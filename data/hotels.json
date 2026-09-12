@@ -1,0 +1,583 @@
+{
+ "_meta": {
+  "what": "City hotels, by city — researched picks with a nightly band in US dollars for two people, room only.",
+  "generated_by": "planning/build-kit.js (from HOTELS in trip-data.js)",
+  "cities": 11,
+  "count": 50,
+  "reads": "Rates are brackets for a January stay — Japan's low season — researched mid-2026, so read them as a floor rather than an average: spring blossom, autumn colour, Golden Week and mid-August run higher. A guide to the tier, never a quote. City hotels do not include meals."
+ },
+ "cities": {
+  "beppu": [
+   {
+    "name": "GALLERIA MIDOBARU",
+    "area": "Mido-baru hillside, above Beppu Bay",
+    "rate_usd_night_two": [
+     250,
+     400
+    ],
+    "url": "https://beppu-galleria-midobaru.jp/en/",
+    "why": "Beppu's design statement — a brutalist-minimal art hotel on the steaming hillside, contemporary works through the halls, every room with its own hot-spring bath and a bay-view balcony. The Peak restaurant cooks from a copper-domed stone oven. The boutique pick in a town of big old bathhouses. (aggregator-rate est.)",
+    "note": null
+   },
+   {
+    "name": "ANA InterContinental Beppu Resort",
+    "area": "Horita highlands, above the city",
+    "rate_usd_night_two": [
+     450,
+     700
+    ],
+    "url": "https://anaicbeppu.com/en/top/",
+    "why": "The chain exception that earns its place: a real onsen resort — striking baths, an infinity pool over the bay, terrace-onsen suites — up in the hills above the hells. Michelin-Guide-listed; the polished counterpoint if the trip wants one plush night.",
+    "note": null
+   }
+  ],
+  "fukuoka": [
+   {
+    "name": "The Ritz-Carlton, Fukuoka",
+    "area": "Daimyō Garden City, Tenjin",
+    "rate_usd_night_two": [
+     650,
+     900
+    ],
+    "url": "https://www.ritzcarlton.com/en/hotels/fukrz-the-ritz-carlton-fukuoka/overview/",
+    "why": "The city's only true luxury flagship (2023); bay views, walk to Daimyō/Tenjin izakaya density.",
+    "note": "r/chubbytravel verdict: 'middle of the pack' for a Ritz — superb new hardware, service growing pains, paid-pool nickel-and-diming."
+   },
+   {
+    "name": "Miyako Hotel Hakata",
+    "area": "On Hakata Station",
+    "rate_usd_night_two": [
+     140,
+     220
+    ],
+    "url": "https://en.miyakohotels.ne.jp/hakata/",
+    "why": "Smart luxury with a gorgeous rooftop indoor/outdoor onsen spa — the soaking-bath box ticked at a bargain.",
+    "note": "The most-repeated Fukuoka rec on r/JTT: rooftop onsen pool, elevator straight into Hakata Station."
+   }
+  ],
+  "hiroshima": [
+   {
+    "name": "KIRO Hiroshima by THE SHARE HOTELS",
+    "area": "Mikawa-chō, downtown (walk to Peace Park)",
+    "rate_usd_night_two": [
+     130,
+     200
+    ],
+    "url": "https://www.thesharehotels.com/kiro/",
+    "why": "A renovated former hospital turned local-design hotel — the old indoor pool is now THE POOLSIDE lounge, with rotating baristas and Seto-region art and furniture through the rooms. The budget-smart design pick that keeps money for okonomiyaki and Miyajima.",
+    "note": null
+   },
+   {
+    "name": "THE KNOT HIROSHIMA",
+    "area": "Directly opposite Peace Memorial Park",
+    "rate_usd_night_two": [
+     120,
+     200
+    ],
+    "url": "https://hotel-the-knot.jp/hiroshima/en/",
+    "why": "2020-renewed design hotel facing the Peace Park — Hiroshima-artist works in the lobby, bistro energy downstairs, and the rooftop bar Kei looking over the river delta at dusk. The best-located bed in town for the memorial morning.",
+    "note": null
+   },
+   {
+    "name": "RIHGA Royal Hotel Hiroshima",
+    "area": "Motomachi, by the castle (5–10 min walk to Peace Park)",
+    "rate_usd_night_two": [
+     160,
+     280
+    ],
+    "url": "https://www.rihga.com/hiroshima",
+    "why": "The city's grande dame tower — high-floor rooms over the castle and delta, six restaurants, pool and spa, deep old-school service. The classic counterpoint when a 1-night stop just needs to be easy and central.",
+    "note": null
+   }
+  ],
+  "kagoshima": [
+   {
+    "name": "Sheraton Kagoshima",
+    "area": "Near Tenmonkan",
+    "rate_usd_night_two": [
+     130,
+     220
+    ],
+    "url": "https://www.marriott.com/en-us/hotels/kojsi-sheraton-kagoshima/overview/",
+    "why": "Newest full-service hotel (2023): floor-to-ceiling Sakurajima views, real onsen floor, walkable food district. Jan club-room discounts running.",
+    "note": "Mention-level but glowing — 'closer to a Four Seasons than a US Sheraton'; FlyerTalk supplies the depth Reddit lacks."
+   },
+   {
+    "name": "Shiroyama Hotel",
+    "area": "Hilltop above the city",
+    "rate_usd_night_two": [
+     170,
+     280
+    ],
+    "url": "https://www.shiroyama-g.co.jp/en/",
+    "why": "THE Sakurajima view — open-air onsen facing the volcano, nationally ranked breakfast; free shuttle down (not walkable).",
+    "note": "Breadth without depth: every Kyushu thread cites the Sakurajima-view onsen and famous breakfast; some corners run dated."
+   },
+   {
+    "name": "Good Fellows Resort U/Q",
+    "area": "Iso Beach, by Sengan-en (~10 min from centre)",
+    "rate_usd_night_two": [
+     155,
+     225
+    ],
+    "url": "https://www.ikyu.com/00052534/",
+    "why": "The anti-hotel: a two-room crowdfunded villa on Iso Beach (opened Aug 2025) with Sakurajima filling the window, a private ocean-view sauna in room Q, and a roastery café below — next door to Sengan-en. A 1–2 night quiet splurge instead of a downtown base: no walkable dining, meals are house-only, last check-in 17:30, and it's too new to have reviews.",
+    "note": null
+   }
+  ],
+  "kanazawa": [
+   {
+    "name": "Hyatt Centric Kanazawa",
+    "area": "At Kanazawa Station",
+    "rate_usd_night_two": [
+     170,
+     260
+    ],
+    "url": "https://www.hyatt.com/hyatt-centric/kmqct-hyatt-centric-kanazawa",
+    "why": "Art-filled, modern, practical; ~15 min to Ōmichō/old town. Jan is deep low season here.",
+    "note": "Multiple dedicated r/hyatt reviews: 'don't sleep on it' — station-side convenience, easy upgrades, excellent breakfast."
+   },
+   {
+    "name": "Sōki Kanazawa",
+    "area": "Opposite Ōmichō Market",
+    "rate_usd_night_two": [
+     100,
+     180
+    ],
+    "url": "https://www.uds-hotels.com/soki/kanazawa/",
+    "why": "Quiet wabi-sabi design hotel with a public bath — arguably the better foodie location, at snow-season prices.",
+    "note": "Consistent trip-report praise: tattoo-friendly baths, Ōmichō at the doorstep, hip and quiet."
+   },
+   {
+    "name": "The Hotel Sanraku",
+    "area": "Castle ↔ Ōmichō",
+    "rate_usd_night_two": [
+     180,
+     280
+    ],
+    "url": "https://sanraku.kenhotels.com/kanazawa/en/",
+    "why": "Opened 2022; luxe bathrooms, acclaimed breakfast, very well priced for what it offers.",
+    "note": "Dense, consistent praise — new, central, an acclaimed breakfast; public areas get packed."
+   }
+  ],
+  "kumamoto": [
+   {
+    "name": "THE BLOSSOM KUMAMOTO",
+    "area": "Atop JR Kumamoto Station (Amu Plaza, floors 9–12)",
+    "rate_usd_night_two": [
+     130,
+     220
+    ],
+    "url": "https://www.jrk-hotels.co.jp/en/Kumamoto/",
+    "why": "The frictionless pick between ryokan legs: elevator from the shinkansen to a 27㎡ modern-Japanese room, a real garden-view public bath, and the city's best hotel breakfast (sea-bream chazuke, warm ikinari dango). Highest-rated in town by a wide margin (Booking 9.3/4,700+). Trade-off: the castle and arcades are a 15-min tram hop, not a walk.",
+    "note": null
+   },
+   {
+    "name": "OMO5 Kumamoto by Hoshino Resorts",
+    "area": "Downtown — 5-min walk to the castle, on the arcades",
+    "rate_usd_night_two": [
+     135,
+     240
+    ],
+    "url": "https://hoshinoresorts.com/en/hotels/omo5kumamoto/",
+    "why": "The design-and-romance pick (2023): Hoshino's playful castle-yagura building with a rooftop terrace pointed straight at the illuminated keep — the most romantic moment any Kumamoto hotel offers, with Kamitori/Shimotori at your feet. Rooms are compact and clever — book the Utsuwa or Entaku twin, not the low-beamed loft.",
+    "note": null
+   },
+   {
+    "name": "Onyado Nono Kumamoto",
+    "area": "By Sakuramachi Bus Terminal, ~5 min to the arcades",
+    "rate_usd_night_two": [
+     110,
+     165
+    ],
+    "url": "https://dormy-hotels.com/dormyinn/hotels/nono_kumamoto/",
+    "why": "The value pick and the city's newest build (Aug 2025): all-tatami shoes-off floors, a top-floor natural onsen with rotenburo and sauna, a ~60-dish Kumamoto breakfast (akaushi burgers, kaisen-don) and free midnight ramen, usually under $160 in January. Skip it if the point of the city stop is a break FROM tatami and communal baths.",
+    "note": null
+   }
+  ],
+  "kyoto": [
+   {
+    "name": "Sowaka",
+    "area": "Gion (Yasaka side streets)",
+    "rate_usd_night_two": [
+     800,
+     950
+    ],
+    "url": "https://sowaka.com",
+    "why": "23-room restored former ryōtei with Michelin-level kappo in-house — the definitive design-luxury small hotel here.",
+    "note": "Dedicated r/chubbytravel review: Gion base 10/10, excellent in-house dining — rooms cozy-to-tight for two with luggage."
+   },
+   {
+    "name": "Hotel The Mitsui Kyoto",
+    "area": "Nijō Castle (Nijōjō-mae)",
+    "rate_usd_night_two": [
+     800,
+     1200
+    ],
+    "url": "https://www.hotelthemitsui.com/en/kyoto/",
+    "why": "Marriott Luxury Collection flagship by Nijō Castle — opulent, with the rare draw of a real onsen drilled 1,000m beneath central Kyoto and a standout Japanese breakfast. A stretch above the city budget; verify the Jan rate.",
+    "note": "Firsthand guests rate it 'very good, not amazing' — a touch sterile, the headline onsen lukewarm and faintly chlorinated; request a Nijō Castle–view base room."
+   },
+   {
+    "name": "Six Senses Kyoto",
+    "area": "Higashiyama (Toyokuni Shrine)",
+    "rate_usd_night_two": [
+     700,
+     1100
+    ],
+    "url": "https://www.sixsenses.com/en/hotels/kyoto",
+    "why": "Six Senses' wellness-forward first Kyoto property (2024), quiet south-Higashiyama by Toyokuni Shrine — destination spa, Earth Lab, playful Heian design. Rack sits with the Ritz-Carlton / Four Seasons / Park Hyatt set (~$1,300); January runs ~$700.",
+    "note": "Reddit/TA lean warm — praised service, zen natural-material rooms and an ideal spa; the breakfast splits opinion and a few find it overpriced and more international/Western than omotenashi."
+   },
+   {
+    "name": "Higashiyama Shikikaboku",
+    "area": "Higashiyama",
+    "rate_usd_night_two": [
+     400,
+     550
+    ],
+    "url": "https://www.shikikaboku.jp/",
+    "why": "8-suite hidden luxury machiya — tea-ceremony welcome, private-feel suites with kitchens; 4.9★ adored.",
+    "note": "Trip-report praise for the reservable rooftop open-air bath and breakfast; early teething issues read as resolved given the 4.9."
+   },
+   {
+    "name": "The Hotel Seiryu Kiyomizu",
+    "area": "Higashiyama (below Kiyomizu-dera)",
+    "rate_usd_night_two": [
+     550,
+     750
+    ],
+    "url": "https://www.princehotels.com/seiryu-kiyomizu/",
+    "why": "Restored 1933 schoolhouse; K36 rooftop bar with Yasaka Pagoda views, deep soaking tubs up top.",
+    "note": "r/chubby and r/FAT both rate the schoolhouse conversion, service and rooftop bar — you live in the Kiyomizu tourist crush for it."
+   },
+   {
+    "name": "THE JUNEI HOTEL Kyoto",
+    "area": "Higashiyama (Kiyomizu)",
+    "rate_usd_night_two": [
+     380,
+     520
+    ],
+    "url": "https://www.juneihotel.com/kyoto/en/",
+    "why": "11-room hinoki-and-bamboo boutique — in-room cypress tubs, kaiseki breakfast. Quietly excellent.",
+    "note": "Little community coverage; a strong 4.8 carries this intimate cypress-tub boutique."
+   },
+   {
+    "name": "Ace Hotel Kyoto",
+    "area": "Karasuma-Oike (downtown)",
+    "rate_usd_night_two": [
+     280,
+     400
+    ],
+    "url": "https://acehotel.com/kyoto/",
+    "why": "Kengo Kuma + Commune Design in the walkable downtown grid — frees budget for dining.",
+    "note": "Fun, artful, supremely central — and emphatically not a traditional Kyoto experience."
+   },
+   {
+    "name": "The Thousand Kyoto",
+    "area": "By Kyoto Station",
+    "rate_usd_night_two": [
+     250,
+     380
+    ],
+    "url": "https://www.keihanhotels-resorts.co.jp/the-thousand-kyoto/en/",
+    "why": "Polished, calm large hotel steps from the shinkansen — the practical-luxury option when transit convenience wins.",
+    "note": "Standard rooms feel like small suites; supremely convenient at the station, atmospherically nowhere."
+   },
+   {
+    "name": "Genji Kyoto",
+    "area": "Kamo riverside (Gojō)",
+    "rate_usd_night_two": [
+     280,
+     450
+    ],
+    "url": "https://genjikyoto.com/",
+    "why": "19-room Design Hotels member right on the Kamo River — clean-lined modern-Japanese, river light in the rooms.",
+    "note": "Low chatter, high scores — quietly over-delivers per G4.8/TA4.9; rooftop praised, sights a walk away."
+   },
+   {
+    "name": "Kyokoyado Muromachi Yutone",
+    "area": "Muromachi (near Nishiki)",
+    "rate_usd_night_two": [
+     350,
+     500
+    ],
+    "url": "https://www.yutone.jp/",
+    "why": "Seven-room kyō-yado with its own Kyoto-cuisine kitchen — small, hushed, central.",
+    "note": "Repeated endorsements at ~$500/n — in-room hinoki tub (not onsen water). Best Google score on this list."
+   },
+   {
+    "name": "Nazuna Kyoto Gosho",
+    "area": "By the Imperial Palace",
+    "rate_usd_night_two": [
+     400,
+     600
+    ],
+    "url": "https://nazuna.co/kyoto-gosho/",
+    "why": "Luxury machiya suites near the Gosho — residential Kyoto, private-bath rooms; Jan is its cheapest month.",
+    "note": "No deep community reviews; G4.8 plus a Michelin selection carry it."
+   },
+   {
+    "name": "Kanamean Nishitomiya",
+    "area": "Central Kyoto",
+    "rate_usd_night_two": [
+     450,
+     650
+    ],
+    "url": "https://www.kanamean.co.jp/en/",
+    "why": "8-suite Relais & Châteaux machiya ryokan with a Michelin-starred kaiseki kitchen (dinner ~¥30k/pp extra) — the city-ryokan hybrid.",
+    "note": "The strongest Reddit endorsement of the Kyoto set — twin r/chubby and r/FAT reviews: 'genuinely rare' omotenashi, standout kaiseki."
+   },
+   {
+    "name": "Tawaraya",
+    "area": "Fuya-chō (heart of Kyoto)",
+    "rate_usd_night_two": [
+     900,
+     1600
+    ],
+    "url": "https://www.tripadvisor.com/Hotel_Review-g298564-d307364-Reviews-Tawaraya-Kyoto_Kyoto_Prefecture_Kinki.html",
+    "why": "The 300-year-old legend — Japan's most storied ryokan, in-room kaiseki dinner + breakfast INCLUDED in the rate. Books by phone/fax; the once-in-a-lifetime city stay.",
+    "note": "Thin on Reddit; the legend lives offline, and opinion splits between once-in-a-lifetime and faded value at the price."
+   },
+   {
+    "name": "Capella Kyoto",
+    "area": "Higashiyama (stretch)",
+    "rate_usd_night_two": [
+     1300,
+     1700
+    ],
+    "url": "https://capellahotels.com/en/capella-kyoto",
+    "why": "2026 opening, instant top-of-market — if the trip deserves one big city splurge, it's this or nothing.",
+    "note": "Live r/chubby and r/FAT reviews from opening months: real Capella service, heart-of-Gion — but 'the renders were better than the final product.'"
+   },
+   {
+    "name": "Suiran, Luxury Collection",
+    "area": "Arashiyama (Ōi riverside, ~20 min west of center)",
+    "rate_usd_night_two": [
+     600,
+     900
+    ],
+    "url": "https://www.suirankyoto.com/",
+    "why": "Riverside Arashiyama luxury with its own hot-spring bathing and a Michelin-pedigree restaurant — trades the central machiya convenience for the bamboo-and-temples setting at the quiet edge of the city.",
+    "note": null
+   }
+  ],
+  "nagasaki": [
+   {
+    "name": "Nagasaki Marriott Hotel",
+    "area": "Over JR Nagasaki Station (AMU Plaza)",
+    "rate_usd_night_two": [
+     240,
+     420
+    ],
+    "url": "https://www.marriott.com/en-us/hotels/ngsmc-nagasaki-marriott-hotel/overview/",
+    "why": "The view-and-service pick (2024) — Mount Inasa and harbour rooms, a bayfront lobby, and staff repeatedly called the best part; right on the station, the natural base for flying out of NGS.",
+    "note": "The Kyushu-thread consensus newcomer — opened 2024, harbour-and-Mount-Inasa views, staff called 'a jewel in the Marriott collection'; station-side and easy."
+   },
+   {
+    "name": "Garden Terrace Nagasaki",
+    "area": "Akasako hillside, ~10 min from centre by taxi",
+    "rate_usd_night_two": [
+     220,
+     380
+    ],
+    "url": "https://www.gardenterrace-nagasaki.co.jp/",
+    "why": "The design pick — Kengo Kuma's folded-timber resort framing Nagasaki's famous bay night view from your own room and bath; reviews split on whether interiors and value match the architecture, and it's a taxi from town.",
+    "note": "The architecture draw is undisputed (Kengo Kuma, the bay laid out at eye level); FlyerTalk and TripAdvisor split on whether the rooms and value live up to it, and it's a taxi from town."
+   },
+   {
+    "name": "Setre Glover's House",
+    "area": "Minami-Yamate, by Glover Garden & Ōura",
+    "rate_usd_night_two": [
+     180,
+     300
+    ],
+    "url": "https://www.setre-glover.com/",
+    "why": "The boutique-foodie pick — a small European-style house in the harbour quarter with creative Nagasaki-sourced cooking, walkable to Glover Garden and Dejima; a few rooms read a touch dated.",
+    "note": "Quiet but fondly reviewed — the European-house atmosphere, the locally-sourced kitchen and the Glover Garden setting carry it; the knock is dated rooms and soft beds."
+   },
+   {
+    "name": "Hotel Indigo Nagasaki Glover Street",
+    "area": "Minami-Yamate — on Glover Street itself",
+    "rate_usd_night_two": [
+     135,
+     250
+    ],
+    "url": "https://nagasaki.hotelindigo.com/en/",
+    "why": "The design-heritage pick (Dec 2024): a restored 19th-century redbrick inside the preservation district, a 7-min walk to Glover Garden with Ōura Cathedral next door, chapel-turned-breakfast-room (the kakuni omelette gets named in reviews) and harbour-view rooms. Booking 9.2 / Rakuten 4.87. The catch: a genuinely steep ~200m slope to the door — taxi up with luggage.",
+    "note": null
+   }
+  ],
+  "sendai": [
+   {
+    "name": "The Westin Sendai",
+    "area": "Sendai Trust Tower, ~9-min walk from the station",
+    "rate_usd_night_two": [
+     220,
+     340
+    ],
+    "url": "https://www.marriott.com/en-us/hotels/sdjwi-the-westin-sendai/overview/",
+    "why": "Rooms on floors 28–36 with floor-to-ceiling views to the Pacific and the Zao range — the modern-luxury view pick, with a top-floor spa and consistently praised service.",
+    "note": "Sendai's view-and-service standout — floors 28–36 over the Pacific and the Zao range, a top-floor spa, and service repeatedly singled out."
+   },
+   {
+    "name": "Hotel Metropolitan Sendai East",
+    "area": "On JR Sendai Station",
+    "rate_usd_night_two": [
+     150,
+     240
+    ],
+    "url": "https://sendai-e.metropolitan.jp/",
+    "why": "A newer JR tower directly over the station — the frictionless base for day-tripping Matsushima and the onward Shinkansen, with strong in-house dining.",
+    "note": "The frictionless pick — a newer JR tower over Sendai Station, ideal for Matsushima and the onward Shinkansen; a smaller view than the Westin."
+   }
+  ],
+  "takayama": [
+   {
+    "name": "Hotel Wood Takayama",
+    "area": "Historic district",
+    "rate_usd_night_two": [
+     150,
+     250
+    ],
+    "url": "https://www.hotel-wood.com/en/",
+    "why": "Warm modern-timber design, evening sake tastings, praised staff; steps from the morning market.",
+    "note": "Consistent mentions: zen-timber design, nightly local-sake tastings, steps from the old town."
+   },
+   {
+    "name": "Cup of Tea Ensemble",
+    "area": "Hida Takayama Onsen, walk to old town",
+    "rate_usd_night_two": [
+     130,
+     250
+    ],
+    "url": "https://cupoftea-takayama.net/ensemble/en/stay/",
+    "why": "Design-led machiya-style stay in local thinned timber & persimmon-tannin finishes — exactly the modern-craft aesthetic.",
+    "note": "No community coverage and a middling G4.0 on 39 reviews — style currently outruns verification."
+   },
+   {
+    "name": "IORI Stay (whole machiya)",
+    "area": "Old town",
+    "rate_usd_night_two": [
+     450,
+     650
+    ],
+    "url": "https://iori-stay.com/stays/iori-takayama/",
+    "why": "Restored 100-year-old private machiya, one party per night — the most romantic option in town; cypress baths in some units.",
+    "note": "The best Takayama word-of-mouth: private-onsen machiya called 'the highlight of our trip'; no central Google listing to cross-check."
+   }
+  ],
+  "tokyo": [
+   {
+    "name": "Trunk(Hotel) Yoyogi Park",
+    "area": "Tomigaya / Yoyogi Park",
+    "rate_usd_night_two": [
+     600,
+     750
+    ],
+    "url": "https://yoyogipark.trunk-hotel.com/en",
+    "why": "The design-hotel of the moment — rooftop pool, park-facing terrace rooms, Tomigaya bistro & coffee scene. Closest Tokyo match to the Fufu aesthetic.",
+    "note": "The heated rooftop pool in January is the killer feature; rooms run compact and the street below is loud."
+   },
+   {
+    "name": "K5",
+    "area": "Kabutochō / Nihonbashi",
+    "rate_usd_night_two": [
+     500,
+     650
+    ],
+    "url": "https://k5-tokyo.com/",
+    "why": "1920s bank reborn as a 20-room Claesson Koivisto Rune hotel — Switch Coffee, Ao bar, Caveman downstairs. The design-insider pick.",
+    "note": "Stylish bank conversion, but rooms are the smallest of its boutique peers, with few extras."
+   },
+   {
+    "name": "Hotel Toranomon Hills",
+    "area": "Toranomon (Unbound, Hyatt)",
+    "rate_usd_night_two": [
+     450,
+     600
+    ],
+    "url": "https://www.hyatt.com/hotel-toranomon-hills",
+    "why": "Space Copenhagen interiors, Le Pristine downstairs, inside a serious food complex — best value in the design tier.",
+    "note": "Deeply documented on r/hyatt and uniformly positive — generous suite upgrades, 'set the tone for the trip' — with one refrain: it doesn't feel Japanese."
+   },
+   {
+    "name": "The Okura Tokyo",
+    "area": "Toranomon (Okura hill)",
+    "rate_usd_night_two": [
+     550,
+     750
+    ],
+    "url": "https://theokuratokyo.jp/en/",
+    "why": "The modernist grande dame — Yoshirō Taniguchi's lobby faithfully rebuilt, deep service, Orchid Bar. The classic counterpoint to the boutiques.",
+    "note": "r/chubbytravel reveres the Heritage wing's old-school Japanese service — calm, classic, regularly chosen over Palace Hotel in comparison threads."
+   },
+   {
+    "name": "TSUKI Tokyo",
+    "area": "Tsukiji ↔ Ginza",
+    "rate_usd_night_two": [
+     180,
+     280
+    ],
+    "url": "https://www.tsukihotel.com/en/",
+    "why": "Compact Japanese-modern boutique between Tsukiji and Ginza — the value play that keeps budget for dinners.",
+    "note": "No deep community reviews; solid Google signal for the hinoki-tub rooms and Tsukiji location."
+   },
+   {
+    "name": "Hoshinoya Tokyo",
+    "area": "Ōtemachi",
+    "rate_usd_night_two": [
+     750,
+     1000
+    ],
+    "url": "https://hoshinoresorts.com/en/hotels/hoshinoyatokyo/",
+    "why": "The tower ryokan — tatami throughout, an ozashiki lounge per floor, and a top-floor open-air onsen fed by a real 1,500m hot spring. The city stay that's also an inn.",
+    "note": "The Reddit darling of Tokyo: rooftop onsen in the rain, best-sleep beds, kendo at dawn — with sterile Otemachi nights and a 1–3 night sweet spot as the caveats."
+   },
+   {
+    "name": "SOIL Nihonbashi",
+    "area": "Nihonbashi (Bakurochō)",
+    "rate_usd_night_two": [
+     280,
+     420
+    ],
+    "url": "https://soilis.co/nihonbashi/",
+    "why": "Michelin-Guide-listed micro design hotel above SOIL's café & sake bar — raw-material minimalism in the old wholesale district, near K5's nightlife orbit.",
+    "note": "No community reviews yet — Michelin-selected and a design-press favorite on a small Google sample."
+   },
+   {
+    "name": "The Tokyo EDITION, Toranomon",
+    "area": "Toranomon (stretch)",
+    "rate_usd_night_two": [
+     700,
+     950
+    ],
+    "url": "https://www.marriott.com/en-us/hotels/tyoet-the-tokyo-edition-toranomon/overview/",
+    "why": "The EDITION the community actually prefers: Kengo Kuma's jungle-lobby atrium on the 31st floor, Tower-view rooms toward Tokyo Tower, Gold Bar. Schrager polish at scale.",
+    "note": "The EDITION the FAT crowd points to over Ginza — lobby and views with real wow, strong bars; the usual Schrager service-style caveats at the price."
+   },
+   {
+    "name": "Palace Hotel Tokyo",
+    "area": "Marunouchi (Imperial Palace moat)",
+    "rate_usd_night_two": [
+     550,
+     850
+    ],
+    "url": "https://en.palacehoteltokyo.com/",
+    "why": "The establishment grande dame — palace-moat rooms with balconies, the Evian spa, deep classic service; a grown-up counterpoint to the boutiques that still books inside budget.",
+    "note": null
+   },
+   {
+    "name": "Park Hyatt Tokyo",
+    "area": "Nishi-Shinjuku (top of Shinjuku Park Tower)",
+    "rate_usd_night_two": [
+     650,
+     1000
+    ],
+    "url": "https://www.hyatt.com/park-hyatt/tyoph-park-hyatt-tokyo",
+    "why": "The Lost in Translation icon, renovated and reopened Dec 2025 — New York Grill and Peak Lounge intact, quiet Nishi-Shinjuku. January city-view rooms land in budget; suites and Wellness rooms run well above.",
+    "note": null
+   }
+  ]
+ }
+}

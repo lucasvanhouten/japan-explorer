@@ -1,0 +1,1775 @@
+{
+ "kit": "Japan Trip Kit",
+ "variant": "b",
+ "variant_note": "the tool-shipping build — builder/route.js and its README; otherwise identical to kit/",
+ "spines": {
+  "count": 9,
+  "ids": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6",
+   "s7",
+   "s8",
+   "s9"
+  ],
+  "bands": {
+   "s1": [
+    7,
+    15
+   ],
+   "s2": [
+    9,
+    16
+   ],
+   "s3": [
+    12,
+    19
+   ],
+   "s4": [
+    9,
+    16
+   ],
+   "s5": [
+    11,
+    20
+   ],
+   "s6": [
+    11,
+    19
+   ],
+   "s7": [
+    10,
+    17
+   ],
+   "s8": [
+    11,
+    18
+   ],
+   "s9": [
+    8,
+    12
+   ]
+  },
+  "decisions": 64,
+  "options": 141,
+  "fixture": {
+   "single": {
+    "runs": 135,
+    "ok": 135,
+    "withheld": 6
+   },
+   "cross": {
+    "runs": 1305,
+    "ok": 1305,
+    "withheld": 2979
+   }
+  },
+  "explorer": {
+   "places": 38,
+   "legs": 1116,
+   "airport_legs": 448
+  },
+  "defaults": {
+   "s1": {
+    "stops": "tokyo:4,hakone:1,kyoto:4",
+    "nights": 9,
+    "hours": 7.3,
+    "perNight": 49,
+    "in": "HND",
+    "out": "KIX"
+   },
+   "s2": {
+    "stops": "tokyo:4,yudanaka:1,kanazawa:3,kyoto:4",
+    "nights": 12,
+    "hours": 9.4,
+    "perNight": 47,
+    "in": "HND",
+    "out": "KIX"
+   },
+   "s3": {
+    "stops": "tokyo:5,hakone:1,kyoto:4,hiroshima:2",
+    "nights": 12,
+    "hours": 8.8,
+    "perNight": 44,
+    "in": "HND",
+    "out": "HIJ"
+   },
+   "s4": {
+    "stops": "tokyo:4,tanigawa:1,echigoyuzawa:1,kanazawa:3,kyoto:4",
+    "nights": 13,
+    "hours": 11.17,
+    "perNight": 52,
+    "in": "HND",
+    "out": "KIX"
+   },
+   "s5": {
+    "stops": "tokyo:4,kirishima:1,kagoshima:2,fukuoka:3,takeo:1,nagasaki:2",
+    "nights": 13,
+    "hours": 9.6,
+    "perNight": 40,
+    "in": "HND",
+    "out": "NGS"
+   },
+   "s6": {
+    "stops": "tokyo:4,kirishima:1,kagoshima:2,fukuoka:3,hita:1,yufuin:1",
+    "nights": 12,
+    "hours": 10.65,
+    "perNight": 48,
+    "in": "HND",
+    "out": "OIT"
+   },
+   "s7": {
+    "stops": "tokyo:4,nagasaki:2,takeo:1,fukuoka:3,hita:1,yufuin:1",
+    "nights": 12,
+    "hours": 10.3,
+    "perNight": 45,
+    "in": "HND",
+    "out": "OIT"
+   },
+   "s8": {
+    "stops": "tokyo:4,hakone:1,kyoto:4,hiroshima:2,fukuoka:3",
+    "nights": 14,
+    "hours": 9.1,
+    "perNight": 39,
+    "in": "HND",
+    "out": "FUK"
+   },
+   "s9": {
+    "stops": "tokyo:4,sapporo:2,niseko:1,sapporo:1",
+    "nights": 8,
+    "hours": 11.35,
+    "perNight": 78,
+    "in": "HND",
+    "out": "CTS"
+   }
+  }
+ },
+ "explorer": {
+  "page": "guides/route-explorer.html",
+  "data": "guides/route-explorer-data.js",
+  "template": "planning/kit-src/companions/explorer/route-explorer.template.html"
+ },
+ "places_json": {
+  "source": "planning/kit-src/places.json",
+  "records": 103,
+  "cards": [
+   "Tokyo",
+   "Nikkō",
+   "Kyoto",
+   "Osaka",
+   "Nara",
+   "Hakone/Fuji/Izu",
+   "Kanazawa & Hokuriku",
+   "Takayama/Hida & the Alps",
+   "Snow country & Tōhoku",
+   "Hokkaido",
+   "Hiroshima/Miyajima & the Inland Sea",
+   "Kyushu",
+   "Okinawa"
+  ],
+  "unmapped": [
+   "Okinawa"
+  ],
+  "locs": [
+   "aizuwakamatsu",
+   "akan",
+   "akayu",
+   "amakusa",
+   "amino",
+   "arima",
+   "atami",
+   "bandaiatami",
+   "beppu",
+   "dogo",
+   "echigoyuzawa",
+   "eiheiji",
+   "fukuoka",
+   "furano",
+   "gero",
+   "hakone",
+   "hatsukaichi",
+   "hiroshima",
+   "hita",
+   "hottoyuda",
+   "ibusuki",
+   "iizaka",
+   "iki",
+   "inuyama",
+   "ise",
+   "izu",
+   "izukogen",
+   "jozankei",
+   "kagoshima",
+   "kakunodate",
+   "kamasaki",
+   "kameoka",
+   "kaminoyama",
+   "kanazawa",
+   "karatsu",
+   "karuizawa",
+   "katsuragi",
+   "katsuura",
+   "kawaguchiko",
+   "kinosaki",
+   "kinugawa",
+   "kirishima",
+   "kiso",
+   "kitahiroshima",
+   "kobuchizawa",
+   "kochi",
+   "koshu",
+   "kumamoto",
+   "kurokawa",
+   "kyoto",
+   "matsue",
+   "matsumoto",
+   "matsunoyama",
+   "mikuni",
+   "miyajima",
+   "miyoshi",
+   "murasugi",
+   "nagasaki",
+   "nagoya",
+   "naoshima",
+   "nara",
+   "naruto",
+   "nasushiobara",
+   "nikko",
+   "niseko",
+   "noboribetsu",
+   "notojima",
+   "nyuto",
+   "okayama",
+   "onomichi",
+   "osaka",
+   "otaru",
+   "oyama",
+   "sapporo",
+   "sendai",
+   "setoda",
+   "shimoda",
+   "shiroishi",
+   "shizukuishi",
+   "sukagawa",
+   "suwa",
+   "suzu",
+   "takachiho",
+   "takayama",
+   "takeo",
+   "tanigawa",
+   "tokyo",
+   "tomonoura",
+   "totsukawa",
+   "toyama",
+   "tsuchiyu",
+   "unzen",
+   "wakura",
+   "yakushima",
+   "yamadaonsen",
+   "yamanaka",
+   "yamashiro",
+   "yonago",
+   "yudanaka",
+   "yufuin",
+   "yugashima",
+   "yugawara",
+   "yunoyama"
+  ]
+ },
+ "version": "2026.09.12",
+ "built": "2026-09-12",
+ "repository": "not yet published",
+ "generated_by": "planning/build-kit.js — GENERATED, never hand-edit anything under kit/",
+ "catalog_as_of": "2026-09-07",
+ "place_labels": {
+  "tokyo": "Tokyo",
+  "sendai": "Sendai",
+  "kanazawa": "Kanazawa",
+  "takayama": "Takayama",
+  "kyoto": "Kyoto",
+  "nara": "Nara",
+  "osaka": "Osaka",
+  "hiroshima": "Hiroshima",
+  "fukuoka": "Fukuoka (Hakata)",
+  "beppu": "Beppu",
+  "kumamoto": "Kumamoto",
+  "nagasaki": "Nagasaki",
+  "kagoshima": "Kagoshima",
+  "hakone": "Hakone",
+  "kurokawa": "Kurokawa Onsen",
+  "nikko": "Nikkō",
+  "izu": "Izu peninsula (Shuzenji)",
+  "echigoyuzawa": "Echigo-Yuzawa (snow country)",
+  "tanigawa": "Minakami / Tanigawa (snow country)",
+  "kawaguchiko": "Lake Kawaguchi (Mt Fuji)",
+  "miyajima": "Miyajima",
+  "yufuin": "Yufuin",
+  "kirishima": "Kirishima (Myōken Onsen)",
+  "amakusa": "Amakusa (Matsushima)",
+  "takeo": "Takeo Onsen",
+  "yamashiro": "Yamashiro Onsen (Kaga)",
+  "yamanaka": "Yamanaka Onsen (Kaga)",
+  "mikuni": "Mikuni / Awara",
+  "toyama": "Toyama",
+  "unzen": "Unzen",
+  "karatsu": "Karatsu",
+  "hita": "Amagase (Hita)",
+  "yakushima": "Yakushima",
+  "iki": "Iki island",
+  "okayama": "Okayama",
+  "naoshima": "Naoshima (Miyanoura)",
+  "uno": "Uno port",
+  "kakunodate": "Kakunodate",
+  "nyuto": "Nyūtō Onsen",
+  "nagoya": "Nagoya",
+  "sapporo": "Sapporo",
+  "niseko": "Niseko (Hirafu)",
+  "furano": "Furano",
+  "noboribetsu": "Noboribetsu Onsen",
+  "otaru": "Otaru",
+  "akan": "Lake Akan (Akanko Onsen)",
+  "takachiho": "Takachiho",
+  "arima": "Arima Onsen",
+  "kinosaki": "Kinosaki Onsen",
+  "amino": "Taiza (Tango coast)",
+  "ise": "Ise-Shima",
+  "yunoyama": "Yunoyama Onsen",
+  "katsuragi": "Katsuragi (Kōyasan side)",
+  "eiheiji": "Eiheiji",
+  "notojima": "Notojima (Noto)",
+  "koshu": "Kōshū (Yamanashi)",
+  "kobuchizawa": "Kobuchizawa (Yatsugatake)",
+  "karuizawa": "Karuizawa (Miyota)",
+  "onomichi": "Onomichi",
+  "tomonoura": "Tomonoura",
+  "setoda": "Setoda (Ikuchijima)",
+  "kochi": "Kōchi (Shikoku)",
+  "jozankei": "Jōzankei Onsen",
+  "gero": "Gero Onsen",
+  "matsumoto": "Matsumoto",
+  "kiso": "Kiso valley",
+  "suwa": "Suwa",
+  "inuyama": "Inuyama",
+  "hatsukaichi": "Hatsukaichi (Miyajima side)",
+  "yudanaka": "Yudanaka (Shibu Onsen)",
+  "yamadaonsen": "Yamada Onsen",
+  "matsunoyama": "Matsunoyama Onsen",
+  "tsuchiyu": "Tsuchiyu Onsen",
+  "iizaka": "Iizaka Onsen",
+  "bandaiatami": "Bandai-Atami",
+  "aizuwakamatsu": "Aizu-Wakamatsu",
+  "sukagawa": "Sukagawa",
+  "akayu": "Akayu Onsen",
+  "kaminoyama": "Kaminoyama Onsen",
+  "hottoyuda": "Hotto-Yuda",
+  "shizukuishi": "Shizukuishi",
+  "kamasaki": "Kamasaki Onsen",
+  "oyama": "Oyama (Mt Fuji)",
+  "yugashima": "Yugashima (Izu)",
+  "izukogen": "Izu-Kōgen",
+  "atami": "Atami",
+  "shimoda": "Shimoda",
+  "yugawara": "Yugawara",
+  "hnd": "Tokyo · Haneda airport (HND)",
+  "nrt": "Tokyo · Narita airport (NRT)",
+  "kix": "Osaka · Kansai airport (KIX)",
+  "itm": "Osaka · Itami airport (ITM)",
+  "hij": "Hiroshima airport (HIJ)",
+  "fuk": "Fukuoka airport (FUK)",
+  "oit": "Ōita airport (OIT)",
+  "kmj": "Kumamoto airport (KMJ)",
+  "ngs": "Nagasaki airport (NGS)",
+  "koj": "Kagoshima airport (KOJ)",
+  "kmq": "Komatsu airport (KMQ)",
+  "cts": "Sapporo · New Chitose airport (CTS)",
+  "ngo": "Nagoya · Centrair airport (NGO)"
+ },
+ "connector_locs": {
+  "Aizu Tsuruga Higashiyama Sohonzan": "aizuwakamatsu",
+  "Yamagata The Takinami": "akayu",
+  "Osteria Sincerità": "akayu",
+  "Sanso Tensui": "hita",
+  "Tayuta": "amakusa",
+  "Nakanobo Zuien": "arima",
+  "Atamiso": "bandaiatami",
+  "Auberge Suzukane": "bandaiatami",
+  "Bettei Oborozukiyo": "dogo",
+  "Kanshuku-en Eshikoto": "eiheiji",
+  "Shogetsu": "gero",
+  "Hakone Suishoen": "hakone",
+  "Gora Kadan": "hakone",
+  "Yamado": "hottoyuda",
+  "Bettei Amafuru Oka": "ibusuki",
+  "Onyado Kawasemi": "iizaka",
+  "Auberge Yusura": "ise",
+  "Chalet Ivy Jozankei": "jozankei",
+  "Wabizakura": "kakunodate",
+  "Kyo Yunohana Resort Suisen": "kameoka",
+  "Yoyokaku": "karatsu",
+  "Sanso Amanosato": "katsuragi",
+  "Kumano Bettei Nakanoshima": "katsuura",
+  "Fufu Kawaguchiko": "kawaguchiko",
+  "Nishimuraya Honkan": "kinosaki",
+  "Kinugawa Kanaya Hotel": "kinugawa",
+  "Myoken Ishiharaso": "kirishima",
+  "Isshin": "kirishima",
+  "Soneka": "kitahiroshima",
+  "Fuefukigawa Onsen Zabou": "koshu",
+  "Takefue": "kurokawa",
+  "Gosho Gekkoju": "kurokawa",
+  "Taiza Onsen Sumihei": "amino",
+  "Hiiragiya": "kyoto",
+  "Akan Tsuruga Besso Hinanoza": "akan",
+  "Sui Suwako": "suwa",
+  "Gora Kadan Fuji": "oyama",
+  "Minamikan": "matsue",
+  "Bettei Senjuan": "tanigawa",
+  "ryugon": "echigoyuzawa",
+  "Satoyama Jujo": "echigoyuzawa",
+  "Kinsuikan": "miyajima",
+  "Hotel Iyaonsen": "miyoshi",
+  "Kohanyu": "kochi",
+  "Kansuiro": "murasugi",
+  "Tsukihitei": "nara",
+  "Fufu Nara": "nara",
+  "Hotel Ridge": "naruto",
+  "Yunohanaso": "nasushiobara",
+  "Fufu Nikko": "nikko",
+  "Shiguchi": "niseko",
+  "Zaborin": "niseko",
+  "Ryokan Nishiyama": "onomichi",
+  "Kuramure": "otaru",
+  "Iwanoyu": "suwa",
+  "Shiki no Yado Michinokuan": "shiroishi",
+  "Asaba": "izu",
+  "Otogi no Yado Yoneya": "sukagawa",
+  "Lamp no Yado": "suzu",
+  "Shinsen": "takachiho",
+  "Wanosato": "takayama",
+  "Machiyado Ichiryu": "takayama",
+  "Onyado Chikurintei": "takeo",
+  "Miyakowasure": "kakunodate",
+  "Migiwatei Ochi Kochi": "tomonoura",
+  "Yunotani Senkei": "totsukawa",
+  "Tsuchiyu Bettei Satonoyu": "tsuchiyu",
+  "Mt.Resort Unzen Kyushu Hotel": "unzen",
+  "Kagaya Bettei Matsunomidori": "wakura",
+  "Sankara Hotel & Spa Yakushima": "yakushima",
+  "Fujiiso": "yamadaonsen",
+  "Kayotei": "yamanaka",
+  "Beniya Mukayu": "yamashiro",
+  "Hanamurasaki": "yamanaka",
+  "Yado Shiontei": "yonago",
+  "NEOLD Private House": "nara",
+  "Shoraiso": "yudanaka",
+  "Sanso Murata": "yufuin",
+  "Enowa Yufuin": "yufuin",
+  "Kamenoi Besso": "yufuin",
+  "Arcana Izu": "yugashima"
+ },
+ "counts": {
+  "catalog_inns": 199,
+  "shortlist_inns": 81,
+  "shortlist_hotels": 51,
+  "corridors": 176,
+  "legs": 788,
+  "region_cards": 13,
+  "front_door_words": 49157,
+  "start_here_words": 4297,
+  "stage_files": 6,
+  "stays_files": 12
+ },
+ "split_layout": {
+  "entry": [
+   "START-HERE.md",
+   "AGENTS.md",
+   "CLAUDE.md"
+  ],
+  "stages": [
+   {
+    "file": "stages/2-orientation.md",
+    "label": "Stage 2 — Orientation and the spine menu"
+   },
+   {
+    "file": "stages/3-where-to-go.md",
+    "label": "Stage 3 — Walk one spine"
+   },
+   {
+    "file": "stages/4-where-to-stay.md",
+    "label": "Stage 4 — Where to stay"
+   },
+   {
+    "file": "stages/5-route.md",
+    "label": "Stage 5 — Make the route work"
+   },
+   {
+    "file": "stages/6-optional-depth.md",
+    "label": "Stage 6 — Optional depth"
+   },
+   {
+    "file": "stages/7-appendix.md",
+    "label": "Appendix — templates, credits, licence"
+   }
+  ],
+  "stays": [
+   {
+    "file": "stays/tokyo.md",
+    "group": "Tokyo",
+    "cities": [
+     "tokyo"
+    ],
+    "fits": [
+     "tokyo-splitter",
+     "snow-country"
+    ],
+    "inns": 27,
+    "hotels": 8
+   },
+   {
+    "file": "stays/nikko.md",
+    "group": "Nikkō",
+    "cities": [
+     "nikko"
+    ],
+    "fits": [],
+    "inns": 9,
+    "hotels": 2
+   },
+   {
+    "file": "stays/kyoto.md",
+    "group": "Kyoto",
+    "cities": [
+     "kyoto"
+    ],
+    "fits": [
+     "kansai-side-trip"
+    ],
+    "inns": 23,
+    "hotels": 7
+   },
+   {
+    "file": "stays/osaka.md",
+    "group": "Osaka",
+    "cities": [
+     "osaka"
+    ],
+    "fits": [],
+    "inns": 8,
+    "hotels": 6
+   },
+   {
+    "file": "stays/nara.md",
+    "group": "Nara",
+    "cities": [
+     "nara"
+    ],
+    "fits": [],
+    "inns": 7,
+    "hotels": 0
+   },
+   {
+    "file": "stays/hakone-izu-fuji.md",
+    "group": "Hakone · Izu · Fuji",
+    "cities": [
+     "hakone"
+    ],
+    "fits": [
+     "golden-route-stop",
+     "fuji-lakes"
+    ],
+    "inns": 10,
+    "hotels": 0
+   },
+   {
+    "file": "stays/kanazawa.md",
+    "group": "Kanazawa",
+    "cities": [
+     "kanazawa"
+    ],
+    "fits": [
+     "kanazawa-loop"
+    ],
+    "inns": 14,
+    "hotels": 3
+   },
+   {
+    "file": "stays/takayama.md",
+    "group": "Takayama",
+    "cities": [
+     "takayama"
+    ],
+    "fits": [
+     "alps"
+    ],
+    "inns": 10,
+    "hotels": 3
+   },
+   {
+    "file": "stays/sendai.md",
+    "group": "Sendai",
+    "cities": [
+     "sendai"
+    ],
+    "fits": [
+     "tohoku"
+    ],
+    "inns": 16,
+    "hotels": 3
+   },
+   {
+    "file": "stays/hiroshima.md",
+    "group": "Hiroshima",
+    "cities": [
+     "hiroshima"
+    ],
+    "fits": [
+     "inland-sea"
+    ],
+    "inns": 10,
+    "hotels": 3
+   },
+   {
+    "file": "stays/sapporo.md",
+    "group": "Sapporo",
+    "cities": [
+     "sapporo"
+    ],
+    "fits": [
+     "hokkaido"
+    ],
+    "inns": 6,
+    "hotels": 0
+   },
+   {
+    "file": "stays/kyushu.md",
+    "group": "Kyushu",
+    "cities": [
+     "fukuoka",
+     "beppu",
+     "kumamoto",
+     "nagasaki",
+     "kagoshima"
+    ],
+    "fits": [
+     "kyushu-yufuin",
+     "kyushu-kurokawa",
+     "kyushu-kirishima",
+     "kyushu-nagasaki",
+     "kyushu-elsewhere"
+    ],
+    "inns": 17,
+    "hotels": 16
+   }
+  ]
+ },
+ "fits_vocabulary": [
+  {
+   "tag": "golden-route-stop",
+   "means": "the standard inn night out of Tokyo, two and a half hours or less away: the Hakone and Izu hot-spring belt, and the Fuji-lakes and Nikkō inns close enough to be the same decision",
+   "inns": 8
+  },
+  {
+   "tag": "fuji-lakes",
+   "means": "the Fuji Five Lakes (Kawaguchiko, Yamanaka) — where you actually see the mountain; out and back from Tokyo",
+   "inns": 3
+  },
+  {
+   "tag": "tokyo-splitter",
+   "means": "Nikkō and northern Tochigi: two hours out and back, so it splits a long Tokyo stay instead of interrupting the run west",
+   "inns": 3
+  },
+  {
+   "tag": "kansai-side-trip",
+   "means": "Kyoto, Nara and Osaka and the country around them — reached from a Kansai base",
+   "inns": 12
+  },
+  {
+   "tag": "kanazawa-loop",
+   "means": "Ishikawa, Toyama and Fukui: the Kaga onsen towns and the Japan Sea coast around Kanazawa",
+   "inns": 6
+  },
+  {
+   "tag": "alps",
+   "means": "Gifu, Nagano and the Hida valleys — mountain inns behind Takayama",
+   "inns": 6
+  },
+  {
+   "tag": "snow-country",
+   "means": "the deep-snow valleys of Niigata, Gunma and the Nagano ski country: Echigo-Yuzawa, Minakami, Yudanaka",
+   "inns": 5
+  },
+  {
+   "tag": "tohoku",
+   "means": "the northern third of the main island above the snow country — Fukushima to Aomori",
+   "inns": 12
+  },
+  {
+   "tag": "hokkaido",
+   "means": "the northern island: a flight, and its own trip",
+   "inns": 6
+  },
+  {
+   "tag": "inland-sea",
+   "means": "Hiroshima, the Seto Inland Sea, Shikoku and the San-in coast",
+   "inns": 9
+  },
+  {
+   "tag": "kyushu-yufuin",
+   "means": "Kyushu's hot-spring heartland: Yufuin, Beppu, Hita",
+   "inns": 4
+  },
+  {
+   "tag": "kyushu-kurokawa",
+   "means": "Kyushu's volcanic middle: Kurokawa, Aso, Minamioguni",
+   "inns": 3
+  },
+  {
+   "tag": "kyushu-kirishima",
+   "means": "Kyushu's warm south: Kirishima, Kagoshima, Ibusuki",
+   "inns": 4
+  },
+  {
+   "tag": "kyushu-nagasaki",
+   "means": "Kyushu's west: Nagasaki, Unzen and the Saga onsen towns",
+   "inns": 3
+  },
+  {
+   "tag": "kyushu-elsewhere",
+   "means": "the rest of Kyushu — Amakusa, Miyazaki, the islands",
+   "inns": 1
+  },
+  {
+   "tag": "okinawa",
+   "means": "the southern islands; a beach trip, and the one gap in this kit",
+   "inns": 0
+  },
+  {
+   "tag": "family-ok",
+   "means": "the inn's own write-up says it takes children — most here do not",
+   "inns": 2
+  },
+  {
+   "tag": "bed-not-futon",
+   "means": "beds rather than a mattress laid on the floor, at least in some rooms",
+   "inns": 33
+  }
+ ],
+ "shortlist_rules": {
+  "score_floor": 7.5,
+  "price_ceiling_usd": 1400,
+  "unscored_allowlist": {
+   "machiyado-ichiryu": "the only in-town Takayama inn the catalogue carries: minutes from the morning market, rated highly by the Japanese booking crowd, unwritten-up in English only"
+  },
+  "excluded": {
+   "ryotei-hanzuiryo": "the Nagasaki zone carries Onyado Chikurintei instead — the same tier band, a bath in every room, and forty minutes from the city rather than an hour and three quarters",
+   "yama-no-chaya": "recent traveller reports run poor enough that the catalogue's score no longer describes the stay a first-timer would get",
+   "seryo": "a low B with no distinguishing asset — the right inn for somebody who wants Ohara specifically, and the wrong one to hand a stranger choosing between five options",
+   "iki-retreat-kairi-murakami": "the catalogue's own summary says the author would not send a visitor there"
+  },
+  "negative_verdict_screen": "\\bwould(?:\\s+not|n[’']t)\\s+send\\b|\\bnot\\s+somewhere\\s+(?:\\w+\\s+){0,3}send\\b|\\bwould(?:\\s+not|n[’']t)\\s+recommend\\b|\\bnot\\s+for\\s+a\\s+first[- ]time",
+  "dropped": {
+   "by_floor": [
+    "amakusa-tenku-no-fune",
+    "asan-kotonami",
+    "hatago-wakatsu",
+    "ryokan-suiranrou",
+    "takayamaso-hanano",
+    "tokachigawa-onsen-sanyoan",
+    "amane-resort-gahama",
+    "fufu-kyoto",
+    "fukudaya",
+    "hakone-gora-byakudan",
+    "takimotokan-yukinosato",
+    "bourou-noguchi-toya",
+    "goto-retreat-ray",
+    "tawaraya",
+    "ryotei-kuki",
+    "taketoritei-maruyama",
+    "bettei-itsuki",
+    "takinoya",
+    "yoshikawa",
+    "yufuin-rikka",
+    "bettei-otozure",
+    "hanaichi",
+    "kaichoro",
+    "modern-ryokan-kishi-ke",
+    "zenagi",
+    "jusandi",
+    "kifu-no-sato",
+    "arimasansoh-goshobessho",
+    "chikusenso-mt-zao-onsen-resort-spa",
+    "hoshino-resorts-kai-unzen",
+    "kappo-ryokan-wakamatsu",
+    "ryokusone",
+    "tsuruga-besso-ao-no-za",
+    "yamamizuki-bettei",
+    "ekoin",
+    "honjin-hiranoya-kachoan",
+    "katsuragi-hotel-kitanomaru",
+    "matsushima-sakan-shoan",
+    "satoumitei-kinparo-hontei",
+    "umioto-mari",
+    "mifuneyama-rakuen-onsen",
+    "sekitei",
+    "teisui",
+    "ginyu",
+    "ryokan-kurashiki",
+    "setouchi-retreat-aonagi",
+    "hyakuna-garan",
+    "iwaso",
+    "kotohira-kadan",
+    "kusatsu-onsen-kei",
+    "nishiyama-onsen-keiunkan",
+    "bettei-yaeno",
+    "sakurayu-sanshuyu",
+    "naoshima-ryokan-roka",
+    "fufu-kyu-karuizawa",
+    "sanso-kannawaen",
+    "hazu-gassho",
+    "ginrinsou",
+    "okutsuso",
+    "hoshino-resorts-kai-tsugaru",
+    "satoyama-no-auberge-maki-no-oto",
+    "uoshizu",
+    "gora-karaku"
+   ],
+   "by_exclusion": [
+    "ryotei-hanzuiryo",
+    "iki-retreat-kairi-murakami",
+    "yama-no-chaya",
+    "seryo"
+   ],
+   "by_screen": [],
+   "by_ceiling": [
+    "bouyourou",
+    "fuji-seiran",
+    "the-yukawa-ichijoh-branch"
+   ],
+   "unscored_not_allowlisted": 48
+  }
+ },
+ "pinned_inns": [
+  {
+   "slug": "myoken-ishiharaso",
+   "name": "Myoken Ishiharaso",
+   "placed": true
+  },
+  {
+   "slug": "fufu-nikko",
+   "name": "Fufu Nikko",
+   "placed": true
+  },
+  {
+   "slug": "takefue",
+   "name": "Takefue",
+   "placed": true
+  },
+  {
+   "slug": "tayuta",
+   "name": "Tayuta",
+   "placed": true
+  },
+  {
+   "slug": "asaba",
+   "name": "Asaba",
+   "placed": true
+  },
+  {
+   "slug": "sanso-murata",
+   "name": "Sanso Murata",
+   "placed": true
+  },
+  {
+   "slug": "kamenoi-besso",
+   "name": "Kamenoi Besso",
+   "placed": true
+  },
+  {
+   "slug": "enowa-yufuin",
+   "name": "Enowa Yufuin",
+   "placed": true
+  },
+  {
+   "slug": "beniya-mukayu",
+   "name": "Beniya Mukayu",
+   "placed": true
+  },
+  {
+   "slug": "hiiragiya",
+   "name": "Hiiragiya",
+   "placed": true
+  },
+  {
+   "slug": "bettei-senjuan",
+   "name": "Bettei Senjuan",
+   "placed": true
+  },
+  {
+   "slug": "sanso-amanosato",
+   "name": "Sanso Amanosato",
+   "placed": true
+  },
+  {
+   "slug": "sanso-tensui",
+   "name": "Sanso Tensui",
+   "placed": true
+  },
+  {
+   "slug": "tsuchiyu-bettei-satonoyu",
+   "name": "Tsuchiyu Bettei Satonoyu",
+   "placed": true
+  },
+  {
+   "slug": "gora-kadan-fuji",
+   "name": "Gora Kadan Fuji",
+   "placed": true
+  },
+  {
+   "slug": "tsukihitei",
+   "name": "Tsukihitei",
+   "placed": true
+  },
+  {
+   "slug": "fufu-kawaguchiko",
+   "name": "Fufu Kawaguchiko",
+   "placed": true
+  },
+  {
+   "slug": "kanshuku-en-eshikoto",
+   "name": "Kanshuku-en Eshikoto",
+   "placed": true
+  },
+  {
+   "slug": "shoraiso",
+   "name": "Shoraiso",
+   "placed": true
+  }
+ ],
+ "region_cards": [
+  {
+   "key": "tokyo",
+   "title": "Tokyo",
+   "prefectures": [
+    "Tokyo",
+    "Chiba",
+    "Saitama",
+    "Ibaraki"
+   ],
+   "cities": [
+    "tokyo"
+   ],
+   "fits": [
+    "tokyo-splitter"
+   ],
+   "inns_in_catalog": 0,
+   "stays_file": "stays/tokyo.md",
+   "shortlisted": 3,
+   "hotels": 8
+  },
+  {
+   "key": "nikko",
+   "title": "Nikkō",
+   "prefectures": [
+    "Tochigi"
+   ],
+   "cities": [
+    "nikko"
+   ],
+   "fits": [
+    "tokyo-splitter"
+   ],
+   "inns_in_catalog": 3,
+   "stays_file": "stays/nikko.md",
+   "shortlisted": 3,
+   "hotels": 2
+  },
+  {
+   "key": "kyoto",
+   "title": "Kyoto",
+   "prefectures": [
+    "Kyoto",
+    "Shiga"
+   ],
+   "cities": [
+    "kyoto"
+   ],
+   "fits": [
+    "kansai-side-trip"
+   ],
+   "inns_in_catalog": 3,
+   "stays_file": "stays/kyoto.md",
+   "shortlisted": 12,
+   "hotels": 7
+  },
+  {
+   "key": "osaka",
+   "title": "Osaka",
+   "prefectures": [
+    "Osaka",
+    "Hyogo"
+   ],
+   "cities": [
+    "osaka"
+   ],
+   "fits": [
+    "kansai-side-trip"
+   ],
+   "inns_in_catalog": 2,
+   "stays_file": "stays/osaka.md",
+   "shortlisted": 12,
+   "hotels": 6
+  },
+  {
+   "key": "nara",
+   "title": "Nara",
+   "prefectures": [
+    "Nara",
+    "Wakayama",
+    "Mie"
+   ],
+   "cities": [
+    "nara"
+   ],
+   "fits": [
+    "kansai-side-trip"
+   ],
+   "inns_in_catalog": 7,
+   "stays_file": "stays/nara.md",
+   "shortlisted": 12,
+   "hotels": 0
+  },
+  {
+   "key": "hakone",
+   "title": "Hakone/Fuji/Izu",
+   "prefectures": [
+    "Kanagawa",
+    "Hakone",
+    "Shizuoka",
+    "Yamanashi"
+   ],
+   "cities": [
+    "hakone"
+   ],
+   "fits": [
+    "golden-route-stop",
+    "fuji-lakes"
+   ],
+   "inns_in_catalog": 7,
+   "stays_file": "stays/hakone-izu-fuji.md",
+   "shortlisted": 8,
+   "hotels": 0
+  },
+  {
+   "key": "hokuriku",
+   "title": "Kanazawa & Hokuriku",
+   "prefectures": [
+    "Ishikawa",
+    "Toyama",
+    "Fukui"
+   ],
+   "cities": [
+    "kanazawa"
+   ],
+   "fits": [
+    "kanazawa-loop"
+   ],
+   "inns_in_catalog": 6,
+   "stays_file": "stays/kanazawa.md",
+   "shortlisted": 6,
+   "hotels": 3
+  },
+  {
+   "key": "alps",
+   "title": "Takayama/Hida & the Alps",
+   "prefectures": [
+    "Gifu",
+    "Nagano",
+    "Aichi"
+   ],
+   "cities": [
+    "takayama"
+   ],
+   "fits": [
+    "alps"
+   ],
+   "inns_in_catalog": 7,
+   "stays_file": "stays/takayama.md",
+   "shortlisted": 6,
+   "hotels": 3
+  },
+  {
+   "key": "tohoku",
+   "title": "Snow country & Tōhoku",
+   "prefectures": [
+    "Niigata",
+    "Gunma",
+    "Fukushima",
+    "Miyagi",
+    "Yamagata",
+    "Akita",
+    "Iwate",
+    "Aomori"
+   ],
+   "cities": [
+    "sendai"
+   ],
+   "fits": [
+    "snow-country",
+    "tohoku"
+   ],
+   "inns_in_catalog": 16,
+   "stays_file": "stays/sendai.md",
+   "shortlisted": 17,
+   "hotels": 3
+  },
+  {
+   "key": "hokkaido",
+   "title": "Hokkaido",
+   "prefectures": [
+    "Hokkaido"
+   ],
+   "cities": [
+    "sapporo"
+   ],
+   "fits": [
+    "hokkaido"
+   ],
+   "inns_in_catalog": 6,
+   "stays_file": "stays/sapporo.md",
+   "shortlisted": 6,
+   "hotels": 0
+  },
+  {
+   "key": "inlandsea",
+   "title": "Hiroshima/Miyajima & the Inland Sea",
+   "prefectures": [
+    "Hiroshima",
+    "Okayama",
+    "Yamaguchi",
+    "Shimane",
+    "Tottori",
+    "Kagawa",
+    "Ehime",
+    "Tokushima",
+    "Kochi",
+    "Floating — the Seto Inland Sea (boards near Onomichi)"
+   ],
+   "cities": [
+    "hiroshima"
+   ],
+   "fits": [
+    "inland-sea"
+   ],
+   "inns_in_catalog": 9,
+   "stays_file": "stays/hiroshima.md",
+   "shortlisted": 9,
+   "hotels": 3
+  },
+  {
+   "key": "kyushu",
+   "title": "Kyushu",
+   "prefectures": [
+    "Fukuoka",
+    "Oita",
+    "Kumamoto",
+    "Kagoshima",
+    "Nagasaki",
+    "Saga",
+    "Miyazaki"
+   ],
+   "cities": [
+    "fukuoka",
+    "beppu",
+    "kumamoto",
+    "nagasaki",
+    "kagoshima"
+   ],
+   "fits": [
+    "kyushu-yufuin",
+    "kyushu-kurokawa",
+    "kyushu-kirishima",
+    "kyushu-nagasaki",
+    "kyushu-elsewhere"
+   ],
+   "inns_in_catalog": 15,
+   "stays_file": "stays/kyushu.md",
+   "shortlisted": 15,
+   "hotels": 16
+  },
+  {
+   "key": "okinawa",
+   "title": "Okinawa",
+   "prefectures": [
+    "Okinawa"
+   ],
+   "cities": [],
+   "fits": [
+    "okinawa"
+   ],
+   "inns_in_catalog": 0,
+   "stays_file": null,
+   "shortlisted": 0,
+   "hotels": 0,
+   "thin_ok": "the catalog holds only two Okinawa inns — the card sends the agent to the live site"
+  }
+ ],
+ "reach_join": {
+  "corridor_locs": {
+   "Tokyo": "tokyo",
+   "Sendai": "sendai",
+   "Kanazawa": "kanazawa",
+   "Takayama": "takayama",
+   "Kyoto": "kyoto",
+   "Nara": "nara",
+   "Osaka": "osaka",
+   "Hiroshima": "hiroshima",
+   "Fukuoka (Hakata)": "fukuoka",
+   "Beppu": "beppu",
+   "Kumamoto": "kumamoto",
+   "Nagasaki": "nagasaki",
+   "Kagoshima": "kagoshima",
+   "Hakone": "hakone",
+   "Kurokawa Onsen": "kurokawa",
+   "Nikkō": "nikko",
+   "Izu peninsula (Shuzenji)": "izu",
+   "Echigo-Yuzawa (snow country)": "echigoyuzawa",
+   "Minakami / Tanigawa (snow country)": "tanigawa",
+   "Lake Kawaguchi (Mt Fuji)": "kawaguchiko",
+   "Miyajima": "miyajima",
+   "Yufuin": "yufuin",
+   "Kirishima (Myōken Onsen)": "kirishima",
+   "Amakusa (Matsushima)": "amakusa",
+   "Takeo Onsen": "takeo",
+   "Yamashiro Onsen (Kaga)": "yamashiro",
+   "Yamanaka Onsen (Kaga)": "yamanaka",
+   "Mikuni / Awara": "mikuni",
+   "Toyama": "toyama",
+   "Unzen": "unzen",
+   "Karatsu": "karatsu",
+   "Amagase (Hita)": "hita",
+   "Yakushima": "yakushima",
+   "Iki island": "iki",
+   "Okayama": "okayama",
+   "Naoshima (Miyanoura)": "naoshima",
+   "Uno port": "uno",
+   "Kakunodate": "kakunodate",
+   "Nyūtō Onsen": "nyuto",
+   "Nagoya": "nagoya",
+   "Sapporo": "sapporo",
+   "Niseko (Hirafu)": "niseko",
+   "Furano": "furano",
+   "Noboribetsu Onsen": "noboribetsu",
+   "Otaru": "otaru",
+   "Lake Akan (Akanko Onsen)": "akan",
+   "Takachiho": "takachiho",
+   "Arima Onsen": "arima",
+   "Kinosaki Onsen": "kinosaki",
+   "Taiza (Tango coast)": "amino",
+   "Ise-Shima": "ise",
+   "Yunoyama Onsen": "yunoyama",
+   "Katsuragi (Kōyasan side)": "katsuragi",
+   "Eiheiji": "eiheiji",
+   "Notojima (Noto)": "notojima",
+   "Kōshū (Yamanashi)": "koshu",
+   "Kobuchizawa (Yatsugatake)": "kobuchizawa",
+   "Karuizawa (Miyota)": "karuizawa",
+   "Onomichi": "onomichi",
+   "Tomonoura": "tomonoura",
+   "Setoda (Ikuchijima)": "setoda",
+   "Kōchi (Shikoku)": "kochi",
+   "Jōzankei Onsen": "jozankei",
+   "Gero Onsen": "gero",
+   "Matsumoto": "matsumoto",
+   "Kiso valley": "kiso",
+   "Suwa": "suwa",
+   "Inuyama": "inuyama",
+   "Hatsukaichi (Miyajima side)": "hatsukaichi",
+   "Yudanaka (Shibu Onsen)": "yudanaka",
+   "Yamada Onsen": "yamadaonsen",
+   "Matsunoyama Onsen": "matsunoyama",
+   "Tsuchiyu Onsen": "tsuchiyu",
+   "Iizaka Onsen": "iizaka",
+   "Bandai-Atami": "bandaiatami",
+   "Aizu-Wakamatsu": "aizuwakamatsu",
+   "Sukagawa": "sukagawa",
+   "Akayu Onsen": "akayu",
+   "Kaminoyama Onsen": "kaminoyama",
+   "Hotto-Yuda": "hottoyuda",
+   "Shizukuishi": "shizukuishi",
+   "Kamasaki Onsen": "kamasaki",
+   "Oyama (Mt Fuji)": "oyama",
+   "Yugashima (Izu)": "yugashima",
+   "Izu-Kōgen": "izukogen",
+   "Atami": "atami",
+   "Shimoda": "shimoda",
+   "Yugawara": "yugawara",
+   "Tokyo · Haneda airport (HND)": "hnd",
+   "Tokyo · Narita airport (NRT)": "nrt",
+   "Osaka · Kansai airport (KIX)": "kix",
+   "Osaka · Itami airport (ITM)": "itm",
+   "Hiroshima airport (HIJ)": "hij",
+   "Fukuoka airport (FUK)": "fuk",
+   "Ōita airport (OIT)": "oit",
+   "Kumamoto airport (KMJ)": "kmj",
+   "Nagasaki airport (NGS)": "ngs",
+   "Kagoshima airport (KOJ)": "koj",
+   "Komatsu airport (KMQ)": "kmq",
+   "Sapporo · New Chitose airport (CTS)": "cts",
+   "Nagoya · Centrair airport (NGO)": "ngo"
+  },
+  "inn_locs": {
+   "aizu-tsuruga-higashiyama-sohonzan": "aizuwakamatsu",
+   "yamagata-the-takinami": "akayu",
+   "osteria-sincerita": "akayu",
+   "sanso-tensui": "hita",
+   "tayuta": "amakusa",
+   "nakanobo-zuien": "arima",
+   "atamiso": "bandaiatami",
+   "auberge-suzukane": "bandaiatami",
+   "bettei-oborozukiyo": "dogo",
+   "kanshuku-en-eshikoto": "eiheiji",
+   "shogetsu": "gero",
+   "hakone-suishoen": "hakone",
+   "gora-kadan": "hakone",
+   "yamado": "hottoyuda",
+   "bettei-amafuru-oka": "ibusuki",
+   "onyado-kawasemi": "iizaka",
+   "auberge-yusura": "ise",
+   "chalet-ivy-jozankei": "jozankei",
+   "wabizakura": "kakunodate",
+   "kyo-yunohana-resort-suisen": "kameoka",
+   "yoyokaku": "karatsu",
+   "sanso-amanosato": "katsuragi",
+   "kumano-bettei-nakanoshima": "katsuura",
+   "fufu-kawaguchiko": "kawaguchiko",
+   "nishimuraya-honkan": "kinosaki",
+   "kinugawa-kanaya-hotel": "kinugawa",
+   "myoken-ishiharaso": "kirishima",
+   "isshin": "kirishima",
+   "soneka": "kitahiroshima",
+   "fuefukigawa-onsen-zabou": "koshu",
+   "takefue": "kurokawa",
+   "gosho-gekkoju": "kurokawa",
+   "taiza-onsen-sumihei": "amino",
+   "hiiragiya": "kyoto",
+   "akan-tsuruga-besso-hinanoza": "akan",
+   "sui-suwako": "suwa",
+   "gora-kadan-fuji": "oyama",
+   "minamikan": "matsue",
+   "bettei-senjuan": "tanigawa",
+   "ryugon": "echigoyuzawa",
+   "satoyama-jujo": "echigoyuzawa",
+   "kinsuikan": "miyajima",
+   "hotel-iyaonsen": "miyoshi",
+   "kohanyu": "kochi",
+   "kansuiro": "murasugi",
+   "tsukihitei": "nara",
+   "fufu-nara": "nara",
+   "hotel-ridge": "naruto",
+   "yunohanaso": "nasushiobara",
+   "fufu-nikko": "nikko",
+   "shiguchi": "niseko",
+   "zaborin": "niseko",
+   "ryokan-nishiyama": "onomichi",
+   "kuramure": "otaru",
+   "iwanoyu": "suwa",
+   "shiki-no-yado-michinokuan": "shiroishi",
+   "asaba": "izu",
+   "otogi-no-yado-yoneya": "sukagawa",
+   "lamp-no-yado": "suzu",
+   "shinsen": "takachiho",
+   "wanosato": "takayama",
+   "machiyado-ichiryu": "takayama",
+   "onyado-chikurintei": "takeo",
+   "miyakowasure": "kakunodate",
+   "migiwatei-ochi-kochi": "tomonoura",
+   "yunotani-senkei": "totsukawa",
+   "tsuchiyu-bettei-satonoyu": "tsuchiyu",
+   "mt-resort-unzen-kyushu-hotel": "unzen",
+   "kagaya-bettei-matsunomidori": "wakura",
+   "sankara-hotel-spa-yakushima": "yakushima",
+   "fujiiso": "yamadaonsen",
+   "kayotei": "yamanaka",
+   "beniya-mukayu": "yamashiro",
+   "hanamurasaki": "yamanaka",
+   "yado-shiontei": "yonago",
+   "neold-private-house": "nara",
+   "shoraiso": "yudanaka",
+   "sanso-murata": "yufuin",
+   "enowa-yufuin": "yufuin",
+   "kamenoi-besso": "yufuin",
+   "arcana-izu": "yugashima"
+  }
+ },
+ "sources": {
+  "planning/trip-data.js": "7f4d300660f98f1ea5b68890bc4c9faaa6618480c48a6854338f0cdb8454945a",
+  "planning/route-data.js": "60597d20783fcea41ce9c43fc0b3249c61f6b5d8fb18b41c0cebf87aa7aca581",
+  "planning/route-builder-logic.js": "9df6774082d09257021291374d3126b9f6db4c6422054f3f8a1b95aeaeaada60",
+  "planning/build-kit.js": "dd699ac32a4fedc24d86b8139a107e80ca3b8d10e4b756960889ad143939dac0",
+  "planning/kit-src/kit-hotels.json": "b43901a3d994f1e6373cb09e597c155ff94014e7358b0043a3c09766ceb8c8d7",
+  "planning/kit-src/pinned-inns.json": "e8dc52506ecff5f9085cd0883fef3bc76fb01aa64e7c0aeec1314b44c92f90ff",
+  "planning/kit-src/places.json": "04983dd1809923a139b1cd94d2ef5880d418e40504001147024ddcb0afe5bb85",
+  "planning/kit-src/tools/spines.json": "30340fa4f452970da50598897e4bb0d0d30d7fc35d9cda5c95d2f84c1e4ac22b",
+  "planning/kit-src/tools/build-spines.js": "162eff58b4b9340f93e2ae1a1414ae5125cd3a95f0e5ade4183e672f920f621a",
+  "planning/kit-src/companions/explorer/route-explorer.template.html": "6d98c638a460c7bc0b0dff3c7e1cb170216e35292a0063408751e48c4680e742",
+  "planning/kit-src/companions/route-engine/route.js": "40d594b9fb27180bb71e3029f7d7a13148b50f0e82899b597d68912f8eb60435",
+  "planning/kit-src/companions/route-engine/README.md": "92234b245cc60b162434d95bff732cc25707e5af0ffb5eb801ca9e483640f47b",
+  "deploy/catalog.json": "2146fd34cb5e0baaf3f190998d3e3199f9ddcafb53ce38a3d503d8a8fea9873e",
+  "deploy/catalog.md": "3733a773b9f4da10f9c7bca15e46abd7dc49c2f42f33d499da6abcc13c977669",
+  "deploy/llms.txt": "7a86b4c61a633e6eb83e4633f8fee78ef15cfccc66e24db8bd042a525b95935e",
+  "research/dining-notes.md": "9be9507e6499a9b8eca990a1d68b09dea07c4796bad35734f1429295e0c69a41",
+  "research/dining-notes-process.md": "902b413beb5190960d7c54709dfd40d10d4a6db3b67e0f0d896b5275b62ed6dd",
+  "ryokans/ryokan_data.json": "4dc885130c8d1993187dac9e9aa19590a1a355ce2096f522fc55771be29d2a56",
+  "planning/kit-src/kit/00-traveler.md": "57e5f8c6ad14b80a784dde85b1ffbed445e35cd96a2a46c45f03ccd63f4b16cb",
+  "planning/kit-src/kit/01-agent.md": "b4153754ab289ae930c226ea954b2e8ba637cace0837d51e22e79f41f1efee12",
+  "planning/kit-src/kit/02-interview.md": "476f6dbdeccc349ab364c5f992dc8aaf08650c0b5a32b889063abf9bb2520f98",
+  "planning/kit-src/kit/03-orientation.md": "03d3b3613c94497b52d7e8b76e2ab267ebc51701520f70465347394ace9f2949",
+  "planning/kit-src/kit/04-where-to-go.md": "df81c9d00f9b91cae6f8b8968331220f0a186a6ab4689b26f81341ccafae605f",
+  "planning/kit-src/kit/05-where-to-stay.md": "2c11e9a4d647969365888cfec5167b0aedd89a3656a9d869c0ed5a8cf20338d5",
+  "planning/kit-src/kit/06-route.md": "618d5f2eca747649e30a903433bb0c1c3a443b9a5175ae8147756a1914887d51",
+  "planning/kit-src/kit/07-optional-depth.md": "b7ca34b4568d44f3c359435b53772c238ab84260aaddc9769d6bae0bab5166e5",
+  "planning/kit-src/kit/08-appendix.md": "417ac870f985a2212e0b7b550bb6381dd57ad53ff4e7e4acbd827b98e857bc10",
+  "planning/kit-src/companions/LICENSE": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
+  "planning/kit-src/companions/README.md": "c78fc667173c1f254b2b4192754e869e13392a6056e61f34605f12efe63f3e57",
+  "planning/kit-src/companions/builder-README.md": "3e7321b664fbf2f90ce8fc3e0f11ebe9b7a7a3bc3c53713b35d531625e20b976",
+  "planning/kit-src/companions/design-language.md": "05912acaa59186d39d4f7e40d6e307472de052680b08af6248915c6929a56f35",
+  "planning/kit-src/companions/design-principles.md": "99cdf1d08b23c60b409aa7762bbb874646779d378824926411e8000cc69ef6dc",
+  "planning/kit-src/companions/research-method.md": "0d8c7f7c23d834be49a69f6b29e2755d1c1de410e801db2831463d1bdd76133b",
+  "planning/kit-src/companions/sample-plan.md": "495f207e6f0077de3fd931cb158a757c3e8a0cf184e206221aeea2bcfe0def44",
+  "planning/kit-src/companions/token-guide.md": "6dc63f2330778ffdb1c72dab66797f0b06ed95e3e13a439492a07f108bb294a5",
+  "planning/kit-src/companions/transit-know-how.md": "9e89de3f3f10740975faca4543d9b2090337bb1857a630a77df296956f6e02df",
+  "planning/kit-src/companions/trip-visual-stops.json": "2b5e735bafd9323bdba08dc72af177b81375dfcc68a6b3e41315653ef97099a5",
+  "planning/kit-src/companions/trip-visual-template.html": "e412558bc56bc929c887691fbece9b4977e32367e1aebc93498755300204c3ba",
+  "planning/kit-src/companions/visualizing-the-trip.md": "a8862f9c7ed1bee119a0005c845abced29d8941e96fb0440e195e8edfb5130ed",
+  "planning/kit-src/scrub.js": "e700e7effd7cb6bca726210eb87a1f884dc5ac29d1763389106dccf816efeaeb"
+ },
+ "outputs": {
+  ".gitignore": {
+   "sha256": "a522649585fbecc0603b8a1e5b6a08aa2f7ab0507a1b4e05fabe0108c236a9c7",
+   "bytes": 518
+  },
+  "AGENTS.md": {
+   "sha256": "f46823d1d7bc9566b7a94ad5d2ba3082300f7d15986f0b892adcc78beb706c61",
+   "bytes": 25898
+  },
+  "CLAUDE.md": {
+   "sha256": "f46823d1d7bc9566b7a94ad5d2ba3082300f7d15986f0b892adcc78beb706c61",
+   "bytes": 25898
+  },
+  "JAPAN-TRIP-KIT.md": {
+   "sha256": "93725c2cbc04aaae5da32984dc5820d8d88098416f77a102666a3614fe5d0bc4",
+   "bytes": 289537
+  },
+  "LICENSE": {
+   "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
+   "bytes": 3418
+  },
+  "README.md": {
+   "sha256": "c78fc667173c1f254b2b4192754e869e13392a6056e61f34605f12efe63f3e57",
+   "bytes": 7527
+  },
+  "START-HERE.md": {
+   "sha256": "88fc18d35ce70fbdd4b586cae787750b9b1b1c653a5dddee7993183f92d97ea5",
+   "bytes": 25480
+  },
+  "builder/README.md": {
+   "sha256": "3e7321b664fbf2f90ce8fc3e0f11ebe9b7a7a3bc3c53713b35d531625e20b976",
+   "bytes": 2898
+  },
+  "builder/index.html": {
+   "sha256": "dcac3c68e3abab2d33057b2cd186b1bb2e84304e297767ea9cd11ad70002bf42",
+   "bytes": 37435
+  },
+  "builder/places.json": {
+   "sha256": "df4fd1462d0d3329145eead6a20ac0a8e68a4db0dd32a3801d7778fc66ea15f8",
+   "bytes": 32081
+  },
+  "builder/route-builder-logic.js": {
+   "sha256": "e1ac1cead2b78921403b9b0d6e095a7d49673a39f7891bb9530931057fc001aa",
+   "bytes": 351457
+  },
+  "builder/route-data.js": {
+   "sha256": "e5b309c315f2d80c1a543e05aff831848b064fe2afea1a8f9840506440189069",
+   "bytes": 533302
+  },
+  "builder/route-engine.md": {
+   "sha256": "92234b245cc60b162434d95bff732cc25707e5af0ffb5eb801ca9e483640f47b",
+   "bytes": 9159
+  },
+  "builder/route.js": {
+   "sha256": "40d594b9fb27180bb71e3029f7d7a13148b50f0e82899b597d68912f8eb60435",
+   "bytes": 119514
+  },
+  "builder/serve.js": {
+   "sha256": "eb267d4277a3465f86f32b07945917c78aeb7ce2b3bfabb2894b8cdc48c77b21",
+   "bytes": 1213
+  },
+  "builder/shortlist.json": {
+   "sha256": "08958eb974cb27d974d2c20c72f5669d5c321ec61eb772f174599d111bcbef21",
+   "bytes": 138424
+  },
+  "builder/spines.json": {
+   "sha256": "30340fa4f452970da50598897e4bb0d0d30d7fc35d9cda5c95d2f84c1e4ac22b",
+   "bytes": 36490
+  },
+  "catalog/by-region/alps.md": {
+   "sha256": "d0f354bd4ce38232d3158ab78ae6760200bcad313ad9f19bdc47ee235eb2f6c8",
+   "bytes": 2972
+  },
+  "catalog/by-region/hakone.md": {
+   "sha256": "9a18a0da42356eebdd7002ed9a8fadb60a248f09063a2548d32833e25b7393cf",
+   "bytes": 5156
+  },
+  "catalog/by-region/hokkaido.md": {
+   "sha256": "5a228ddcaab6637725ce1a067feb7166f1def1f2d1c9e1758c32a826ed6e622b",
+   "bytes": 2587
+  },
+  "catalog/by-region/hokuriku.md": {
+   "sha256": "94e4038e3898006937fc1da8333677da283b851a37c31103a415ae098092b903",
+   "bytes": 2617
+  },
+  "catalog/by-region/index.md": {
+   "sha256": "a69870f5f18a383755dd12514c831b3667eec2856992766b6760eaeba4bafc0e",
+   "bytes": 2069
+  },
+  "catalog/by-region/inlandsea.md": {
+   "sha256": "f1b815a19c3c5809ddb6254f359cb071158115d0daefdc4974e12db7019a0ed5",
+   "bytes": 3827
+  },
+  "catalog/by-region/kyoto.md": {
+   "sha256": "516b31ebb86dec6c45a2ad8621becc8f1d470eccfb3f9c84ea29e953f0464672",
+   "bytes": 1940
+  },
+  "catalog/by-region/kyushu.md": {
+   "sha256": "9a3d6662d8c68e847bcf0514018bc260b76624bb39a78370fe28f9f0421ea6e8",
+   "bytes": 4674
+  },
+  "catalog/by-region/nara.md": {
+   "sha256": "e55075f62dc267aa516e978c8b8acabcd14dc8deddb0c0b8fa280e4765444fe2",
+   "bytes": 2127
+  },
+  "catalog/by-region/nikko.md": {
+   "sha256": "76204bc9c2734974542b34f6df020b2cf30bc8fd6b8fe5973e6e997c5099d8a1",
+   "bytes": 1190
+  },
+  "catalog/by-region/okinawa.md": {
+   "sha256": "41cb0b2c2acffe8d4b0412e0f8701baefffc354d1ad9204caca9c865e4714f16",
+   "bytes": 1028
+  },
+  "catalog/by-region/osaka.md": {
+   "sha256": "7058de48232c653ec511a219cbfad2c979b45b7196acc1d419ebfc0642e557d0",
+   "bytes": 1577
+  },
+  "catalog/by-region/tohoku.md": {
+   "sha256": "eafd79f93a1549cca50519092c6c9459cb8133c6e120c7102233efe4859f2cd5",
+   "bytes": 4905
+  },
+  "catalog/by-region/tokyo.md": {
+   "sha256": "940adbf2dafee96f603a76f86598f1d9b79b58fbc57169b5faeac13c1c0679e3",
+   "bytes": 1078
+  },
+  "catalog/catalog.json": {
+   "sha256": "2146fd34cb5e0baaf3f190998d3e3199f9ddcafb53ce38a3d503d8a8fea9873e",
+   "bytes": 1160261
+  },
+  "catalog/catalog.md": {
+   "sha256": "3733a773b9f4da10f9c7bca15e46abd7dc49c2f42f33d499da6abcc13c977669",
+   "bytes": 29838
+  },
+  "catalog/llms.txt": {
+   "sha256": "7a86b4c61a633e6eb83e4633f8fee78ef15cfccc66e24db8bd042a525b95935e",
+   "bytes": 4822
+  },
+  "data/connectors.md": {
+   "sha256": "d33e9f7bb726334132971b57d9c3f40d708083a9baa5f37732fcf7413fd8a2ec",
+   "bytes": 23364
+  },
+  "data/corridors.md": {
+   "sha256": "4dd4a37c32b24c577202b27f92c1cde4aa491b8bb1d7c82d77a1cac68b44bebd",
+   "bytes": 46657
+  },
+  "data/hotels.json": {
+   "sha256": "30778d55b9712127b3d0fd98963b1abdabff45941404c0558c5a847a776ead51",
+   "bytes": 25538
+  },
+  "data/hotels.md": {
+   "sha256": "1aa87ea4f18980ca462788cd64d8ca192f65088c0f33d5b1220e297b790b8bad",
+   "bytes": 20604
+  },
+  "data/transit-legs.json": {
+   "sha256": "372121a0811520e6589485a7070644931878eae67758d26a48f55fe0516e6508",
+   "bytes": 317225
+  },
+  "data/transit-legs.md": {
+   "sha256": "5014e6cced0db79984c7528d0721ba04e0206e1b1278899e8e113229a24286f5",
+   "bytes": 205378
+  },
+  "examples/sample-plan.md": {
+   "sha256": "495f207e6f0077de3fd931cb158a757c3e8a0cf184e206221aeea2bcfe0def44",
+   "bytes": 8966
+  },
+  "guides/design-language.md": {
+   "sha256": "05912acaa59186d39d4f7e40d6e307472de052680b08af6248915c6929a56f35",
+   "bytes": 12378
+  },
+  "guides/design-principles.md": {
+   "sha256": "99cdf1d08b23c60b409aa7762bbb874646779d378824926411e8000cc69ef6dc",
+   "bytes": 5063
+  },
+  "guides/dining.md": {
+   "sha256": "9ec9a12ec326f2496f54976c86c5a1a849f588f773de75f14cbf2d35967381d8",
+   "bytes": 448737
+  },
+  "guides/dining/day-trip-regional.md": {
+   "sha256": "7fbe45465d33d73f4aa27731112418a3c12af10259765a74dd47a5290921c807",
+   "bytes": 7101
+  },
+  "guides/dining/fukuoka.md": {
+   "sha256": "154d527f9c824b8b7f23384354041cc357753eaec02d6008d3e35d23e6fb678b",
+   "bytes": 105989
+  },
+  "guides/dining/index.md": {
+   "sha256": "f34c02ff272532c405937ddcbd40dd386f66c7b7ec3d6fd1cc9c3d798790d6b5",
+   "bytes": 3039
+  },
+  "guides/dining/kagoshima.md": {
+   "sha256": "3a102537d2856e49ed5b0c8d68c8d7579534244d1a02274bba953029b99591b0",
+   "bytes": 37174
+  },
+  "guides/dining/kanazawa.md": {
+   "sha256": "c8fa61ddfae34b15398bbf40e80c44048ff276b7d3c63a8214021eb706d64d63",
+   "bytes": 11426
+  },
+  "guides/dining/kobe.md": {
+   "sha256": "3852cdc4858d216fa839a974dc717ff6665617b120d5c32f7418095112db8d8f",
+   "bytes": 1745
+  },
+  "guides/dining/kyoto.md": {
+   "sha256": "24ab811e921ccd9afda08c9f055c3cae6bb158d64f4052823153c4bd478003b4",
+   "bytes": 52085
+  },
+  "guides/dining/off-route-archive.md": {
+   "sha256": "46548e2fe2bfcd4e945c2f4f1fe032a309efba1a17ff3c857348fed9397a4d78",
+   "bytes": 6196
+  },
+  "guides/dining/osaka.md": {
+   "sha256": "50a808b260a5f38f3f8fe635bd53d5930967c87471a5b0918d802376cd30d3d5",
+   "bytes": 36324
+  },
+  "guides/dining/tokyo.md": {
+   "sha256": "3d1faafcdb5e4853602e4e443acdf8d9cb18a402d64fcbb8ca77acff6c3d7cc2",
+   "bytes": 176854
+  },
+  "guides/research-method.md": {
+   "sha256": "0d8c7f7c23d834be49a69f6b29e2755d1c1de410e801db2831463d1bdd76133b",
+   "bytes": 9168
+  },
+  "guides/route-explorer-data.js": {
+   "sha256": "36f4eb3116f65003b6ef8750d710f0fb0a5d01d4ac94946a0cf4a12a25e8d347",
+   "bytes": 88741
+  },
+  "guides/route-explorer.html": {
+   "sha256": "b68879ab1ef534ccbb5d340c658312f04e8332a955cbe45a9e183dace1032a16",
+   "bytes": 36367
+  },
+  "guides/token-guide.md": {
+   "sha256": "50e98dcfc53a642f9b5a478cb26784167f164f61dda2057d4d1b53b9b74a8b44",
+   "bytes": 4209
+  },
+  "guides/transit-know-how.md": {
+   "sha256": "9e89de3f3f10740975faca4543d9b2090337bb1857a630a77df296956f6e02df",
+   "bytes": 14313
+  },
+  "guides/trip-visual-photos.json": {
+   "sha256": "039a874ee93f3bbbab47dd278d44140cc7356573155cbdb28e33c06232fd0762",
+   "bytes": 42968
+  },
+  "guides/trip-visual-stops.json": {
+   "sha256": "2b5e735bafd9323bdba08dc72af177b81375dfcc68a6b3e41315653ef97099a5",
+   "bytes": 4289
+  },
+  "guides/trip-visual-template.html": {
+   "sha256": "e412558bc56bc929c887691fbece9b4977e32367e1aebc93498755300204c3ba",
+   "bytes": 49831
+  },
+  "guides/visualizing-the-trip.md": {
+   "sha256": "a8862f9c7ed1bee119a0005c845abced29d8941e96fb0440e195e8edfb5130ed",
+   "bytes": 20694
+  },
+  "stages/2-orientation.md": {
+   "sha256": "5aec0135043f0ff8e3070bffd4394b219462763b94d2944a618b0595132c5f0b",
+   "bytes": 44584
+  },
+  "stages/3-where-to-go.md": {
+   "sha256": "4d276d104b29b9499f79e3c504c6f522eaaa88d8602fd48397f46b76609d95ae",
+   "bytes": 78039
+  },
+  "stages/4-where-to-stay.md": {
+   "sha256": "8380868fef1236b70fce84dd36fabbae6d9981cb6282021fa1491269b2599221",
+   "bytes": 65389
+  },
+  "stages/5-route.md": {
+   "sha256": "2e80e77ab07a168336600982a3c73da33856110747ab53b4478c65e95be757b6",
+   "bytes": 87899
+  },
+  "stages/6-optional-depth.md": {
+   "sha256": "106f3079c792a43d7ad8054cffc5e9d0835448e310553dd0963847c42041426b",
+   "bytes": 13537
+  },
+  "stages/7-appendix.md": {
+   "sha256": "a950b50e89ca95ad14c93446e0d7e14a1e722fb5a48f03f8c6cd058251289a9e",
+   "bytes": 10630
+  },
+  "stays/hakone-izu-fuji.md": {
+   "sha256": "526317fa273363454803770dadcaa7976d80bcd425459996a075afa7330d5428",
+   "bytes": 3704
+  },
+  "stays/hiroshima.md": {
+   "sha256": "111063f30d8bf38755a8a5384d5d5a6316610f50064cce2d35147b2c65c7acb5",
+   "bytes": 6113
+  },
+  "stays/kanazawa.md": {
+   "sha256": "2a28124b8599330876d89ba9577c8dd581f6f3b5fc7b9cb7290fb86992c7433f",
+   "bytes": 6418
+  },
+  "stays/kyoto.md": {
+   "sha256": "87c94d012bd839d68ad54958bf967e922a826d1bd1a4505bf18ce631ef03c67a",
+   "bytes": 9555
+  },
+  "stays/kyushu.md": {
+   "sha256": "67bfd29df0aa2f127b4e21b23482aa48d4f4711447af3ff452eac4f3b0529f28",
+   "bytes": 14430
+  },
+  "stays/nara.md": {
+   "sha256": "ee7d2b81b86b1d51897b5b6732c7cee762015a4399e0a385ac89d970784922cc",
+   "bytes": 3143
+  },
+  "stays/nikko.md": {
+   "sha256": "4caab4a41480108ecefb23625d648d6dfdc51cee82697dc239011d7bac9ef9d7",
+   "bytes": 5832
+  },
+  "stays/osaka.md": {
+   "sha256": "17c5aa134d9b2a1b0e5c89e68a3f93f60d2d156cdd2a510dd3f08e9d4e7a5f42",
+   "bytes": 7924
+  },
+  "stays/sapporo.md": {
+   "sha256": "6dbfb2f0d58d8d3ca032689f162c4d1244bfd9991033228e45e383ee5bc046ed",
+   "bytes": 3183
+  },
+  "stays/sendai.md": {
+   "sha256": "697de2709202c94560be9c7f20021f519e3aac49ef5f564865ec50036ba531ca",
+   "bytes": 6698
+  },
+  "stays/takayama.md": {
+   "sha256": "fea7a2f5ba5e052b13723a66dc68ca4d5e9c5002363c7f8c0bbf1a5378474e84",
+   "bytes": 5997
+  },
+  "stays/tokyo.md": {
+   "sha256": "0c9646daa6f5351d9bcde52c212f2acc9a951e4f22b2fdf1735baa91b4f362f6",
+   "bytes": 12089
+  }
+ }
+}

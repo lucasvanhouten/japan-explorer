@@ -1,0 +1,66 @@
+# Ryokan Finder
+
+> An independent, fan-made catalog of 199 Japanese ryokans (traditional inns), re-scored from
+> KI-NRT's FlyerTalk "Japan Luxury Ryokans — A Primer + Impressions" thread, his own TripAdvisor
+> reviews, and Japanese booking-site research (Ikyu, Rakuten, Jalan). Not affiliated with any inn
+> or with FlyerTalk. Data as of 2026-09-07.
+
+## How to read the scores
+
+- Every inn has an **overall score from 1 to 10** and a **tier**: S ≥ 9 (build the trip around it),
+  A ≥ 8 (anchor a leg), B ≥ 7 (right inn, right place), C ≥ 6 (situational),
+  D (the evidence warns). Current spread: S 5 · A 50 · B 49 · C 33 · D 10 · unscored 52.
+- Scores are **evidence-adjusted**: the reading of the forum text minus a small confidence
+  discount when only one or two stays are on record, so a thinly-reviewed inn reads slightly
+  below an equally praised, well-corroborated one.
+- Five **aspect scores, 1 to 5**: Food (cuisine) · Bath (onsen) · Service · Room · Place (setting).
+  Each carries a paragraph of prose explaining it.
+- 52 inns are **unscored** — nobody has written one up first-hand in the thread. Where a
+  Japanese crowd rating exists it is given instead, out of 5, and named by its source.
+- These are directional readings of forum opinion, weighted toward the thread author. They are not
+  official ratings and should not be read as a precise ranking.
+
+## Files
+
+Every URL below is complete — fetch it as written.
+
+- https://ryokancatalog.com/catalog.md — the whole catalog as one markdown table (~29 KB). Start here.
+- https://ryokancatalog.com/api/index.json — the same index as JSON.
+- https://ryokancatalog.com/api/inn/<slug>.json — one inn's full public record: summary, five aspect scores and
+  their prose, transit times, photos, and every source link. Slugs are in the index.
+- https://ryokancatalog.com/inn/<slug> — the same record as a readable HTML page.
+- https://ryokancatalog.com/llms-full.txt — every inn's full prose (summary + all five aspects + transit)
+  as plain text, in one file (~524 KB). The one to read if you want to reason
+  across the catalog.
+- https://ryokancatalog.com/catalog.json — all 199 full records in one file (~1.1 MB).
+- https://ryokancatalog.com/sitemap.xml — every page.
+- https://ryokancatalog.com/ — the interactive site (a single-page app; filtering is client-side, so prefer the
+  files above for reading the data). https://ryokancatalog.com/#<slug> opens one inn's card.
+
+## Answering common questions
+
+- **"Best ryokans in <place>"** — every area with two or more inns has its own small page, already
+  ranked: **https://ryokancatalog.com/place/<place>** (e.g. https://ryokancatalog.com/place/hakone, https://ryokancatalog.com/place/kyoto,
+  https://ryokancatalog.com/place/hokkaido — towns, prefectures and regions all work), and the same list as data at
+  https://ryokancatalog.com/api/place/<place>.json. The full set of place links is at the top of https://ryokancatalog.com/catalog.md.
+  Failing that, catalog.md is one table of all 199 inns with a "Where" column, sorted best-first.
+  Do not try to drive the homepage's filters — they run in the browser and a fetch cannot reach them.
+- **"Tell me about <inn>"** — take its slug from the last column of catalog.md and fetch
+  https://ryokancatalog.com/api/inn/<slug>.json, or read https://ryokancatalog.com/inn/<slug> as a page.
+- **"Which inns are near <city>"** — every record carries a `transit.cities` list of door-to-door
+  times to the nearest gateway cities, and a `geo` lat/lng. catalog.json has all 199 at once.
+- **"Show me a filtered view"** — the homepage's filters are in the URL, so any slice has a link:
+  https://ryokancatalog.com/#region=Kanto&tier=A,B · https://ryokancatalog.com/#tier=S · https://ryokancatalog.com/#q=hakone · https://ryokancatalog.com/#near=tokyo&h=3 ·
+  https://ryokancatalog.com/#<inn-slug> opens one card. (Those need a browser; for a plain fetch use the files above.)
+- **Fetching the homepage at all** — it is a single-page app of about 1.2 MB and a fetch will
+  truncate it, but the FIRST block of its text is a compact index of all 199 inns as
+  "Name · Place · Tier Score" lines, so even a truncated read has the whole catalog.
+- **"What does the score mean"** — see "How to read the scores" above. Always say the scores are one
+  reader's evidence-adjusted synthesis of a forum thread, not an official rating.
+
+## Notes for reuse
+
+Attribution is the point: this exists to give back to KI-NRT's thread. If you quote or build on
+the data, credit the thread (flyertalk.com, "Japan Luxury Ryokans – A Primer + Impressions") and
+this catalog, and please point people who found an inn this way back to the thread to post their
+own review. Photos belong to the inns and their booking-site listings.

@@ -1,0 +1,420 @@
+{
+  "_about": [
+    "The Japan Trip Kit's nine route SPINES (2026-09-12; v2 2026-09-13 — PLAN-spines.md, \"decisions belong to cities and legs\").",
+    "A spine is an ordered list of major CITIES, and every decision hangs off a city or off the leg between two cities, so a",
+    "chosen place can only land where it belongs — nothing can be put before Kyoto, and two ryokan on different legs are two",
+    "separate yes/no answers rather than one either/or.",
+    "",
+    "`cities` is the spine, in trip order: either a loc key string (a fixed city) or a CITY switch",
+    "{kind:\"city\", key, question, default, options[{label, desc, cities[], …}]} — the start (Tokyo first or straight into the",
+    "region), the Kansai choice (always symmetric: Kyoto | Osaka | Kyoto and Osaka), the direction, the end city. A CITY option",
+    "may carry `in`/`out` (the airport it implies), `line` (the one-liner printed when it is taken — the blurb follows the route,",
+    "so a start that drops Tokyo does not still describe one), `reverse: true` (the middle of the route runs the other way; a",
+    "leading or trailing Tokyo stays put) and the guards below.",
+    "",
+    "`attach` are the ATTACHMENTS: a yes/no night that belongs to one city — {key, city[], kind: inn|stop, at: split|after|before,",
+    "question, desc, no, stops[], default, on_at?}. `city` is a list: the first of those cities present on the assembly owns it",
+    "(so Nara attaches after Kyoto, or between Kyoto and Osaka, and never before Kyoto). `at` says how it sits: `split` puts the",
+    "city, the attachment, then the city again (Nikkō out and back splits the Tokyo stay), `after` and `before` put it on one side.",
+    "",
+    "`legs` are the LEG SLOTS: {key, from[], to[], slots[{key, kind, question, desc, no, stops[], default, on_at?}]}. A leg is",
+    "offered when one of its `from` cities and one of its `to` cities are consecutive on the assembly, either way round; its slots",
+    "are the ryokan towns and the STOP towns that sit on that leg, each a yes/no, inserted in the order they are declared. Two",
+    "slots on two different legs are two answers: Yudanaka before Kanazawa AND Kaga after it, on one trip.",
+    "",
+    "`end` is the END decision, unchanged: how the trip finishes — fly from the last city, one more ryokan night, or back through",
+    "Tokyo — with `stops[]`, `place: after|before <loc>` and `out` as before.",
+    "",
+    "Decision keys are what `--set` takes: `start`, `kansai`, `end` for the switches, `<city>.<name>` for an attachment",
+    "(`--set tokyo.nikko=yes`), `<leg>.<name>` for a leg slot (`--set tokyo-kanazawa.yudanaka=yes`). Yes/no answers take `yes`/`no`",
+    "or the option number; a switch takes its label or number. The engine derives one flat decision list from all of this and",
+    "prints it grouped in trip order — a city, its attachment, the leg's slots, the next city — and a decision whose only real",
+    "option is withheld here is never shown.",
+    "",
+    "Guards, on any option: `requires` / `not_with` (loc keys that must be, or must not be, on the route — `tokyo@first` means",
+    "Tokyo must open the trip), `or_in` (arrival airport codes that waive `requires`: a booked flight into the region settles a",
+    "guard about landing straight at a ryokan), `why_not` (the sentence the tool and the explorer print when it is withheld). An",
+    "attachment whose city is not on the route, and a slot whose leg is not on the route, are withheld the same way. A `--in`",
+    "ticket also PICKS the START option that declares that same `in`, unless `--set start=` says otherwise.",
+    "",
+    "`name` is the spine's short name, `blurb` the longer line it used to be called by, `for` the one line that says who it is for",
+    "(the menu's For column), `rank` the menu order for a first visit and a repeat one (1 is offered first), `assumes: \"repeat\"`",
+    "that the For line takes a traveller who has already done Tokyo and Kyoto. `band` is the night range the spine is meant for",
+    "(four lower when the START option drops Tokyo); `draws` are Stage 1's draws it answers (food temples nature onsen craft city",
+    "pop art snow coast). `default` is the option taken when nothing is chosen; `on_at: N` makes a yes/no default to yes at a",
+    "requested total of N nights or more.",
+    "",
+    "Nights are never part of a decision: each place starts at its places.json ideal low (a repeated city splits 3/2 for Tokyo,",
+    "2/1 otherwise) and `spine --nights loc=N` or `--total N` moves them inside the ranges. Nothing here carries a travel time.",
+    "The route engine (builder/route.js `spines`, `spine`, `compare`) assembles, prices and checks every assembly through",
+    "buildPlan; build-kit.js prints the menu and the nine spines into the kit and emits guides/route-explorer.html from this file",
+    "and LEGS; kit-verify.js prices every spine × every option of every decision and fails on any assembly that is not clean."
+  ],
+  "spines": [
+    {
+      "id": "s1",
+      "name": "The Classic",
+      "blurb": "Tokyo, Kyoto or Osaka, a ryokan or two.",
+      "for": "A first trip.",
+      "rank": { "first": 1, "repeat": 9 },
+      "band": [7, 15],
+      "io": "HND → KIX",
+      "in": "HND",
+      "out": "KIX",
+      "line": "The first trip. Tokyo, a ryokan on the road west, then Kansai.",
+      "draws": ["food", "temples", "city", "pop", "art", "onsen"],
+      "cities": [
+        { "kind": "city", "key": "start", "question": "Where does the trip start?", "default": 0, "options": [
+          { "label": "Tokyo first", "desc": "Tokyo, then the road west into Kansai.", "cities": ["tokyo"] },
+          { "label": "Straight into Kansai", "desc": "No Tokyo: fly into Kansai airport, Osaka first, and give the whole trip to Osaka and Kyoto.", "cities": ["osaka"], "in": "KIX", "out": "KIX", "line": "Straight into Kansai. Osaka and Kyoto at the heart of the trip, with a ryokan in the hills nearby; no Tokyo this time." }
+        ] },
+        { "kind": "city", "key": "kansai", "question": "Which Kansai city?", "default": 0, "options": [
+          { "label": "Kyoto", "desc": "Temples, gardens and the old capital.", "cities": ["kyoto"] },
+          { "label": "Osaka", "desc": "Osaka only; Kyoto as a day out or skipped.", "cities": ["osaka"], "not_with": ["osaka@first"], "why_not": "flying straight into Kansai the trip already opens in Osaka" },
+          { "label": "Kyoto and Osaka", "desc": "Kyoto first, then Osaka for eating and going out.", "cities": ["kyoto", "osaka"], "not_with": ["osaka@first"], "why_not": "flying straight into Kansai the trip already opens in Osaka" }
+        ] }
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"], "requires": ["tokyo@first"], "why_not": "Nikkō is an out-and-back from Tokyo; flying straight into Kansai there is no Tokyo stay to split" },
+        { "key": "kyoto.nara", "city": ["kyoto", "osaka"], "kind": "stop", "at": "after", "default": 1, "on_at": 12, "question": "A night at Nara?", "desc": "A night among the temples and the deer park, after Kyoto.", "no": "Nara as a day trip instead.", "stops": ["nara"], "not_with": ["tokyo@last"], "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead" }
+      ],
+      "legs": [
+        { "key": "tokyo-kansai", "from": ["tokyo"], "to": ["kyoto", "osaka"], "slots": [
+          { "key": "fuji", "kind": "inn", "default": 0, "question": "A ryokan near Mount Fuji on the way west?", "desc": "Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west.", "no": "Straight through to Kansai.", "stops": ["hakone"] }
+        ] },
+        { "key": "osaka-kyoto", "from": ["osaka"], "to": ["kyoto"], "slots": [
+          { "key": "arima", "kind": "inn", "default": 1, "question": "A ryokan at Arima between Osaka and Kyoto?", "desc": "The hot-spring town behind Kobe, between Osaka and Kyoto.", "no": "Straight through.", "stops": ["arima"] }
+        ] }
+      ],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from Kansai", "desc": "Out through Kansai airport.", "stops": [] },
+        { "label": "A Kōyasan ryokan", "desc": "A last night on the mountain south of Osaka, then Kansai airport.", "stops": ["katsuragi"], "out": "KIX" },
+        { "label": "Kinosaki", "desc": "A last night in the Japan Sea hot-spring town, then Itami airport.", "stops": ["kinosaki"], "out": "ITM" },
+        { "label": "Back to Tokyo", "desc": "Two more Tokyo nights and a Haneda flight home.", "stops": ["tokyo"] }
+      ] }
+    },
+    {
+      "id": "s2",
+      "name": "The Kanazawa Loop",
+      "blurb": "Tokyo, Kanazawa, a ryokan or two, then onward or back.",
+      "for": "A second trip, or a first for someone who wants mountains and crafts.",
+      "rank": { "first": 3, "repeat": 1 },
+      "band": [9, 16],
+      "io": "HND → KIX, or HND → HND / NGO",
+      "in": "HND",
+      "out": "KIX",
+      "line": "Over the mountains instead of the straight shuttle. After Kanazawa the trip carries on to Kansai or loops back to Tokyo.",
+      "draws": ["craft", "art", "onsen", "nature", "snow", "food"],
+      "cities": [
+        "tokyo",
+        "kanazawa",
+        { "kind": "city", "key": "next", "question": "Which city next?", "default": 0, "options": [
+          { "label": "Kyoto", "desc": "On to Kyoto, then Kansai airport.", "cities": ["kyoto"] },
+          { "label": "Osaka", "desc": "Straight to Osaka for eating and going out, then Kansai airport.", "cities": ["osaka"] },
+          { "label": "Kyoto and Osaka", "desc": "Kyoto, then Osaka, then Kansai airport.", "cities": ["kyoto", "osaka"] },
+          { "label": "Back to Tokyo", "desc": "Loop back over the mountains for a Haneda flight.", "cities": ["tokyo"] }
+        ] }
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"], "requires": ["tokyo@first"] },
+        { "key": "kyoto.nara", "city": ["kyoto", "osaka"], "kind": "stop", "at": "after", "default": 1, "question": "A night at Nara?", "desc": "A night among the temples and the deer park, after Kyoto.", "no": "Nara as a day trip instead.", "stops": ["nara"], "not_with": ["tokyo@last"], "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead" }
+      ],
+      "legs": [
+        { "key": "tokyo-kanazawa", "from": ["tokyo"], "to": ["kanazawa"], "slots": [
+          { "key": "yudanaka", "kind": "inn", "default": 0, "question": "A ryokan at Yudanaka on the way over the mountains?", "desc": "A hot-spring valley in Nagano, on the way over the mountains.", "no": "Straight through to Kanazawa.", "stops": ["yudanaka"] }
+        ] },
+        { "key": "kanazawa-onward", "from": ["kanazawa"], "to": ["kyoto", "osaka", "tokyo"], "slots": [
+          { "key": "kaga", "kind": "inn", "default": 1, "question": "A ryokan in the Kaga towns after Kanazawa?", "desc": "The hot-spring towns an hour down the coast from Kanazawa.", "no": "Straight on from Kanazawa.", "stops": ["yamashiro"] },
+          { "key": "takayama", "kind": "stop", "default": 1, "question": "A stop at Takayama on the way?", "desc": "A preserved timber merchant town in the mountains, on the way.", "no": "Direct to the next city.", "stops": ["takayama"] }
+        ] }
+      ],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from the last city", "desc": "Kansai or Haneda, whichever the route reaches.", "stops": [] },
+        { "label": "Kinosaki", "desc": "A last night in the Japan Sea hot-spring town, then Itami airport.", "stops": ["kinosaki"], "place": "after kyoto|osaka", "out": "ITM" }
+      ] }
+    },
+    {
+      "id": "s3",
+      "name": "Stretched West",
+      "blurb": "Tokyo, Kyoto or Osaka, Hiroshima, one to three ryokan.",
+      "for": "A first trip with two weeks or more.",
+      "rank": { "first": 2, "repeat": 8 },
+      "band": [12, 19],
+      "io": "HND → HIJ",
+      "in": "HND",
+      "out": "HIJ",
+      "line": "The first trip stretched west to the inland sea.",
+      "draws": ["temples", "coast", "food", "art", "city", "onsen"],
+      "cities": [
+        "tokyo",
+        { "kind": "city", "key": "kansai", "question": "Which Kansai city?", "default": 0, "options": [
+          { "label": "Kyoto", "desc": "Temples, gardens and the old capital.", "cities": ["kyoto"] },
+          { "label": "Osaka", "desc": "Osaka only; Kyoto as a day out or skipped.", "cities": ["osaka"] },
+          { "label": "Kyoto and Osaka", "desc": "Kyoto first, then Osaka for eating and going out.", "cities": ["kyoto", "osaka"] }
+        ] },
+        "hiroshima"
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"] },
+        { "key": "kyoto.nara", "city": ["kyoto", "osaka"], "kind": "stop", "at": "after", "default": 1, "on_at": 12, "question": "A night at Nara?", "desc": "A night among the temples and the deer park, between Kyoto and Osaka.", "no": "Nara as a day trip instead.", "stops": ["nara"], "requires": ["kyoto", "osaka"], "not_with": ["tokyo@last"], "why_not": "this trip carries on west, so Nara only fits between Kyoto and Osaka: on its own after Kyoto the next leg doubles back. Nara as a day trip instead" },
+        { "key": "hiroshima.miyajima", "city": ["hiroshima"], "kind": "inn", "at": "after", "default": 1, "question": "A night on Miyajima?", "desc": "A night on the shrine island, under the torii that stands in the sea.", "no": "Miyajima as a day trip from Hiroshima.", "stops": ["miyajima"], "not_with": ["tokyo@last"], "why_not": "the island night is the last one west; a trip that then turns round and ends in Tokyo doubles back. Miyajima as a day trip from Hiroshima instead" }
+      ],
+      "legs": [
+        { "key": "tokyo-kansai", "from": ["tokyo"], "to": ["kyoto", "osaka"], "slots": [
+          { "key": "fuji", "kind": "inn", "default": 0, "question": "A ryokan near Mount Fuji on the way west?", "desc": "Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west.", "no": "Straight through to Kansai.", "stops": ["hakone"] }
+        ] },
+        { "key": "kansai-hiroshima", "from": ["kyoto", "osaka"], "to": ["hiroshima"], "slots": [
+          { "key": "tomonoura", "kind": "inn", "default": 1, "question": "A ryokan at Tomonoura on the inland sea?", "desc": "A small harbour town on the inland sea, an hour short of Hiroshima.", "no": "Straight through to Hiroshima.", "stops": ["tomonoura"], "not_with": ["osaka"], "why_not": "from Osaka the tables reach Tomonoura only back through Kyoto; from Kyoto it is on the way" },
+          { "key": "naoshima", "kind": "inn", "default": 1, "question": "A night on Naoshima, the art island?", "desc": "The art island, reached by ferry from Okayama.", "no": "Straight through to Hiroshima.", "stops": ["naoshima"] }
+        ] }
+      ],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from Hiroshima", "desc": "Out through Hiroshima airport.", "stops": [] },
+        { "label": "Back to Tokyo", "desc": "Two more Tokyo nights and a Haneda flight home.", "stops": ["tokyo"] }
+      ] }
+    },
+    {
+      "id": "s4",
+      "name": "Snow Country",
+      "blurb": "Tokyo and the north, then Kanazawa and onward.",
+      "for": "Winter: snow country and the northern hot-spring towns.",
+      "rank": { "first": 4, "repeat": 2 },
+      "band": [9, 16],
+      "io": "HND → KIX / ITM, or HND → HND",
+      "in": "HND",
+      "out": "KIX",
+      "line": "Tokyo, then north into the snow or the Tōhoku ryokan towns, then Kanazawa and on to Kyoto or back to Tokyo.",
+      "draws": ["snow", "onsen", "nature", "craft", "food"],
+      "cities": [
+        "tokyo",
+        "kanazawa",
+        { "kind": "city", "key": "next", "question": "Which city next?", "default": 0, "options": [
+          { "label": "Kyoto", "desc": "On to Kyoto, then Kansai airport.", "cities": ["kyoto"] },
+          { "label": "Osaka", "desc": "Straight to Osaka, then Kansai airport.", "cities": ["osaka"] },
+          { "label": "Kyoto and Osaka", "desc": "Kyoto, then Osaka, then Kansai airport.", "cities": ["kyoto", "osaka"] },
+          { "label": "Back to Tokyo", "desc": "Loop back over the mountains for a Haneda flight.", "cities": ["tokyo"] }
+        ] }
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest two hours north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"] },
+        { "key": "kyoto.nara", "city": ["kyoto", "osaka"], "kind": "stop", "at": "after", "default": 1, "question": "A night at Nara?", "desc": "A night among the temples and the deer park, after Kyoto.", "no": "Nara as a day trip instead.", "stops": ["nara"], "not_with": ["tokyo@last"], "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead" }
+      ],
+      "legs": [
+        { "key": "tokyo-kanazawa", "from": ["tokyo"], "to": ["kanazawa"], "slots": [
+          { "key": "snow", "kind": "inn", "default": 0, "question": "Two nights in snow country on the way?", "desc": "Two valley ryokan on the bullet train north of Tokyo.", "no": "No snow-country nights.", "stops": ["tanigawa", "echigoyuzawa"] },
+          { "key": "tohoku", "kind": "inn", "default": 1, "question": "The Sendai loop and the Tōhoku hot-spring towns?", "desc": "Sendai, then the north's hot-spring towns: a mountain inn and a samurai town.", "no": "No Tōhoku leg.", "stops": ["sendai", "nyuto", "kakunodate"] }
+        ] },
+        { "key": "kanazawa-onward", "from": ["kanazawa"], "to": ["kyoto", "osaka", "tokyo"], "slots": [
+          { "key": "takayama", "kind": "stop", "default": 1, "question": "A stop at Takayama on the way?", "desc": "A preserved timber merchant town in the mountains, on the way.", "no": "Direct to the next city.", "stops": ["takayama"] }
+        ] }
+      ],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from the last city", "desc": "Kansai or Haneda, whichever the route reaches.", "stops": [] },
+        { "label": "Kinosaki", "desc": "A last night in the Japan Sea hot-spring town after Kyoto, then Itami airport.", "stops": ["kinosaki"], "place": "after kyoto|osaka", "out": "ITM" }
+      ] }
+    },
+    {
+      "id": "s5",
+      "name": "Kyushu South & West",
+      "blurb": "Tokyo and Kyushu, south and west.",
+      "for": "Kyushu for people who have done Tokyo and Kyoto.",
+      "assumes": "repeat",
+      "rank": { "first": 7, "repeat": 4 },
+      "band": [11, 20],
+      "io": "HND → NGS",
+      "in": "HND",
+      "out": "NGS",
+      "line": "Kirishima and Kagoshima, up to Fukuoka, Takeo, Nagasaki.",
+      "draws": ["nature", "onsen", "food", "coast"],
+      "cities": [
+        { "kind": "city", "key": "start", "question": "Where does the trip start?", "default": 0, "options": [
+          { "label": "Tokyo first", "desc": "Tokyo, then a flight to Kagoshima.", "cities": ["tokyo", "kagoshima"] },
+          { "label": "Straight into Kagoshima", "desc": "No Tokyo; fly into the south of the island.", "cities": ["kagoshima"], "in": "KOJ", "line": "Straight into Kyushu. Kirishima and Kagoshima, up to Fukuoka, Takeo, Nagasaki; no Tokyo this time." }
+        ] },
+        "fukuoka",
+        "nagasaki"
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"], "requires": ["tokyo@first"] },
+        { "key": "kagoshima.kirishima", "city": ["kagoshima"], "kind": "inn", "at": "before", "default": 0, "question": "A ryokan at Kirishima before Kagoshima?", "desc": "Hot-spring ryokan in the volcanic hills above Kagoshima.", "no": "Straight into the city.", "stops": ["kirishima"], "requires": ["tokyo@first"], "why_not": "an inn cannot be the arrival night: flying straight into Kagoshima, the city comes first" }
+      ],
+      "legs": [
+        { "key": "fukuoka-nagasaki", "from": ["fukuoka"], "to": ["nagasaki"], "slots": [
+          { "key": "takeo", "kind": "inn", "default": 0, "question": "A ryokan at Takeo on the way to Nagasaki?", "desc": "A small hot-spring town on the line to Nagasaki.", "no": "Straight through.", "stops": ["takeo"] }
+        ] }
+      ],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from Nagasaki", "desc": "Out through Nagasaki airport, via Haneda.", "stops": [] },
+        { "label": "Unzen", "desc": "A last night in the hot-spring town on the peninsula east of Nagasaki.", "stops": ["unzen"], "out": "NGS" },
+        { "label": "Back to Tokyo", "desc": "Two more Tokyo nights and a Haneda flight home.", "stops": ["tokyo"] }
+      ] }
+    },
+    {
+      "id": "s6",
+      "name": "Kyushu South & East",
+      "blurb": "Tokyo and Kyushu, south and east.",
+      "for": "Kyushu when the hot springs are the point.",
+      "rank": { "first": 8, "repeat": 5 },
+      "band": [11, 19],
+      "io": "HND → OIT / FUK",
+      "in": "HND",
+      "out": "OIT",
+      "line": "Kirishima and Kagoshima, up to Fukuoka, then the hot-spring east.",
+      "draws": ["nature", "onsen", "food"],
+      "cities": [
+        { "kind": "city", "key": "start", "question": "Where does the trip start?", "default": 0, "options": [
+          { "label": "Tokyo first", "desc": "Tokyo, then a flight to Kagoshima.", "cities": ["tokyo", "kagoshima"] },
+          { "label": "Straight into Kagoshima", "desc": "No Tokyo; fly into the south of the island.", "cities": ["kagoshima"], "in": "KOJ", "line": "Straight into Kyushu. Kirishima and Kagoshima, up to Fukuoka, then the hot-spring east; no Tokyo this time." }
+        ] },
+        "fukuoka",
+        { "kind": "city", "key": "east", "question": "Which hot-spring town in the east?", "default": 0, "options": [
+          { "label": "Yufuin", "desc": "The valley town under Mount Yufu, small inns and a mountain skyline.", "cities": ["yufuin"] },
+          { "label": "Beppu", "desc": "The big steaming hot-spring city on the east coast.", "cities": ["beppu"] }
+        ] }
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"], "requires": ["tokyo@first"] },
+        { "key": "kagoshima.kirishima", "city": ["kagoshima"], "kind": "inn", "at": "before", "default": 0, "question": "A ryokan at Kirishima before Kagoshima?", "desc": "Hot-spring ryokan in the volcanic hills above Kagoshima.", "no": "Straight into the city.", "stops": ["kirishima"], "requires": ["tokyo@first"], "why_not": "an inn cannot be the arrival night: flying straight into Kagoshima, the city comes first" },
+        { "key": "kumamoto.amakusa", "city": ["kumamoto"], "kind": "inn", "at": "after", "default": 1, "question": "A ryokan night on the Amakusa islands?", "desc": "A ryokan night on the Amakusa islands, out past Kumamoto.", "no": "Straight on to Fukuoka.", "stops": ["amakusa"] }
+      ],
+      "legs": [
+        { "key": "kagoshima-fukuoka", "from": ["kagoshima"], "to": ["fukuoka"], "slots": [
+          { "key": "kumamoto", "kind": "stop", "default": 1, "question": "A stop at Kumamoto on the way to Fukuoka?", "desc": "The castle city under the Aso caldera.", "no": "Bullet train straight to Fukuoka.", "stops": ["kumamoto"] }
+        ] },
+        { "key": "fukuoka-yufuin", "from": ["fukuoka"], "to": ["yufuin"], "slots": [
+          { "key": "hita", "kind": "inn", "default": 0, "question": "A gorge ryokan at Amagase before Yufuin?", "desc": "A night in the river gorge on the way, so the east is two nights rather than one.", "no": "One night in the east.", "stops": ["hita"] }
+        ] }
+      ],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from Ōita", "desc": "Out through Ōita airport, via Haneda.", "stops": [] },
+        { "label": "Back to Tokyo", "desc": "Two more Tokyo nights and a Haneda flight home.", "stops": ["tokyo"] }
+      ] }
+    },
+    {
+      "id": "s7",
+      "name": "Kyushu North & East",
+      "blurb": "Tokyo and Kyushu, north and east.",
+      "for": "Kyushu on a shorter trip, either way round.",
+      "rank": { "first": 9, "repeat": 6 },
+      "band": [10, 17],
+      "io": "HND → OIT, or HND → NGS",
+      "in": "HND",
+      "out": "OIT",
+      "line": "Nagasaki, Takeo, Fukuoka, then the hot-spring east. Runs either way round.",
+      "draws": ["nature", "onsen", "food", "coast"],
+      "cities": [
+        { "kind": "city", "key": "start", "question": "Where does the trip start?", "default": 0, "options": [
+          { "label": "Tokyo first", "desc": "Tokyo, then a flight to Kyushu.", "cities": ["tokyo"] },
+          { "label": "Straight into Kyushu", "desc": "No Tokyo.", "cities": [], "in": "NGS", "line": "Straight into Kyushu. Nagasaki, Takeo, Fukuoka, then the hot-spring east; no Tokyo this time." }
+        ] },
+        { "kind": "city", "key": "order", "question": "Which way round?", "default": 0, "options": [
+          { "label": "Nagasaki first", "desc": "Land at Nagasaki, finish in the hot-spring east, out through Ōita.", "cities": [] },
+          { "label": "The east first", "desc": "Land at Ōita, finish in Nagasaki, out through Nagasaki.", "cities": [], "reverse": true, "in": "OIT", "out": "NGS", "requires": ["tokyo@first"], "or_in": ["OIT", "FUK", "KMJ", "HND", "NRT"], "why_not": "a long-haul flight landing straight at Ōita would put the first night at a ryokan; with Tokyo first, or a booked flight into Kyushu, it lands with the afternoon to spare" }
+        ] },
+        "nagasaki",
+        "fukuoka",
+        { "kind": "city", "key": "east", "question": "Which way does the east go?", "default": 0, "options": [
+          { "label": "Yufuin", "desc": "The valley town under Mount Yufu, small inns and a mountain skyline.", "cities": ["yufuin"] },
+          { "label": "Beppu", "desc": "The big steaming hot-spring city on the east coast.", "cities": ["beppu"] },
+          { "label": "The volcanic middle", "desc": "Inland instead: the caldera country and Kumamoto, out through Kumamoto.", "cities": ["kumamoto"], "out": "KMJ" }
+        ] }
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"], "requires": ["tokyo@first"] }
+      ],
+      "legs": [
+        { "key": "nagasaki-fukuoka", "from": ["nagasaki"], "to": ["fukuoka"], "slots": [
+          { "key": "unzen", "kind": "inn", "default": 1, "question": "A ryokan at Unzen, out on the peninsula?", "desc": "The hot-spring town on the peninsula east of Nagasaki.", "no": "No Unzen night.", "stops": ["unzen"] },
+          { "key": "takeo", "kind": "inn", "default": 0, "question": "A ryokan at Takeo on the line to Fukuoka?", "desc": "A small hot-spring town on the line to Fukuoka.", "no": "Straight through.", "stops": ["takeo"] }
+        ] },
+        { "key": "fukuoka-yufuin", "from": ["fukuoka"], "to": ["yufuin"], "slots": [
+          { "key": "hita", "kind": "inn", "default": 0, "question": "A gorge ryokan at Amagase before Yufuin?", "desc": "A night in the river gorge on the way, so the east is two nights rather than one.", "no": "One night in the east.", "stops": ["hita"] }
+        ] },
+        { "key": "fukuoka-kumamoto", "from": ["fukuoka"], "to": ["kumamoto"], "slots": [
+          { "key": "kurokawa", "kind": "inn", "default": 0, "question": "A ryokan at Kurokawa in the caldera country?", "desc": "The wooden hot-spring village inland, black-roofed and lantern-lit.", "no": "Straight on.", "stops": ["kurokawa"] },
+          { "key": "takachiho", "kind": "stop", "default": 0, "question": "A night at the Takachiho gorge?", "desc": "The gorge and the night-time shrine dance, deep in the mountains.", "no": "Straight on to Kumamoto.", "stops": ["takachiho"] }
+        ] }
+      ],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from the last stop", "desc": "Ōita, Kumamoto or Nagasaki, via Haneda.", "stops": [] },
+        { "label": "Back to Tokyo", "desc": "Two more Tokyo nights and a Haneda flight home.", "stops": ["tokyo"] }
+      ] }
+    },
+    {
+      "id": "s8",
+      "name": "The Long Line",
+      "blurb": "West to east: Kyoto or Osaka, Hiroshima, Fukuoka.",
+      "for": "Kyushu without a flight: one train line the whole way.",
+      "rank": { "first": 5, "repeat": 3 },
+      "band": [11, 18],
+      "io": "HND or KIX → FUK / OIT / NGS",
+      "in": "HND",
+      "out": "FUK",
+      "line": "One bullet-train line from Kansai into Kyushu with ryokan along it. The only spine that reaches Kyushu without a flight.",
+      "draws": ["temples", "coast", "food", "city", "onsen"],
+      "cities": [
+        { "kind": "city", "key": "start", "question": "Where does the trip start?", "default": 0, "options": [
+          { "label": "Tokyo first", "desc": "Tokyo, then the train west.", "cities": ["tokyo"] },
+          { "label": "Straight into Kansai", "desc": "No Tokyo; fly into Kansai airport.", "cities": [], "in": "KIX", "line": "Straight into Kansai. One bullet-train line from Kyoto all the way into Kyushu, with ryokan along it; no Tokyo this time." }
+        ] },
+        { "kind": "city", "key": "kansai", "question": "Which Kansai city?", "default": 0, "options": [
+          { "label": "Kyoto", "desc": "Temples, gardens and the old capital.", "cities": ["kyoto"] },
+          { "label": "Osaka", "desc": "Osaka only; Kyoto as a day out or skipped.", "cities": ["osaka"] },
+          { "label": "Kyoto and Osaka", "desc": "Kyoto first, then Osaka for eating and going out.", "cities": ["kyoto", "osaka"] }
+        ] },
+        "hiroshima",
+        "fukuoka"
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"], "requires": ["tokyo@first"] },
+        { "key": "kyoto.nara", "city": ["kyoto", "osaka"], "kind": "stop", "at": "after", "default": 1, "question": "A night at Nara?", "desc": "A night among the temples and the deer park, between Kyoto and Osaka.", "no": "Nara as a day trip instead.", "stops": ["nara"], "requires": ["kyoto", "osaka"], "not_with": ["tokyo@last"], "why_not": "this trip carries on west, so Nara only fits between Kyoto and Osaka: on its own after Kyoto the next leg doubles back. Nara as a day trip instead" },
+        { "key": "hiroshima.miyajima", "city": ["hiroshima"], "kind": "inn", "at": "after", "default": 1, "question": "A night on Miyajima?", "desc": "A night on the shrine island, under the torii that stands in the sea.", "no": "Miyajima as a day trip from Hiroshima.", "stops": ["miyajima"], "not_with": ["tokyo@last"], "why_not": "the island night is the last one west; a trip that then turns round and ends in Tokyo doubles back. Miyajima as a day trip from Hiroshima instead" }
+      ],
+      "legs": [
+        { "key": "tokyo-kansai", "from": ["tokyo"], "to": ["kyoto", "osaka"], "slots": [
+          { "key": "fuji", "kind": "inn", "default": 0, "question": "A ryokan near Mount Fuji on the way west?", "desc": "Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west.", "no": "Straight through to Kansai.", "stops": ["hakone"] }
+        ] },
+        { "key": "kansai-hiroshima", "from": ["kyoto", "osaka"], "to": ["hiroshima"], "slots": [
+          { "key": "tomonoura", "kind": "inn", "default": 1, "question": "A ryokan at Tomonoura on the inland sea?", "desc": "A small harbour town on the inland sea, an hour short of Hiroshima.", "no": "Straight through to Hiroshima.", "stops": ["tomonoura"], "not_with": ["osaka"], "why_not": "from Osaka the tables reach Tomonoura only back through Kyoto; from Kyoto it is on the way" },
+          { "key": "naoshima", "kind": "inn", "default": 1, "question": "A night on Naoshima, the art island?", "desc": "The art island, reached by ferry from Okayama.", "no": "Straight through to Hiroshima.", "stops": ["naoshima"] }
+        ] }
+      ],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from Fukuoka", "desc": "Out through Fukuoka airport.", "stops": [] },
+        { "label": "The hot-spring east", "desc": "Two ryokan nights, Amagase then Yufuin, out through Ōita.", "stops": ["hita", "yufuin"], "out": "OIT" },
+        { "label": "Takeo and Nagasaki", "desc": "A ryokan night, then Nagasaki, out through Nagasaki.", "stops": ["takeo", "nagasaki"], "out": "NGS" }
+      ] }
+    },
+    {
+      "id": "s9",
+      "name": "Hokkaido",
+      "blurb": "The northern island in snow, a flight each way.",
+      "for": "The northern island in snow. The kit is thin here: no hotel rows in Sapporo, and one mountain town to sleep in.",
+      "rank": { "first": 6, "repeat": 7 },
+      "band": [8, 12],
+      "io": "HND → CTS",
+      "in": "HND",
+      "out": "CTS",
+      "line": "A flight each way, the island's snow and food.",
+      "draws": ["snow", "food", "nature", "onsen"],
+      "cities": [
+        { "kind": "city", "key": "start", "question": "Where does the trip start?", "default": 0, "options": [
+          { "label": "Tokyo first", "desc": "Tokyo, then a flight to Sapporo.", "cities": ["tokyo"] },
+          { "label": "Straight into Sapporo", "desc": "No Tokyo.", "cities": [], "in": "CTS", "line": "Straight into Sapporo. The island's snow and food, one flight each way; no Tokyo this time." }
+        ] },
+        "sapporo",
+        "niseko",
+        "sapporo"
+      ],
+      "attach": [
+        { "key": "tokyo.nikko", "city": ["tokyo"], "kind": "inn", "at": "split", "default": 1, "question": "A night at Nikkō?", "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.", "no": "No Nikkō; the Tokyo stay runs unbroken.", "stops": ["nikko"], "requires": ["tokyo@first"] }
+      ],
+      "legs": [],
+      "end": { "kind": "end", "key": "end", "question": "How does the trip end?", "default": 0, "options": [
+        { "label": "Fly home from New Chitose", "desc": "Out through Sapporo's airport.", "stops": [] },
+        { "label": "A hot-spring ryokan", "desc": "A last night at Noboribetsu or Jōzankei, near the airport.", "stops": ["noboribetsu"], "out": "CTS" },
+        { "label": "Back to Tokyo", "desc": "Two more Tokyo nights and a Haneda flight home.", "stops": ["tokyo"] }
+      ] }
+    }
+  ]
+}

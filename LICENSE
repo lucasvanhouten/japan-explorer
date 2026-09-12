@@ -1,0 +1,65 @@
+Japan Trip Kit — licensing
+==========================
+
+This project ships two kinds of material under two different licenses.
+
+1. DOCUMENTATION AND DATA — Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+   International (CC BY-NC-SA 4.0)
+
+   Covers: JAPAN-TRIP-KIT.md, everything under guides/, data/, catalog/ and examples/, this
+   README, and any other prose, table, or dataset in the repository.
+
+   In plain terms: you may copy, share, and adapt this material, including feeding it to an AI
+   assistant, as long as you (a) credit the source, (b) do not use it commercially, and (c) release
+   anything you build from it under the same terms.
+
+   Full legal text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+   Human-readable summary: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+   Attribution notice to reproduce when sharing or adapting:
+
+     "Japan Trip Kit", licensed under CC BY-NC-SA 4.0.
+     Inn research derived from the FlyerTalk thread "Japan Luxury Ryokans - A Primer +
+     Impressions" and the reviews of its author, KI-NRT, and its members.
+
+2. CODE — MIT License
+
+   Covers: everything under builder/ (HTML, CSS and JavaScript, including index.html,
+   route-builder-logic.js, route-data.js and serve.js) and any other script in the repository.
+
+   Note that builder/route-data.js embeds trip data; the code in it is MIT, while the data it
+   carries is CC BY-NC-SA 4.0 per section 1.
+
+   MIT License
+
+   Copyright (c) 2026 the Japan Trip Kit contributors
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+   and associated documentation files (the "Software"), to deal in the Software without
+   restriction, including without limitation the rights to use, copy, modify, merge, publish,
+   distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+   Software is furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all copies or
+   substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+   BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Third-party material
+--------------------
+
+Neither license above grants rights in material owned by others:
+
+- Photographs of inns and hotels belong to the properties. They are not redistributed here; the
+  builder and the catalogue load them from https://ryokancatalog.com. Do not copy them out for
+  other uses without the property's permission.
+- Quoted and paraphrased forum content remains the work of its authors, principally KI-NRT and the
+  members of the FlyerTalk ryokan thread, and is used here as commentary and reference.
+- Restaurant information informed by Tabelog (https://tabelog.com) remains Tabelog's and its
+  reviewers'. No Tabelog data is reproduced in bulk.
+- Travel times cite public sources - railway operators, japan-guide, and the properties' own access
+  pages - which are linked inline rather than reproduced.

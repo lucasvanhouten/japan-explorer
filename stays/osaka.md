@@ -1,0 +1,39 @@
+# Where to stay — Osaka
+
+*Japan Trip Kit · open this file only when **Osaka** is on the plan. It is an INDEX, not a table: the inns you can reach from here and this place's hotels. The full row for any inn is in the master table in `stages/4-where-to-stay.md`, which you should have read first.*
+
+**Every band here needs confirming for your dates.** Inn rates were researched for January; hotel rates are three-night stays for two, taxes included, checked across February, May and October. Japanese holidays run well above them: **11 February** (National Foundation Day), **Golden Week**, **Obon** and the **autumn-colour weekends**. One room can differ by a third between a Tuesday and a Saturday. **Off those months, read an inn band as a floor:** blossom and autumn colour run a third higher, high summer and the rainy season lower, and the property's own page for the actual dates is the only quote.
+
+## The inns — 8 within reach
+
+- `hiiragiya` · Hiiragiya ◆ · A 8.7 · bath no · ask · 45 min/0 from Osaka
+- `tsukihitei` · Tsukihitei ◆ · A 8.1 · bath unstated · $750–950 · 1h/0 from Osaka
+- `fufu-nara` · Fufu Nara · B 7.7 · bath yes · $780–1200 · 1h/0 from Osaka
+- `neold-private-house` · NEOLD Private House · B 7.7 · bath unstated · $560–660 · 1h/0 from Osaka
+- `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h06/0 from Osaka
+- `sanso-amanosato` · Sanso Amanosato ◆ · A 8.6 · bath no · $650–1000 · 1h24/1 from Osaka
+- `kyo-yunohana-resort-suisen` · Kyo Yunohana Resort Suisen · B 7.6 · bath yes · ask · 1h30/2 from Osaka
+- `nishimuraya-honkan` · Nishimuraya Honkan · A 8.8 · bath no · $700–1000 · 2h45/0 from Osaka — _long day; another gateway is closer_
+
+## City hotels
+
+*One row per hotel. **`Map` is the property's own Google place** — open it before the site, and give it first when you name the hotel to someone. `Group` is the question that actually decides the booking in the three cities a first trip sleeps in — whether you are spending points, spending money on a Japanese-run house, or spending less on something with more character than either; `—` where the city's list is too short to group. `Per night` is US dollars for two, **room only, no meals** unless the row says otherwise. A band is the rounded low-to-high of three-night checks in February, May and October. **rate not researched — check live** = no usable rate was found, so read one off the property's own page rather than quoting a number. A band is a sighting, never a quote.*
+
+**Osaka** — six, the four big luxury names first, then the two worth booking instead of them.
+
+| Hotel | Map | Site | Group | Neighbourhood | Per night | Why it's on the list |
+|---|---|---|---|---|---|---|
+| Conrad Osaka | [map ↗](https://www.google.com/maps?cid=10561270487337634692) | [site](https://www.hilton.com/en/hotels/osakaci-conrad-osaka/) | The big luxury names | Nakanoshima, floors 33–40 of Festival Tower West | $600–650 | A luxury hotel on the top floors of a Nakanoshima tower, and the one FlyerTalk picks among Osaka's big names: a member chose it over the Waldorf and called it stunning. Reception, the bar and both restaurants are 200 metres up, with a river on either side. Rooms start at 50 square metres, large for Osaka. He rated the breakfast above the Conrad Tokyo's and the buffet dinner poor, so eat dinner out. |
+| Four Seasons Hotel Osaka | [map ↗](https://www.google.com/maps?cid=4720923803230290434) | [site](https://www.fourseasons.com/osaka/) | The big luxury names | Dōjima, floors 1–2 and 28–37 of a tower | $475–750 | The 28th floor, Gensui, is what sets this one apart: 21 tatami rooms with futons and a tea lounge of their own, inside a Dojima tower that opened in 2024. The thread's most-travelled luxury regular calls it the city's only ultra-luxury house, nicer than anything in Japan outside Kyoto and Tokyo, and nobody has argued; he also judged the Gensui premium not worth paying and the pool thin for a flagship. The spa has soaking baths with city views, and breakfast is cooked to order. Umeda station is ten minutes on foot. |
+| Waldorf Astoria Osaka | [map ↗](https://www.google.com/maps?cid=10203554227316915614) | [site](https://www.hilton.com/en/hotels/osawawa-waldorf-astoria-osaka/) | The big luxury names | Umekita / Grand Green Osaka, floors 28–38 | $550–800 | Japan's first Waldorf Astoria, on the top floors of the Grand Green Osaka complex above Umeda station, opened recently. It has the Peacock Alley lounge every Waldorf has, and the park below is the largest new green space in the city. Nobody on FlyerTalk has stayed yet, the regulars there are wary of just-opened Hiltons, and people who had tried both told one member they preferred the Conrad. Treat it as unproven. |
+| Patina Osaka | [map ↗](https://www.google.com/maps?cid=1397153970431032509) | [site](https://patinahotels.com/osaka/) | The big luxury names | Banbacho, by Osaka Castle Park | $650–700 | A luxury hotel one minute from Osaka Castle Park, with the lobby, the bar and an open rooftop on the 20th floor facing the castle. Rooms start at 50 square metres, the largest entry rooms in the city, and the top floor holds a listening room where a vinyl system plays a sunrise soundscape daily. Five restaurants and bars, a spa and an indoor pool. It opened in May 2025 and no FlyerTalk regular has stayed, so there is little traveller evidence yet. |
+| Zentis Osaka | [map ↗](https://www.google.com/maps?cid=3268535993116507316) | [site](https://zentishotels.com/en/osaka/) | Boutique and mid-range | Dōjimahama, between Umeda and Nakanoshima | $100–175 | A boutique hotel in Dojimahama where the entry room is a 25-square-metre studio with a kitchenette counter, so a stay works like a small flat. The ground floor is an all-day cafe and bar that fills with locals rather than guests. Umeda and Nakanoshima are each about ten minutes on foot, and the Dojima blocks between them are offices, so eat towards the river. |
+| Hotel Noum OSAKA | [map ↗](https://www.google.com/maps?cid=14769462904248915675) | [site](https://www.no-um.jp/en) | Boutique and mid-range | Tenmabashi, on the Ōkawa river | $75–150 | A design hotel at Tenmabashi facing the Okawa river, with a cafe and bar downstairs that stay open late. Kema Sakuranomiya park runs along the water outside, and its cherry trees are the ones Osaka turns out for in April. Osaka Castle is about fifteen minutes on foot. Rooms are small and simply fitted, so it suits a short stop rather than a base for a week. |
+
+---
+
+**How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
+
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+
+The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.

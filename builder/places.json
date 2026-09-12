@@ -1,0 +1,2006 @@
+[
+ {
+  "loc": "aizuwakamatsu",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Aizu-Wakamatsu",
+  "lat": 37.495,
+  "lng": 139.9297,
+  "spines": []
+ },
+ {
+  "loc": "akan",
+  "name": "Niseko, Furano and Lake Akan inns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "hokkaido",
+  "card": "Hokkaido",
+  "primary": true,
+  "label": "Lake Akan (Akanko Onsen)",
+  "lat": 43.441,
+  "lng": 144.096,
+  "spines": []
+ },
+ {
+  "loc": "akayu",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Akayu Onsen",
+  "lat": 38.0486,
+  "lng": 140.1704,
+  "spines": []
+ },
+ {
+  "loc": "amakusa",
+  "name": "Amakusa",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Amakusa (Matsushima)",
+  "lat": 32.5,
+  "lng": 130.1916,
+  "spines": [
+   "s6"
+  ]
+ },
+ {
+  "loc": "amino",
+  "name": "The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": true,
+  "label": "Taiza (Tango coast)",
+  "lat": 35.6583,
+  "lng": 135.0917,
+  "spines": []
+ },
+ {
+  "loc": "arima",
+  "name": "The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": true,
+  "label": "Arima Onsen",
+  "lat": 34.7967,
+  "lng": 135.2467,
+  "spines": [
+   "s1"
+  ]
+ },
+ {
+  "loc": "atami",
+  "name": "Izu",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": false,
+  "label": "Atami",
+  "lat": 35.0956,
+  "lng": 139.0708,
+  "spines": []
+ },
+ {
+  "loc": "bandaiatami",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Bandai-Atami",
+  "lat": 37.3822,
+  "lng": 140.3667,
+  "spines": []
+ },
+ {
+  "loc": "beppu",
+  "name": "Beppu",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   0,
+   1
+  ],
+  "minimum": 0,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Beppu",
+  "lat": 33.284,
+  "lng": 131.491,
+  "spines": [
+   "s6",
+   "s7"
+  ]
+ },
+ {
+  "loc": "dogo",
+  "name": "Dōgo Onsen (Matsuyama)",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": false,
+  "shortlist_only": "Bettei Oborozukiyo",
+  "label": "Dōgo Onsen (Matsuyama)",
+  "lat": 33.8517,
+  "lng": 132.7856,
+  "spines": []
+ },
+ {
+  "loc": "echigoyuzawa",
+  "name": "Each snow valley",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": true,
+  "label": "Echigo-Yuzawa (snow country)",
+  "lat": 37.0833,
+  "lng": 138.8833,
+  "spines": [
+   "s4"
+  ]
+ },
+ {
+  "loc": "eiheiji",
+  "name": "The Hokuriku inn towns (Eiheiji, Awara, Notojima, Sasazu)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": true,
+  "label": "Eiheiji",
+  "lat": 36.098,
+  "lng": 136.293,
+  "spines": []
+ },
+ {
+  "loc": "fukuoka",
+  "name": "Fukuoka",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   3,
+   3
+  ],
+  "minimum": 2,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Fukuoka (Hakata)",
+  "lat": 33.59,
+  "lng": 130.42,
+  "spines": [
+   "s5",
+   "s6",
+   "s7",
+   "s8"
+  ]
+ },
+ {
+  "loc": "furano",
+  "name": "Niseko, Furano and Lake Akan inns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "hokkaido",
+  "card": "Hokkaido",
+  "primary": true,
+  "label": "Furano",
+  "lat": 43.342,
+  "lng": 142.383,
+  "spines": []
+ },
+ {
+  "loc": "gero",
+  "name": "Takayama",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Takayama/Hida & the Alps",
+  "primary": false,
+  "label": "Gero Onsen",
+  "lat": 35.8028,
+  "lng": 137.2417,
+  "spines": []
+ },
+ {
+  "loc": "hakone",
+  "name": "Hakone",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": true,
+  "label": "Hakone",
+  "lat": 35.2412,
+  "lng": 139.054,
+  "spines": [
+   "s1",
+   "s3",
+   "s8"
+  ]
+ },
+ {
+  "loc": "hatsukaichi",
+  "name": "Miyajima",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": false,
+  "label": "Hatsukaichi (Miyajima side)",
+  "lat": 34.35,
+  "lng": 132.3333,
+  "spines": []
+ },
+ {
+  "loc": "hiroshima",
+  "name": "Hiroshima",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   2,
+   2
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": true,
+  "label": "Hiroshima",
+  "lat": 34.397,
+  "lng": 132.475,
+  "spines": [
+   "s3",
+   "s8"
+  ]
+ },
+ {
+  "loc": "hita",
+  "name": "Amagase",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Amagase (Hita)",
+  "lat": 33.35,
+  "lng": 130.8833,
+  "spines": [
+   "s6",
+   "s7",
+   "s8"
+  ]
+ },
+ {
+  "loc": "hottoyuda",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Hotto-Yuda",
+  "lat": 39.4333,
+  "lng": 141.1167,
+  "spines": []
+ },
+ {
+  "loc": "ibusuki",
+  "name": "Ibusuki",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": false,
+  "shortlist_only": "Bettei Amafuru Oka",
+  "label": "Ibusuki",
+  "lat": 31.25,
+  "lng": 130.65,
+  "spines": []
+ },
+ {
+  "loc": "iizaka",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Iizaka Onsen",
+  "lat": 37.7972,
+  "lng": 140.4444,
+  "spines": []
+ },
+ {
+  "loc": "iki",
+  "name": "Iki and Yakushima islands",
+  "kind": "island",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Iki island",
+  "lat": 33.75,
+  "lng": 129.7167,
+  "spines": []
+ },
+ {
+  "loc": "inuyama",
+  "name": "Takayama",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Takayama/Hida & the Alps",
+  "primary": false,
+  "label": "Inuyama",
+  "lat": 35.3874,
+  "lng": 136.9377,
+  "spines": []
+ },
+ {
+  "loc": "ise",
+  "name": "The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": true,
+  "label": "Ise-Shima",
+  "lat": 34.4,
+  "lng": 136.7667,
+  "spines": []
+ },
+ {
+  "loc": "izu",
+  "name": "Izu",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": true,
+  "label": "Izu peninsula (Shuzenji)",
+  "lat": 34.9716,
+  "lng": 138.9021,
+  "spines": []
+ },
+ {
+  "loc": "izukogen",
+  "name": "Izu",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": false,
+  "label": "Izu-Kōgen",
+  "lat": 34.8833,
+  "lng": 139.1167,
+  "spines": []
+ },
+ {
+  "loc": "jozankei",
+  "name": "Jōzankei",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokkaido",
+  "card": "Hokkaido",
+  "primary": true,
+  "label": "Jōzankei Onsen",
+  "lat": 42.9833,
+  "lng": 141.1167,
+  "spines": []
+ },
+ {
+  "loc": "kagoshima",
+  "name": "Kagoshima",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   2,
+   3
+  ],
+  "minimum": 2,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Kagoshima",
+  "lat": 31.584,
+  "lng": 130.541,
+  "spines": [
+   "s5",
+   "s6"
+  ]
+ },
+ {
+  "loc": "kakunodate",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": true,
+  "label": "Kakunodate",
+  "lat": 39.4547,
+  "lng": 140.6093,
+  "spines": [
+   "s4"
+  ]
+ },
+ {
+  "loc": "kamasaki",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Kamasaki Onsen",
+  "lat": 37.9833,
+  "lng": 140.5667,
+  "spines": []
+ },
+ {
+  "loc": "kameoka",
+  "name": "Kameoka (Yunohana Onsen)",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": false,
+  "shortlist_only": "Kyo Yunohana Resort Suisen",
+  "label": "Kameoka (Yunohana Onsen)",
+  "lat": 35.0167,
+  "lng": 135.575,
+  "spines": []
+ },
+ {
+  "loc": "kaminoyama",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Kaminoyama Onsen",
+  "lat": 38.1547,
+  "lng": 140.2739,
+  "spines": []
+ },
+ {
+  "loc": "kanazawa",
+  "name": "Kanazawa",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   3,
+   3
+  ],
+  "minimum": 2,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": true,
+  "label": "Kanazawa",
+  "lat": 36.578,
+  "lng": 136.648,
+  "spines": [
+   "s2",
+   "s4"
+  ]
+ },
+ {
+  "loc": "karatsu",
+  "name": "Karatsu",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Karatsu",
+  "lat": 33.45,
+  "lng": 129.9667,
+  "spines": []
+ },
+ {
+  "loc": "karuizawa",
+  "name": "Karuizawa (Miyota)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": true,
+  "label": "Karuizawa (Miyota)",
+  "lat": 36.35,
+  "lng": 138.5667,
+  "spines": []
+ },
+ {
+  "loc": "katsuragi",
+  "name": "The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": true,
+  "label": "Katsuragi (Kōyasan side)",
+  "lat": 34.3667,
+  "lng": 135.5833,
+  "spines": [
+   "s1"
+  ]
+ },
+ {
+  "loc": "katsuura",
+  "name": "Katsuura (Kumano coast)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": false,
+  "shortlist_only": "Kumano Bettei Nakanoshima",
+  "label": "Katsuura (Kumano coast)",
+  "lat": 33.6667,
+  "lng": 135.9333,
+  "spines": []
+ },
+ {
+  "loc": "kawaguchiko",
+  "name": "Fuji lakes",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": true,
+  "label": "Lake Kawaguchi (Mt Fuji)",
+  "lat": 35.4969,
+  "lng": 138.7642,
+  "spines": []
+ },
+ {
+  "loc": "kinosaki",
+  "name": "The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": true,
+  "label": "Kinosaki Onsen",
+  "lat": 35.6289,
+  "lng": 134.8114,
+  "spines": [
+   "s1",
+   "s2",
+   "s4"
+  ]
+ },
+ {
+  "loc": "kinugawa",
+  "name": "Kinugawa Onsen",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Nikkō",
+  "primary": false,
+  "shortlist_only": "Kinugawa Kanaya Hotel",
+  "label": "Kinugawa Onsen",
+  "lat": 36.8181,
+  "lng": 139.7469,
+  "spines": []
+ },
+ {
+  "loc": "kirishima",
+  "name": "Kirishima",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Kirishima (Myōken Onsen)",
+  "lat": 31.9167,
+  "lng": 130.8667,
+  "spines": [
+   "s5",
+   "s6"
+  ]
+ },
+ {
+  "loc": "kiso",
+  "name": "Takayama",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Takayama/Hida & the Alps",
+  "primary": false,
+  "label": "Kiso valley",
+  "lat": 35.5917,
+  "lng": 137.5568,
+  "spines": []
+ },
+ {
+  "loc": "kitahiroshima",
+  "name": "Kitahiroshima",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokkaido",
+  "card": "Hokkaido",
+  "primary": false,
+  "shortlist_only": "Soneka",
+  "label": "Kitahiroshima",
+  "lat": 42.9527,
+  "lng": 141.4788,
+  "spines": []
+ },
+ {
+  "loc": "kobuchizawa",
+  "name": "Kōshū and Yatsugatake",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": true,
+  "label": "Kobuchizawa (Yatsugatake)",
+  "lat": 35.8167,
+  "lng": 138.4167,
+  "spines": []
+ },
+ {
+  "loc": "kochi",
+  "name": "Kōchi (Shikoku)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": true,
+  "label": "Kōchi (Shikoku)",
+  "lat": 33.65,
+  "lng": 133.75,
+  "spines": []
+ },
+ {
+  "loc": "koshu",
+  "name": "Kōshū and Yatsugatake",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": true,
+  "label": "Kōshū (Yamanashi)",
+  "lat": 35.6917,
+  "lng": 138.6833,
+  "spines": []
+ },
+ {
+  "loc": "kumamoto",
+  "name": "Kumamoto",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Kumamoto",
+  "lat": 32.79,
+  "lng": 130.689,
+  "spines": [
+   "s6",
+   "s7"
+  ]
+ },
+ {
+  "loc": "kurokawa",
+  "name": "Kurokawa",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Kurokawa Onsen",
+  "lat": 33.0989,
+  "lng": 131.0364,
+  "spines": [
+   "s7"
+  ]
+ },
+ {
+  "loc": "kyoto",
+  "name": "Kyoto",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   4,
+   6
+  ],
+  "minimum": 3,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": true,
+  "label": "Kyoto",
+  "lat": 34.985,
+  "lng": 135.758,
+  "spines": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s8"
+  ]
+ },
+ {
+  "loc": "matsue",
+  "name": "Matsue",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": false,
+  "shortlist_only": "Minamikan",
+  "label": "Matsue",
+  "lat": 35.4723,
+  "lng": 133.0505,
+  "spines": []
+ },
+ {
+  "loc": "matsumoto",
+  "name": "Takayama",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Takayama/Hida & the Alps",
+  "primary": false,
+  "label": "Matsumoto",
+  "lat": 36.2833,
+  "lng": 137.8667,
+  "spines": []
+ },
+ {
+  "loc": "matsunoyama",
+  "name": "Each snow valley",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Matsunoyama Onsen",
+  "lat": 37.1167,
+  "lng": 138.6667,
+  "spines": []
+ },
+ {
+  "loc": "mikuni",
+  "name": "The Hokuriku inn towns (Eiheiji, Awara, Notojima, Sasazu)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": true,
+  "label": "Mikuni / Awara",
+  "lat": 36.2263,
+  "lng": 136.1881,
+  "spines": []
+ },
+ {
+  "loc": "miyajima",
+  "name": "Miyajima",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 0,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": true,
+  "label": "Miyajima",
+  "lat": 34.2969,
+  "lng": 132.3197,
+  "spines": [
+   "s3",
+   "s8"
+  ]
+ },
+ {
+  "loc": "miyoshi",
+  "name": "Miyoshi (Iya Valley)",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": false,
+  "shortlist_only": "Hotel Iyaonsen",
+  "label": "Miyoshi (Iya Valley)",
+  "lat": 33.85,
+  "lng": 133.8,
+  "spines": []
+ },
+ {
+  "loc": "murasugi",
+  "name": "Murasugi Onsen",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "shortlist_only": "Kansuiro",
+  "label": "Murasugi Onsen",
+  "lat": 37.8001,
+  "lng": 139.2917,
+  "spines": []
+ },
+ {
+  "loc": "nagasaki",
+  "name": "Nagasaki",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   2,
+   3
+  ],
+  "minimum": 2,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Nagasaki",
+  "lat": 32.752,
+  "lng": 129.871,
+  "spines": [
+   "s5",
+   "s7",
+   "s8"
+  ]
+ },
+ {
+  "loc": "nagoya",
+  "name": "Nagoya",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   0,
+   1
+  ],
+  "minimum": 0,
+  "region": "central",
+  "card": "Takayama/Hida & the Alps",
+  "primary": true,
+  "label": "Nagoya",
+  "lat": 35.171,
+  "lng": 136.882,
+  "spines": []
+ },
+ {
+  "loc": "naoshima",
+  "name": "Naoshima",
+  "kind": "island",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": true,
+  "label": "Naoshima (Miyanoura)",
+  "lat": 34.46,
+  "lng": 133.99,
+  "spines": [
+   "s3",
+   "s8"
+  ]
+ },
+ {
+  "loc": "nara",
+  "name": "Nara",
+  "kind": "day-trip",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 0,
+  "region": "kansai",
+  "card": "Nara",
+  "primary": true,
+  "label": "Nara",
+  "lat": 34.579,
+  "lng": 135.8254,
+  "spines": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s8"
+  ]
+ },
+ {
+  "loc": "naruto",
+  "name": "Naruto",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": false,
+  "shortlist_only": "Hotel Ridge",
+  "label": "Naruto",
+  "lat": 34.1731,
+  "lng": 134.6083,
+  "spines": []
+ },
+ {
+  "loc": "nasushiobara",
+  "name": "Nasushiobara",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Nikkō",
+  "primary": false,
+  "shortlist_only": "Yunohanaso",
+  "label": "Nasushiobara",
+  "lat": 36.9658,
+  "lng": 140.0453,
+  "spines": []
+ },
+ {
+  "loc": "nikko",
+  "name": "Nikkō",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Nikkō",
+  "primary": true,
+  "label": "Nikkō",
+  "lat": 36.7198,
+  "lng": 139.6982,
+  "spines": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6",
+   "s7",
+   "s8",
+   "s9"
+  ]
+ },
+ {
+  "loc": "niseko",
+  "name": "Niseko, Furano and Lake Akan inns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "hokkaido",
+  "card": "Hokkaido",
+  "primary": true,
+  "label": "Niseko (Hirafu)",
+  "lat": 42.862,
+  "lng": 140.697,
+  "spines": [
+   "s9"
+  ]
+ },
+ {
+  "loc": "noboribetsu",
+  "name": "Noboribetsu",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokkaido",
+  "card": "Hokkaido",
+  "primary": true,
+  "label": "Noboribetsu Onsen",
+  "lat": 42.494,
+  "lng": 141.146,
+  "spines": [
+   "s9"
+  ]
+ },
+ {
+  "loc": "notojima",
+  "name": "The Hokuriku inn towns (Eiheiji, Awara, Notojima, Sasazu)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": true,
+  "label": "Notojima (Noto)",
+  "lat": 37.0925,
+  "lng": 137.0075,
+  "spines": []
+ },
+ {
+  "loc": "nyuto",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": true,
+  "label": "Nyūtō Onsen",
+  "lat": 39.796,
+  "lng": 140.8,
+  "spines": [
+   "s4"
+  ]
+ },
+ {
+  "loc": "okayama",
+  "name": "Okayama",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   0,
+   1
+  ],
+  "minimum": 0,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": true,
+  "label": "Okayama",
+  "lat": 34.666,
+  "lng": 133.918,
+  "spines": []
+ },
+ {
+  "loc": "onomichi",
+  "name": "The coast east of Hiroshima (Onomichi, Tomonoura, Setoda)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": true,
+  "label": "Onomichi",
+  "lat": 34.4092,
+  "lng": 133.2038,
+  "spines": []
+ },
+ {
+  "loc": "osaka",
+  "name": "Osaka",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   2,
+   3
+  ],
+  "minimum": 2,
+  "region": "kansai",
+  "card": "Osaka",
+  "primary": true,
+  "label": "Osaka",
+  "lat": 34.702,
+  "lng": 135.495,
+  "spines": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s8"
+  ]
+ },
+ {
+  "loc": "otaru",
+  "name": "Otaru",
+  "kind": "day-trip",
+  "base": false,
+  "ideal": [
+   0,
+   1
+  ],
+  "minimum": 0,
+  "region": "hokkaido",
+  "card": "Hokkaido",
+  "primary": true,
+  "label": "Otaru",
+  "lat": 43.191,
+  "lng": 140.995,
+  "spines": []
+ },
+ {
+  "loc": "oyama",
+  "name": "Fuji lakes",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": false,
+  "label": "Oyama (Mt Fuji)",
+  "lat": 35.4167,
+  "lng": 138.8667,
+  "spines": []
+ },
+ {
+  "loc": "sapporo",
+  "name": "Sapporo",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   2,
+   3
+  ],
+  "minimum": 2,
+  "region": "hokkaido",
+  "card": "Hokkaido",
+  "primary": true,
+  "label": "Sapporo",
+  "lat": 43.068,
+  "lng": 141.351,
+  "spines": [
+   "s9"
+  ]
+ },
+ {
+  "loc": "sendai",
+  "name": "Sendai",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": true,
+  "label": "Sendai",
+  "lat": 38.26,
+  "lng": 140.882,
+  "spines": [
+   "s4"
+  ]
+ },
+ {
+  "loc": "setoda",
+  "name": "The coast east of Hiroshima (Onomichi, Tomonoura, Setoda)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": true,
+  "label": "Setoda (Ikuchijima)",
+  "lat": 34.2989,
+  "lng": 133.0872,
+  "spines": []
+ },
+ {
+  "loc": "shimoda",
+  "name": "Izu",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": false,
+  "label": "Shimoda",
+  "lat": 34.6833,
+  "lng": 138.9333,
+  "spines": []
+ },
+ {
+  "loc": "shiroishi",
+  "name": "Shiroishi",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "shortlist_only": "Shiki no Yado Michinokuan",
+  "label": "Shiroishi",
+  "lat": 38.0022,
+  "lng": 140.6197,
+  "spines": []
+ },
+ {
+  "loc": "shizukuishi",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Shizukuishi",
+  "lat": 39.7333,
+  "lng": 141,
+  "spines": []
+ },
+ {
+  "loc": "sukagawa",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Sukagawa",
+  "lat": 37.2864,
+  "lng": 140.3675,
+  "spines": []
+ },
+ {
+  "loc": "suwa",
+  "name": "Takayama",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Takayama/Hida & the Alps",
+  "primary": false,
+  "label": "Suwa",
+  "lat": 36.05,
+  "lng": 138.1,
+  "spines": []
+ },
+ {
+  "loc": "suzu",
+  "name": "Suzu (Noto peninsula)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": false,
+  "shortlist_only": "Lamp no Yado",
+  "label": "Suzu (Noto peninsula)",
+  "lat": 37.45,
+  "lng": 137.2667,
+  "spines": []
+ },
+ {
+  "loc": "takachiho",
+  "name": "Takachiho",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Takachiho",
+  "lat": 32.7167,
+  "lng": 131.3,
+  "spines": [
+   "s7"
+  ]
+ },
+ {
+  "loc": "takayama",
+  "name": "Takayama",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   2,
+   2
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Takayama/Hida & the Alps",
+  "primary": true,
+  "label": "Takayama",
+  "lat": 36.142,
+  "lng": 137.252,
+  "spines": [
+   "s2",
+   "s4"
+  ]
+ },
+ {
+  "loc": "takeo",
+  "name": "Takeo Onsen",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Takeo Onsen",
+  "lat": 33.2,
+  "lng": 130.0167,
+  "spines": [
+   "s5",
+   "s7",
+   "s8"
+  ]
+ },
+ {
+  "loc": "tanigawa",
+  "name": "Each snow valley",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": true,
+  "label": "Minakami / Tanigawa (snow country)",
+  "lat": 36.7833,
+  "lng": 138.9667,
+  "spines": [
+   "s4"
+  ]
+ },
+ {
+  "loc": "tokyo",
+  "name": "Tokyo",
+  "kind": "city",
+  "base": true,
+  "ideal": [
+   4,
+   7
+  ],
+  "minimum": 3,
+  "region": "tokyo",
+  "card": "Tokyo",
+  "primary": true,
+  "repeat": [
+   3,
+   4
+  ],
+  "label": "Tokyo",
+  "lat": 35.681,
+  "lng": 139.767,
+  "spines": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6",
+   "s7",
+   "s8",
+   "s9"
+  ]
+ },
+ {
+  "loc": "tomonoura",
+  "name": "The coast east of Hiroshima (Onomichi, Tomonoura, Setoda)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": true,
+  "label": "Tomonoura",
+  "lat": 34.3833,
+  "lng": 133.3833,
+  "spines": [
+   "s3",
+   "s8"
+  ]
+ },
+ {
+  "loc": "totsukawa",
+  "name": "Totsukawa (Yoshino)",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Nara",
+  "primary": false,
+  "shortlist_only": "Yunotani Senkei",
+  "label": "Totsukawa (Yoshino)",
+  "lat": 33.95,
+  "lng": 135.7167,
+  "spines": []
+ },
+ {
+  "loc": "toyama",
+  "name": "The Hokuriku inn towns (Eiheiji, Awara, Notojima, Sasazu)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": true,
+  "label": "Toyama",
+  "lat": 36.5614,
+  "lng": 137.2115,
+  "spines": []
+ },
+ {
+  "loc": "tsuchiyu",
+  "name": "Tōhoku inn towns",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Tsuchiyu Onsen",
+  "lat": 37.6989,
+  "lng": 140.3389,
+  "spines": []
+ },
+ {
+  "loc": "unzen",
+  "name": "Unzen",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Unzen",
+  "lat": 32.7383,
+  "lng": 130.2664,
+  "spines": [
+   "s5",
+   "s7"
+  ]
+ },
+ {
+  "loc": "wakura",
+  "name": "Wakura Onsen",
+  "kind": "onsen-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": false,
+  "shortlist_only": "Kagaya Bettei Matsunomidori",
+  "label": "Wakura Onsen",
+  "lat": 37.1167,
+  "lng": 136.9167,
+  "spines": []
+ },
+ {
+  "loc": "yakushima",
+  "name": "Iki and Yakushima islands",
+  "kind": "island",
+  "base": false,
+  "ideal": [
+   1,
+   2
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Yakushima",
+  "lat": 30.3167,
+  "lng": 130.5667,
+  "spines": []
+ },
+ {
+  "loc": "yamadaonsen",
+  "name": "Each snow valley",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Yamada Onsen",
+  "lat": 36.6833,
+  "lng": 138.35,
+  "spines": []
+ },
+ {
+  "loc": "yamanaka",
+  "name": "The Kaga onsen towns (Yamashiro, Yamanaka)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": true,
+  "label": "Yamanaka Onsen (Kaga)",
+  "lat": 36.2614,
+  "lng": 136.3753,
+  "spines": []
+ },
+ {
+  "loc": "yamashiro",
+  "name": "The Kaga onsen towns (Yamashiro, Yamanaka)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "hokuriku",
+  "card": "Kanazawa & Hokuriku",
+  "primary": true,
+  "label": "Yamashiro Onsen (Kaga)",
+  "lat": 36.2833,
+  "lng": 136.35,
+  "spines": [
+   "s2"
+  ]
+ },
+ {
+  "loc": "yonago",
+  "name": "Yonago",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "inlandsea",
+  "card": "Hiroshima/Miyajima & the Inland Sea",
+  "primary": false,
+  "shortlist_only": "Yado Shiontei",
+  "label": "Yonago",
+  "lat": 35.4333,
+  "lng": 133.3333,
+  "spines": []
+ },
+ {
+  "loc": "yudanaka",
+  "name": "Each snow valley",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "north",
+  "card": "Snow country & Tōhoku",
+  "primary": false,
+  "label": "Yudanaka (Shibu Onsen)",
+  "lat": 36.7419,
+  "lng": 138.4361,
+  "spines": [
+   "s2"
+  ]
+ },
+ {
+  "loc": "yufuin",
+  "name": "Yufuin",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kyushu",
+  "card": "Kyushu",
+  "primary": true,
+  "label": "Yufuin",
+  "lat": 33.2644,
+  "lng": 131.3583,
+  "spines": [
+   "s6",
+   "s7",
+   "s8"
+  ]
+ },
+ {
+  "loc": "yugashima",
+  "name": "Izu",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": false,
+  "label": "Yugashima (Izu)",
+  "lat": 34.9264,
+  "lng": 138.9531,
+  "spines": []
+ },
+ {
+  "loc": "yugawara",
+  "name": "Izu",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "central",
+  "card": "Hakone/Fuji/Izu",
+  "primary": false,
+  "label": "Yugawara",
+  "lat": 35.16,
+  "lng": 139.09,
+  "spines": []
+ },
+ {
+  "loc": "yunoyama",
+  "name": "The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi)",
+  "kind": "inn-town",
+  "base": false,
+  "ideal": [
+   1,
+   1
+  ],
+  "minimum": 1,
+  "region": "kansai",
+  "card": "Kyoto",
+  "primary": true,
+  "label": "Yunoyama Onsen",
+  "lat": 35.0121,
+  "lng": 136.4776,
+  "spines": []
+ }
+]

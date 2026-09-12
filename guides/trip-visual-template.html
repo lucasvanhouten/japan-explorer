@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Twelve nights in April · trip plan</title>
+<!--
+═══════════════════════════════════════════════════════════════════════════════
+  HOW TO USE THIS FILE  —  read `guides/visualizing-the-trip.md` first.
+
+  This page is STATIC. Every word, number and coordinate below is typed into the
+  HTML. There is no data block and no rendering script: a file card, a preview
+  pane or a browser with JavaScript switched off shows the finished page. The one
+  script at the foot only remembers a light/dark choice — delete it and nothing
+  is lost.
+
+  What ships here is the kit's worked example (`examples/sample-plan.md`), filled
+  in, so you can see the target. FILL IT BY EDITING IT IN PLACE: replace the
+  words and numbers between the `EDIT` markers, delete the parts the plan does
+  not have, and change nothing in the <style> block.
+
+  Everything on the page comes from the finished itinerary table. Invent nothing —
+  not a travel time, not a price, not a sentence of atmosphere.
+
+  THE FIVE THINGS TO EDIT, in the order they appear:
+   1  <title> and the hero band       — the trip's name, its dates, one kanji
+   2  the map, per plan               — viewBox, --k, the route polyline, the dots
+   3  the night band, per plan        — --d = nights in the trip, --n = nights per
+                                        stop, a short label + the full name, and
+                                        one day tick per night under it
+   4  the itinerary, per plan         — a card per stop headed by its night range,
+                                        a full-width leg bar between them
+   5  the comparison matrix           — one column per plan, at the foot
+
+  NO NUMBERED STOPS. Cards are headed by the stop's NIGHT RANGE — "Nights 1–5",
+  or "Night 7" for a single night — counted straight off the sequence: stop one
+  starts at night 1, each later stop starts the night after the one before ends.
+  Map markers carry the place name only; the line through them gives the order.
+
+  THERE IS NO "TO CONFIRM" BLOCK. The page is for understanding a trip, not for
+  running its logistics: no standard follow-ups, no cancellation terms, dietary
+  requests, shuttles or price bands to chase. The one exception is a WATCH LINE
+  inside a single leg bar — see EDIT 4.
+
+  MAP COORDINATES: `guides/trip-visual-stops.json` gives, per place, an
+  `[x, y, "side"]` — the point on the outline this file draws, and the default
+  side its label sits on. Copy the pair for each stop. A place that is not in the
+  table: use the nearest one that is (the map is a country at 1:7,000,000 —
+  Kinosaki and Toyooka are the same dot), or, if nothing is near, delete the
+  <figure class="mapbox"> block for that plan. Never guess a coordinate.
+
+  ── A. AUTO-FIT THE VIEWBOX TO THE PLAN ─────────────────────────────────────
+  There is no "pick a preset" step any more — the crop is COMPUTED from the stops
+  this plan actually uses, so a Kyushu-plus-Tokyo trip zooms to Kyushu–Tokyo and a
+  Kansai trip to Honshū's middle. Take the bounding box of the plan's stops:
+
+      w0 = maxX − minX          h0 = maxY − minY
+      W  = max(w0, 1.4×h0, 60) ÷ 0.82       (9% clear each side for labels)
+      H  = max(h0 ÷ 0.82, W ÷ 2.4)          (never wider than 2.4:1)
+      x  = (minX+maxX)/2 − W/2    y = (minY+maxY)/2 − H/2
+      viewBox="x y W H"    and    --k = W ÷ 560
+
+  Round all four to whole units. --k is what keeps dots and labels the SAME SIZE
+  ON SCREEN at every crop — a label is 11px and a dot 8px whatever W is — so it
+  must be recomputed whenever the viewBox changes.
+
+  THEN CHECK THE FOUR EDGES, because the 9% is a starting guess, not a proof. In
+  map units a label runs 0.020×W PER CHARACTER, stands 0.04×W tall, and sits
+  0.02×W clear of its dot. Lay that box on each label — a "w" label runs left from
+  its dot, an "n" label straddles it — and where the box crosses the crop, GROW
+  THAT EDGE until it clears by 0.02×W. Growing top or bottom changes H only;
+  growing left or right changes W, so re-derive --k with it. Aim for 8px of real
+  clearance; 2px is a clip on somebody else's screen. The five old presets remain
+  as a fallback when the arithmetic is not worth doing:
+    whole country   viewBox="0 10 565 630"    --k:1
+    Hiroshima→Tokyo viewBox="100 330 300 175" --k:.54
+    Kansai→Kantō    viewBox="200 345 200 150" --k:.357
+    Kyushu          viewBox="20 470 130 120"  --k:.23
+    Tōhoku/Hokkaidō viewBox="300 60 200 300"  --k:.357
+
+  ── B. WHICH SIDE THE LABEL SITS ON ─────────────────────────────────────────
+  A label's x/y are the STOP'S OWN COORDINATES, exactly — never a nudged number.
+  The side comes from a class: n e s w ne nw se sw, which offsets and anchors the
+  text in --k units. The third entry in trip-visual-stops.json is the default
+  side, chosen so the usual neighbours do not collide (Takeo w, Fukuoka n,
+  Amagase e, Kurokawa s, Yufuin e, Nagasaki sw, Kumamoto w, Kagoshima s).
+  Override it in two cases, and only these two:
+   • CLIPPING — a stop near an edge points its label INWARD. A label runs about
+     0.020×W units per character and stands 0.013×W tall, so an outward label on
+     the outermost stop always runs off the crop. Flip it.
+   • COLLISION — two labels overlap: give them opposite sides, or inset them (C).
+  Labels are drawn LAST, over the dots, so the halo punches through the route line
+  where the two cross. That is correct — do not move a label to avoid a line.
+
+  ── C. CLUSTERS — DRAW AN INSET ─────────────────────────────────────────────
+  Two stops are TOO CLOSE TO LABEL when they are under W÷13 map units apart at the
+  fitted scale (≈26px on screen). Half a trip in one region — five Kyushu onsen,
+  four Hokuriku towns — always trips this. The answer is the atlas answer: an
+  INSET. Not smaller type, and not a key of three-letter codes.
+   1  Fit a second viewBox to the CLUSTER'S stops with the same arithmetic as A.
+   2  On the MAIN map draw <rect class="detail"> around exactly that box, and one
+      <text class="mlbl n"> on it naming the region (KYUSHU, HOKURIKU, KANSAI).
+      The clustered stops keep their dots on the main map but LOSE their labels —
+      the box is their label.
+   3  Under the main map add <div class="inset">: a <p class="inscap"> reading
+      "Detail · <region>", then a second <svg class="jm"> with the cluster
+      viewBox, its own --k, the same <use class="land">, the same route polylines
+      (the viewport clips them), and the cluster's dots WITH their labels.
+  One inset per map. If a plan has two clusters it is two plans' worth of map: fit
+  the main viewBox to the bigger cluster and let the other be a single dot.
+
+  ── D. THE ROUTE LINE ───────────────────────────────────────────────────────
+  Solid = rail, dashed = flight (class "fly"), dotted = car, bus or ferry (class
+  "road"). A route that changes mode is several polylines, one per run of legs in
+  the same mode, sharing the stop they meet at. The line is drawn under the dots.
+
+  PHOTOS: three per inn, from the inn's `photos` in `catalog/catalog.json` —
+  prefix each `url` with `https://ryokancatalog.com`. City hotels have no photos
+  in the kit: those cards simply have no strip, which is how they are meant to
+  look. If images are blocked where the page is being read, the strip collapses
+  and the page still reads.
+═══════════════════════════════════════════════════════════════════════════════
+-->
+<style>
+/* ── Type: three faces, each with one job. Sans for names and prose, mono for
+   every number and label, mincho for CJK accent glyphs only — never roman. ── */
+:root{
+  --paper:#ecebe6; --panel:#f4f3ef; --inset:#e7e5de;
+  --ink:#19191a; --prose:#3f3d37; --ink2:#56554e; --dim:#7a7870;
+  --hair:#d6d3c9; --hair2:#c4c1b5;
+  --verm:#df4327; --vermd:#a82f15; --vermsoft:#f7e3dd;
+  --dc:#1a4a80; --dcsoft:#dfe7f0;
+  --warn:#8a5a10;
+  --hero:#19191a; --heroink:#fff; --herodim:#9a978c;
+  --land:#ddd9cf; --landline:#c0bcae; --sea:transparent; --mlbl:#8d887a; --mhalo:#ecebe6;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --jp:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#1b1b1d; --panel:#222225; --inset:#1e1e21;
+  --ink:#e8e6df; --prose:#cfccc2; --ink2:#a5a29a; --dim:#7d7b74;
+  --hair:#333338; --hair2:#45454c;
+  --verm:#e85535; --vermd:#e85535; --vermsoft:#39231e;
+  --dc:#6f9fd8; --dcsoft:#1d2733;
+  --warn:#d7a54a;
+  --hero:#101012; --heroink:#f2f0e9; --herodim:#8b8981;
+  --land:#2b2b2e; --landline:#4a4a50; --mlbl:#8b877c; --mhalo:#1b1b1d;
+}}
+:root[data-theme="dark"]{
+  --paper:#1b1b1d; --panel:#222225; --inset:#1e1e21;
+  --ink:#e8e6df; --prose:#cfccc2; --ink2:#a5a29a; --dim:#7d7b74;
+  --hair:#333338; --hair2:#45454c;
+  --verm:#e85535; --vermd:#e85535; --vermsoft:#39231e;
+  --dc:#6f9fd8; --dcsoft:#1d2733;
+  --warn:#d7a54a;
+  --hero:#101012; --heroink:#f2f0e9; --herodim:#8b8981;
+  --land:#2b2b2e; --landline:#4a4a50; --mlbl:#8b877c; --mhalo:#1b1b1d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--prose);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;color:var(--ink);font-weight:800;letter-spacing:-.015em}
+a{color:var(--vermd)}
+
+/* ── hero: an ink band, the trip's name, one kanji ── */
+header.hero{background:var(--hero);padding:1.9rem 22px 1.5rem}
+.hero .in{max-width:62rem;margin:0 auto;display:flex;align-items:flex-start;gap:1.2rem}
+.hero .txt{min-width:0;flex:1}
+.eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--herodim);margin:0 0 .5rem}
+h1{font-size:clamp(1.4rem,3.4vw,2.05rem);line-height:1.06;color:var(--heroink);
+  text-transform:uppercase;letter-spacing:-.02em}
+.hsub{font-family:var(--mono);font-size:.68rem;color:var(--herodim);margin:.55rem 0 0;
+  letter-spacing:.04em}
+.kanji{font-family:var(--jp);color:var(--verm);font-weight:700;font-size:3.1rem;line-height:.9;
+  flex:none;-webkit-font-smoothing:antialiased}
+.tog{all:unset;cursor:pointer;font-family:var(--mono);font-size:.58rem;font-weight:800;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--herodim);border:1px solid #444;
+  padding:.25rem .5rem;flex:none;align-self:flex-start}
+.tog:hover{color:var(--heroink);border-color:#888}
+.tog[hidden]{display:none}   /* `all:unset` would otherwise show it with no script */
+
+.wrap{max-width:62rem;margin:0 auto;padding:1.7rem 22px 5rem}
+
+/* ── one plan, one flat panel on paper ── */
+.plan{background:var(--panel);border:1px solid var(--hair);padding:1rem 1.1rem 1.2rem;
+  margin:0 0 1.6rem}
+.pname{font-size:1.12rem;text-transform:uppercase;border-bottom:3px solid var(--ink);
+  padding-bottom:.28rem;display:inline-block}
+.pmeta{font-family:var(--mono);font-size:.66rem;color:var(--dim);letter-spacing:.04em;
+  margin:.5rem 0 1rem}
+
+/* ── map beside band, stacking on a phone ── */
+.split{display:grid;grid-template-columns:minmax(0,21rem) minmax(0,1fr);gap:1.4rem;
+  align-items:center}
+/* Once the map stops sitting beside the band it would stretch to the full column, and
+   because dots and labels are sized in MAP units they would grow with it — 11px type at
+   336px becomes 25px at 790px. Capping the stacked map keeps a phone full-width and a
+   tablet honest. */
+@media (max-width:52rem){.split{grid-template-columns:minmax(0,1fr);gap:1rem}
+  .mapbox{max-width:28rem;margin-inline:auto}}
+.mapbox{margin:0;min-width:0}
+.jm{width:100%;height:auto;display:block;--k:1}
+.jm .land{fill:var(--land);stroke:var(--landline);stroke-width:.8px;vector-effect:non-scaling-stroke}
+/* The route, drawn UNDER the dots: solid = rail, dashed = flight, dotted = car/bus/ferry.
+   One polyline per run of same-mode legs. The dash lengths are NOT multiplied by --k —
+   vector-effect:non-scaling-stroke already measures the stroke in screen pixels, so a
+   --k factor here makes a close crop's dashes collapse into a solid line. */
+.jm .rline{fill:none;stroke:var(--verm);stroke-width:2px;stroke-linejoin:round;
+  stroke-linecap:round;vector-effect:non-scaling-stroke}
+.jm .rline.fly{stroke-dasharray:6 4}
+.jm .rline.road{stroke-dasharray:.1 6.5}
+/* the frame on the main map showing what the inset below enlarges */
+.jm .detail{fill:none;stroke:var(--mlbl);stroke-width:1px;stroke-dasharray:4 3;opacity:.85;
+  vector-effect:non-scaling-stroke}
+/* Dots and labels are drawn in map units and scaled by --k (= viewBox width ÷ 560), so a
+   close crop and a whole-country view render them identically on screen: a dot is 8px
+   across and a label about 11px tall, always. Never hand-size either. */
+.jm .dot{transform:scale(var(--k));transform-box:fill-box;transform-origin:center}
+.jm .dot circle{fill:var(--dcsoft);stroke:var(--dc);stroke-width:1.6px;vector-effect:non-scaling-stroke}
+.jm .dot.inn circle{fill:var(--vermsoft);stroke:var(--verm)}
+/* A label's x/y ARE its stop's coordinates. The side class does the offsetting, so no map
+   label on this page carries a hand-nudged number. Default side is east. */
+.jm .mlbl{font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  fill:var(--mlbl);font-size:calc(18px*var(--k));paint-order:stroke;stroke:var(--mhalo);
+  stroke-width:calc(4px*var(--k));stroke-linejoin:round;
+  text-anchor:start;transform:translate(calc(12px*var(--k)),calc(6px*var(--k)))}
+.jm .mlbl.e {text-anchor:start; transform:translate(calc(12px*var(--k)),calc(6px*var(--k)))}
+.jm .mlbl.w {text-anchor:end;   transform:translate(calc(-12px*var(--k)),calc(6px*var(--k)))}
+.jm .mlbl.n {text-anchor:middle;transform:translate(0,calc(-12px*var(--k)))}
+.jm .mlbl.s {text-anchor:middle;transform:translate(0,calc(25px*var(--k)))}
+.jm .mlbl.ne{text-anchor:start; transform:translate(calc(10px*var(--k)),calc(-10px*var(--k)))}
+.jm .mlbl.nw{text-anchor:end;   transform:translate(calc(-10px*var(--k)),calc(-10px*var(--k)))}
+.jm .mlbl.se{text-anchor:start; transform:translate(calc(10px*var(--k)),calc(22px*var(--k)))}
+.jm .mlbl.sw{text-anchor:end;   transform:translate(calc(-10px*var(--k)),calc(22px*var(--k)))}
+/* the cluster inset — one region enlarged, under the main map */
+.inset{margin-top:.5rem;border-top:1px solid var(--hair);padding-top:.4rem}
+.inscap{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 .25rem}
+
+/* ── the night band: nights are widths, days are the axis below ──
+   .band and .axis are the same grid — one column per night of the trip, set once
+   on .bandgrid as --d. A stop spans its nights (--n); a day tick spans one. Each
+   block is a container: it prints its short label, and swaps in the full name
+   only when the block is wide enough to hold it, so a name is never cut. ── */
+.bandwrap{overflow-x:auto;padding-bottom:.3rem}
+.bandgrid{min-width:19rem}
+.band,.axis{display:grid;grid-template-columns:repeat(var(--d,12),minmax(0,1fr))}
+.blk{grid-column:span var(--n,1);container-type:inline-size;min-width:0;overflow:hidden;
+  padding:.5rem .4rem .55rem;border-right:3px solid var(--panel);
+  box-shadow:inset 0 -4px 0 var(--u)}
+.blk:last-child{border-right:0}
+.blk.city{background:var(--dcsoft);--u:var(--dc)}
+.blk.inn{background:var(--vermsoft);--u:var(--verm)}
+.blk .p{white-space:nowrap;min-width:0;color:var(--ink)}
+.blk .ab{font-family:var(--mono);font-size:.6rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase}
+.blk .fl{display:none;font-size:.8rem;font-weight:700;letter-spacing:-.01em}
+@container (min-width:7.2rem){.blk .ab{display:none}.blk .fl{display:inline}}
+.axis{font-family:var(--mono);font-size:.56rem;color:var(--dim);margin-top:3px;
+  font-variant-numeric:tabular-nums}
+.axis span{min-width:0;overflow:hidden;border-left:1px solid var(--hair2);
+  padding:.14rem 0 0 .22rem;line-height:1.1}
+.legend{font-family:var(--mono);font-size:.62rem;color:var(--ink2);margin:.6rem 0 0;
+  display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;align-items:baseline}
+.legend span::before{content:"";display:inline-block;width:.7rem;height:.7rem;margin-right:.35rem;
+  vertical-align:-.08rem;background:var(--s);box-shadow:inset 0 -3px 0 var(--u)}
+.legend .lcity{--s:var(--dcsoft);--u:var(--dc)}
+.legend .linn{--s:var(--vermsoft);--u:var(--verm)}
+.legend .lplain::before{display:none}
+/* ── the band key: every block's short label spelled out, under the axis, wherever one may show ── */
+.bandkey{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;color:var(--dim);margin:.35rem 0 0;
+  font-variant-numeric:tabular-nums}
+.bandkey b{color:var(--ink2);font-weight:700}
+
+/* ── the itinerary: a card per stop, a full-width bar per leg ── */
+.itin{margin:1.4rem 0 0}
+.stop{background:var(--paper);border:1px solid var(--hair2)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:2px;
+  background:var(--hair);border-bottom:1px solid var(--hair);line-height:0}
+.strip img{width:100%;height:152px;object-fit:cover;display:block;background:var(--inset)}
+@media (max-width:40rem){.strip img{height:112px}}
+.sbody{padding:.6rem .8rem .7rem}
+.sh{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.snum{font-family:var(--mono);font-size:.66rem;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--vermd)}
+.snum::after{content:" ·";color:var(--dim)}
+.sh h3{font-size:1.02rem}
+.sh .meta{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--dim);margin-left:auto}
+.sm{font-family:var(--mono);font-size:.7rem;color:var(--ink2);margin-top:.25rem}
+.sm a{text-decoration:none;border-bottom:1px solid var(--hair2)}
+.sm a:hover{border-bottom-color:var(--vermd)}
+.sm .alt{color:var(--dim)}
+
+/* ── the leg bar: full width between two cards, never inside one ── */
+.leg{margin:.5rem 0;padding:.46rem .7rem;background:var(--panel);
+  border-top:1px solid var(--hair2);border-bottom:1px solid var(--hair2);
+  border-left:4px solid var(--mode,var(--hair2));
+  font-family:var(--mono);font-size:.78rem;line-height:1.5;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--ink2);font-variant-numeric:tabular-nums}
+.leg b{font-weight:800;color:var(--ink)}
+.leg.rail{--mode:var(--dc)}
+.leg.road{--mode:var(--verm)}
+.leg.air{--mode:var(--dim);border-left-style:dashed}
+.leg.est,.leg.open{color:var(--warn);--mode:var(--warn);
+  border-top-color:var(--warn);border-bottom-color:var(--warn)}
+.leg.est b,.leg.open b{color:var(--warn)}
+
+/* ── the watch line: one leg, one real hazard, second line inside its bar ── */
+.watch{display:block;margin:.32rem 0 0;font-size:.62rem;line-height:1.5;letter-spacing:.02em;
+  text-transform:none;color:var(--warn)}
+.watch b{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--warn)}
+h4{font-family:var(--mono);font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 .4rem}
+
+/* ── the comparison matrix: one label column, one column per plan ── */
+.mx{margin-top:2.6rem;border-top:3px solid var(--ink);padding-top:1.1rem;
+  --cols:20ch repeat(2,minmax(0,1fr))}
+.mx.single{--cols:20ch max-content}   /* one plan: one value column sized to its content, the label beside it */
+.mxwrap{overflow-x:auto}
+.qgrid{min-width:30rem}
+.qrow{display:grid;grid-template-columns:var(--cols);gap:0 .7rem;align-items:baseline;
+  border-bottom:1px solid var(--hair);padding:.44rem 0}
+.qrow.qhr{border-bottom:2px solid var(--hair2);align-items:end;padding-bottom:.5rem}
+.ql{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--dim)}
+.qc{font-family:var(--mono);font-size:.72rem;text-align:right;color:var(--ink2);
+  font-variant-numeric:tabular-nums}
+.qc b{font-size:.9rem;font-weight:800;color:var(--ink)}
+.qc small{display:block;font-size:.56rem;letter-spacing:.04em;color:var(--dim)}
+.qc.part,.qc.part b{color:var(--warn)}
+.qhead{text-align:right}
+.qhead b{display:block;font-family:var(--sans);font-size:.95rem;font-weight:800;color:var(--ink);
+  letter-spacing:-.01em}
+.qhead i{display:block;font-style:normal;font-family:var(--mono);font-size:.58rem;color:var(--dim);
+  letter-spacing:.04em;margin-top:.15rem}
+.foot{font-family:var(--mono);font-size:.62rem;color:var(--dim);line-height:1.7;margin:1.1rem 0 0}
+
+@media (max-width:34rem){
+  .leg{font-size:.66rem;letter-spacing:.02em}
+  header.hero{padding:1.4rem 16px 1.1rem}
+  .kanji{font-size:2.3rem}
+  .wrap{padding:1.2rem 16px 4rem}
+  .plan{padding:.85rem .85rem 1rem}
+}
+</style></head>
+<body>
+
+<!-- The Japan outline, drawn once and referenced by every map below.
+     Do not edit it. Do not delete it while any map remains. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<path id="jp-land" d="M160 390 L158 391 L156 391 L154 389 L155 386 L158 384 L160 388 L160 390 Z M316 325 L314 325 L313 325 L315 324 L315 322 L316 319 L316 318 L314 318 L314 315 L316 312 L320 306 L322 305 L322 308 L320 313 L320 315 L324 315 L322 322 L316 325 Z M209 466 L206 470 L203 470 L201 468 L201 466 L204 463 L206 459 L208 457 L210 456 L211 456 L208 462 L209 466 Z M73 628 L70 628 L68 628 L66 622 L69 619 L74 622 L75 623 L73 628 Z M84 622 L81 622 L81 620 L83 615 L84 611 L85 606 L86 605 L87 605 L88 606 L87 612 L85 617 L84 622 Z M56 549 L54 550 L53 549 L52 548 L54 546 L54 546 L53 544 L54 539 L54 537 L59 536 L60 538 L60 544 L56 549 Z M34 464 L34 466 L32 464 L31 463 L32 457 L32 455 L32 454 L36 450 L37 451 L37 452 L37 453 L37 456 L34 461 L34 464 Z M12 527 L13 528 L14 527 L16 527 L17 528 L18 530 L19 532 L16 532 L15 532 L14 534 L12 534 L11 533 L11 532 L12 527 Z M66 541 L63 541 L62 541 L61 540 L65 537 L68 537 L67 540 L66 541 Z M352 155 L352 155 L351 155 L350 152 L351 150 L353 149 L355 148 L353 154 L352 155 Z M191 459 L190 460 L190 459 L188 461 L187 459 L186 458 L185 457 L190 457 L191 457 L191 459 Z M25 524 L24 525 L23 521 L22 520 L23 519 L26 513 L26 515 L27 518 L28 518 L27 520 L26 521 L25 524 Z M38 509 L35 511 L34 511 L35 509 L35 508 L37 505 L39 504 L40 504 L38 507 L38 509 Z M135 473 L134 475 L131 474 L132 473 L133 472 L134 471 L134 473 L135 473 Z M125 480 L126 482 L130 481 L130 482 L130 483 L128 484 L125 483 L123 483 L123 481 L123 480 L125 480 Z M489 73 L493 74 L495 73 L498 74 L510 80 L514 81 L518 81 L520 80 L522 79 L530 71 L537 65 L538 65 L538 67 L537 69 L534 75 L530 83 L530 88 L531 92 L533 95 L535 100 L537 106 L540 107 L542 107 L545 105 L548 102 L550 102 L553 102 L549 104 L546 106 L543 110 L542 111 L539 111 L537 111 L534 112 L530 114 L527 117 L524 118 L520 118 L515 120 L511 120 L504 119 L501 119 L494 123 L487 128 L482 134 L477 141 L475 145 L474 149 L474 152 L473 155 L472 156 L471 158 L467 157 L461 153 L448 148 L435 139 L427 135 L413 136 L400 144 L399 144 L394 138 L391 136 L388 135 L386 135 L384 136 L381 138 L380 140 L379 143 L379 145 L379 146 L382 150 L385 153 L387 153 L390 153 L392 153 L397 159 L404 164 L405 166 L403 168 L400 168 L397 168 L395 168 L390 165 L387 167 L384 171 L382 175 L381 177 L377 180 L374 181 L372 181 L370 179 L369 177 L369 175 L369 170 L371 166 L372 162 L371 155 L369 154 L366 150 L364 147 L363 142 L363 140 L364 135 L365 132 L367 131 L369 131 L372 129 L376 126 L379 123 L382 120 L384 116 L381 111 L381 108 L381 106 L384 104 L387 106 L393 110 L395 110 L399 110 L405 111 L408 110 L410 110 L412 107 L413 103 L413 98 L413 92 L414 88 L419 81 L420 77 L421 68 L423 63 L424 59 L425 49 L423 40 L421 36 L419 32 L419 28 L421 24 L421 23 L421 22 L425 21 L426 20 L428 19 L430 18 L431 19 L432 20 L437 25 L445 33 L454 45 L460 51 L466 57 L472 62 L479 67 L484 69 L487 73 L489 73 Z M90 494 L95 495 L97 495 L98 495 L101 493 L103 492 L105 492 L107 494 L108 496 L107 498 L105 502 L102 507 L108 508 L113 508 L112 511 L112 513 L113 514 L115 516 L115 518 L114 519 L117 521 L117 523 L116 524 L108 534 L106 539 L104 545 L103 549 L102 553 L101 558 L100 563 L100 567 L100 571 L96 582 L93 582 L90 580 L87 580 L86 583 L88 588 L82 594 L75 597 L75 596 L76 594 L77 593 L78 592 L78 587 L78 583 L76 577 L76 575 L77 574 L78 574 L79 573 L79 571 L78 570 L76 569 L74 569 L73 571 L71 576 L70 580 L71 582 L72 584 L74 587 L73 589 L72 591 L63 587 L61 587 L60 586 L58 582 L62 580 L63 580 L63 578 L64 574 L62 570 L61 569 L60 567 L60 564 L60 560 L60 554 L60 553 L64 552 L66 549 L68 546 L71 540 L74 533 L71 533 L69 532 L72 529 L71 525 L67 520 L66 514 L63 512 L61 511 L59 512 L58 514 L59 518 L59 521 L59 524 L61 524 L62 523 L64 524 L65 526 L65 528 L64 530 L63 531 L61 531 L60 530 L58 528 L55 527 L52 529 L49 533 L46 535 L48 532 L48 529 L47 527 L44 523 L43 521 L43 518 L43 516 L47 518 L48 522 L50 524 L53 524 L51 518 L50 517 L47 515 L43 510 L40 508 L41 504 L43 504 L44 504 L49 505 L49 503 L49 502 L48 500 L51 499 L56 497 L57 496 L58 495 L59 494 L62 494 L65 493 L67 489 L68 486 L69 485 L75 481 L76 481 L80 481 L84 483 L85 487 L87 491 L90 494 Z M191 468 L195 470 L200 469 L200 476 L200 479 L202 481 L201 484 L203 485 L197 489 L192 494 L189 497 L187 500 L186 504 L185 508 L183 506 L178 500 L175 498 L170 497 L168 498 L157 504 L156 508 L153 515 L151 517 L150 518 L149 519 L148 524 L144 528 L142 528 L138 527 L137 528 L139 522 L136 521 L132 521 L132 518 L130 516 L132 513 L132 511 L133 510 L133 508 L133 506 L131 506 L130 505 L130 501 L128 501 L125 501 L119 504 L118 504 L120 502 L126 499 L128 498 L134 493 L137 490 L139 486 L139 484 L140 482 L141 478 L143 477 L146 474 L148 474 L150 478 L152 481 L154 481 L158 479 L159 479 L163 479 L166 477 L168 475 L168 473 L167 468 L169 469 L171 468 L174 466 L178 464 L182 464 L187 465 L191 468 Z M408 183 L409 184 L415 182 L414 188 L413 194 L413 204 L414 209 L415 214 L417 217 L421 219 L426 226 L428 235 L430 240 L431 244 L432 246 L432 248 L431 251 L432 254 L431 261 L429 269 L429 274 L427 274 L426 276 L425 277 L424 278 L422 278 L421 279 L420 281 L420 283 L419 285 L418 288 L417 293 L416 298 L415 302 L412 303 L408 303 L404 304 L403 306 L399 312 L398 316 L398 320 L399 325 L400 330 L402 339 L400 354 L399 358 L397 361 L395 362 L394 364 L392 369 L389 378 L388 380 L388 382 L387 386 L387 389 L387 392 L388 396 L393 404 L394 407 L396 409 L389 412 L388 413 L383 418 L382 422 L382 427 L381 429 L380 431 L379 432 L374 434 L371 436 L368 440 L366 442 L364 442 L362 440 L364 438 L363 435 L364 429 L363 426 L366 424 L367 421 L370 418 L372 416 L372 414 L370 413 L368 411 L366 411 L363 412 L362 414 L362 416 L362 417 L362 418 L358 422 L358 425 L359 427 L361 428 L360 429 L359 432 L357 432 L355 428 L352 426 L349 426 L345 427 L342 430 L341 432 L341 434 L341 440 L340 444 L338 448 L337 450 L334 453 L332 453 L331 452 L330 450 L331 443 L331 439 L334 437 L332 434 L328 433 L324 434 L323 436 L322 438 L319 441 L317 444 L314 449 L312 454 L305 452 L301 452 L298 452 L291 452 L284 452 L276 455 L277 453 L283 450 L284 449 L283 447 L281 447 L277 448 L275 447 L275 446 L273 445 L272 445 L272 449 L271 450 L270 449 L270 446 L270 442 L269 439 L271 436 L269 436 L268 436 L266 437 L264 439 L261 446 L259 451 L262 454 L269 460 L270 461 L270 463 L269 465 L268 466 L260 468 L253 471 L251 474 L245 487 L240 496 L233 498 L225 496 L223 493 L222 489 L219 486 L217 482 L215 478 L216 471 L214 466 L215 465 L220 463 L221 461 L223 458 L224 456 L224 453 L223 452 L217 452 L212 453 L209 452 L204 448 L203 447 L198 447 L194 448 L191 449 L188 450 L186 450 L182 454 L179 457 L176 458 L170 458 L166 460 L163 461 L162 461 L159 462 L155 464 L153 466 L149 465 L141 468 L137 468 L133 466 L130 464 L126 465 L124 469 L123 477 L122 480 L121 484 L119 484 L109 476 L108 476 L100 477 L98 478 L95 479 L92 480 L90 479 L87 477 L85 478 L83 479 L82 468 L82 466 L84 464 L85 462 L89 462 L93 462 L96 462 L99 459 L101 456 L104 453 L108 451 L112 449 L115 446 L119 442 L122 439 L125 437 L130 432 L136 426 L139 421 L140 420 L146 418 L153 416 L157 416 L160 420 L162 419 L164 418 L168 418 L171 418 L175 418 L179 418 L186 416 L190 415 L194 413 L207 412 L217 408 L218 408 L220 409 L220 412 L218 414 L220 416 L222 417 L230 417 L233 418 L236 416 L240 414 L243 411 L246 407 L243 403 L243 398 L245 393 L248 389 L251 386 L254 384 L260 375 L265 368 L266 360 L265 350 L269 343 L273 342 L281 338 L284 337 L285 338 L285 340 L279 347 L276 349 L274 350 L272 351 L271 353 L274 357 L275 360 L275 362 L275 364 L278 367 L282 368 L284 368 L285 367 L289 361 L290 360 L303 356 L309 352 L313 351 L316 349 L323 342 L326 339 L328 336 L330 332 L332 327 L334 324 L345 318 L349 314 L350 312 L351 307 L352 302 L354 298 L356 294 L358 290 L361 286 L362 283 L365 274 L366 269 L367 267 L368 266 L369 264 L370 262 L370 260 L371 253 L370 248 L368 244 L367 242 L365 242 L363 243 L361 241 L361 240 L363 239 L365 238 L366 237 L368 232 L369 228 L369 226 L368 222 L366 217 L366 214 L368 211 L370 209 L372 208 L374 208 L375 207 L377 206 L378 204 L379 200 L380 198 L379 192 L380 190 L381 189 L383 190 L385 190 L386 190 L389 190 L389 192 L390 202 L391 204 L392 205 L394 205 L396 203 L397 201 L398 200 L404 203 L406 201 L408 198 L409 194 L408 190 L407 188 L405 188 L404 190 L403 190 L394 192 L394 188 L396 181 L397 179 L398 178 L402 179 L404 180 L408 183 Z M364 516 L363 516 L362 515 L362 514 L362 513 L363 513 L365 514 L364 516 Z"/>
+</defs></svg>
+
+<!-- ══ EDIT 1 · the hero ═══════════════════════════════════════════════════════
+     The trip's name, its dates, and ONE kanji as a mark beside it. The kanji is
+     decoration on a labelled page, never a label: 旅 journey · 冬 winter ·
+     春 spring · 夏 summer · 秋 autumn · 山 mountain · 海 sea · 湯 hot spring ·
+     都 old capital · 食 food. Nothing reads it aloud; it is marked aria-hidden. -->
+<header class="hero"><div class="in">
+  <div class="txt">
+    <p class="eyebrow">Trip plan · two versions</p>
+    <h1>Twelve nights in April</h1>
+    <p class="hsub">mid-April 2027 · 12 nights · in at Haneda (HND), out from Kansai (KIX)</p>
+  </div>
+  <div class="kanji" aria-hidden="true">春</div>
+  <button class="tog" id="tog" hidden>dark</button>
+</div></header>
+
+<main class="wrap">
+
+<!-- ══ ONE PLAN ════════════════════════════════════════════════════════════════
+     Copy this whole <section> once per plan. Two side by side is the point of
+     the page whenever two are still open; three is the most that fits. ═══════ -->
+<section class="plan">
+  <h2 class="pname">Tokyo, Kyoto, Nara</h2>
+  <p class="pmeta">12 nights · 3 stops · in at Haneda (HND), out from Kansai (KIX) · no car</p>
+
+  <div class="split">
+    <!-- ══ EDIT 2 · the map ══════════════════════════════════════════════════
+         viewBox + --k are AUTO-FIT to this plan's own stops — rule A at the top
+         of this file. Here: x 235.4–361.3 (w0=125.9), y 409.9–454.3 (h0=44.4),
+         so W = 125.9/0.82 = 154 and H = max(54.1, 64.2) = 64; the edge check then
+         grew the top by 3 units because Tokyo's "n" label sat 1px under it →
+         viewBox="221 397 154 67", --k = 154/560 = .275.
+         polyline: the stops in travel order, "x,y x,y x,y" straight out of
+         guides/trip-visual-stops.json, one polyline per run of same-mode legs
+         (add class "fly" for a flight, "road" for car/bus/ferry).
+         One <g class="dot"> per stop — class "inn" or "city", a plain marker
+         with no numeral in it. Then one <text class="mlbl SIDE"> per stop, drawn
+         LAST so the halo sits over the line: x/y are the stop's own coordinates
+         and the side class (n e s w ne nw se sw) does all the offsetting. Tokyo,
+         Kyoto and Nara all sit at the edge of this crop, so all three point
+         inward — rule B. No cluster here, so no inset: every pair is more than
+         W÷13 = 12 units apart. -->
+    <figure class="mapbox">
+      <svg class="jm" viewBox="221 397 154 67" style="--k:.275" role="img"
+           aria-label="Route map: Tokyo, then Kyoto, then Nara.">
+        <use class="land" href="#jp-land"/>
+        <polyline class="rline" points="361.3,409.9 235.4,437.9 237.3,454.3"/>
+        <g class="dot city"><circle cx="361.3" cy="409.9" r="7"/></g>
+        <g class="dot city"><circle cx="235.4" cy="437.9" r="7"/></g>
+        <g class="dot inn"><circle cx="237.3" cy="454.3" r="7"/></g>
+        <text class="mlbl n"  x="361.3" y="409.9">Tokyo</text>
+        <text class="mlbl ne" x="235.4" y="437.9">Kyoto</text>
+        <text class="mlbl e"  x="237.3" y="454.3">Nara</text>
+      </svg>
+    </figure>
+
+    <div>
+      <!-- ══ EDIT 3 · the night band ═════════════════════════════════════════
+           style="--d:12" on .bandgrid is the nights in the whole trip: the band
+           and the day axis share that one grid, so a block's length IS its
+           nights. One block per stop in travel order, style="--n:5" its nights.
+           Each block carries BOTH labels: <b class="ab"> a 3–4 letter short
+           label, and <b class="fl"> the full name, which appears by itself as
+           soon as the block is wide enough — so a name is never cut in half.
+           Under it, one <span> per night, numbered 1…n: that axis carries the
+           day count, so no block repeats it. Then the KEY LINE, <p class="bandkey">:
+           one entry per block, "TYO Tokyo", in travel order. Keep it whenever any
+           block may print its short label (a stop of one or two nights on a trip of
+           ten or more, more than five stops, or a phone screen — that is most trips);
+           delete it only when every block prints its full name at phone width. -->
+      <div class="bandwrap"><div class="bandgrid" style="--d:12">
+        <div class="band">
+          <div class="blk city" style="--n:5"><div class="p"><b class="ab">TYO</b><b class="fl">Tokyo</b></div></div>
+          <div class="blk city" style="--n:5"><div class="p"><b class="ab">KYO</b><b class="fl">Kyoto</b></div></div>
+          <div class="blk inn" style="--n:2"><div class="p"><b class="ab">NAR</b><b class="fl">Nara</b></div></div>
+        </div>
+        <div class="axis" aria-label="Day of the trip">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+          <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+        </div>
+        <p class="bandkey"><b>TYO</b> Tokyo · <b>KYO</b> Kyoto · <b>NAR</b> Nara</p>
+      </div></div>
+      <p class="legend">
+        <span class="lcity">city night, room only</span>
+        <span class="linn">inn night, dinner and breakfast</span>
+        <span class="lplain">block length = nights · axis = day of the trip</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ══ EDIT 4 · the itinerary ═══════════════════════════════════════════════
+       A card per stop in travel order, a full-width LEG BAR between two cards,
+       and the airport journeys as dashed bars at the head and the foot. Three
+       photos per inn, copied from guides/trip-visual-photos.json by the inn's
+       slug; a stay with no photos there simply has no strip.
+
+       The card's head is the stop's NIGHT RANGE, then the place:
+         <span class="snum">Nights 1–5</span><h3>Tokyo</h3>
+       counted off the sequence (5 + 5 + 2 nights → 1–5, 6–10, 11–12; a single
+       night reads "Night 7"). The meta line on the right carries the meal only —
+       the nights are already in the head, and a fact appears in one place.
+
+       A leg bar reads, in this order and in these words:
+         <from> → <to> · <mode> · <time> · direct       (or · 1 change / 2 changes)
+       The class after "leg" colours its left edge by mode: "rail" for train,
+       shinkansen or metro · "road" for bus, car, taxi or ferry · "air" for an
+       airport journey, which also dashes the edge. Statuses: plain (a row of the
+       kit's tables, or two of them summed — the line then ends "· composed via
+       <city>") · class "est" plus the word estimated · class "open" reading
+       "to confirm", which also keeps that leg out of every total.
+
+       A WATCH LINE — <span class="watch"><b>Watch this leg</b> — …</span> as the
+       last thing INSIDE one bar — is optional and rare: only for a major transit
+       flag, which means an estimated or composed leg, a driving day, a ferry, a
+       bus that must be reserved, or a pass that closes or runs slow in winter.
+       Never for cancellation terms, dietary requests, shuttles or price bands:
+       those are booking work, and none of it belongs on this page. Most plans
+       carry no watch line at all. -->
+  <div class="itin">
+
+    <p class="leg air">Haneda (HND) → Tokyo · train · <b>36 min</b> · 1 change</p>
+
+    <article class="stop">
+      <div class="sbody">
+        <div class="sh"><span class="snum">Nights 1–5</span><h3>Tokyo</h3>
+          <span class="meta">room only</span></div>
+        <p class="sm"><a href="https://www.google.com/maps?cid=12819761384697507953">Hotel Toranomon Hills</a>
+          · $375–700 a night <span class="alt">· alternate
+          <a href="https://www.google.com/maps?cid=10906498574121315795">K5</a>, $275–650</span></p>
+      </div>
+    </article>
+
+    <p class="leg rail">Tokyo → Kyoto · shinkansen · <b>2 hr 45 min</b> · direct</p>
+
+    <article class="stop">
+      <div class="sbody">
+        <div class="sh"><span class="snum">Nights 6–10</span><h3>Kyoto</h3>
+          <span class="meta">room only</span></div>
+        <p class="sm"><a href="https://www.google.com/maps?cid=3046628050993449764">Sowaka</a>
+          · $900–1650 a night <span class="alt">· alternate
+          <a href="https://www.google.com/maps?cid=9260278570712509021">Hotel The Mitsui Kyoto</a>, $700–1000</span></p>
+      </div>
+    </article>
+
+    <p class="leg rail">Kyoto → Nara · train · <b>45 min</b> · direct</p>
+
+    <article class="stop">
+      <div class="strip">
+        <img src="https://ryokancatalog.com/img/tsukihitei-0-f573f1a8.jpg" alt="" loading="lazy" width="400" height="300">
+        <img src="https://ryokancatalog.com/img/tsukihitei-2-40ba95be.jpg" alt="" loading="lazy" width="400" height="266">
+        <img src="https://ryokancatalog.com/img/tsukihitei-4-09f84303.jpg" alt="" loading="lazy" width="400" height="300">
+      </div>
+      <div class="sbody">
+        <div class="sh"><span class="snum">Nights 11–12</span><h3>Nara</h3>
+          <span class="meta">dinner and breakfast</span></div>
+        <p class="sm"><a href="https://ryokancatalog.com/inn/tsukihitei">Tsukihitei</a>
+          · $750–950 a night <span class="alt">· alternate
+          <a href="https://ryokancatalog.com/inn/fufu-nara">Fufu Nara</a>, $780–1200</span></p>
+      </div>
+    </article>
+
+    <p class="leg air">Nara → Kansai (KIX) · train · <b>1 hr 54 min</b> · 1 change</p>
+
+  </div>
+</section>
+
+<!-- ══ THE SECOND PLAN ═════════════════════════════════════════════════════════ -->
+<section class="plan">
+  <h2 class="pname">With Nikkō</h2>
+  <p class="pmeta">12 nights · 4 stops · in at Haneda (HND), out from Kansai (KIX) · no car</p>
+
+  <div class="split">
+    <!-- Same plan plus Nikkō, so the fit grows downwards: y now runs
+         367.8–454.3 (h0=86.5) → H = 86.5/0.82 = 106, viewBox="221 358 154 106".
+         W is unchanged, so --k is still .275. Nikkō and Tokyo are the two
+         rightmost stops, so both labels point west, into the crop. -->
+    <figure class="mapbox">
+      <svg class="jm" viewBox="221 358 154 106" style="--k:.275" role="img"
+           aria-label="Route map: Tokyo, then Nikkō, then Kyoto, then Nara.">
+        <use class="land" href="#jp-land"/>
+        <polyline class="rline" points="361.3,409.9 359.6,367.8 235.4,437.9 237.3,454.3"/>
+        <g class="dot city"><circle cx="361.3" cy="409.9" r="7"/></g>
+        <g class="dot inn"><circle cx="359.6" cy="367.8" r="7"/></g>
+        <g class="dot city"><circle cx="235.4" cy="437.9" r="7"/></g>
+        <g class="dot inn"><circle cx="237.3" cy="454.3" r="7"/></g>
+        <text class="mlbl w"  x="361.3" y="409.9">Tokyo</text>
+        <text class="mlbl w"  x="359.6" y="367.8">Nikkō</text>
+        <text class="mlbl ne" x="235.4" y="437.9">Kyoto</text>
+        <text class="mlbl e"  x="237.3" y="454.3">Nara</text>
+      </svg>
+    </figure>
+
+    <div>
+      <div class="bandwrap"><div class="bandgrid" style="--d:12">
+        <div class="band">
+          <div class="blk city" style="--n:4"><div class="p"><b class="ab">TYO</b><b class="fl">Tokyo</b></div></div>
+          <div class="blk inn" style="--n:2"><div class="p"><b class="ab">NIK</b><b class="fl">Nikkō</b></div></div>
+          <div class="blk city" style="--n:4"><div class="p"><b class="ab">KYO</b><b class="fl">Kyoto</b></div></div>
+          <div class="blk inn" style="--n:2"><div class="p"><b class="ab">NAR</b><b class="fl">Nara</b></div></div>
+        </div>
+        <div class="axis" aria-label="Day of the trip">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+          <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+        </div>
+        <p class="bandkey"><b>TYO</b> Tokyo · <b>NIK</b> Nikkō · <b>KYO</b> Kyoto · <b>NAR</b> Nara</p>
+      </div></div>
+      <p class="legend">
+        <span class="lcity">city night, room only</span>
+        <span class="linn">inn night, dinner and breakfast</span>
+        <span class="lplain">block length = nights · axis = day of the trip</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="itin">
+
+    <p class="leg air">Haneda (HND) → Tokyo · train · <b>36 min</b> · 1 change</p>
+
+    <article class="stop">
+      <div class="sbody">
+        <div class="sh"><span class="snum">Nights 1–4</span><h3>Tokyo</h3>
+          <span class="meta">room only</span></div>
+        <p class="sm"><a href="https://www.google.com/maps?cid=12819761384697507953">Hotel Toranomon Hills</a>
+          · $375–700 a night <span class="alt">· alternate
+          <a href="https://www.google.com/maps?cid=10906498574121315795">K5</a>, $275–650</span></p>
+      </div>
+    </article>
+
+    <p class="leg rail">Tokyo → Nikkō · train · <b>2 hr</b> · direct</p>
+
+    <article class="stop">
+      <div class="strip">
+        <img src="https://ryokancatalog.com/img/fufunikko-1-43c9fb7d.jpg" alt="" loading="lazy" width="400" height="300">
+        <img src="https://ryokancatalog.com/img/fufunikko-0-cf3de6fe.jpg" alt="" loading="lazy" width="400" height="300">
+        <img src="https://ryokancatalog.com/img/fufunikko-2-7a3cdb47.jpg" alt="" loading="lazy" width="400" height="300">
+      </div>
+      <div class="sbody">
+        <div class="sh"><span class="snum">Nights 5–6</span><h3>Nikkō</h3>
+          <span class="meta">dinner and breakfast</span></div>
+        <p class="sm"><a href="https://ryokancatalog.com/inn/fufu-nikko">Fufu Nikko</a>
+          · $850–1200 a night <span class="alt">· alternate
+          <a href="https://ryokancatalog.com/inn/kinugawa-kanaya-hotel">Kinugawa Kanaya Hotel</a></span></p>
+      </div>
+    </article>
+
+    <p class="leg rail">Nikkō → Kyoto · shinkansen · <b>4 hr 42 min</b> · 2 changes
+      <span class="watch"><b>Watch this leg</b> — it starts on an hourly local line out of Nikkō
+        that runs slow in snow.</span></p>
+
+    <article class="stop">
+      <div class="sbody">
+        <div class="sh"><span class="snum">Nights 7–10</span><h3>Kyoto</h3>
+          <span class="meta">room only</span></div>
+        <p class="sm"><a href="https://www.google.com/maps?cid=3046628050993449764">Sowaka</a>
+          · $900–1650 a night <span class="alt">· alternate
+          <a href="https://www.google.com/maps?cid=9260278570712509021">Hotel The Mitsui Kyoto</a>, $700–1000</span></p>
+      </div>
+    </article>
+
+    <p class="leg rail">Kyoto → Nara · train · <b>45 min</b> · direct</p>
+
+    <article class="stop">
+      <div class="strip">
+        <img src="https://ryokancatalog.com/img/tsukihitei-0-f573f1a8.jpg" alt="" loading="lazy" width="400" height="300">
+        <img src="https://ryokancatalog.com/img/tsukihitei-2-40ba95be.jpg" alt="" loading="lazy" width="400" height="266">
+        <img src="https://ryokancatalog.com/img/tsukihitei-4-09f84303.jpg" alt="" loading="lazy" width="400" height="300">
+      </div>
+      <div class="sbody">
+        <div class="sh"><span class="snum">Nights 11–12</span><h3>Nara</h3>
+          <span class="meta">dinner and breakfast</span></div>
+        <p class="sm"><a href="https://ryokancatalog.com/inn/tsukihitei">Tsukihitei</a>
+          · $750–950 a night <span class="alt">· alternate
+          <a href="https://ryokancatalog.com/inn/fufu-nara">Fufu Nara</a>, $780–1200</span></p>
+      </div>
+    </article>
+
+    <p class="leg air">Nara → Kansai (KIX) · train · <b>1 hr 54 min</b> · 1 change</p>
+
+  </div>
+</section>
+
+<!-- ══ EDIT 5 · the comparison ══════════════════════════════════════════════════
+     One column per plan, the same rows in the same order for every plan, no
+     blank cells. Set --cols on the section: 20ch repeat(<number of plans>,
+     minmax(0,1fr)). Add each leg's hours and changes by hand, airport journeys
+     included; a plan holding a leg marked "to confirm" keeps that leg out and
+     prints "≥" with a note, in class "part". ONE PLAN KEEPS THE MATRIX: give the
+     section class "mx single" (one value column sized to its content, the label
+     beside it) and drop the style attribute. Times read to the minute, as
+     everywhere on the page: "36 min", "4 hr 42 min". -->
+<section class="mx" style="--cols:20ch repeat(2,minmax(0,1fr))">
+  <h4>Side by side</h4>
+  <div class="mxwrap"><div class="qgrid">
+    <div class="qrow qhr"><div class="ql"></div>
+      <div class="qc qhead"><b>Tokyo, Kyoto, Nara</b><i>12n · 3 stays</i></div>
+      <div class="qc qhead"><b>With Nikkō</b><i>12n · 4 stays</i></div></div>
+    <div class="qrow"><div class="ql">Travel, total</div>
+      <div class="qc"><b>6 hr</b></div>
+      <div class="qc"><b>9 hr 55 min</b></div></div>
+    <div class="qrow"><div class="ql">Changes</div>
+      <div class="qc"><b>2</b></div>
+      <div class="qc"><b>4</b></div></div>
+    <div class="qrow"><div class="ql">Check-ins</div>
+      <div class="qc"><b>3</b></div><div class="qc"><b>4</b></div></div>
+    <div class="qrow"><div class="ql">One-night stops</div>
+      <div class="qc"><b>0</b></div><div class="qc"><b>0</b></div></div>
+    <div class="qrow"><div class="ql">Inn / city nights</div>
+      <div class="qc"><b>2 / 10</b><small>of 12 nights</small></div>
+      <div class="qc"><b>4 / 8</b><small>of 12 nights</small></div></div>
+    <div class="qrow"><div class="ql">Inn dinners in a row</div>
+      <div class="qc"><b>2</b></div><div class="qc"><b>2</b></div></div>
+    <div class="qrow"><div class="ql">Days needing a car</div>
+      <div class="qc"><b>0</b></div><div class="qc"><b>0</b></div></div>
+    <div class="qrow"><div class="ql">Legs not from the tables</div>
+      <div class="qc"><b>0</b></div>
+      <div class="qc"><b>0</b></div></div>
+  </div></div>
+  <p class="foot">Travel totals include the journey in from the arrival airport and out to the
+    departure airport. A leg marked to confirm would be left out of a total, and that total would
+    read as at least; neither plan here has one.</p>
+</section>
+
+</main>
+
+<!-- The only script on the page, and it changes nothing structural: it shows a
+     light/dark button and remembers the choice. The page is complete without it. -->
+<script>
+(function(){
+  var b=document.getElementById("tog"); if(!b) return;
+  var r=document.documentElement, s=null;
+  try{ s=localStorage.getItem("tripTheme"); }catch(e){}
+  function paint(t){ if(t) r.setAttribute("data-theme",t); else r.removeAttribute("data-theme");
+    var dark = t ? t==="dark" : matchMedia("(prefers-color-scheme:dark)").matches;
+    b.textContent = dark ? "light" : "dark"; }
+  paint(s); b.hidden=false;
+  b.addEventListener("click",function(){
+    var dark = r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme:dark)").matches);
+    var t = dark ? "light" : "dark"; paint(t);
+    try{ localStorage.setItem("tripTheme",t); }catch(e){}
+  });
+})();
+</script>
+</body></html>

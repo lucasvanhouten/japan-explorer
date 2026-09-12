@@ -1,0 +1,973 @@
+{
+ "about": "Three catalogue photographs per inn, by slug, the building, bath or room first and food never first — for guides/trip-visual-template.html; the same images catalog/catalog.json holds.",
+ "photos": {
+  "myoken-ishiharaso": [
+   "https://ryokancatalog.com/img/myoken-0-a764da7e.jpg",
+   "https://ryokancatalog.com/img/myoken-1-9bbb9d56.jpg",
+   "https://ryokancatalog.com/img/myoken-2-ec76d176.jpg"
+  ],
+  "asaba": [
+   "https://ryokancatalog.com/img/asaba-0-8891e618.jpg",
+   "https://ryokancatalog.com/img/asaba-1-95edac50.jpg",
+   "https://ryokancatalog.com/img/asaba-2-3e4faaca.jpg"
+  ],
+  "tayuta": [
+   "https://ryokancatalog.com/img/tayuta-0-6ece3525.jpg",
+   "https://ryokancatalog.com/img/tayuta-1-ff4ec604.jpg",
+   "https://ryokancatalog.com/img/tayuta-2-63ae295b.jpg"
+  ],
+  "takefue": [
+   "https://ryokancatalog.com/img/takefue-0-144f0096.jpg",
+   "https://ryokancatalog.com/img/takefue-1-2c607f16.jpg",
+   "https://ryokancatalog.com/img/takefue-2-b3ca1c43.jpg"
+  ],
+  "sanso-murata": [
+   "https://ryokancatalog.com/img/sansomurata-0-9c6cf980.jpg",
+   "https://ryokancatalog.com/img/sansomurata-1-02776e63.jpg",
+   "https://ryokancatalog.com/img/sansomurata-2-8cf17767.jpg"
+  ],
+  "wabizakura": [
+   "https://ryokancatalog.com/img/wabizakura-0-0895d5c5.jpg",
+   "https://ryokancatalog.com/img/wabizakura-1-f0f33b89.jpg",
+   "https://ryokancatalog.com/img/wabizakura-2-9b663ed5.jpg"
+  ],
+  "shinsen": [
+   "https://ryokancatalog.com/img/shinsen-0-d2a8d269.jpg",
+   "https://ryokancatalog.com/img/shinsen-1-0fddcd60.jpg",
+   "https://ryokancatalog.com/img/shinsen-2-a519c7a2.jpg"
+  ],
+  "sankara-hotel-spa-yakushima": [
+   "https://ryokancatalog.com/img/sankara-0-26e53787.jpg",
+   "https://ryokancatalog.com/img/sankara-1-41e22a7a.jpg",
+   "https://ryokancatalog.com/img/sankara-2-0cf536ab.jpg"
+  ],
+  "fufu-nikko": [
+   "https://ryokancatalog.com/img/fufunikko-0-cf3de6fe.jpg",
+   "https://ryokancatalog.com/img/fufunikko-1-43c9fb7d.jpg",
+   "https://ryokancatalog.com/img/fufunikko-2-7a3cdb47.jpg"
+  ],
+  "nishimuraya-honkan": [
+   "https://ryokancatalog.com/img/nishimuraya-0-ff3df0e7.jpg",
+   "https://ryokancatalog.com/img/nishimuraya-1-cda69ede.jpg",
+   "https://ryokancatalog.com/img/nishimuraya-2-72183b25.jpg"
+  ],
+  "shogetsu": [
+   "https://ryokancatalog.com/img/shogetsu-0-d7b0eb81.jpg",
+   "https://ryokancatalog.com/img/shogetsu-1-a134a6b8.jpg",
+   "https://ryokancatalog.com/img/shogetsu-2-be9bcc51.jpg"
+  ],
+  "ryotei-hanzuiryo": [
+   "https://ryokancatalog.com/img/hanzuiryo-0-f42aac60.jpg",
+   "https://ryokancatalog.com/img/hanzuiryo-1-0ed9ddb5.jpg",
+   "https://ryokancatalog.com/img/hanzuiryo-2-0ca4036b.jpg"
+  ],
+  "shiguchi": [
+   "https://ryokancatalog.com/img/nc_shiguchi-0-8cf04781.jpg",
+   "https://ryokancatalog.com/img/nc_shiguchi-1-71eeabbb.jpg",
+   "https://ryokancatalog.com/img/nc_shiguchi-2-50e45e24.jpg"
+  ],
+  "ryugon": [
+   "https://ryokancatalog.com/img/ryugon-0-71fc45ab.jpg",
+   "https://ryokancatalog.com/img/ryugon-1-77812077.jpg",
+   "https://ryokancatalog.com/img/ryugon-2-222b98a8.jpg"
+  ],
+  "bettei-senjuan": [
+   "https://ryokancatalog.com/img/senjuan-0-4e7f4b4a.jpg",
+   "https://ryokancatalog.com/img/senjuan-1-10918b76.jpg",
+   "https://ryokancatalog.com/img/senjuan-2-6e147012.jpg"
+  ],
+  "hiiragiya": [
+   "https://ryokancatalog.com/img/nc_hiiragiya-0-d97ec151.jpg",
+   "https://ryokancatalog.com/img/nc_hiiragiya-1-db6bd56a.jpg",
+   "https://ryokancatalog.com/img/nc_hiiragiya-2-fc010f1e.jpg"
+  ],
+  "sanso-amanosato": [
+   "https://ryokancatalog.com/img/amanosato-0-23836e8b.jpg",
+   "https://ryokancatalog.com/img/amanosato-1-bbf793d7.jpg",
+   "https://ryokancatalog.com/img/amanosato-2-5b4f1b8d.jpg"
+  ],
+  "sanso-tensui": [
+   "https://ryokancatalog.com/img/sansotensui-0-10315873.jpg",
+   "https://ryokancatalog.com/img/sansotensui-1-702db6b4.jpg",
+   "https://ryokancatalog.com/img/sansotensui-2-dff9da28.jpg"
+  ],
+  "soneka": [
+   "https://ryokancatalog.com/img/nc_soneka-0-087c0147.jpg",
+   "https://ryokancatalog.com/img/nc_soneka-1-3cb192a6.jpg",
+   "https://ryokancatalog.com/img/nc_soneka-2-56ed3ef9.jpg"
+  ],
+  "gosho-gekkoju": [
+   "https://ryokancatalog.com/img/goshogekkoju-0-68c6b7a4.jpg",
+   "https://ryokancatalog.com/img/goshogekkoju-1-ddf87669.jpg",
+   "https://ryokancatalog.com/img/goshogekkoju-2-211fd448.jpg"
+  ],
+  "migiwatei-ochi-kochi": [
+   "https://ryokancatalog.com/img/migiwatei-0-260c4982.jpg",
+   "https://ryokancatalog.com/img/migiwatei-1-c2947c98.jpg",
+   "https://ryokancatalog.com/img/migiwatei-2-5ad515e1.jpg"
+  ],
+  "bouyourou": [
+   "https://ryokancatalog.com/img/bouyourou-0-ff4ea05b.jpg",
+   "https://ryokancatalog.com/img/bouyourou-1-457191d2.jpg",
+   "https://ryokancatalog.com/img/bouyourou-2-22da45e9.jpg"
+  ],
+  "kansuiro": [
+   "https://ryokancatalog.com/img/nc_kansuiro-0-85c85a14.jpg",
+   "https://ryokancatalog.com/img/nc_kansuiro-1-c1b31e7f.jpg",
+   "https://ryokancatalog.com/img/nc_kansuiro-2-fb8b30f2.jpg"
+  ],
+  "aizu-tsuruga-higashiyama-sohonzan": [
+   "https://ryokancatalog.com/img/aizutsuruga-0-b72a9703.jpg",
+   "https://ryokancatalog.com/img/aizutsuruga-1-8d86ee7d.jpg",
+   "https://ryokancatalog.com/img/aizutsuruga-2-dd8e39be.jpg"
+  ],
+  "beniya-mukayu": [
+   "https://ryokancatalog.com/img/beniya-0-c80c3b5e.jpg",
+   "https://ryokancatalog.com/img/beniya-1-566b63dc.jpg",
+   "https://ryokancatalog.com/img/beniya-2-8af3eedc.jpg"
+  ],
+  "enowa-yufuin": [
+   "https://ryokancatalog.com/img/enowa-0-7823457e.jpg",
+   "https://ryokancatalog.com/img/enowa-1-0014ca84.jpg",
+   "https://ryokancatalog.com/img/enowa-2-961d7e7f.jpg"
+  ],
+  "miyakowasure": [
+   "https://ryokancatalog.com/img/miyakowasure-0-c456655d.jpg",
+   "https://ryokancatalog.com/img/miyakowasure-1-e61e883f.jpg",
+   "https://ryokancatalog.com/img/miyakowasure-2-9d7c7e9a.jpg"
+  ],
+  "mt-resort-unzen-kyushu-hotel": [
+   "https://ryokancatalog.com/img/nc_mtresortunzenkyushuhotel-0-90190074.jpg",
+   "https://ryokancatalog.com/img/nc_mtresortunzenkyushuhotel-1-dbb9156b.jpg",
+   "https://ryokancatalog.com/img/nc_mtresortunzenkyushuhotel-2-26b151d1.jpg"
+  ],
+  "wanosato": [
+   "https://ryokancatalog.com/img/wanosato-0-a383fa5f.jpg",
+   "https://ryokancatalog.com/img/wanosato-1-f41ca910.jpg",
+   "https://ryokancatalog.com/img/wanosato-2-ab53a2c6.jpg"
+  ],
+  "atamiso": [
+   "https://ryokancatalog.com/img/atamiso-0-dd7fe09d.jpg",
+   "https://ryokancatalog.com/img/atamiso-1-2a22e623.jpg",
+   "https://ryokancatalog.com/img/atamiso-2-9257612d.jpg"
+  ],
+  "hotel-ridge": [
+   "https://ryokancatalog.com/img/nc_hotelridge-0-0fed903f.jpg",
+   "https://ryokancatalog.com/img/nc_hotelridge-1-7acc9e29.jpg",
+   "https://ryokancatalog.com/img/nc_hotelridge-2-f3542217.jpg"
+  ],
+  "iki-retreat-kairi-murakami": [
+   "https://ryokancatalog.com/img/ikikairi-0-ceb4bf54.jpg",
+   "https://ryokancatalog.com/img/ikikairi-1-5db51300.jpg",
+   "https://ryokancatalog.com/img/ikikairi-2-556d1aa2.jpg"
+  ],
+  "iwanoyu": [
+   "https://ryokancatalog.com/img/iwanoyu-0-8ab4c704.jpg",
+   "https://ryokancatalog.com/img/iwanoyu-1-9c1fdc11.jpg",
+   "https://ryokancatalog.com/img/iwanoyu-2-3efe0fd1.jpg"
+  ],
+  "kohanyu": [
+   "https://ryokancatalog.com/img/kohanyu-0-c5a9343c.jpg",
+   "https://ryokancatalog.com/img/kohanyu-1-73804a32.jpg",
+   "https://ryokancatalog.com/img/kohanyu-2-424b8988.jpg"
+  ],
+  "minamikan": [
+   "https://ryokancatalog.com/img/nc_minamikan-0-aa2fa42d.jpg",
+   "https://ryokancatalog.com/img/nc_minamikan-1-b4ed062b.jpg",
+   "https://ryokancatalog.com/img/nc_minamikan-2-25d330d8.jpg"
+  ],
+  "onyado-kawasemi": [
+   "https://ryokancatalog.com/img/kawasemi-0-4662bce8.jpg",
+   "https://ryokancatalog.com/img/kawasemi-1-df16d781.jpg",
+   "https://ryokancatalog.com/img/kawasemi-2-77ba409a.jpg"
+  ],
+  "satoyama-jujo": [
+   "https://ryokancatalog.com/img/satoyamajujo-0-af3945a9.jpg",
+   "https://ryokancatalog.com/img/satoyamajujo-1-458e6b97.jpg",
+   "https://ryokancatalog.com/img/satoyamajujo-2-2883b12c.jpg"
+  ],
+  "tsuchiyu-bettei-satonoyu": [
+   "https://ryokancatalog.com/img/satonoyu-0-dfff9dd0.jpg",
+   "https://ryokancatalog.com/img/satonoyu-1-53b26735.jpg",
+   "https://ryokancatalog.com/img/satonoyu-2-580bd546.jpg"
+  ],
+  "yamagata-the-takinami": [
+   "https://ryokancatalog.com/img/takinami-0-759c48f3.jpg",
+   "https://ryokancatalog.com/img/takinami-1-a16d5059.jpg",
+   "https://ryokancatalog.com/img/takinami-2-dea50b6d.jpg"
+  ],
+  "chalet-ivy-jozankei": [
+   "https://ryokancatalog.com/img/chaletivy-0-d77f6bf8.jpg",
+   "https://ryokancatalog.com/img/chaletivy-1-5e4ffd5b.jpg",
+   "https://ryokancatalog.com/img/chaletivy-2-1cbd6500.jpg"
+  ],
+  "hakone-suishoen": [
+   "https://ryokancatalog.com/img/suishoen-0-e35f7e4e.jpg",
+   "https://ryokancatalog.com/img/suishoen-1-aaadc553.jpg",
+   "https://ryokancatalog.com/img/suishoen-2-386045f4.jpg"
+  ],
+  "onyado-chikurintei": [
+   "https://ryokancatalog.com/img/chikurintei-0-1afaa217.jpg",
+   "https://ryokancatalog.com/img/chikurintei-1-0ee71913.jpg",
+   "https://ryokancatalog.com/img/chikurintei-2-49b236d9.jpg"
+  ],
+  "yama-no-chaya": [
+   "https://ryokancatalog.com/img/yamanochaya-0-bd90ed81.jpg",
+   "https://ryokancatalog.com/img/yamanochaya-1-bc1d35d5.jpg",
+   "https://ryokancatalog.com/img/yamanochaya-2-01778e25.jpg"
+  ],
+  "yamado": [
+   "https://ryokancatalog.com/img/yamado-0-9ae04d2d.jpg",
+   "https://ryokancatalog.com/img/yamado-1-51e6be94.jpg",
+   "https://ryokancatalog.com/img/yamado-2-c062e08e.jpg"
+  ],
+  "fuji-seiran": [
+   "https://ryokancatalog.com/img/fujiseiran-0-a046ac53.jpg",
+   "https://ryokancatalog.com/img/fujiseiran-1-869cc1c8.jpg",
+   "https://ryokancatalog.com/img/fujiseiran-2-1c0d45d6.jpg"
+  ],
+  "hanamurasaki": [
+   "https://ryokancatalog.com/img/hanamurasaki-0-ba78a3a9.jpg",
+   "https://ryokancatalog.com/img/hanamurasaki-1-2a82aa00.jpg",
+   "https://ryokancatalog.com/img/hanamurasaki-2-8e10fae9.jpg"
+  ],
+  "kinsuikan": [
+   "https://ryokancatalog.com/img/kinsuikan-0-e45aa315.jpg",
+   "https://ryokancatalog.com/img/kinsuikan-1-914cd10d.jpg",
+   "https://ryokancatalog.com/img/kinsuikan-2-d127411b.jpg"
+  ],
+  "otogi-no-yado-yoneya": [
+   "https://ryokancatalog.com/img/yoneya-0-12a9c904.jpg",
+   "https://ryokancatalog.com/img/yoneya-1-0230b4bd.jpg",
+   "https://ryokancatalog.com/img/yoneya-2-281e2a83.jpg"
+  ],
+  "sui-suwako": [
+   "https://ryokancatalog.com/img/suisuwako-0-a3ce03d4.jpg",
+   "https://ryokancatalog.com/img/suisuwako-1-07c5b05f.jpg",
+   "https://ryokancatalog.com/img/suisuwako-2-6f29ea9a.jpg"
+  ],
+  "the-yukawa-ichijoh-branch": [
+   "https://ryokancatalog.com/img/yukawa-0-675509cd.jpg",
+   "https://ryokancatalog.com/img/yukawa-1-37cdc45e.jpg",
+   "https://ryokancatalog.com/img/yukawa-2-3a87e0e0.jpg"
+  ],
+  "taiza-onsen-sumihei": [
+   "https://ryokancatalog.com/img/taiza-0-5622a2fd.jpg",
+   "https://ryokancatalog.com/img/taiza-1-30beeef1.jpg",
+   "https://ryokancatalog.com/img/taiza-2-5ceaa402.jpg"
+  ],
+  "tsukihitei": [
+   "https://ryokancatalog.com/img/tsukihitei-0-f573f1a8.jpg",
+   "https://ryokancatalog.com/img/tsukihitei-1-05ecc843.jpg",
+   "https://ryokancatalog.com/img/tsukihitei-2-40ba95be.jpg"
+  ],
+  "auberge-suzukane": [
+   "https://ryokancatalog.com/img/nc_aubergesuzukane-0-cc8e9661.jpg",
+   "https://ryokancatalog.com/img/nc_aubergesuzukane-1-26172bed.jpg",
+   "https://ryokancatalog.com/img/nc_aubergesuzukane-2-52cde7d8.jpg"
+  ],
+  "gora-kadan-fuji": [
+   "https://ryokancatalog.com/img/gorakadanfuji-0-f64cad3b.jpg",
+   "https://ryokancatalog.com/img/gorakadanfuji-1-af641b8d.jpg",
+   "https://ryokancatalog.com/img/gorakadanfuji-2-b8b41032.jpg"
+  ],
+  "yado-shiontei": [
+   "https://ryokancatalog.com/img/nc_yadoshiontei-0-355da774.jpg",
+   "https://ryokancatalog.com/img/nc_yadoshiontei-1-81f157a1.jpg",
+   "https://ryokancatalog.com/img/nc_yadoshiontei-2-895a86f6.jpg"
+  ],
+  "bettei-amafuru-oka": [
+   "https://ryokancatalog.com/img/nc_betteiamafuruoka-0-aea2f5dc.jpg",
+   "https://ryokancatalog.com/img/nc_betteiamafuruoka-1-8179a2c1.jpg",
+   "https://ryokancatalog.com/img/nc_betteiamafuruoka-2-6986a7bf.jpg"
+  ],
+  "fufu-kawaguchiko": [
+   "https://ryokancatalog.com/img/fufukawaguchiko-0-041e0097.jpg",
+   "https://ryokancatalog.com/img/fufukawaguchiko-1-58c5d41b.jpg",
+   "https://ryokancatalog.com/img/fufukawaguchiko-2-08dac035.jpg"
+  ],
+  "hotel-iyaonsen": [
+   "https://ryokancatalog.com/img/nc_hoteliyaonsen-0-301e5476.jpg",
+   "https://ryokancatalog.com/img/nc_hoteliyaonsen-1-3e8d84e9.jpg",
+   "https://ryokancatalog.com/img/nc_hoteliyaonsen-2-d3cc0d42.jpg"
+  ],
+  "kagaya-bettei-matsunomidori": [
+   "https://ryokancatalog.com/img/nc_kagayabetteimatsunomidori-0-e3010beb.jpg",
+   "https://ryokancatalog.com/img/nc_kagayabetteimatsunomidori-1-6aef0e9a.jpg",
+   "https://ryokancatalog.com/img/nc_kagayabetteimatsunomidori-2-9764edbd.jpg"
+  ],
+  "nakanobo-zuien": [
+   "https://ryokancatalog.com/img/nc_nakanobozuien-0-c9d2ed02.jpg",
+   "https://ryokancatalog.com/img/nc_nakanobozuien-1-d6628910.jpg",
+   "https://ryokancatalog.com/img/nc_nakanobozuien-2-655509a7.jpg"
+  ],
+  "yoyokaku": [
+   "https://ryokancatalog.com/img/yoyokaku-0-d8c29ba8.jpg",
+   "https://ryokancatalog.com/img/yoyokaku-1-e843dc6b.jpg",
+   "https://ryokancatalog.com/img/yoyokaku-2-015e88d5.jpg"
+  ],
+  "zaborin": [
+   "https://ryokancatalog.com/img/nc_zaborin-0-a09853dd.jpg",
+   "https://ryokancatalog.com/img/nc_zaborin-1-d5fa3502.jpg",
+   "https://ryokancatalog.com/img/nc_zaborin-2-3671c34b.jpg"
+  ],
+  "akan-tsuruga-besso-hinanoza": [
+   "https://ryokancatalog.com/img/nc_akantsurugabessohinanoza-0-3c6dd2df.jpg",
+   "https://ryokancatalog.com/img/nc_akantsurugabessohinanoza-1-4cf92232.jpg",
+   "https://ryokancatalog.com/img/nc_akantsurugabessohinanoza-2-95a086a3.jpg"
+  ],
+  "arcana-izu": [
+   "https://ryokancatalog.com/img/arcanaizu-0-66226fde.jpg",
+   "https://ryokancatalog.com/img/arcanaizu-1-5d17f0d4.jpg",
+   "https://ryokancatalog.com/img/arcanaizu-2-89ae37d8.jpg"
+  ],
+  "bettei-oborozukiyo": [
+   "https://ryokancatalog.com/img/nc_betteioborozukiyo-0-ff50e256.jpg",
+   "https://ryokancatalog.com/img/nc_betteioborozukiyo-1-94fc70f0.jpg",
+   "https://ryokancatalog.com/img/nc_betteioborozukiyo-2-27829286.jpg"
+  ],
+  "kinugawa-kanaya-hotel": [
+   "https://ryokancatalog.com/img/nc_kinugawakanayahotel-0-41350487.jpg",
+   "https://ryokancatalog.com/img/nc_kinugawakanayahotel-1-8670dfde.jpg",
+   "https://ryokancatalog.com/img/nc_kinugawakanayahotel-2-ee8f27fd.jpg"
+  ],
+  "kuramure": [
+   "https://ryokancatalog.com/img/nc_kuramure-0-3c2a527e.jpg",
+   "https://ryokancatalog.com/img/nc_kuramure-1-2361f637.jpg",
+   "https://ryokancatalog.com/img/nc_kuramure-2-75428580.jpg"
+  ],
+  "osteria-sincerita": [
+   "https://ryokancatalog.com/img/sincerita-0-5adefdd7.jpg",
+   "https://ryokancatalog.com/img/sincerita-1-5d8ea5ba.jpg",
+   "https://ryokancatalog.com/img/sincerita-2-96e2e265.jpg"
+  ],
+  "fufu-nara": [
+   "https://ryokancatalog.com/img/fufunara-0-89f9f648.jpg",
+   "https://ryokancatalog.com/img/fufunara-1-0f358dac.jpg",
+   "https://ryokancatalog.com/img/fufunara-2-9dcd62f0.jpg"
+  ],
+  "fujiiso": [
+   "https://ryokancatalog.com/img/fujiiso-0-ff2ab9ad.jpg",
+   "https://ryokancatalog.com/img/fujiiso-1-e791e068.jpg",
+   "https://ryokancatalog.com/img/fujiiso-2-14a9e1ee.jpg"
+  ],
+  "isshin": [
+   "https://ryokancatalog.com/img/nc_isshin-0-fe78ba27.jpg",
+   "https://ryokancatalog.com/img/nc_isshin-1-1873cabd.jpg",
+   "https://ryokancatalog.com/img/nc_isshin-2-4262a0a7.jpg"
+  ],
+  "lamp-no-yado": [
+   "https://ryokancatalog.com/img/nc_lampnoyado-0-b6945d33.jpg",
+   "https://ryokancatalog.com/img/nc_lampnoyado-1-619313a3.jpg",
+   "https://ryokancatalog.com/img/nc_lampnoyado-2-991231f6.jpg"
+  ],
+  "neold-private-house": [
+   "https://ryokancatalog.com/img/neold-0-a56adf53.jpg",
+   "https://ryokancatalog.com/img/neold-1-8cafa585.jpg",
+   "https://ryokancatalog.com/img/neold-2-c60640d4.jpg"
+  ],
+  "shiki-no-yado-michinokuan": [
+   "https://ryokancatalog.com/img/nc_shikinoyadomichinokuan-0-1a49978d.jpg",
+   "https://ryokancatalog.com/img/nc_shikinoyadomichinokuan-1-03f3a626.jpg",
+   "https://ryokancatalog.com/img/nc_shikinoyadomichinokuan-2-d0dbea58.jpg"
+  ],
+  "yunohanaso": [
+   "https://ryokancatalog.com/img/nc_yunohanaso-0-ad7a1ebc.jpg",
+   "https://ryokancatalog.com/img/nc_yunohanaso-1-fd986147.jpg",
+   "https://ryokancatalog.com/img/nc_yunohanaso-2-805d32c5.jpg"
+  ],
+  "auberge-yusura": [
+   "https://ryokancatalog.com/img/yusura-0-53496a14.jpg",
+   "https://ryokancatalog.com/img/yusura-1-84ab0eca.jpg",
+   "https://ryokancatalog.com/img/yusura-2-36c2ef25.jpg"
+  ],
+  "kayotei": [
+   "https://ryokancatalog.com/img/kayotei-0-38b1db4c.jpg",
+   "https://ryokancatalog.com/img/kayotei-1-9d72d1f8.jpg",
+   "https://ryokancatalog.com/img/kayotei-2-e84e4543.jpg"
+  ],
+  "kyo-yunohana-resort-suisen": [
+   "https://ryokancatalog.com/img/nc_kyoyunohanaresortsuisen-0-a29ea0a6.jpg",
+   "https://ryokancatalog.com/img/nc_kyoyunohanaresortsuisen-1-28d377d1.jpg",
+   "https://ryokancatalog.com/img/nc_kyoyunohanaresortsuisen-2-fb9b71be.jpg"
+  ],
+  "ryokan-nishiyama": [
+   "https://ryokancatalog.com/img/nishiyama-0-fd538b03.jpg",
+   "https://ryokancatalog.com/img/nishiyama-1-fe433018.jpg",
+   "https://ryokancatalog.com/img/nishiyama-2-9f7b304a.jpg"
+  ],
+  "yunotani-senkei": [
+   "https://ryokancatalog.com/img/nc_yunotanisenkei-0-42d72f12.jpg",
+   "https://ryokancatalog.com/img/nc_yunotanisenkei-1-8606a81c.jpg",
+   "https://ryokancatalog.com/img/nc_yunotanisenkei-2-e95ce18b.jpg"
+  ],
+  "gora-kadan": [
+   "https://ryokancatalog.com/img/nc_gorakadan-0-381a3012.jpg",
+   "https://ryokancatalog.com/img/nc_gorakadan-1-b0711deb.jpg",
+   "https://ryokancatalog.com/img/nc_gorakadan-2-99248fcd.jpg"
+  ],
+  "fuefukigawa-onsen-zabou": [
+   "https://ryokancatalog.com/img/fuefukigawa-0-ef4e64be.jpg",
+   "https://ryokancatalog.com/img/fuefukigawa-1-785fe32f.jpg",
+   "https://ryokancatalog.com/img/fuefukigawa-2-6862c557.jpg"
+  ],
+  "kumano-bettei-nakanoshima": [
+   "https://ryokancatalog.com/img/nc_kumanobetteinakanoshima-0-be519e57.jpg",
+   "https://ryokancatalog.com/img/nc_kumanobetteinakanoshima-1-f3ddc3ed.jpg",
+   "https://ryokancatalog.com/img/nc_kumanobetteinakanoshima-2-f355caaf.jpg"
+  ],
+  "amakusa-tenku-no-fune": [
+   "https://ryokancatalog.com/img/nc_amakusatenkunofune-0-c610a0d8.jpg",
+   "https://ryokancatalog.com/img/nc_amakusatenkunofune-1-e9610f7e.jpg",
+   "https://ryokancatalog.com/img/nc_amakusatenkunofune-2-378cb8b0.jpg"
+  ],
+  "asan-kotonami": [
+   "https://ryokancatalog.com/img/nc_asankotonami-0-beb5d245.jpg",
+   "https://ryokancatalog.com/img/nc_asankotonami-1-7633af91.jpg",
+   "https://ryokancatalog.com/img/nc_asankotonami-2-fe176ca8.jpg"
+  ],
+  "hatago-wakatsu": [
+   "https://ryokancatalog.com/img/nc_hatagowakatsu-0-7e22de85.jpg",
+   "https://ryokancatalog.com/img/nc_hatagowakatsu-1-70fc63fc.jpg",
+   "https://ryokancatalog.com/img/nc_hatagowakatsu-2-41303d7b.jpg"
+  ],
+  "ryokan-suiranrou": [
+   "https://ryokancatalog.com/img/nc_ryokansuiranrou-0-6c9f3483.jpg",
+   "https://ryokancatalog.com/img/nc_ryokansuiranrou-1-dcd052ae.jpg",
+   "https://ryokancatalog.com/img/nc_ryokansuiranrou-2-44e0d8a5.jpg"
+  ],
+  "takayamaso-hanano": [
+   "https://ryokancatalog.com/img/takayamaso-0-0211662c.jpg",
+   "https://ryokancatalog.com/img/takayamaso-1-84928456.jpg",
+   "https://ryokancatalog.com/img/takayamaso-2-d3b29a11.jpg"
+  ],
+  "tokachigawa-onsen-sanyoan": [
+   "https://ryokancatalog.com/img/nc_tokachigawaonsensanyoan-0-23e4094c.jpg",
+   "https://ryokancatalog.com/img/nc_tokachigawaonsensanyoan-1-1ab8a720.jpg",
+   "https://ryokancatalog.com/img/nc_tokachigawaonsensanyoan-2-7e52ee73.jpg"
+  ],
+  "amane-resort-gahama": [
+   "https://ryokancatalog.com/img/nc_amaneresortgahama-0-95b0579c.jpg",
+   "https://ryokancatalog.com/img/nc_amaneresortgahama-1-a19b553d.jpg",
+   "https://ryokancatalog.com/img/nc_amaneresortgahama-2-2b342cc9.jpg"
+  ],
+  "fufu-kyoto": [
+   "https://ryokancatalog.com/img/nc_fufukyoto-0-5b65bb21.jpg",
+   "https://ryokancatalog.com/img/nc_fufukyoto-1-c0b16ff4.jpg",
+   "https://ryokancatalog.com/img/nc_fufukyoto-2-b0e930bb.jpg"
+  ],
+  "fukudaya": [
+   "https://ryokancatalog.com/img/nc_fukudaya-0-904e9adf.jpg",
+   "https://ryokancatalog.com/img/nc_fukudaya-1-a906f63d.jpg",
+   "https://ryokancatalog.com/img/nc_fukudaya-2-a41dc86b.jpg"
+  ],
+  "hakone-gora-byakudan": [
+   "https://ryokancatalog.com/img/nc_hakonegorabyakudan-0-0e2a6222.jpg",
+   "https://ryokancatalog.com/img/nc_hakonegorabyakudan-1-6b91a31c.jpg",
+   "https://ryokancatalog.com/img/nc_hakonegorabyakudan-2-32a88753.jpg"
+  ],
+  "takimotokan-yukinosato": [
+   "https://ryokancatalog.com/img/nc_takimotokanyukinosato-0-98019cc9.jpg",
+   "https://ryokancatalog.com/img/nc_takimotokanyukinosato-1-f2ef47c6.jpg",
+   "https://ryokancatalog.com/img/nc_takimotokanyukinosato-2-430ceafe.jpg"
+  ],
+  "goto-retreat-ray": [
+   "https://ryokancatalog.com/img/nc_gotoretreatray-0-d3b51c81.jpg",
+   "https://ryokancatalog.com/img/nc_gotoretreatray-1-e2d7552e.jpg",
+   "https://ryokancatalog.com/img/nc_gotoretreatray-2-39d34bec.jpg"
+  ],
+  "seryo": [
+   "https://ryokancatalog.com/img/nc_seryo-0-becbf6cf.jpg",
+   "https://ryokancatalog.com/img/nc_seryo-1-51e246b1.jpg",
+   "https://ryokancatalog.com/img/nc_seryo-2-8a4d6517.jpg"
+  ],
+  "tawaraya": [
+   "https://ryokancatalog.com/img/nc_tawaraya-0-5bb93a37.jpg"
+  ],
+  "ryotei-kuki": [
+   "https://ryokancatalog.com/img/nc_ryoteikuki-0-7b16c50e.jpg",
+   "https://ryokancatalog.com/img/nc_ryoteikuki-1-fa86107d.jpg",
+   "https://ryokancatalog.com/img/nc_ryoteikuki-2-7af66ec3.jpg"
+  ],
+  "taketoritei-maruyama": [
+   "https://ryokancatalog.com/img/nc_taketoriteimaruyama-0-fb657909.jpg",
+   "https://ryokancatalog.com/img/nc_taketoriteimaruyama-1-05f49d89.jpg",
+   "https://ryokancatalog.com/img/nc_taketoriteimaruyama-2-f56b5e83.jpg"
+  ],
+  "bettei-itsuki": [
+   "https://ryokancatalog.com/img/nc_betteiitsuki-0-e89c8f39.jpg",
+   "https://ryokancatalog.com/img/nc_betteiitsuki-1-d51da4b9.jpg",
+   "https://ryokancatalog.com/img/nc_betteiitsuki-2-ed80a1ac.jpg"
+  ],
+  "takinoya": [
+   "https://ryokancatalog.com/img/nc_takinoya-0-d298565f.jpg",
+   "https://ryokancatalog.com/img/nc_takinoya-1-f1e6d855.jpg",
+   "https://ryokancatalog.com/img/nc_takinoya-2-433605c2.jpg"
+  ],
+  "yoshikawa": [
+   "https://ryokancatalog.com/img/nc_yoshikawa-0-6160624b.jpg",
+   "https://ryokancatalog.com/img/nc_yoshikawa-1-44758db3.jpg",
+   "https://ryokancatalog.com/img/nc_yoshikawa-2-9c35fa74.jpg"
+  ],
+  "yufuin-rikka": [
+   "https://ryokancatalog.com/img/yufuinrikka-0-77b7fa56.jpg",
+   "https://ryokancatalog.com/img/yufuinrikka-1-8e6c9102.jpg",
+   "https://ryokancatalog.com/img/yufuinrikka-2-77bc1755.jpg"
+  ],
+  "bettei-otozure": [
+   "https://ryokancatalog.com/img/nc_betteiotozure-0-f9d3388c.jpg",
+   "https://ryokancatalog.com/img/nc_betteiotozure-1-ebb4f3a0.jpg",
+   "https://ryokancatalog.com/img/nc_betteiotozure-2-32b09d5d.jpg"
+  ],
+  "hanaichi": [
+   "https://ryokancatalog.com/img/nc_hanaichi-0-030bb7f9.jpg",
+   "https://ryokancatalog.com/img/nc_hanaichi-1-c33e40a5.jpg",
+   "https://ryokancatalog.com/img/nc_hanaichi-2-19374fae.jpg"
+  ],
+  "kaichoro": [
+   "https://ryokancatalog.com/img/nc_kaichoro-0-de41f5f7.jpg",
+   "https://ryokancatalog.com/img/nc_kaichoro-1-1305c278.jpg",
+   "https://ryokancatalog.com/img/nc_kaichoro-2-9ff3a0af.jpg"
+  ],
+  "modern-ryokan-kishi-ke": [
+   "https://ryokancatalog.com/img/nc_modernryokankishike-0-a2181ad7.jpg",
+   "https://ryokancatalog.com/img/nc_modernryokankishike-1-0efc64ac.jpg",
+   "https://ryokancatalog.com/img/nc_modernryokankishike-2-fdb2ce04.jpg"
+  ],
+  "zenagi": [
+   "https://ryokancatalog.com/img/zenagi-0-8a00603c.jpg",
+   "https://ryokancatalog.com/img/zenagi-1-3cccfb4a.jpg",
+   "https://ryokancatalog.com/img/zenagi-2-1119d99a.jpg"
+  ],
+  "jusandi": [
+   "https://ryokancatalog.com/img/nc_jusandi-0-23dbe15a.jpg",
+   "https://ryokancatalog.com/img/nc_jusandi-1-540dc455.jpg",
+   "https://ryokancatalog.com/img/nc_jusandi-2-e80af449.jpg"
+  ],
+  "kifu-no-sato": [
+   "https://ryokancatalog.com/img/nc_kifunosato-0-81031f74.jpg",
+   "https://ryokancatalog.com/img/nc_kifunosato-1-5a962e52.jpg",
+   "https://ryokancatalog.com/img/nc_kifunosato-2-1b5105d8.jpg"
+  ],
+  "arimasansoh-goshobessho": [
+   "https://ryokancatalog.com/img/nc_arimasansohgoshobessho-0-1f2d474e.jpg",
+   "https://ryokancatalog.com/img/nc_arimasansohgoshobessho-1-65657e49.jpg",
+   "https://ryokancatalog.com/img/nc_arimasansohgoshobessho-2-2dc63de4.jpg"
+  ],
+  "chikusenso-mt-zao-onsen-resort-spa": [
+   "https://ryokancatalog.com/img/nc_chikusensomtzaoonsenresortspa-0-b5deed96.jpg",
+   "https://ryokancatalog.com/img/nc_chikusensomtzaoonsenresortspa-1-d00927c3.jpg",
+   "https://ryokancatalog.com/img/nc_chikusensomtzaoonsenresortspa-2-7291b402.jpg"
+  ],
+  "hoshino-resorts-kai-unzen": [
+   "https://ryokancatalog.com/img/nc_hoshinoresortskaiunzen-0-e54cceb9.jpg",
+   "https://ryokancatalog.com/img/nc_hoshinoresortskaiunzen-1-8eeedf74.jpg",
+   "https://ryokancatalog.com/img/nc_hoshinoresortskaiunzen-2-7d15610c.jpg"
+  ],
+  "kappo-ryokan-wakamatsu": [
+   "https://ryokancatalog.com/img/nc_kapporyokanwakamatsu-0-44eb38ed.jpg",
+   "https://ryokancatalog.com/img/nc_kapporyokanwakamatsu-1-97caa550.jpg",
+   "https://ryokancatalog.com/img/nc_kapporyokanwakamatsu-2-a8234e3c.jpg"
+  ],
+  "tsuruga-besso-ao-no-za": [
+   "https://ryokancatalog.com/img/nc_tsurugabessoaonoza-0-d3da72cb.jpg",
+   "https://ryokancatalog.com/img/nc_tsurugabessoaonoza-1-5616124d.jpg",
+   "https://ryokancatalog.com/img/nc_tsurugabessoaonoza-2-44af709e.jpg"
+  ],
+  "yamamizuki-bettei": [
+   "https://ryokancatalog.com/img/nc_yamamizukibettei-0-f2bba0e5.jpg",
+   "https://ryokancatalog.com/img/nc_yamamizukibettei-1-3d56c16c.jpg",
+   "https://ryokancatalog.com/img/nc_yamamizukibettei-2-f6d3f18e.jpg"
+  ],
+  "honjin-hiranoya-kachoan": [
+   "https://ryokancatalog.com/img/nc_honjinhiranoyakachoan-0-2b746bec.jpg",
+   "https://ryokancatalog.com/img/nc_honjinhiranoyakachoan-1-f339f405.jpg",
+   "https://ryokancatalog.com/img/nc_honjinhiranoyakachoan-2-80dddb0d.jpg"
+  ],
+  "katsuragi-hotel-kitanomaru": [
+   "https://ryokancatalog.com/img/nc_katsuragihotelkitanomaru-0-d7fd4ee6.jpg",
+   "https://ryokancatalog.com/img/nc_katsuragihotelkitanomaru-1-4ea8a52d.jpg",
+   "https://ryokancatalog.com/img/nc_katsuragihotelkitanomaru-2-f308d990.jpg"
+  ],
+  "matsushima-sakan-shoan": [
+   "https://ryokancatalog.com/img/nc_matsushimasakanshoan-0-dac86984.jpg",
+   "https://ryokancatalog.com/img/nc_matsushimasakanshoan-1-18a68a7b.jpg",
+   "https://ryokancatalog.com/img/nc_matsushimasakanshoan-2-7e63c89f.jpg"
+  ],
+  "satoumitei-kinparo-hontei": [
+   "https://ryokancatalog.com/img/nc_satoumiteikinparohontei-0-0bde1b38.jpg",
+   "https://ryokancatalog.com/img/nc_satoumiteikinparohontei-1-c52a049e.jpg",
+   "https://ryokancatalog.com/img/nc_satoumiteikinparohontei-2-cf4c8d74.jpg"
+  ],
+  "umioto-mari": [
+   "https://ryokancatalog.com/img/nc_umiotomari-0-6de0c50e.jpg",
+   "https://ryokancatalog.com/img/nc_umiotomari-1-77b27615.jpg",
+   "https://ryokancatalog.com/img/nc_umiotomari-2-3f463c0c.jpg"
+  ],
+  "mifuneyama-rakuen-onsen": [
+   "https://ryokancatalog.com/img/nc_mifuneyamarakuenonsen-0-d4033614.jpg",
+   "https://ryokancatalog.com/img/nc_mifuneyamarakuenonsen-1-101bf310.jpg",
+   "https://ryokancatalog.com/img/nc_mifuneyamarakuenonsen-2-d146ec75.jpg"
+  ],
+  "sekitei": [
+   "https://ryokancatalog.com/img/sekitei-0-f08d5d01.jpg",
+   "https://ryokancatalog.com/img/sekitei-1-83efc5db.jpg",
+   "https://ryokancatalog.com/img/sekitei-2-e7010515.jpg"
+  ],
+  "teisui": [
+   "https://ryokancatalog.com/img/nc_teisui-0-52783c65.jpg",
+   "https://ryokancatalog.com/img/nc_teisui-1-fc55b9b3.jpg",
+   "https://ryokancatalog.com/img/nc_teisui-2-ccaffc76.jpg"
+  ],
+  "ginyu": [
+   "https://ryokancatalog.com/img/nc_ginyu-0-b14b6279.jpg",
+   "https://ryokancatalog.com/img/nc_ginyu-1-e2309da2.jpg",
+   "https://ryokancatalog.com/img/nc_ginyu-2-5ce69551.jpg"
+  ],
+  "ryokan-kurashiki": [
+   "https://ryokancatalog.com/img/nc_ryokankurashiki-0-fda71b6f.jpg",
+   "https://ryokancatalog.com/img/nc_ryokankurashiki-1-c1f12531.jpg",
+   "https://ryokancatalog.com/img/nc_ryokankurashiki-2-9f3c8592.jpg"
+  ],
+  "setouchi-retreat-aonagi": [
+   "https://ryokancatalog.com/img/nc_setouchiretreataonagi-0-2cacc18e.jpg",
+   "https://ryokancatalog.com/img/nc_setouchiretreataonagi-1-1f4a09b5.jpg",
+   "https://ryokancatalog.com/img/nc_setouchiretreataonagi-2-655bd751.jpg"
+  ],
+  "hyakuna-garan": [
+   "https://ryokancatalog.com/img/nc_hyakunagaran-0-0265d800.jpg",
+   "https://ryokancatalog.com/img/nc_hyakunagaran-1-7ebc7d2a.jpg",
+   "https://ryokancatalog.com/img/nc_hyakunagaran-2-894786c2.jpg"
+  ],
+  "iwaso": [
+   "https://ryokancatalog.com/img/nc_iwaso-0-b236aaa2.jpg",
+   "https://ryokancatalog.com/img/nc_iwaso-1-e1b2993c.jpg",
+   "https://ryokancatalog.com/img/nc_iwaso-2-c152d5a4.jpg"
+  ],
+  "kotohira-kadan": [
+   "https://ryokancatalog.com/img/nc_kotohirakadan-0-7b3ec083.jpg",
+   "https://ryokancatalog.com/img/nc_kotohirakadan-1-74d26a1b.jpg",
+   "https://ryokancatalog.com/img/nc_kotohirakadan-2-8f6f6d3b.jpg"
+  ],
+  "kusatsu-onsen-kei": [
+   "https://ryokancatalog.com/img/nc_kusatsuonsenkei-0-c84e0e78.jpg",
+   "https://ryokancatalog.com/img/nc_kusatsuonsenkei-1-1d0ab413.jpg",
+   "https://ryokancatalog.com/img/nc_kusatsuonsenkei-2-97e2f6a8.jpg"
+  ],
+  "nishiyama-onsen-keiunkan": [
+   "https://ryokancatalog.com/img/nc_nishiyamaonsenkeiunkan-0-b5e0f774.jpg",
+   "https://ryokancatalog.com/img/nc_nishiyamaonsenkeiunkan-1-3cc8fe19.jpg",
+   "https://ryokancatalog.com/img/nc_nishiyamaonsenkeiunkan-2-a75ef16d.jpg"
+  ],
+  "bettei-yaeno": [
+   "https://ryokancatalog.com/img/nc_betteiyaeno-0-13859b4f.jpg",
+   "https://ryokancatalog.com/img/nc_betteiyaeno-1-7f9a6968.jpg",
+   "https://ryokancatalog.com/img/nc_betteiyaeno-2-8d596554.jpg"
+  ],
+  "sakurayu-sanshuyu": [
+   "https://ryokancatalog.com/img/nc_sakurayusanshuyu-0-4f8d1601.jpg",
+   "https://ryokancatalog.com/img/nc_sakurayusanshuyu-1-8df414ea.jpg",
+   "https://ryokancatalog.com/img/nc_sakurayusanshuyu-2-4892b8f6.jpg"
+  ],
+  "naoshima-ryokan-roka": [
+   "https://ryokancatalog.com/img/nc_naoshimaryokanroka-0-9a126ae4.jpg",
+   "https://ryokancatalog.com/img/nc_naoshimaryokanroka-1-43e3821c.jpg",
+   "https://ryokancatalog.com/img/nc_naoshimaryokanroka-2-5b533ecd.jpg"
+  ],
+  "fufu-kyu-karuizawa": [
+   "https://ryokancatalog.com/img/nc_fufukyukaruizawa-0-159a98cb.jpg",
+   "https://ryokancatalog.com/img/nc_fufukyukaruizawa-1-aca41813.jpg",
+   "https://ryokancatalog.com/img/nc_fufukyukaruizawa-2-054c0a55.jpg"
+  ],
+  "sanso-kannawaen": [
+   "https://ryokancatalog.com/img/nc_sansokannawaen-0-4b32ade0.jpg",
+   "https://ryokancatalog.com/img/nc_sansokannawaen-1-6b1c6539.jpg",
+   "https://ryokancatalog.com/img/nc_sansokannawaen-2-234feb05.jpg"
+  ],
+  "hazu-gassho": [
+   "https://ryokancatalog.com/img/nc_hazugassho-0-3b8c1ca0.jpg",
+   "https://ryokancatalog.com/img/nc_hazugassho-1-d6905472.jpg",
+   "https://ryokancatalog.com/img/nc_hazugassho-2-10bf4d71.jpg"
+  ],
+  "ginrinsou": [
+   "https://ryokancatalog.com/img/nc_ginrinsou-0-18b71a34.jpg",
+   "https://ryokancatalog.com/img/nc_ginrinsou-1-9a8e7d82.jpg",
+   "https://ryokancatalog.com/img/nc_ginrinsou-2-1ea3e835.jpg"
+  ],
+  "okutsuso": [
+   "https://ryokancatalog.com/img/nc_okutsuso-0-156394f5.jpg",
+   "https://ryokancatalog.com/img/nc_okutsuso-1-809e37de.jpg",
+   "https://ryokancatalog.com/img/nc_okutsuso-2-fe990797.jpg"
+  ],
+  "satoyama-no-auberge-maki-no-oto": [
+   "https://ryokancatalog.com/img/nc_satoyamanoaubergemakinooto-0-ec578338.jpg",
+   "https://ryokancatalog.com/img/nc_satoyamanoaubergemakinooto-1-eaf0c245.jpg",
+   "https://ryokancatalog.com/img/nc_satoyamanoaubergemakinooto-2-d4307b4b.jpg"
+  ],
+  "gora-karaku": [
+   "https://ryokancatalog.com/img/nc_gorakaraku-0-de3b8092.jpg",
+   "https://ryokancatalog.com/img/nc_gorakaraku-1-a339de77.jpg",
+   "https://ryokancatalog.com/img/nc_gorakaraku-2-2397f202.jpg"
+  ],
+  "akariya-geihanro": [
+   "https://ryokancatalog.com/img/geihanro-0-9f3e9dd2.jpg",
+   "https://ryokancatalog.com/img/geihanro-1-8e78250d.jpg",
+   "https://ryokancatalog.com/img/geihanro-2-4ade2ac5.jpg"
+  ],
+  "akazawa-geihinkan": [
+   "https://ryokancatalog.com/img/akazawa-0-0cb89c50.jpg",
+   "https://ryokancatalog.com/img/akazawa-1-d591c716.jpg",
+   "https://ryokancatalog.com/img/akazawa-2-b406f020.jpg"
+  ],
+  "amane-resort-seikai": [
+   "https://ryokancatalog.com/img/nc_amaneresortseikai-0-07565796.jpg",
+   "https://ryokancatalog.com/img/nc_amaneresortseikai-1-965c8839.jpg",
+   "https://ryokancatalog.com/img/nc_amaneresortseikai-2-2d360a64.jpg"
+  ],
+  "amanojyaku": [
+   "https://ryokancatalog.com/img/amanojyaku-0-311378bc.jpg",
+   "https://ryokancatalog.com/img/amanojyaku-1-ab8ecb14.jpg",
+   "https://ryokancatalog.com/img/amanojyaku-2-5dd0cb99.jpg"
+  ],
+  "ancient-hotel-asama-karuizawa": [
+   "https://ryokancatalog.com/img/ancientasama-0-5be125c1.jpg",
+   "https://ryokancatalog.com/img/ancientasama-1-86d585c1.jpg",
+   "https://ryokancatalog.com/img/ancientasama-2-6ca9e259.jpg"
+  ],
+  "araya-totoan": [
+   "https://ryokancatalog.com/img/araya-0-5497cf8c.jpg",
+   "https://ryokancatalog.com/img/araya-1-81ee3ef3.jpg",
+   "https://ryokancatalog.com/img/araya-2-267a68d6.jpg"
+  ],
+  "atami-sekaie": [
+   "https://ryokancatalog.com/img/atamisekaie-0-dcf0c0d1.jpg",
+   "https://ryokancatalog.com/img/atamisekaie-1-09fd3ff7.jpg",
+   "https://ryokancatalog.com/img/atamisekaie-2-660afce4.jpg"
+  ],
+  "ayunosato": [
+   "https://ryokancatalog.com/img/nc_ayunosato-0-328f848b.jpg",
+   "https://ryokancatalog.com/img/nc_ayunosato-1-f9769251.jpg",
+   "https://ryokancatalog.com/img/nc_ayunosato-2-c8893cfb.jpg"
+  ],
+  "azuma-farm-koiwai": [
+   "https://ryokancatalog.com/img/azumafarm-0-b95755fd.jpg",
+   "https://ryokancatalog.com/img/azumafarm-1-5736caba.jpg",
+   "https://ryokancatalog.com/img/azumafarm-2-ec9e39ae.jpg"
+  ],
+  "azumi-setoda": [
+   "https://ryokancatalog.com/img/azumisetoda-0-50335fc4.jpg",
+   "https://ryokancatalog.com/img/azumisetoda-1-667f12f6.jpg",
+   "https://ryokancatalog.com/img/azumisetoda-2-efed8bc4.jpg"
+  ],
+  "bessho-sasa": [
+   "https://ryokancatalog.com/img/besshosasa-0-43092e19.jpg",
+   "https://ryokancatalog.com/img/besshosasa-1-c711cdd6.jpg",
+   "https://ryokancatalog.com/img/besshosasa-2-758fe7af.jpg"
+  ],
+  "c-est-la-vie": [
+   "https://ryokancatalog.com/img/nc_cestlavie-0-c4332236.jpg",
+   "https://ryokancatalog.com/img/nc_cestlavie-1-fc8d93c7.jpg",
+   "https://ryokancatalog.com/img/nc_cestlavie-2-e0575668.jpg"
+  ],
+  "daikon-no-hana": [
+   "https://ryokancatalog.com/img/nc_daikonnohana-0-8970e5a3.jpg",
+   "https://ryokancatalog.com/img/nc_daikonnohana-1-6d8ef4d0.jpg",
+   "https://ryokancatalog.com/img/nc_daikonnohana-2-9f831ec0.jpg"
+  ],
+  "espacio-the-hakone-geihinkan-rin-poh-ki-ryu": [
+   "https://ryokancatalog.com/img/espacio-0-2a10e42f.jpg",
+   "https://ryokancatalog.com/img/espacio-1-33460bb9.jpg",
+   "https://ryokancatalog.com/img/espacio-2-ee1e8093.jpg"
+  ],
+  "guntu": [
+   "https://ryokancatalog.com/img/guntu-0-1a6d4eb5.jpg",
+   "https://ryokancatalog.com/img/guntu-1-c419c1c6.jpg",
+   "https://ryokancatalog.com/img/guntu-2-9f564f10.jpg"
+  ],
+  "hakone-retreat-fore-villa-1-f": [
+   "https://ryokancatalog.com/img/hakoneretreat-0-f07a42dd.jpg",
+   "https://ryokancatalog.com/img/hakoneretreat-1-df6ec614.jpg",
+   "https://ryokancatalog.com/img/hakoneretreat-2-8b8c0e52.jpg"
+  ],
+  "hatago-arima": [
+   "https://ryokancatalog.com/img/nc_hatagoarima-0-705e95d3.jpg",
+   "https://ryokancatalog.com/img/nc_hatagoarima-1-9c117338.jpg",
+   "https://ryokancatalog.com/img/nc_hatagoarima-2-c269a86c.jpg"
+  ],
+  "hitotsu-notojima": [
+   "https://ryokancatalog.com/img/notojima-0-b9040e6b.jpg",
+   "https://ryokancatalog.com/img/notojima-1-853473e5.jpg",
+   "https://ryokancatalog.com/img/notojima-2-441c519c.jpg"
+  ],
+  "hoshinoya-fuji": [
+   "https://ryokancatalog.com/img/hoshinoyafuji-0-9992e813.jpg",
+   "https://ryokancatalog.com/img/hoshinoyafuji-1-9cb5ff75.jpg",
+   "https://ryokancatalog.com/img/hoshinoyafuji-2-cf21e9b5.jpg"
+  ],
+  "kanaya-resort-hakone": [
+   "https://ryokancatalog.com/img/kanaya-0-9fd0685e.jpg",
+   "https://ryokancatalog.com/img/kanaya-1-3d8724af.jpg",
+   "https://ryokancatalog.com/img/kanaya-2-c5f4b715.jpg"
+  ],
+  "kaiseki-inn-suihuen": [
+   "https://ryokancatalog.com/img/suihuen-0-079e1fbf.jpg",
+   "https://ryokancatalog.com/img/suihuen-1-3cefe932.jpg",
+   "https://ryokancatalog.com/img/suihuen-2-ee848e14.jpg"
+  ],
+  "kamenoi-besso": [
+   "https://ryokancatalog.com/img/kamenoi-0-8bc8d032.jpg",
+   "https://ryokancatalog.com/img/kamenoi-1-096b6212.jpg",
+   "https://ryokancatalog.com/img/kamenoi-2-84f1f8ba.jpg"
+  ],
+  "kanshuku-en-eshikoto": [
+   "https://ryokancatalog.com/img/eiheiji-0-625b9314.jpg",
+   "https://ryokancatalog.com/img/eiheiji-1-3cb8f3aa.jpg",
+   "https://ryokancatalog.com/img/eiheiji-2-fdcb8622.jpg"
+  ],
+  "kinnotake-tonosawa": [
+   "https://ryokancatalog.com/img/kinnotake-0-1e05ccb9.jpg",
+   "https://ryokancatalog.com/img/kinnotake-1-5a6c1270.jpg",
+   "https://ryokancatalog.com/img/kinnotake-2-dfbe9845.jpg"
+  ],
+  "kofuyuden-beniya": [
+   "https://ryokancatalog.com/img/beniyaawara-0-fd6dd35c.jpg",
+   "https://ryokancatalog.com/img/beniyaawara-1-08a7582b.jpg",
+   "https://ryokancatalog.com/img/beniyaawara-2-ce4b2fa2.jpg"
+  ],
+  "lakeside-villa-suimeikaku": [
+   "https://ryokancatalog.com/img/nc_lakesidevillasuimeikaku-0-4df28f25.jpg",
+   "https://ryokancatalog.com/img/nc_lakesidevillasuimeikaku-1-4b65ee96.jpg",
+   "https://ryokancatalog.com/img/nc_lakesidevillasuimeikaku-2-e8112ac7.jpg"
+  ],
+  "machiyado-ichiryu": [
+   "https://ryokancatalog.com/img/ichiryu-0-bf2a26af.jpg",
+   "https://ryokancatalog.com/img/ichiryu-1-e2e73c7b.jpg",
+   "https://ryokancatalog.com/img/ichiryu-2-f4db2d25.jpg"
+  ],
+  "madoka-no-mori": [
+   "https://ryokancatalog.com/img/madokanomori-0-d33294a4.jpg",
+   "https://ryokancatalog.com/img/madokanomori-1-5a44571a.jpg",
+   "https://ryokancatalog.com/img/madokanomori-2-98e4900f.jpg"
+  ],
+  "meigetsuso": [
+   "https://ryokancatalog.com/img/meigetsuso-0-12416e3a.jpg",
+   "https://ryokancatalog.com/img/meigetsuso-1-1a4f448f.jpg",
+   "https://ryokancatalog.com/img/meigetsuso-2-b2b5a74e.jpg"
+  ],
+  "ochiairo": [
+   "https://ryokancatalog.com/img/ochiairo-0-b47f6e36.jpg",
+   "https://ryokancatalog.com/img/ochiairo-1-51fc6f36.jpg",
+   "https://ryokancatalog.com/img/ochiairo-2-7c25693b.jpg"
+  ],
+  "risonare-yatsugatake": [
+   "https://ryokancatalog.com/img/risonare-0-d9eb4fc6.jpg",
+   "https://ryokancatalog.com/img/risonare-1-6abd05b8.jpg",
+   "https://ryokancatalog.com/img/risonare-2-7f9e53cd.jpg"
+  ],
+  "river-retreat-garaku": [
+   "https://ryokancatalog.com/img/garaku-0-309e9631.jpg",
+   "https://ryokancatalog.com/img/garaku-1-324812a7.jpg",
+   "https://ryokancatalog.com/img/garaku-2-040f0b3e.jpg"
+  ],
+  "stay366": [
+   "https://ryokancatalog.com/img/stay366-0-69c17414.jpg",
+   "https://ryokancatalog.com/img/stay366-1-51f733ac.jpg",
+   "https://ryokancatalog.com/img/stay366-2-fe902776.jpg"
+  ],
+  "saryo-souen": [
+   "https://ryokancatalog.com/img/nc_saryosouen-0-b0d14656.jpg",
+   "https://ryokancatalog.com/img/nc_saryosouen-1-af33f826.jpg",
+   "https://ryokancatalog.com/img/nc_saryosouen-2-e8c5cc22.jpg"
+  ],
+  "seiryuso": [
+   "https://ryokancatalog.com/img/seiryuso-0-8c02d2fa.jpg",
+   "https://ryokancatalog.com/img/seiryuso-1-e6c08c78.jpg",
+   "https://ryokancatalog.com/img/seiryuso-2-679d8300.jpg"
+  ],
+  "sekiyo": [
+   "https://ryokancatalog.com/img/sekiyo-0-ff65acd9.jpg",
+   "https://ryokancatalog.com/img/sekiyo-1-86d2d4a8.jpg",
+   "https://ryokancatalog.com/img/sekiyo-2-be89ca3b.jpg"
+  ],
+  "sengokuhara-cocon": [
+   "https://ryokancatalog.com/img/cocon-0-7211097b.jpg",
+   "https://ryokancatalog.com/img/cocon-1-72610c14.jpg",
+   "https://ryokancatalog.com/img/cocon-2-284aafd3.jpg"
+  ],
+  "shiojitei": [
+   "https://ryokancatalog.com/img/nc_shiojitei-0-20d12567.jpg",
+   "https://ryokancatalog.com/img/nc_shiojitei-1-e34f426c.jpg",
+   "https://ryokancatalog.com/img/nc_shiojitei-2-d30dc341.jpg"
+  ],
+  "shoraiso": [
+   "https://ryokancatalog.com/img/shoraiso-0-53b85c98.jpg",
+   "https://ryokancatalog.com/img/shoraiso-1-c37e1aaa.jpg",
+   "https://ryokancatalog.com/img/shoraiso-2-462aa2ad.jpg"
+  ],
+  "sosuikyo": [
+   "https://ryokancatalog.com/img/sosuikyo-0-f48f96db.jpg",
+   "https://ryokancatalog.com/img/sosuikyo-1-0057fabe.jpg",
+   "https://ryokancatalog.com/img/sosuikyo-2-277137b6.jpg"
+  ],
+  "takaragawa-osenkaku": [
+   "https://ryokancatalog.com/img/nc_takaragawaosenkaku-0-f1383818.jpg",
+   "https://ryokancatalog.com/img/nc_takaragawaosenkaku-1-df890833.jpg",
+   "https://ryokancatalog.com/img/nc_takaragawaosenkaku-2-277dadb7.jpg"
+  ],
+  "tamakiya": [
+   "https://ryokancatalog.com/img/tamakiya-0-fa496280.jpg",
+   "https://ryokancatalog.com/img/tamakiya-1-9b5ef595.jpg",
+   "https://ryokancatalog.com/img/tamakiya-2-13c2daf8.jpg"
+  ],
+  "the-hiramatsu-karuizawa-miyota": [
+   "https://ryokancatalog.com/img/hiramatsu-0-6507a849.jpg",
+   "https://ryokancatalog.com/img/hiramatsu-1-738bc507.jpg",
+   "https://ryokancatalog.com/img/hiramatsu-2-05e37dda.jpg"
+  ],
+  "the-hiramatsu-kashikojima": [
+   "https://ryokancatalog.com/img/hiramatsukashikojima-0-ad61792f.jpg",
+   "https://ryokancatalog.com/img/hiramatsukashikojima-1-dccc3339.jpg",
+   "https://ryokancatalog.com/img/hiramatsukashikojima-2-4ceff4a1.jpg"
+  ],
+  "the-hiramatsu-sengokuhara": [
+   "https://ryokancatalog.com/img/hiramatsusengokuhara-0-b908c4ee.jpg",
+   "https://ryokancatalog.com/img/hiramatsusengokuhara-1-141390da.jpg",
+   "https://ryokancatalog.com/img/hiramatsusengokuhara-2-18755238.jpg"
+  ],
+  "tobira-onsen-myojinkan": [
+   "https://ryokancatalog.com/img/myojinkan-0-ceff003c.jpg",
+   "https://ryokancatalog.com/img/myojinkan-1-de280023.jpg",
+   "https://ryokancatalog.com/img/myojinkan-2-4a9ae818.jpg"
+  ],
+  "tsuruko": [
+   "https://ryokancatalog.com/img/tsuruko-0-3de185ae.jpg",
+   "https://ryokancatalog.com/img/tsuruko-1-e94e7088.jpg",
+   "https://ryokancatalog.com/img/tsuruko-2-4679ba12.jpg"
+  ],
+  "ubuya": [
+   "https://ryokancatalog.com/img/ubuya-0-180f5297.jpg",
+   "https://ryokancatalog.com/img/ubuya-1-63537501.jpg",
+   "https://ryokancatalog.com/img/ubuya-2-efc7f93e.jpg"
+  ],
+  "ujo-soan": [
+   "https://ryokancatalog.com/img/ujosoan-0-52cb128a.jpg",
+   "https://ryokancatalog.com/img/ujosoan-1-93969e7d.jpg",
+   "https://ryokancatalog.com/img/ujosoan-2-a1b96750.jpg"
+  ],
+  "wasure-no-sato-gajoen": [
+   "https://ryokancatalog.com/img/nc_wasurenosatogajoen-0-0ab8beee.jpg",
+   "https://ryokancatalog.com/img/nc_wasurenosatogajoen-1-991799ee.jpg",
+   "https://ryokancatalog.com/img/nc_wasurenosatogajoen-2-bb408ad6.jpg"
+  ],
+  "yagyu-no-sho": [
+   "https://ryokancatalog.com/img/yagyunosho-0-3ac05e26.jpg",
+   "https://ryokancatalog.com/img/yagyunosho-1-08133629.jpg",
+   "https://ryokancatalog.com/img/yagyunosho-2-22828f05.jpg"
+  ],
+  "zagyosoh-abba-resorts-izu": [
+   "https://ryokancatalog.com/img/zagyosoh-0-0eb1ebd1.jpg",
+   "https://ryokancatalog.com/img/zagyosoh-1-f7c7d2d4.jpg",
+   "https://ryokancatalog.com/img/zagyosoh-2-3358408f.jpg"
+  ]
+ }
+}
