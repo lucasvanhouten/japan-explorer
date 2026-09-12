@@ -477,7 +477,7 @@
   "corridors": 176,
   "legs": 788,
   "region_cards": 13,
-  "front_door_words": 49491,
+  "front_door_words": 49483,
   "start_here_words": 4305,
   "stage_files": 6,
   "stays_files": 12
@@ -1426,8 +1426,8 @@
   "planning/kit-src/kit/00-traveler.md": "57e5f8c6ad14b80a784dde85b1ffbed445e35cd96a2a46c45f03ccd63f4b16cb",
   "planning/kit-src/kit/01-agent.md": "e3f9573aab37c8108c9dc960dd34281f2fe61a591624b28ea5ede38d381a94df",
   "planning/kit-src/kit/02-interview.md": "476f6dbdeccc349ab364c5f992dc8aaf08650c0b5a32b889063abf9bb2520f98",
-  "planning/kit-src/kit/03-orientation.md": "4ed3c6e55032fc147e7e15fef7ba43a24c1325925b0297f195a395c82d125be0",
-  "planning/kit-src/kit/04-where-to-go.md": "5e51a6a7d7d55e89ab7c22a62545b714da1a9e510eb7a0486b8bd98220ef976d",
+  "planning/kit-src/kit/03-orientation.md": "fec6c1c43a7fbfbe19527c30a2c17a058af63315dc05d63694a85e33ea1c362f",
+  "planning/kit-src/kit/04-where-to-go.md": "f446070eb17b92667e066484d95964a9c6bc35cf66d5b947527de398abca2948",
   "planning/kit-src/kit/05-where-to-stay.md": "2c11e9a4d647969365888cfec5167b0aedd89a3656a9d869c0ed5a8cf20338d5",
   "planning/kit-src/kit/06-route.md": "618d5f2eca747649e30a903433bb0c1c3a443b9a5175ae8147756a1914887d51",
   "planning/kit-src/kit/07-optional-depth.md": "b7ca34b4568d44f3c359435b53772c238ab84260aaddc9769d6bae0bab5166e5",
@@ -1460,8 +1460,8 @@
    "bytes": 25948
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "343d607ce203d03b1942d95b512018422aba4f6975f6b367d15d864c4cc6758b",
-   "bytes": 291733
+   "sha256": "0d5e744f54b74005918db8149d083aae70d980d47fe0f5e9ac32fd5851e2056c",
+   "bytes": 291740
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1700,12 +1700,12 @@
    "bytes": 20694
   },
   "stages/2-orientation.md": {
-   "sha256": "0068948aa5988e9f9b94fc02f99eebaf3bcc3230fc577869125c7ed4d17e52f7",
-   "bytes": 41791
+   "sha256": "1835a45f39e2a8c2bf6bc0f326ddde9f3df492e705b3d070a582475c5706d122",
+   "bytes": 41388
   },
   "stages/3-where-to-go.md": {
-   "sha256": "3371111b289885bf546ff01283a10cd8f312163aab4d87ba1babd2638d1d0808",
-   "bytes": 82971
+   "sha256": "d1686b5722886f74b5625682ffbb6d474270cd04064eb8801cf6be46d1ab3e3b",
+   "bytes": 83381
   },
   "stages/4-where-to-stay.md": {
    "sha256": "8380868fef1236b70fce84dd36fabbae6d9981cb6282021fa1491269b2599221",
