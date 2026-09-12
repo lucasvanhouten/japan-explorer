@@ -27,14 +27,14 @@ The alternate matters: the good inns sell out, so have the second answer ready b
 
    | Stay | Band | Bath | Why | Links |
    |---|---|---|---|---|
-   | `<name · inn / hotel · tier score · editor's pick where it is one>` | `<band>` | `<in the room · bookable private · shared only · none>` | `<why it is special for them, and its key features — from the write-up>` | [map](`<link>`) · [full write-up](`<link>`) |
+   | `<name · inn / hotel · tier score · editor's pick where it is one>` | `<band>` | `<in the room · bookable private · shared only · none · unstated for a hotel in a mixed table>` | `<why it is special for them, and its key features — from the write-up>` | [map](`<link>`) · [full write-up](`<link>`) |
 
    **Why gets the width**: kind, score and editor's pick ride in the Stay cell; no Town column, since they know the town. Two variants, as `stays` prints them: a RYOKAN option spanning towns adds `Town` — `| Stay | Town | Band | Bath | Why | Links |`; a city of hotels has no bath — `| Stay | Band | Why | Links |`.
 
 4. **What goes in the cells.** **`Why` is yours** — what makes it special for this couple and its key features, every fact from the write-up (below). Where the stop is a RYOKAN option spanning towns, `Town` carries the time from the gateway city from the corridor table, so the leg is visible beside the name. `Band` says what it includes — per night for two, dinner and breakfast included for an inn, room only for a hotel — and the band itself is said once, in that cell, never again in a sentence. `Links` is the Google Maps pin first, then the second link — a hotel's homepage, an inn's `ryokancatalog.com` page — in that order for every row, so the map always sits in the same place. Anything else that changes the choice — no natural spring, a bed rather than a floor mattress, out of town — goes in `Why`, in a clause.
 5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so in their words — *"four more on the kit's list — ask and I'll show them"* — so they can ask. No "I would take X", no "recommended": the order of the rows is the recommendation, and they choose. Close the first message on the line Stage 3 prescribes, not on *"which one?"*. Ask for the choice in a later turn, once they name one they lean to or say "go", and record the second choice as the alternate; that is part of the job. If they ask which you would take, answer in one line, with the reason.
 
-**Opening up a stay means going and reading it**: the inn's page on **[ryokancatalog.com](https://ryokancatalog.com)** — rooms, bath, kitchen, setting, where it is weakest, who it suits — plus the practical half from `Reach` and `fits`: distance from the gateway city, the room with the private bath, what booking needs.
+**Opening up a stay means reading its page on [ryokancatalog.com](https://ryokancatalog.com)** — rooms, bath, kitchen, setting, where it is weakest — plus the practical half: distance from the gateway city, the room with the private bath, what booking needs.
 
 **How many, by kind of stop:**
 
@@ -56,7 +56,7 @@ Every inn and hotel here carries a hand-researched write-up, and the tool prints
 
 Gora Kadan Fuji, not as the write-up pastes but for a couple on their first ryokan night: *"The gentlest way into a ryokan: a hotel-ryokan hybrid with Fuji in front of you, a pool, three dining rooms and nothing about the form to be nervous about. Book an Open-air Bath Suite or above for spring water in the room, and the sushi or teppanyaki counter over the kaiseki."*
 
-**Explain the score once, the first time a table shows one:** *"A 8.8 means tier A, 8.8 out of 10 — the catalogue's reading of the FlyerTalk thread and the Japanese review sites; S is the top tier, B is good, a dash means nobody has written it up in English."* And introduce the catalogue the same once: *"every inn links to its page on ryokancatalog.com — the long read: rooms, bath, food, setting, how to book."*
+**Explain the score once, the first time a table shows one:** *"A 8.8 means tier A, 8.8 out of 10 — the catalogue's reading of the FlyerTalk thread and the Japanese review sites; S is the top tier, a dash means nobody has written it up in English."* And introduce the catalogue once: *"every inn links to its page on ryokancatalog.com — the long read: rooms, bath, food, how to book."*
 
 ### Two things to say out loud once
 
@@ -225,10 +225,10 @@ The whole catalogue — every inn, not the shortlist — is at https://ryokancat
 
 The city hotels are in the same per-place files, listed above; the longer researched list is `data/hotels.md`.
 
-**Osaka and Nara — the neighbourhood is the decision.** Both sit a short train from Kyoto and have shorter lists; where a list runs thin, work from the neighbourhood.
+**Osaka and Nara — the neighbourhood is the decision.** Both are a short train from Kyoto with shorter lists.
 
-- **Osaka** — **Namba or Shinsaibashi** if eating and drinking is the point (you walk home from dinner); **Umeda / Kita** if you move on by train next morning. Osaka is the cheapest big city for a good room, and a fair base for Kyoto and Nara when Kyoto is booked out.
-- **Nara** — small; everything sits between the station and the park. Staying overnight buys the temples at eight in the morning.
+- **Osaka** — **Namba or Shinsaibashi** to walk home from dinner; **Umeda / Kita** to move on by train next morning. The cheapest big city for a good room, and a fair base when Kyoto is booked out.
+- **Nara** — small; everything sits between the station and the park. Overnight buys the temples at eight in the morning.
 
 Where a band says *check live*, read one off the property's page for the actual dates.
 
@@ -261,15 +261,15 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 
 ### The follow-up questions — ask only when they change the pick
 
-**The rule: ask one of these only when the options actually in front of them differ on it.** If all five have a private bath, don't ask about tattoos. If none has a sauna, don't raise saunas. If every option is a hotel with beds, don't ask about futons. Ask when the answer would move them from one option to another — and at most two at a time.
+**Ask one of these only when the options in front of them differ on it** — if all five have a private bath, tattoos are moot — and at most two at a time.
 
 - **A private bath?** Ask if anyone has **tattoos**, is shy about communal bathing, or wants the bath to themselves: baths are nude and gender-separated, and many still refuse visible tattoos. A **bath in the room** or a **bookable private bath** settles it. Check the property's page for **overnight guests**; a day-visitor rule is a different rule.
 - **A sauna?** Common at newer inns, but usually gender-separated like the baths. Two people saunaing together need a **private or rental sauna**, or a mixed facility with swimwear.
 - **How heavy do you want dinner?** Some kitchens serve a long formal *kaiseki*; others something lighter — French, wood-fired, farm produce, temple cooking. Two ryokan nights close together go on different kitchens.
-- **Floor mattress or bed?** A traditional room means a *futon* laid on the straw floor at bedtime. Comfortable for most, hard on bad backs and knees. The `bed-not-futon` tag marks inns whose write-up mentions beds; ask before assuming elsewhere.
-- **How formal?** At the traditional end, meals come to your room and staff kneel at the door. At the modern-luxury end you eat in a dining room and nobody minds what you wear. Neither is better; people have strong preferences and won't volunteer them unprompted.
-- **Children, and how many of you?** Ask **before** showing inn options to a family — see the note above the table. Child policies vary wildly, the best inns are the strictest, and the policy changes and is often stated only in Japanese: check the inn's page, then confirm by email.
-- **Dietary needs?** Inn menus are fixed and built weeks ahead. Vegetarian, no fish, no shellfish, an allergy — all usually possible, but only if stated at booking, never on arrival.
+- **Floor mattress or bed?** A traditional room means a *futon* on the tatami at bedtime: fine for most, hard on bad backs. The `bed-not-futon` tag marks inns whose write-up mentions beds.
+- **How formal?** Traditional: meals in your room, staff kneeling at the door. Modern-luxury: a dining room, wear what you like. People have strong preferences and rarely volunteer them.
+- **Children, and how many of you?** Ask **before** showing inns to a family. Policies vary, the best inns are strictest, and the rule is often only in Japanese: check the page, then confirm by email.
+- **Dietary needs?** Inn menus are fixed weeks ahead; vegetarian, no fish, an allergy are usually possible if stated at booking, never on arrival.
 
 ### The decision
 

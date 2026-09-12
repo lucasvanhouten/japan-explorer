@@ -4,7 +4,7 @@
   "site": "https://ryokancatalog.com",
   "as_of": "2026-09-07",
   "count": 199,
-  "src_sha": "0b7a0bac27dc4dd8a214e70da572f4ccf32686b98cd1d9e99937028d11867802",
+  "src_sha": "4e19bb2a82c790b69c8c1415783288c4f874ce070a11309cd1db2d01f62e9494",
   "score_scale": "1-10 overall (evidence-adjusted), 1-5 per aspect",
   "source": "KI-NRT's FlyerTalk 'Japan Luxury Ryokans' thread + TripAdvisor + Japanese booking sites"
  },
@@ -5016,6 +5016,14 @@
       "transfers": 2,
       "estimated": false,
       "text": "Reverse of: JR Ltd Exp 'Hida' Takayama→Nagoya (~2h25; 10/day, hourly only ~11:30–16:30, 2h gaps outside), ~20-min cross-platform transfer to a Tōkaidō Shinkansen 'Nozomi' Nagoya→Shin-Osaka (~50 min, frequent), then the Midōsuji subway Shin-Osaka→Umeda/Namba (~5–10 min) + the walk to the hotel. Two changes, at Nagoya and Shin-Osaka. ⚠ the Takayama Line is snow-exposed — JR Central posts 大雪 advisories most Januaries, and Dec 25–Jan 5 is all-reserved; keep same-day slack. Equal-time alternative that dodges the exposure: the Nohi highway bus Takayama→Nagoya + the same Nozomi. Sources: japan-guide Takayama access; JR Central Tōkaidō/Takayama Line timetables."
+     },
+     {
+      "city": "Nagoya",
+      "hours": 2.75,
+      "time": "2h45",
+      "transfers": 0,
+      "estimated": false,
+      "text": "Reverse of: JR Ltd Exp 'Hida' Takayama→Nagoya, ~2h25 direct, 10 a day (hourly only ~11:30–16:30, 2h gaps outside), ¥5,610 unreserved / ¥6,140 reserved, + the 7-min walk from the inn/old town. ⚠ Snow-exposed — JR Central posts 大雪 advisories most Januaries, all-reserved Dec 25–Jan 5. Equal-time alternative when the line is under an advisory: the Nohi highway bus Takayama Nōhi BC→Meitetsu BC Nagoya, ~2h45, reserved."
      }
     ],
     "note": ""
@@ -25469,6 +25477,14 @@
       "transfers": 2,
       "estimated": false,
       "text": "Reverse of: JR Ltd Exp 'Hida' Takayama→Nagoya (~2h25; 10/day, hourly only ~11:30–16:30, 2h gaps outside), ~20-min cross-platform transfer to a Tōkaidō Shinkansen 'Nozomi' Nagoya→Shin-Osaka (~50 min, frequent), then the Midōsuji subway Shin-Osaka→Umeda/Namba (~5–10 min) + the walk to the hotel. Two changes, at Nagoya and Shin-Osaka. ⚠ the Takayama Line is snow-exposed — JR Central posts 大雪 advisories most Januaries, and Dec 25–Jan 5 is all-reserved; keep same-day slack. Equal-time alternative that dodges the exposure: the Nohi highway bus Takayama→Nagoya + the same Nozomi. Sources: japan-guide Takayama access; JR Central Tōkaidō/Takayama Line timetables."
+     },
+     {
+      "city": "Nagoya",
+      "hours": 2.75,
+      "time": "2h45",
+      "transfers": 0,
+      "estimated": false,
+      "text": "Reverse of: JR Ltd Exp 'Hida' Takayama→Nagoya, ~2h25 direct, 10 a day (hourly only ~11:30–16:30, 2h gaps outside), ¥5,610 unreserved / ¥6,140 reserved, + the 7-min walk from the inn/old town. ⚠ Snow-exposed — JR Central posts 大雪 advisories most Januaries, all-reserved Dec 25–Jan 5. Equal-time alternative when the line is under an advisory: the Nohi highway bus Takayama Nōhi BC→Meitetsu BC Nagoya, ~2h45, reserved."
      }
     ],
     "note": ""

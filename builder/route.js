@@ -265,7 +265,11 @@ function airportLeg(loc, code) {
     const fl = researchedDirect(apKey(A), lc); if (!fl || !fl.flight) return;
     cands.push({ h: t1.t[0] + fl.t[0], x: t1.t[1] + fl.t[1] + 1, flightH: fl.t[0], mode: "flight",
       source: `composed via ${AIRPORT[A].label}`, text: `${t1.text} Then ${fl.text}`, halves: [{ h: t1.t[0], x: t1.t[1], mode: t1.mode, what: `${short(loc)} → ${AIRPORT[A].label}` }, { h: fl.t[0], x: fl.t[1], mode: "flight", what: `${AIRPORT[A].label} → ${ap.label}` }] }); });
-  cands.sort((p, q) => p.h - q.h || p.x - q.x);
+  /* a composed flight is ranked with 1h30 of airport time on top (check-in, security, the walk out), so a 2h30 hop via
+   * Itami does not beat a 3h20 bullet train to Haneda (QA round 7); the printed time stays the researched one */
+  const FLIGHT_OVERHEAD_H = 1.5;
+  const rank = (c) => c.h + (c.mode === "flight" ? FLIGHT_OVERHEAD_H : 0);
+  cands.sort((p, q) => rank(p) - rank(q) || p.x - q.x);
   return cands[0] || { h: null, x: null, flightH: 0, mode: "—", source: "to confirm", text: "no airport leg in the tables", estimated: true };
 }
 /* "connects to Haneda": the tables hold the airport's own flight to HND */
@@ -333,7 +337,7 @@ function checks(stops, legs, t, opt) {
     if (p.unlisted) N(`${nm}: no Stage 2 night line — treating it as ${p.kind} (ideal ${range[0]}–${range[1]}).`);
     if (p.kind === "day-trip" && total > 0) N(`${nm} is a day-trip place on its card; ${total} night${total > 1 ? "s" : ""} there is the by-exception overnight.`);
     if (total < p.minimum) F(`${nm}: ${total} night${total === 1 ? "" : "s"} is under the card's minimum of ${p.minimum} — allowed because they asked; say once what it costs.`);
-    else if (total < range[0]) N(`${nm}: ${total} nights is under the ideal ${range[0]}–${range[1]}; it has room to absorb spare nights.`);
+    else if (total < range[0]) N(`${nm}: ${total} nights is under the ideal ${range[0] === range[1] ? range[0] : `${range[0]}–${range[1]}`}; it has room to absorb spare nights.`);
     if (total > range[1] + 1) V(`${nm}: ${total} nights is more than one over the top of its ideal ${range[0]}–${range[1]} — past the +1 ceiling unless they asked.`);
     else if (total > range[1]) N(`${nm}: ${total} nights sits at the +1 ceiling (ideal ${range[0]}–${range[1]}); say so.`);
     if (isBaseKind(p.kind) && visits.length > 1) {
@@ -365,6 +369,9 @@ function checks(stops, legs, t, opt) {
   }
   for (let i = 0; i < stops.length; i++) for (let j = 0; j < i - 1; j++) { const d = km(coord(stops[i].loc), coord(stops[j].loc));
     if (d !== null && d < 25 && stops[i].loc !== stops[j].loc) N(`${label(stops[i].loc)} (stop ${i + 1}) is next door to ${label(stops[j].loc)} (stop ${j + 1}) already left — check that is deliberate.`); }
+  /* more than seven places on one trip tires most couples whatever the travel figure says (QA round 7: nine places in
+   * eighteen nights passed every other check) — a flag, with the steer to merge two */
+  if (new Set(stops.map((s) => s.loc)).size > 7) F(`${new Set(stops.map((s) => s.loc)).size} different places on one trip — more than seven is a lot of packing and unpacking; say so, and name the two you would merge.`);
   if (t.unsourced) N(`per night is partial: ${t.unsourced} leg${t.unsourced > 1 ? "s are" : " is"} unsourced, so the figure is a floor.`);
   else if (t.perNight >= DENSITY_MAX) F(`${t.perNight} min of travel per night — ${DENSITY_MAX} minutes or more; say why${t.flightHours ? ` (${hm(t.flightHours)} of it is flying, counted at ${FLIGHT_CAP_H}h a leg)` : ""} and show a lighter order beside it.`);
   /* the arrival-day inn: a violation for a long-haul arrival nobody chose, a flag when they booked the
@@ -745,13 +752,15 @@ function whyNot(sp, d, o, choices, opt) {
  * option); an unavailable option that was asked for by name is an error. Returns { locs, cities, choices, unavailable[] } */
 function assembleLocs(sp, choices, sets, opt) {
   choices = Object.assign({}, choices);
-  const unavailable = [];
+  const unavailable = [], dropped = [];
   for (let pass = 0; pass < 6; pass++) {
     let changed = false;
     for (const d of decisionsOf(sp)) {
       const o = d.options[choices[d.key]], why = whyNot(sp, d, o, choices, opt);
       if (!why) continue;
-      if (sets && sets[d.key] != null) throw new Error(`${d.key}=${o.label} is not available here: ${why}`);
+      /* an answer given for a decision a later answer removed from the route (Amagase, then Beppu instead of Yufuin)
+       * is dropped with a note rather than an error, so answers can be given in the order they were asked (QA round 7) */
+      if (sets && sets[d.key] != null) { if (!(o.stops || []).length && !o.reverse) throw new Error(`${d.key}=${o.label} is not available here: ${why}`); dropped.push(`${d.key}=${o.label} no longer applies: ${why}`); delete sets[d.key]; }
       const fb = d.options.findIndex((x, j) => j !== choices[d.key] && !(x.stops || []).length && !x.reverse && !whyNot(sp, d, x, choices, opt));
       const next = fb >= 0 ? fb : d.options.findIndex((x, j) => j !== choices[d.key] && !whyNot(sp, d, x, choices, opt));
       if (next < 0) throw new Error(`${sp.id}/${d.key}: no option is available (${why})`);
@@ -896,7 +905,7 @@ function assembleSpine(sp, optIn) {
   const P = buildPlan(stops, defined({ in: apIn, out: apOut, inGiven: !!opt.in, repeat: opt.repeat, nights: fitNote ? undefined : opt.total }));
   if (!opt.in && P.opt.in) P.opt.inSpine = true; if (!opt.out && P.opt.out) P.opt.outSpine = true;
   if (fitNote) P.checks.unshift({ level: "flag", msg: bandMsg(sp, bandOf(sp, locs), total, fitNote) });
-  P.spine = sp; P.choices = choices; P.cities = cities; P.reversed = reversed; P.steps = steps; P.band = bandOf(sp, locs); P.unavailable = unavailable; P.fitNote = fitNote;
+  P.spine = sp; P.choices = choices; P.cities = cities; P.reversed = reversed; P.steps = steps; P.band = bandOf(sp, locs); P.unavailable = unavailable; P.droppedSets = dropped; P.fitNote = fitNote;
   P.flights = P.legs.filter((l) => l.flightH || l.mode === "flight").length;
   return P;
 }
@@ -913,7 +922,10 @@ const lineOf = (sp, chosenOpts) => chosenOpts.map((o) => o && o.line).filter(Boo
 /* a route run the other way round prints the option's reversed wording where the data carries one (label_rev / desc_rev,
  * 2026-09-12, QA round 6: "Tokyo first" and "fly home from Ōita" are mirror images on a reversed trip) */
 const optWord = (o, rev) => (rev && o.label_rev ? { label: o.label_rev, desc: o.desc_rev || o.desc } : o);
-const optCell = (d, i, chosen, rev) => d.options.map((o, j) => { const w = optWord(o, rev); return `${j === chosen ? `**${j + 1} ${w.label}**` : `${j + 1} ${w.label}`} — ${w.desc}`; }).join(" · ");
+const optCell = (d, i, chosen, rev, opt) => d.options.map((o, j) => { const w = optWord(o, rev && !d.options.some((x) => x.reverse));   // a "which way round" decision keeps its own wording
+  /* an END that names an airport the ticket does not use says so (QA round 7: "Fly home from Kansai" on a Haneda return) */
+  const tk = opt && opt.out && o.out && o.out !== opt.out && d.owner && d.owner.type === "end" ? ` (your ticket leaves from ${apLabel(opt.out)}, so the last leg runs there)` : "";
+  return `${j === chosen ? `**${j + 1} ${w.label}**` : `${j + 1} ${w.label}`} — ${w.desc}${tk}`; }).join(" · ");
 /* the decisions grouped in trip order (v2, 2026-09-13): a city, the attachment that belongs to it, the slots on the leg
  * to the next city, the next city, and the END last. Returns [{ where, kind, items[] }] — `where` is what the table's
  * first column and the explorer's row header print, `items` the decisions shown there. */
@@ -947,17 +959,19 @@ function groupsOf(sp, choices, cities, reversed) {
 }
 /* the decisions grouped in trip order, the options as the kit's data prints them, the chosen one in bold; a decision
  * with one option — one this assembly withheld the rest of, or one the spine only ever had one of — is never shown */
-function decisionsTable(sp, choices, unavailable, cities, reversed) {
+function decisionsTable(sp, choices, unavailable, cities, reversed, opt) {
   const L = ["| Where | Decision | Options (chosen in bold) |", "|---|---|---|"];
   let n = 0;
   for (const g of groupsOf(sp, choices, cities, reversed)) {
     let first = true;
     for (const d of g.items) {
       const na = (unavailable || []).filter((u) => u.key === d.key).map((u) => `${u.label}: not offered here — ${u.why}`);
-      if (d.options.length - na.length < 2) continue; n++;
+      /* a decision the assembly withholds is still printed, as one line with its reason, so the reader learns why
+       * Kirishima is not there rather than never hearing of it (QA round 7) */
+      if (d.options.length - na.length < 2) { if (na.length) L.push(`| ${first ? `**${g.where}**` : ""} | ${d.question} | _${na.join("; ")}_ |`); first = false; continue; } n++;
       /* a stop that switches on by itself at a length says so in the table, so the printed table and the engine agree (D5) */
       const on = d.on_at ? ` — ${d.options[0].label} is on by default from ${d.on_at} nights, and can be chosen on a shorter trip` : "";
-      L.push(`| ${first ? `**${g.where}**` : ""} | ${n} · ${KIND_LABEL[d.kind] || d.kind.toUpperCase()} · ${d.question}${on} \`${d.key}\` | ${optCell(d, 0, choices[d.key], reversed)}${na.length ? ` · _${na.join("; ")}_` : ""} |`);
+      L.push(`| ${first ? `**${g.where}**` : ""} | ${n} · ${KIND_LABEL[d.kind] || d.kind.toUpperCase()} · ${d.question}${on} \`${d.key}\` | ${optCell(d, 0, choices[d.key], reversed, opt)}${na.length ? ` · _${na.join("; ")}_` : ""} |`);
       first = false; }
   }
   return L.join("\n");
@@ -1082,7 +1096,9 @@ function cmdSpines(opt) {
   rows.forEach((r) => { r.noTicket = ticket && r.P.flights >= TICKET_FLIGHT_MAX;
     /* a ticket into the far end (FUK in, HND home) is honoured by the spine run the other way round (2026-09-12, QA round 6):
      * try --reverse before calling it the wrong trip, and say so in the row */
-    if (r.noTicket && !opt.repeat) { try { const R = assembleSpine(r.sp, { total: r.at, in: opt.in, out: opt.out, reverse: true }); if (R.flights < TICKET_FLIGHT_MAX) { r.P = R; r.noTicket = false; r.reversed = true; } } catch (e) { /* stays as it was */ } } });
+    if (ticket && !opt.repeat) { try { const R = assembleSpine(r.sp, { total: r.at, in: opt.in, out: opt.out, reverse: true });
+      const better = r.noTicket ? R.flights < TICKET_FLIGHT_MAX : (R.flights < r.P.flights || (R.flights === r.P.flights && R.totals.hours <= r.P.totals.hours - 0.5));
+      if (better) { r.P = R; r.noTicket = false; r.reversed = true; } } catch (e) { /* stays as it was */ } } });
   /* the For line is a ranking tier, not decoration (2026-09-13): a spine written for someone who has already
    * done Tokyo and Kyoto (`assumes: "repeat"`) sits under every first-trip spine on a first visit */
   const wrongTrip = (sp) => (!opt.repeat && sp.assumes === "repeat" ? 1 : 0);
@@ -1106,13 +1122,26 @@ function cmdSpines(opt) {
   return L.join("\n");
 }
 /* one spine (level 2): its decisions, the assembly, the timeline, the stop string, the checks; with --set, before and after */
+/* with a ticket, the spine is run the other way round when that means fewer flights, or the same flights and at least
+ * half an hour less travel (2026-09-12, QA round 7: a KIX-in / HND-home Kanazawa Loop was priced forwards with a
+ * Kansai→Haneda flight first, 13h, when the reversed trip is the natural one) */
+function betterReversed(sp, opt) {
+  if (!(opt.in || opt.out) || opt.reverse) return false;
+  try { const F = assembleSpine(sp, Object.assign({}, opt, { set: (opt.from || []).concat(opt.set || []), lenientNights: true }));
+    const R = assembleSpine(sp, Object.assign({}, opt, { set: (opt.from || []).concat(opt.set || []), lenientNights: true, reverse: true }));
+    return R.flights < F.flights || (R.flights === F.flights && R.totals.hours <= F.totals.hours - 0.5); } catch (e) { return false; }
+}
 function cmdSpine(ref, opt) {
   const sp = spineOf(ref);
+  const autoRev = betterReversed(sp, opt); if (autoRev) opt = Object.assign({}, opt, { reverse: true });
   /* Before is the route they actually had: `--before "<stop string>"` when they paste the one on screen,
    * otherwise the spine with the answers already given (`--from`), its night moves applied where they
    * still fit. It is never a route they never saw (2026-09-13). */
   const base = Object.assign({}, opt, { set: opt.from || [], lenientNights: true });
-  const before = opt.before ? buildPlan(parseStops(opt.before), defined({ in: opt.in, out: opt.out, repeat: opt.repeat })) : assembleSpine(sp, base);
+  /* a pasted Before inherits the spine's airports when no ticket was given, so it is priced the way the walk priced it
+   * (QA round 7: `--before` re-priced Stretched West out through Fukuoka instead of Hiroshima) */
+  const base0 = assembleSpine(sp, base);
+  const before = opt.before ? buildPlan(parseStops(opt.before), defined({ in: opt.in || base0.opt.in, out: opt.out || base0.opt.out, repeat: opt.repeat })) : base0;
   if (opt.before) { before.flights = before.legs.filter((l) => l.flightH || l.mode === "flight").length; before.steps = []; }
   const changed = (opt.set || []).length;
   const after = changed ? assembleSpine(sp, Object.assign({}, opt, { set: (opt.from || []).concat(opt.set) })) : assembleSpine(sp, Object.assign({}, opt, { set: opt.from || [] }));
@@ -1120,11 +1149,13 @@ function cmdSpine(ref, opt) {
   if (opt.json) return JSON.stringify({ spine: sp.id, before: moved ? before : undefined, after, choices: after.choices, stopString: stopString(after.stops) }, null, 1);
   const chosenOpts = decisionsOf(sp).map((d) => d.options[after.choices[d.key]]);
   const L = [spineHead(sp, after.band, opt), "", lineOf(sp, chosenOpts), ""];
+  if (autoRev) L.push(`Run the other way round for your ticket — in at ${apLabel(after.opt.in)}, home from ${apLabel(after.opt.out)} — which is what \`--reverse\` does; keep it on every run of this route.`, "");
   L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed), "");
   /* one of the two, never both (2026-09-13): a run that asked for a change and moved nothing says so, and
    * the night lines the defaults filled in are not dressed up as a change they made */
   const nothingMoved = changed && !moved;
-  if (after.steps.length && !nothingMoved) { L.push("What moved:", "", ...after.steps.map((s) => `- ${s}`), ""); }
+  const stepsAll = (after.steps || []).concat((after.droppedSets || []).map((x) => x));
+  if (stepsAll.length && !nothingMoved) { L.push("What moved:", "", ...stepsAll.map((s) => `- ${s}`), ""); }
   if (moved) {
     const what = before.choices ? decisionsOf(sp).filter((d) => before.choices[d.key] !== after.choices[d.key]).map((d) => `${d.key}: ${d.options[before.choices[d.key]].label} → ${d.options[after.choices[d.key]].label}`) : [];
     L.push(`**Before and after** — ${what.length ? what.join("; ") : "the same decisions, a different shape"}.`, "", "### Before", "", timelineTable(before, `${sp.name} before`, true), "", "### After", "", timelineTable(after, `${sp.name} after`, true), "");
@@ -1176,8 +1207,12 @@ function nearestStay(loc, skip) {
 }
 function cmdStays(q, opt) {
   if (!SHORTLIST) throw new Error("no shortlist.json beside route.js — the kit build writes it from the master inn table");
-  const G = stayGroup(q);
-  const loc = G ? G.locs[0] : resolveLoc(q), p = placeOf(loc);
+  const G0 = stayGroup(q);
+  const loc = G0 ? G0.locs[0] : resolveLoc(q), p = placeOf(loc);
+  /* a place whose stays are answered across several towns (the snow valleys behind `minakami`) prints the group
+   * shape too — the town as a column — never a single-town table with four rows from other valleys (QA round 7) */
+  const alias = !G0 && (Object.values(ALIAS).find((g) => g[0] === loc) || null);
+  const G = G0 || (alias && alias.length > 1 ? { name: `${label(loc)} and the valleys around it`, locs: alias, alias: true } : null);
   const budget = opt.budget ? norm(opt.budget) : null;
   if (budget && !BUDGET.inn[budget] && budget !== "splurge") throw new Error("--budget is modest, comfortable or splurge");
   const fits = (kind, band) => { if (!budget || budget === "splurge") return true; const lo = bandLow(band); return lo === null || lo <= BUDGET[kind][budget]; };
@@ -1213,7 +1248,7 @@ function cmdStays(q, opt) {
   const shownTxt = [nFit ? `${nFit} inn${nFit === 1 ? "" : "s"}` : "", nFitH ? `${nFitH} hotel${nFitH === 1 ? "" : "s"}` : ""].filter(Boolean).join(" and ") || "nothing";
   const above = [reach.length ? `${reach.length} inn${reach.length === 1 ? "" : "s"} above it, ${reach.length === 1 ? "an editor's pick" : "editor's picks"}` : "", topUp.length ? `${topUp.length} hotel${topUp.length === 1 ? "" : "s"} above it, the cheapest there ${topUp.length === 1 ? "is" : "are"}` : ""].filter(Boolean);
   const reachTxt = above.length ? `, then ${above.join(" and ")}` : "";
-  const L = [`*${where} (${G ? `${G.locs.length} towns, one table` : p.kind + (p.unlisted ? ", no card line" : "")}): ${shownTxt}${budget ? ` within a ${budget} budget` : ""}${opt.bath ? ", in-room bath only" : ""}, best first${reachTxt}${held ? ` — ${held} more on the shortlist here (--all for every one)` : ""}. The Why column is the kit's write-up, your source for a Why in your own words; the band is per night for two, dinner and breakfast included for an inn, room only for a hotel.*`, ""];
+  const L = [`*${where} (${G ? `${G.locs.length} towns, one table` : p.kind + (p.unlisted ? ", no card line" : "")}): ${shownTxt}${budget ? ` at the ${budget} end of the list (${budget === "splurge" ? "no cap" : `inn bands starting under $${BUDGET.inn[budget]}, hotels under $${BUDGET.hotel[budget]}`})` : ""}${opt.bath ? ", in-room bath only" : ""}, best first${reachTxt}${held ? ` — ${held} more on the shortlist here (--all for every one)` : ""}. The Why column is the kit's write-up, your source for a Why in your own words; the band is per night for two, dinner and breakfast included for an inn, room only for a hotel.*`, ""];
   /* the town is a column (2026-09-12): a RYOKAN option spans towns, and choosing the inn fixes the town and the leg */
   /* the table gives its width to Why (owner, 2026-09-12): the kind, the score and an editor's pick ride in the Stay cell,
    * Town is a column only when the option spans towns, a hotel city has no Bath column, and a mixed inn-and-hotel table
@@ -1225,7 +1260,7 @@ function cmdStays(q, opt) {
   const innRow = (i, town) => `| ${innStay(i)} | ${G ? `${town} | ` : ""}${i.band} | ${i.bath} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`;
   /* the Town cell of a group table carries the time from the group's gateway city (Stage 4: "the leg is visible beside the
    * name"), never a slug (QA round 6) */
-  const gate = G ? GROUP_GATE[norm(q).replace(/ /g, "-")] : null;
+  const gate = G ? (GROUP_GATE[norm(q).replace(/ /g, "-")] || Object.keys(STAY_GROUPS).map((k) => [k, STAY_GROUPS[k].locs]).filter(([k, ls]) => ls.includes(loc)).map(([k]) => GROUP_GATE[k])[0] || null) : null;
   const townOf = (i) => { const t = i.area || label(i.loc || loc); if (!gate || !i.loc) return t; const l = leg(gate, i.loc); return l && !l.estimated && l.h != null ? `${t} · from ${label(gate)} ${hm(l.h)}${l.x ? `, ${l.x} change${l.x > 1 ? "s" : ""}` : ", direct"}` : `${t} · from ${label(gate)}: to confirm`; };
   rowsI.filter((i) => !reachRows.includes(i)).forEach((i) => L.push(innRow(i, townOf(i))));
   rowsH.forEach((h) => { const isInn = /^inn\b/.test(String(h.kind || ""));

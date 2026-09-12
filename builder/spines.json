@@ -267,8 +267,8 @@
       "stops": [
        "tokyo"
       ],
-      "label_rev": "Tokyo at both ends",
-      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
+      "label_rev": "Tokyo at the close",
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
      }
     ]
    }
@@ -338,8 +338,8 @@
        "cities": [
         "tokyo"
        ],
-       "label_rev": "Tokyo at both ends",
-       "desc_rev": "Start in Tokyo, over the mountains to Kanazawa and back."
+       "label_rev": "Tokyo at the close",
+       "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
       }
      ]
     }
@@ -669,8 +669,8 @@
       "stops": [
        "tokyo"
       ],
-      "label_rev": "Tokyo at both ends",
-      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
+      "label_rev": "Tokyo at the close",
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
      }
     ]
    }
@@ -739,8 +739,8 @@
        "cities": [
         "tokyo"
        ],
-       "label_rev": "Tokyo at both ends",
-       "desc_rev": "Start in Tokyo, up to the north and Kanazawa, and back."
+       "label_rev": "Tokyo at the close",
+       "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
       }
      ]
     }
@@ -1012,8 +1012,8 @@
       "stops": [
        "tokyo"
       ],
-      "label_rev": "Tokyo at both ends",
-      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
+      "label_rev": "Tokyo at the close",
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
      }
     ]
    }
@@ -1205,8 +1205,8 @@
       "stops": [
        "tokyo"
       ],
-      "label_rev": "Tokyo at both ends",
-      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
+      "label_rev": "Tokyo at the close",
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
      }
     ]
    }
@@ -1265,9 +1265,7 @@
       {
        "label": "Nagasaki first",
        "desc": "Land at Nagasaki, finish in the hot-spring east, out through Ōita.",
-       "cities": [],
-       "label_rev": "Nagasaki last",
-       "desc_rev": "Land at Ōita, finish in Nagasaki, out through Nagasaki."
+       "cities": []
       },
       {
        "label": "The east first",
@@ -1286,9 +1284,7 @@
         "HND",
         "NRT"
        ],
-       "why_not": "a long-haul flight landing straight at Ōita would put the first night at a ryokan; with Tokyo first, or a booked flight into Kyushu, it lands with the afternoon to spare",
-       "label_rev": "The east last",
-       "desc_rev": "Land at Nagasaki, finish in the hot-spring east, out through Ōita."
+       "why_not": "a long-haul flight landing straight at Ōita would put the first night at a ryokan; with Tokyo first, or a booked flight into Kyushu, it lands with the afternoon to spare"
       }
      ]
     },
@@ -1453,8 +1449,8 @@
       "stops": [
        "tokyo"
       ],
-      "label_rev": "Tokyo at both ends",
-      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
+      "label_rev": "Tokyo at the close",
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
      }
     ]
    }
@@ -1797,8 +1793,8 @@
       "stops": [
        "tokyo"
       ],
-      "label_rev": "Tokyo at both ends",
-      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
+      "label_rev": "Tokyo at the close",
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
      }
     ]
    }
