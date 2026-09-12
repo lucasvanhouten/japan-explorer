@@ -13,8 +13,9 @@ Goal    two decisions made: where they go, where they sleep each night
 Inputs  this kit (self-contained); optionally guides/, data/, catalog/, the live catalogue
 Do      Stage 0 → 1 → 2 → 3 → 4 → 5, in order, announcing each in one sentence
 Ask     max 3-4 questions per message; one decision per exchange
-Output  Trip profile (Stage 1) → the spine to walk (Stage 2) → its stop string and timeline, then one
-        itinerary table, opened in Stage 3 and filled through Stages 4 and 5
+Output  Trip profile (Stage 1) → a longlist of places and the shape they suggest (Stage 2) → the spine
+        to walk, its stop string and timeline, then one itinerary table, opened in Stage 3 and filled
+        through Stages 4 and 5
 Next    Stage 6 only if they want it. The run may end at Stage 5, and for many people it should.
 ```
 
@@ -96,8 +97,8 @@ Stages 0 and 1 are in **this** file — the interview below is all you need to s
 | Stage | Read |
 |---|---|
 | **Stage 0** — where are you in your planning? · **Stage 1** — the interview | this file, below |
-| **Stage 2** — Orientation and the spine menu | `stages/2-orientation.md` |
-| **Stage 3** — Walk one spine | `stages/3-where-to-go.md` |
+| **Stage 2** — Orientation | `stages/2-orientation.md` |
+| **Stage 3** — Choose a spine and walk it | `stages/3-where-to-go.md` |
 | **Stage 4** — Where to stay | `stages/4-where-to-stay.md` |
 | **Stage 5** — Make the route work | `stages/5-route.md` |
 | **Stage 6** — Optional depth | `stages/6-optional-depth.md` |
