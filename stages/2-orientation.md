@@ -176,7 +176,7 @@ For a first trip these three are interchangeable: one hot-spring inn night withi
 - **nights:** ideal 3 · minimum 2 · add 1 for a hot-spring inn night on the Kaga coast
 - **places:**
   - **Kanazawa:** ideal 3 · minimum 2 · the city itself, and the region's base
-  - **The Kaga onsen towns (Yamashiro, Yamanaka):** ideal 1 · minimum 1 · inn town, a night on the way in or out
+  - **The Kaga onsen towns (Yamashiro, Yamanaka):** ideal 1–2 · minimum 1 · inn town, a night on the way in or out
   - **The Hokuriku inn towns (Eiheiji, Awara, Notojima, Sasazu):** ideal 1 · minimum 1 · inn town — a night each, reached from Kanazawa or on the way in from Kyoto
 - **base:** yes
 - **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)

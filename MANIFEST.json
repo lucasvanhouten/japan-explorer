@@ -1411,7 +1411,7 @@
   "planning/build-kit.js": "a49c012a14cc014eae7f5564325a77ce4bff48929c3b5648b9cfdc67c5911a40",
   "planning/kit-src/kit-hotels.json": "b43901a3d994f1e6373cb09e597c155ff94014e7358b0043a3c09766ceb8c8d7",
   "planning/kit-src/pinned-inns.json": "e8dc52506ecff5f9085cd0883fef3bc76fb01aa64e7c0aeec1314b44c92f90ff",
-  "planning/kit-src/places.json": "04983dd1809923a139b1cd94d2ef5880d418e40504001147024ddcb0afe5bb85",
+  "planning/kit-src/places.json": "a442cb7dad633abaf5e6e8c506414d9ac29bf920879c3916b9027107476c4bd6",
   "planning/kit-src/tools/spines.json": "d059a1dec8697812bb3b3c208ff32f43ad749c6bcdaa90610a43e270b41257f2",
   "planning/kit-src/tools/build-spines.js": "9bddba679379271301ebb536dc98ebe62beba64a14b76a7ac7b47bd25d9894e7",
   "planning/kit-src/companions/explorer/route-explorer.template.html": "6d98c638a460c7bc0b0dff3c7e1cb170216e35292a0063408751e48c4680e742",
@@ -1460,8 +1460,8 @@
    "bytes": 25948
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "0d5e744f54b74005918db8149d083aae70d980d47fe0f5e9ac32fd5851e2056c",
-   "bytes": 291740
+   "sha256": "c3d042ee59158ebd2cf34051c6d216eb4b8538d2cf41a68c43a4b592f9e13ef6",
+   "bytes": 291744
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1484,7 +1484,7 @@
    "bytes": 37435
   },
   "builder/places.json": {
-   "sha256": "df4fd1462d0d3329145eead6a20ac0a8e68a4db0dd32a3801d7778fc66ea15f8",
+   "sha256": "4916f0c2aa60d636e0c3e150dcca6c54b55df16692bcdfc845595457dcb5f5c3",
    "bytes": 32081
   },
   "builder/route-builder-logic.js": {
@@ -1668,7 +1668,7 @@
    "bytes": 9168
   },
   "guides/route-explorer-data.js": {
-   "sha256": "90acae50761a974f91a7b3a2ee37c33210f937bed0008ed33c652530b4ca45ef",
+   "sha256": "78851af58d9f1338c62b3beadff12b39ca2683292437d94d003e5f8487144d1b",
    "bytes": 88778
   },
   "guides/route-explorer.html": {
@@ -1700,8 +1700,8 @@
    "bytes": 20694
   },
   "stages/2-orientation.md": {
-   "sha256": "1835a45f39e2a8c2bf6bc0f326ddde9f3df492e705b3d070a582475c5706d122",
-   "bytes": 41388
+   "sha256": "44c3e149ee5901bd9ee97e21fefa4d570cb5e22876dc72133fc141f7bcad0489",
+   "bytes": 41392
   },
   "stages/3-where-to-go.md": {
    "sha256": "d1686b5722886f74b5625682ffbb6d474270cd04064eb8801cf6be46d1ab3e3b",
