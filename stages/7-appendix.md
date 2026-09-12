@@ -28,7 +28,7 @@ Fill this in Stage 1, show it, and update it whenever the plan shifts. Rendered 
 
 Every sequence, set of options and comparison is a table, and each stage has one header line; the one exception is a Stage 2 place card, two or three sentences in prose. The prose beside a table carries the pitch and the trade-offs; hours, prices, links and scores live in cells and never in a sentence. Nothing is set in a code fence; code formatting is for the engine's own names only (a spine id, a decision key, a stop string), never for prose.
 
-- **Stage 2, the spine menu** — `| Spine | For | Stops | Nights | Travel | Per night | Check-ins | Ryokan nights | Flights | In / out |`, one row per spine at its default assembly
+- **Stage 3, the spine menu** — `| Route | Who it's for | The trip | Nights | Travel | Ryokan nights | Flights | Fly in / home from |`, one row per spine at its default assembly
 - **Stage 3, a spine's decisions** — `| Where | Decision | Options (chosen in bold) |`, the rows grouped in trip order (a city, its attachment, the next leg's slots, the next city), the options and descriptions as spines.json prints them
 - **Stage 3, a timeline** — `| Stop | Nights | Onward |`, one row per stay, the arrival transfer first, the leg under each stop as time to five minutes and one mode word, the stop string beneath
 - **Stage 3, a change before and after, or two routes compared; Stage 5, orders compared** — `| Route | Stops | Nights | Travel | Per night | Check-ins | Ryokan nights | Flights | In / out |` (Stage 5 keeps `| Order | Hours | Per night | Changes | Check-ins | Inn / city nights | One-nighters |`), one row per route

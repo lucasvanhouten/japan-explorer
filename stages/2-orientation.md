@@ -65,7 +65,7 @@ Almost everything a first-timer considers sits on **Honshu**. Tokyo is on its Pa
 - **nights:** ideal 4–7 · minimum 3 · more if it is the only city
 - **repeat visit:** read the ideal as 3–4 · for someone who has done Tokyo before
 - **base:** yes
-- **spines:** `s1` The Classic (7–15 nights) · `s2` The Kanazawa Loop (9–16 nights) · `s3` Stretched West (12–19 nights) · `s4` Snow Country (9–16 nights) · `s5` Kyushu South & West (11–20 nights) · `s6` Kyushu South & East (11–19 nights) · `s7` Kyushu North & East (10–17 nights) · `s8` The Long Line (11–18 nights) · `s9` Hokkaido (8–12 nights)
+- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · Kyushu South & West (11–20 nights) · Kyushu South & East (11–19 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights) · Hokkaido (8–12 nights)
 <!-- /generated:card-tokyo -->
 - **season:** good year-round. Blossom (late March–early April) and autumn colour (late November) are prettiest and most crowded. High summer is punishing. January–February are cold, dry, bright, least crowded.
 - **pairs_with:** everything — the usual arrival and departure point.
@@ -82,7 +82,7 @@ Tokyo delivers more per night than anywhere here and is the least tiring stop: u
 <!-- generated:card-nikko -->
 - **nights:** ideal 1–2 · minimum 1 · one pairs the shrines with an inn night; a second is for the lake, the waterfall and the upper valley
 - **base:** inn town
-- **spines:** `s1` The Classic (7–15 nights) · `s2` The Kanazawa Loop (9–16 nights) · `s3` Stretched West (12–19 nights) · `s4` Snow Country (9–16 nights) · `s5` Kyushu South & West (11–20 nights) · `s6` Kyushu South & East (11–19 nights) · `s7` Kyushu North & East (10–17 nights) · `s8` The Long Line (11–18 nights) · `s9` Hokkaido (8–12 nights)
+- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · Kyushu South & West (11–20 nights) · Kyushu South & East (11–19 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights) · Hokkaido (8–12 nights)
 <!-- /generated:card-nikko -->
 - **season:** autumn colour among the country's best, and the roads jam accordingly. Winter is cold, clear and quiet, snow on the shrine roofs; the upper valley road can close in heavy snow.
 - **pairs_with:** Tokyo, directly. It chains poorly to anything west.
@@ -102,7 +102,7 @@ The strongest one-night trip out of Tokyo for shrines and mountains rather than 
   - **Kyoto:** ideal 4–6 · minimum 3 · the city itself
   - **The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi):** ideal 1 · minimum 1 · inn town — a night out of Kyoto or Osaka, each with its own line in the leg table
 - **base:** yes
-- **spines:** `s1` The Classic (7–15 nights) · `s2` The Kanazawa Loop (9–16 nights) · `s3` Stretched West (12–19 nights) · `s4` Snow Country (9–16 nights) · `s8` The Long Line (11–18 nights)
+- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
 <!-- /generated:card-kyoto -->
 - **season:** blossom and autumn colour are spectacular and mobbed. Winter is quiet, sometimes snow-dusted, and temples unapproachable in April are near-empty. Summer traps heat in the valley.
 - **pairs_with:** Osaka and Nara, both a short ride away. The western pivot: onward to Kanazawa, to Hiroshima, or to a hot-spring inn in the hills nearby.
@@ -119,7 +119,7 @@ Kyoto is for people who came for the old country and will work a little for it. 
 <!-- generated:card-osaka -->
 - **nights:** ideal 2–3 · minimum 2 · zero nights is fine as a day trip from Kyoto; a stay here is two nights or none, and they are for eating and going out
 - **base:** yes
-- **spines:** `s1` The Classic (7–15 nights) · `s2` The Kanazawa Loop (9–16 nights) · `s3` Stretched West (12–19 nights) · `s4` Snow Country (9–16 nights) · `s8` The Long Line (11–18 nights)
+- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
 <!-- /generated:card-osaka -->
 - **season:** year-round — an indoor-and-evening city, so weather matters less here than anywhere else on this list.
 - **pairs_with:** Kyoto and Nara; Hiroshima and the Inland Sea westward. Its airport makes it a natural first or last stop.
@@ -136,7 +136,7 @@ Osaka is for people who plan trips around dinner, and it has fewer must-see sigh
 <!-- generated:card-nara -->
 - **nights:** ideal 1 · minimum 0 · a half-day trip is the norm; an overnight after the day-trippers leave is high value
 - **base:** day trip
-- **spines:** `s1` The Classic (7–15 nights) · `s2` The Kanazawa Loop (9–16 nights) · `s3` Stretched West (12–19 nights) · `s4` Snow Country (9–16 nights) · `s8` The Long Line (11–18 nights)
+- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
 <!-- /generated:card-nara -->
 - **season:** year-round; autumn colour in the deer park is beautiful. Avoid the middle of a hot summer day: almost everything is outdoors.
 - **pairs_with:** Kyoto and Osaka, and a good soft first night for anyone landing at Kansai.
@@ -158,7 +158,7 @@ The crowds leave in late afternoon and the grounds at dusk and dawn are extraord
   - **Izu:** ideal 1–2 · minimum 1 · coast, seafood and the quietest of the three
   - **Kōshū and Yatsugatake:** ideal 1 · minimum 1 · inn town — the Yamanashi wine country and the highland behind it, an hour or two out of Tokyo
 - **base:** inn town
-- **spines:** `s1` The Classic (7–15 nights) · `s3` Stretched West (12–19 nights) · `s8` The Long Line (11–18 nights)
+- **spines:** The Classic (7–15 nights) · Stretched West (12–19 nights) · The Long Line (11–18 nights)
 <!-- /generated:card-hakone -->
 - **season:** winter is best for Fuji — cold dry mornings, clearest air, snow cap — though never guaranteed. Autumn colour around Hakone's lake is superb. Summer is hazy. Busy on Japanese weekends year-round.
 - **pairs_with:** Tokyo on one side, Kyoto on the other. Izu chains less neatly westward than Hakone does.
@@ -179,7 +179,7 @@ For a first trip these three are interchangeable: one hot-spring inn night withi
   - **The Kaga onsen towns (Yamashiro, Yamanaka):** ideal 1 · minimum 1 · inn town, a night on the way in or out
   - **The Hokuriku inn towns (Eiheiji, Awara, Notojima, Sasazu):** ideal 1 · minimum 1 · inn town — a night each, reached from Kanazawa or on the way in from Kyoto
 - **base:** yes
-- **spines:** `s2` The Kanazawa Loop (9–16 nights) · `s4` Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
 <!-- /generated:card-hokuriku -->
 - **season:** winter is the connoisseur's season — the garden under snow, and **snow crab** roughly November to March, which spikes inn prices and sells out early. It rains and snows a lot here; that is the character.
 - **pairs_with:** Takayama and the Alps inland, Kyoto down the coast, Tokyo by direct bullet train.
@@ -199,7 +199,7 @@ The best answer to "more history, fewer queues": a real historical city with exc
   - **Takayama:** ideal 2 · minimum 1 · the town and Shirakawa-gō; Gero, Matsumoto and the Kiso valley are its inn towns, a night each
   - **Nagoya:** ideal 0–1 · minimum 0 · the airport city for a route ending in the Alps; a night only before an early Centrair flight
 - **base:** yes
-- **spines:** `s2` The Kanazawa Loop (9–16 nights) · `s4` Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
 <!-- /generated:card-alps -->
 - **season:** winter for snow-buried farmhouses and steaming outdoor baths; autumn for colour; spring for the April festival. Mid-winter means real snow — slower roads, and check that anywhere remote is open.
 - **pairs_with:** Kanazawa over the mountains, Nagoya or Kyoto south — a Kanazawa–Takayama–Kyoto arc is one of the tidiest add-ons to the spine.
@@ -221,7 +221,7 @@ Takayama itself walks in an afternoon; two nights is for Shirakawa-gō and the p
   - **Tōhoku inn towns:** ideal 1 · minimum 1 · Kakunodate, Nyūtō and the rest, a night each on the way through; the kit's inn is at Kakunodate and Nyūtō's own are on the live catalogue
   - **Karuizawa (Miyota):** ideal 1 · minimum 1 · inn town — the highland resort an hour from Tokyo by bullet train
 - **base:** inn town (Sendai is a city base)
-- **spines:** `s2` The Kanazawa Loop (9–16 nights) · `s4` Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
 <!-- /generated:card-tohoku -->
 - **season:** snow country is a winter destination, mid-January to February peak. Tōhoku's blossom comes weeks after Tokyo's — useful for a late-April trip. Avoid early spring. Summer is pleasantly cool.
 - **pairs_with:** Tokyo, directly. It chains west toward Kanazawa with effort, and pairs with nothing southern in a fortnight.
@@ -244,7 +244,7 @@ For the traveller who said "hot springs" and meant it. The compressed version �
   - **Otaru:** ideal 0–1 · minimum 0 · day trip from Sapporo on the airport train
   - **Jōzankei:** ideal 1 · minimum 1 · onsen town an hour from Sapporo, in the hills
 - **base:** yes
-- **spines:** `s9` Hokkaido (8–12 nights)
+- **spines:** Hokkaido (8–12 nights)
 <!-- /generated:card-hokkaido -->
 - **season:** February for snow, and the Snow Festival's week falls in early February, so late February misses it; June to September for Japan's most comfortable summer. Avoid the shoulder months. Winter driving here is serious.
 - **pairs_with:** Tokyo as an out-and-back flight, and essentially nothing else in a fortnight.
@@ -268,7 +268,7 @@ On a first fortnight this is usually the wrong call: a flight each way and four 
   - **The coast east of Hiroshima (Onomichi, Tomonoura, Setoda):** ideal 1 · minimum 1 · inn town — a harbour night on the way west
   - **Kōchi (Shikoku):** ideal 1 · minimum 1 · inn town across the Inland Sea, a long day from Hiroshima or Okayama
 - **base:** yes
-- **spines:** `s3` Stretched West (12–19 nights) · `s8` The Long Line (11–18 nights)
+- **spines:** Stretched West (12–19 nights) · The Long Line (11–18 nights)
 <!-- /generated:card-inlandsea -->
 - **season:** year-round; the sea keeps winter mild. Check museum closing days on the art islands — several close Mondays.
 - **pairs_with:** Kyoto and Osaka directly along the bullet-train line, and onward to Kyushu on the same line.
@@ -301,7 +301,7 @@ It sits on the spine, so adding it to a Kyoto trip is a ride rather than a detou
   - **Karatsu:** ideal 1 · minimum 1 · inn town on the Saga coast, an hour from Fukuoka
   - **Iki and Yakushima islands:** ideal 1–2 · minimum 1 · inn town reached by a flight or a ferry; a night or two, never a connector
 - **base:** yes
-- **spines:** `s5` Kyushu South & West (11–20 nights) · `s6` Kyushu South & East (11–19 nights) · `s7` Kyushu North & East (10–17 nights) · `s8` The Long Line (11–18 nights)
+- **spines:** Kyushu South & West (11–20 nights) · Kyushu South & East (11–19 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights)
 <!-- /generated:card-kyushu -->
 - **season:** winter is excellent and under-appreciated — the mildest air of any region here, steam at its most dramatic, clear views, no crowds. Summer is hot, humid, typhoon-prone. In winter, the volcanic inland roads are the one place ice really matters.
 - **pairs_with:** the western end of the spine. In practice Kyushu is a self-contained trip, or one half of a trip whose other half is Tokyo. **Do not stitch it onto a full Honshu circuit; pick one landmass.**
@@ -310,7 +310,7 @@ It sits on the spine, so adding it to a Kyoto trip is a ride rather than a detou
 
 Nowhere in Japan is denser or better value for inns and volcanic landscape; the sensible shape is Tokyo plus Kyushu, one landmass. The card's area total is a first-visit guide rather than a cap: a longer Kyushu request is normal and buys stops rather than stretched cities.
 
-**The island reads as a loop, and the order matters more here than anywhere else in this kit.** Fukuoka is the north gate, Yufuin and Beppu sit east of it, Kurokawa and Aso are the volcanic centre, Kirishima and Kagoshima the southern end; Nagasaki and Unzen lie out west — **never directly from Kagoshima**: Nagasaki sits west, so reach it from Fukuoka or Kumamoto. Ride the arc once, and put the one-night inns on the legs between the cities. **Fukuoka, Kumamoto, Kagoshima and Nagasaki are the bases; Yufuin, Kurokawa, Kirishima, Amagase, Amakusa, Takachiho and Takeo Onsen are inn towns**, a night each on a leg, and Beppu is the onsen town seen from Yufuin. **The spine menu carries the island as four spines** — `s5`, `s6`, `s7` and `s8` — use one rather than building the Kyushu half from this card.
+**The island reads as a loop, and the order matters more here than anywhere else in this kit.** Fukuoka is the north gate, Yufuin and Beppu sit east of it, Kurokawa and Aso are the volcanic centre, Kirishima and Kagoshima the southern end; Nagasaki and Unzen lie out west — **never directly from Kagoshima**: Nagasaki sits west, so reach it from Fukuoka or Kumamoto. Ride the arc once, and put the one-night inns on the legs between the cities. **Fukuoka, Kumamoto, Kagoshima and Nagasaki are the bases; Yufuin, Kurokawa, Kirishima, Amagase, Amakusa, Takachiho and Takeo Onsen are inn towns**, a night each on a leg, and Beppu is the onsen town seen from Yufuin. **The spine menu carries the island as four routes** — Kyushu South & West, South & East, North & East, and The Long Line — use one rather than building the Kyushu half from this card.
 
 ---
 

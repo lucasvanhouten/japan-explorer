@@ -562,8 +562,14 @@ const legWord = (l) => (l.estimated ? "to confirm" : `${hm5(l.h)} ${modeWord(l.m
 
 function spineOf(ref) {
   if (!SPINES) throw new Error("no spines.json beside route.js — the spine commands need the kit build's copy");
-  const q = norm(ref).replace(/ /g, ""), hit = SPINES.find((s) => s.id === q || s.id === "s" + q || s.id === q.replace(/^spine/, "s"));
-  if (!hit) throw new Error(`unknown spine "${ref}" — one of ${SPINES.map((s) => s.id).join(", ")}`);
+  const q = norm(ref).replace(/ /g, ""), nq = norm(ref).replace(/[^a-z0-9 ]/g, " ").trim();
+  /* a spine is asked for by its name — the whole name, or any word of it four letters or longer that only one
+   * spine carries ("kanazawa", "classic", "hokkaido") — so the id never has to be shown to anyone (2026-09-12) */
+  const words = (s) => norm(s.name).replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter((w) => w.length >= 4);
+  const hit = SPINES.find((s) => s.id === q || s.id === "s" + q || s.id === q.replace(/^spine/, "s"))
+    || SPINES.find((s) => norm(s.name).replace(/[^a-z0-9 ]/g, " ").trim() === nq)
+    || (() => { const m = SPINES.filter((s) => nq.split(/\s+/).some((w) => w.length >= 4 && words(s).includes(w))); return m.length === 1 ? m[0] : null; })();
+  if (!hit) throw new Error(`unknown spine "${ref}" — one of ${SPINES.map((s) => `"${s.name}"`).join(", ")} (any single word of a name will do)`);
   return hit;
 }
 /* ── the decision model (v2, 2026-09-13): decisions belong to cities and legs ──
@@ -888,7 +894,7 @@ function assembleSpine(sp, optIn) {
  * assembly is read against when its Tokyo start was dropped. The timeline never repeats it. */
 function spineHead(sp, band) {
   const own = sp.band.join("–"), here = band ? band.join("–") : own;
-  return `**Spine ${sp.id} — ${sp.name}** · band ${own} nights${here !== own ? ` (${here} without Tokyo)` : ""} · ${sp.io}`;
+  return `**${sp.name}** · runs ${own} nights${here !== own ? ` (${here} without Tokyo)` : ""} · ${sp.io}`;
 }
 /* the one-liner follows the assembly: an option that changes what the trip is carries its own `line` */
 const lineOf = (sp, chosenOpts) => chosenOpts.map((o) => o && o.line).filter(Boolean).pop() || sp.line;
@@ -946,7 +952,7 @@ function decisionsTable(sp, choices, unavailable, cities, reversed) {
 function timelineTable(P, name, noBand) {
   const t = P.totals, o = P.opt, L = [];
   const band = P.band && !noBand ? ` · band ${P.band.join("–")}${t.nights < P.band[0] || t.nights > P.band[1] ? " (outside it)" : ""}` : "";
-  L.push(`**${name || (P.spine ? `${P.spine.id} · ${P.spine.name}` : chain(P.stops))}** · ${t.nights} nights · ${t.checkins} check-ins · ${hoursTxt5(t)} of travel · ${perNightTxt(t)}${P.flights ? ` · ${P.flights} flight${P.flights > 1 ? "s" : ""}` : ""} · in ${apLabel(o.in)}, out ${apLabel(o.out)}${band}`, "");
+  L.push(`**${name || (P.spine ? P.spine.name : chain(P.stops))}** · ${t.nights} nights · ${t.checkins} check-ins · ${hoursTxt5(t)} of travel · ${perNightTxt(t)}${P.flights ? ` · ${P.flights} flight${P.flights > 1 ? "s" : ""}` : ""} · in ${apLabel(o.in)}, out ${apLabel(o.out)}${band}`, "");
   L.push("| Stop | Nights | Onward |", "|---|---|---|");
   let li = 0;
   if (o.in) { const l = P.legs[li++]; L.push(`| in from ${AIRPORT[l.code].label} | — | ${legWord(l)} |`); }
@@ -1063,16 +1069,20 @@ function cmdSpines(opt) {
   const wrongTrip = (sp) => (!opt.repeat && sp.assumes === "repeat" ? 1 : 0);
   rows.sort((a, b) => (a.noTicket ? 1 : 0) - (b.noTicket ? 1 : 0) || (a.out ? 1 : 0) - (b.out ? 1 : 0) || wrongTrip(a.sp) - wrongTrip(b.sp)
     || b.hit.length - a.hit.length || rankOf(a.sp) - rankOf(b.sp) || a.sp.id.localeCompare(b.sp.id));
+  /* a spine marked `always: "first"` is offered on every first visit (2026-09-12: the Kanazawa Loop, over
+   * Snow Country in particular) — it sits in the top three whatever the draws, unless the length or the
+   * ticket rule it out */
+  if (!opt.repeat) rows.filter((r) => r.sp.always === "first" && !r.noTicket && !r.out).reverse().forEach((r) => { const i = rows.indexOf(r); if (i > 2) { rows.splice(i, 1); rows.splice(2, 0, r); } });
   if (opt.json) return JSON.stringify(rows.map(({ sp, P, hit, band, out }) => ({ id: sp.id, name: sp.name, blurb: sp.blurb, for: sp.for, band: sp.band, bandHere: band, outsideBand: out, draws: sp.draws, matched: hit, choices: P.choices, stops: P.stops, totals: P.totals, flights: P.flights, opt: P.opt, checks: P.checks, stopString: stopString(P.stops) })), null, 1);
-  const L = [`*The nine spines ${opt.nights ? `at ${opt.nights} nights` : "at their own shortest length (no night count was given \u2014 run `spines --nights N` at the profile\'s nights before showing a menu)"}${draws.length ? `, ranked for ${draws.join(", ")}` : ""}${opt.repeat ? ", repeat visit (straight into the region where the spine allows it, and the Tokyo nights read 3–4)" : ""}${opt.in || opt.out ? ` · ${opt.in ? `in ${apLabel(opt.in)}` : ""}${opt.in && opt.out ? ", " : ""}${opt.out ? `out ${apLabel(opt.out)}` : ""} (a booked ticket prices the last leg; it never removes a spine)` : ""}. The top two or three rows are the ones to offer. Per night counts each flight leg at ${FLIGHT_CAP_H}h at most; (≥${DENSITY_MAX}) is the flag. \`spine <id>\` prints any row with its decisions.*`, ""];
-  L.push("| Spine | For | Stops | Nights | Travel | Per night | Check-ins | Ryokan nights | Flights | In / out |", "|---|---|---|---|---|---|---|---|---|---|");
+  const L = [`*The nine routes ${opt.nights ? `at ${opt.nights} nights` : "at their own shortest length (no night count was given \u2014 run `spines --nights N` at the profile\'s nights before showing a menu)"}${draws.length ? `, ranked for ${draws.join(", ")}` : ""}${opt.repeat ? ", repeat visit (straight into the region where the route allows it, and the Tokyo nights read 3–4)" : ""}${opt.in || opt.out ? ` · ${opt.in ? `in ${apLabel(opt.in)}` : ""}${opt.in && opt.out ? ", " : ""}${opt.out ? `out ${apLabel(opt.out)}` : ""} (a booked ticket prices the last leg; it never removes a route)` : ""}. Offer the top two or three, by name; the rest is the roll call. Travel counts each flight leg at ${FLIGHT_CAP_H}h at most, and a route over ${DENSITY_MAX} minutes of travel a night says so. \`spine <name>\` walks one — \`spine kanazawa\`, \`spine classic\`.*`, ""];
+  L.push("| Route | Who it's for | The trip | Nights | Travel | Ryokan nights | Flights | Fly in / home from |", "|---|---|---|---|---|---|---|---|");
   rows.forEach(({ sp, P, hit, band, out, at, noTicket }) => { const t = P.totals;
-    const forCell = `${sp.for || "—"}${hit.length ? ` Answers ${hit.join(", ")}.` : ""}${out ? ` ${band[0]}–${band[1]} nights, so it is shown here at ${at}.` : ""}`;
+    const forCell = `${sp.for || "—"}${out ? ` Runs ${band[0]}–${band[1]} nights, so it is shown at ${at}.` : ""}`;
     const nt = "not with this ticket";
-    L.push(`| **${sp.id}** · ${sp.name} · ${sp.band.join("–")} | ${forCell} | ${chain(P.stops)} | ${t.nights} | ${noTicket ? nt : hoursTxt5(t)} | ${noTicket ? nt : `${perNightTxt(t).replace(" per night", "")}${t.perNight >= DENSITY_MAX && !t.unsourced ? " (≥60)" : ""}`} | ${t.checkins} | ${t.innNights} | ${P.flights} | ${apLabel(P.opt.in)} / ${apLabel(P.opt.out)} |`); });
-  if (rows.some((r) => r.noTicket)) L.push("", `*${rows.filter((r) => r.noTicket).map((r) => r.sp.id).join(", ")} would take ${TICKET_FLIGHT_MAX} domestic flights or more to honour that ticket, so no figure is printed for ${rows.filter((r) => r.noTicket).length === 1 ? "it" : "them"}: they are the wrong trip for this ticket, not a dearer version of it.*`);
+    L.push(`| **${sp.name}** · ${sp.band.join("–")} nights | ${forCell} | ${chain(P.stops)} | ${t.nights} | ${noTicket ? nt : `${hoursTxt5(t)}${t.perNight >= DENSITY_MAX && !t.unsourced ? ` (${perNightTxt(t)})` : ""}`} | ${t.innNights} | ${P.flights} | ${apLabel(P.opt.in)} / ${apLabel(P.opt.out)} |`); });
+  if (rows.some((r) => r.noTicket)) L.push("", `*${rows.filter((r) => r.noTicket).map((r) => r.sp.name).join(", ")} would take ${TICKET_FLIGHT_MAX} domestic flights or more to honour that ticket, so no figure is printed for ${rows.filter((r) => r.noTicket).length === 1 ? "it" : "them"}: ${rows.filter((r) => r.noTicket).length === 1 ? "it is" : "they are"} the wrong trip for this ticket, not a dearer version of it.*`);
   const flagged = rows.filter(({ P }) => P.checks.some((c) => c.level === "flag" || c.level === "violation"));
-  flagged.forEach(({ sp, P }) => P.checks.filter((c) => c.level !== "note").forEach((c) => L.push("", `- ${sp.id}: ${mark(c)} ${c.msg}`)));
+  flagged.forEach(({ sp, P }) => P.checks.filter((c) => c.level !== "note").forEach((c) => L.push("", `- ${sp.name}: ${mark(c)} ${c.msg}`)));
   if (broken.length) L.push("", `Could not be assembled: ${broken.join("; ")}.`);
   return L.join("\n");
 }
@@ -1091,14 +1101,14 @@ function cmdSpine(ref, opt) {
   if (opt.json) return JSON.stringify({ spine: sp.id, before: moved ? before : undefined, after, choices: after.choices, stopString: stopString(after.stops) }, null, 1);
   const chosenOpts = decisionsOf(sp).map((d) => d.options[after.choices[d.key]]);
   const L = [spineHead(sp, after.band), "", lineOf(sp, chosenOpts), ""];
-  L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine ${sp.id} --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed), "");
+  L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed), "");
   /* one of the two, never both (2026-09-13): a run that asked for a change and moved nothing says so, and
    * the night lines the defaults filled in are not dressed up as a change they made */
   const nothingMoved = changed && !moved;
   if (after.steps.length && !nothingMoved) { L.push("What moved:", "", ...after.steps.map((s) => `- ${s}`), ""); }
   if (moved) {
     const what = before.choices ? decisionsOf(sp).filter((d) => before.choices[d.key] !== after.choices[d.key]).map((d) => `${d.key}: ${d.options[before.choices[d.key]].label} → ${d.options[after.choices[d.key]].label}`) : [];
-    L.push(`**Before and after** — ${what.length ? what.join("; ") : "the same decisions, a different shape"}.`, "", "### Before", "", timelineTable(before, `${sp.id} before`, true), "", "### After", "", timelineTable(after, `${sp.id} after`, true), "");
+    L.push(`**Before and after** — ${what.length ? what.join("; ") : "the same decisions, a different shape"}.`, "", "### Before", "", timelineTable(before, `${sp.name} before`, true), "", "### After", "", timelineTable(after, `${sp.name} after`, true), "");
     L.push(...COMPARE_HEAD, compareRow(before, "before"), compareRow(after, "after"), "");
   } else { L.push(timelineTable(after, null, true), ""); if (nothingMoved) L.push("Nothing moved: that is the route it already was.", ""); }
   L.push("**Checks**", "", ...checksLines(after));
