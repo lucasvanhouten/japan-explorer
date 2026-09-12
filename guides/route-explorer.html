@@ -98,6 +98,10 @@ p.why{max-width:74ch;font-size:.84rem;color:var(--ink2);margin:.2rem 0 .9rem}p.w
 .row.ghost.dis:hover{border-color:var(--hair2);border-left-color:var(--hair2)}
 .row.ghost.dis .d{color:var(--ink)}
 
+.hintline{font-size:.76rem;color:var(--ink2);margin:-.35rem 0 .55rem}
+.prompt{font-size:.86rem;color:var(--ink2);margin:.2rem 0 1rem}.prompt b{color:var(--ink)}
+.row .gl{color:var(--dim);font-size:.72rem}
+
 /* ── map ───────────────────────────────────────────────── */
 svg.jm{width:100%;height:auto;display:block;background:var(--paper)}
 svg.jm .land{fill:var(--land);stroke:var(--landline);stroke-width:1;vector-effect:non-scaling-stroke}
@@ -227,13 +231,18 @@ const modeWord=m=>/flight/.test(m)?"flight":/car|taxi/.test(m)?"taxi":/ferry/.te
 
 /* ══════════════ the presentation: one route, the list and the map both the control ══════════════ */
 /* one short line per base city, from the place's role; every optional place speaks with its own spines.json desc */
-const DESC={tokyo:"where most trips start: neighbourhoods a train apart, food at every price",kyoto:"temples, gardens and the old capital, at its quietest in winter",osaka:"the eating-and-going-out city, a short ride from Kyoto",kanazawa:"castle town on the Japan Sea: the garden under snow, crab, gold leaf",takayama:"a preserved timber town in the mountains, between Kanazawa and Kyoto",hiroshima:"the inland-sea city: the peace park, the food, the ferry to the shrine island",sendai:"the north's one big city and the way into the Tōhoku hot-spring towns",kagoshima:"a southern port under an active volcano, hot springs in the hills behind",fukuoka:"Kyushu's food city: ramen, the river stalls, everything within a walk",nagasaki:"a harbour city built on hills, with a Chinese and Portuguese past",kumamoto:"the castle city under the Aso caldera",sapporo:"the northern island's city: snow, crab, ramen and a grid you can walk",niseko:"the ski town under Mount Yōtei: deep snow and mountain inns",echigoyuzawa:"the second snow-country valley: a bullet-train stop under the ski slopes",nyuto:"a remote mountain inn in the Akita cedar forest, all outdoor baths",kakunodate:"the samurai town of black timber walls and weeping cherries",yufuin:"the valley town under Mount Yufu: small inns and a mountain skyline"};
+/* the row has to name a place a first-timer can find on a map: where the engine's short key is a nickname, the row says
+ * the valley or the station instead (the command still sends the key) */
+const NAME={tanigawa:"Minakami / Tanigawa",echigoyuzawa:"Echigo-Yuzawa"};
+/* two places whose kind the decision's own wording gets wrong: a samurai town is not a ryokan */
+const KX={kakunodate:"stop"};
+const DESC={tokyo:"where most trips start: neighbourhoods a train apart, food at every price",kyoto:"temples, gardens and the old capital, at its quietest in winter",osaka:"the eating-and-going-out city, a short ride from Kyoto",kanazawa:"castle town on the Japan Sea: the garden under snow, crab, gold leaf",takayama:"a preserved timber town in the mountains, between Kanazawa and Kyoto",hiroshima:"the inland-sea city: the peace park, the food, the ferry to the shrine island",sendai:"the north's one big city and the way into the Tōhoku hot-spring towns",kagoshima:"a southern port under an active volcano, hot springs in the hills behind",fukuoka:"Kyushu's food city: ramen, the river stalls, everything within a walk",nagasaki:"a harbour city built on hills, with a Chinese and Portuguese past",kumamoto:"the castle city under the Aso caldera",sapporo:"the northern island's city: snow, crab, ramen and a grid you can walk",niseko:"the ski town under Mount Yōtei: deep snow and mountain ryokan",echigoyuzawa:"the second snow-country valley: a bullet-train stop under the ski slopes",nyuto:"a remote mountain ryokan in the Akita cedar forest, all outdoor baths",kakunodate:"the samurai town of black timber walls and weeping cherries",yufuin:"the valley town under Mount Yufu: small ryokan and a mountain skyline"};
 const APN={HND:"Tokyo Haneda (HND)",NRT:"Tokyo Narita (NRT)",KIX:"Osaka Kansai (KIX)",ITM:"Osaka Itami (ITM)",FUK:"Fukuoka (FUK)",NGS:"Nagasaki (NGS)",HIJ:"Hiroshima (HIJ)",KOJ:"Kagoshima (KOJ)",KMJ:"Kumamoto (KMJ)",OIT:"Ōita (OIT)",KMQ:"Komatsu (KMQ)",NGO:"Nagoya Centrair (NGO)",CTS:"Sapporo New Chitose (CTS)"};
 const apName=c=>APN[c]||(c&&c!=="—"?c:"to confirm");
-const nm=l=>C[l]||l;
+const nm=l=>NAME[l]||C[l]||l;
 const KINDTAG={city:"CITY",inn:"RYOKAN",stop:"TOWN"};
 /* CITY / RYOKAN / TOWN — the kind tag is the place's role, not the decision's wording */
-function kindOf(sp,loc){if(CITY.has(loc))return "city";
+function kindOf(sp,loc){if(CITY.has(loc))return "city";if(KX[loc])return KX[loc];
  const d=decs(sp).find(x=>x.options.some(o=>(o.stops||[]).concat(o.cities||[]).includes(loc)));
  return d&&(d.kind==="inn"||d.kind==="end")?"inn":"stop";}
 const cls=k=>k==="city"?"c":k==="inn"?"i":"s";
@@ -258,24 +267,63 @@ const optFor=(d,set,add)=>{let j=d.options.findIndex(o=>sameSet(o.cities||[],[..
  if(j<0&&add)j=d.options.findIndex(o=>sameSet(o.cities||[],[add]));return j;};
 const emptyEnd=d=>d.options.findIndex(o=>!(o.stops||[]).length);
 
+/* ---------- the recommended version lands on the settled nights ----------
+ * the engine's own counts come out of stopsOf; the difference to the target is then spread over the flexible city rows
+ * (the BASE places), the widest usual range first, never past a row's ceiling nor under its floor. The steppers the
+ * reader presses sit on top of that, so a nudge still moves the total. What the cities cannot absorb is reported. */
+function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.loc]||0)+1;});
+ const rows=st.map(s=>Object.assign({},s));
+ const q=l=>NIGHTS[l]||[1,1,2,1,1];
+ /* two passes: the usual range first, then out to the row's own floor and ceiling if the target still is not met */
+ const room=(r,hard)=>hard?{lo:cnt[r.loc]>1?1:Math.max(1,q(r.loc)[1]),hi:Math.max(r.def,q(r.loc)[2])}
+  :{lo:Math.min(r.def,bandOf(r.loc)[0]),hi:Math.max(r.def,bandOf(r.loc)[1])};
+ const wide=r=>{const v=q(r.loc);return (v[4]==null?v[2]:v[4])-(v[3]==null?v[0]:v[3]);};
+ /* the spread is over the defaults alone, so a stepper the reader presses still moves the total by exactly that much */
+ const pool=rows.filter(r=>BASE.has(r.loc))
+  .sort((a,b)=>wide(b)-wide(a)||rows.indexOf(a)-rows.indexOf(b));
+ let diff=target-rows.reduce((a,r)=>a+r.def,0);
+ [false,true].forEach(hard=>{
+  for(let guard=0;diff!==0&&guard<120;guard++){let moved=false;
+   for(const r of pool){if(diff===0)break;const rm=room(r,hard);
+    if(diff>0&&r.def<rm.hi){r.def++;diff--;moved=true;}
+    else if(diff<0&&r.def>rm.lo){r.def--;diff++;moved=true;}}
+   if(!moved)break;}});
+ rows.forEach(r=>{r.n=nightsOv[r.key]!=null?nightsOv[r.key]:r.def;});
+ rows.short=diff;
+ rows.nudge=diff===0||!pool.length?null
+  :nm(pool.slice().sort((a,b)=>diff>0?(stepMax(b.loc)-b.def)-(stepMax(a.loc)-a.def):(b.def-a.def))[0].loc);
+ return rows;}
+
 /* ---------- the settled facts live in the URL hash ---------- */
 const slugOf=sp=>sp.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
 const words=sp=>slugOf(sp).split("-");
+/* the route name as a slug (the-long-line), or the id. A bare single word only counts when exactly one route's name
+ * carries it — "south" is two routes, so the page asks which rather than guessing */
 function findSpine(q){if(!q)return null;const s=String(q).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");if(!s)return null;
- return spines.find(x=>x.id===s)||spines.find(x=>slugOf(x)===s)||spines.find(x=>words(x).includes(s))||spines.find(x=>slugOf(x).indexOf(s)>=0)||null;}
+ const exact=spines.find(x=>x.id===s)||spines.find(x=>slugOf(x)===s);if(exact)return exact;
+ const hits=spines.filter(x=>words(x).includes(s)||slugOf(x).indexOf(s)>=0);
+ return hits.length===1?hits[0]:null;}
 const HKEYS=["spine","nights","in","out","start","reverse"];
 function hashParams(){const o={};location.hash.replace(/^#/,"").split("&").forEach(kv=>{if(!kv)return;const i=kv.indexOf("=");
  const k=decodeURIComponent(i<0?kv:kv.slice(0,i)).toLowerCase(),v=decodeURIComponent((i<0?"":kv.slice(i+1)).replace(/\+/g," "));if(k)o[k]=v;});return o;}
 const hashStr=p=>HKEYS.filter(k=>p[k]!=null&&p[k]!=="").map(k=>k+"="+encodeURIComponent(p[k])).join("&");
-let cur=spines[0],target=spines[0].band[0];
+let cur=spines[0],target=spines[0].band[0],ask=null;
+/* every render reads the hash again, so a fresh link overrides whatever the page was holding: the nights, the start, the
+ * direction and the two airports all come from it when it carries them */
 function readHash(){const p=hashParams();
- cur=findSpine(p.spine)||spines[0];
+ const found=findSpine(p.spine);ask=p.spine&&!found?p.spine:null;
+ cur=found||(ask?null:spines[0]);
+ if(!cur)return p;
  const n=parseInt(p.nights,10);target=n>0?n:cur.band[0];
- /* a booked ticket picks the option that declares it — only when the route does not already land there */
+ /* a booked ticket picks the option that declares it; if the route's own airport is the one booked, any decision that
+  * moved it goes back to its default instead */
  const want={in:(p.in||"").toUpperCase(),out:(p.out||"").toUpperCase()};
  ["in","out"].forEach(side=>{const code=want[side];if(!code)return;
   const now=airportsOf(cur,stopsOf(cur))[side==="in"?0:1];if(now===code)return;
-  for(const d of decs(cur)){const j=d.options.findIndex(o=>o[side]===code);if(j>=0){sel[cur.id+"/"+d.key]=j;break;}}});
+  for(const d of decs(cur)){const j=d.options.findIndex(o=>o[side]===code);if(j>=0){sel[cur.id+"/"+d.key]=j;return;}}
+  if(code!==(cur[side]||"").toUpperCase())return;
+  for(const d of decs(cur)){const o=d.options[choicesOf(cur)[d.key]];
+   if(o&&o[side]&&o[side]!==code)sel[cur.id+"/"+d.key]=defOf(d);}});
  if(p.start!=null&&p.start!==""){const d=startDec(cur);if(d){const v=p.start.toLowerCase();let j=parseInt(v,10);
   if(!(j>=0&&j<d.options.length))j=d.options.findIndex(o=>o.label.toLowerCase().indexOf(v)>=0);
   if(j>=0)sel[cur.id+"/"+d.key]=j;}}
@@ -291,8 +339,18 @@ function setHash(patch){const p=hashParams();Object.assign(p,patch);const s=hash
 function delIdx(long,short){const del=[];let j=0;
  for(let i=0;i<long.length;i++){if(j<short.length&&long[i]===short[j])j++;else del.push(i);}
  return j===short.length?del:null;}
+/* why an option is not offered, said the way a first-timer would say it — re-read from the route as it stands on every
+ * render, never cached. The model's own refusal is the authority; this only chooses the words. Where the engine keys an
+ * attachment to a spine city and the route merely passes through that city, the row says exactly that. */
+function friendly(sp,d,j,R){const raw=R.na[d.key+"/"+j];if(!raw)return null;const o=d.options[j]||{};
+ if(o.why_not)return raw;
+ if(o.needCity&&!o.needCity.some(c=>R.cities.includes(c))){const on=o.needCity.find(c=>R.locs.includes(c));
+  return on?`hangs off ${nm(on)} as a main stop; this route only passes through it`:`needs ${nm(o.needCity[0])} on the route`;}
+ if(o.needLeg&&!R.cities.some((c,i)=>i<R.cities.length-1&&legJoins(o.needLeg,c,R.cities[i+1],R.reversed)))
+  return `needs ${nm(o.needLeg.from[0])} before ${nm(o.needLeg.to[0])} on the route`;
+ return raw;}
 function trip(sp){
- const R=resolve(sp),st=stopsOf(sp),cl=R.cities,ds=decs(sp);
+ const R=resolve(sp),st=fit(sp),cl=R.cities,ds=decs(sp);
  const count={},firstAt={};st.forEach((s,i)=>{count[s.loc]=(count[s.loc]||0)+1;if(firstAt[s.loc]==null)firstAt[s.loc]=i;});
  /* where each spine city sits in the timeline */
  const cityPos=[];{let p=0;st.forEach((s,i)=>{if(p<cl.length&&s.loc===cl[p]){cityPos[p]=i;p++;}});}
@@ -310,8 +368,9 @@ function trip(sp){
  /* the option that is currently the reason a stop is there — for its description */
  const srcOf={};ds.forEach(d=>{const o=d.options[R.ch[d.key]];if(!o)return;
   (o.stops||[]).concat(o.cities||[]).forEach((l,k)=>{if(srcOf[l]==null)srcOf[l]={d,o,lead:k===0};});});
- /* the spine's own recommendation: the default Yes, or the default city option */
- const rec=new Set();ds.forEach(d=>{if(inBar(d)||R.ch[d.key]!==defOf(d))return;const o=d.options[R.ch[d.key]]||{};
+ /* the spine's own recommendation: the default Yes, or the default city option. Read off the default option itself, not
+  * the current one, so Kyoto keeps its star when Osaka is added alongside it */
+ const rec=new Set();ds.forEach(d=>{if(inBar(d))return;const o=d.options[defOf(d)]||{};
   (o.stops||[]).concat(o.cities||[]).forEach(l=>rec.add(l));});
 
  /* ── the base list: airport line, rows, leg lines, airport line ── */
@@ -324,10 +383,17 @@ function trip(sp){
  /* ── the ghosts: every place a decision of this spine could add, where it would fall ── */
  const ghosts=[],addFor={},dimFor={};
  /* the nights a ghost would add — a second visit to a city it is already on takes the split count, not a full stay */
- const ghostOf=(d,j,locs,reason)=>{const nb=l=>firstAt[l]!=null?(BASE.has(l)?2:1):(NIGHTS[l]||[1])[0];
+ const ghostOf=(d,j,locs,reason,gone)=>{const nb=l=>firstAt[l]!=null?(BASE.has(l)?2:1):(NIGHTS[l]||[1])[0];
+  const swap=!reason&&gone&&gone.length?gone:null;
+  const od=(d.options[j]||{}).desc||"";
+  /* an either/or: the sibling it replaces is said first, and whatever travels with that sibling is named */
+  let desc=reason||od;
+  if(swap){const lead=nm(swap[0]),rest=swap.slice(1).map(nm);
+   desc="instead of "+lead+(rest.length?" — "+(rest.length<2?rest[0]+" goes":rest.slice(0,-1).join(", ")+" and "+rest[rest.length-1]+" go")+" with it":"")+(od?". "+od:"");}
   const g={t:"ghost",locs,name:locs.length<2?nm(locs[0]):locs.slice(0,-1).map(nm).join(", ")+" and "+nm(locs[locs.length-1]),kind:kindOf(sp,locs[0]),
-   n:locs.reduce((a,l)=>a+nb(l),0),desc:reason||(d.options[j]||{}).desc||"",rec:j===defOf(d),dis:!!reason,k:d.key,j};
-  locs.forEach(l=>{if(reason){if(dimFor[l]==null)dimFor[l]=reason;}else if(addFor[l]==null)addFor[l]={k:d.key,j};});
+   parts:locs.map(l=>({n:nm(l),k:kindOf(sp,l)})),swap:!!swap,
+   n:locs.reduce((a,l)=>a+nb(l),0),desc,rec:j===defOf(d),dis:!!reason,k:d.key,j};
+  locs.forEach(l=>{if(reason){if(dimFor[l]==null)dimFor[l]=reason;}else if(addFor[l]==null)addFor[l]={k:d.key,j,swap:!!swap};});
   return g;};
  const slotPos=d=>{if(d.owner.type==="leg"){
    for(let p=0;p<cl.length-1;p++){if(!legJoins(d.owner,cl[p],cl[p+1],R.reversed))continue;
@@ -340,16 +406,22 @@ function trip(sp){
  const swPos=(d,set)=>{let best=-1;[...set].forEach(c=>{if(firstAt[c]!=null&&firstAt[c]>best)best=firstAt[c];});
   if(best>=0)return rowAt(best)+1;const p=cl.findIndex(c=>(d.options[R.ch[d.key]]||{cities:[]}).cities.includes(c));
   return p>0&&cityPos[p-1]!=null?rowAt(cityPos[p-1])+1:1;};
+ /* what a choice would take off the trip: ask the assembler, the same way the Remove buttons do */
+ const goneIf=(d,j)=>{const t=Object.assign({},R.ch);t[d.key]=j;const nl=new Set(assembleOnce(sp,t).locs);
+  return R.locs.filter(l=>!nl.has(l));};
  ds.forEach(d=>{if(inBar(d))return;
   if(isSlot(d)){if(R.ch[d.key]===0)return;const o=d.options[0];if(!(o.stops||[]).length)return;
-   ghosts.push({p:slotPos(d),g:ghostOf(d,0,o.stops,R.na[d.key+"/0"]||null)});}
+   ghosts.push({p:slotPos(d),r:0,g:ghostOf(d,0,o.stops,friendly(sp,d,0,R))});}
   else if(isCitySw(d)){const set=new Set((d.options[R.ch[d.key]]||{}).cities||[]),seen=new Set();
    d.options.forEach(o=>(o.cities||[]).forEach(c=>{if(set.has(c)||seen.has(c))return;seen.add(c);
     const t=new Set(set);t.add(c);const j=optFor(d,t,c);if(j<0)return;
-    const reason=R.na[d.key+"/"+j]||null;if(reason&&firstAt[c]!=null)return;  /* a refused city already on the trip says nothing */
-    ghosts.push({p:swPos(d,set),g:ghostOf(d,j,[c],reason)});}));}
+    const reason=friendly(sp,d,j,R);if(reason&&firstAt[c]!=null)return;  /* a refused city already on the trip says nothing */
+    /* the option may not keep the city that is there now — then this is a swap, and the stops that leave with it are named */
+    const keeps=[...set].every(x=>((d.options[j]||{}).cities||[]).includes(x));
+    const gone=reason||keeps?null:goneIf(d,j).sort((a,b)=>(set.has(b)?1:0)-(set.has(a)?1:0));
+    ghosts.push({p:swPos(d,set),r:1,g:ghostOf(d,j,[c],reason,gone)});}));}
   else if(isEnd(d)){d.options.forEach((o,j)=>{if(j===R.ch[d.key]||!(o.stops||[]).length)return;
-   ghosts.push({p:endPos,g:ghostOf(d,j,o.stops,R.na[d.key+"/"+j]||null)});});}});
+   ghosts.push({p:endPos,r:2,g:ghostOf(d,j,o.stops,friendly(sp,d,j,R))});});}});
  /* ── the two figures ── */
  const [apIn,apOut]=airportsOf(sp,st);
  const lIn=st.length&&APLEG[st[0].loc+">"+apIn],lOut=st.length&&APLEG[st[st.length-1].loc+">"+apOut];
@@ -359,7 +431,9 @@ function trip(sp){
  return {R,st,cl,ds,count,firstAt,owner,ownFirst,srcOf,rec,items,ghosts,addFor,dimFor,apIn,apOut,lIn,lOut,mins,unk,total};}
 
 /* ---------- the rows ---------- */
-const bandOf=loc=>{const r=NIGHTS[loc]||[1,1,2,1,1];return [r[3]==null?r[0]:r[3],r[4]==null?r[2]:r[4]];};
+const bandOf=loc=>{const r=NIGHTS[loc]||[1,1,2,1,1];return [Math.max(1,r[3]==null?r[0]:r[3]),Math.max(1,r[4]==null?r[2]:r[4])];};
+/* one night either way is a number, not a range: "usually 3", never "usually 3–3" */
+const bandText=loc=>{const [lo,hi]=bandOf(loc);return "usually "+(lo===hi?lo:lo+"–"+hi);};
 const stepMax=loc=>bandOf(loc)[1]+2;
 function nightsCtl(loc,key,n,warn){const [lo,hi]=bandOf(loc),mx=hi+2;
  return `<span class="nn"><button data-nk="${esc(key)}" data-d="-1"${n<=1?" disabled":""} aria-label="One night fewer at ${esc(nm(loc))}">−</button>`
@@ -372,27 +446,37 @@ function rowHtml(T,sp,i){const s=T.st[i],loc=s.loc,k=kindOf(sp,loc),own=T.owner[
  const off=T.count[loc]===1&&(s.n<lo||s.n>hi);
  const src=T.srcOf[loc];
  let d1;
- if(rep)d1=src&&(src.o.stops||[]).concat(src.o.cities||[]).includes(loc)&&own?src.o.desc||"":`back in ${nm(loc)}, the same stay`;
+ if(rep){const oo=own?own.d.options[T.R.ch[own.d.key]]:null;
+  d1=oo&&(oo.stops||[]).concat(oo.cities||[]).includes(loc)&&oo.desc?oo.desc:`back in ${nm(loc)}, the same stay`;}
  else d1=DESC[loc]||(src&&src.lead?src.o.desc||"":"");
- const canRm=own&&T.ownFirst[own.d.key+"/"+own.j]===i;
- const act=canRm?`<button class="act rm" data-k="${esc(own.d.key)}" data-j="${own.j}">Remove</button>`
-  :(own||rep?"":`<span class="fixed">fixed</span>`);
- const rk=off?`<span class="rk range">usually ${lo}–${hi}</span>`:`<span class="rk">${T.rec.has(loc)&&!rep?"recommended":""}</span>`;
+ /* every solid row carries an action: the row a decision put there can be removed — from any of the places one decision
+  * brought, since they come and go together — and a city the spine cannot drop reads "fixed" */
+ let act=`<span class="fixed">fixed</span>`;
+ if(own){const gone=[...new Set(T.owner.map((o,ix)=>o&&o.d.key===own.d.key&&o.j===own.j?T.st[ix].loc:null)
+   .filter(l=>l&&T.count[l]===1))].map(nm);
+  const what=gone.length<2?gone[0]||nm(loc):gone.slice(0,-1).join(", ")+" and "+gone[gone.length-1];
+  act=`<button class="act rm" data-k="${esc(own.d.key)}" data-j="${own.j}" title="Takes ${esc(what)} off the trip">Remove</button>`;}
+ const rk=off?`<span class="rk range">${bandText(loc)}</span>`:`<span class="rk">${T.rec.has(loc)&&!rep?"recommended":""}</span>`;
  return `<div class="row ${cls(k)}"><span class="no">${String(i+1).padStart(2,"0")}</span>`
  +`<span class="nm"><span class="nmt">${esc(nm(loc))}</span><span class="kindtag">${KINDTAG[k]}</span>`
  +`<span class="d">${esc(d1)}</span></span>${rk}${nightsCtl(loc,s.key,s.n,off)}<span class="ax">${act}</span></div>`;}
 function ghostHtml(g,no){
+ /* a ghost that brings more than one place names each of them with its own kind */
+ const parts=(g.parts||[{n:g.name,k:g.kind}]).map(p=>`<span class="nmt">${esc(p.n)}</span><span class="kindtag">${KINDTAG[p.k]}</span>`).join(`<span class="gl">·</span>`);
+ const word=g.swap?"Swap":"Add";
  return `<div class="row ghost ${cls(g.kind)}${g.dis?" dis":""}"`
- +(g.dis?` title="${esc(g.desc)}"`:` role="button" tabindex="0" data-k="${esc(g.k)}" data-j="${g.j}" aria-label="Add ${esc(g.name)}"`)
- +`><span class="no">+</span><span class="nm"><span class="nmt">${esc(g.name)}</span><span class="kindtag">${KINDTAG[g.kind]}</span>`
+ +(g.dis?` title="${esc(g.desc)}"`:` role="button" tabindex="0" data-k="${esc(g.k)}" data-j="${g.j}" aria-label="${word} ${esc(g.name)}"`)
+ +`><span class="no">${g.swap?"⇄":"+"}</span><span class="nm">${parts}`
  +`<span class="d">${esc(g.desc)}</span></span><span class="rk">${g.rec&&!g.dis?"recommended":""}</span>`
- +ghostCtl(g.n)+`<span class="ax">${g.dis?"":`<span class="act add" aria-hidden="true">Add</span>`}</span></div>`;}
+ +ghostCtl(g.n)+`<span class="ax">${g.dis?"":`<span class="act add" aria-hidden="true">${word}</span>`}</span></div>`;}
 function legHtml(a,b){const L=LEG[a+">"+b];if(!L)return `<div class="legrow q"><b>to confirm</b> no researched leg</div>`;
  const w=modeWord(L[2]);return `<div class="legrow${w==="flight"?" f":""}"><b>${hmS(L[0])}</b> ${w}</div>`;}
 function apHtml(dir,code,L){const t=L?`<b>${hmS(L[0])}</b> ${modeWord(L[2])}`:"<b>to confirm</b>";
  return dir==="in"?`<div class="legrow"><span class="ap">✈ arrive ${esc(apName(code))}</span> · ${t}</div>`
   :`<div class="legrow"><span class="ap">depart ${esc(apName(code))} ✈</span> · ${t}</div>`;}
-function itinHtml(T,sp){const q={};T.ghosts.forEach(x=>{(q[x.p]=q[x.p]||[]).push(x.g);});
+function itinHtml(T,sp){const q={};
+ /* inside one position: the place attached to the city just above, then the city switches, then the end */
+ T.ghosts.map((x,i)=>[x,i]).sort((a,b)=>a[0].p-b[0].p||a[0].r-b[0].r||a[1]-b[1]).forEach(x=>{(q[x[0].p]=q[x[0].p]||[]).push(x[0].g);});
  let out="";
  for(let p=0;p<=T.items.length;p++){
   (q[p]||[]).forEach(g=>{out+=ghostHtml(g);});
@@ -405,8 +489,11 @@ function itinHtml(T,sp){const q={};T.ghosts.forEach(x=>{(q[x.p]=q[x.p]||[]).push
 /* ---------- the summary: the nights against the target, and the travel ---------- */
 function sumHtml(T){const over=T.total-target,tone=over>0?"over":over<0?"under":"ok";
  const flag=over>0?`${over} too many`:over<0?`${-over} too few`:"";
+ /* the cities absorb the difference wherever they can; when they cannot, the line says which row to nudge */
+ const short=T.st.short,who=T.st.nudge;
+ const hint=short&&who?`<div class="hintline">${short<0?`${-short} more than the cities can hold — take a night off ${esc(who)}, or drop a place`:`${short} short of ${target} — nudge ${esc(who)} up, or add a place`}</div>`:"";
  return `<div class="sum"><div class="stat ${tone}"><b>${T.total}</b> <span class="u">nights</span><span class="flag">${flag}</span></div>`
- +`<div class="stat"><b>${hmS(T.mins)}</b> <span class="u">of travel${T.unk?` + ${T.unk} to confirm`:""}</span><span class="flag"></span></div></div>`;}
+ +`<div class="stat"><b>${hmS(T.mins)}</b> <span class="u">of travel${T.unk?` + ${T.unk} to confirm`:""}</span><span class="flag"></span></div></div>`+hint;}
 
 /* ---------- the map: the same control as the list ---------- */
 function frame(locs,pad,ar){ar=ar||1.4;const pts=locs.map(l=>XY[l]).filter(Boolean);if(!pts.length)return {vb:"0 0 560 400",k:1};
@@ -429,10 +516,10 @@ function mapCtl(T,sp){const on=new Set(T.st.map(s=>s.loc));
   const dot=isOn?`<circle class="dot" cx="${p[0]}" cy="${p[1]}" r="${(4.2*f.k).toFixed(2)}" fill="${tint(k)}"/>`
    :`<circle class="off" cx="${p[0]}" cy="${p[1]}" r="${(4.2*f.k).toFixed(2)}"/>`;
   const rm=isOn?T.st.map((s,i)=>s.loc===l?T.owner[i]:null).filter(Boolean)[0]:null;
-  const lab=isOn?(rm?`${esc(nm(l))} <tspan class="x">×</tspan>`:esc(nm(l))):(a?`+ ${esc(nm(l))}`:esc(nm(l)));
+  const lab=isOn?(rm?`${esc(nm(l))} <tspan class="x">×</tspan>`:esc(nm(l))):(a?`${a.swap?"⇄":"+"} ${esc(nm(l))}`:esc(nm(l)));
   const txt=`<text class="${isOn?"on":"off"}" x="${(p[0]+o[0]*f.k).toFixed(1)}" y="${(p[1]+o[1]*f.k).toFixed(1)}" text-anchor="${ANC[d]||"start"}">${lab}</text>`;
-  const at=`data-x="${p[0]}" data-y="${p[1]}" data-dir="${d}"`;
-  const act=isOn?(rm?{k:rm.d.key,j:rm.j,t:"Take "+nm(l)+" off the trip"}:null):(a?{k:a.k,j:a.j,t:"Add "+nm(l)}:null);
+  const at=`data-x="${p[0]}" data-y="${p[1]}" data-dir="${d}"${isOn?' data-on="1"':""}${!isOn&&a?` data-plus="${a.swap?"⇄":"+"}"`:""}`;
+  const act=isOn?(rm?{k:rm.d.key,j:rm.j,t:"Take "+nm(l)+" off the trip"}:null):(a?{k:a.k,j:a.j,t:(a.swap?"Swap in ":"Add ")+nm(l)}:null);
   g+=act?`<g class="opt mk" ${at} role="button" tabindex="0" data-k="${esc(act.k)}" data-j="${act.j}" aria-label="${esc(act.t)}"><title>${esc(act.t)}</title>${dot}${txt}</g>`
    :`<g class="mk${dim&&!isOn?" dis":""}" ${at}><title>${esc(dim||nm(l))}</title>${dot}${txt}</g>`;});
  return `<svg class="jm" ${mapData(all,.72,3)} viewBox="${f.vb}" role="img" aria-label="The route, and every place a decision could add"><path class="land" d="${JP}"/>${lineSegs(T.st)}${g}</svg>`;}
@@ -440,43 +527,60 @@ const DIRS=["n","s","e","w","ne","nw","se","sw"];
 const ovA=(a,b)=>Math.max(0,Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x))*Math.max(0,Math.min(a.y+a.h,b.y+b.h)-Math.max(a.y,b.y));
 /* --fs is authored in user units as 11.5*(viewBox/pixel), so every label renders at 11.5px
    whatever the frame; the loop then picks each label a side that collides with nothing. */
-function paintMap(sv,u){sv.style.setProperty("--fs",(11.5*u).toFixed(3));
+function paintMap(sv,u,narrow){sv.style.setProperty("--fs",(11.5*u).toFixed(3));
  sv.querySelectorAll("rect.pill").forEach(r=>r.remove());
  const k=(sv.viewBox.baseVal.width||560)/560,px=3.2*u,py=2.2*u;
  const gs=[...sv.querySelectorAll("g.mk")];
  const dots=gs.map(gg=>{const x=+gg.dataset.x,y=+gg.dataset.y,r=4.6*k;return {x:x-r,y:y-r,w:2*r,h:2*r};});
  const labs=[];
  const put=(t,x,y,d)=>{const o=OFF[d]||OFF.e;t.setAttribute("x",(x+o[0]*k).toFixed(1));t.setAttribute("y",(y+o[1]*k).toFixed(1));t.setAttribute("text-anchor",ANC[d]||"start");};
- gs.forEach((gg,gi)=>{const t=gg.querySelector("text");if(!t)return;
+ /* the label each place already has, so a repaint starts from the full name again */
+ gs.forEach(gg=>{const t=gg.querySelector("text");if(!t)return;
+  if(t.dataset.full==null)t.dataset.full=t.innerHTML;else t.innerHTML=t.dataset.full;});
+ /* the places on the trip claim their side of the dot first; the dashed ones fit around them */
+ const order=gs.map((g,i)=>i).sort((a,b)=>(gs[b].dataset.on?1:0)-(gs[a].dataset.on?1:0));
+ const place=gi=>{const gg=gs[gi],t=gg.querySelector("text");if(!t)return null;
   const x=+gg.dataset.x,y=+gg.dataset.y,pref=gg.dataset.dir||"e";
   let best=null,bestOv=Infinity;
   for(const d of [pref,...DIRS.filter(q=>q!==pref)]){put(t,x,y,d);
-   let b;try{b=t.getBBox();}catch(e){return;}
+   let b;try{b=t.getBBox();}catch(e){return null;}
    const r={x:b.x-px,y:b.y-py,w:b.width+2*px,h:b.height+2*py};
    let ov=labs.reduce((a,q)=>a+ovA(r,q),0);
    dots.forEach((q,qi)=>{if(qi!==gi)ov+=ovA(r,q);});
    if(ov<bestOv){bestOv=ov;best=[d,r];}
    if(ov<=0)break;}
-  if(!best)return;
-  put(t,x,y,best[0]);labs.push(best[1]);
+  if(!best)return null;
+  put(t,x,y,best[0]);return {ov:bestOv,rect:best[1]};};
+ order.forEach(gi=>{const gg=gs[gi];let res=place(gi);
+  /* on a phone a dashed label that still collides falls back to its mark alone */
+  if(res&&narrow&&!gg.dataset.on&&res.ov>0){gg.querySelector("text").textContent=gg.dataset.plus||"+";res=place(gi);}
+  if(!res)return;
+  labs.push(res.rect);
   const r=document.createElementNS("http://www.w3.org/2000/svg","rect");
-  r.setAttribute("class","pill");r.setAttribute("x",best[1].x.toFixed(1));r.setAttribute("y",best[1].y.toFixed(1));
-  r.setAttribute("width",best[1].w.toFixed(1));r.setAttribute("height",best[1].h.toFixed(1));r.setAttribute("rx",(2*u).toFixed(1));
-  gg.insertBefore(r,t);});}
+  r.setAttribute("class","pill");r.setAttribute("x",res.rect.x.toFixed(1));r.setAttribute("y",res.rect.y.toFixed(1));
+  r.setAttribute("width",res.rect.w.toFixed(1));r.setAttribute("height",res.rect.h.toFixed(1));r.setAttribute("rx",(2*u).toFixed(1));
+  gg.insertBefore(r,gg.querySelector("text"));});}
 function fitMaps(){document.querySelectorAll("svg.jm").forEach(sv=>{
  const w=sv.getBoundingClientRect().width||560;
  const locs=(sv.dataset.locs||"").split(",").filter(Boolean),pad=+sv.dataset.pad||.75;
- let ar=+sv.dataset.ar||1.4;if(w<560)ar=Math.min(ar,1.5);
- if(locs.length)sv.setAttribute("viewBox",frame(locs,pad,ar).vb);
- paintMap(sv,(sv.viewBox.baseVal.width||560)/w);
- /* grow the frame so no label (with its pill) can fall outside the map */
- const vb=sv.viewBox.baseVal;let x0=vb.x,y0=vb.y,x1=vb.x+vb.width,y1=vb.y+vb.height,grew=0;
- sv.querySelectorAll("g.mk").forEach(gg=>{let b;try{b=gg.getBBox();}catch(e){return;}
-  if(b.x<x0){x0=b.x;grew=1}if(b.y<y0){y0=b.y;grew=1}
-  if(b.x+b.width>x1){x1=b.x+b.width;grew=1}if(b.y+b.height>y1){y1=b.y+b.height;grew=1}});
- if(grew){const W=Math.max(x1-x0,ar*(y1-y0))*1.03,H=W/ar,cx=(x0+x1)/2,cy=(y0+y1)/2;
+ /* a phone gets a taller banner: the same places in a squarer frame have room for their labels */
+ const narrow=w<=600;
+ let ar=+sv.dataset.ar||1.4;if(narrow)ar=Math.min(ar,1.2);else if(w<900)ar=Math.min(ar,1.5);
+ if(locs.length)sv.setAttribute("viewBox",frame(locs,narrow?pad*.88:pad,ar).vb);  /* a little more room at the edges on a phone */
+ paintMap(sv,(sv.viewBox.baseVal.width||560)/w,narrow);
+ /* grow the frame so no label (with its pill) can fall outside the map — twice, because the repaint may move a label
+  * to a side the first pass had not reserved */
+ for(let pass=0;pass<2;pass++){
+  const vb=sv.viewBox.baseVal;let x0=vb.x,y0=vb.y,x1=vb.x+vb.width,y1=vb.y+vb.height,grew=0;
+  sv.querySelectorAll("g.mk").forEach(gg=>{let b;try{b=gg.getBBox();}catch(e){return;}
+   if(b.x<x0){x0=b.x;grew=1}if(b.y<y0){y0=b.y;grew=1}
+   if(b.x+b.width>x1){x1=b.x+b.width;grew=1}if(b.y+b.height>y1){y1=b.y+b.height;grew=1}});
+  if(!grew)break;
+  const W=Math.max(x1-x0,ar*(y1-y0))*1.04,H=W/ar,cx=(x0+x1)/2,cy=(y0+y1)/2;
   sv.setAttribute("viewBox",`${(cx-W/2).toFixed(1)} ${(cy-H/2).toFixed(1)} ${W.toFixed(1)} ${H.toFixed(1)}`);
-  paintMap(sv,W/w);}});}
+  /* the last pass only widens the frame around the labels where they already sit — repainting could move one back out */
+  if(pass)break;
+  paintMap(sv,W/w,narrow);}});}
 
 /* ---------- preferences and constraints: the only controls outside the list and the map ---------- */
 function barHtml(T,sp){const parts=[];
@@ -498,16 +602,20 @@ function giveHtml(T){const stops=T.st.map(s=>s.loc+":"+s.n).join(",");
  return `<div class="give"><b>Give this to your assistant</b><div class="cbox"><code id="cmd">${esc(cmd)}</code>`
  +`<button class="copy" data-copy="1">Copy</button></div>`
  +`<p>Paste that line into the chat and the kit's route tool prices the whole trip, leg by leg, and checks it.</p></div>`;}
-function pageHtml(sp){const T=trip(sp);
+const tabsHtml=sp=>`<div class="tabs" role="group" aria-label="The nine routes">`
+ +spines.map(s=>`<button class="tab${s===sp?" on":""}" data-tab="${esc(slugOf(s))}">${esc(s.name)}</button>`).join("")+`</div>`;
+function pageHtml(sp){
+ /* a link that could mean two routes picks neither: the tabs stand open and the page says so in a line */
+ if(!sp)return tabsHtml(null)+`<p class="prompt">Which route? <b>${esc(ask||"")}</b> matches more than one of them — pick one above.</p>`;
+ const T=trip(sp);
  const chosen=T.ds.map(d=>d.options[T.R.ch[d.key]]).filter(Boolean);
  const line=chosen.map(o=>o.line).filter(Boolean)[0]||`${sp.blurb?sp.blurb+" ":""}${sp.line}`;
- const tabs=spines.map(s=>`<button class="tab${s===sp?" on":""}" data-tab="${esc(slugOf(s))}">${esc(s.name)}</button>`).join("");
- return `<div class="tabs" role="group" aria-label="The nine routes">${tabs}</div>`
+ return tabsHtml(sp)
  +`<h2>${esc(sp.name)}</h2><p class="why">${esc(line)}</p>`
  +`<div class="core">${barHtml(T,sp)}<div class="tl">${sumHtml(T)}<div class="pairF">${mapCtl(T,sp)}${itinHtml(T,sp)}</div></div>${giveHtml(T)}</div>`;}
 
 const app=document.getElementById("app");
-function render(){readHash();app.innerHTML=pageHtml(cur);fitMaps();}
+function render(){readHash();app.innerHTML=pageHtml(cur);if(cur)fitMaps();}
 render();
 addEventListener("hashchange",render);
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(fitMaps,120);});
@@ -516,6 +624,7 @@ let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(fitMaps,120
 function act(el){
  const tab=el.closest?el.closest("[data-tab]"):null;
  if(tab){setHash({spine:tab.dataset.tab,start:"",reverse:""});return true;}
+ if(!cur)return false;
  const sw=el.closest?el.closest("[data-sw]"):null;
  if(sw){if(sw.disabled)return true;const d=decs(cur).find(x=>x.key===sw.dataset.sw);
   if(d&&isStart(d))setHash({start:sw.dataset.j});
@@ -523,7 +632,7 @@ function act(el){
   return true;}
  const nb=el.closest?el.closest("[data-nk]"):null;
  if(nb){if(nb.disabled)return true;const key=nb.dataset.nk,loc=key.slice(key.indexOf("/")+1,key.lastIndexOf("#"));
-  const st=stopsOf(cur).find(s=>s.key===key);if(!st)return true;
+  const st=fit(cur).find(s=>s.key===key);if(!st)return true;
   nightsOv[key]=Math.min(stepMax(loc),Math.max(1,st.n+(+nb.dataset.d)));render();return true;}
  const k=el.dataset&&el.dataset.k!=null?el:(el.closest?el.closest("[data-k]"):null);
  if(k){sel[cur.id+"/"+k.dataset.k]=+k.dataset.j;render();return true;}

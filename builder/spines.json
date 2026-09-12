@@ -60,10 +60,7 @@
     "first": 1,
     "repeat": 9
    },
-   "band": [
-    7,
-    15
-   ],
+   "band": [7, 15],
    "io": "HND → KIX",
    "in": "HND",
    "out": "KIX",
@@ -88,7 +85,9 @@
        "desc": "Tokyo, then the road west into Kansai.",
        "cities": [
         "tokyo"
-       ]
+       ],
+       "label_rev": "Tokyo last",
+       "desc_rev": "Kansai first, then the road east to Tokyo."
       },
       {
        "label": "Straight into Kansai",
@@ -136,7 +135,9 @@
        "not_with": [
         "osaka@first"
        ],
-       "why_not": "flying straight into Kansai the trip already opens in Osaka"
+       "why_not": "flying straight into Kansai the trip already opens in Osaka",
+       "label_rev": "Osaka and Kyoto",
+       "desc_rev": "Osaka first for eating and going out, then Kyoto."
       }
      ]
     }
@@ -155,9 +156,6 @@
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
       "nikko"
-     ],
-     "requires": [
-      "tokyo@first"
      ],
      "why_not": "Nikkō is an out-and-back from Tokyo; flying straight into Kansai there is no Tokyo stay to split"
     },
@@ -239,7 +237,9 @@
      {
       "label": "Fly home from Kansai",
       "desc": "Out through Kansai airport.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at Kansai",
+      "desc_rev": "In through Kansai airport."
      },
      {
       "label": "A Kōyasan ryokan",
@@ -247,7 +247,9 @@
       "stops": [
        "katsuragi"
       ],
-      "out": "KIX"
+      "out": "KIX",
+      "label_rev": "A Kōyasan ryokan",
+      "desc_rev": "A first night on the mountain south of Osaka, from Kansai airport."
      },
      {
       "label": "Kinosaki",
@@ -255,14 +257,18 @@
       "stops": [
        "kinosaki"
       ],
-      "out": "ITM"
+      "out": "ITM",
+      "label_rev": "Kinosaki",
+      "desc_rev": "A first night in the Japan Sea hot-spring town, in through Itami airport."
      },
      {
       "label": "Back to Tokyo",
       "desc": "Two more Tokyo nights and a Haneda flight home.",
       "stops": [
        "tokyo"
-      ]
+      ],
+      "label_rev": "Tokyo at both ends",
+      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
      }
     ]
    }
@@ -276,10 +282,7 @@
     "first": 2,
     "repeat": 1
    },
-   "band": [
-    9,
-    16
-   ],
+   "band": [9, 16],
    "io": "HND → KIX, or HND → HND / NGO",
    "in": "HND",
    "out": "KIX",
@@ -306,14 +309,18 @@
        "desc": "On to Kyoto, then Kansai airport.",
        "cities": [
         "kyoto"
-       ]
+       ],
+       "label_rev": "Kyoto",
+       "desc_rev": "From Kyoto over the mountains to Kanazawa, in through Kansai airport."
       },
       {
        "label": "Osaka",
        "desc": "Straight to Osaka for eating and going out, then Kansai airport.",
        "cities": [
         "osaka"
-       ]
+       ],
+       "label_rev": "Osaka",
+       "desc_rev": "From Osaka, in through Kansai airport, then over the mountains."
       },
       {
        "label": "Kyoto and Osaka",
@@ -321,14 +328,18 @@
        "cities": [
         "kyoto",
         "osaka"
-       ]
+       ],
+       "label_rev": "Osaka and Kyoto",
+       "desc_rev": "Osaka, then Kyoto, then over the mountains to Kanazawa."
       },
       {
        "label": "Back to Tokyo",
        "desc": "Loop back over the mountains for a Haneda flight.",
        "cities": [
         "tokyo"
-       ]
+       ],
+       "label_rev": "Tokyo at both ends",
+       "desc_rev": "Start in Tokyo, over the mountains to Kanazawa and back."
       }
      ]
     }
@@ -347,9 +358,6 @@
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
       "nikko"
-     ],
-     "requires": [
-      "tokyo@first"
      ]
     },
     {
@@ -441,7 +449,9 @@
      {
       "label": "Fly home from the last city",
       "desc": "Kansai or Haneda, whichever the route reaches.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at the first city",
+      "desc_rev": "Kansai or Haneda, whichever the route starts from."
      },
      {
       "label": "Kinosaki",
@@ -450,7 +460,9 @@
        "kinosaki"
       ],
       "place": "after kyoto|osaka",
-      "out": "ITM"
+      "out": "ITM",
+      "label_rev": "Kinosaki",
+      "desc_rev": "A first night in the Japan Sea hot-spring town, in through Itami airport."
      }
     ]
    },
@@ -465,10 +477,7 @@
     "first": 3,
     "repeat": 8
    },
-   "band": [
-    12,
-    19
-   ],
+   "band": [12, 19],
    "io": "HND → HIJ",
    "in": "HND",
    "out": "HIJ",
@@ -509,7 +518,9 @@
        "cities": [
         "kyoto",
         "osaka"
-       ]
+       ],
+       "label_rev": "Osaka and Kyoto",
+       "desc_rev": "Osaka first for eating and going out, then Kyoto."
       }
      ]
     },
@@ -648,14 +659,18 @@
      {
       "label": "Fly home from Hiroshima",
       "desc": "Out through Hiroshima airport.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at Hiroshima",
+      "desc_rev": "In through Hiroshima airport."
      },
      {
       "label": "Back to Tokyo",
       "desc": "Two more Tokyo nights and a Haneda flight home.",
       "stops": [
        "tokyo"
-      ]
+      ],
+      "label_rev": "Tokyo at both ends",
+      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
      }
     ]
    }
@@ -669,10 +684,7 @@
     "first": 4,
     "repeat": 2
    },
-   "band": [
-    9,
-    16
-   ],
+   "band": [9, 16],
    "io": "HND → KIX / ITM, or HND → HND",
    "in": "HND",
    "out": "KIX",
@@ -698,14 +710,18 @@
        "desc": "On to Kyoto, then Kansai airport.",
        "cities": [
         "kyoto"
-       ]
+       ],
+       "label_rev": "Kyoto",
+       "desc_rev": "From Kyoto to Kanazawa and the north, in through Kansai airport."
       },
       {
        "label": "Osaka",
        "desc": "Straight to Osaka, then Kansai airport.",
        "cities": [
         "osaka"
-       ]
+       ],
+       "label_rev": "Osaka",
+       "desc_rev": "From Osaka, in through Kansai airport, then Kanazawa and the north."
       },
       {
        "label": "Kyoto and Osaka",
@@ -713,14 +729,18 @@
        "cities": [
         "kyoto",
         "osaka"
-       ]
+       ],
+       "label_rev": "Osaka and Kyoto",
+       "desc_rev": "Osaka, then Kyoto, then Kanazawa and the north."
       },
       {
        "label": "Back to Tokyo",
        "desc": "Loop back over the mountains for a Haneda flight.",
        "cities": [
         "tokyo"
-       ]
+       ],
+       "label_rev": "Tokyo at both ends",
+       "desc_rev": "Start in Tokyo, up to the north and Kanazawa, and back."
       }
      ]
     }
@@ -789,7 +809,7 @@
        "kind": "inn",
        "default": 1,
        "question": "The Sendai loop and the Tōhoku hot-spring towns?",
-       "desc": "Sendai, then the north's hot-spring towns: a mountain inn and a samurai town.",
+       "desc": "Sendai, then the north's hot-spring towns: a mountain ryokan and a samurai town.",
        "no": "No Tōhoku leg.",
        "stops": [
         "sendai",
@@ -833,7 +853,9 @@
      {
       "label": "Fly home from the last city",
       "desc": "Kansai or Haneda, whichever the route reaches.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at the first city",
+      "desc_rev": "Kansai or Haneda, whichever the route starts from."
      },
      {
       "label": "Kinosaki",
@@ -842,7 +864,9 @@
        "kinosaki"
       ],
       "place": "after kyoto|osaka",
-      "out": "ITM"
+      "out": "ITM",
+      "label_rev": "Kinosaki",
+      "desc_rev": "A first night in the Japan Sea hot-spring town before Kyoto, in through Itami airport."
      }
     ]
    }
@@ -857,10 +881,7 @@
     "first": 7,
     "repeat": 4
    },
-   "band": [
-    11,
-    20
-   ],
+   "band": [11, 20],
    "io": "HND → NGS",
    "in": "HND",
    "out": "NGS",
@@ -884,7 +905,9 @@
        "cities": [
         "tokyo",
         "kagoshima"
-       ]
+       ],
+       "label_rev": "Tokyo last",
+       "desc_rev": "Kyushu first, then a flight to Tokyo."
       },
       {
        "label": "Straight into Kagoshima",
@@ -914,9 +937,6 @@
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
       "nikko"
-     ],
-     "requires": [
-      "tokyo@first"
      ]
     },
     {
@@ -936,7 +956,7 @@
      "requires": [
       "tokyo@first"
      ],
-     "why_not": "an inn cannot be the arrival night: flying straight into Kagoshima, the city comes first"
+     "why_not": "a ryokan cannot be the arrival night: flying straight into Kagoshima, the city comes first"
     }
    ],
    "legs": [
@@ -972,7 +992,9 @@
      {
       "label": "Fly home from Nagasaki",
       "desc": "Out through Nagasaki airport, via Haneda.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at Nagasaki",
+      "desc_rev": "In through Nagasaki airport, via Haneda."
      },
      {
       "label": "Unzen",
@@ -980,14 +1002,18 @@
       "stops": [
        "unzen"
       ],
-      "out": "NGS"
+      "out": "NGS",
+      "label_rev": "Unzen",
+      "desc_rev": "A first night in the hot-spring town on the peninsula east of Nagasaki."
      },
      {
       "label": "Back to Tokyo",
       "desc": "Two more Tokyo nights and a Haneda flight home.",
       "stops": [
        "tokyo"
-      ]
+      ],
+      "label_rev": "Tokyo at both ends",
+      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
      }
     ]
    }
@@ -1001,10 +1027,7 @@
     "first": 8,
     "repeat": 5
    },
-   "band": [
-    11,
-    19
-   ],
+   "band": [11, 19],
    "io": "HND → OIT / FUK",
    "in": "HND",
    "out": "OIT",
@@ -1027,7 +1050,9 @@
        "cities": [
         "tokyo",
         "kagoshima"
-       ]
+       ],
+       "label_rev": "Tokyo last",
+       "desc_rev": "Kyushu first, then a flight to Tokyo."
       },
       {
        "label": "Straight into Kagoshima",
@@ -1049,7 +1074,7 @@
      "options": [
       {
        "label": "Yufuin",
-       "desc": "The valley town under Mount Yufu, small inns and a mountain skyline.",
+       "desc": "The valley town under Mount Yufu, small ryokans and a mountain skyline.",
        "cities": [
         "yufuin"
        ]
@@ -1078,9 +1103,6 @@
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
       "nikko"
-     ],
-     "requires": [
-      "tokyo@first"
      ]
     },
     {
@@ -1100,7 +1122,7 @@
      "requires": [
       "tokyo@first"
      ],
-     "why_not": "an inn cannot be the arrival night: flying straight into Kagoshima, the city comes first"
+     "why_not": "a ryokan cannot be the arrival night: flying straight into Kagoshima, the city comes first"
     },
     {
      "key": "kumamoto.amakusa",
@@ -1173,14 +1195,18 @@
      {
       "label": "Fly home from Ōita",
       "desc": "Out through Ōita airport, via Haneda.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at Ōita",
+      "desc_rev": "In through Ōita airport, via Haneda."
      },
      {
       "label": "Back to Tokyo",
       "desc": "Two more Tokyo nights and a Haneda flight home.",
       "stops": [
        "tokyo"
-      ]
+      ],
+      "label_rev": "Tokyo at both ends",
+      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
      }
     ]
    }
@@ -1194,10 +1220,7 @@
     "first": 9,
     "repeat": 6
    },
-   "band": [
-    10,
-    17
-   ],
+   "band": [10, 17],
    "io": "HND → OIT, or HND → NGS",
    "in": "HND",
    "out": "OIT",
@@ -1220,7 +1243,9 @@
        "desc": "Tokyo, then a flight to Kyushu.",
        "cities": [
         "tokyo"
-       ]
+       ],
+       "label_rev": "Tokyo last",
+       "desc_rev": "Kyushu first, then a flight to Tokyo."
       },
       {
        "label": "Straight into Kyushu",
@@ -1240,7 +1265,9 @@
       {
        "label": "Nagasaki first",
        "desc": "Land at Nagasaki, finish in the hot-spring east, out through Ōita.",
-       "cities": []
+       "cities": [],
+       "label_rev": "Nagasaki last",
+       "desc_rev": "Land at Ōita, finish in Nagasaki, out through Nagasaki."
       },
       {
        "label": "The east first",
@@ -1259,7 +1286,9 @@
         "HND",
         "NRT"
        ],
-       "why_not": "a long-haul flight landing straight at Ōita would put the first night at a ryokan; with Tokyo first, or a booked flight into Kyushu, it lands with the afternoon to spare"
+       "why_not": "a long-haul flight landing straight at Ōita would put the first night at a ryokan; with Tokyo first, or a booked flight into Kyushu, it lands with the afternoon to spare",
+       "label_rev": "The east last",
+       "desc_rev": "Land at Nagasaki, finish in the hot-spring east, out through Ōita."
       }
      ]
     },
@@ -1273,7 +1302,7 @@
      "options": [
       {
        "label": "Yufuin",
-       "desc": "The valley town under Mount Yufu, small inns and a mountain skyline.",
+       "desc": "The valley town under Mount Yufu, small ryokans and a mountain skyline.",
        "cities": [
         "yufuin"
        ]
@@ -1291,7 +1320,9 @@
        "cities": [
         "kumamoto"
        ],
-       "out": "KMJ"
+       "out": "KMJ",
+       "label_rev": "The volcanic middle",
+       "desc_rev": "Inland instead: the caldera country and Kumamoto, in through Kumamoto."
       }
      ]
     }
@@ -1310,9 +1341,6 @@
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
       "nikko"
-     ],
-     "requires": [
-      "tokyo@first"
      ]
     }
    ],
@@ -1415,14 +1443,18 @@
      {
       "label": "Fly home from the last stop",
       "desc": "Ōita, Kumamoto or Nagasaki, via Haneda.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at the first stop",
+      "desc_rev": "Ōita, Kumamoto or Nagasaki, via Haneda."
      },
      {
       "label": "Back to Tokyo",
       "desc": "Two more Tokyo nights and a Haneda flight home.",
       "stops": [
        "tokyo"
-      ]
+      ],
+      "label_rev": "Tokyo at both ends",
+      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
      }
     ]
    }
@@ -1436,10 +1468,7 @@
     "first": 5,
     "repeat": 3
    },
-   "band": [
-    11,
-    18
-   ],
+   "band": [11, 18],
    "io": "HND or KIX → FUK / OIT / NGS",
    "in": "HND",
    "out": "FUK",
@@ -1463,7 +1492,9 @@
        "desc": "Tokyo, then the train west.",
        "cities": [
         "tokyo"
-       ]
+       ],
+       "label_rev": "Tokyo last",
+       "desc_rev": "The train east, Tokyo at the close."
       },
       {
        "label": "Straight into Kansai",
@@ -1500,7 +1531,9 @@
        "cities": [
         "kyoto",
         "osaka"
-       ]
+       ],
+       "label_rev": "Osaka and Kyoto",
+       "desc_rev": "Osaka first for eating and going out, then Kyoto."
       }
      ]
     },
@@ -1521,9 +1554,6 @@
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
       "nikko"
-     ],
-     "requires": [
-      "tokyo@first"
      ]
     },
     {
@@ -1642,7 +1672,9 @@
      {
       "label": "Fly home from Fukuoka",
       "desc": "Out through Fukuoka airport.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at Fukuoka",
+      "desc_rev": "In through Fukuoka airport."
      },
      {
       "label": "The hot-spring east",
@@ -1651,7 +1683,9 @@
        "hita",
        "yufuin"
       ],
-      "out": "OIT"
+      "out": "OIT",
+      "label_rev": "The hot-spring east",
+      "desc_rev": "Two ryokan nights first, Yufuin then Amagase, in through Ōita."
      },
      {
       "label": "Takeo and Nagasaki",
@@ -1660,7 +1694,9 @@
        "takeo",
        "nagasaki"
       ],
-      "out": "NGS"
+      "out": "NGS",
+      "label_rev": "Nagasaki and Takeo",
+      "desc_rev": "Nagasaki first, then a ryokan night, in through Nagasaki."
      }
     ]
    }
@@ -1674,10 +1710,7 @@
     "first": 6,
     "repeat": 7
    },
-   "band": [
-    8,
-    12
-   ],
+   "band": [8, 12],
    "io": "HND → CTS",
    "in": "HND",
    "out": "CTS",
@@ -1700,7 +1733,9 @@
        "desc": "Tokyo, then a flight to Sapporo.",
        "cities": [
         "tokyo"
-       ]
+       ],
+       "label_rev": "Tokyo last",
+       "desc_rev": "Hokkaido first, then a flight to Tokyo."
       },
       {
        "label": "Straight into Sapporo",
@@ -1729,9 +1764,6 @@
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
       "nikko"
-     ],
-     "requires": [
-      "tokyo@first"
      ]
     }
    ],
@@ -1745,7 +1777,9 @@
      {
       "label": "Fly home from New Chitose",
       "desc": "Out through Sapporo's airport.",
-      "stops": []
+      "stops": [],
+      "label_rev": "Arrive at New Chitose",
+      "desc_rev": "In through Sapporo's airport."
      },
      {
       "label": "A hot-spring ryokan",
@@ -1753,14 +1787,18 @@
       "stops": [
        "noboribetsu"
       ],
-      "out": "CTS"
+      "out": "CTS",
+      "label_rev": "A hot-spring ryokan",
+      "desc_rev": "A first night at Noboribetsu or Jōzankei, near the airport."
      },
      {
       "label": "Back to Tokyo",
       "desc": "Two more Tokyo nights and a Haneda flight home.",
       "stops": [
        "tokyo"
-      ]
+      ],
+      "label_rev": "Tokyo at both ends",
+      "desc_rev": "Two Tokyo nights first, in at Haneda, and Tokyo again at the close."
      }
     ]
    }

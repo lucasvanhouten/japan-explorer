@@ -331,9 +331,9 @@ A poor fit for a first trip built around cities, food and temples: a flight each
 
 ---
 
-## The output — the spines worth walking
+## The output — a longlist and a shape
 
-Close the stage with the two or three spines' rows from the menu, pasted as they print, and one line under each in their words — why *they* leaned in, not the spine's pitch. **Rendered markdown, never a code fence.** No legs, no prices, no scores beyond what the row carries. Two spines read as a fork, four as a menu nobody can hold. A place they named that sits on no spine is said in a clause under the table, with the nearest spine. Say what it is as you hand it over: two or three doors, nothing chosen yet; the one they lean to is the one Stage 3 walks.
+Close the stage in prose: the places they warmed to, in one line each in their words, and the shape those places suggest in a clause. No menu rows, no legs, no prices, no scores. A place they named that sits on no spine is said so in a clause, with the nearest thing a spine does. Say what it is as you hand it over: a longlist, nothing chosen yet; Stage 3 puts two or three routes beside it.
 
 ## Where you'll sleep — the three kinds of stay
 

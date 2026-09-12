@@ -8,7 +8,7 @@
 Goal    one place to sleep plus one alternate, for every stop
 Inputs  the itinerary table from Stage 3; Taste and Budget from the Trip profile
 Do      one stop per message, in trip order: the shortlist only, three to five options chosen against the
-        profile in one `| Stay | Band | Bath | Why | Links |` table, best fit first, write-ups
+        profile in one `| Stay | Band | Bath | Why | Links |` table, best fit first, Why in your words from the write-ups
         verbatim, no default and no pick of your own; offer more on any of them
 Ask     first: whether they want any of them opened up — then the pick, once they lean. Max 2 follow-up questions, and only where the options in front of them differ on it
 Output  the itinerary table with Stay, Band and Alternate filled
@@ -27,14 +27,14 @@ The alternate matters: the good inns sell out, so have the second answer ready b
 
    | Stay | Band | Bath | Why | Links |
    |---|---|---|---|---|
-   | `<name · inn / hotel · tier score · editor's pick where it is one>` | `<band>` | `<in the room · bookable private · shared only · none>` | `<the kit's write-up, verbatim>` | [map](`<link>`) · [site](`<link>`) |
+   | `<name · inn / hotel · tier score · editor's pick where it is one>` | `<band>` | `<in the room · bookable private · shared only · none>` | `<why it is special for them, and its key features — from the write-up>` | [map](`<link>`) · [full write-up](`<link>`) |
 
    **Why gets the width**: kind, score and editor's pick ride in the Stay cell; no Town column, since they know the town. Two variants, as `stays` prints them: a RYOKAN option spanning towns adds `Town` — `| Stay | Town | Band | Bath | Why | Links |`; a city of hotels has no bath — `| Stay | Band | Why | Links |`.
 
-4. **What goes in the cells.** **`Why` is the kit's write-up for that stay, verbatim** — the hotel's `why` text or the inn's summary as printed, never shortened. Where the stop is a RYOKAN option spanning towns, `Town` carries the time from the gateway city from the corridor table, so the leg is visible beside the name. `Band` says what it includes — per night for two, dinner and breakfast included for an inn, room only for a hotel — and the band itself is said once, in that cell, never again in a sentence. `Links` is the Google Maps pin first, then the second link — a hotel's homepage, an inn's `ryokancatalog.com` page — in that order for every row, so the map always sits in the same place. Anything else that changes the choice — no natural spring, a bed rather than a floor mattress, out of town — goes in `Why`, in a clause.
-5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so in their words — *"four more on the kit's list; say the word"* — so they can ask. No "I would take X", no "recommended": the order of the rows is the recommendation, and they choose. Close the first message on the line Stage 3 prescribes, not on *"which one?"*. Ask for the choice in a later turn, once they name one they lean to or say "go", and record the second choice as the alternate; that is part of the job. If they ask which you would take, answer in one line, with the reason.
+4. **What goes in the cells.** **`Why` is yours** — what makes it special for this couple and its key features, every fact from the write-up (below). Where the stop is a RYOKAN option spanning towns, `Town` carries the time from the gateway city from the corridor table, so the leg is visible beside the name. `Band` says what it includes — per night for two, dinner and breakfast included for an inn, room only for a hotel — and the band itself is said once, in that cell, never again in a sentence. `Links` is the Google Maps pin first, then the second link — a hotel's homepage, an inn's `ryokancatalog.com` page — in that order for every row, so the map always sits in the same place. Anything else that changes the choice — no natural spring, a bed rather than a floor mattress, out of town — goes in `Why`, in a clause.
+5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so in their words — *"four more on the kit's list — ask and I'll show them"* — so they can ask. No "I would take X", no "recommended": the order of the rows is the recommendation, and they choose. Close the first message on the line Stage 3 prescribes, not on *"which one?"*. Ask for the choice in a later turn, once they name one they lean to or say "go", and record the second choice as the alternate; that is part of the job. If they ask which you would take, answer in one line, with the reason.
 
-**Opening up a stay means going and reading it.** A fuller answer is the inn's own write-up in your own words — what the rooms, the bath, the kitchen and the setting are actually like, where it is weakest, and who it suits — plus the practical part: how far it is from the gateway city, what the room with the private bath costs, what the booking needs. The `Reach` and `fits` columns carry the practical half; **[ryokancatalog.com](https://ryokancatalog.com) carries the long read on any inn in the table** — each row has its link, so follow it rather than re-describing from the one line you already gave.
+**Opening up a stay means going and reading it**: the inn's page on **[ryokancatalog.com](https://ryokancatalog.com)** — rooms, bath, kitchen, setting, where it is weakest, who it suits — plus the practical half from `Reach` and `fits`: distance from the gateway city, the room with the private bath, what booking needs.
 
 **How many, by kind of stop:**
 
@@ -50,14 +50,18 @@ The alternate matters: the good inns sell out, so have the second answer ready b
 - **Give the Google Maps link first, the second link after it** — the homepage for a hotel, the catalogue page for an inn, the order the tool prints them in. Every hotel row carries both. The map link is the property's own Google place, so it settles where the hotel actually stands; a neighbourhood name cannot. Where the `Map` cell is `—`, no place was confirmed: give the site alone and say the map is unconfirmed. Never build a maps search link out of the hotel's name — it lands on the town, not the building.
 - **Say what a band is when you quote one.** Hotel bands are three-night checks for two, taxes included, across February, May and October. Japanese holidays run well above them: 11 February (National Foundation Day), Golden Week, Obon and the autumn-colour weekends. Confirm on the property's own page for the actual dates.
 
-### The write-ups are quoted, not rewritten
+### The Why cell is yours; the facts are the kit's
 
-Every hotel and inn in this kit carries a write-up that was researched and edited by hand, and the tool prints the same words as the table below — quote either. **Present it verbatim** — the whole text, as written, with the band and the map and site links as given. Do not summarise it, shorten it, or restate it in your own words; a paraphrase loses what was checked and puts your voice where the kit's should be. Your own words are for the trade-offs between the rows, in the prose above the table, never for a pick under it.
+Every inn and hotel here carries a hand-researched write-up, and the tool prints it in full — that is your source, not the cell. **Write `Why` in your own words for this couple**: two or three sentences on what would make the night special for *them* — tied to their `Taste:` and `Draws:` lines — and the key features (the bath and whether it is in the room, the kitchen, the setting, the size), plus its real reservations — a noisy dining room, a blocked view, a bath only in the top rooms — said plainly, never glossed. **Every fact comes from the write-up or the inn's page; nothing is invented**, no adjective the source does not earn, and the full write-up is one click away in `Links`. The trade-offs between rows go in the prose above the table, never a pick under it.
+
+Gora Kadan Fuji, not as the write-up pastes but for a couple on their first ryokan night: *"The gentlest way into a ryokan: a hotel-ryokan hybrid with Fuji in front of you, a pool, three dining rooms and nothing about the form to be nervous about. Book an Open-air Bath Suite or above for spring water in the room, and the sushi or teppanyaki counter over the kaiseki."*
+
+**Explain the score once, the first time a table shows one:** *"A 8.8 means tier A, 8.8 out of 10 — the catalogue's reading of the FlyerTalk thread and the Japanese review sites; S is the top tier, B is good, a dash means nobody has written it up in English."* And introduce the catalogue the same once: *"every inn links to its page on ryokancatalog.com — the long read: rooms, bath, food, setting, how to book."*
 
 ### Two things to say out loud once
 
-- **An inn night is a fixed schedule.** Arrive mid-afternoon, dinner at a set hour, breakfast likewise, checkout late morning. That is the product: you cannot also do a full day of sightseeing, and a delayed train can cost you the dinner you paid for. Plan the travel day around the check-in window, not the other way round.
-- **The price comparison isn't like-for-like.** An inn's rate covers two substantial meals for two; a hotel's covers the room. A ¥100,000 inn night and a ¥40,000 hotel night are closer than they look once you have paid for a serious dinner twice.
+- **A ryokan night is a fixed schedule.** Arrive mid-afternoon, dinner at a set hour, breakfast likewise, checkout late morning: not a full sightseeing day, and a late train can cost the dinner you paid for. Plan the travel day around check-in.
+- **The price isn't like-for-like.** A ryokan's rate covers two substantial meals for two; a hotel's covers the room, so the gap is smaller than it looks.
 
 <!-- generated:catalog-howto -->
 - Every inn has an **overall score from 1 to 10** and a **tier**: S ≥ 9 (build the trip around it), A ≥ 8 (anchor a leg), B ≥ 7 (right inn, right place), C ≥ 6 (situational), D (the evidence warns). Current spread: S 5 · A 50 · B 49 · C 33 · D 10 · unscored 52.
@@ -75,7 +79,7 @@ Reading a listing, in four lines:
 The whole catalog is fetchable as data: https://ryokancatalog.com/catalog.md (one table, all inns) · https://ryokancatalog.com/api/inn/<slug>.json (one inn in full) · https://ryokancatalog.com/place/<place> (a ranked page per town, prefecture and region) · https://ryokancatalog.com/llms.txt (how the data is laid out). The kit ships a snapshot of the first three in `catalog/`; the live site is always the primary.
 <!-- /generated:catalog-howto -->
 
-**Before showing inns to a family:** most of these are adult-oriented. The `family-ok` tag marks the few whose own write-up says they take children — its absence means *not stated*, not *no*. Check the inn's page for its child policy and for a room that sleeps three or four, and price it **per person**: an inn rate is per head including both meals, so four people is roughly double a couple.
+**Before showing inns to a family:** most are adult-oriented. The `family-ok` tag marks the few whose write-up says they take children — its absence means *not stated*. Check the inn's page for its child policy and a room for three or four, and price it **per person**: a ryokan rate is per head with both meals.
 
 ### The master inn table
 
@@ -223,16 +227,16 @@ The city hotels are in the same per-place files, listed above; the longer resear
 
 **Osaka and Nara — the neighbourhood is the decision.** Both sit a short train from Kyoto and have shorter lists; where a list runs thin, work from the neighbourhood.
 
-- **Osaka** — **Namba or Shinsaibashi** if the eating and drinking is the point (you walk home from dinner); **Umeda / Kita** if you move on by train next morning. Both dense with hotels at every price, and Osaka is the cheapest big city for a good room — a reasonable base for Kyoto and Nara if Kyoto is booked out for the dates.
-- **Nara** — a small city where almost everything sits between the station and the park. Staying overnight buys the temples at eight in the morning; day-tripping does not.
+- **Osaka** — **Namba or Shinsaibashi** if eating and drinking is the point (you walk home from dinner); **Umeda / Kita** if you move on by train next morning. Osaka is the cheapest big city for a good room, and a fair base for Kyoto and Nara when Kyoto is booked out.
+- **Nara** — small; everything sits between the station and the park. Staying overnight buys the temples at eight in the morning.
 
-Name the hotel and the neighbourhood together, and where the table says *rate not researched — check live*, give a band read off the property's own page for the actual dates rather than quoting a rate.
+Where a band says *check live*, read one off the property's page for the actual dates.
 
 ### When the stop or the budget is outside these tables
 
 The tables are a **design-and-luxury list** and do not cover every town. Say so plainly — "Japan is not expensive, this particular list is" — and use the research method in the appendix; a find is presented as a row of the same table, its band marked "unverified — check live for your dates".
 
-**Satellite stops have their own file.** A stop that is not a city but has beds of its own — **Nikkō**, **Gero**, **Kinugawa**, the Kaga onsen towns, the Hakone–Izu–Fuji belt — is answered by the file for the region it sits in, not by the file for the city you reach it from. Look the town up here rather than guessing which file holds it.
+**Satellite stops have their own file.** A stop with beds of its own — **Nikkō**, **Gero**, **Kinugawa**, the Kaga towns, the Hakone–Izu–Fuji belt — is answered by its region's file, not the city you reach it from:
 
 <!-- generated:satellites -->
 **Which file answers which town.** A stop that is not a city but has beds of its own is indexed by the file for the gateway nearest it, not by the one named after the town. Find the town below — these are the `Area` column of the master table — and open that one file. A town is listed once: the file named here is the one whose journey to it is shortest.
@@ -253,15 +257,15 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 | `stays/kyushu.md` | Amagase Onsen · Amakusa · Ibusuki · Iki island · Karatsu · Kirishima · Kurokawa Onsen · Takachiho · Takeo Onsen · Unzen · Yakushima · Yufuin |
 <!-- /generated:satellites -->
 
-**Where a `fits` tag holds fewer than five inns, say so** — "the kit has four here, and the nearest thing to a fifth is in <the neighbouring tag>" — and offer the nearest tag rather than padding the list. A short honest list plus a named neighbour beats five options where the fifth is filler.
+**Where a `fits` tag holds fewer than five inns, say so** and offer the nearest tag rather than padding: a short honest list plus a named neighbour beats a fifth that is filler.
 
 ### The follow-up questions — ask only when they change the pick
 
 **The rule: ask one of these only when the options actually in front of them differ on it.** If all five have a private bath, don't ask about tattoos. If none has a sauna, don't raise saunas. If every option is a hotel with beds, don't ask about futons. Ask when the answer would move them from one option to another — and at most two at a time.
 
-- **A private bath?** Ask if anyone has **tattoos**, is shy about communal bathing, or wants the bath to themselves. Japanese bathhouses are nude and gender-separated, and many still refuse visible tattoos. The reliable answer is a **bath in the room** or a **bookable private bath** — then house policy stops mattering. Check the property's own page for **overnight guests**; a rule posted for day visitors is a different rule, and free guest access is not an exemption.
+- **A private bath?** Ask if anyone has **tattoos**, is shy about communal bathing, or wants the bath to themselves: baths are nude and gender-separated, and many still refuse visible tattoos. A **bath in the room** or a **bookable private bath** settles it. Check the property's page for **overnight guests**; a day-visitor rule is a different rule.
 - **A sauna?** Common at newer inns, but usually gender-separated like the baths. Two people saunaing together need a **private or rental sauna**, or a mixed facility with swimwear.
-- **How heavy do you want dinner?** Some kitchens serve a long formal *kaiseki*; others do something lighter or entirely different — French, wood-fired, farm produce, temple cooking. If two inn nights fall close together, put them on different kitchens. "Not another twelve courses" is a common constraint with excellent answers.
+- **How heavy do you want dinner?** Some kitchens serve a long formal *kaiseki*; others something lighter — French, wood-fired, farm produce, temple cooking. Two ryokan nights close together go on different kitchens.
 - **Floor mattress or bed?** A traditional room means a *futon* laid on the straw floor at bedtime. Comfortable for most, hard on bad backs and knees. The `bed-not-futon` tag marks inns whose write-up mentions beds; ask before assuming elsewhere.
 - **How formal?** At the traditional end, meals come to your room and staff kneel at the door. At the modern-luxury end you eat in a dining room and nobody minds what you wear. Neither is better; people have strong preferences and won't volunteer them unprompted.
 - **Children, and how many of you?** Ask **before** showing inn options to a family — see the note above the table. Child policies vary wildly, the best inns are the strictest, and the policy changes and is often stated only in Japanese: check the inn's page, then confirm by email.
