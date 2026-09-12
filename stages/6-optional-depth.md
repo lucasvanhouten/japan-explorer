@@ -36,13 +36,13 @@ The paragraph says three things: nobody needs reservations to eat superbly in Ja
 - **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 in Osaka, 80 in Kagoshima, 25 in Kanazawa, and shorter sections for Kobe, Hiroshima, Takayama, Sendai, Nara and Yanagawa. Written from one traveller's palate — creative low-key rooms, counters, natural wine — and every entry checked for whether a table can be got. Lotteries, memberships and introduction-only rooms were cut.
 - **The illustrated trip report** linked above: one earlier trip in photos, not a survey.
 
-**Open one city at a time.** Each city section is also its own file — `guides/dining/tokyo.md`,
-`guides/dining/kyoto.md`, and `guides/dining/index.md` listing them all. **Open only the stops on the
-plan, never `guides/dining.md` whole**: it is half a megabyte, and the city files are the same text.
+**Open one city at a time**, `guides/dining/<city>.md` for the stops on the plan and
+`guides/dining/index.md` to list them; **never `guides/dining.md` whole**: it is half a megabyte,
+and the city files are the same text.
 
 Say that what follows is a small subset chosen against their answers, and that they can **ask for more in any category, neighbourhood or price at any time.**
 
-**If `guides/dining.md` isn't there**, say so in one line and offer the two ways to get it — the **`japan-trip-kit`** repository on GitHub, green **Code** button → **Download ZIP**, or open that file there and give the assistant its web address — then carry on.
+**If the dining guide isn't there**, say so in one line, name the **`japan-trip-kit`** repository on GitHub as the way to get it, and carry on.
 
 **The recommendations are a table, never a list of paragraphs**, with a heading per cuisine or category above each one — sushi · izakaya · noodles · kaiseki and kappō · yakitori and grills · tempura and tonkatsu · Western-in-Japan · wine bars · cocktail bars · listening bars · coffee — and never a grouping by how hard they are to book:
 

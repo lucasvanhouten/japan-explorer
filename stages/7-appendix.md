@@ -32,7 +32,7 @@ Every sequence, set of options and comparison is a table, and each stage has one
 - **Stage 3, a spine's decisions** — `| Where | Decision | Options (chosen in bold) |`, the rows grouped in trip order (a city, its attachment, the next leg's slots, the next city), the options and descriptions as spines.json prints them
 - **Stage 3, a timeline** — `| Stop | Nights | Onward |`, one row per stay, the arrival transfer first, the leg under each stop as time to five minutes and one mode word, the stop string beneath
 - **Stage 3, a change before and after, or two routes compared; Stage 5, orders compared** — `| Route | Stops | Nights | Travel | Per night | Check-ins | Ryokan nights | Flights | In / out |` (Stage 5 keeps `| Order | Hours | Per night | Changes | Check-ins | Inn / city nights | One-nighters |`), one row per route
-- **Stage 4, the stays for a stop** — `| Stay | Kind | Town | Band | Bath | Why | Links |`, one table per stop, the town as a column where a ryokan option spans towns
+- **Stage 4, the stays for a stop** — `| Stay | Town | Band | Bath | Why | Links |`, one table per stop, the town as a column where a ryokan option spans towns
 - **Stages 3 to 5, the plan itself** — the itinerary table below, filled progressively
 - **Stage 6, eating** — `| Place | Type | Price | Neighbourhood | Booking | Map |`, under a heading per cuisine
 - **Stage 6, day ideas** — `| Idea | What it is | Time | Map |`, one table per stop
@@ -56,7 +56,7 @@ The one table the run is built in, filled progressively from Stage 3 to Stage 5,
 | 3 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
 | | ↓ out to `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
 
-**Totals:** `<n>` travel hours · `<n>` changes · `<n>` check-ins · `<n>` inn nights / `<n>` city nights · `<n>` one-nighters. The travel total is the sum of the leg rows above, both airport legs in it, rounded to five minutes as they are.
+**Totals:** `<n>` travel hours · `<n>` changes · `<n>` check-ins · `<n>` inn nights / `<n>` city nights · `<n>` one-nighters. Every figure here comes from `plan`, the airport legs' changes included, never typed; the travel total sums the leg rows above, both airport legs in it, rounded to five minutes.
 
 **Notes:** `<shuttle window, last-mile detail>`, one per stop that needs one. **Assumed:** `<every default you chose for them>`.
 

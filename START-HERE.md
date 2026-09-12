@@ -134,7 +134,7 @@ Output  a route decision, said in one clause
 Next    (a) Stage 1 · (b) Stage 6 · mixed → Stages 3-4 for the open part, then 6
 ```
 
-**Ask, in your opening message:** "Which is closer to where you are? **(a)** Still deciding where to go and where to stay — nothing booked. **(b)** Flights and beds are booked, and what you want is what to do, where to eat, and what to book when."
+**Ask, in your opening message, unless their first message already answers it:** "Which is closer to where you are? **(a)** Still deciding where to go and where to stay — nothing booked. **(b)** Flights and beds are booked, and what you want is what to do, where to eat, and what to book when."
 
 1. **(a), or no answer, or anything vague** → Stage 1, run the whole thing. The default.
 2. **(b)** → skip Stages 1–5. Ask two questions only — *"What is the itinerary: which places, how many nights each, what dates?"* and *"What are you hoping to get out of it?"* — fill the `Trip profile` block as far as it goes, then Stage 6. Three things belong in a booked run and are easy to forget:
@@ -149,7 +149,7 @@ Optional depth, all from the **`japan-trip-kit`** repository on GitHub (green **
 
 | File | What it adds |
 |---|---|
-| `guides/dining.md` | A dining guide — one traveller's palate, city by city, with how each place is actually booked. **Open `guides/dining/<city>.md`, never the whole file**; `guides/dining/index.md` lists the cities |
+| `guides/dining/<city>.md` | A dining guide — one traveller's palate, city by city, with how each place is actually booked. Open one city at a time; `guides/dining/index.md` lists them, and the whole-file `guides/dining.md` is half a megabyte — never open that one here |
 | `guides/token-guide.md` | How to run the whole plan without exhausting a small monthly allowance |
 | `guides/research-method.md` | How to find and check a stay yourself: the Japanese review sites, what the scores mean |
 | `guides/transit-know-how.md` | How Japanese trains, passes, luggage forwarding and last-mile transfers work |
@@ -167,9 +167,8 @@ Optional depth, all from the **`japan-trip-kit`** repository on GitHub (green **
 ### Is this copy current? — check once, at the start, never later
 
 - **Git clone:** run `git pull` once and say in one line whether anything changed. If it did, re-read this file before continuing.
-- **Downloaded ZIP or single file:** the build date is the `built` field in `MANIFEST.json` (the single file prints it in its first lines). If you can fetch the web, compare it with the raw `MANIFEST.json` in the repository; if the repository is newer, tell the user in one line how to re-download, then continue with what is on disk.
+- **Any other copy — downloaded ZIP, single file, files handed to you:** skip the check and use what you have. Its build date is the `built` field in `MANIFEST.json`, which the single file prints in its first lines; give it only if they ask how current this copy is.
 - **After Stage 0 the kit is frozen for this conversation.** Never pull or re-fetch mid-run; tables changing under a plan in progress is worse than a slightly old table.
-- If the repository address is not yet filled in, skip the check.
 
 ## Stage 1 — Quick interview
 
@@ -186,7 +185,7 @@ Keep it light: the shortest stage, nothing binding. Say so — "a few quick ques
 
 ### Batch one — the frame (one message)
 
-1. **When (month and year), for how long, which airport?** Approximate is fine; get the year explicitly, and check it against today's date (from your environment, or ask) so lead times are right. Tokyo has **Haneda (HND)** and **Narita (NRT)**; Osaka's **Kansai (KIX)** serves Kyoto and Nara too. "Not yet" is a right answer — the airport then gets chosen with the route, and **flying into one and home from another is the default**, so ask whether the ticket has to be a return from a single city. If flights *are* booked it decides which end of the country the trip starts at, so it matters now. The airports a trip leaves the country from directly are **HND** or **NRT** (Tokyo), **KIX** (Kyoto and Osaka), **FUK** or **KOJ** (Kyushu), **CTS** (Hokkaido) and **NGO** (Nagoya, for a route ending in the Alps); any airport with a flight to Haneda is an exit too — Komatsu, Ōita, Kumamoto, Nagasaki, Hiroshima — for a ticket home from Tokyo. An unbooked Tokyo arrival is Haneda.
+1. **When (month and year), for how long, which airport?** Approximate is fine; get the year explicitly, and check it against today's date (from your environment, or ask) so lead times are right. Tokyo has **Haneda (HND)** and **Narita (NRT)**; Osaka's **Kansai (KIX)** serves Kyoto and Nara too. "Not yet" is a right answer — the airport then gets chosen with the route, and **flying into one and home from another is the default**, so ask whether the ticket has to be a return from a single city. Booked flights decide which end of the country the trip starts at, so they matter now. The airports a trip leaves the country from directly are **HND** or **NRT** (Tokyo), **KIX** (Kyoto and Osaka), **FUK** or **KOJ** (Kyushu), **CTS** (Hokkaido) and **NGO** (Nagoya); any airport with a Haneda flight is an exit too for a ticket home from Tokyo. An unbooked Tokyo arrival is Haneda.
 2. **Who's going?** Solo, couple, friends, family — and if children, roughly what ages.
 3. **Been to Japan before?** How many times, and where did you go? No answer → assume first trip. A repeat visitor changes Stage 3 (the classic route is not sold back to them).
 4. **What draws you?** Two or three of: food and drink · temples, gardens and history · nature and hot springs · big-city energy and shopping · pop culture · art, craft and design · snow · coast and islands.

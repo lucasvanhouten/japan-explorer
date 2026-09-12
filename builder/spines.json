@@ -60,7 +60,10 @@
     "first": 1,
     "repeat": 9
    },
-   "band": [7, 15],
+   "band": [
+    7,
+    15
+   ],
    "io": "HND → KIX",
    "in": "HND",
    "out": "KIX",
@@ -282,7 +285,10 @@
     "first": 2,
     "repeat": 1
    },
-   "band": [9, 16],
+   "band": [
+    9,
+    16
+   ],
    "io": "HND → KIX, or HND → HND / NGO",
    "in": "HND",
    "out": "KIX",
@@ -477,7 +483,10 @@
     "first": 3,
     "repeat": 8
    },
-   "band": [12, 19],
+   "band": [
+    12,
+    19
+   ],
    "io": "HND → HIJ",
    "in": "HND",
    "out": "HIJ",
@@ -641,7 +650,7 @@
        "kind": "inn",
        "default": 1,
        "question": "A night on Naoshima, the art island?",
-       "desc": "The art island, reached by ferry from Okayama.",
+       "desc": "The art island, reached by ferry from Okayama (no kit write-up — book Benesse House direct).",
        "no": "Straight through to Hiroshima.",
        "stops": [
         "naoshima"
@@ -684,7 +693,10 @@
     "first": 4,
     "repeat": 2
    },
-   "band": [9, 16],
+   "band": [
+    9,
+    16
+   ],
    "io": "HND → KIX / ITM, or HND → HND",
    "in": "HND",
    "out": "KIX",
@@ -874,18 +886,21 @@
   {
    "id": "s5",
    "name": "Kyushu South & West",
-   "blurb": "Tokyo and Kyushu, south and west.",
+   "blurb": "Tokyo and Kyushu, west and south.",
    "for": "Kyushu for people who have done Tokyo and Kyoto.",
    "assumes": "repeat",
    "rank": {
     "first": 7,
     "repeat": 4
    },
-   "band": [11, 20],
-   "io": "HND → NGS",
+   "band": [
+    11,
+    20
+   ],
+   "io": "HND → KOJ",
    "in": "HND",
-   "out": "NGS",
-   "line": "Kirishima and Kagoshima, up to Fukuoka, Takeo, Nagasaki.",
+   "out": "KOJ",
+   "line": "Fukuoka, Takeo, Nagasaki, then south to Kagoshima and its Kirishima ryokan.",
    "draws": [
     "nature",
     "onsen",
@@ -901,27 +916,34 @@
      "options": [
       {
        "label": "Tokyo first",
-       "desc": "Tokyo, then a flight to Kagoshima.",
+       "desc": "Tokyo, then a flight to Fukuoka.",
        "cities": [
-        "tokyo",
-        "kagoshima"
+        "tokyo"
        ],
        "label_rev": "Tokyo last",
        "desc_rev": "Kyushu first, then a flight to Tokyo."
       },
       {
+       "label": "Straight into Fukuoka",
+       "desc": "No Tokyo: start in the city you land in.",
+       "cities": [],
+       "in": "FUK",
+       "line": "Straight into Fukuoka. Fukuoka, Takeo, Nagasaki, then south to Kagoshima; no Tokyo this time."
+      },
+      {
        "label": "Straight into Kagoshima",
-       "desc": "No Tokyo; fly into the south of the island.",
-       "cities": [
-        "kagoshima"
-       ],
+       "desc": "No Tokyo: the loop run the other way, Kagoshima first, Fukuoka last.",
+       "cities": [],
        "in": "KOJ",
-       "line": "Straight into Kyushu. Kirishima and Kagoshima, up to Fukuoka, Takeo, Nagasaki; no Tokyo this time."
+       "out": "FUK",
+       "reverse": true,
+       "line": "Straight into Kagoshima, the loop run south to north; no Tokyo this time."
       }
      ]
     },
     "fukuoka",
-    "nagasaki"
+    "nagasaki",
+    "kagoshima"
    ],
    "attach": [
     {
@@ -945,18 +967,14 @@
       "kagoshima"
      ],
      "kind": "inn",
-     "at": "before",
+     "at": "after",
      "default": 0,
-     "question": "A ryokan at Kirishima before Kagoshima?",
-     "desc": "Hot-spring ryokan in the volcanic hills above Kagoshima.",
-     "no": "Straight into the city.",
+     "question": "A ryokan at Kirishima with Kagoshima?",
+     "desc": "Myōken's riverside ryokan, an hour above Kagoshima bay: the classic pairing with the city.",
+     "no": "Kagoshima on its own.",
      "stops": [
       "kirishima"
-     ],
-     "requires": [
-      "tokyo@first"
-     ],
-     "why_not": "a ryokan cannot be the arrival night: flying straight into Kagoshima, the city comes first"
+     ]
     }
    ],
    "legs": [
@@ -981,6 +999,28 @@
        ]
       }
      ]
+    },
+    {
+     "key": "nagasaki-kagoshima",
+     "from": [
+      "nagasaki"
+     ],
+     "to": [
+      "kagoshima"
+     ],
+     "slots": [
+      {
+       "key": "unzen",
+       "kind": "inn",
+       "default": 1,
+       "question": "A ryokan at Unzen on the way south?",
+       "desc": "The volcano town east of Nagasaki, a night on the way south.",
+       "no": "Straight south.",
+       "stops": [
+        "unzen"
+       ]
+      }
+     ]
     }
    ],
    "end": {
@@ -990,21 +1030,11 @@
     "default": 0,
     "options": [
      {
-      "label": "Fly home from Nagasaki",
-      "desc": "Out through Nagasaki airport, via Haneda.",
+      "label": "Fly home from Kagoshima",
+      "desc": "Out through Kagoshima airport.",
       "stops": [],
-      "label_rev": "Arrive at Nagasaki",
-      "desc_rev": "In through Nagasaki airport, via Haneda."
-     },
-     {
-      "label": "Unzen",
-      "desc": "A last night in the hot-spring town on the peninsula east of Nagasaki.",
-      "stops": [
-       "unzen"
-      ],
-      "out": "NGS",
-      "label_rev": "Unzen",
-      "desc_rev": "A first night in the hot-spring town on the peninsula east of Nagasaki."
+      "label_rev": "Fly home from Fukuoka",
+      "desc_rev": "Out through Fukuoka airport."
      },
      {
       "label": "Back to Tokyo",
@@ -1021,17 +1051,20 @@
   {
    "id": "s6",
    "name": "Kyushu South & East",
-   "blurb": "Tokyo and Kyushu, south and east.",
+   "blurb": "Tokyo and Kyushu, north and south.",
    "for": "Kyushu when the hot springs are the point.",
    "rank": {
     "first": 8,
     "repeat": 5
    },
-   "band": [11, 19],
-   "io": "HND → OIT / FUK",
+   "band": [
+    11,
+    19
+   ],
+   "io": "HND → KOJ",
    "in": "HND",
-   "out": "OIT",
-   "line": "Kirishima and Kagoshima, up to Fukuoka, then the hot-spring east.",
+   "out": "KOJ",
+   "line": "Fukuoka, the hot-spring east, then south to Kagoshima and its Kirishima ryokan.",
    "draws": [
     "nature",
     "onsen",
@@ -1046,22 +1079,28 @@
      "options": [
       {
        "label": "Tokyo first",
-       "desc": "Tokyo, then a flight to Kagoshima.",
+       "desc": "Tokyo, then a flight to Fukuoka.",
        "cities": [
-        "tokyo",
-        "kagoshima"
+        "tokyo"
        ],
        "label_rev": "Tokyo last",
        "desc_rev": "Kyushu first, then a flight to Tokyo."
       },
       {
+       "label": "Straight into Fukuoka",
+       "desc": "No Tokyo: start in the city you land in.",
+       "cities": [],
+       "in": "FUK",
+       "line": "Straight into Fukuoka. Fukuoka, the hot-spring east, then south to Kagoshima; no Tokyo this time."
+      },
+      {
        "label": "Straight into Kagoshima",
-       "desc": "No Tokyo; fly into the south of the island.",
-       "cities": [
-        "kagoshima"
-       ],
+       "desc": "No Tokyo: the loop run the other way, Kagoshima first, Fukuoka last.",
+       "cities": [],
        "in": "KOJ",
-       "line": "Straight into Kyushu. Kirishima and Kagoshima, up to Fukuoka, then the hot-spring east; no Tokyo this time."
+       "out": "FUK",
+       "reverse": true,
+       "line": "Straight into Kagoshima, the loop run south to north; no Tokyo this time."
       }
      ]
     },
@@ -1084,10 +1123,15 @@
        "desc": "The big steaming hot-spring city on the east coast.",
        "cities": [
         "beppu"
-       ]
+       ],
+       "not_with": [
+        "kagoshima@first"
+       ],
+       "why_not": "run south to north, the train from Kagoshima's side to Beppu doubles back through the city — Yufuin instead"
       }
      ]
-    }
+    },
+    "kagoshima"
    ],
    "attach": [
     {
@@ -1111,18 +1155,14 @@
       "kagoshima"
      ],
      "kind": "inn",
-     "at": "before",
+     "at": "after",
      "default": 0,
-     "question": "A ryokan at Kirishima before Kagoshima?",
-     "desc": "Hot-spring ryokan in the volcanic hills above Kagoshima.",
-     "no": "Straight into the city.",
+     "question": "A ryokan at Kirishima with Kagoshima?",
+     "desc": "Myōken's riverside ryokan, an hour above Kagoshima bay: the classic pairing with the city.",
+     "no": "Kagoshima on its own.",
      "stops": [
       "kirishima"
-     ],
-     "requires": [
-      "tokyo@first"
-     ],
-     "why_not": "a ryokan cannot be the arrival night: flying straight into Kagoshima, the city comes first"
+     ]
     },
     {
      "key": "kumamoto.amakusa",
@@ -1141,28 +1181,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "kagoshima-fukuoka",
-     "from": [
-      "kagoshima"
-     ],
-     "to": [
-      "fukuoka"
-     ],
-     "slots": [
-      {
-       "key": "kumamoto",
-       "kind": "stop",
-       "default": 1,
-       "question": "A stop at Kumamoto on the way to Fukuoka?",
-       "desc": "The castle city under the Aso caldera.",
-       "no": "Bullet train straight to Fukuoka.",
-       "stops": [
-        "kumamoto"
-       ]
-      }
-     ]
-    },
     {
      "key": "fukuoka-yufuin",
      "from": [
@@ -1184,6 +1202,29 @@
        ]
       }
      ]
+    },
+    {
+     "key": "east-kagoshima",
+     "from": [
+      "yufuin",
+      "beppu"
+     ],
+     "to": [
+      "kagoshima"
+     ],
+     "slots": [
+      {
+       "key": "kumamoto",
+       "kind": "stop",
+       "default": 1,
+       "question": "A stop at Kumamoto on the way south?",
+       "desc": "The castle city under the Aso caldera, on the way south.",
+       "no": "Straight to Kagoshima.",
+       "stops": [
+        "kumamoto"
+       ]
+      }
+     ]
     }
    ],
    "end": {
@@ -1193,11 +1234,11 @@
     "default": 0,
     "options": [
      {
-      "label": "Fly home from Ōita",
-      "desc": "Out through Ōita airport, via Haneda.",
+      "label": "Fly home from Kagoshima",
+      "desc": "Out through Kagoshima airport.",
       "stops": [],
-      "label_rev": "Arrive at Ōita",
-      "desc_rev": "In through Ōita airport, via Haneda."
+      "label_rev": "Fly home from Fukuoka",
+      "desc_rev": "Out through Fukuoka airport."
      },
      {
       "label": "Back to Tokyo",
@@ -1220,7 +1261,10 @@
     "first": 9,
     "repeat": 6
    },
-   "band": [10, 17],
+   "band": [
+    10,
+    17
+   ],
    "io": "HND → OIT, or HND → NGS",
    "in": "HND",
    "out": "OIT",
@@ -1464,7 +1508,10 @@
     "first": 5,
     "repeat": 3
    },
-   "band": [11, 18],
+   "band": [
+    11,
+    18
+   ],
    "io": "HND or KIX → FUK / OIT / NGS",
    "in": "HND",
    "out": "FUK",
@@ -1650,7 +1697,7 @@
        "kind": "inn",
        "default": 1,
        "question": "A night on Naoshima, the art island?",
-       "desc": "The art island, reached by ferry from Okayama.",
+       "desc": "The art island, reached by ferry from Okayama (no kit write-up — book Benesse House direct).",
        "no": "Straight through to Hiroshima.",
        "stops": [
         "naoshima"
@@ -1706,7 +1753,10 @@
     "first": 6,
     "repeat": 7
    },
-   "band": [8, 12],
+   "band": [
+    8,
+    12
+   ],
    "io": "HND → CTS",
    "in": "HND",
    "out": "CTS",
@@ -1779,13 +1829,13 @@
      },
      {
       "label": "A hot-spring ryokan",
-      "desc": "A last night at Noboribetsu or Jōzankei, near the airport.",
+      "desc": "A last night at Noboribetsu or Jōzankei, near the airport (no kit write-up at Noboribetsu; Jōzankei has one).",
       "stops": [
        "noboribetsu"
       ],
       "out": "CTS",
       "label_rev": "A hot-spring ryokan",
-      "desc_rev": "A first night at Noboribetsu or Jōzankei, near the airport."
+      "desc_rev": "A first night at Noboribetsu or Jōzankei, near the airport (no kit write-up at Noboribetsu; Jōzankei has one)."
      },
      {
       "label": "Back to Tokyo",

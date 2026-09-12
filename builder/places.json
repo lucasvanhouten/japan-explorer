@@ -543,6 +543,7 @@
   "region": "kyushu",
   "card": "Kyushu",
   "primary": true,
+  "max": 3,
   "label": "Kagoshima",
   "lat": 31.584,
   "lng": 130.541,
