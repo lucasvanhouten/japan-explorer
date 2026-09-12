@@ -7,18 +7,18 @@
 ## The inns — 17 within reach
 
 - `onyado-chikurintei` · Onyado Chikurintei · A 8.2 · bath yes · $550–1400 · 42 min/0 from Nagasaki
-- `myoken-ishiharaso` · Myoken Ishiharaso ◆ · S 9.5 · bath yes · $550–900 · 54 min/0 from Kagoshima
+- `myoken-ishiharaso` · Myoken Ishiharaso editor's pick · S 9.5 · bath yes · $550–900 · 54 min/0 from Kagoshima
 - `isshin` · Isshin · B 7.7 · bath yes · ask · 54 min/0 from Kagoshima
-- `sanso-murata` · Sanso Murata ◆ · S 9.0 · bath yes · $1000–1400 · 1h/0 from Beppu
-- `enowa-yufuin` · Enowa Yufuin ◆ · A 8.4 · bath yes · $950–2000 · 1h/0 from Beppu
-- `kamenoi-besso` · Kamenoi Besso ◆ · — · bath unstated · $760–1500 · 1h/0 from Beppu
-- `tayuta` · Tayuta ◆ · S 9.4 · bath yes · $1200–2700 · 1h12/0 from Kumamoto
+- `sanso-murata` · Sanso Murata editor's pick · S 9.0 · bath yes · $1000–1400 · 1h/0 from Beppu
+- `enowa-yufuin` · Enowa Yufuin editor's pick · A 8.4 · bath yes · $950–2000 · 1h/0 from Beppu
+- `kamenoi-besso` · Kamenoi Besso editor's pick · — · bath unstated · $760–1500 · 1h/0 from Beppu
+- `tayuta` · Tayuta editor's pick · S 9.4 · bath yes · $1200–2700 · 1h12/0 from Kumamoto
 - `yoyokaku` · Yoyokaku · B 7.9 · bath no · $300–550 · 1h15/0 from Fukuoka
-- `sanso-tensui` · Sanso Tensui ◆ · A 8.6 · bath yes · $420–600 · 1h42/1 from Kumamoto
+- `sanso-tensui` · Sanso Tensui editor's pick · A 8.6 · bath yes · $420–600 · 1h42/1 from Kumamoto
 - `mt-resort-unzen-kyushu-hotel` · Mt.Resort Unzen Kyushu Hotel · A 8.4 · bath yes · ask · 1h42/0 from Nagasaki
 - `shinsen` · Shinsen · A 8.9 · bath some · $600–1100 · 2h/0 from Kumamoto
 - `kinsuikan` · Kinsuikan · A 8.1 · bath no · $470–830 · 2h15/2 from Fukuoka
-- `takefue` · Takefue ◆ · S 9.3 · bath yes · $1300–1800 · 2h24/0 from Beppu
+- `takefue` · Takefue editor's pick · S 9.3 · bath yes · $1300–1800 · 2h24/0 from Beppu
 - `gosho-gekkoju` · Gosho Gekkoju · A 8.5 · bath yes · $900–1400 · 2h24/0 from Beppu
 - `sankara-hotel-spa-yakushima` · Sankara Hotel & Spa Yakushima · A 8.9 · bath no · $750–1500 · 2h30/1 from Kagoshima
 - `migiwatei-ochi-kochi` · Migiwatei Ochi Kochi · A 8.5 · bath yes · $470–800 · 2h30/0 from Fukuoka
@@ -73,6 +73,6 @@
 
 **How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
-Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
 The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.

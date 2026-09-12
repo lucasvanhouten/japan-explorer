@@ -6,12 +6,12 @@
 
 ## The inns — 8 within reach
 
-- `hiiragiya` · Hiiragiya ◆ · A 8.7 · bath no · ask · 45 min/0 from Osaka
-- `tsukihitei` · Tsukihitei ◆ · A 8.1 · bath unstated · $750–950 · 1h/0 from Osaka
+- `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 45 min/0 from Osaka
+- `tsukihitei` · Tsukihitei editor's pick · A 8.1 · bath unstated · $750–950 · 1h/0 from Osaka
 - `fufu-nara` · Fufu Nara · B 7.7 · bath yes · $780–1200 · 1h/0 from Osaka
 - `neold-private-house` · NEOLD Private House · B 7.7 · bath unstated · $560–660 · 1h/0 from Osaka
 - `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h06/0 from Osaka
-- `sanso-amanosato` · Sanso Amanosato ◆ · A 8.6 · bath no · $650–1000 · 1h24/1 from Osaka
+- `sanso-amanosato` · Sanso Amanosato editor's pick · A 8.6 · bath no · $650–1000 · 1h24/1 from Osaka
 - `kyo-yunohana-resort-suisen` · Kyo Yunohana Resort Suisen · B 7.6 · bath yes · ask · 1h30/2 from Osaka
 - `nishimuraya-honkan` · Nishimuraya Honkan · A 8.8 · bath no · $700–1000 · 2h45/0 from Osaka — _long day; another gateway is closer_
 
@@ -34,6 +34,6 @@
 
 **How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
-Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
 The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.

@@ -1130,6 +1130,12 @@ function cmdCompare(specs, opt) {
 /* the shortlist for a place: three to five rows against the profile, write-ups verbatim, from shortlist.json */
 const BUDGET = { inn: { modest: 600, comfortable: 1000 }, hotel: { modest: 300, comfortable: 600 } };
 const bandLow = (s) => { const m = /\$?(\d[\d,]*)/.exec(String(s || "")); return m ? +m[1].replace(/,/g, "") : null; };
+const bandHigh = (s) => { const m = /\$?(\d[\d,]*)\s*[–-]\s*\$?(\d[\d,]*)/.exec(String(s || "")); return m ? +m[2].replace(/,/g, "") : bandLow(s); };
+/* under a modest or comfortable budget the hotels sit in three tiers (2026-09-12, owner: "five within a comfortable
+ * budget" led with the dearest rows and dropped K5 and SOIL): a band whose top stays within a quarter above the
+ * budget line is squarely inside it; one that starts under the line but runs well past it is a stretch; no band
+ * at all is last. Inside a tier the authored order holds. */
+const hotelTier = (budget, band) => { if (!budget || budget === "splurge") return 0; const lo = bandLow(band), hi = bandHigh(band); if (lo === null) return 2; return hi <= BUDGET.hotel[budget] * 1.25 ? 0 : 1; };
 /* a RYOKAN option on a spine spans towns, so the shortlist answers for the whole option in one table with the
  * town as a column: `stays fuji`, `stays snow`, `stays kaga`, `stays east`, `stays sapporo-onsen` (2026-09-13) */
 const STAY_GROUPS = {
@@ -1160,33 +1166,45 @@ function cmdStays(q, opt) {
   const group = G ? G.locs : Object.values(ALIAS).find((g) => g[0] === loc) || [loc], inLoc = (l) => group.includes(l);
   let inns = (SHORTLIST.inns || []).filter((i) => inLoc(i.loc)).map((i) => Object.assign({ kind: "inn" }, i));
   const hotels = (SHORTLIST.hotels || []).filter((h) => inLoc(h.city)).map((h) => Object.assign({ kind: h.kind || "hotel" }, h));
-  const droppedInns = inns.filter((i) => !fits("inn", i.band) || !bathOk(i.bath)), droppedHotels = hotels.filter((h) => !fits("hotel", h.rate));
+  /* an editor's pick priced above the budget is still shown, last, as the reach (owner, 2026-09-12: "isn't Asaba a
+   * required rec for Hakone / Fuji / Izu?"); the bath filter still applies to it */
+  const reach = inns.filter((i) => i.pinned && !fits("inn", i.band) && bathOk(i.bath));
+  const droppedInns = inns.filter((i) => (!fits("inn", i.band) || !bathOk(i.bath)) && !reach.includes(i)), droppedHotels = hotels.filter((h) => !fits("hotel", h.rate));
   inns = inns.filter((i) => fits("inn", i.band) && bathOk(i.bath)).sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || (b.score || 0) - (a.score || 0) || a.name.localeCompare(b.name, "en"));
-  const shownHotels = hotels.filter((h) => fits("hotel", h.rate));
-  const cap = opt.all ? Infinity : G ? 8 : 5;
-  const rowsI = inns.slice(0, cap), rowsH = shownHotels.slice(0, cap);
+  const shownHotels = hotels.filter((h) => fits("hotel", h.rate)).map((h, i) => ({ h, i })).sort((a, b) => hotelTier(budget, a.h.rate) - hotelTier(budget, b.h.rate) || a.i - b.i).map((x) => x.h);
+  /* inns cap at five (eight across a town group); a city's hotels at six, so the table shows variety (owner, 2026-09-12) */
+  const cap = opt.all ? Infinity : G ? 8 : 5, capH = opt.all ? Infinity : 6;
+  const rowsI = inns.slice(0, cap).concat(reach.map((i) => Object.assign({}, i, { band: `${i.band} · above the budget` }))), rowsH = shownHotels.slice(0, capH);
   const where = G ? G.name : label(loc);
   if (opt.json) return JSON.stringify({ loc, group: G ? { name: G.name, locs: G.locs } : null, place: p, inns: rowsI, hotels: rowsH, filtered_out: { inns: droppedInns.map((i) => i.slug), hotels: droppedHotels.map((h) => h.name) } }, null, 1);
   /* the count in the header IS the number of rows under it (2026-09-13): what is shown, then what was held back */
-  const held = (inns.length - rowsI.length) + (shownHotels.length - rowsH.length);
-  const shownTxt = [rowsI.length ? `${rowsI.length} inn${rowsI.length === 1 ? "" : "s"}` : "", rowsH.length ? `${rowsH.length} hotel${rowsH.length === 1 ? "" : "s"}` : ""].filter(Boolean).join(" and ") || "nothing";
-  const L = [`*${where} (${G ? `${G.locs.length} towns, one table` : p.kind + (p.unlisted ? ", no card line" : "")}): ${shownTxt}${budget ? ` within a ${budget} budget` : ""}${opt.bath ? ", in-room bath only" : ""}, best first${held ? ` — ${held} more on the shortlist here (--all for every one)` : ""}. Write-ups are the kit's, verbatim; the band is per night for two, dinner and breakfast included for an inn, room only for a hotel.*`, ""];
+  const held = (inns.length - Math.min(inns.length, cap)) + (shownHotels.length - rowsH.length);
+  const nFit = rowsI.length - reach.length;
+  const shownTxt = [nFit ? `${nFit} inn${nFit === 1 ? "" : "s"}` : "", rowsH.length ? `${rowsH.length} hotel${rowsH.length === 1 ? "" : "s"}` : ""].filter(Boolean).join(" and ") || "nothing";
+  const reachTxt = reach.length ? `, then ${reach.length} inn${reach.length === 1 ? "" : "s"} above it, ${reach.length === 1 ? "an editor's pick" : "editor's picks"}` : "";
+  const L = [`*${where} (${G ? `${G.locs.length} towns, one table` : p.kind + (p.unlisted ? ", no card line" : "")}): ${shownTxt}${budget ? ` within a ${budget} budget` : ""}${opt.bath ? ", in-room bath only" : ""}, best first${reachTxt}${held ? ` — ${held} more on the shortlist here (--all for every one)` : ""}. Write-ups are the kit's, verbatim; the band is per night for two, dinner and breakfast included for an inn, room only for a hotel.*`, ""];
   /* the town is a column (2026-09-12): a RYOKAN option spans towns, and choosing the inn fixes the town and the leg */
-  L.push("| Stay | Kind | Town | Band | Bath | Why | Links |", "|---|---|---|---|---|---|---|");
-  /* the map link leads, as Stage 4 says: it settles where the place actually stands (2026-09-13) */
-  rowsI.forEach((i) => L.push(`| ${i.name}${i.pinned ? " ◆" : ""} | inn${i.tier ? ` · ${i.tier}` : ""} | ${i.area || label(i.loc || loc)}${i.loc && i.loc !== loc ? ` (\`${i.loc}\`)` : ""} | ${i.band} | ${i.bath} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[catalog](${i.url}) |`));
-  /* a hotel's bath is not researched here, and an empty cell reads as none: it says `unstated` (2026-09-13).
-   * A row the kit calls an inn links to its ryokancatalog page, never to the property's own site. */
+  /* the table gives its width to Why (owner, 2026-09-12): the kind, the score and an editor's pick ride in the Stay cell,
+   * Town is a column only when the option spans towns, a hotel city has no Bath column, and a mixed inn-and-hotel table
+   * keeps Bath with a hotel's cell reading `unstated` (an empty cell would read as none) */
+  const hotelsOnly = !rowsI.length && rowsH.length > 0;
+  const HEAD = hotelsOnly ? "| Stay | Band | Why | Links |" : G ? "| Stay | Town | Band | Bath | Why | Links |" : "| Stay | Band | Bath | Why | Links |";
+  L.push(HEAD, HEAD.replace(/[^|]+/g, "---"));
+  const innStay = (i) => `${i.name} · inn${i.tier ? ` · ${i.tier}` : ""}${i.pinned ? " · editor's pick" : ""}`;
+  const innRow = (i, town) => `| ${innStay(i)} | ${G ? `${town} | ` : ""}${i.band} | ${i.bath} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[catalog](${i.url}) |`;
+  rowsI.forEach((i) => L.push(innRow(i, `${i.area || label(i.loc || loc)}${i.loc && i.loc !== loc ? ` (\`${i.loc}\`)` : ""}`)));
   rowsH.forEach((h) => { const isInn = /^inn\b/.test(String(h.kind || ""));
     const links = [h.map ? `[map](${h.map})` : "map unconfirmed", isInn && h.url ? `[catalog](${h.url})` : h.site ? `[site](${h.site})` : ""].filter(Boolean).join(" · ");
-    L.push(`| ${h.name} | ${h.kind}${h.group && h.group !== "—" ? ` · ${h.group}` : ""} | ${label(h.city)}${h.area ? ` · ${h.area}` : ""} | ${h.rate} | unstated | ${h.why} | ${links} |`); });
+    /* a hotel's Stay cell is its name and neighbourhood; the points or luxury group is already in its write-up */
+    const stay = `${h.name}${isInn ? " · inn" : ""}${h.area ? ` · ${h.area}` : ""}`;
+    L.push(`| ${stay} | ${G ? `${label(h.city)} | ` : ""}${h.rate} | ${hotelsOnly ? "" : "unstated | "}${h.why} | ${links} |`); });
   /* nothing here: the cell says so plainly — never an instruction to the assistant — and the nearest place's
    * rows follow it, so the reader still has somewhere to sleep (2026-09-13) */
   if (!rowsI.length && !rowsH.length) {
-    L.push(`| — | — | ${where} | — | — | no shortlist stay here${droppedInns.length || droppedHotels.length ? " inside that filter" : ""} | — |`);
+    L.push(`| — | — | — | no shortlist stay here${droppedInns.length || droppedHotels.length ? " inside that filter" : ""} | — |`);
     const near = nearestStay(loc, group);
-    if (near) { L.push("", `The nearest place the kit covers is ${label(near.loc)}, ${Math.round(near.km)} km away:`, "", "| Stay | Kind | Town | Band | Bath | Why | Links |", "|---|---|---|---|---|---|---|");
-      near.inns.slice(0, 3).forEach((i) => L.push(`| ${i.name}${i.pinned ? " ◆" : ""} | inn${i.tier ? ` · ${i.tier}` : ""} | ${i.area || label(i.loc)} | ${i.band} | ${i.bath} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[catalog](${i.url}) |`)); }
+    if (near) { L.push("", `The nearest place the kit covers is ${label(near.loc)}, ${Math.round(near.km)} km away:`, "", "| Stay | Band | Bath | Why | Links |", "|---|---|---|---|---|");
+      near.inns.slice(0, 3).forEach((i) => L.push(`| ${innStay(i)} | ${i.band} | ${i.bath} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[catalog](${i.url}) |`)); }
   }
   if (droppedInns.length || droppedHotels.length) L.push("", `Left out by the filter: ${droppedInns.map((i) => i.name).concat(droppedHotels.map((h) => h.name)).join(", ")}.`);
   if (rowsI.length && rowsI.length < 3) L.push("", `Only ${rowsI.length} inn${rowsI.length === 1 ? "" : "s"} here on the shortlist — say so rather than padding; the alternative is a hotel in the nearest city, or the live catalogue at https://ryokancatalog.com/place/${loc}.`);

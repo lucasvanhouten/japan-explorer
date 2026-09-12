@@ -9,10 +9,10 @@
 - `machiyado-ichiryu` · Machiyado Ichiryu · — · bath unstated · $600–950 · in Takayama
 - `wanosato` · Wanosato · A 8.3 · bath no · $550–850 · in Takayama
 - `shogetsu` · Shogetsu · A 8.8 · bath yes · $600–950 · 1h/0 from Takayama
-- `beniya-mukayu` · Beniya Mukayu ◆ · A 8.4 · bath some · $800–1200 · 2h36/1 from Takayama — _long day; another gateway is closer_
+- `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · 2h36/1 from Takayama — _long day; another gateway is closer_
 - `hanamurasaki` · Hanamurasaki · A 8.1 · bath no · $600–1000 · 2h48/1 from Takayama — _long day; another gateway is closer_
 - `kayotei` · Kayotei · B 7.6 · bath some · $700–1100 · 2h48/1 from Takayama — _long day; another gateway is closer_
-- `kanshuku-en-eshikoto` · Kanshuku-en Eshikoto ◆ · — · bath unstated · $750–1150 · 2h54/1 from Takayama — _long day; another gateway is closer_
+- `kanshuku-en-eshikoto` · Kanshuku-en Eshikoto editor's pick · — · bath unstated · $750–1150 · 2h54/1 from Takayama — _long day; another gateway is closer_
 - `fujiiso` · Fujiiso · B 7.7 · bath yes · $480–900 · 3h06/1 from Takayama — _long day; another gateway is closer_
 - `iwanoyu` · Iwanoyu · A 8.3 · bath some · $400–750 · 3h15/1 from Takayama — _long day; another gateway is closer_
 - `sui-suwako` · Sui Suwako · A 8.1 · bath yes · $450–750 · 3h15/1 from Takayama — _long day; another gateway is closer_
@@ -33,6 +33,6 @@
 
 **How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
-Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
 The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.

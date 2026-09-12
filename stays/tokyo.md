@@ -14,29 +14,29 @@
 ## The inns — 27 within reach
 
 - `fuefukigawa-onsen-zabou` · Fuefukigawa Onsen Zabou · B 7.5 · bath yes · $450–650 · 1h30/0 from Tokyo
-- `bettei-senjuan` · Bettei Senjuan ◆ · A 8.7 · bath some · $550–750 · 1h40/0 from Tokyo
-- `asaba` · Asaba ◆ · S 9.4 · bath some · $1100–1600 · 1h45/0 from Tokyo
+- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · 1h40/0 from Tokyo
+- `asaba` · Asaba editor's pick · S 9.4 · bath some · $1100–1600 · 1h45/0 from Tokyo
 - `ryugon` · ryugon · A 8.8 · bath some · $520–970 · 1h45/0 from Tokyo
 - `satoyama-jujo` · Satoyama Jujo · A 8.3 · bath some · $500–800 · 1h45/0 from Tokyo
 - `otogi-no-yado-yoneya` · Otogi no Yado Yoneya · A 8.1 · bath unstated · $350–650 · 1h45/1 from Tokyo
-- `gora-kadan-fuji` · Gora Kadan Fuji ◆ · A 8.0 · bath some · $900–1800 · 1h48/0 from Tokyo
-- `fufu-nikko` · Fufu Nikko ◆ · A 8.8 · bath yes · $850–1200 · 2h/0 from Tokyo
+- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · 1h48/0 from Tokyo
+- `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · 2h/0 from Tokyo
 - `onyado-kawasemi` · Onyado Kawasemi · A 8.3 · bath no · $850–1150 · 2h/1 from Tokyo
-- `fufu-kawaguchiko` · Fufu Kawaguchiko ◆ · B 7.9 · bath yes · $930–1300 · 2h/0 from Tokyo
+- `fufu-kawaguchiko` · Fufu Kawaguchiko editor's pick · B 7.9 · bath yes · $930–1300 · 2h/0 from Tokyo
 - `atamiso` · Atamiso · A 8.3 · bath some · $450–800 · 2h12/1 from Tokyo
 - `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · 2h12/1 from Tokyo
 - `auberge-suzukane` · Auberge Suzukane · A 8.0 · bath unstated · ask · 2h12/1 from Tokyo
 - `arcana-izu` · Arcana Izu · B 7.8 · bath some · $520–1100 · 2h12/1 from Tokyo
 - `gora-kadan` · Gora Kadan · B 7.5 · bath some · ask · 2h12/1 from Tokyo
-- `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu ◆ · A 8.3 · bath some · $570–800 · 2h15/0 from Tokyo
+- `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu editor's pick · A 8.3 · bath some · $570–800 · 2h15/0 from Tokyo
 - `fujiiso` · Fujiiso · B 7.7 · bath yes · $480–900 · 2h18/0 from Tokyo
 - `iwanoyu` · Iwanoyu · A 8.3 · bath some · $400–750 · 2h30/0 from Tokyo
 - `yamagata-the-takinami` · Yamagata The Takinami · A 8.3 · bath some · $600–900 · 2h30/0 from Tokyo
 - `sui-suwako` · Sui Suwako · A 8.1 · bath yes · $450–750 · 2h30/0 from Tokyo
 - `osteria-sincerita` · Osteria Sincerità · B 7.8 · bath unstated · $850–1100 · 2h30/0 from Tokyo
-- `shoraiso` · Shoraiso ◆ · — · bath yes · $730–1100 · 2h36/1 from Tokyo — _long day; another gateway is closer_
-- `hiiragiya` · Hiiragiya ◆ · A 8.7 · bath no · ask · 2h45/0 from Tokyo — _long day; another gateway is closer_
-- `beniya-mukayu` · Beniya Mukayu ◆ · A 8.4 · bath some · $800–1200 · 3h/0 from Tokyo — _long day; another gateway is closer_
+- `shoraiso` · Shoraiso editor's pick · — · bath yes · $730–1100 · 2h36/1 from Tokyo — _long day; another gateway is closer_
+- `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 2h45/0 from Tokyo — _long day; another gateway is closer_
+- `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · 3h/0 from Tokyo — _long day; another gateway is closer_
 - `kansuiro` · Kansuiro · A 8.5 · bath unstated · ask · 3h12/2 from Tokyo — _long day; another gateway is closer_
 - `kinugawa-kanaya-hotel` · Kinugawa Kanaya Hotel · B 7.8 · bath no · ask · no researched leg from this file's cities — look it up live
 - `yunohanaso` · Yunohanaso · B 7.7 · bath yes · ask · no researched leg from this file's cities — look it up live
@@ -53,7 +53,7 @@
 | Hotel Toranomon Hills | [map ↗](https://www.google.com/maps?cid=12819761384697507953) | [site](https://www.hyatt.com/hotel-toranomon-hills) | Hyatt points, or Chase points transferred to Hyatt | Toranomon (Unbound Collection by Hyatt) | $375–700 | An upmarket hotel on floors 11 to 14 of the Toranomon Hills Station Tower, and the one FlyerTalk regulars book over the Andaz next door. Its 204 rooms are pale wood and stone, quieter than the tower around them. Le Pristine, a Belgian dining room, is downstairs, and the Hibiya line runs from the basement. Toranomon Yokocho, an alley of 26 small restaurants, is in the next tower. Ginza is two stops when the district empties after work. Bookable with Hyatt or transferred Chase points. |
 | Hyatt Centric Ginza Tokyo | [map ↗](https://www.google.com/maps?cid=13498144464031270753) | [site](https://www.hyatt.com/hyatt-centric/en-US/tyoct-hyatt-centric-ginza-tokyo) | Hyatt points, or Chase points transferred to Hyatt | Namiki-dōri, Ginza | $400–750 | Known for its address: Namiki-dori, the tree-lined Ginza street where the small bars and counters are. Dinner is a walk from the door rather than a taxi, and the Ginza subway lines are two minutes away. Rooms are plain and about 25 square metres, which is normal for the area and tight if you unpack for a week. Bookable with Hyatt points, or Chase points transferred at 1:1. |
 | Palace Hotel Tokyo | [map ↗](https://www.google.com/maps?cid=1748987416538389436) | [site](https://en.palacehoteltokyo.com/) | Japanese-run luxury | Marunouchi, on the Imperial Palace moat | $600–1250 | Tokyo's best Japanese-run luxury hotel, and the one FlyerTalk's regulars pick first: grand but not stiff, with the most polished service in the city. Rooms are large by Tokyo standards and most have a balcony over the Imperial Palace moat, a view no other hotel has. Six restaurants and bars, a real spa and pool, and the palace gardens across the water for a morning walk. Marunouchi puts Tokyo Station minutes away. |
-| The Okura Tokyo — Heritage Wing | [map ↗](https://www.google.com/maps?cid=3528441622244778882) | [site](https://theokuratokyo.jp/en/the-okura-heritage-wing/) | Japanese-run luxury | Toranomon, on the Okura hill | rate not researched — check live | The mid-century modern register is the reason to stay here. The 1962 lobby was rebuilt to the original design, hanging lanterns and plum-blossom tables included, and the Orchid Bar keeps the fittings of the old hotel. The Heritage Wing holds 140 suite-sized rooms, each with its own steam sauna, and it stays quiet. Toranomon station is out the back, but most other lines are a 10 to 15 minute walk, so take a taxi when it rains. |
+| The Okura Tokyo — Heritage Wing | [map ↗](https://www.google.com/maps?cid=3528441622244778882) | [site](https://theokuratokyo.jp/en/the-okura-heritage-wing/) | Japanese-run luxury | Toranomon, on the Okura hill | $360–640 · Prestige Tower entry room; the Heritage Wing sells direct only, check theokuratokyo.jp | The mid-century modern register is the reason to stay here. The 1962 lobby was rebuilt to the original design, hanging lanterns and plum-blossom tables included, and the Orchid Bar keeps the fittings of the old hotel. The Heritage Wing holds 140 suite-sized rooms, each with its own steam sauna, and it stays quiet. Toranomon station is out the back, but most other lines are a 10 to 15 minute walk, so take a taxi when it rains. |
 | Hoshinoya Tokyo | [map ↗](https://www.google.com/maps?cid=452005950262881873) | [site](https://hoshinoresorts.com/en/hotels/hoshinoyatokyo/) | Japanese-run luxury | Ōtemachi | $450–950 | A ryokan built as a tower in Otemachi, where shoes come off at the door and stay off. Each floor has a shared lounge with tea, sake and snacks, and the roof has an open-air bath fed by a hot spring drilled under the city. Offices hem it in, so there is no view from the rooms. FlyerTalk's ryokan regulars find the rooms small and would send people to the countryside instead. |
 | K5 | [map ↗](https://www.google.com/maps?cid=10906498574121315795) | [site](https://k5-tokyo.com/) | Funky boutique | Kabutochō / Nihonbashi | $275–650 | A design hotel in a converted pre-war bank in Kabutocho, Tokyo's old stock-exchange quarter, and the building is the reason to book it. Twenty rooms, with indigo-dyed fabric hung where walls would be. The basement cocktail bar, a Brooklyn Brewery taproom and a coffee counter are all in the house. The quarter is offices and shutters on a Sunday; Ginza is a 15-minute walk. |
 | SOIL Nihonbashi | [map ↗](https://www.google.com/maps?cid=11886533522893997146) | [site](https://soilis.co/nihonbashi/) | Funky boutique | Bakurochō, Nihonbashi | $200–225 | A small design-led hotel over its own cafe and sake bar in Bakurocho, the old textile-wholesale district. Raw plaster, timber and steel inside, and guests use the ground floor as a living room. Rooms are compact, which is the trade for the address. Nihonbashi and Akihabara are each a short walk, and the Asakusa line runs from the corner. |
@@ -62,6 +62,6 @@
 
 **How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
-Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
 The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.

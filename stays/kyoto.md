@@ -6,24 +6,24 @@
 
 ## The inns — 23 within reach
 
-- `hiiragiya` · Hiiragiya ◆ · A 8.7 · bath no · ask · in Kyoto
-- `tsukihitei` · Tsukihitei ◆ · A 8.1 · bath unstated · $750–950 · 45 min/0 from Kyoto
+- `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · in Kyoto
+- `tsukihitei` · Tsukihitei editor's pick · A 8.1 · bath unstated · $750–950 · 45 min/0 from Kyoto
 - `fufu-nara` · Fufu Nara · B 7.7 · bath yes · $780–1200 · 45 min/0 from Kyoto
 - `neold-private-house` · NEOLD Private House · B 7.7 · bath unstated · $560–660 · 45 min/0 from Kyoto
 - `kyo-yunohana-resort-suisen` · Kyo Yunohana Resort Suisen · B 7.6 · bath yes · ask · 45 min/1 from Kyoto
 - `hanamurasaki` · Hanamurasaki · A 8.1 · bath no · $600–1000 · 1h36/1 from Kyoto
 - `kayotei` · Kayotei · B 7.6 · bath some · $700–1100 · 1h36/1 from Kyoto
 - `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h45/2 from Kyoto
-- `kanshuku-en-eshikoto` · Kanshuku-en Eshikoto ◆ · — · bath unstated · $750–1150 · 1h45/1 from Kyoto
-- `beniya-mukayu` · Beniya Mukayu ◆ · A 8.4 · bath some · $800–1200 · 2h/1 from Kyoto
+- `kanshuku-en-eshikoto` · Kanshuku-en Eshikoto editor's pick · — · bath unstated · $750–1150 · 1h45/1 from Kyoto
+- `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · 2h/1 from Kyoto
 - `auberge-yusura` · Auberge Yusura · B 7.6 · bath yes · $870–1200 · 2h/1 from Kyoto
 - `migiwatei-ochi-kochi` · Migiwatei Ochi Kochi · A 8.5 · bath yes · $470–800 · 2h12/1 from Kyoto
 - `ryokan-nishiyama` · Ryokan Nishiyama · B 7.6 · bath unstated · $540–650 · 2h18/1 from Kyoto
 - `nishimuraya-honkan` · Nishimuraya Honkan · A 8.8 · bath no · $700–1000 · 2h30/0 from Kyoto
-- `sanso-amanosato` · Sanso Amanosato ◆ · A 8.6 · bath no · $650–1000 · 2h30/2 from Kyoto
+- `sanso-amanosato` · Sanso Amanosato editor's pick · A 8.6 · bath no · $650–1000 · 2h30/2 from Kyoto
 - `taiza-onsen-sumihei` · Taiza Onsen Sumihei · A 8.1 · bath some · $600–900 · 2h30/0 from Kyoto
-- `gora-kadan-fuji` · Gora Kadan Fuji ◆ · A 8.0 · bath some · $900–1800 · 2h36/0 from Kyoto — _long day; another gateway is closer_
-- `asaba` · Asaba ◆ · S 9.4 · bath some · $1100–1600 · 2h42/0 from Kyoto — _long day; another gateway is closer_
+- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · 2h36/0 from Kyoto — _long day; another gateway is closer_
+- `asaba` · Asaba editor's pick · S 9.4 · bath some · $1100–1600 · 2h42/0 from Kyoto — _long day; another gateway is closer_
 - `kinsuikan` · Kinsuikan · A 8.1 · bath no · $470–830 · 2h42/2 from Kyoto — _long day; another gateway is closer_
 - `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · 3h/1 from Kyoto — _long day; another gateway is closer_
 - `gora-kadan` · Gora Kadan · B 7.5 · bath some · ask · 3h/1 from Kyoto — _long day; another gateway is closer_
@@ -50,6 +50,6 @@
 
 **How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
-Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
 The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.

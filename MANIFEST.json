@@ -477,7 +477,7 @@
   "corridors": 176,
   "legs": 788,
   "region_cards": 13,
-  "front_door_words": 49475,
+  "front_door_words": 49487,
   "start_here_words": 4305,
   "stage_files": 6,
   "stays_files": 12
@@ -1408,14 +1408,14 @@
   "planning/trip-data.js": "7f4d300660f98f1ea5b68890bc4c9faaa6618480c48a6854338f0cdb8454945a",
   "planning/route-data.js": "60597d20783fcea41ce9c43fc0b3249c61f6b5d8fb18b41c0cebf87aa7aca581",
   "planning/route-builder-logic.js": "9df6774082d09257021291374d3126b9f6db4c6422054f3f8a1b95aeaeaada60",
-  "planning/build-kit.js": "a49c012a14cc014eae7f5564325a77ce4bff48929c3b5648b9cfdc67c5911a40",
-  "planning/kit-src/kit-hotels.json": "b43901a3d994f1e6373cb09e597c155ff94014e7358b0043a3c09766ceb8c8d7",
+  "planning/build-kit.js": "579b0b9fe739b38542bd98d7b47d530ed910b1f4ac2654dc6deb3efa1201d9dd",
+  "planning/kit-src/kit-hotels.json": "b7bb864496555c9dbe390d0c31c65c7bcca6994ae6c6407aa44a85260ee884f6",
   "planning/kit-src/pinned-inns.json": "e8dc52506ecff5f9085cd0883fef3bc76fb01aa64e7c0aeec1314b44c92f90ff",
   "planning/kit-src/places.json": "aef0ab1567f663a86793adc7f59f407806031f74fcd7aaaea96dd8316fb34282",
   "planning/kit-src/tools/spines.json": "d059a1dec8697812bb3b3c208ff32f43ad749c6bcdaa90610a43e270b41257f2",
-  "planning/kit-src/tools/build-spines.js": "9bddba679379271301ebb536dc98ebe62beba64a14b76a7ac7b47bd25d9894e7",
-  "planning/kit-src/companions/explorer/route-explorer.template.html": "6d98c638a460c7bc0b0dff3c7e1cb170216e35292a0063408751e48c4680e742",
-  "planning/kit-src/companions/route-engine/route.js": "63b270f40ad424afb3212de8f1a663116da88554ce7b993a8699f73d1a2b6749",
+  "planning/kit-src/tools/build-spines.js": "b1fbbeaf37d5bc9dd810b399ea763a663fd44bf11544d59025c2f4282fbb88d9",
+  "planning/kit-src/companions/explorer/route-explorer.template.html": "b24589cb48de38d7adf1c44270b2603a64e85f48236684b97103e4ce0b8b70ba",
+  "planning/kit-src/companions/route-engine/route.js": "025d14a1b016ba51b4565131b9680e73c0d35390f2682dd21978c9685ef533eb",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
   "deploy/catalog.json": "2146fd34cb5e0baaf3f190998d3e3199f9ddcafb53ce38a3d503d8a8fea9873e",
   "deploy/catalog.md": "3733a773b9f4da10f9c7bca15e46abd7dc49c2f42f33d499da6abcc13c977669",
@@ -1428,7 +1428,7 @@
   "planning/kit-src/kit/02-interview.md": "476f6dbdeccc349ab364c5f992dc8aaf08650c0b5a32b889063abf9bb2520f98",
   "planning/kit-src/kit/03-orientation.md": "ef8dbd6bd38f32a47e0232a1de96307837168bff4773cce22764452cba479c21",
   "planning/kit-src/kit/04-where-to-go.md": "ed7dfdbaae217954ce97750dd3c227d6b000fc699f51ec31151b28798c480641",
-  "planning/kit-src/kit/05-where-to-stay.md": "2c11e9a4d647969365888cfec5167b0aedd89a3656a9d869c0ed5a8cf20338d5",
+  "planning/kit-src/kit/05-where-to-stay.md": "e95863050abb5dc6dc6d939d180e1a2cc3274df4977491d7d3981a2584d5c4fa",
   "planning/kit-src/kit/06-route.md": "618d5f2eca747649e30a903433bb0c1c3a443b9a5175ae8147756a1914887d51",
   "planning/kit-src/kit/07-optional-depth.md": "b7ca34b4568d44f3c359435b53772c238ab84260aaddc9769d6bae0bab5166e5",
   "planning/kit-src/kit/08-appendix.md": "fe6b9f4fc73d085d0d567a746fbc1e1d87acb35cf095b360658e7d0af52955b8",
@@ -1460,8 +1460,8 @@
    "bytes": 25948
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "4e61851c1cfa25cc01ee1c9a254361e7b8ee717733b405d9ca605430e7bf8f94",
-   "bytes": 291897
+   "sha256": "a71d61f9faa572977d299397f28c34a11c33da92427bdbbf84723fb23233ca52",
+   "bytes": 291955
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1500,16 +1500,16 @@
    "bytes": 9240
   },
   "builder/route.js": {
-   "sha256": "63b270f40ad424afb3212de8f1a663116da88554ce7b993a8699f73d1a2b6749",
-   "bytes": 120605
+   "sha256": "025d14a1b016ba51b4565131b9680e73c0d35390f2682dd21978c9685ef533eb",
+   "bytes": 122599
   },
   "builder/serve.js": {
    "sha256": "eb267d4277a3465f86f32b07945917c78aeb7ce2b3bfabb2894b8cdc48c77b21",
    "bytes": 1213
   },
   "builder/shortlist.json": {
-   "sha256": "08958eb974cb27d974d2c20c72f5669d5c321ec61eb772f174599d111bcbef21",
-   "bytes": 138424
+   "sha256": "2d69e1996f17e08fae553060971f06e2b7a9375c6471ca6d3d5a5510105cf779",
+   "bytes": 138490
   },
   "builder/spines.json": {
    "sha256": "d059a1dec8697812bb3b3c208ff32f43ad749c6bcdaa90610a43e270b41257f2",
@@ -1668,12 +1668,12 @@
    "bytes": 9168
   },
   "guides/route-explorer-data.js": {
-   "sha256": "b17b01ea31ea547b84a3a24ee42ad193008d3eb932fab2a5fa7cf3242ba49791",
-   "bytes": 88778
+   "sha256": "542fdc07cf9813d85b9bf46689cf0006a716b7894c1e19d6107402f9802bd1a9",
+   "bytes": 88948
   },
   "guides/route-explorer.html": {
-   "sha256": "b68879ab1ef534ccbb5d340c658312f04e8332a955cbe45a9e183dace1032a16",
-   "bytes": 36367
+   "sha256": "5625d54baa7cca29807053d152e3e4b4dc3a31223d1db8c57a45d5518abb9683",
+   "bytes": 56702
   },
   "guides/token-guide.md": {
    "sha256": "50e98dcfc53a642f9b5a478cb26784167f164f61dda2057d4d1b53b9b74a8b44",
@@ -1708,8 +1708,8 @@
    "bytes": 83654
   },
   "stages/4-where-to-stay.md": {
-   "sha256": "8380868fef1236b70fce84dd36fabbae6d9981cb6282021fa1491269b2599221",
-   "bytes": 65389
+   "sha256": "a6738704db66cc1f20915bdbdf88fb8d636fd3938c524866065c9244ab0fd38f",
+   "bytes": 65381
   },
   "stages/5-route.md": {
    "sha256": "2e80e77ab07a168336600982a3c73da33856110747ab53b4478c65e95be757b6",
@@ -1724,52 +1724,52 @@
    "bytes": 10628
   },
   "stays/hakone-izu-fuji.md": {
-   "sha256": "526317fa273363454803770dadcaa7976d80bcd425459996a075afa7330d5428",
-   "bytes": 3704
+   "sha256": "7fce95527cb79a4008fec5a1f3cea4656b08c619140187aaa391fb370538cc4f",
+   "bytes": 3810
   },
   "stays/hiroshima.md": {
-   "sha256": "111063f30d8bf38755a8a5384d5d5a6316610f50064cce2d35147b2c65c7acb5",
-   "bytes": 6113
+   "sha256": "330304d424fd0b73b6370e73bf2ffcce8496d605b573e2dd74423d010a4c1a05",
+   "bytes": 6169
   },
   "stays/kanazawa.md": {
-   "sha256": "2a28124b8599330876d89ba9577c8dd581f6f3b5fc7b9cb7290fb86992c7433f",
-   "bytes": 6418
+   "sha256": "54986256995eb75c4217b21bed38971dbba404c477a39a66dcfbef61aebdd52f",
+   "bytes": 6504
   },
   "stays/kyoto.md": {
-   "sha256": "87c94d012bd839d68ad54958bf967e922a826d1bd1a4505bf18ce631ef03c67a",
-   "bytes": 9555
+   "sha256": "7527ea2aeca358b8a82f06a32381371b32fd480d1076de252d3c90d8079735cc",
+   "bytes": 9671
   },
   "stays/kyushu.md": {
-   "sha256": "67bfd29df0aa2f127b4e21b23482aa48d4f4711447af3ff452eac4f3b0529f28",
-   "bytes": 14430
+   "sha256": "88947097a92f052a174d57b94c6a2e22756c3a55854ca72ab5d50495e39e9d9f",
+   "bytes": 14546
   },
   "stays/nara.md": {
-   "sha256": "ee7d2b81b86b1d51897b5b6732c7cee762015a4399e0a385ac89d970784922cc",
-   "bytes": 3143
+   "sha256": "e0a31fb733e2f645e7694688df61ea7b97328eb0335cabe1986111b5a95f5ae4",
+   "bytes": 3219
   },
   "stays/nikko.md": {
-   "sha256": "4caab4a41480108ecefb23625d648d6dfdc51cee82697dc239011d7bac9ef9d7",
-   "bytes": 5832
+   "sha256": "613864628e7d30eedbd305854f4f16986b6c8e4407030d29d9d3bf8f3c441336",
+   "bytes": 5908
   },
   "stays/osaka.md": {
-   "sha256": "17c5aa134d9b2a1b0e5c89e68a3f93f60d2d156cdd2a510dd3f08e9d4e7a5f42",
-   "bytes": 7924
+   "sha256": "c05d09815068d31d95b32c34f7bf5d94ccea020763a2b7e699fc54fcf161bc25",
+   "bytes": 8000
   },
   "stays/sapporo.md": {
-   "sha256": "6dbfb2f0d58d8d3ca032689f162c4d1244bfd9991033228e45e383ee5bc046ed",
-   "bytes": 3183
+   "sha256": "fb0dfdf01bb617def3eb74b85d9857dfb54197e8fe684dd0f2067fa1555580da",
+   "bytes": 3229
   },
   "stays/sendai.md": {
-   "sha256": "697de2709202c94560be9c7f20021f519e3aac49ef5f564865ec50036ba531ca",
-   "bytes": 6698
+   "sha256": "28a64e34012fab94aeec8742f8e0f1ee5fd4d018f36b30f2ec9b9f5a8b697602",
+   "bytes": 6774
   },
   "stays/takayama.md": {
-   "sha256": "fea7a2f5ba5e052b13723a66dc68ca4d5e9c5002363c7f8c0bbf1a5378474e84",
-   "bytes": 5997
+   "sha256": "f79e64c80b8f076967014dd7a1d4a6e42f00b96f7b1d55624a3568fdde9f2af8",
+   "bytes": 6063
   },
   "stays/tokyo.md": {
-   "sha256": "0c9646daa6f5351d9bcde52c212f2acc9a951e4f22b2fdf1735baa91b4f362f6",
-   "bytes": 12089
+   "sha256": "bf734d9ab659cb8809099f70b39bb66ac6ab852474db00919b9343757742cab7",
+   "bytes": 12291
   }
  }
 }

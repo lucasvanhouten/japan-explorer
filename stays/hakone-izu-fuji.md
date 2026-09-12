@@ -8,14 +8,14 @@
 
 - `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · in Hakone
 - `gora-kadan` · Gora Kadan · B 7.5 · bath some · ask · in Hakone
-- `asaba` · Asaba ◆ · S 9.4 · bath some · $1100–1600 · 1h48/2 from Hakone
-- `gora-kadan-fuji` · Gora Kadan Fuji ◆ · A 8.0 · bath some · $900–1800 · 1h54/1 from Hakone
+- `asaba` · Asaba editor's pick · S 9.4 · bath some · $1100–1600 · 1h48/2 from Hakone
+- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · 1h54/1 from Hakone
 - `arcana-izu` · Arcana Izu · B 7.8 · bath some · $520–1100 · 2h24/2 from Hakone
-- `bettei-senjuan` · Bettei Senjuan ◆ · A 8.7 · bath some · $550–750 · 3h/2 from Hakone — _long day; another gateway is closer_
-- `hiiragiya` · Hiiragiya ◆ · A 8.7 · bath no · ask · 3h/1 from Hakone — _long day; another gateway is closer_
+- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · 3h/2 from Hakone — _long day; another gateway is closer_
+- `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 3h/1 from Hakone — _long day; another gateway is closer_
 - `fuefukigawa-onsen-zabou` · Fuefukigawa Onsen Zabou · B 7.5 · bath yes · $450–650 · 3h15/3 from Hakone — _long day; another gateway is closer_
-- `fufu-kawaguchiko` · Fufu Kawaguchiko ◆ · B 7.9 · bath yes · $930–1300 · 3h45/3 from Hakone — _long day; another gateway is closer_
-- `fufu-nikko` · Fufu Nikko ◆ · A 8.8 · bath yes · $850–1200 · 4h/3 from Hakone — _long day; another gateway is closer_
+- `fufu-kawaguchiko` · Fufu Kawaguchiko editor's pick · B 7.9 · bath yes · $930–1300 · 3h45/3 from Hakone — _long day; another gateway is closer_
+- `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · 4h/3 from Hakone — _long day; another gateway is closer_
 
 ## City hotels
 
@@ -25,6 +25,6 @@ _No hotel rows for Hakone · Izu · Fuji: the kit's hotel research does not reac
 
 **How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
-Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
 The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.

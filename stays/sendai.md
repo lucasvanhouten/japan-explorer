@@ -7,7 +7,7 @@
 ## The inns — 16 within reach
 
 - `atamiso` · Atamiso · A 8.3 · bath some · $450–800 · 1h/1 from Sendai
-- `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu ◆ · A 8.3 · bath some · $570–800 · 1h/0 from Sendai
+- `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu editor's pick · A 8.3 · bath some · $570–800 · 1h/0 from Sendai
 - `auberge-suzukane` · Auberge Suzukane · A 8.0 · bath unstated · ask · 1h/1 from Sendai
 - `onyado-kawasemi` · Onyado Kawasemi · A 8.3 · bath no · $850–1150 · 1h15/1 from Sendai
 - `otogi-no-yado-yoneya` · Otogi no Yado Yoneya · A 8.1 · bath unstated · $350–650 · 1h18/1 from Sendai
@@ -17,8 +17,8 @@
 - `wabizakura` · Wabizakura · A 8.9 · bath yes · $620–780 · 2h15/0 from Sendai
 - `aizu-tsuruga-higashiyama-sohonzan` · Aizu Tsuruga Higashiyama Sohonzan · A 8.4 · bath unstated · $1000–1400 · 2h15/1 from Sendai
 - `miyakowasure` · Miyakowasure · A 8.4 · bath yes · $600–850 · 2h15/0 from Sendai
-- `fufu-nikko` · Fufu Nikko ◆ · A 8.8 · bath yes · $850–1200 · 2h18/1 from Sendai
-- `bettei-senjuan` · Bettei Senjuan ◆ · A 8.7 · bath some · $550–750 · 2h30/1 from Sendai
+- `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · 2h18/1 from Sendai
+- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · 2h30/1 from Sendai
 - `ryugon` · ryugon · A 8.8 · bath some · $520–970 · 3h/1 from Sendai — _long day; another gateway is closer_
 - `satoyama-jujo` · Satoyama Jujo · A 8.3 · bath some · $500–800 · 3h/1 from Sendai — _long day; another gateway is closer_
 - `shiki-no-yado-michinokuan` · Shiki no Yado Michinokuan · B 7.7 · bath unstated · ask · no researched leg from this file's cities — look it up live
@@ -39,6 +39,6 @@
 
 **How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
-Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
 The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.

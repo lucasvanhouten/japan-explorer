@@ -9,7 +9,7 @@
 - `kinsuikan` · Kinsuikan · A 8.1 · bath no · $470–830 · 1h/1 from Hiroshima
 - `ryokan-nishiyama` · Ryokan Nishiyama · B 7.6 · bath unstated · $540–650 · 1h/1 from Hiroshima
 - `migiwatei-ochi-kochi` · Migiwatei Ochi Kochi · A 8.5 · bath yes · $470–800 · 1h12/1 from Hiroshima
-- `hiiragiya` · Hiiragiya ◆ · A 8.7 · bath no · ask · 1h54/0 from Hiroshima
+- `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 1h54/0 from Hiroshima
 - `hotel-ridge` · Hotel Ridge · A 8.3 · bath no · ask · no researched leg from this file's cities — look it up live
 - `kohanyu` · Kohanyu · A 8.3 · bath yes · $800–1700 · no researched leg from this file's cities — look it up live
 - `minamikan` · Minamikan · A 8.3 · bath yes · ask · no researched leg from this file's cities — look it up live
@@ -33,6 +33,6 @@
 
 **How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
-Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. **◆** is an editor's pick. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
+Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
 The method for choosing between these — how many to show, what to ask, what not to ask — is in `stages/4-where-to-stay.md`. The full catalogue is at https://ryokancatalog.com.
