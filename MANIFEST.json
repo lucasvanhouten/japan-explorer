@@ -477,7 +477,7 @@
   "corridors": 176,
   "legs": 788,
   "region_cards": 13,
-  "front_door_words": 49496,
+  "front_door_words": 49475,
   "start_here_words": 4305,
   "stage_files": 6,
   "stays_files": 12
@@ -1427,7 +1427,7 @@
   "planning/kit-src/kit/01-agent.md": "e3f9573aab37c8108c9dc960dd34281f2fe61a591624b28ea5ede38d381a94df",
   "planning/kit-src/kit/02-interview.md": "476f6dbdeccc349ab364c5f992dc8aaf08650c0b5a32b889063abf9bb2520f98",
   "planning/kit-src/kit/03-orientation.md": "ef8dbd6bd38f32a47e0232a1de96307837168bff4773cce22764452cba479c21",
-  "planning/kit-src/kit/04-where-to-go.md": "7ad08c541bc4ca53220d814e9e35d05b800033f5ae7190c0d5098e59307c9503",
+  "planning/kit-src/kit/04-where-to-go.md": "ed7dfdbaae217954ce97750dd3c227d6b000fc699f51ec31151b28798c480641",
   "planning/kit-src/kit/05-where-to-stay.md": "2c11e9a4d647969365888cfec5167b0aedd89a3656a9d869c0ed5a8cf20338d5",
   "planning/kit-src/kit/06-route.md": "618d5f2eca747649e30a903433bb0c1c3a443b9a5175ae8147756a1914887d51",
   "planning/kit-src/kit/07-optional-depth.md": "b7ca34b4568d44f3c359435b53772c238ab84260aaddc9769d6bae0bab5166e5",
@@ -1460,8 +1460,8 @@
    "bytes": 25948
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "418c06edf817fa978f4e777190789785163bef18f64f3007914a8edb68307895",
-   "bytes": 291867
+   "sha256": "4e61851c1cfa25cc01ee1c9a254361e7b8ee717733b405d9ca605430e7bf8f94",
+   "bytes": 291897
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1704,8 +1704,8 @@
    "bytes": 41272
   },
   "stages/3-where-to-go.md": {
-   "sha256": "17f523af9e69886672c8d34af4e689cd59711823bb239a29215d8ec118039a70",
-   "bytes": 83624
+   "sha256": "35270d3123f1a0c209b5f0076bb264f9b3c7e9e00614b4b4e9aea5f7ce586cd5",
+   "bytes": 83654
   },
   "stages/4-where-to-stay.md": {
    "sha256": "8380868fef1236b70fce84dd36fabbae6d9981cb6282021fa1491269b2599221",

@@ -650,30 +650,25 @@ A **city** carries its **CITY** switch — which cities, which way round — and
 
 ### Walk it
 
-The engine is `builder/route.js`: `spine <name>` — `spine kanazawa`, `spine classic`, any word of the route's name — prints the decisions, the default timeline, the stop string and the checks. Present the first decision as printed:
+The engine is `builder/route.js`: `spine <name>` — `spine kanazawa`, `spine classic`, any word of the route's name — prints the decisions, the default timeline, the stop string and the checks. **What it prints is for you; what they see is a decision in plain words**, in this shape:
 
-| Where | Decision | Options (chosen in bold) |
-|---|---|---|
-| **Tokyo** | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Tokyo → Kyoto** | 3 · RYOKAN · A ryokan near Mount Fuji on the way west? `tokyo-kansai.fuji` | **1 Yes** — Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west. · 2 No — Straight through to Kansai. |
+1. **Name the decision** in one sentence a first-timer follows: *"Next: whether to break the journey west with a night at a hot-spring ryokan near Mount Fuji."*
+2. **The place**, two or three sentences from its card in your own words — what it is, what a night there is like, how it sits on the route.
+3. **Why yes, why no** — a line each, the default first with its reason: *"Yes is the default: Hakone sits on the line to Kyoto, so the night costs almost no travel. No keeps Nikkō as the only ryokan night and gives a night back to a city."*
+4. **The options as a short table**, `| Option | What it means |`, the default marked *(default)*, the description as the tool prints it. **Never the key** (`tokyo-kansai.fuji`), the number, or the RYOKAN/CITY tag — those are yours for the `--set`.
+5. The closing line. One decision per message.
 
 Each answer is another `--set <key>=<option>` — `tokyo.nikko=yes`, `kansai=osaka`, by label or number — earlier answers carried along; paste the timeline it returns:
 
-**The Classic** · 10 nights · 3 check-ins · 7h18 of travel · 44 min per night · in Haneda (HND), out Kansai (KIX)
-
 | Stop | Nights | Onward |
 |---|---|---|
-| in from Haneda (HND) | — | 35 min train |
 | Tokyo | 5 | 2h10 train |
-| Hakone | 1 | 3h train |
-| Kyoto | 4 | 1h30 train · out to Kansai (KIX) |
 
 Before and after get a row each:
 
 | Route | Stops | Nights | Travel | Per night | Check-ins | Ryokan nights | Flights | In / out |
 |---|---|---|---|---|---|---|---|---|
 | before | Tokyo → Hakone → Kyoto | 10 | 7h18 | 44 min | 3 | 1 | 0 | Haneda (HND) / Kansai (KIX) |
-| after | Tokyo → Nikkō → Tokyo → Kyoto | 10 | 8h51 | 53 min | 4 | 1 | 0 | Haneda (HND) / Kansai (KIX) |
 
 Then the next decision; one with a single option is not asked. Nights stay at their defaults until they move one: `--nights <place>=N` for a stop (`=0` drops it), `--total N` for the length, either on the same line as a `--set`. **A total outside the band still assembles**, and so does a place under its own range — say once what that costs. At 60 minutes of travel a night or more the engine prints a **`Lighter:`** line under the checks: a real assembly at the same length, its per-night figure, and the one thing that changed — or the nearest shape there is, when none comes under 60. **Paste it beside the route they asked for and say which you would take and why, in one sentence**; over 60 with a city under its minimum is never left settled. Then build whichever they pick. `:1r` is a room-only night: no inn dinner, so the dinner run resets there.
 
