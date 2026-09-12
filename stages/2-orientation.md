@@ -10,33 +10,33 @@ Goal    they can picture the country: a handful of places they are curious about
 Inputs  Trip profile (Draws, Taste, Pace, nights, been before)
 Do      the map in a paragraph; then four or five place cards chosen by the profile, two or three
         sentences each in your own words, the best fits marked as recommended with the reason in a
-        clause; then how the ones you showed chain into a trip, in prose; then the roll call of the rest
+        clause; then how the ones you showed chain into a trip, in prose; then the other stops as a table
 Ask     which of these sound interesting — close on the line below, then expand and loop
 Output  a longlist of places, with the shape they suggest said in a sentence. Not a route, not a spine,
         and not a decision on nights
 Next    Stage 3 — choose the spine those places sit on, then walk its decisions in trip order.
 ```
 
-**This stage orients; it does not price.** No table of routes, no travel figures, no night counts beyond a card's ideal range. Someone who has just said "food and onsen, two weeks" needs to hear what Kyoto is before they hear how far it is from Hakone. The spines, the engine and every number wait for Stage 3.
+**This stage orients; it does not price.** No table of routes, no travel figures, no night counts beyond a card's ideal range: they need to hear what Kyoto is before they hear how far it is from Hakone. The spines, the engine and every number wait for Stage 3.
 
 #### What they get, in this order
 
 1. **The map in one paragraph** — the paragraph below, in your words and shorter: Honshu and its spine, what hangs off it north, west and inland, and which places are a flight.
 2. **The place cards.** **On a first trip the recommended set is fixed: Tokyo, Kyoto, Kanazawa, Hakone/Fuji/Izu and Nikkō** — the word *recommended* on each of those five lines, with the reason in a clause (*"Kanazawa, recommended: the best food city outside the big two, and the garden is at its best under snow"*). The profile changes that set only when the draws strongly say so — a couple who wrote off temples and gardens entirely, or a single-region trip — and then you say what you swapped and why. **Kyoto is recommended on every first trip; Osaka is an addition to Kyoto, never its replacement** — the Kansai choice is Stage 3's. **Then one or two alternates, shown but not recommended**, chosen by season and draws: snow country in winter, Kyushu when the hot springs are the point, Hiroshima and the Inland Sea for the coast. A repeat visit drops the fixed set and chooses four or five by the profile alone. **Two or three sentences each** in your own words; never paste a card.
 3. **How they fit together** — two or three sentences on how the places you showed chain into a trip: which sit on the shinkansen line an hour or two apart, which are out-and-back from Tokyo, which are a flight. Name the shape in a clause (*"that is Tokyo, a ryokan on the way, then Kyoto — the classic first trip"*), never a spine id, a night count or a travel figure.
-4. **The roll call.** Name **every card you did not show, by name** — **Tokyo · Nikkō · Kyoto · Osaka · Nara · Hakone/Fuji/Izu · Kanazawa & Hokuriku · Takayama/Hida & the Alps · Snow country & Tōhoku · Hokkaido · Hiroshima/Miyajima & the Inland Sea · Kyushu · Okinawa** — each with **three or four words** of what it is, and offer to expand any.
+4. **Other potential stops** — that heading, then a two-column table, `| Place | What it is |`, one row for **every card you did not show** — from **Tokyo · Nikkō · Kyoto · Osaka · Nara · Hakone/Fuji/Izu · Kanazawa & Hokuriku · Takayama/Hida & the Alps · Snow country & Tōhoku · Hokkaido · Hiroshima/Miyajima & the Inland Sea · Kyushu · Okinawa** — three or four words each, a flight or the season noted where it matters. Never a run-on paragraph. Offer to expand any.
 5. **Close on curiosity, not a choice.** The last line is *"want more on any of these, or a different mix?"* — the closing line for the first options message in Stages 2, 3 and 4 alike — never "which one". Expand any card they ask about and **loop until they stop asking**, never the same two lines again.
 
 **The place cards below are reference for you. Do not brief them from the cards.** What the lines on a card mean:
 
-- **`nights:` on every card reads `ideal a–b · minimum n · one line of context`.** Quote the ideal when they ask how long; treat the minimum as a floor, never a grade. **If they ask for fewer nights than the minimum, give them it** — say once what it costs, then put it on the plan's `Assumed` line and stop mentioning it.
+- **`nights:` on every card reads `ideal a–b · minimum n · one line of context`.** Quote the ideal when they ask how long; the minimum is a floor, never a grade. **Fewer nights than the minimum: give them it**, say once what it costs, put it on the plan's `Assumed` line and stop mentioning it.
 - **A card covering several places carries `places:`** — the same line for each place inside it, and the card's own range stays the area total.
 - **`spines:` on every card names the spines that carry the place**, with each spine's night band. It is Stage 3's line; here it only tells you which cards chain together. A place on no spine is said so in a clause (Okinawa, or a deeper Tōhoku than the spines reach).
 - **`base:` says how a place is stayed in** — `yes` for a city you build nights around, `inn town` for a place whose stay is the inn, one night and rarely two, `onsen town` where the town rather than one inn is the draw, `day trip` for somewhere seen from a nearby base. **An `inn town` is never a day trip**: its minimum is a night unless its own line says `minimum 0`. Only a `day trip` card resists becoming a multi-night stop.
-- **One fixed element.** On a **first trip that includes Tokyo and any inn night**, **show both Nikkō and Hakone/Fuji/Izu** as options rather than the recommendation, each with the time from Tokyo in the table below. Nikkō is out and back, so it **splits a long Tokyo stay**; Hakone sits on the way west. They are two yes/no answers in Stage 3, not a choice between them.
+- **Nikkō and Hakone/Fuji/Izu are both on the first-trip set**, and they are two yes/no answers in Stage 3, not a choice between them — say so in a clause, and give each its time from Tokyo inside its own card sentence ("two hours north, out and back, so it splits the Tokyo stay"; "two hours west, on the way to Kyoto"). **The table below is reference for you; never paste it** — a table of four journeys with no route yet is the first thing a reader cannot place.
 - **The kinds of stay** only when a stay decision is near, **"what a ryokan is"** only when an inn night is on the table, **their month** from the season table, the rest on request.
 
-**The four trips out of Tokyo, with their times** — for the Nikkō and Hakone/Fuji/Izu cards, so the fixed element is answered without opening a later stage.
+**The four trips out of Tokyo, with their times** — the figures behind those two card sentences. For you, not for them.
 
 <!-- generated:tokyo-satellite-times -->
 | From Tokyo to | Door to door | Changes | Out and back, or on the way? |
