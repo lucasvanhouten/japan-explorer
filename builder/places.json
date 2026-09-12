@@ -80,7 +80,7 @@
   "base": false,
   "ideal": [
    1,
-   1
+   2
   ],
   "minimum": 1,
   "region": "kansai",
@@ -98,7 +98,7 @@
   "base": false,
   "ideal": [
    1,
-   1
+   2
   ],
   "minimum": 1,
   "region": "kansai",
@@ -465,7 +465,7 @@
   "base": false,
   "ideal": [
    1,
-   1
+   2
   ],
   "minimum": 1,
   "region": "kansai",
@@ -690,7 +690,7 @@
   "base": false,
   "ideal": [
    1,
-   1
+   2
   ],
   "minimum": 1,
   "region": "kansai",
@@ -1857,7 +1857,7 @@
   "base": false,
   "ideal": [
    1,
-   1
+   2
   ],
   "minimum": 1,
   "region": "hokuriku",
@@ -1992,7 +1992,7 @@
   "base": false,
   "ideal": [
    1,
-   1
+   2
   ],
   "minimum": 1,
   "region": "kansai",
