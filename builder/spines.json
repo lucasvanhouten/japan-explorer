@@ -74,7 +74,8 @@
     "city",
     "pop",
     "art",
-    "onsen"
+    "onsen",
+    "kansai"
    ],
    "cities": [
     {
@@ -181,7 +182,8 @@
      "not_with": [
       "tokyo@last"
      ],
-     "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead"
+     "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead",
+     "desc_rev": "A night among the temples and the deer park, before Kyoto."
     }
    ],
    "legs": [
@@ -204,7 +206,10 @@
        "no": "Straight through to Kansai.",
        "stops": [
         "hakone"
-       ]
+       ],
+       "question_rev": "A ryokan near Mount Fuji on the way east?",
+       "desc_rev": "Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way east.",
+       "no_rev": "Straight through to Tokyo."
       }
      ]
     },
@@ -299,7 +304,8 @@
     "onsen",
     "nature",
     "snow",
-    "food"
+    "food",
+    "hokuriku"
    ],
    "cities": [
     "tokyo",
@@ -384,7 +390,8 @@
      "not_with": [
       "tokyo@last"
      ],
-     "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead"
+     "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead",
+     "desc_rev": "A night among the temples and the deer park, before Kyoto."
     }
    ],
    "legs": [
@@ -406,7 +413,9 @@
        "no": "Straight through to Kanazawa.",
        "stops": [
         "yudanaka"
-       ]
+       ],
+       "question_rev": "A ryokan at Yudanaka on the way over the mountains to Tokyo?",
+       "no_rev": "Straight through to Tokyo."
       }
      ]
     },
@@ -430,7 +439,9 @@
        "no": "Straight on from Kanazawa.",
        "stops": [
         "yamashiro"
-       ]
+       ],
+       "question_rev": "A ryokan in the Kaga towns before Kanazawa?",
+       "no_rev": "Straight on to Kanazawa."
       },
       {
        "key": "takayama",
@@ -497,7 +508,9 @@
     "food",
     "art",
     "city",
-    "onsen"
+    "onsen",
+    "kansai",
+    "setouchi"
    ],
    "cities": [
     "tokyo",
@@ -616,7 +629,10 @@
        "no": "Straight through to Kansai.",
        "stops": [
         "hakone"
-       ]
+       ],
+       "question_rev": "A ryokan near Mount Fuji on the way east?",
+       "desc_rev": "Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way east.",
+       "no_rev": "Straight through to Tokyo."
       }
      ]
     },
@@ -706,7 +722,9 @@
     "onsen",
     "nature",
     "craft",
-    "food"
+    "food",
+    "hokuriku",
+    "tohoku"
    ],
    "cities": [
     "tokyo",
@@ -791,7 +809,8 @@
      "not_with": [
       "tokyo@last"
      ],
-     "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead"
+     "why_not": "Nara sits south of Kyoto: on a trip that turns round and ends in Tokyo the night doubles back. Nara as a day trip from Kyoto instead",
+     "desc_rev": "A night among the temples and the deer park, before Kyoto."
     }
    ],
    "legs": [
@@ -881,7 +900,13 @@
       "desc_rev": "A first night in the Japan Sea hot-spring town before Kyoto, in through Itami airport."
      }
     ]
-   }
+   },
+   "season": [
+    12,
+    1,
+    2,
+    3
+   ]
   },
   {
    "id": "s5",
@@ -905,7 +930,8 @@
     "nature",
     "onsen",
     "food",
-    "coast"
+    "coast",
+    "kyushu"
    ],
    "cities": [
     {
@@ -938,6 +964,19 @@
        "out": "FUK",
        "reverse": true,
        "line": "Straight into Kagoshima, the loop run south to north; no Tokyo this time."
+      },
+      {
+       "label": "Straight into Nagasaki",
+       "desc": "No Tokyo: land at Nagasaki, south to Kagoshima, Fukuoka last.",
+       "cities": [],
+       "in": "NGS",
+       "out": "FUK",
+       "order": [
+        "nagasaki",
+        "kagoshima",
+        "fukuoka"
+       ],
+       "line": "Straight into Nagasaki, then Unzen, south to Kagoshima and its Kirishima ryokan, Fukuoka last; no Tokyo this time."
       }
      ]
     },
@@ -996,7 +1035,9 @@
        "no": "Straight through.",
        "stops": [
         "takeo"
-       ]
+       ],
+       "question_rev": "A ryokan at Takeo on the way to Fukuoka?",
+       "desc_rev": "A small hot-spring town on the line to Fukuoka."
       }
      ]
     },
@@ -1018,7 +1059,10 @@
        "no": "Straight south.",
        "stops": [
         "unzen"
-       ]
+       ],
+       "question_rev": "A ryokan at Unzen on the way north?",
+       "desc_rev": "The volcano town east of Nagasaki, a night on the way north.",
+       "no_rev": "Straight north."
       }
      ]
     }
@@ -1030,11 +1074,11 @@
     "default": 0,
     "options": [
      {
-      "label": "Fly home from Kagoshima",
-      "desc": "Out through Kagoshima airport.",
+      "label": "Fly home from the last city",
+      "desc": "Out through its own airport.",
       "stops": [],
-      "label_rev": "Fly home from Fukuoka",
-      "desc_rev": "Out through Fukuoka airport."
+      "label_rev": "Arrive at the first city",
+      "desc_rev": "In through its own airport."
      },
      {
       "label": "Back to Tokyo",
@@ -1068,7 +1112,8 @@
    "draws": [
     "nature",
     "onsen",
-    "food"
+    "food",
+    "kyushu"
    ],
    "cities": [
     {
@@ -1101,6 +1146,19 @@
        "out": "FUK",
        "reverse": true,
        "line": "Straight into Kagoshima, the loop run south to north; no Tokyo this time."
+      },
+      {
+       "label": "Straight into Ōita",
+       "desc": "No Tokyo: land at Ōita for the hot-spring east, south to Kagoshima, Fukuoka last.",
+       "cities": [],
+       "in": "OIT",
+       "out": "FUK",
+       "order": [
+        "east",
+        "kagoshima",
+        "fukuoka"
+       ],
+       "line": "Straight into Ōita: the hot-spring east first, south to Kagoshima and its Kirishima ryokan, Fukuoka last; no Tokyo this time."
       }
      ]
     },
@@ -1199,7 +1257,9 @@
        "no": "One night in the east.",
        "stops": [
         "hita"
-       ]
+       ],
+       "question_rev": "A gorge ryokan at Amagase after Yufuin?",
+       "desc_rev": "A night in the river gorge on the way to Fukuoka, so the east is two nights rather than one."
       }
      ]
     },
@@ -1222,7 +1282,10 @@
        "no": "Straight to Kagoshima.",
        "stops": [
         "kumamoto"
-       ]
+       ],
+       "question_rev": "A stop at Kumamoto on the way north?",
+       "desc_rev": "The castle city under the Aso caldera, on the way north.",
+       "no_rev": "Straight north from Kagoshima."
       }
      ]
     }
@@ -1234,11 +1297,11 @@
     "default": 0,
     "options": [
      {
-      "label": "Fly home from Kagoshima",
-      "desc": "Out through Kagoshima airport.",
+      "label": "Fly home from the last city",
+      "desc": "Out through its own airport.",
       "stops": [],
-      "label_rev": "Fly home from Fukuoka",
-      "desc_rev": "Out through Fukuoka airport."
+      "label_rev": "Arrive at the first city",
+      "desc_rev": "In through its own airport."
      },
      {
       "label": "Back to Tokyo",
@@ -1273,7 +1336,8 @@
     "nature",
     "onsen",
     "food",
-    "coast"
+    "coast",
+    "kyushu"
    ],
    "cities": [
     {
@@ -1436,7 +1500,9 @@
        "no": "One night in the east.",
        "stops": [
         "hita"
-       ]
+       ],
+       "question_rev": "A gorge ryokan at Amagase after Yufuin?",
+       "desc_rev": "A night in the river gorge on the way to Fukuoka, so the east is two nights rather than one."
       }
      ]
     },
@@ -1521,7 +1587,10 @@
     "coast",
     "food",
     "city",
-    "onsen"
+    "onsen",
+    "kansai",
+    "setouchi",
+    "kyushu"
    ],
    "cities": [
     {
@@ -1663,7 +1732,10 @@
        "no": "Straight through to Kansai.",
        "stops": [
         "hakone"
-       ]
+       ],
+       "question_rev": "A ryokan near Mount Fuji on the way east?",
+       "desc_rev": "Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way east.",
+       "no_rev": "Straight through to Tokyo."
       }
      ]
     },
@@ -1740,6 +1812,15 @@
       "out": "NGS",
       "label_rev": "Nagasaki and Takeo",
       "desc_rev": "Nagasaki first, then a ryokan night, in through Nagasaki."
+     },
+     {
+      "label": "Back to Tokyo",
+      "desc": "A flight up from Fukuoka, two more Tokyo nights and a Haneda flight home.",
+      "stops": [
+       "tokyo"
+      ],
+      "label_rev": "Tokyo at the close",
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
      }
     ]
    }
@@ -1765,7 +1846,8 @@
     "snow",
     "food",
     "nature",
-    "onsen"
+    "onsen",
+    "hokkaido"
    ],
    "cities": [
     {

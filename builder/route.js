@@ -362,7 +362,7 @@ function checks(stops, legs, t, opt) {
     if (L && (L.flightH || L.mode === "flight")) continue;
     const via = L && /composed via (.+)/.exec(L.source); const left = via && stops.slice(0, i - 1).find((s) => short(s.loc) === via[1]);
     if (left) { V(`${label(stops[i].loc)} after ${label(stops[i - 1].loc)} doubles back through ${label(left.loc)}, already left — reorder, or say it does not fit.`); continue; }
-    const thru = L && L.source === "table" && stops.slice(0, i - 1).find((s) => isBaseKind(s.kind) && s.loc !== stops[i - 1].loc && s.loc !== stops[i].loc && new RegExp("\\b" + short(s.loc) + "\\b").test(L.text || ""));
+    const thru = L && L.source === "table" && stops.slice(0, i - 1).find((s) => isBaseKind(s.kind) && s.loc !== stops[i - 1].loc && s.loc !== stops[i].loc && new RegExp("(?<!than |not |never |no |than back |not back |never back )(?:via|through|change at|changing at|back to|→)\\s*" + short(s.loc) + "\\b", "i").test(L.text || ""));   // a city the leg's own route goes through, not one its prose merely mentions (QA round 9: Snow Country's Echigo-Yuzawa → Kanazawa note names the old Tokyo–Kanazawa train)
     if (thru) N(`${label(stops[i - 1].loc)} → ${label(stops[i].loc)} is a researched leg, but its route runs by way of ${label(thru.loc)}, already left.`);
     const bk = backtracksAt(stops, i);
     if (bk === "violation") V(`${label(stops[i].loc)} after ${label(stops[i - 1].loc)} doubles back past ${label(stops[i - 2].loc)} — reorder, or say it does not fit.`);
@@ -556,10 +556,15 @@ function cmdLegs(a, b, opt) {
 let SPINES = null;
 try { const sj = path.join(DIR, "spines.json"); if (fs.existsSync(sj)) SPINES = JSON.parse(fs.readFileSync(sj, "utf8")).spines; } catch (e) { SPINES = null; }
 /* Stage 1's draws, with `onsen` and `craft` first-class (fixlist B3) and the interview's longer phrasings accepted */
-const DRAWS = ["food", "temples", "nature", "onsen", "craft", "city", "pop", "art", "snow", "coast"];
+const DRAWS = ["food", "temples", "nature", "onsen", "craft", "city", "pop", "art", "snow", "coast", "kyushu", "hokkaido", "kansai", "hokuriku", "tohoku", "setouchi"];
+/* a region named as a draw outranks every taste draw (QA round 9: a couple who said Kyushu was offered the Kanazawa Loop first) */
+const REGION_DRAWS = ["kyushu", "hokkaido", "kansai", "hokuriku", "tohoku", "setouchi"];
+const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+const monthOf = (v) => { if (v == null || v === "") return null; const n = +v; if (n >= 1 && n <= 12) return n; const i = MONTHS.findIndex((m) => m.startsWith(norm(String(v)).slice(0, 3))); return i >= 0 ? i + 1 : null; };
 const DRAW_ALIAS = { "hot springs": "onsen", "hot spring": "onsen", "hotsprings": "onsen", "baths": "onsen", "design": "craft", "crafts": "craft", "craft towns": "craft",
   "islands": "coast", "island": "coast", "cities": "city", "big city": "city", "history": "temples", "gardens": "temples", "skiing": "snow", "ski": "snow", "winter": "snow",
-  "pop culture": "pop", "nature and hot springs": "nature", "food and drink": "food", "temples gardens and history": "temples", "art craft and design": "art", "coast and islands": "coast", "big city energy": "city" };
+  "pop culture": "pop", "nature and hot springs": "nature", "food and drink": "food", "temples gardens and history": "temples", "art craft and design": "art", "coast and islands": "coast", "big city energy": "city",
+  "volcanoes": "nature", "volcano": "nature", "kyoto": "kansai", "osaka": "kansai", "kanazawa": "hokuriku", "the north": "tohoku", "north": "tohoku", "inland sea": "setouchi", "the inland sea": "setouchi", "seto": "setouchi", "snow country": "snow" };
 const normDraw = (d) => { const n = norm(d); return DRAW_ALIAS[n] || n; };
 const KIND_LABEL = { city: "CITY", inn: "RYOKAN", stop: "STOP", end: "END" };
 const defined = (o) => Object.fromEntries(Object.entries(o || {}).filter(([, v]) => v !== undefined && v !== null && v !== false));
@@ -599,11 +604,14 @@ const legKeyOf = (lg) => lg.key || `${asList(lg.from)[0]}-${asList(lg.to)[0]}`;
 const NO_DESC = "Straight through.";
 const DEC = new WeakMap();
 /* a yes/no decision — an attachment (`at` says how it sits at its city) or a leg slot (inside its leg) */
-const yesNoDecision = (y, owner) => ({ kind: y.kind || "stop", key: y.key, question: y.question, default: y.default == null ? 1 : y.default,
+/* a slot's wording can carry a reversed reading (question_rev / desc_rev / no_rev): "on the way west" is "on the way east"
+ * when the trip runs the other way (QA round 9: reversed Classic and Kanazawa Loop read forwards) */
+const yesNoDecision = (y, owner) => ({ kind: y.kind || "stop", key: y.key, question: y.question, question_rev: y.question_rev, default: y.default == null ? 1 : y.default,
   on_at: y.on_at, owner, options: [
     defined({ label: "Yes", desc: y.desc, stops: y.stops || [], requires: y.requires, not_with: y.not_with, or_in: y.or_in, why_not: y.why_not,
-      in: y.in, out: y.out, needCity: owner.type === "city" ? owner.city : undefined, needLeg: owner.type === "leg" ? { from: owner.from, to: owner.to } : undefined }),
-    { label: "No", desc: y.no || NO_DESC, stops: [] }] });
+      in: y.in, out: y.out, needCity: owner.type === "city" ? owner.city : undefined, needLeg: owner.type === "leg" ? { from: owner.from, to: owner.to } : undefined,
+      label_rev: y.desc_rev || y.no_rev ? "Yes" : undefined, desc_rev: y.desc_rev }),
+    defined({ label: "No", desc: y.no || NO_DESC, stops: [], label_rev: y.desc_rev || y.no_rev ? "No" : undefined, desc_rev: y.no_rev })] });
 /* a CITY switch's options carry `cities`; `stops` mirrors them so every reader downstream can treat an option alike */
 const cityDecision = (e) => Object.assign({}, e, { owner: { type: "city" },
   options: e.options.map((o) => Object.assign({}, o, { stops: o.cities || [] })) });
@@ -638,7 +646,8 @@ function choicesOf(sp, sets, total, repeat, apIn, apOut) {
     /* a booked arrival airport picks the START option that declares that same `in` — a Kansai ticket implies straight into Kansai */
     /* …unless the ticket home leaves from somewhere that start would never reach: a KIX-in / HND-home Classic is the
      * Tokyo route run the other way round, not a trip without Tokyo (QA round 8) */
-    if (apIn && d.key === "start") { const j = d.options.findIndex((o) => o.in === apIn && !(apOut && o.out && o.out !== apOut)); if (j >= 0) i = j; }
+    if (apIn && d.key === "start") { const ok = (o) => o.in === apIn && !(apOut && o.out && o.out !== apOut && ((AIRPORT[apOut] || {}).hubs || []).includes("tokyo"));
+      let j = d.options.findIndex((o) => ok(o) && (!apOut || !o.out || o.out === apOut)); if (j < 0) j = d.options.findIndex(ok); if (j >= 0) i = j; }
     /* a booked flight home picks the ending that lands there: the option that declares that `out`, or the one whose last
      * stop is that airport's own city — a Haneda ticket home from Kyushu closes with two Tokyo nights (QA round 8) */
     if (apOut && d.key === "end" && sp.out !== apOut) { const hubs = (AIRPORT[apOut] || {}).hubs || [];
@@ -678,15 +687,21 @@ function parseSets(sp, list) {
  * trailing Tokyo stays put, because that is still where the trip lands); --reverse turns the whole trip round, and the
  * two cancel — a spine asked to reverse its own reversal runs its own way. */
 function orderedCities(sp, choices, forceReverse) {
-  const list = [];
+  let list = [], order = null;
+  const byKey = {};
   let reverse = !!forceReverse;
   for (const e of sp.cities || []) {
     if (typeof e === "string") { list.push(e); continue; }
     const d = decisionOf(sp, e.key), o = d && d.options[choices[e.key]];
     if (!o) throw new Error(`${sp.id}/${e.key}: no option ${choices[e.key]}`);
     if (o.reverse) reverse = !reverse;
+    if (o.order) order = o.order;
+    byKey[e.key] = o.cities || [];
     (o.cities || []).forEach((c) => list.push(c));
   }
+  /* an option with `order` runs the ring from another city: Kyushu opens wherever the ticket lands (NGS, OIT), the
+   * cities in the order it names — a city key stands for whatever that decision chose (QA round 9, owner) */
+  if (order) list = order.flatMap((k) => (byKey[k] ? byKey[k] : [k]));
   let cl = list;
   if (reverse && forceReverse) cl = cl.slice().reverse();
   else if (reverse) { const head = []; while (cl.length && cl[0] === "tokyo") head.push(cl.shift());
@@ -749,7 +764,11 @@ function whyNot(sp, d, o, choices, opt) {
    * offered "Arrive at Kansai"); run the other way round, an option's `in` is where the trip leaves and its `out` where it lands */
   if (opt && (opt.in || opt.out)) { const tin = opt.reverse ? o.out : o.in, tout = opt.reverse ? o.in : o.out;
     if (opt.in && tin && tin !== opt.in && AIRPORT[opt.in]) return `the ticket lands at ${AIRPORT[opt.in].label}, not ${AIRPORT[tin] ? AIRPORT[tin].label : tin}`;
-    if (opt.out && tout && tout !== opt.out && AIRPORT[opt.out]) return `the ticket home is from ${AIRPORT[opt.out].label}, not ${AIRPORT[tout] ? AIRPORT[tout].label : tout}`; }
+    /* a START option's `out` is where its loop happens to finish, not the point of the option: a Kagoshima round trip still
+     * starts straight into Kagoshima and the ticket prices the last leg (QA round 9, r02) */
+    if (opt.out && tout && tout !== opt.out && AIRPORT[opt.out] && d.key !== "start") return `the ticket home is from ${AIRPORT[opt.out].label}, not ${AIRPORT[tout] ? AIRPORT[tout].label : tout}`;
+    /* the plain "fly home from the last city" ending stays offered on a ticket home from elsewhere: a same-day flight to
+     * the ticket's airport is a fine close (owner, 2026-09-12); the Tokyo close is the default there, never forced */ }
   /* a booked flight into the region waives the option's `requires` guard (spines.json `or_in`) */
   const waived = !!(o.or_in && opt && opt.in && o.or_in.includes(opt.in));
   const trial = Object.assign({}, choices);
@@ -942,9 +961,9 @@ function assembleSpine(sp, optIn) {
 /* ── printers ── */
 /* one band line for the whole print (2026-09-13): the spine's own band, and in brackets the band this
  * assembly is read against when its Tokyo start was dropped. The timeline never repeats it. */
-function spineHead(sp, band, opt) {
+function spineHead(sp, band, opt, P) {
   const own = sp.band.join("–"), here = band ? band.join("–") : own;
-  const io = (opt && (opt.in || opt.out)) ? `${opt.in ? apLabel(opt.in) : "—"} → ${opt.out ? apLabel(opt.out) : "—"}` : sp.io;
+  const io = (opt && (opt.in || opt.out)) ? `${opt.in ? apLabel(opt.in) : "—"} → ${opt.out ? apLabel(opt.out) : "—"}` : P && P.opt ? `${apLabel(P.opt.in)} → ${apLabel(P.opt.out)}` : sp.io;
   return `**${sp.name}** · runs ${own} nights${here !== own ? ` (${here} without Tokyo)` : ""} · ${io}`;
 }
 /* the one-liner follows the assembly: an option that changes what the trip is carries its own `line` */
@@ -1000,6 +1019,8 @@ function groupsOf(sp, choices, cities, reversed, locs) {
 }
 /* the decisions grouped in trip order, the options as the kit's data prints them, the chosen one in bold; a decision
  * with one option — one this assembly withheld the rest of, or one the spine only ever had one of — is never shown */
+/* run the other way round, the START decision settles where the trip ends and the END one where it begins (QA round 9) */
+const qWord = (d, reversed) => (!reversed ? d.question : d.key === "end" ? "How does the trip start?" : d.key === "start" ? "Where does the trip end?" : d.question_rev || d.question);
 function decisionsTable(sp, choices, unavailable, cities, reversed, opt, locs) {
   const L = ["| Where | Decision | Options (chosen in bold) |", "|---|---|---|"];
   let n = 0;
@@ -1012,7 +1033,7 @@ function decisionsTable(sp, choices, unavailable, cities, reversed, opt, locs) {
       if (d.options.length - na.length < 2) { if (na.length) L.push(`| ${first ? `**${g.where}**` : ""} | ${d.question} | _${na.join("; ")}_ |`); first = false; continue; } n++;
       /* a stop that switches on by itself at a length says so in the table, so the printed table and the engine agree (D5) */
       const on = d.on_at ? ` — ${d.options[0].label} is on by default from ${d.on_at} nights, and can be chosen on a shorter trip` : "";
-      L.push(`| ${first ? `**${g.where}**` : ""} | ${n} · ${KIND_LABEL[d.kind] || d.kind.toUpperCase()} · ${d.question}${on} \`${d.key}\` | ${optCell(d, 0, choices[d.key], reversed, opt)}${na.length ? ` · _${na.join("; ")}_` : ""} |`);
+      L.push(`| ${first ? `**${g.where}**` : ""} | ${n} · ${KIND_LABEL[d.kind] || d.kind.toUpperCase()} · ${qWord(d, reversed)}${on} \`${d.key}\` | ${optCell(d, 0, choices[d.key], reversed, opt)}${na.length ? ` · _${na.join("; ")}_` : ""} |`);
       first = false; }
   }
   return L.join("\n");
@@ -1060,7 +1081,7 @@ function lighterCandidates(P, optIn) {
       for (const j of order) {
         let Q; try { Q = assembleSpine(sp, Object.assign({}, opt, { set: (opt.from || []).concat(opt.set || [], [`${d.key}=${j + 1}`]), total: N, lenientNights: true })); }
         catch (e) { continue; }
-        out.push({ P: Q, what: `${d.key}: ${d.options[cur].label} → ${d.options[j].label}` });
+        out.push({ P: Q, what: `${d.question.replace(/\?$/, "")}: ${d.options[cur].label} → ${d.options[j].label}` });
       }
     }
   }
@@ -1116,6 +1137,10 @@ function cmdSpines(opt) {
   /* a draw the menu does not rank on ("cocktails") is ignored and said in the header, never a refusal (QA round 6) */
   const ignored = bad.slice(); for (const b of bad) draws.splice(draws.indexOf(b), 1);
   const overlap = (sp) => draws.filter((d) => (sp.draws || []).includes(d));
+  const regionHit = (sp) => draws.filter((d) => REGION_DRAWS.includes(d) && (sp.draws || []).includes(d)).length;
+  const month = monthOf(opt.month);
+  /* a route written for a season (spines.json `season`, months) sorts under the rest when the trip is outside it, and says so */
+  const offSeason = (sp) => (month && Array.isArray(sp.season) && sp.season.length && !sp.season.includes(month) ? 1 : 0);
   const rows = [], broken = [];
   for (const sp of SPINES) {
     const canStraightIn = !!(sp.cities || [])[0] && !!((sp.cities || [])[0].options);
@@ -1137,7 +1162,7 @@ function cmdSpines(opt) {
   rows.forEach((r) => { r.noTicket = ticket && r.P.flights >= TICKET_FLIGHT_MAX;
     /* a ticket into the far end (FUK in, HND home) is honoured by the spine run the other way round (2026-09-12, QA round 6):
      * try --reverse before calling it the wrong trip, and say so in the row */
-    if (ticket && !opt.repeat) { try { const R = assembleSpine(r.sp, { total: r.at, in: opt.in, out: opt.out, reverse: true });
+    if (ticket) { try { const R = assembleSpine(r.sp, { total: r.at, in: opt.in, out: opt.out, reverse: true, repeat: opt.repeat || undefined });
       const better = r.noTicket ? R.flights < TICKET_FLIGHT_MAX : (R.flights < r.P.flights || (R.flights === r.P.flights && R.totals.hours <= r.P.totals.hours - 0.5));
       if (better) { r.P = R; r.noTicket = false; r.reversed = true; } } catch (e) { /* stays as it was */ } } });
   /* the For line is a ranking tier, not decoration (2026-09-13): a spine written for someone who has already
@@ -1148,17 +1173,17 @@ function cmdSpines(opt) {
    * first): a route that opens where they land and closes where they fly home sits above one reached by a flight or a
    * long transfer; the draws then order each tier */
   rows.forEach((r) => { r.ticketCost = 0; if (ticket) r.P.legs.filter((l) => l.kind === "in" || l.kind === "out").forEach((l) => { r.ticketCost += (l.flightH || l.mode === "flight" ? 10 : 0) + (l.h >= 1.5 ? 1 : 0); }); });
-  rows.sort((a, b) => (a.noTicket ? 1 : 0) - (b.noTicket ? 1 : 0) || (a.out ? 1 : 0) - (b.out ? 1 : 0) || wrongTrip(a.sp) - wrongTrip(b.sp)
-    || a.ticketCost - b.ticketCost || b.hit.length - a.hit.length || rankOf(a.sp) - rankOf(b.sp) || a.sp.id.localeCompare(b.sp.id));
+  rows.sort((a, b) => (a.noTicket ? 1 : 0) - (b.noTicket ? 1 : 0) || (a.out ? 1 : 0) - (b.out ? 1 : 0) || wrongTrip(a.sp) - wrongTrip(b.sp) || offSeason(a.sp) - offSeason(b.sp)
+    || a.ticketCost - b.ticketCost || regionHit(b.sp) - regionHit(a.sp) || b.hit.length - a.hit.length || rankOf(a.sp) - rankOf(b.sp) || a.sp.id.localeCompare(b.sp.id));
   /* a spine marked `always: "first"` is offered on every first visit (2026-09-12: the Kanazawa Loop, over
    * Snow Country in particular) — it sits in the top three whatever the draws, unless the length or the
    * ticket rule it out */
-  if (!opt.repeat) rows.filter((r) => r.sp.always === "first" && !r.noTicket && !r.out && !r.ticketCost).reverse().forEach((r) => { const i = rows.indexOf(r); if (i > 2) { rows.splice(i, 1); rows.splice(2, 0, r); } });
+  if (!opt.repeat && !draws.some((d) => REGION_DRAWS.includes(d))) rows.filter((r) => r.sp.always === "first" && !r.noTicket && !r.out && !r.ticketCost && !offSeason(r.sp)).reverse().forEach((r) => { const i = rows.indexOf(r); if (i > 2) { rows.splice(i, 1); rows.splice(2, 0, r); } });
   if (opt.json) return JSON.stringify(rows.map(({ sp, P, hit, band, out, ticketCost, reversed, noTicket }) => ({ id: sp.id, ticketCost, reversed: !!reversed, noTicket: !!noTicket, name: sp.name, blurb: sp.blurb, for: sp.for, band: sp.band, bandHere: band, outsideBand: out, draws: sp.draws, matched: hit, choices: P.choices, stops: P.stops, totals: P.totals, flights: P.flights, opt: P.opt, checks: P.checks, stopString: stopString(P.stops) })), null, 1);
   const L = [`*The nine routes ${opt.nights ? `at ${opt.nights} nights` : "at their own shortest length (no night count was given \u2014 run `spines --nights N` at the profile\'s nights before showing a menu)"}${draws.length ? `, ranked for ${draws.join(", ")}` : ""}${ignored.length ? ` (${ignored.join(", ")} is not a draw the menu ranks on; the cards carry it)` : ""}${opt.repeat ? ", repeat visit (straight into the region where the route allows it, and the Tokyo nights read 3–4)" : ""}${opt.in || opt.out ? ` · ${opt.in ? `in ${apLabel(opt.in)}` : ""}${opt.in && opt.out ? ", " : ""}${opt.out ? `out ${apLabel(opt.out)}` : ""} (a booked ticket prices the last leg; it never removes a route)` : ""}. Offer the top two or three, by name; the rest is the roll call. Travel counts each flight leg at ${FLIGHT_CAP_H}h at most, and a route over ${DENSITY_MAX} minutes of travel a night says so. \`spine <name>\` walks one — \`spine kanazawa\`, \`spine classic\`.*`, ""];
   L.push("| Route | Who it's for | The trip | Nights | Travel | Ryokan nights | Flights | Fly in / home from |", "|---|---|---|---|---|---|---|---|");
   rows.forEach(({ sp, P, hit, band, out, at, noTicket }) => { const t = P.totals;
-    const forCell = `${sp.for || "—"}${out ? ` Runs ${band[0]}–${band[1]} nights, so it is shown at ${at}.` : ""}${rows.find((x) => x.sp === sp).reversed ? " Runs the other way round for this ticket." : ""}`;
+    const forCell = `${sp.for || "—"}${out ? ` Runs ${band[0]}–${band[1]} nights, so it is shown at ${at}.` : ""}${rows.find((x) => x.sp === sp).reversed ? " Runs the other way round for this ticket." : ""}${offSeason(sp) ? ` A ${sp.season.includes(1) ? "winter" : "seasonal"} route, out of season in ${MONTHS[month - 1][0].toUpperCase() + MONTHS[month - 1].slice(1)}.` : ""}`;
     const nt = "not with this ticket";
     L.push(`| **${sp.name}** · ${sp.band.join("–")} nights | ${forCell} | ${chain(P.stops)} | ${t.nights} | ${noTicket ? nt : `${hoursTxt5(t)}${t.perNight >= DENSITY_MAX && !t.unsourced ? ` (${perNightTxt(t)})` : ""}`} | ${t.innNights} | ${P.flights} | ${apLabel(P.opt.in)} / ${apLabel(P.opt.out)} |`); });
   if (rows.some((r) => r.noTicket)) L.push("", `*${rows.filter((r) => r.noTicket).map((r) => r.sp.name).join(", ")} would take ${TICKET_FLIGHT_MAX} domestic flights or more to honour that ticket, so no figure is printed for ${rows.filter((r) => r.noTicket).length === 1 ? "it" : "them"}: ${rows.filter((r) => r.noTicket).length === 1 ? "it is" : "they are"} the wrong trip for this ticket, not a dearer version of it.*`);
@@ -1204,10 +1229,12 @@ function cmdSpine(ref, opt) {
   if (opt.before) { before.flights = before.legs.filter((l) => l.flightH || l.mode === "flight").length; before.steps = []; }
   const changed = (opt.set || []).length;
   const after = changed ? assembleSpine(sp, Object.assign({}, opt, { set: (opt.from || []).concat(opt.set) })) : assembleSpine(sp, Object.assign({}, opt, { set: opt.from || [] }));
-  const moved = changed && (opt.before || stopString(before.stops) !== stopString(after.stops) || decisionsOf(sp).some((d) => before.choices && before.choices[d.key] !== after.choices[d.key]));
+  /* a pasted Before, or a --nights/--total on its own, is a change too (QA round 9: `--total 11 --before …` printed no Before) */
+  const moved = (changed || opt.before || (opt.nightsAt || []).length || opt.total) && (stopString(before.stops) !== stopString(after.stops) || before.totals.nights !== after.totals.nights || decisionsOf(sp).some((d) => before.choices && before.choices[d.key] !== after.choices[d.key]));
   if (opt.json) return JSON.stringify({ spine: sp.id, before: moved ? before : undefined, after, choices: after.choices, stopString: stopString(after.stops) }, null, 1);
   const chosenOpts = decisionsOf(sp).map((d) => d.options[after.choices[d.key]]);
-  const L = [spineHead(sp, after.band, opt), "", lineOf(sp, chosenOpts), ""];
+  const L = [spineHead(sp, after.band, opt, after), "", lineOf(sp, chosenOpts), "",
+    `Explorer: \`guides/route-explorer.html#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}\` — the page to hand them, prefilled with this route.`, ""];
   if (autoRev) L.push(`Run the other way round for your ticket — in at ${apLabel(after.opt.in)}, home from ${apLabel(after.opt.out)}. The engine turns it round by itself whenever the ticket is on every run (\`--in\`/\`--out\`); do not add \`--reverse\` on top, that would turn it back.`, "");
   L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed, null, after.stops.map((s) => s.loc)), "");
   /* one of the two, never both (2026-09-13): a run that asked for a change and moved nothing says so, and
@@ -1400,7 +1427,7 @@ function main(argv) {
     else if (a === "--total") { opt.total = +argv[++i]; if (!opt.total || opt.total < 1) throw new Error("--total takes a whole number of nights"); }
     else if (a === "--reverse") opt.reverse = true; else if (a === "--before") opt.before = String(argv[++i] || "");
     else if (a === "--set") opt.set.push(String(argv[++i] || "")); else if (a === "--from") opt.from.push(String(argv[++i] || ""));
-    else if (a === "--budget") opt.budget = String(argv[++i] || ""); else if (a === "--draws") opt.draws.push(...String(argv[++i] || "").split(","));
+    else if (a === "--budget") opt.budget = String(argv[++i] || ""); else if (a === "--draws") opt.draws.push(...String(argv[++i] || "").split(",")); else if (a === "--month") opt.month = String(argv[++i] || "");
     else pos.push(a); }
   ["in", "out"].forEach((k) => { if (opt[k] && !AIRPORT[opt[k]]) throw new Error(`unknown airport ${opt[k]} (${AP_CODES.join(", ")})`); });
   const cmd = pos[0];

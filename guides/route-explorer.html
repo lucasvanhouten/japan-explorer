@@ -135,13 +135,21 @@ svg.jm tspan.x{font-weight:800}
  .act,.fixed{min-height:2.2rem;display:inline-flex;align-items:center;justify-content:center}
  .sum{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 .7rem}
  .stat b{font-size:1rem}
- .row{grid-template-columns:1.5rem minmax(0,1fr);grid-template-rows:auto auto auto auto;min-height:0;padding:.35rem .5rem .4rem .5rem;row-gap:.25rem;align-items:start}
+ /* stacked: the name and its line, then the range note, then one last line — the stepper on the left, the action on
+    the right — so the count sits beside the ± and no button hangs on a line of its own */
+ .row{grid-template-columns:1.5rem minmax(0,1fr) auto;grid-template-rows:auto auto auto;min-height:0;padding:.35rem .5rem .4rem .5rem;row-gap:.3rem;column-gap:.5rem;align-items:start}
  .row .nm{grid-column:2/-1;grid-row:1;white-space:normal;flex-wrap:wrap}
  .row .d{flex-basis:100%}
  .row .rk{grid-column:2/-1;grid-row:2;align-self:center}
- .row .nn{grid-column:2/-1;grid-row:3;justify-self:start}
- .row .ax{grid-column:2/-1;grid-row:4;justify-self:start}
- .fixed,.act{width:auto;min-width:5.4rem;padding-left:.5rem;padding-right:.5rem}
+ .row .nn{grid-column:2;grid-row:3;justify-self:start;align-self:center}
+ .row .ax{grid-column:3;grid-row:3;justify-self:end;align-self:center}
+ /* the count reads first and the two big keys sit together beside it: "5 nights − +", one thumb-sized pair */
+ .nn{gap:.3rem}
+ .nn .u{width:auto;order:2;margin-right:.25rem}
+ .nn .n{order:1}
+ .nn button{order:3}
+ .nn.ghostn button{display:none}
+ .fixed,.act{width:auto;min-width:4.6rem;padding-left:.5rem;padding-right:.5rem}
 }
 </style>
 <div class="wrap">
@@ -181,8 +189,9 @@ function decs(sp){if(DECS[sp.id])return DECS[sp.id];const out=[],at=sp.attach||[
  if(sp.end)out.push(Object.assign({},sp.end,{owner:{type:"end"}}));
  DECS[sp.id]=out;return out;}
 const choicesOf=sp=>{const ch={};for(const d of decs(sp))ch[d.key]=sel[sp.id+"/"+d.key]??d.default??0;return ch;};
-function orderedCities(sp,ch){const list=[];let rev=false;
- for(const e of sp.cities||[]){if(typeof e==="string"){list.push(e);continue;}const d=decs(sp).find(x=>x.key===e.key),o=d.options[ch[e.key]];if(!o)continue;if(o.reverse)rev=!rev;(o.cities||[]).forEach(c=>list.push(c));}
+function orderedCities(sp,ch){let list=[],order=null;const byKey={};let rev=false;
+ for(const e of sp.cities||[]){if(typeof e==="string"){list.push(e);continue;}const d=decs(sp).find(x=>x.key===e.key),o=d.options[ch[e.key]];if(!o)continue;if(o.reverse)rev=!rev;if(o.order)order=o.order;byKey[e.key]=o.cities||[];(o.cities||[]).forEach(c=>list.push(c));}
+ if(order)list=order.flatMap(k=>byKey[k]?byKey[k]:[k]);
  let cl=list;if(rev){const head=[];while(cl.length&&cl[0]==="tokyo")head.push(cl.shift());const tail=[];while(cl.length&&cl[cl.length-1]==="tokyo")tail.unshift(cl.pop());cl=head.concat(cl.slice().reverse(),tail);}
  return {cities:cl,reversed:rev};}
 const legJoins=(ow,a,b,rev)=>rev?ow.from.includes(b)&&ow.to.includes(a):ow.from.includes(a)&&ow.to.includes(b);
@@ -275,6 +284,11 @@ function plainly(t){if(!t)return t;let s=String(t);
  PLAIN.forEach(r=>{s=s.replace(r[0],r[1]);});
  s=s.replace(KEYRE,m=>C[m]||m);
  return s.replace(/\s+/g," ").trim();}
+/* a sentence that follows a full stop starts like one */
+const cap=s=>s?String(s).charAt(0).toUpperCase()+String(s).slice(1):s;
+/* the nights a place opens on when it is the only stay there: its ideal count, held inside its own usual range so a
+ * row never arrives already wearing the amber warning */
+const usualNights=loc=>{const b=bandOf(loc);return Math.min(Math.max(Math.max(1,NQ(loc)[0]),b[0]),b[1]);};
 const numWord=n=>["zero","one","two","three","four","five","six","seven","eight","nine","ten"][n]||String(n);
 /* a spine's wording may name the nights it adds ("Two more Tokyo nights"); where the assembly says otherwise the
  * figure on the row is the truth, so the sentence is corrected to it rather than left contradicting the stepper */
@@ -284,7 +298,7 @@ function sayNights(desc,n){if(!desc||!/\bnights?\b/.test(desc))return desc;
 /* the night each place opens on, for a hypothetical assembly — the same rule stopsOf uses, so a ghost can say what it
  * would really add before it is added */
 function defsFor(locs){const count={};locs.forEach(l=>{count[l]=(count[l]||0)+1;});const seen={};
- return locs.map((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);const r=NQ(loc);let def=Math.max(1,r[0]);
+ return locs.map((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);const r=NQ(loc);let def=usualNights(loc);
   if(count[loc]>1&&BASE.has(loc)){const airportSide=n===count[loc]&&locs.slice(i+1).every(l=>!BASE.has(l));
    def=loc==="tokyo"?(n===1?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;}
   return def;});}
@@ -326,7 +340,9 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
  const q=l=>NQ(l);
  /* the room a row has inside its USUAL count — the fit never goes outside it, so the recommended load cannot arrive
   * wearing its own amber warning, and a place added later takes its nights from the overrun, not from another row */
- const room=r=>({lo:Math.min(r.def,bandOf(r.loc)[0]),hi:Math.max(r.def,bandOf(r.loc)[1])});
+ const room=r=>{const b=bandOf(r.loc);return {lo:cnt[r.loc]>1?Math.min(r.def,b[0]):b[0],hi:Math.max(r.def,b[1])};};
+ /* the nights a row opens on: its usual count, and for a place stayed at twice the split the assembler chose */
+ const base=r=>cnt[r.loc]>1?r.def:usualNights(r.loc);
  const hardLo=r=>cnt[r.loc]>1?1:Math.max(1,q(r.loc)[1]);
  const wide=r=>{const b=bandOf(r.loc);return b[1]-b[0];};
  /* the spread is over the defaults alone, so a stepper the reader presses still moves the total by exactly that much;
@@ -336,10 +352,15 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
   * settled nights still lands on them — the row that went outside its usual count says so beside its stepper */
  const reach=r=>({lo:hardLo(r),hi:stepMax(r.loc)});
  const pin=fitPin[sp.id]=fitPin[sp.id]||{};
- rows.forEach(r=>{if(pin[r.key]!=null)r.def=pin[r.key];});
- const open=rows.filter(r=>pin[r.key]==null);
+ /* the spread happens once, when the route or the target is new. After that every row is held where it landed: a place
+  * added later arrives at its own usual count and the overrun is reported, never taken off the stays already there */
+ const fresh=!Object.keys(pin).length;
+ rows.forEach(r=>{r.def=pin[r.key]!=null?pin[r.key]:base(r);});
+ /* a night the reader set by hand is theirs: the spread works around it rather than over it */
+ const held=r=>nightsOv[r.key]!=null;
+ const open=fresh?rows.filter(r=>!held(r)):[];
  const cities=ord(open.filter(r=>BASE.has(r.loc))),rest=ord(open.filter(r=>!BASE.has(r.loc)));
- let diff=target-rows.reduce((a,r)=>a+r.def,0);
+ let diff=target-rows.reduce((a,r)=>a+(held(r)?nightsOv[r.key]:r.def),0);
  [[cities,room],[cities.concat(rest),room],[cities.concat(rest),reach]].forEach(([pool,bnd])=>{
   for(let guard=0;diff!==0&&guard<120;guard++){let moved=false;
    for(const r of pool){if(diff===0)break;const rm=bnd(r);
@@ -422,11 +443,26 @@ function friendly(sp,d,j,R){const raw=R.na[d.key+"/"+j];if(!raw)return null;cons
    * on the page can change it, so the row says so outright rather than hinting that adding the city would open it */
   const ever=spineCities(sp);const never=!o.needCity.some(c=>ever.has(c));
   const base=nm(o.needCity[0]),onTrip=o.needCity.some(c=>R.locs.includes(c));
-  return plainly(!never?`needs ${base} on the route`
+  /* the city this hangs off can also be tacked on at the very end of the trip, and a stay there would not open this
+   * row: the reason says which end of the route it means, so it never contradicts a Tokyo the reader can see */
+  const ends=new Set(((decs(sp).find(x=>x.owner.type==="end")||{options:[]}).options||[]).flatMap(x=>x.stops||[]));
+  const where=o.needCity.some(c=>ends.has(c))?"at the start of the route":"on the route";
+  return plainly(!never?`needs ${base} ${where}`
    :onTrip?`not offered here — ${what} is a night out and back from ${base}, and on this route ${base} is a stop on the way rather than somewhere you sleep`
    :`not offered here — ${what} is a night out and back from ${base}, and this route never stays in ${base}`);}
- if(o.needLeg&&!R.cities.some((c,i)=>i<R.cities.length-1&&legJoins(o.needLeg,c,R.cities[i+1],R.reversed)))
-  return plainly(`needs ${nm(o.needLeg.from[0])} before ${nm(o.needLeg.to[0])} on the route`);
+ if(o.needLeg&&!R.cities.some((c,i)=>i<R.cities.length-1&&legJoins(o.needLeg,c,R.cities[i+1],R.reversed))){
+  /* the leg is missing because the place at its far end has been swapped off the route: the row asks for that place
+   * back, and names the city standing in its slot, rather than quoting a leg the reader never chose */
+  const to=o.needLeg.to,gone=!to.some(c=>R.locs.includes(c));
+  if(gone){const sw=decs(sp).find(x=>isCitySw(x)&&x.options.some(op=>(op.cities||[]).some(c=>to.includes(c))));
+   const now=sw?(((sw.options[R.ch[sw.key]]||{}).cities)||[]).filter(c=>!to.includes(c)):[];
+   return plainly(`needs ${nm(to[0])} on the route`+(now.length?` (swap ${now.map(nm).join(" and ")} back)`:""));}
+  return plainly(`needs ${nm(o.needLeg.from[0])} before ${nm(o.needLeg.to[0])} on the route`);}
+ /* a requirement that is really about position — Tokyo has to be the first stay, not merely somewhere on the trip —
+  * says so, otherwise the row reads as a contradiction on a route that ends in Tokyo */
+ const pos=(o.requires||[]).find(l=>/@(first|last)$/.test(l));
+ if(pos&&/\bon the route\b/.test(raw))
+  return plainly(raw.replace(/\bon the route\b/,/@first$/.test(pos)?"at the start of the route":"at the end of the route"));
  return plainly(raw);}
 function trip(sp){
  const R=resolve(sp),st=fit(sp),cl=R.cities,ds=decs(sp);
@@ -464,21 +500,23 @@ function trip(sp){
  /* ── the ghosts: every place a decision of this spine could add, where it would fall ── */
  const ghosts=[],addFor={},dimFor={};
  /* the nights a ghost would add — a second visit to a city it is already on takes the split count, not a full stay */
- const ghostOf=(d,j,locs,reason,gone,w)=>{const nb=l=>firstAt[l]!=null?(BASE.has(l)?2:1):NQ(l)[0];
+ const ghostOf=(d,j,locs,reason,gone,w)=>{const nb=l=>firstAt[l]!=null?(BASE.has(l)?2:1):usualNights(l);
   const swap=!reason&&gone&&gone.length?gone:null;
-  const n=w&&w.n!=null?w.n:locs.reduce((a,l)=>a+nb(l),0);
+  /* a swap states its own nights only: the places it puts on the route, not every stay downstream of it */
+  const ownN=w&&w.adds?w.adds.filter(a=>locs.includes(a[0])).reduce((a,x)=>a+x[1],0):0;
+  const n=swap?(ownN||locs.reduce((a,l)=>a+nb(l),0)):(w&&w.n!=null?w.n:locs.reduce((a,l)=>a+nb(l),0));
   const o=d.options[j]||{};
   const od=sayNights(plainly(o.desc||""),n);
   /* an either/or: the sibling it replaces is said first, and whatever travels with that sibling is named */
   let desc=reason||od;
   if(swap){const lead=nm(swap[0]),rest=swap.slice(1).map(nm);
-   desc="instead of "+lead+(rest.length?" — "+(rest.length<2?rest[0]+" goes":rest.slice(0,-1).join(", ")+" and "+rest[rest.length-1]+" go")+" with it":"")+(od?". "+od:"");}
+   desc="instead of "+lead+(rest.length?" — "+(rest.length<2?rest[0]+" goes":rest.slice(0,-1).join(", ")+" and "+rest[rest.length-1]+" go")+" with it":"")+(od?". "+cap(od):"");}
   /* a place that splits a stay adds nights the row itself does not name — Nikkō is one night there and two more back in
    * Tokyo — so the row counts them out before the summary jumps */
-  if(!reason&&w&&w.adds&&w.adds.some(a=>!locs.includes(a[0]))){
+  if(!reason&&!swap&&w&&w.adds&&w.adds.some(a=>!locs.includes(a[0]))){
    const seen={},ord=[];w.adds.forEach(a=>{if(seen[a[0]]==null){seen[a[0]]=0;ord.push(a[0]);}seen[a[0]]+=a[1];});
    const say=ord.map(l=>seen[l]+(locs.includes(l)?" in ":" back in ")+nm(l));
-   desc=`+${n} ${n===1?"night":"nights"}: `+(say.length<2?say[0]:say.slice(0,-1).join(", ")+", "+say[say.length-1])+(desc?". "+desc:"");}
+   desc=`+${n} ${n===1?"night":"nights"}: `+(say.length<2?say[0]:say.slice(0,-1).join(", ")+", "+say[say.length-1])+(desc?". "+cap(desc):"");}
   /* an ending that changes which airport the trip flies from says it here, where the choice is made */
   if(!reason){if(o.out&&o.out!==apOut)desc+=` · home from ${apName(o.out)} instead`;
    if(o.in&&o.in!==apIn)desc+=` · in at ${apName(o.in)} instead`;}
@@ -555,6 +593,9 @@ function ghostCtl(n){return `<span class="nn ghostn"><button disabled tabindex="
 function rowHtml(T,sp,i){const s=T.st[i],loc=s.loc,k=kindOf(sp,loc),own=T.owner[i];
  const rep=T.firstAt[loc]!==i,[lo,hi]=bandOf(loc);
  const off=T.count[loc]===1&&(s.n<lo||s.n>hi);
+ /* the amber is a warning about a choice: it belongs to nights the reader set. Where the settled target itself cannot
+  * be met inside every usual range, the row the fit had to trim states its range plainly instead of flagging it */
+ const mine=off&&s.n!==s.def;
  const src=T.srcOf[loc];
  let d1;
  if(rep){const oo=own?own.d.options[T.R.ch[own.d.key]]:null;
@@ -572,11 +613,11 @@ function rowHtml(T,sp,i){const s=T.st[i],loc=s.loc,k=kindOf(sp,loc),own=T.owner[
   if(lead===i)act=`<button class="act rm" data-k="${esc(own.d.key)}" data-j="${own.j}" title="Takes ${esc(what)} off the trip">Remove</button>`;
   /* the places one decision brought come and go together: the later rows name the row that carries the button */
   else act=`<span class="fixed">with ${esc(nm(T.st[lead].loc))}</span>`;}
- const rk=off?`<span class="rk range">${bandText(loc)}</span>`
+ const rk=off?`<span class="rk ${mine?"range":"grp"}">${bandText(loc)}</span>`
   :`<span class="rk">${T.rec.has(loc)&&!rep?"recommended":""}</span>`;
  return `<div class="row ${cls(k)}"><span class="no">${String(i+1).padStart(2,"0")}</span>`
  +`<span class="nm"><span class="nmt">${esc(nm(loc))}</span><span class="kindtag">${KINDTAG[k]}</span>`
- +`<span class="d">${esc(d1)}</span></span>${rk}${nightsCtl(loc,s.key,s.n,off)}<span class="ax">${act}</span></div>`;}
+ +`<span class="d">${esc(d1)}</span></span>${rk}${nightsCtl(loc,s.key,s.n,mine)}<span class="ax">${act}</span></div>`;}
 function ghostHtml(g,no){
  /* a ghost that brings more than one place names each of them with its own kind */
  const parts=(g.parts||[{n:g.name,k:g.kind}]).map(p=>`<span class="nmt">${esc(p.n)}</span><span class="kindtag">${KINDTAG[p.k]}</span>`).join(`<span class="gl">·</span>`);
@@ -585,7 +626,10 @@ function ghostHtml(g,no){
  +(g.dis?` title="${esc(g.desc)}"`:` role="button" tabindex="0" data-k="${esc(g.k)}" data-j="${g.j}" aria-label="${word} ${esc(g.name)}"`)
  +`><span class="no">+</span><span class="nm">${parts}`
  +`<span class="d">${esc(g.desc)}</span></span><span class="rk">${g.rec&&!g.dis?"recommended":""}</span>`
- +ghostCtl(g.n)+`<span class="ax">${g.dis?"":`<span class="act add" aria-hidden="true">${word}</span>`}</span></div>`;}
+ /* a place that is not offered here has no nights to promise: the column stays empty rather than quoting a figure
+  * for a stay that cannot happen */
+ +(g.dis?`<span class="nn ghostn"></span>`:ghostCtl(g.n))
+ +`<span class="ax">${g.dis?"":`<span class="act add" aria-hidden="true">${word}</span>`}</span></div>`;}
 function legHtml(a,b){const L=LEG[a+">"+b];if(!L)return `<div class="legrow q"><b>to confirm</b> no researched leg</div>`;
  const w=modeWord(L[2]);return `<div class="legrow${w==="flight"?" f":""}"><b>${hmS(L[0])}</b> ${w}</div>`;}
 function apHtml(dir,code,L){const t=L?`<b>${hmS(L[0])}</b> ${modeWord(L[2])}`:"<b>to confirm</b>";
@@ -637,10 +681,10 @@ function mapCtl(T,sp){const on=new Set(T.st.map(s=>s.loc));
   if(isOn){const ix=T.st.map((s,i)=>s.loc===l?i:-1).filter(i=>i>=0),ow=ix.filter(i=>T.owner[i]);
    if(ow.length&&ow.length===ix.length){const o=T.owner[ow[0]],lead=T.ownFirst[o.d.key+"/"+o.j];
     if(ix.indexOf(lead)>=0)rm=o;else belong=nm(T.st[lead].loc);}}
-  /* a city already on the trip that a choice could bring back at the other end (Tokyo instead of Kyoto) carries that
-   * swap where the list shows it too — the one handle a fixed city can have */
-  const again=isOn&&!rm&&!belong&&a&&a.swap?a:null;
-  const gl=a&&(!isOn||again)?"+":"";
+  /* a place already on the trip is never also a dashed option: the swap that would put a second Tokyo at the far end
+   * belongs to its own row in the list, not to the dot the trip already starts from, which stays a plain filled name */
+  const again=null;
+  const gl=a&&!isOn?"+":"";
   /* the two swaps read alike, in words: "Tokyo instead", "+ Beppu instead" — no glyph to learn */
   const lab=isOn?(rm?`${esc(nm(l))} <tspan class="x">×</tspan>`:again?`${esc(nm(l))} <tspan class="x">instead</tspan>`:esc(nm(l)))
    :(a&&a.lead?`+ ${esc(nm(l))}${a.swap?` <tspan class="x">instead</tspan>`:""}`:esc(nm(l)));
@@ -659,7 +703,7 @@ const DIRS=["n","s","e","w","ne","nw","se","sw"];
 const ovA=(a,b)=>Math.max(0,Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x))*Math.max(0,Math.min(a.y+a.h,b.y+b.h)-Math.max(a.y,b.y));
 /* --fs is authored in user units as 11.5*(viewBox/pixel), so every label renders at 11.5px
    whatever the frame; the loop then picks each label a side that collides with nothing. */
-function paintMap(sv,u,narrow){sv.style.setProperty("--fs",(11.5*u).toFixed(3));
+function paintMap(sv,u,narrow){sv.style.setProperty("--fs",((narrow?10.2:11.5)*u).toFixed(3));
  sv.querySelectorAll("rect.pill,line.ld").forEach(r=>r.remove());
  /* the tap circles are sized at the very end of fitMaps; back to nothing before any measuring starts */
  sv.querySelectorAll("circle.hit").forEach(c=>c.setAttribute("r",0));
@@ -669,7 +713,8 @@ function paintMap(sv,u,narrow){sv.style.setProperty("--fs",(11.5*u).toFixed(3));
  const labs=[];
  /* a label sits beside its dot; where that side is taken it steps further out, alternating above and below, and keeps
   * a hairline leader back to the dot so the further-out ones still read as that place's name */
- const STEP=[1,1.9,2.8,3.7];
+ /* on a phone a tight cluster (Osaka, Nara, Kōyasan, Arima) needs to step further out before a side comes free */
+ const STEP=narrow?[1,1.9,2.8,3.7,4.8,6,7.4]:[1,1.9,2.8,3.7];
  const put=(t,x,y,d,st)=>{const o=OFF[d]||OFF.e,sc=st||1;
   t.setAttribute("x",(x+o[0]*k*sc).toFixed(1));t.setAttribute("y",(y+o[1]*k*sc).toFixed(1));t.setAttribute("text-anchor",ANC[d]||"start");};
  /* the label each place already has, so a repaint starts from the full name again */
@@ -783,15 +828,19 @@ let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(fitMaps,120
 /* ---------- the four things a click can mean ---------- */
 function act(el){
  const tab=el.closest?el.closest("[data-tab]"):null;
- if(tab){setHash({spine:tab.dataset.tab,start:"",reverse:""});return true;}
+ if(tab){setHash({spine:tab.dataset.tab,start:"",reverse:"",in:"",out:""});return true;}
  if(!cur)return false;
  const sw=el.closest?el.closest("[data-sw]"):null;
  if(sw){if(sw.disabled)return true;const d=decs(cur).find(x=>x.key===sw.dataset.sw);
-  /* the whole shape of the trip changes: the nights go back to the fit, so the flip lands on the recommended version
-   * of the settled target rather than carrying the old trip's nudges into a different route */
-  Object.keys(nightsOv).forEach(k=>{if(k.indexOf(cur.id+"/")===0)delete nightsOv[k];});
-  if(d&&isStart(d))setHash({start:sw.dataset.j});
-  else if(d)setHash({reverse:d.options[+sw.dataset.j].reverse?"1":""});
+  if(!d)return true;
+  /* the shape of the trip changes but the reader's own nights do not: a place that survives the flip keeps the count
+   * they set, and the rest of the trip is fitted around it. The two airports move with the route, so the link the page
+   * is holding is rewritten to the ones it now flies — otherwise the old ticket would pull the route back */
+  sel[cur.id+"/"+d.key]=+sw.dataset.j;
+  const ap=airportsOf(cur,stopsOf(cur));
+  const patch={in:ap[0]&&ap[0]!=="—"?ap[0]:"",out:ap[1]&&ap[1]!=="—"?ap[1]:""};
+  if(isStart(d))patch.start=sw.dataset.j;else patch.reverse=d.options[+sw.dataset.j].reverse?"1":"";
+  setHash(patch);
   return true;}
  const nb=el.closest?el.closest("[data-nk]"):null;
  if(nb){if(nb.disabled)return true;const key=nb.dataset.nk,loc=key.slice(key.indexOf("/")+1,key.lastIndexOf("#"));
