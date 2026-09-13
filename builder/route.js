@@ -682,6 +682,57 @@ function decisionsOf(sp) {
   DEC.set(sp, out); return out;
 }
 const decisionOf = (sp, key) => decisionsOf(sp).find((d) => d.key === key);
+/* ── decisions that exclude each other are ONE question (owner, 2026-09-13) ──
+ * A yes/no night whose Yes is guarded `not_with` another's place is an ALTERNATIVE to it, not a separate question:
+ * the Kanazawa Loop's Yudanaka, Nikkō and the Fuji lakes are one night out of Tokyo, and asking them one at a time
+ * makes a traveller say No twice before hearing the third. The groups are DERIVED from the guards themselves — any
+ * connected set of `not_with`, on any spine, today's and any added later — and printed as one decision carrying every
+ * alternative and None. Each member's own key still works in `--set`; so does the group's `<prefix>.choice`. */
+const EXG = new WeakMap();
+const yesOf = (d) => d.options.findIndex((o) => (o.stops || []).length);
+function exclGroups(sp) {
+  const cached = EXG.get(sp); if (cached) return cached;
+  const ds = decisionsOf(sp).filter((d) => (d.kind === "inn" || d.kind === "stop") && d.owner.type !== "end" && yesOf(d) >= 0);
+  const stopsOf = (d) => d.options[yesOf(d)].stops || [];
+  const clash = (a, b) => (a.options[yesOf(a)].not_with || []).some((l) => stopsOf(b).includes(l))
+    || (b.options[yesOf(b)].not_with || []).some((l) => stopsOf(a).includes(l));
+  const parent = ds.map((_, i) => i), find = (i) => (parent[i] === i ? i : (parent[i] = find(parent[i])));
+  ds.forEach((a, i) => ds.forEach((b, j) => { if (j > i && clash(a, b)) parent[find(j)] = find(i); }));
+  const by = {}; ds.forEach((d, i) => { const r = find(i); (by[r] = by[r] || []).push(d); });
+  const out = Object.values(by).filter((m) => m.length > 1).map((members) => {
+    const anchors = members.map((d) => (d.owner.type === "leg" ? d.owner.from[0] : (d.owner.city || [])[0]));
+    const anchor = anchors.every((a) => a && a === anchors[0]) ? anchors[0] : null;
+    const pre = (d) => String(d.key).split(".")[0];
+    return { key: `${pre(members[0])}.choice`, alias: [...new Set(members.map((d) => `${pre(d)}.choice`))], members, anchor };
+  });
+  EXG.set(sp, out); return out;
+}
+const groupOfDecision = (sp, d) => exclGroups(sp).find((g) => g.members.includes(d)) || null;
+/* the one question the group asks, and its options: every alternative by its place, then None */
+function groupCell(sp, g, choices, unavailable, rev, opt) {
+  const noAt = (d) => d.options.findIndex((o) => !(o.stops || []).length);
+  /* every member is judged with the WHOLE group switched off: a place withheld only because a sibling is on is the
+   * very choice being offered here, while one withheld on its own account (its leg is not on this route) is named
+   * with its reason instead. The guard text varies by spine, so the test is structural, never a string match. */
+  const trial = Object.assign({}, choices); g.members.forEach((d) => { trial[d.key] = noAt(d); });
+  const shown = [], withheld = [];
+  g.members.forEach((d) => { const j = yesOf(d), place = label(d.options[j].stops[0]);
+    const why = whyNot(sp, d, d.options[j], trial, opt);
+    if (why) { withheld.push(`${place}: not offered here — ${why}`); return; }
+    shown.push({ d, place, desc: optWord(d.options[j], rev).desc, on: choices[d.key] === j }); });
+  /* the one that is on leads (owner: the default first), the rest in trip order behind it */
+  shown.sort((a, b) => (b.on ? 1 : 0) - (a.on ? 1 : 0));
+  const on = shown.findIndex((x) => x.on);
+  /* None reads from whichever member is on — "straight through to Kanazawa", not "no Fuji lakes" */
+  const noText = (((shown[on] || shown[0] || {}).d || g.members[0]).options.find((o) => !(o.stops || []).length) || {}).desc || NO_DESC;
+  const cells = shown.map((x, i) => `${i === on ? `**${i + 1} ${x.place}**` : `${i + 1} ${x.place}`} — ${x.desc}`);
+  cells.push(`${on < 0 ? `**${shown.length + 1} None**` : `${shown.length + 1} None`} — ${noText}`);
+  const where = g.anchor ? ` out of ${label(g.anchor)}` : "";
+  const kind = g.members.some((d) => d.kind === "inn") ? "inn" : "stop";
+  const on_at = g.members.map((d) => d.on_at).filter(Boolean)[0];
+  return { question: `One night${where}: ${shown.map((x) => x.place).join(", ")} or none — which?`, kind, on_at,
+    cell: cells.join(" · ") + (withheld.length ? ` · _${withheld.join("; ")}_` : ""), shown };
+}
 /* every loc a spine can put on a route — its cities, its attachments, its leg slots, its END options */
 const spineLocs = (sp) => [...new Set(decisionsOf(sp).flatMap((d) => d.options.flatMap((o) => o.stops || []))
   .concat((sp.cities || []).filter((e) => typeof e === "string")))];
@@ -729,7 +780,16 @@ function parseSets(sp, list) {
   for (const item of (list || []).flatMap((s) => String(s).split(/,(?=[a-z_][a-z_.\-]*=)/i))) {
     const m = /^\s*([^=]+)=(.+)$/.exec(item); if (!m) throw new Error("--set takes key=option, e.g. --set tokyo.nikko=yes or --set kansai=osaka");
     const key = norm(m[1]).replace(/ /g, ""), d = decisionsOf(sp).find((x) => norm(x.key).replace(/ /g, "") === key);
-    if (!d) throw new Error(`spine ${sp.id} has no decision "${m[1].trim()}" — its decisions are ${decisionsOf(sp).map((x) => x.key).join(", ")}`);
+    /* the group form: `--set tokyo.choice=nikko` (or `=none`) — one answer for the whole either/or */
+    if (!d) { const g = exclGroups(sp).find((x) => x.alias.concat([x.key]).some((k) => norm(k).replace(/ /g, "") === key));
+      if (g) { const want = norm(m[2]).replace(/[^a-z0-9]/g, ""), noAt = (x) => x.options.findIndex((o) => !(o.stops || []).length);
+        if (/^(none|no|n)$/.test(want)) { g.members.forEach((x) => { out[x.key] = noAt(x); }); continue; }
+        const hit = g.members.find((x) => { const st = x.options[yesOf(x)].stops[0];
+          return want.length > 1 && [String(x.key).split(".").pop(), st, label(st)].some((v) => norm(String(v)).replace(/[^a-z0-9]/g, "").startsWith(want)); });
+        if (!hit) throw new Error(`${g.key}: no option "${m[2].trim()}" — ${g.members.map((x) => String(x.key).split(".").pop()).join(", ")} or none`);
+        g.members.forEach((x) => { out[x.key] = x === hit ? yesOf(x) : noAt(x); });
+        continue; } }
+    if (!d) throw new Error(`spine ${sp.id} has no decision "${m[1].trim()}" — its decisions are ${decisionsOf(sp).map((x) => x.key).join(", ")}${exclGroups(sp).length ? `, plus the either/or ${exclGroups(sp).map((x) => x.key).join(", ")}` : ""}`);
     out[d.key] = optionIndex(d, m[2]);
   }
   return out;
@@ -1312,9 +1372,19 @@ const qWord = (d, reversed) => (!reversed ? d.question : d.key === "end" ? "How 
 function decisionsTable(sp, choices, unavailable, cities, reversed, opt, locs) {
   const L = ["| Where | Decision | Options (chosen in bold) |", "|---|---|---|"];
   let n = 0;
+  const printed = new Set();
   for (const g of groupsOf(sp, choices, cities, reversed, locs)) {
     let first = true;
     for (const d of g.items) {
+      /* a member of an either/or group is never asked on its own: the whole group is one row, printed where its
+       * first member falls in trip order (owner, 2026-09-13) */
+      const X = groupOfDecision(sp, d);
+      if (X) { if (printed.has(X.key)) continue;
+        const gc = groupCell(sp, X, choices, unavailable, reversed, opt);
+        if (gc.shown.length >= 2) { printed.add(X.key); n++;
+          const onx = gc.on_at ? ` — one of them is on by default from ${gc.on_at} nights` : "";
+          L.push(`| ${first ? `**${g.where}**` : ""} | ${n} · ${KIND_LABEL[gc.kind]} · ${gc.question}${onx} \`${X.key}\` | ${gc.cell} |`);
+          first = false; continue; } }
       const na = (unavailable || []).filter((u) => u.key === d.key).map((u) => `${u.label}: not offered here — ${u.why}`);
       /* a decision the assembly withholds is still printed, as one line with its reason, so the reader learns why
        * Kirishima is not there rather than never hearing of it (QA round 7) */
@@ -1539,7 +1609,7 @@ function cmdSpine(ref, opt) {
     `Explorer: \`${EXPLORER_PAGE}#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${opt.total || after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${opt.reverse ? "&reverse=1" : ""}${hashSets(sp, opt, after)}${hashNights(after)}&routes=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}\` — the page to hand them, prefilled with this route, its answers so far and the nights on screen; it pins this route and folds the rest — widen routes= to the other slugs while they are still comparing.`, ""];
   L.push(...shapeLines(sp, after), "");
   if (autoRev) L.push(`Run the other way round for your ticket — in at ${apLabel(after.opt.in)}, home from ${apLabel(after.opt.out)}. The engine turns it round by itself whenever the ticket is on every run (\`--in\`/\`--out\`); do not add \`--reverse\` on top, that would turn it back.`, "");
-  L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed, exitOpt(after, opt), after.stops.map((s) => s.loc)), "");
+  L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one (an either/or is answered whole, \`--set <group>.choice=<place|none>\`), \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed, exitOpt(after, opt), after.stops.map((s) => s.loc)), "");
   /* one of the two, never both (2026-09-13): a run that asked for a change and moved nothing says so, and
    * the night lines the defaults filled in are not dressed up as a change they made */
   const nothingMoved = changed && !moved;
@@ -1807,4 +1877,4 @@ function main(argv) {
 if (require.main === module) { try { console.log(main(process.argv.slice(2))); } catch (e) { console.error("route.js: " + e.message); process.exit(1); } }
 module.exports = { buildPlan, parseStops, stopOf, stopString, leg, airportLeg, airportsRanked, defaultIn, defaultOut, resolveLoc, placeOf, label, short, coord, km, hm, hm5, modeWord,
   printPlan, shapeTable, orderRow, lighterLine, lighterPick, lighterCandidates, ORDER_HEAD, chain, isClean, runId, AIRPORT, AP_CODES, HUBS, PLACES, PLACES_SRC, DENSITY_MAX, FLIGHT_CAP_H, regionOfLoc: (l) => B.regionOfLoc(l),
-  SPINES, SHORTLIST, STAY_GROUPS, DRAWS, normDraw, spineOf, decisionsOf, decisionOf, spineLocs, groupsOf, orderedCities, choicesOf, parseSets, assembleLocs, assembleSpine, bandOf, timelineTable, decisionsTable, compareRow, COMPARE_HEAD, legsLine, cmdSpines, cmdSpine, cmdCompare, isInnKind, isBaseKind };
+  SPINES, SHORTLIST, STAY_GROUPS, DRAWS, exclGroups, groupOfDecision, normDraw, spineOf, decisionsOf, decisionOf, spineLocs, groupsOf, orderedCities, choicesOf, parseSets, assembleLocs, assembleSpine, bandOf, timelineTable, decisionsTable, compareRow, COMPARE_HEAD, legsLine, cmdSpines, cmdSpine, cmdCompare, isInnKind, isBaseKind };
