@@ -514,8 +514,12 @@ function spendNights(sp){
  const endD=decs(sp).find(d=>d.owner.type==="end");
  if(capacity(sp)<target&&endD&&sel[SID(sp)+"/"+endD.key]==null){const R=resolve(sp);
   if(!(((endD.options[R.ch[endD.key]]||{}).stops)||[]).length){
+   /* an ending that returns to a city the trip already stays in is the traveller's own choice — the nights asked for are
+    * never spent on it (owner, 2026-09-13); the last ride back to the airport is normal and priced */
+   const onRoute=new Set(R.locs);
    /* the ending that spends most of what is left, the earliest on a tie — the engine's own choice */
    let best=null;endD.options.forEach((o,j)=>{if(!(o.stops||[]).length||whyNot(sp,endD,o,R.ch))return;
+    if((o.stops||[]).some(l=>onRoute.has(l)))return;
     take(endD,j);const c=Math.min(capacity(sp),target);drop(endD);
     const tk=REPEAT&&(o.stops||[]).includes("tokyo")?1:0;if(!best||tk<best.tk||(tk===best.tk&&c>best.c))best={j,c,tk};});
    if(best&&best.c>Math.min(capacity(sp),target))take(endD,best.j);}}}
@@ -549,7 +553,12 @@ const isPlanSec=p=>!!(p&&p.plan&&!p.spine);
 /* the answers and the nights are keyed by the tab they were set in, so two tabs on one route never share them */
 const SID=sp=>SEC+"|"+sp.id;
 /* the list punctuation stays as it is written — a shared address reads as one */
-const hEnc=v=>encodeURIComponent(v).replace(/%2C/gi,",").replace(/%3A/gi,":").replace(/%23/gi,"#");
+/* the list punctuation and the repeat marker stay as they are written: tokyo@2 needs no encoding, and an address that
+ * still carries the older tokyo#2 is read either way (2026-09-13) */
+const hEnc=v=>encodeURIComponent(v).replace(/%2C/gi,",").replace(/%3A/gi,":").replace(/%23/gi,"#").replace(/%40/gi,"@");
+/* a place with its visit marker: "tokyo@2" (or the older "tokyo#2") → ["tokyo",2] */
+const visitOf=t=>{const m=String(t).match(/^(.*?)[@#](\d+)$/);return m?[m[1].trim(),parseInt(m[2],10)||1]:[String(t).trim(),1];};
+const visitStr=(loc,n)=>loc+(n>1?"@"+n:"");
 const hashStr=p=>HKEYS.filter(k=>p[k]!=null&&p[k]!=="").map(k=>k+"="+hEnc(p[k])).join("&");
 let cur=spines[0],target=spines[0].band[0],ask=null;
 /* true while the address carries the nights itself: the fit holds them and the auto-spend stands down */
@@ -559,7 +568,7 @@ let NFIX=false;
 function readHash(){const raw=location.hash.replace(/^#/,"");
  /* a link the page did not write is a new trip: the answers, the nights and the fits it was holding go, so an address
   * always shows what it says rather than the last one with this one laid over it (owner, 2026-09-13) */
- if(raw!==LASTWROTE){[sel,nightsOv,fitPin,autoOn].forEach(o=>Object.keys(o).forEach(k=>{delete o[k];}));
+ if(raw!==LASTWROTE){[sel,nightsOv,fitPin,autoOn,PLANOFF].forEach(o=>Object.keys(o).forEach(k=>{delete o[k];}));
   lastSig=null;addedSec=-1;SEC=0;LASTWROTE=raw;}
  SECTIONS=readSections();if(SEC>=SECTIONS.length)SEC=0;const p=hashParams();
  REPEAT=/^(1|yes|true|on)$/i.test(String(p.repeat||""));
@@ -601,8 +610,8 @@ function readHash(){const raw=location.hash.replace(/^#/,"");
   * re-spreads the total nor spends it on more places */
  NFIX=false;
  if(p.n)String(p.n).split(",").forEach(pair=>{const i=pair.lastIndexOf(":");if(i<0)return;
-  let loc=pair.slice(0,i).trim();const v=parseInt(pair.slice(i+1),10);if(!loc||!(v>0))return;
-  let visit=1;const h=loc.indexOf("#");if(h>=0){visit=parseInt(loc.slice(h+1),10)||1;loc=loc.slice(0,h);}
+  const v=parseInt(pair.slice(i+1),10);const vo=visitOf(pair.slice(0,i));let loc=vo[0];const visit=vo[1];
+  if(!loc||!(v>0))return;
   nightsOv[SID(cur)+"/"+loc+"#"+visit]=Math.min(stepMax(loc),Math.max(1,v));NFIX=true;});
  /* the ticket the address carries, held for the airports no choice on this route declares */
  FIN=(p.in||"").toUpperCase();FOUT=(p.out||"").toUpperCase();
@@ -621,7 +630,7 @@ function setPart(){if(!cur)return "";
 /* the nights on screen: every city stay, in trip order, plus any other stay the reader moved themselves */
 function nPart(){if(!cur)return "";
  return fit(cur).filter(r=>kindOf(cur,r.loc)==="city"||nightsOv[r.key]!=null)
-  .map(r=>r.key.slice(r.key.indexOf("/")+1).replace(/#1$/,"")+":"+r.n).join(",");}
+  .map(r=>{const vo=visitOf(r.key.slice(r.key.indexOf("/")+1));return visitStr(vo[0],vo[1])+":"+r.n;}).join(",");}
 /* a change the reader made keeps the address current, so the link they copy reopens exactly this shape */
 const keepHash=patch=>setHash(Object.assign({set:setPart(),n:nPart()},patch||{}));
 
@@ -820,13 +829,15 @@ function trip(sp){
 function parsePlan(t){return String(t||"").split(",").map(x=>x.trim()).filter(Boolean).map(tok=>{
  let loc=tok,n=null;const c=tok.lastIndexOf(":");
  if(c>0){const v=parseInt(tok.slice(c+1),10);if(v>0){n=v;loc=tok.slice(0,c);}}
- const h=loc.indexOf("#");if(h>=0)loc=loc.slice(0,h);
- return {loc:loc.trim(),n};}).filter(x=>x.loc&&(XY[x.loc]||NIGHTS[x.loc]));}
+ return {loc:visitOf(loc)[0],n};}).filter(x=>x.loc&&(XY[x.loc]||NIGHTS[x.loc]));}
 /* the stop string as the route tool takes it: a second visit to a place says so */
 function planStr(st){const seen={};return st.map(s=>{const n=(seen[s.loc]=(seen[s.loc]||0)+1);
- return s.loc+(n>1?"#"+n:"")+":"+s.n;}).join(",");}
+ return visitStr(s.loc,n)+":"+s.n;}).join(",");}
 function planStops(p){const toks=parsePlan(p.plan),locs=toks.map(t=>t.loc),defs=defsFor(locs);
  return toks.map((t,i)=>({loc:t.loc,key:"p:"+i,n:t.n!=null?Math.min(stepMax(t.loc),t.n):defs[i],def:defs[i],min:1,max:stepMax(t.loc)}));}
+/* a stop dropped from a plan is not gone: it waits where it was, as a dashed row, until a new address arrives. The
+ * address itself carries only the live stops (owner, 2026-09-13) */
+const PLANOFF={};
 function planTrip(p){const st=planStops(p);
  const count={},firstAt={};st.forEach((x,i)=>{count[x.loc]=(count[x.loc]||0)+1;if(firstAt[x.loc]==null)firstAt[x.loc]=i;});
  const items=[{t:"ap",dir:"in"}];
@@ -838,8 +849,15 @@ function planTrip(p){const st=planStops(p);
  const lIn=f&&APLEG[f+">"+apIn],lOut=l&&APLEG[l+">"+apOut];
  let mins=0,unk=0;const add=L=>{if(L)mins+=L[0];else unk++;};
  add(lIn);for(let i=1;i<st.length;i++)add(LEG[st[i-1].loc+">"+st[i].loc]);add(lOut);
+ /* the waiting rows keep the slot they were taken from — the ones still waiting move up as the plan shortens, so a
+  * dashed row always sits where its stop would go back */
+ const gh=(PLANOFF[SEC]||[]).map((x,ix)=>[x,ix]).sort((a,b)=>a[0].at-b[0].at||a[0].orig-b[0].orig)
+  .map(([x,ix])=>{const at=Math.min(x.at,st.length),k=kindAny(x.loc);
+  const pos=at<st.length?items.findIndex(it=>it.t==="row"&&it.si===at):items.length-1;
+  return {p:pos<0?items.length-1:pos,r:0,g:{locs:[x.loc],name:nm(x.loc),kind:k,parts:[{n:nm(x.loc),k}],
+   swap:false,n:x.n,desc:DESC[x.loc]||"",rec:false,dis:false,pk:ix}};});
  return {plan:true,st,cl:[],ds:[],count,firstAt,owner:st.map(()=>null),ownFirst:{},srcOf:{},rec:new Set(),
-  items,ghosts:[],addFor:{},dimFor:{},apIn,apOut,lIn,lOut,mins,unk,total:st.reduce((a,x)=>a+x.n,0)};}
+  items,ghosts:gh,addFor:{},dimFor:{},apIn,apOut,lIn,lOut,mins,unk,total:st.reduce((a,x)=>a+x.n,0)};}
 
 /* ---------- the rows ---------- */
 const bandOf=loc=>{const r=NQ(loc);return [Math.max(1,r[3]==null?r[0]:r[3]),Math.max(1,r[4]==null?r[2]:r[4])];};
@@ -889,7 +907,9 @@ function ghostHtml(g,no){
  const parts=(g.parts||[{n:g.name,k:g.kind}]).map(p=>`<span class="nmt">${esc(p.n)}</span><span class="kindtag">${KINDTAG[p.k]}</span>`).join(`<span class="gl">·</span>`);
  const word=g.swap?"Swap":"Add";
  return `<div class="row ghost ${cls(g.kind)}${g.dis?" dis":""}"`
- +(g.dis?` title="${esc(g.desc)}"`:` role="button" tabindex="0" data-k="${esc(g.k)}" data-j="${g.j}"${g.off?` data-off="${esc(g.off)}"`:""} aria-label="${word} ${esc(g.name)}"`)
+ +(g.dis?` title="${esc(g.desc)}"`
+  :g.pk!=null?` role="button" tabindex="0" data-pk="${g.pk}" aria-label="Put ${esc(g.name)} back"`
+  :` role="button" tabindex="0" data-k="${esc(g.k)}" data-j="${g.j}"${g.off?` data-off="${esc(g.off)}"`:""} aria-label="${word} ${esc(g.name)}"`)
  +`><span class="no">+</span><span class="nm">${parts}`
  +`<span class="d">${esc(g.desc)}</span></span><span class="rk">${g.rec&&!g.dis?"recommended":""}</span>`
  /* a place that is not offered here has no nights to promise: the column stays empty rather than quoting a figure
@@ -1104,7 +1124,7 @@ document.addEventListener("click",e=>{const t=e.target.closest?e.target.closest(
  setHash({nights:Math.max(1,Math.min(40,target+(+t.dataset.tgt))),set:setPart(),n:""});});
 
 /* ---------- the page ---------- */
-function giveHtml(T){const stops=T.plan?planStr(T.st):T.st.map(s=>s.loc+":"+s.n).join(",");
+function giveHtml(T){const stops=planStr(T.st);
  const cmd=`plan "${stops}" --in ${T.apIn} --out ${T.apOut}`;
  /* the command is the route tool's own shorthand, place ids and all; the line above it is the same plan in the names
   * the page uses, so the couple can read what they are handing over before they hand it over */
@@ -1184,7 +1204,16 @@ function act(el){
  /* the plan tab: a night either way, or a stop off the plan */
  const prm=el.closest?el.closest("[data-prm]"):null;
  if(prm){const st=planStops(hashParams()),i=+prm.dataset.prm;
-  if(!st[i])return true;st.splice(i,1);setHash({plan:planStr(st)});return true;}
+  if(!st[i])return true;const gone=st.splice(i,1)[0];
+  const off=(PLANOFF[SEC]=PLANOFF[SEC]||[]);off.forEach(x=>{if(x.at>i)x.at--;});
+  off.push({loc:gone.loc,n:gone.n,at:i,orig:i});
+  setHash({plan:planStr(st)});return true;}
+ /* the dashed row of a stop taken off: it goes back where it was */
+ const pk=el.closest?el.closest("[data-pk]"):null;
+ if(pk){const off=PLANOFF[SEC]||[],x=off[+pk.dataset.pk];if(!x)return true;
+  const st=planStops(hashParams()),at=Math.min(x.at,st.length);st.splice(at,0,{loc:x.loc,n:x.n});
+  off.splice(+pk.dataset.pk,1);off.forEach(y=>{if(y.at>at)y.at++;});
+  setHash({plan:planStr(st)});return true;}
  const pn=el.closest?el.closest("[data-nk]"):null;
  if(pn&&String(pn.dataset.nk).indexOf("p:")===0){if(pn.disabled)return true;
   const st=planStops(hashParams()),i=+String(pn.dataset.nk).slice(2);const x=st[i];if(!x)return true;

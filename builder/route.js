@@ -9,8 +9,8 @@
  *
  *   node route.js spines [--nights N] [--draws food,onsen] [--repeat] [--in X --out Y]   the menu: the nine spines
  *   node route.js spine s1 [--set inn=nikko …] [--nights kyoto=5 …] [--total 12] [--in X --out Y] [--reverse] [--before "<stops>"]   one spine, walked
- *   node route.js compare "<stops A>" "<stops B>" [--in X --out Y]     two or three routes side by side
- *   node route.js stays kyoto [--budget modest|comfortable|splurge] [--bath] [--all]   the shortlist for a place
+ *   node route.js compare classic kanazawa --total 14 [--in X --out Y]     two or three routes side by side (spine names or stop strings)
+ *   node route.js stays kyoto [--budget modest|comfortable|splurge] [--bath] [--all]   the shortlist for a place (or a group: fuji, fujilakes, snow, kaga, east, sapporo-onsen)
  *   node route.js plan "tokyo:4,nikko:2r,tokyo:2,kyoto:4" --in HND --out KIX [--repeat] [--nights N]
  *   node route.js connectors kyoto kanazawa [--all]   node route.js exit kyoto   node route.js legs tokyo nikko
  *   --json on any command; --md (default) prints the kit's markdown tables.
@@ -212,7 +212,9 @@ function parseStops(spec) {
   return spec.split(",").map((tok) => tok.trim()).filter(Boolean).map((tok) => {
     const parts = tok.split(":"); let inn = null, loc, n;
     if (parts[0] === "inn") { inn = innByRef(parts[1]); if (!inn) throw new Error(`unknown inn "${parts[1]}"`); loc = RYK[inn].loc; n = parseNights(parts[2], 1); }
-    else { loc = resolveLoc(parts[0]); n = parseNights(parts[1], isBaseKind(placeOf(loc).kind) ? 2 : 1); }
+    /* `tokyo@2:3` (and the older `tokyo#2:3`) is the second visit — the marker only says which stay it is, and the
+     * stop string already carries them in order, so it is read and dropped */
+    else { loc = resolveLoc(parts[0].replace(/[@#]\d+$/, "")); n = parseNights(parts[1], isBaseKind(placeOf(loc).kind) ? 2 : 1); }
     return stopOf(loc, n.n, inn, n.r);
   });
 }
@@ -343,7 +345,7 @@ function backtracksAt(stops, i) {
 }
 function checks(stops, legs, t, opt) {
   const out = [], V = (m) => out.push({ level: "violation", msg: m }), F = (m) => out.push({ level: "flag", msg: m }), N = (m) => out.push({ level: "note", msg: m });
-  /* ranges, split visits, the +1 ceiling */
+  /* ranges, split visits, the usual high */
   const byLoc = {}; stops.forEach((st, i) => { (byLoc[st.loc] = byLoc[st.loc] || []).push(Object.assign({ i }, st)); });
   Object.entries(byLoc).forEach(([loc, visits]) => {
     const p = placeOf(loc), total = visits.reduce((s, v) => s + v.nights, 0), range = (opt.repeat && p.repeat) || p.ideal, nm = label(loc);
@@ -352,8 +354,7 @@ function checks(stops, legs, t, opt) {
     if (total < p.minimum) F(`${nm}: ${total} night${total === 1 ? "" : "s"} is under the card's minimum of ${p.minimum} — allowed because they asked; say once what it costs.`);
     else if (total < range[0]) N(`${nm}: ${total} nights is under the ideal ${range[0] === range[1] ? range[0] : `${range[0]}–${range[1]}`}; it has room to absorb spare nights.`);
     const cap = capOf(loc, { repeat: opt.repeat });
-    if (total > cap) V(`${nm}: ${total} nights is over its ceiling of ${cap} (ideal ${range[0]}–${range[1]}) — ${p.max ? "the kit caps it there" : "past the +1 ceiling"} unless they asked.`);
-    else if (total > range[1]) N(`${nm}: ${total} nights sits at the +1 ceiling (ideal ${range[0]}–${range[1]}); say so.`);
+    if (total > cap) V(`${nm}: ${total} nights is over its usual high of ${cap} (ideal ${range[0]}–${range[1]}) — the kit never fills a city past that unless they asked.`);
     if (isBaseKind(p.kind) && visits.length > 1) {
       N(`${nm} is split ${visits.map((v) => v.nights).join(" + ")} = ${total} nights against its range ${range[0]}–${range[1]}; each visit is its own separate stay.`);
       visits.forEach((v) => { if (v.nights >= 2) return;
@@ -433,7 +434,9 @@ const ITIN_HEAD = ["| # | Stop | Dates | Nights | Stay options |", "|---|---|---
 /* the explorer address (2026-09-13): one hash section per route, `plan=` for a plain stop string. The page path is
  * the one `spine` prints, so every command hands over the same file; sections are joined with `|` by the assistant. */
 const EXPLORER_PAGE = "http://localhost:8790/guides/route-explorer.html"; /* served by the kit's .claude/launch.json (kit-explorer); a file:// open renders blank (live QA 2026-09-13) */
-const planHash = (P) => { const seen = {}; return P.stops.map((st) => { seen[st.loc] = (seen[st.loc] || 0) + 1; return `${st.loc}${seen[st.loc] > 1 ? `#${seen[st.loc]}` : ""}:${st.nights}`; }).join(","); };
+/* the repeat marker is written `@2` — nothing in a URL has to escape it — and `#2` is still read wherever a
+ * stop string or a `--nights` key is parsed, so anything written earlier still works (owner, 2026-09-13) */
+const planHash = (P) => { const seen = {}; return P.stops.map((st) => { seen[st.loc] = (seen[st.loc] || 0) + 1; return `${st.loc}${seen[st.loc] > 1 ? `@${seen[st.loc]}` : ""}:${st.nights}`; }).join(","); };
 const explorerPlanSection = (P) => `plan=${planHash(P)}${P.opt.in ? `&in=${P.opt.in}` : ""}${P.opt.out ? `&out=${P.opt.out}` : ""}`;
 /* the stop's kind in the word the reader uses: a ryokan, a city, or a town (2026-09-13) */
 const kindWord = (st) => (st.kind === "inn" ? "ryokan" : st.kind === "city" ? "city" : "town");
@@ -608,9 +611,10 @@ const normDraw = (d) => { const n = norm(d); return DRAW_ALIAS[n] || n; };
 const KIND_LABEL = { city: "CITY", inn: "RYOKAN", stop: "STOP", end: "END" };
 const defined = (o) => Object.fromEntries(Object.entries(o || {}).filter(([, v]) => v !== undefined && v !== null && v !== false));
 const rangeOf = (loc, opt) => { const p = placeOf(loc); return (opt && opt.repeat && p.repeat) || p.ideal; };
-/* the most nights a place takes unasked: one over its ideal top, or the place's own `max` where the kit caps it lower
- * (2026-09-12: Kagoshima caps at 3 — four nights there is too many) */
-const capOf = (loc, opt) => { const p = placeOf(loc), r = rangeOf(loc, opt); return p.max ? Math.min(p.max, r[1] + 1) : r[1] + 1; };
+/* the most nights a place takes unasked: its ideal top, or the place's own `max` where the kit caps it lower.
+ * There is no "+1 ceiling" any more (owner, 2026-09-13): no city is ever filled past its usual high — spare
+ * nights go to a ryokan or a stop, or they are said to be unspent. */
+const capOf = (loc, opt) => { const p = placeOf(loc), r = rangeOf(loc, opt); return p.max ? Math.min(p.max, r[1]) : r[1]; };
 /* the night count a place is filled to BEFORE any other city goes above its own low (places.json `default`,
  * 2026-09-13, owner): the kit's opinion of how long to stay. It is the ideal low everywhere but Tokyo, which
  * reads 5 of its 4–6 — and a repeat visitor's shorter range clamps it. */
@@ -693,12 +697,12 @@ function choicesOf(sp, sets, total, repeat, apIn, apOut) {
      * Tokyo route run the other way round, not a trip without Tokyo (QA round 8) */
     if (apIn && d.key === "start") { const ok = (o) => o.in === apIn && !(apOut && o.out && o.out !== apOut && ((AIRPORT[apOut] || {}).hubs || []).includes("tokyo"));
       let j = d.options.findIndex((o) => ok(o) && (!apOut || !o.out || o.out === apOut)); if (j < 0) j = d.options.findIndex(ok); if (j >= 0) i = j; }
-    /* a booked flight home picks the ending that lands there: the option that declares that `out`, or the one whose last
-     * stop is that airport's own city — a Haneda ticket home from Kyushu closes with two Tokyo nights (QA round 8) */
-    /* …only an ending that declares that airport: the trip may close anywhere with a same-day hop to the ticket, so a
-     * Haneda return does not take the Tokyo close by itself — it is offered (owner, 2026-09-12: "why is Tokyo split?") */
+    /* a booked flight home picks the ending that lands there: the option that declares that `out`.
+     * NEVER a Tokyo close (spines.json `ask_only`, owner 2026-09-13): Tokyo is one stay, and a Haneda ticket
+     * does not mean Tokyo at the end — the last leg is the train or the flight back to the airport, priced
+     * like any other. Only `--set end=<n>` puts Tokyo back on the route. */
     if (apOut && d.key === "end" && sp.out !== apOut) {
-      const j = d.options.findIndex((o) => o.out === apOut);
+      const j = d.options.findIndex((o) => o.out === apOut && !o.ask_only);
       if (j >= 0 && !(d.options[j].in && apIn && d.options[j].in !== apIn)) i = j; }
     if (d.on_at && total && total >= d.on_at) i = 0;
     if (sets && sets[d.key] != null) i = sets[d.key];
@@ -901,7 +905,7 @@ function bandOf(sp, locs) {
  *       (assembleSpine), which re-assembles the route each time one goes on;
  *   (4) the cities to their usual high, the one nearest its own low first — so Tokyo, already a night
  *       above its low at (2), takes its sixth night after the others have had theirs;
- *   (5) the +1 ceiling, and whatever is still unspent is said to be unspent.
+ * and whatever is still unspent is said to be unspent — no city is ever filled past its usual high.
  * Over the count, the same road backwards: the cities down to their `default`, then down to their low, then
  * (the caller again) the optional nights off in reverse trip order, then down to the minimums and under them.
  * `opts.attached` maps an attached inn night to the city it belongs to (Kirishima → Kagoshima), so that city
@@ -964,15 +968,8 @@ function fitTotal(stops, N, repeat, opts) {
   /* PROBE 2 stops here — every city down to its own card minimum. Only what is STILL over is worth taking a night
    * the spine itself put on the route off for; below this the cities would go under their minimums. */
   if (probe === 2) return report();
-  /* (5) still short of the count they asked for: the cities take one night each over their usual top, the +1 ceiling */
-  guard = 0;
-  while (total() < N && guard++ < 200) {
-    let moved = false;
-    /* the same order for the +1 ceiling: nearest its low first, the first city on a tie */
-    { const s = lowest((s, r) => atLoc(s.loc) === r[1] && atLoc(s.loc) < capOf(s.loc, { repeat }));
-      if (s) { const from = s.nights; s.nights++; moved = true; say(s, from, `one night over its usual ${rangeOf(s.loc, { repeat }).join("–")}`); } }
-    if (!moved) break;
-  }
+  /* the "+1 ceiling" step used to sit here: a city took one night over its usual top rather than leave a night
+   * unspent. It is gone (owner, 2026-09-13) — a night with nowhere sensible to go is reported unspent. */
   /* asked for fewer than the cities' own minimums: go under them, down to one night a stop, and say so */
   guard = 0;
   while (total() > N && guard++ < 200) {
@@ -992,6 +989,36 @@ function fitTotal(stops, N, repeat, opts) {
   else if (total() > N) note = { kind: "floor", n: total() - N, shape };     // every stop is down to one night and it still holds more
   else if (stops.some((s) => atLoc(s.loc) < placeOf(s.loc).minimum)) note = { kind: "under", shape };
   return { steps, note, shape };
+}
+/* THE OUT-AND-BACK SPLIT (owner, 2026-09-13). A city broken by a night away — Tokyo · Nikkō · Tokyo — is ONE stay
+ * shown in two halves, and it is split as evenly as its nights allow, the extra night on the first half: 6 → 3/3,
+ * 5 → 3/2, 7 → 4/3. `splitRuns` finds those halves: consecutive visits to one city with nothing but non-base stops
+ * between them. A city returned to later in the trip, other cities in between, is a separate stay and is left alone.
+ * Every path that sets a city's nights ends here — the fill, the shrink, `--nights tokyo=N`, `--total`. */
+function splitRuns(stops) {
+  const byLoc = {}, out = [];
+  stops.forEach((s, i) => { if (isBaseKind(s.kind)) (byLoc[s.loc] = byLoc[s.loc] || []).push(i); });
+  Object.values(byLoc).forEach((ix) => { let run = [ix[0]];
+    for (let k = 1; k < ix.length; k++) {
+      if (stops.slice(ix[k - 1] + 1, ix[k]).some((x) => isBaseKind(x.kind))) { if (run.length > 1) out.push(run); run = [ix[k]]; }
+      else run.push(ix[k]);
+    }
+    if (run.length > 1) out.push(run); });
+  return out;
+}
+function evenSplits(stops) {
+  const steps = [];
+  for (const run of splitRuns(stops)) {
+    /* a half the traveller pinned by name (`--nights tokyo@2=1`) is left exactly where they put it */
+    if (run.some((i) => stops[i].pinned)) continue;
+    if (run.some((i) => stops[i].roomOnly !== stops[run[0]].roomOnly)) continue;
+    const before = run.map((i) => stops[i].nights), sum = before.reduce((a, b) => a + b, 0), k = run.length;
+    const want = run.map((_, j) => Math.floor(sum / k) + (j < sum % k ? 1 : 0));
+    if (want.some((n) => n < 1) || want.join() === before.join()) continue;
+    run.forEach((i, j) => { stops[i].nights = want[j]; });
+    steps.push(`${label(stops[run[0]].loc)} split ${want.join(" + ")} around the night away (it was ${before.join(" + ")})`);
+  }
+  return steps;
 }
 /* a total the spine's places cannot hold exactly is assembled anyway and flagged in one plain sentence — the
  * spine's band, what the nights actually are, and the one thing that would fix it (2026-09-13) */
@@ -1025,7 +1052,7 @@ function assembleSpine(sp, optIn) {
     if (eo && (eo.stops || []).length) { const last = eo.stops[eo.stops.length - 1], i = reversed && last !== "tokyo" ? 0 : stops.length - 1;
       if (stops[i] && stops[i].loc === last && isBaseKind(stops[i].kind) && stops.some((s, j) => j !== i && s.loc === last)) { stops[i].nights = 2; stops[i].fixedNights = true; } } }
   /* a city visited three times over — Tokyo split by a Nikkō night AND returned to at the end — defaults past its
-   * own ceiling (3 + 3 + 2 against a 4–6 range). The earlier visits give the surplus back before anything else
+   * own usual high (3 + 3 + 2 against a 4–6 range). The earlier visits give the surplus back before anything else
    * moves, so the trip starts inside the range the card states (2026-09-13) */
   { const by = {}; stops.forEach((s) => { if (isBaseKind(s.kind)) (by[s.loc] = by[s.loc] || []).push(s); });
     Object.entries(by).forEach(([loc, list]) => { if (list.length < 2) return;
@@ -1035,14 +1062,26 @@ function assembleSpine(sp, optIn) {
         const s = pick(2) || pick(1); if (!s) break; s.nights--; sum--; } }); }
   const dropped = [];
   for (const ov of opt.nightsAt || []) {
-    const m = /^([^=#]+)(?:#(\d+))?=(\d+)(r)?$/.exec(String(ov).trim()); if (!m) throw new Error("--nights takes loc=N (or loc#2=N for a second visit; N r for room only, 0 to drop the stop), e.g. --nights kyoto=5");
+    /* the repeat marker is written `@2` and read either way: `tokyo@2=3`, and `tokyo#2=3` from anything older (2026-09-13) */
+    const m = /^([^=#@]+)(?:[#@](\d+))?=(\d+)(r)?$/.exec(String(ov).trim()); if (!m) throw new Error("--nights takes loc=N (or loc@2=N for a second visit; N r for room only, 0 to drop the stop), e.g. --nights kyoto=5");
     const loc = resolveLoc(m[1]), visits = stops.map((s, i) => [s, i]).filter(([s]) => s.loc === loc);
     if (!visits.length) { if (opt.lenientNights) continue; throw new Error(`${label(loc)} is not a stop of this assembly (${locs.map(short).join(" → ")})`); }
+    /* `--nights tokyo=5` on a city split by a night away is five TOKYO nights, split evenly across the two halves —
+     * never five on the first half and the second left as it was (owner, 2026-09-13). A visit named by number
+     * (`tokyo@2=1`) still moves that half alone, and pins it against the even split. */
+    if (!m[2] && +m[3] > 0 && visits.length > 1) {
+      const run = splitRuns(stops).find((r) => stops[r[0]].loc === loc && r.length === visits.length);
+      if (run) { const k = run.length, sum = +m[3];
+        if (sum >= k) { const want = run.map((_, j) => Math.floor(sum / k) + (j < sum % k ? 1 : 0));
+          run.forEach((ix, j) => { stops[ix] = stopOf(loc, want[j], null, !!m[4]); stops[ix].fixedNights = true; });
+          steps.push(`${label(loc)} set to ${sum} night${sum === 1 ? "" : "s"}${m[4] ? ", room only" : ""}, split ${want.join(" + ")} around the night away`);
+          continue; } } }
     const v = visits[Math.min((+m[2] || 1) - 1, visits.length - 1)]; const i = v[1];
     /* zero nights is not a stop of no nights, it is no stop (2026-09-13): it leaves the assembly, the
      * legs and the totals, and the trip closes up around it */
     if (+m[3] === 0) { dropped.push(i); steps.push(`${label(loc)} dropped from the route`); continue; }
     stops[i] = stopOf(loc, +m[3], null, !!m[4]); stops[i].fixedNights = true;   // an explicit --nights is never overridden by the total filler (QA round 6)
+    if (m[2]) stops[i].pinned = true;   // a half named by number is pinned against the even split too
     steps.push(`${label(loc)} set to ${m[3]} night${+m[3] === 1 ? "" : "s"}${m[4] ? ", room only" : ""}`);
   }
   if (dropped.length) {
@@ -1065,6 +1104,8 @@ function assembleSpine(sp, optIn) {
     const city = d.owner.city.find((c) => locs.includes(c)); if (!city) continue;
     o.stops.forEach((l) => { if (locs.includes(l)) attached[l] = city; }); }
   if (total) { const f = fitTotal(stops, total, opt.repeat, { attached, probe }); fitSteps = f.steps; fitNote = f.note; }
+  /* every path that set a city's nights ends here: the out-and-back halves are levelled up, extra night first */
+  fitSteps = fitSteps.concat(evenSplits(stops));
   return { locs, cities, reversed, choices, unavailable, stops, steps, fitSteps, fitNote, total };
   };
   let R = build(asked);
@@ -1117,7 +1158,8 @@ function assembleSpine(sp, optIn) {
     turnOff(back.filter((d) => !spineOn(d)), 1, "to hold the length asked");
     turnOff(back.filter((d) => spineOn(d)), 2, "to hold the length asked — every city was already at its minimum");
     if (Object.keys(extra).length) { try { R = build(Object.assign({}, asked, extra)); } catch (e) { Object.keys(extra).forEach((k) => delete extra[k]); switchSteps.length = 0; } }
-    /* still short with every city at its +1 ceiling: the ending that carries nights, the one that spends most of what is left */
+    /* still short with every city at its usual high: the ending that carries nights, the one that spends most of
+     * what is left — never one that puts Tokyo back on the route (`ask_only`) */
     const endD = decisionsOf(sp).find((d) => d.owner.type === "end");
     if (shortOf(R) && endD && userSet[endD.key] == null && !((endD.options[R.choices[endD.key]] || {}).stops || []).length) {
       let best = null;
@@ -1126,6 +1168,9 @@ function assembleSpine(sp, optIn) {
       const onNow = decisionsOf(sp).filter((d) => (d.kind === "inn" || d.kind === "stop") && (((d.options[R.choices[d.key]] || {}).stops) || []).length);
       endD.options.forEach((o, j) => {
         if (!(o.stops || []).length || whyNot(sp, endD, o, R.choices, opt)) return;
+        /* an `ask_only` ending — every one that puts Tokyo back on the route — is never spent into: Tokyo is one
+         * stay, and spare nights go to the places the route already has (owner, 2026-09-13) */
+        if (o.ask_only) return;
         let T; try { T = build(Object.assign({}, asked, extra, { [endD.key]: j })); } catch (e) { return; }
         if (onNow.some((d) => !(((d.options[T.choices[d.key]] || {}).stops) || []).length)) return;
         if (shortOf(T) >= shortOf(R) || (T.fitNote && T.fitNote.kind !== "unspent")) return;
@@ -1171,7 +1216,7 @@ function assembleSpine(sp, optIn) {
  * every city stay as priced */
 function hashSets(sp, opt) { let s; try { s = parseSets(sp, (opt.from || []).concat(opt.set || [])); } catch (e) { return ""; }
   const ks = Object.keys(s); return ks.length ? `&set=${ks.map((k) => `${k}:${s[k]}`).join(",")}` : ""; }
-function hashNights(P) { const seen = {}; const out = (P.stops || []).filter((s) => isBaseKind(s.kind)).map((s) => { seen[s.loc] = (seen[s.loc] || 0) + 1; return `${s.loc}${seen[s.loc] > 1 ? `#${seen[s.loc]}` : ""}:${s.nights}`; });
+function hashNights(P) { const seen = {}; const out = (P.stops || []).filter((s) => isBaseKind(s.kind)).map((s) => { seen[s.loc] = (seen[s.loc] || 0) + 1; return `${s.loc}${seen[s.loc] > 1 ? `@${seen[s.loc]}` : ""}:${s.nights}`; });
   return out.length ? `&n=${out.join(",")}` : ""; }
 function shapeLines(sp, P) {
   const off = new Set((P.unavailable || []).map((u) => `${u.key}#${u.index}`)), rev = P.reversed;
@@ -1486,17 +1531,36 @@ function cmdSpine(ref, opt) {
   const lt = lighterLine(after, opt); if (lt) L.push("", lt);
   return L.join("\n");
 }
-/* two or three full assemblies side by side (level 3): the same columns as the menu, then each route's legs */
+/* two or three full assemblies side by side (level 3): the same columns as the menu, then each route's legs.
+ * An argument is either a stop string or a SPINE (its name or its id, 2026-09-13, owner): a spine is assembled at
+ * its own DEFAULTS for the `--total`/`--in`/`--out`/`--repeat` given — never with every optional night switched on —
+ * plus any `--set` on the line, so the comparison is the two routes as the traveller would actually be offered them.
+ * A run whose arguments are all spines addresses the explorer in `spine=` sections, options intact, so the page
+ * opens on the routes themselves rather than on a frozen stop list. */
+const spineArg = (s) => { if (/[:,]/.test(String(s))) return null; try { return spineOf(s); } catch (e) { return null; } };
+const spineSlug = (sp) => slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim());
 function cmdCompare(specs, opt) {
-  if (specs.length < 2) throw new Error("compare needs two or three stop strings, e.g. compare \"tokyo:4,hakone:1,kyoto:4\" \"tokyo:4,kanazawa:3,kyoto:4\"");
+  if (specs.length < 2) throw new Error("compare needs two or three routes — stop strings or spine names, e.g. compare classic kanazawa --total 14, or compare \"tokyo:4,hakone:1,kyoto:4\" \"tokyo:4,kanazawa:3,kyoto:4\"");
   const names = ["A", "B", "C", "D"];
-  const Ps = specs.map((s) => { const P = buildPlan(parseStops(s), defined({ in: opt.in, out: opt.out, repeat: opt.repeat })); P.flights = P.legs.filter((l) => l.flightH || l.mode === "flight").length; return P; });
+  const sps = specs.map(spineArg);
+  const Ps = specs.map((s, i) => { if (sps[i]) { const sp = sps[i];
+      const P = assembleSpine(sp, { total: opt.total, in: opt.in, out: opt.out, repeat: opt.repeat || undefined, set: opt.set || [], lenientNights: true });
+      P.spineSlug = spineSlug(sp); P.spineName = sp.name; return P; }
+    const P = buildPlan(parseStops(s), defined({ in: opt.in, out: opt.out, repeat: opt.repeat })); P.flights = P.legs.filter((l) => l.flightH || l.mode === "flight").length; return P; });
   if (opt.json) return JSON.stringify(Ps.map((P, i) => ({ name: names[i], stops: P.stops, totals: P.totals, flights: P.flights, opt: P.opt, checks: P.checks, stopString: stopString(P.stops) })), null, 1);
   const L = [`*${Ps.length} routes compared, each priced leg by leg from the tables. Per night counts each flight leg at ${FLIGHT_CAP_H}h at most; (≥${DENSITY_MAX}) is the flag.*`, "", ...COMPARE_HEAD];
   Ps.forEach((P, i) => L.push(compareRow(P, `**${names[i]}**`)));
   L.push("");
-  Ps.forEach((P, i) => { L.push(`**${names[i]}** · \`plan "${stopString(P.stops)}" --in ${P.opt.in} --out ${P.opt.out}\` — ${legsLine(P)}`); P.checks.filter((c) => c.level !== "note").forEach((c) => L.push(`- ${mark(c)} ${c.msg}`)); L.push(""); });
-  L.push(`Explorer: \`${EXPLORER_PAGE}#${Ps.map(explorerPlanSection).join("|")}\` — one tab per route, the first active.`);
+  Ps.forEach((P, i) => { const cmd = P.spineName ? `spine "${P.spineName}"${opt.total ? ` --total ${opt.total}` : ""}${opt.in ? ` --in ${opt.in}` : ""}${opt.out ? ` --out ${opt.out}` : ""}` : `plan "${stopString(P.stops)}" --in ${P.opt.in} --out ${P.opt.out}`;
+    L.push(`**${names[i]}**${P.spineName ? ` · ${P.spineName}, at its defaults` : ""} · \`${cmd}\` — ${legsLine(P)}`); P.checks.filter((c) => c.level !== "note").forEach((c) => L.push(`- ${mark(c)} ${c.msg}`)); L.push(""); });
+  /* all spines → one address of `spine=` sections, the options still live on the page; anything else → `plan=` */
+  const allSpines = Ps.every((P) => P.spineSlug);
+  const section = (P) => (P.spineSlug
+    ? `spine=${P.spineSlug}&nights=${P.totals.nights}${P.opt.in ? `&in=${P.opt.in}` : ""}${P.opt.out ? `&out=${P.opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}`
+    : explorerPlanSection(P));
+  L.push(allSpines
+    ? `Explorer: \`${EXPLORER_PAGE}#${Ps.map(section).join("|")}&routes=${Ps.map((P) => P.spineSlug).join(",")}\` — one tab per route, the first active, each still carrying its own decisions.`
+    : `Explorer: \`${EXPLORER_PAGE}#${Ps.map(section).join("|")}\` — one tab per route, the first active.`);
   return L.join("\n").trimEnd();
 }
 /* the shortlist for a place: three to five rows against the profile, write-ups verbatim, from shortlist.json */
@@ -1510,9 +1574,13 @@ const bandHigh = (s) => { const m = /\$?(\d[\d,]*)\s*[–-]\s*\$?(\d[\d,]*)/.exe
 const hotelTier = (budget, band) => { if (!budget || budget === "splurge") return 0; const lo = bandLow(band), hi = bandHigh(band); if (lo === null) return 2; return hi <= BUDGET.hotel[budget] * 1.25 ? 0 : 1; };
 /* a RYOKAN option on a spine spans towns, so the shortlist answers for the whole option in one table with the
  * town as a column: `stays fuji`, `stays snow`, `stays kaga`, `stays east`, `stays sapporo-onsen` (2026-09-13) */
-const GROUP_GATE = { fuji: "tokyo", snow: "tokyo", kaga: "kanazawa", east: "fukuoka", "sapporo-onsen": "sapporo" };
+const GROUP_GATE = { fuji: "tokyo", fujilakes: "tokyo", snow: "tokyo", kaga: "kanazawa", east: "fukuoka", "sapporo-onsen": "sapporo" };
 const STAY_GROUPS = {
-  fuji: { name: "Near Mount Fuji", locs: ["hakone", "kawaguchiko", "oyama", "izu", "yugashima", "izukogen", "atami", "shimoda", "yugawara"] },
+  /* two different questions, two different lists (owner, 2026-09-13): the on-the-way "Near Fuji" slot is Hakone and
+   * Izu — Kawaguchiko is a poor stop on the road to Kyoto, a long ride onward — while the Fuji-lakes out-and-back
+   * from Tokyo is the lakes themselves */
+  fuji: { name: "Near Mount Fuji", locs: ["hakone", "izu", "yugashima", "izukogen", "atami", "shimoda", "yugawara"] },
+  fujilakes: { name: "The Fuji lakes", locs: ["kawaguchiko", "oyama"] },
   snow: { name: "Snow country", locs: ["tanigawa", "echigoyuzawa", "yudanaka", "matsunoyama", "yamadaonsen"] },
   kaga: { name: "The Kaga onsen towns", locs: ["yamashiro", "yamanaka", "mikuni", "eiheiji"] },
   east: { name: "The hot-spring east", locs: ["hita", "yufuin", "kurokawa", "beppu"] },
@@ -1663,6 +1731,9 @@ function cmdStays(q, opt) {
    * Jōzankei table closed by pointing at Noboribetsu) */
   const linkLoc = (G && rowsI.length ? rowsI[0].loc : null) || loc;
   if (rowsI.length && rowsI.length < 3) L.push("", `Only ${rowsI.length} inn${rowsI.length === 1 ? "" : "s"} here on the shortlist — say so rather than padding; the alternative is a hotel in the nearest city, or the live catalogue at https://ryokancatalog.com/place/${linkLoc}.`);
+  /* every table with an inn in it closes with the place to explore more of them (owner, 2026-09-13). A hotel-only
+   * table prints nothing — a city's hotel list is not what the ryokan catalogue is for. */
+  if (L.some((l) => /ryokancatalog\.com\/inn\//.test(String(l)))) L.push("", "*More inns for this area, and the long read on each, at https://ryokancatalog.com.*");
   return L.join("\n");
 }
 
@@ -1672,7 +1743,7 @@ function main(argv) {
   for (let i = 0; i < argv.length; i++) { const a = argv[i];
     if (a === "--json") opt.json = true; else if (a === "--md") opt.json = false; else if (a === "--repeat") opt.repeat = true; else if (a === "--all") opt.all = true; else if (a === "--bath") opt.bath = true;
     else if (a === "--in") opt.in = String(argv[++i] || "").toUpperCase(); else if (a === "--out") opt.out = String(argv[++i] || "").toUpperCase();
-    else if (a === "--nights") { const v = String(argv[++i] || ""); if (/=/.test(v)) opt.nightsAt.push(...v.split(/,(?=[a-z]+(?:#\d)?=)/i)); else { opt.nights = +v; if (!opt.nights || opt.nights < 1) throw new Error("--nights takes a whole number of nights, or loc=N on a spine"); } }
+    else if (a === "--nights") { const v = String(argv[++i] || ""); if (/=/.test(v)) opt.nightsAt.push(...v.split(/,(?=[a-z]+(?:[@#]\d)?=)/i)); else { opt.nights = +v; if (!opt.nights || opt.nights < 1) throw new Error("--nights takes a whole number of nights, or loc=N on a spine"); } }
     else if (a === "--total") { opt.total = +argv[++i]; if (!opt.total || opt.total < 1) throw new Error("--total takes a whole number of nights"); }
     else if (a === "--reverse") opt.reverse = true; else if (a === "--before") opt.before = String(argv[++i] || "");
     else if (a === "--start") opt.start = parseStart(argv[++i]);
@@ -1695,8 +1766,8 @@ function main(argv) {
   return ["usage: node route.js <command> [--json|--md]",
     "  spines [--nights N] [--draws food,onsen,…] [--repeat] [--in X --out Y]   the menu: the nine spines at their default assembly, with figures",
     "  spine <id> [--set key=option …] [--nights loc=N …] [--total N] [--in X --out Y] [--repeat] [--reverse] [--before \"<stops>\"]   one spine: decisions, timeline, stop string, checks",
-    "  compare \"<stops A>\" \"<stops B>\" [\"<stops C>\"] [--in X --out Y]   two or three full routes side by side",
-    "  stays <place|fuji|snow|kaga|east|sapporo-onsen> [--budget modest|comfortable|splurge] [--bath] [--all]   the shortlist for one place, or for a whole ryokan option across its towns, write-ups verbatim",
+    "  compare <spine|\"<stops>\"> <spine|\"<stops>\"> [third] [--total N] [--in X --out Y]   two or three full routes side by side; a spine is assembled at its defaults",
+    "  stays <place|fuji|fujilakes|snow|kaga|east|sapporo-onsen> [--budget modest|comfortable|splurge] [--bath] [--all]   the shortlist for one place, or for a whole ryokan option across its towns, write-ups verbatim",
     "  plan \"tokyo:4,nikko:2r,tokyo:2,kyoto:4\" --in HND --out KIX [--repeat] [--nights N] [--start YYYY-MM-DD]   (2r = two room-only nights; --start fills Dates)",
     "  connectors <cityA> <cityB> [--all]   (inn:<slug> works for either)", "  exit <lastStop>", "  legs <a> <b>", "  places",
     `places read from ${PLACES_SRC || "nothing (no places.json, no ../stages/2-orientation.md)"}; spines ${SPINES ? SPINES.length : "not found"}; shortlist ${SHORTLIST ? `${(SHORTLIST.inns || []).length} inns, ${(SHORTLIST.hotels || []).length} hotels` : "not found"}; airports: ${AP_CODES.join(" ")}`].join("\n");

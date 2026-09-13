@@ -11,7 +11,7 @@
 - **The Fuji lakes** (`fuji-lakes`), 2h — Kawaguchiko and Yamanaka, where the mountain is actually in the window; led by **Gora Kadan Fuji** and **Fufu Kawaguchiko**. Clearest on a cold winter morning, never guaranteed.
 - **The snow country** (`snow-country`), 1h45 / 1h40 direct on the bullet train — Echigo-Yuzawa and Minakami, villages buried to the first floor, outdoor baths in falling snow.
 
-## The inns — 27 within reach
+## The inns — 26 within reach
 
 - `fuefukigawa-onsen-zabou` · Fuefukigawa Onsen Zabou · B 7.5 · bath yes · $450–650 · [book on Ikyu](https://www.ikyu.com/00001645/) · 1h30/0 from Tokyo
 - `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · [book on Ikyu](https://www.ikyu.com/00000604/) · 1h40/0 from Tokyo
@@ -27,7 +27,6 @@
 - `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · [book on Ikyu](https://www.ikyu.com/00001359/) · 2h10/1 from Tokyo
 - `auberge-suzukane` · Auberge Suzukane · A 8.0 · bath unstated · ask · 2h10/1 from Tokyo
 - `arcana-izu` · Arcana Izu · B 7.8 · bath some · $520–1100 · [book on Ikyu](https://www.ikyu.com/00001289/) · 2h10/1 from Tokyo
-- `gora-kadan` · Gora Kadan · B 7.5 · bath some · ask · 2h10/1 from Tokyo
 - `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu editor's pick · A 8.3 · bath some · $570–800 · [book on Ikyu](https://www.ikyu.com/00001149/) · 2h15/0 from Tokyo
 - `fujiiso` · Fujiiso · B 7.7 · bath yes · $480–900 · [book on Ikyu](https://www.ikyu.com/00001534/) · 2h20/0 from Tokyo
 - `iwanoyu` · Iwanoyu · A 8.3 · bath some · $400–750 · 2h30/0 from Tokyo

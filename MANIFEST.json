@@ -26,7 +26,7 @@
    ],
    "s3": [
     12,
-    19
+    18
    ],
    "s4": [
     9,
@@ -38,7 +38,7 @@
    ],
    "s6": [
     9,
-    16
+    15
    ],
    "s7": [
     10,
@@ -53,55 +53,55 @@
     12
    ]
   },
-  "decisions": 69,
-  "options": 160,
+  "decisions": 78,
+  "options": 178,
   "fixture": {
    "single": {
-    "runs": 160,
-    "ok": 160,
+    "runs": 178,
+    "ok": 178,
     "withheld": 0
    },
    "cross": {
-    "runs": 8368,
-    "ok": 8368,
+    "runs": 16736,
+    "ok": 16736,
     "withheld": 0
    }
   },
   "explorer": {
-   "places": 37,
-   "legs": 1082,
-   "airport_legs": 439
+   "places": 38,
+   "legs": 1154,
+   "airport_legs": 452
   },
   "defaults": {
    "s1": {
-    "stops": "tokyo:3,nikko:1,tokyo:3,hakone:1,kyoto:3",
-    "nights": 11,
+    "stops": "tokyo:3,nikko:1,tokyo:3,hakone:1,kyoto:4",
+    "nights": 12,
     "hours": 11.3,
-    "perNight": 62,
+    "perNight": 57,
     "in": "HND",
     "out": "KIX"
    },
    "s2": {
-    "stops": "tokyo:4,yudanaka:1,kanazawa:3,kyoto:3",
-    "nights": 11,
+    "stops": "tokyo:4,yudanaka:1,kanazawa:3,kyoto:4",
+    "nights": 12,
     "hours": 9.4,
-    "perNight": 51,
+    "perNight": 47,
     "in": "HND",
     "out": "KIX"
    },
    "s3": {
-    "stops": "tokyo:3,nikko:1,tokyo:3,hakone:1,kyoto:3,hiroshima:2",
-    "nights": 13,
-    "hours": 12.8,
-    "perNight": 59,
+    "stops": "tokyo:5,hakone:1,kyoto:4,hiroshima:2",
+    "nights": 12,
+    "hours": 8.8,
+    "perNight": 44,
     "in": "HND",
     "out": "HIJ"
    },
    "s4": {
-    "stops": "tokyo:4,tanigawa:1,echigoyuzawa:1,kanazawa:3,kyoto:3",
-    "nights": 12,
+    "stops": "tokyo:4,tanigawa:1,echigoyuzawa:1,kanazawa:3,kyoto:4",
+    "nights": 13,
     "hours": 11.17,
-    "perNight": 56,
+    "perNight": 52,
     "in": "HND",
     "out": "KIX"
    },
@@ -130,15 +130,15 @@
     "out": "KMJ"
    },
    "s8": {
-    "stops": "tokyo:4,hakone:1,kyoto:3,hiroshima:2,fukuoka:3",
-    "nights": 13,
+    "stops": "tokyo:4,hakone:1,kyoto:4,hiroshima:2,fukuoka:3",
+    "nights": 14,
     "hours": 9.1,
-    "perNight": 42,
+    "perNight": 39,
     "in": "HND",
     "out": "FUK"
    },
    "s9": {
-    "stops": "tokyo:4,sapporo:3,niseko:1,sapporo:1",
+    "stops": "tokyo:4,sapporo:2,niseko:1,sapporo:2",
     "nights": 9,
     "hours": 11.35,
     "perNight": 69,
@@ -400,7 +400,6 @@
   "Kanshuku-en Eshikoto": "eiheiji",
   "Shogetsu": "gero",
   "Hakone Suishoen": "hakone",
-  "Gora Kadan": "hakone",
   "Yamado": "hottoyuda",
   "Bettei Amafuru Oka": "ibusuki",
   "Onyado Kawasemi": "iizaka",
@@ -472,13 +471,13 @@
  },
  "counts": {
   "catalog_inns": 199,
-  "shortlist_inns": 81,
+  "shortlist_inns": 80,
   "shortlist_hotels": 51,
   "corridors": 176,
   "legs": 790,
   "region_cards": 13,
-  "front_door_words": 49367,
-  "start_here_words": 4315,
+  "front_door_words": 49491,
+  "start_here_words": 4117,
   "stage_files": 6,
   "stays_files": 12
  },
@@ -525,7 +524,7 @@
      "tokyo-splitter",
      "snow-country"
     ],
-    "inns": 27,
+    "inns": 26,
     "hotels": 8
    },
    {
@@ -547,7 +546,7 @@
     "fits": [
      "kansai-side-trip"
     ],
-    "inns": 23,
+    "inns": 22,
     "hotels": 7
    },
    {
@@ -580,7 +579,7 @@
      "golden-route-stop",
      "fuji-lakes"
     ],
-    "inns": 10,
+    "inns": 9,
     "hotels": 0
    },
    {
@@ -669,7 +668,7 @@
   {
    "tag": "golden-route-stop",
    "means": "the standard inn night out of Tokyo, two and a half hours or less away: the Hakone and Izu hot-spring belt, and the Fuji-lakes and Nikkō inns close enough to be the same decision",
-   "inns": 8
+   "inns": 7
   },
   {
    "tag": "fuji-lakes",
@@ -749,7 +748,7 @@
   {
    "tag": "family-ok",
    "means": "the inn's own write-up says it takes children — most here do not",
-   "inns": 2
+   "inns": 1
   },
   {
    "tag": "bed-not-futon",
@@ -767,7 +766,8 @@
    "ryotei-hanzuiryo": "the Nagasaki zone carries Onyado Chikurintei instead — the same tier band, a bath in every room, and forty minutes from the city rather than an hour and three quarters",
    "yama-no-chaya": "recent traveller reports run poor enough that the catalogue's score no longer describes the stay a first-timer would get",
    "seryo": "a low B with no distinguishing asset — the right inn for somebody who wants Ohara specifically, and the wrong one to hand a stranger choosing between five options",
-   "iki-retreat-kairi-murakami": "the catalogue's own summary says the author would not send a visitor there"
+   "iki-retreat-kairi-murakami": "the catalogue's own summary says the author would not send a visitor there",
+   "gora-kadan": "recent reviews turned; the owner recommends Gora Kadan Fuji instead (2026-09-13)"
   },
   "negative_verdict_screen": "\\bwould(?:\\s+not|n[’']t)\\s+send\\b|\\bnot\\s+somewhere\\s+(?:\\w+\\s+){0,3}send\\b|\\bwould(?:\\s+not|n[’']t)\\s+recommend\\b|\\bnot\\s+for\\s+a\\s+first[- ]time",
   "dropped": {
@@ -840,6 +840,7 @@
     "ryotei-hanzuiryo",
     "iki-retreat-kairi-murakami",
     "yama-no-chaya",
+    "gora-kadan",
     "seryo"
    ],
    "by_screen": [],
@@ -1057,9 +1058,9 @@
     "golden-route-stop",
     "fuji-lakes"
    ],
-   "inns_in_catalog": 7,
+   "inns_in_catalog": 6,
    "stays_file": "stays/hakone-izu-fuji.md",
-   "shortlisted": 8,
+   "shortlisted": 7,
    "hotels": 0
   },
   {
@@ -1333,7 +1334,6 @@
    "kanshuku-en-eshikoto": "eiheiji",
    "shogetsu": "gero",
    "hakone-suishoen": "hakone",
-   "gora-kadan": "hakone",
    "yamado": "hottoyuda",
    "bettei-amafuru-oka": "ibusuki",
    "onyado-kawasemi": "iizaka",
@@ -1408,14 +1408,14 @@
   "planning/trip-data.js": "7f4d300660f98f1ea5b68890bc4c9faaa6618480c48a6854338f0cdb8454945a",
   "planning/route-data.js": "c84409b1f9459468022df3e18a4f0df6438078a3ad59557b80033d05b0e836fe",
   "planning/route-builder-logic.js": "50893ce3a9fdac5bfc7879c366143c1d528f65a546acc7c34418c30471160f70",
-  "planning/build-kit.js": "e73cd758903fca3a4d941794da735ffa29334f8703fb1dcc0a68bd84afa00fbd",
-  "planning/kit-src/kit-hotels.json": "427bfcaf00e60666925f6bc86b131c8d9a6a06572928b6f411a9d6bbb752b357",
-  "planning/kit-src/pinned-inns.json": "e8dc52506ecff5f9085cd0883fef3bc76fb01aa64e7c0aeec1314b44c92f90ff",
-  "planning/kit-src/places.json": "d66cd0beaff67e1c16781089c8ad2826f2cf633467cdd9ba0accd9eeaea5ef72",
-  "planning/kit-src/tools/spines.json": "b2d89a8a34a322673a1ef12f3f77ede6c675ec88a6ecda34fafa6145264f5554",
+  "planning/build-kit.js": "059475a3af3c9b94400a72809b1a80d2b22fa8b3792f966728d95546f051808c",
+  "planning/kit-src/kit-hotels.json": "cf518d3a982027a400eac3109bc3247b35dcd862681349f30191360255e6b34f",
+  "planning/kit-src/pinned-inns.json": "2fc30d000ed06e40a611042c05f00ffb0f4978899dc1c6cee13d86d6a93a0501",
+  "planning/kit-src/places.json": "74ec6716b5e14af75d9a63e607267b042d8c0683a9efd72c89598cd023611075",
+  "planning/kit-src/tools/spines.json": "0012b80a64bc3dea42718870041b2a57c21c6bb583dbaab0286bbb591f66ea51",
   "planning/kit-src/tools/build-spines.js": "d9c27648cbe21b2ada924f6c305e7ff07b1dca06417389c10083dfdbc12771c3",
-  "planning/kit-src/companions/explorer/route-explorer.template.html": "4fae76cdee77ef40d4b4ada60e0c09771951693bbbf48c5fb0aac9945c3e787e",
-  "planning/kit-src/companions/route-engine/route.js": "a4ae02cb7fbebf8fcfd2d1ee2f0b0180bc6313258c74f58eb1a468168d33ee0c",
+  "planning/kit-src/companions/explorer/route-explorer.template.html": "d51039936ae37c67ac19966e4b9ec354448858f1422b518f306ed81f8c160e3c",
+  "planning/kit-src/companions/route-engine/route.js": "bc293f0c2708006176f83feb525d3a35c9c5ca51fe5566058d68575c9b920e7d",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
   "deploy/catalog.json": "1e46171cac9cb9f1a132af7c4fb2e905959207b78541584089c4cb659e0dd213",
   "deploy/catalog.md": "285cfbf7b2784c33c43471eb6ef193c8bc2b9a4059824d68c78b6a577497d614",
@@ -1425,14 +1425,14 @@
   "research/dining-notes-process.md": "902b413beb5190960d7c54709dfd40d10d4a6db3b67e0f0d896b5275b62ed6dd",
   "ryokans/ryokan_data.json": "fff54d24b89a0df707c1273d573bc7d347a0cdfe914c5fb65730e90cf9b01ace",
   "planning/kit-src/kit/00-traveler.md": "57e5f8c6ad14b80a784dde85b1ffbed445e35cd96a2a46c45f03ccd63f4b16cb",
-  "planning/kit-src/kit/01-agent.md": "ed48244724e2746f2dca96623f5aac1919347980e2a4fdda0671a8dc33d42f34",
-  "planning/kit-src/kit/02-interview.md": "c7079be8af5893b8a12899aa0b790a4c035738b7f61881e0b6a622e84529f4a7",
-  "planning/kit-src/kit/03-orientation.md": "6f966eabf892d18b3449865e5bc3cb39b761d65f29c1d4ba0201cbeb6b192b51",
-  "planning/kit-src/kit/04-where-to-go.md": "76d2f73379d0551585a2d3db38751757399719db3fcef1edc75034e5819e79a4",
-  "planning/kit-src/kit/05-where-to-stay.md": "d302e665dc3eee1a15fad0efd895b5c06d07366f6a21827e41ad5725f39ebe8e",
-  "planning/kit-src/kit/06-route.md": "0d199f0aba90b51bb4a5c4febf535895e98a94e925ef43ca8b40ee6f1b3363be",
-  "planning/kit-src/kit/07-optional-depth.md": "b46c488e0c3c498c0282bd641aef566e66de4a74b4c868062e16987f82fa08d8",
-  "planning/kit-src/kit/08-appendix.md": "02cdd2dfe88ce312a931dd19fffbbaaf9ade2987ca4794526fc9e3ffbb0063e0",
+  "planning/kit-src/kit/01-agent.md": "27679c1e5e879b570e756c1347e9fb85e337b50f68df754d013b8c460cd98e8f",
+  "planning/kit-src/kit/02-interview.md": "9286385779e125d526abe707c965223130a5a238ed5f8947cadaae896be03e87",
+  "planning/kit-src/kit/03-orientation.md": "23f5f7928397a86b24435ef62e8662cebc4683e497c09be428a0e8aebf1dead2",
+  "planning/kit-src/kit/04-where-to-go.md": "9642649986b50c291ffc7af0f3b4b27e331d6ac81ca0c7dd497b56bf8a0cfb62",
+  "planning/kit-src/kit/05-where-to-stay.md": "b154f74bb433955a3cd4eaaee50c95b7905a55ed6da3406ef17e69384284ec7f",
+  "planning/kit-src/kit/06-route.md": "f99fc3bd4617bd8cb6717d4256e0e5f969a29169c8c7b1777c5cc61f38d05881",
+  "planning/kit-src/kit/07-optional-depth.md": "d178b87131c5ecee401c6f2ce6121082b0961acc56e8eee95506b053338c48ff",
+  "planning/kit-src/kit/08-appendix.md": "38252c48545fe6830e321f05aabbbcb37d30ad294ec60aa8902f7604bff8e1d6",
   "planning/kit-src/companions/LICENSE": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
   "planning/kit-src/companions/README.md": "c78fc667173c1f254b2b4192754e869e13392a6056e61f34605f12efe63f3e57",
   "planning/kit-src/companions/builder-README.md": "3e7321b664fbf2f90ce8fc3e0f11ebe9b7a7a3bc3c53713b35d531625e20b976",
@@ -1442,10 +1442,10 @@
   "planning/kit-src/companions/research-method.md": "0d8c7f7c23d834be49a69f6b29e2755d1c1de410e801db2831463d1bdd76133b",
   "planning/kit-src/companions/sample-plan.md": "c8c7b5a560fe6a93df00e124f390c0277e815c16a89312083704dc7e4a40606d",
   "planning/kit-src/companions/token-guide.md": "6dc63f2330778ffdb1c72dab66797f0b06ed95e3e13a439492a07f108bb294a5",
-  "planning/kit-src/companions/transit-know-how.md": "9e89de3f3f10740975faca4543d9b2090337bb1857a630a77df296956f6e02df",
+  "planning/kit-src/companions/transit-know-how.md": "1d07bf712e7328bbcdaf7ec90b53746a2d2ff1b5e369049be41c013a88ab95b3",
   "planning/kit-src/companions/trip-visual-stops.json": "2b5e735bafd9323bdba08dc72af177b81375dfcc68a6b3e41315653ef97099a5",
   "planning/kit-src/companions/trip-visual-template.html": "e412558bc56bc929c887691fbece9b4977e32367e1aebc93498755300204c3ba",
-  "planning/kit-src/companions/visualizing-the-trip.md": "dd2c67cc08f0dd7fef0accd40dbc83d7bc81ade9ab91d6d03dcf7a759e9942e7",
+  "planning/kit-src/companions/visualizing-the-trip.md": "0564f5c1a32f4ae39947ad5ba43bed135b314fc219dec36a979cb679531637c4",
   "planning/kit-src/scrub.js": "e700e7effd7cb6bca726210eb87a1f884dc5ac29d1763389106dccf816efeaeb"
  },
  "outputs": {
@@ -1458,16 +1458,16 @@
    "bytes": 518
   },
   "AGENTS.md": {
-   "sha256": "36585962c0158870e343ae2aefb9bc2b21806e5de583f8602dfb94c2ec5db77a",
-   "bytes": 25984
+   "sha256": "a80a620b6b6e5c67d6384e0b5635c092210d40e3d02ed0a0bfe1a1b2088d580f",
+   "bytes": 24784
   },
   "CLAUDE.md": {
-   "sha256": "36585962c0158870e343ae2aefb9bc2b21806e5de583f8602dfb94c2ec5db77a",
-   "bytes": 25984
+   "sha256": "a80a620b6b6e5c67d6384e0b5635c092210d40e3d02ed0a0bfe1a1b2088d580f",
+   "bytes": 24784
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "0e716c86502734668c8c7076356fa355a387fb3a2833532ea1673a06e7f6056e",
-   "bytes": 292944
+   "sha256": "c64e15b8a91c18cc801b205be1ad3a363bdd0be7fa22ce1cb4a2d2768dac6088",
+   "bytes": 293121
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1478,8 +1478,8 @@
    "bytes": 7527
   },
   "START-HERE.md": {
-   "sha256": "b4d6c698c56785be714f4e50a694c1c39a5376b08ccd53c92b2e540e898f1398",
-   "bytes": 25566
+   "sha256": "9d0152908ba3c40ec2319869c1490146ad1d5a5f22b147d2cd6496976a2a32f0",
+   "bytes": 24366
   },
   "builder/README.md": {
    "sha256": "3e7321b664fbf2f90ce8fc3e0f11ebe9b7a7a3bc3c53713b35d531625e20b976",
@@ -1490,8 +1490,8 @@
    "bytes": 37435
   },
   "builder/places.json": {
-   "sha256": "8c223d5af0930c7ea93ad1b9041b05a57f9db77e4162af843c1ceb0d821cefff",
-   "bytes": 33768
+   "sha256": "924a259beef4a35656d332b384438f7709a1c66c271da464071d5b4eb55fad62",
+   "bytes": 33863
   },
   "builder/route-builder-logic.js": {
    "sha256": "5a21059df26e8f87b69b0eb159e2e0899f75319e0db9a060ecc8392b87782d0f",
@@ -1506,20 +1506,20 @@
    "bytes": 9240
   },
   "builder/route.js": {
-   "sha256": "a4ae02cb7fbebf8fcfd2d1ee2f0b0180bc6313258c74f58eb1a468168d33ee0c",
-   "bytes": 171791
+   "sha256": "bc293f0c2708006176f83feb525d3a35c9c5ca51fe5566058d68575c9b920e7d",
+   "bytes": 178149
   },
   "builder/serve.js": {
    "sha256": "eb267d4277a3465f86f32b07945917c78aeb7ce2b3bfabb2894b8cdc48c77b21",
    "bytes": 1213
   },
   "builder/shortlist.json": {
-   "sha256": "04e501c71d023c26d830e1f02f809db2331c690663205d8ef3b9b2037f5a0b4a",
-   "bytes": 142197
+   "sha256": "5b87cc83d2fcadc58f23a099db5bcf0702aacf01083eabec087f5ecf531cbac8",
+   "bytes": 140901
   },
   "builder/spines.json": {
-   "sha256": "b2d89a8a34a322673a1ef12f3f77ede6c675ec88a6ecda34fafa6145264f5554",
-   "bytes": 56736
+   "sha256": "0012b80a64bc3dea42718870041b2a57c21c6bb583dbaab0286bbb591f66ea51",
+   "bytes": 62211
   },
   "catalog/by-region/alps.md": {
    "sha256": "d0f354bd4ce38232d3158ab78ae6760200bcad313ad9f19bdc47ee235eb2f6c8",
@@ -1674,20 +1674,20 @@
    "bytes": 9168
   },
   "guides/route-explorer-data.js": {
-   "sha256": "cfa9b0b07bfdf43245b44166005dec110bf73ed4f9cedd1307b17d8111fe0075",
-   "bytes": 98602
+   "sha256": "0872adbd2023b5140dbbb6a238458c3fec6c6abaa12f256cc2190d8b4a3a9092",
+   "bytes": 106008
   },
   "guides/route-explorer.html": {
-   "sha256": "63acd281db74e706055f4f02044e3508fe99aba5f802540529d8aa8d8a39b043",
-   "bytes": 112841
+   "sha256": "e248491b6c98f35d50dda3c69b511f7c19ddaf1a0ba55aff38ddbf5b8e01137d",
+   "bytes": 114972
   },
   "guides/token-guide.md": {
    "sha256": "50e98dcfc53a642f9b5a478cb26784167f164f61dda2057d4d1b53b9b74a8b44",
    "bytes": 4209
   },
   "guides/transit-know-how.md": {
-   "sha256": "9e89de3f3f10740975faca4543d9b2090337bb1857a630a77df296956f6e02df",
-   "bytes": 14313
+   "sha256": "1d07bf712e7328bbcdaf7ec90b53746a2d2ff1b5e369049be41c013a88ab95b3",
+   "bytes": 14452
   },
   "guides/trip-visual-photos.json": {
    "sha256": "039a874ee93f3bbbab47dd278d44140cc7356573155cbdb28e33c06232fd0762",
@@ -1702,36 +1702,36 @@
    "bytes": 49831
   },
   "guides/visualizing-the-trip.md": {
-   "sha256": "dd2c67cc08f0dd7fef0accd40dbc83d7bc81ade9ab91d6d03dcf7a759e9942e7",
-   "bytes": 21160
+   "sha256": "0564f5c1a32f4ae39947ad5ba43bed135b314fc219dec36a979cb679531637c4",
+   "bytes": 21593
   },
   "stages/2-orientation.md": {
-   "sha256": "1abd6ab79df40fbfccff686f0d3da06d0b16d84cc519a015c31b32543c6df8c1",
-   "bytes": 40991
+   "sha256": "b229e25df4aaa1fd104e816a01d4b4e251ec4ed2dc35030721271d28a6b9d7b5",
+   "bytes": 42893
   },
   "stages/3-where-to-go.md": {
-   "sha256": "d3e77eb564899a8cacc21a2623123d9d51352f929e2a315158795e1b0e5b7fce",
-   "bytes": 88570
+   "sha256": "4d9127d837d1c5b0c430c7faf7dee37ac48a1983ec4a5c1129fb4f58055e3cb6",
+   "bytes": 90380
   },
   "stages/4-where-to-stay.md": {
-   "sha256": "17ed729c47ee6de68cc538ac390ad9ea0fc3bcd836898a972edcb6abd93d684c",
-   "bytes": 67083
+   "sha256": "470db0a41964e78305ac759bc1f3f705a3555dbae70301d9fc7100cd2cc7816b",
+   "bytes": 66450
   },
   "stages/5-route.md": {
-   "sha256": "801c3c301dc6add666b89fe9ca69ec75a0863f7905294608ac6b3dbb845b4c12",
-   "bytes": 83866
+   "sha256": "196b5a18d023ad2605aa90cb2542abb6a4506d1a5d4bae189d09bcd9cd8981d2",
+   "bytes": 82920
   },
   "stages/6-optional-depth.md": {
-   "sha256": "8a4c63ee10deb86629af126e48eb39322b6577458c7b2747a55b34ec03fefc6e",
-   "bytes": 13100
+   "sha256": "171da55e0b93ccc617bc74b744d5e1fc879db39ae22f9c1a5beb9145ed36ec04",
+   "bytes": 12726
   },
   "stages/7-appendix.md": {
-   "sha256": "e2d033bcbdfa68bdd32afeaaeb5bd970689df27a702ddd50fdfc669270ee0370",
-   "bytes": 10734
+   "sha256": "025763e82690b46de3e1c248d29ed57fb32b9ae01634ac34383b410dac3c7ae5",
+   "bytes": 10412
   },
   "stays/hakone-izu-fuji.md": {
-   "sha256": "d1c82e88c75c6ff1458128d08bf87ebc663da9727c02a6aa57a80843ffd90367",
-   "bytes": 4257
+   "sha256": "df60c44381608251da00097a47983b2cf67f790d0af057e98a59d48af35a4981",
+   "bytes": 4185
   },
   "stays/hiroshima.md": {
    "sha256": "52bdbf40e065b5f1e8def848ba4d826afdd11d5545ed6b9292cb3fa3b0dfe491",
@@ -1742,8 +1742,8 @@
    "bytes": 6911
   },
   "stays/kyoto.md": {
-   "sha256": "709a08aa7615812cd00b6ce68aac7e329607e59b8a5e22ef46df79ded7bbaeae",
-   "bytes": 10500
+   "sha256": "fccef41411b3e0252363746b45c0130bed2b49bac7fbf3e9452d4d11e650adeb",
+   "bytes": 10384
   },
   "stays/kyushu.md": {
    "sha256": "6763f9f4d7c3fce9ea432e8143259e9ce348a80d13f3c517044ab0f63e4d459d",
@@ -1774,8 +1774,8 @@
    "bytes": 6420
   },
   "stays/tokyo.md": {
-   "sha256": "7064e0f6a134a66bb1bd41b463b2dcc91fd19222f8a38dd2c8bb351cf4330cf6",
-   "bytes": 13334
+   "sha256": "fa88f2d9d718e26f493ec7ad9fcb466c481c426fd4efb4295fa25e3edc8213bd",
+   "bytes": 13255
   }
  }
 }

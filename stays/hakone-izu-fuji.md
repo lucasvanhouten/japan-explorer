@@ -4,10 +4,9 @@
 
 **Every band here needs confirming for your dates.** Inn rates were researched for January; hotel rates are three-night stays for two, taxes included, checked across February, May and October. Japanese holidays run well above them: **11 February** (National Foundation Day), **Golden Week**, **Obon** and the **autumn-colour weekends**. One room can differ by a third between a Tuesday and a Saturday. **Off those months, read an inn band as a floor:** blossom and autumn colour run a third higher, high summer and the rainy season lower, and the property's own page for the actual dates is the only quote.
 
-## The inns — 10 within reach
+## The inns — 9 within reach
 
 - `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · [book on Ikyu](https://www.ikyu.com/00001359/) · in Hakone
-- `gora-kadan` · Gora Kadan · B 7.5 · bath some · ask · in Hakone
 - `asaba` · Asaba editor's pick · S 9.4 · bath some · $1100–1600 · [book on Ikyu](https://www.ikyu.com/00002155/) · 1h50/2 from Hakone
 - `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · [book on Ikyu](https://www.ikyu.com/00003331/) · 1h55/1 from Hakone
 - `arcana-izu` · Arcana Izu · B 7.8 · bath some · $520–1100 · [book on Ikyu](https://www.ikyu.com/00001289/) · 2h25/2 from Hakone

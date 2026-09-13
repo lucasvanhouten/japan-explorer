@@ -779,7 +779,17 @@
   "label": "Lake Kawaguchi (Mt Fuji)",
   "lat": 35.4969,
   "lng": 138.7642,
-  "spines": []
+  "spines": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6",
+   "s7",
+   "s8",
+   "s9"
+  ]
  },
  {
   "loc": "kinosaki",
@@ -993,14 +1003,15 @@
   "kind": "city",
   "base": true,
   "ideal": [
-   3,
+   4,
    5
   ],
   "minimum": 3,
   "region": "kansai",
   "card": "Kyoto",
   "primary": true,
-  "default": 3,
+  "max": 5,
+  "default": 4,
   "label": "Kyoto",
   "lat": 34.985,
   "lng": 135.758,

@@ -122,15 +122,21 @@ words, as the plan prints them (to five minutes), in the template's own form: `3
 **One plan on the page keeps the matrix**, with one value column: put `single` on the section
 (`<section class="mx single">`), which sizes that column to its content beside the labels.
 
-## When to offer it
+## When to draw it
 
-- **After the itinerary table is finished**, and not before. The page is a picture of that table. If
-  a stop, a stay or a leg is still open, the plan is what needs finishing.
-- **When two candidate plans are still alive, this is the main use.** Two orderings, or the same
+**Draw it; don't offer it.** The page is not a bonus at the end — it is how somebody sees the trip
+whole after five stages of tables. Build it and open it, and say what it is in one line.
+
+- **At the close of Stage 4**, once every stop has its stays earmarked and the itinerary table holds
+  stops, nights, legs and names. That is the first drawing, and it is unasked.
+- **Again at the close of Stage 5**, updated from the finished table: the route work moves stops,
+  legs and totals, and a page showing the old ones is worse than none.
+- **Not before the itinerary table exists.** The page is a picture of that table; while a stop or a
+  leg is still open, the plan is what needs finishing.
+- **When two candidate plans are still alive, draw both in one frame.** Two orderings, or the same
   route with a different finale, are hard to compare in prose and easy to compare in one frame.
-  Offer it at the point where you would otherwise write a comparison table.
-- Offer it in one line — "I can draw this as a page you can open in a browser" — then build it if
-  they say yes. Never build it unasked, and never in place of the plan block.
+  Draw it at the point where you would otherwise write a comparison table.
+- Never in place of the plan block: the table is the deliverable, the page is how it is read.
 
 ## What it must show
 

@@ -259,28 +259,6 @@
    "map": "https://www.google.com/maps?cid=5189077942476791715"
   },
   {
-   "slug": "gora-kadan",
-   "key": null,
-   "name": "Gora Kadan",
-   "loc": "hakone",
-   "area": "Hakone",
-   "tier": "B 7.5",
-   "score": 7.5,
-   "bath": "some",
-   "band": "ask",
-   "reach": "hakone in town · tokyo 2h10/1 train · kyoto 3h/1 train",
-   "fits": [
-    "golden-route-stop",
-    "family-ok"
-   ],
-   "pinned": false,
-   "hook": "A 39-room modern-Japanese ryokan in Gora and one of the thread author's 'Hakone holy trinity', with polished omotenashi, meals served in the room and onsen baths in the first-floor rooms only.",
-   "writeup": "A 39-room modern-Japanese ryokan in Gora and one of the thread author's 'Hakone holy trinity', with polished omotenashi, meals served in the room and onsen baths in the first-floor rooms only. It 'just missed my top ten' for him in 2022 and is still 'always a solid choice' in 2025, but by then members were asking about the many negative reviews of its condition, and the one dedicated review is a scathing late-2023 member stay (furniture falling apart, room not clean, food just OK) that urges others to avoid it. The service and the architecture seem intact, and the worry is the aging fabric.",
-   "url": "https://ryokancatalog.com/inn/gora-kadan",
-   "ikyu": null,
-   "map": "https://www.google.com/maps?cid=4685860011475237162"
-  },
-  {
    "slug": "yamado",
    "key": "yamado",
    "name": "Yamado",
@@ -1880,7 +1858,7 @@
    "name": "Kyokoyado Muromachi Yutone",
    "kind": "townhouse hotel",
    "map": "https://www.google.com/maps?cid=10380402357816233814",
-   "site": "https://www.yutone.jp/",
+   "site": "https://www.m-yutone.com/",
    "group": "—",
    "area": "Muromachi, by Nishiki market",
    "rate": "$350–500",

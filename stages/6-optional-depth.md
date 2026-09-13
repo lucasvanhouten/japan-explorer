@@ -7,64 +7,62 @@
 ```
 Goal    whichever of the three they actually want
 Inputs  the finished Trip plan, open stops and all
-Do      offer (a) eating (b) day ideas (c) the booking calendar (d) the trip drawn as a page, in
-        one line; do the one they pick. (a) and (b) open by asking what they like, not with a list
+Do      offer (a) eating (b) day ideas (c) the booking calendar, in one line; do the one they pick.
+        (a) and (b) open by asking what they like, not with a list. (d), the trip page, is already
+        drawn — it was built at the end of Stage 4 and updated at the end of Stage 5; here it is only
+        redrawn on request, or when a change in this stage lands on it
 Tables  eating `| Place | Type | Price | Neighbourhood | Booking | Map |`, grouped under a heading per
         cuisine · day ideas `| Idea | What it is | Time | Map |` · the calendar as it is printed below
-Ask     1 question — which of the four; then the taste or interest questions
+Ask     1 question — which of the three; then the taste or interest questions
 Output  the thing they picked, and a checklist with real dates if (c)
 Next    nothing. That is the whole job.
 ```
 
-Only after the plan exists. **Don't deliver all four unasked.**
+Only after the plan exists. **Don't deliver all of it unasked.**
 
-**A fun read to offer once in this stage:** the kit's author's illustrated trip report from an earlier Japan trip, photos and meals: https://docs.google.com/document/d/18FJshPTanc0IR7VbOufL0bE4Dz3prDVKNJuIeoNFmT0/edit — if the link asks for access, say it is optional and move on.
+**A fun read to offer once in this stage:** the kit author's illustrated trip report from an earlier Japan trip, photos and meals: https://docs.google.com/document/d/18FJshPTanc0IR7VbOufL0bE4Dz3prDVKNJuIeoNFmT0/edit — if it asks for access, say it is optional and move on.
 
 ### (a) Eating
 
-**The first message is an interview, not a list of restaurants.** One short paragraph, then four questions, read against their `Taste:` line so you don't re-ask it.
-
-The paragraph says three things: nobody needs reservations to eat superbly in Japan, most eating is walk-in, and two or three booked meals per city is the most anyone needs. None is a normal answer. Then the questions, with examples to react to, glossing each Japanese word:
+**The first message is an interview, not a list of restaurants.** One short paragraph, then four questions, read against their `Taste:` line so you don't re-ask it. The paragraph says three things: nobody needs reservations to eat superbly in Japan, most eating is walk-in, and two or three booked meals per city is the most anyone needs — none is a normal answer. Then the questions, with examples to react to, glossing each Japanese word:
 
 1. **Which styles pull at you?** — sushi counter, izakaya, ramen, soba, udon, kaiseki, yakitori, tempura, tonkatsu, yakiniku, French or Italian in Japan, wine bars, cocktail bars, coffee, listening bars (built around a record collection).
-2. **How formal, and what would you spend on a good dinner?** — a ¥3–6k counter, a ¥10–15k room, ¥25k and up for one big meal. Ask whether an ambitious lunch appeals: it is the cheaper way in.
+2. **How formal, and what would you spend on a good dinner?** — a ¥3–6k counter, a ¥10–15k room, ¥25k and up for one big meal. An ambitious lunch is the cheaper way in.
 3. **Drinks, and anything you don't eat?** — sake, natural wine, cocktails, none; allergies, vegetarian, no raw fish.
 4. **How much booking effort do you want?** — none at all (then every place you name is walk-in), two or three anchors per city, or go all in.
 
 **Name the two sources once.**
 
-- **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 each in Osaka and Kagoshima, 25 in Kanazawa, and shorter sections for Kobe, Hiroshima, Takayama, Sendai, Nara and Yanagawa. Written from one traveller's palate — creative low-key rooms, counters, natural wine — and every entry checked for whether a table can be got. Lotteries, memberships and introduction-only rooms were cut.
+- **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 each in Osaka and Kagoshima, 25 in Kanazawa, and shorter sections for Kobe, Hiroshima, Takayama, Sendai, Nara and Yanagawa. Written from one traveller's palate — creative low-key rooms, counters, natural wine — and every entry checked for whether a table can be got.
 - **The illustrated trip report** linked above: one earlier trip in photos, not a survey.
 
-**Open one city at a time**, `guides/dining/<city>.md` for the stops on the plan and
-`guides/dining/index.md` to list them; **never `guides/dining.md` whole**: it is half a megabyte,
-and the city files are the same text.
+**Open one city at a time**, `guides/dining/<city>.md` for the stops on the plan and `guides/dining/index.md` to list them; **never `guides/dining.md` whole** — half a megabyte of the same text.
 
 Say that what follows is a small subset chosen against their answers, and that they can **ask for more in any category, neighbourhood or price at any time.**
 
 **If the dining guide isn't there**, say so in one line, name the **`japan-trip-kit`** repository on GitHub, and carry on.
 
-**The recommendations are a table, never a list of paragraphs**, with a heading per cuisine or category above each one — sushi · izakaya · noodles · kaiseki and kappō · yakitori and grills · tempura and tonkatsu · Western-in-Japan · wine bars · cocktail bars · listening bars · coffee — and never a grouping by how hard they are to book:
+**The recommendations are a table, never a list of paragraphs**, with a heading per cuisine above each — sushi · izakaya · noodles · kaiseki and kappō · yakitori and grills · tempura and tonkatsu · Western-in-Japan · wine bars · cocktail bars · listening bars · coffee — never grouped by how hard they are to book:
 
 | Place | Type | Price | Neighbourhood | Booking | Map |
 |---|---|---|---|---|---|
 | `<name>` | `<cuisine or room type>` | `<band per head, dinner or lunch>` | `<neighbourhood, not the address>` | `<walk-in · Tabelog · TableCheck · OMAKASE.in · phone, in Japanese · through the hotel>` | [map](`<link>`) |
 
-One line of prose per place at most, under the table, and only where the pitch needs it; the price and the booking channel are cells, never sentences. Lotteries and midnight releases are excluded by rule. The booking-effort answer decides what appears: "none" means walk-in only; "two or three anchors" means at most that many bookable places per city; "all in" opens the hard-to-get tier. The **Tabelog score** is optional — Tabelog is Japan's own review site, 3.5 and up very good, 3.7 and up excellent, and casual places are not marked down for being cheap.
+One line of prose per place at most, under the table, and only where the pitch needs it; price and booking channel are cells, never sentences. Lotteries and midnight releases are excluded by rule. The booking-effort answer decides what appears: "none" means walk-in only, "two or three anchors" that many bookable places per city, "all in" opens the hard-to-get tier. The **Tabelog score** is optional — Japan's own review site, 3.5 and up very good, 3.7 and up excellent, and casual places are not marked down for being cheap.
 
-**The map link rule.** A guide row's real pin (`google.com/maps/place/…`) is best: pass it straight through. A name-search link is an acceptable fallback, labelled "map (search)" so the reader checks it lands on the venue; a confirmed pin replaces it where you can look the venue up live. Never write a map link from memory.
+**The map link rule.** A guide row's real pin (`google.com/maps/place/…`) is best: pass it through. A name-search link is the fallback, labelled "map (search)" so the reader checks it lands on the venue. Never write a map link from memory.
 
 **Two rules for the picks.** On inn nights dinner is at the inn, so no restaurant those evenings. A listing with no available dates is not a channel — check it, or say you haven't.
 
-**How the messages close.** The first ends with the taste questions and nothing else. Every one after ends with **"more in any category, or another neighbourhood?"** Never close by pointing at the booking calendar; offer it only once they ask for anchors.
+**How the messages close.** The first ends with the taste questions and nothing else; every one after with **"more in any category, or another neighbourhood?"** Never close by pointing at the booking calendar.
 
 ### (b) Day ideas per stop
 
-**Ask what interests them before you name anything.** Same pattern as (a): a short paragraph, then three questions, read against their `Draws:` line.
+**Ask what interests them before you name anything.** As in (a): a short paragraph, then three questions, read against their `Draws:` line.
 
 1. **What pulls at you?** — temples and gardens, craft and design, markets, neighbourhoods to walk, museums, nature, pop culture, an onsen open to day visitors.
 2. **How full should a day be?** — one anchor and time to wander, or two or three planned things.
-3. **Anything you already know you want?** — a named museum, a garden, a show.
+3. **Anything you already know you want?** — a museum, a garden, a show.
 
 Then the ideas, as a table per stop, the stop as its heading:
 
@@ -72,62 +70,60 @@ Then the ideas, as a table per stop, the stop as its heading:
 |---|---|---|---|
 | `<name>` | `<one line>` | `<half a day · 2h · a morning>` | [map](`<link>`) |
 
-- Three or four ideas per stop, and a note under the table on which need advance tickets.
-- **Two should be low-effort** (a neighbourhood to walk, a market, a bath) and **one should be the thing the place is known for.**
+- Three or four ideas per stop, with **two low-effort** (a neighbourhood to walk, a market, a bath) and **one the thing the place is known for**; note under the table which need advance tickets.
 - **Default rhythm per city block:** one landmark day, one neighbourhood day on foot, one day with a single anchor and nothing after it.
 - **In the countryside the anchor is the bath and the meal**, and the day around it stays empty. A three o'clock inn check-in does not survive a morning excursion an hour away.
 - **No more than one big timed thing per day**, and one empty afternoon per week.
 - **Check anything seasonal against the month.** Mountain roads, ropeways, gorge railways and some gardens and museums close for the winter.
-- Anything needing an advance ticket goes in the calendar, not the day list.
-- Close the way (a) closes.
+- Anything needing an advance ticket goes in the calendar, not the day list. Close the way (a) closes.
 
 ### (c) The booking calendar
 
-Order by **deadline**, not by trip order: a checklist, earliest first, with a real date against each item counted back from departure.
+Order by **deadline**, not trip order: a checklist, earliest first, with a real date against each item counted back from departure.
 
 | When | Date | What | Book it at | Why |
 |---|---|---|---|---|
-| **6–12 months out** | `<date>` | Long-haul flights | [Google Flights](https://www.google.com/travel/flights) | Price and seat choice, especially around New Year, blossom season and mid-August |
-| **6 months out** | `<date>` | The one inn the trip is built around | its page on [ryokancatalog.com](https://ryokancatalog.com), then the inn's own site | The best inns open their books six months to a year ahead, sometimes by phone or email only, and the sought-after rooms go the day the window opens. If a room type is the reason for the stay, treat the opening date as an appointment |
-| **4–6 months out** | `<date>` | Every other inn | the inn's own site, or [Ikyu](https://www.ikyu.com/) | The comfortable lead time. Later than three months and the popular ones are gone |
-| **3–4 months out** | `<date>` | City hotels | the property's own page — the links in the hotel table's `Stay` cell | Usually open and often free to cancel, so book early and revise. Rates rise as the date nears |
-| **2–3 months out** | `<date>` | The restaurants they chose as anchors, if any | the channel named on the row — walk-in, [Tabelog](https://tabelog.com/en/), [TableCheck](https://www.tablecheck.com/), [OMAKASE](https://omakase.in/en) or the hotel | Only the ones they picked. Windows differ per restaurant, so give each its own date |
-| **1–2 months out** | `<date>` | Rail passes | [Japan Rail Pass](https://www.japanrailpass.net/en/) and the regional passes beside it | And confirm whether the plan needs one |
-| **1 month out** | `<date>` | Reserved seats on long trains | [smartEX](https://smart-ex.jp/en/) for the Tokyo–Kyoto–Hiroshima line, [JR-EAST train reservation](https://www.eki-net.com/en/jreast-train-reservation/) north and west | Reservations open a set period ahead, commonly a month |
-| **1 month out** | `<date>` | Inn shuttles and arrivals | email the inn directly — the address is on its own site | Many pickups need a request at booking or a call the day before, and some remote stations have no taxis. Confirm in writing |
-| **1 month out** | `<date>` | Popular timed tickets | the venue's own page first, then [Lawson Ticket](https://l-tike.com/) or [e+](https://eplus.jp/) | Some sell out within hours, sometimes through a convenience-store ticketing system rather than the venue's site, and sometimes only inside Japan. Find the release date and have a second choice |
-| **2 weeks out** | `<date>` | Car hire, if needed | [Toyota Rent a Car](https://rent.toyota.co.jp/eng/) or [Times Car Rental](https://www.timescar-rental.com/) | And an international driving permit, obtained at home before departure |
+| **6–12 months out** | `<date>` | Long-haul flights | [Google Flights](https://www.google.com/travel/flights) | Price and seat choice, worst around New Year, blossom season and mid-August |
+| **6 months out** | `<date>` | The one inn the trip is built around | its page on [ryokancatalog.com](https://ryokancatalog.com), then the inn's own site | The best inns open their books six months to a year ahead, sometimes by phone or email only, and the best rooms go the day the window opens. If a room type is the reason for the stay, treat that date as an appointment |
+| **4–6 months out** | `<date>` | Every other inn | the inn's own site, or [Ikyu](https://www.ikyu.com/) | The comfortable lead time; later than three months and the popular ones are gone |
+| **3–4 months out** | `<date>` | City hotels | the property's own page — the links in the hotel table's `Stay` cell | Usually open and often free to cancel, so book early and revise |
+| **2–3 months out** | `<date>` | The restaurants they chose as anchors, if any | the channel named on the row — walk-in, [Tabelog](https://tabelog.com/en/), [TableCheck](https://www.tablecheck.com/), [OMAKASE](https://omakase.in/en) or the hotel | Only the ones they picked; windows differ per restaurant, so give each its own date |
+| **1–2 months out** | `<date>` | Rail passes | [Japan Rail Pass](https://www.japanrailpass.net/en/) and the regional passes beside it | Confirm first whether the plan needs one |
+| **1 month out** | `<date>` | Reserved seats on long trains | [smartEX](https://smart-ex.jp/en/) for the Tokyo–Kyoto–Hiroshima line, [JR-EAST](https://www.eki-net.com/en/jreast-train-reservation/) north and west | Reservations open a set period ahead, commonly a month |
+| **1 month out** | `<date>` | Inn shuttles and arrivals | email the inn directly — the address is on its own site | Many pickups need a request at booking, and some remote stations have no taxis. Confirm in writing |
+| **1 month out** | `<date>` | Popular timed tickets | the venue's own page first, then [Lawson Ticket](https://l-tike.com/) or [e+](https://eplus.jp/) | Some sell out in hours, sometimes only through a convenience-store ticketing system inside Japan. Find the release date and have a second choice |
+| **2 weeks out** | `<date>` | Car hire, if needed | [Toyota Rent a Car](https://rent.toyota.co.jp/eng/) or [Times Car Rental](https://www.timescar-rental.com/) | Plus an international driving permit, obtained at home |
 | **1 week out** | `<date>` | Dietary requests and any special occasion | email each inn and each booked restaurant | Inn menus are fixed weeks ahead |
-| **Before leaving** | `<date>` | Travel money, transport card, connectivity, confirmations saved offline | [Suica](https://www.jreast.co.jp/multi/en/pass/suica.html) on the phone, and an eSIM before you fly | Cash still matters outside the cities |
+| **Before leaving** | `<date>` | Travel money, transport card, connectivity, confirmations saved offline | [Suica](https://www.jreast.co.jp/multi/en/pass/suica.html) on the phone, an eSIM before you fly | Cash still matters outside the cities |
 
-**Put a real date in the `Date` column, counted back from their departure date** — "6 months out" is not a deadline anybody acts on. Where a window opens on a fixed date rather than a rolling one, write that date, not the count-back. **Every row is a live link**, so the next click is in the table rather than in a search.
+**Put a real date in the `Date` column, counted back from their departure date** — "6 months out" is not a deadline anybody acts on; where a window opens on a fixed date, write that date. **Every row is a live link**, so the next click is in the table rather than in a search.
 
-**A stop Stage 4 left open still gets its rows** — the inn or hotel deadline stands, and it is the reason to close the stay.
-
-**Restaurant windows live here, and only for the anchors they chose.** A restaurant that books a fixed period ahead usually opens on the first of the month, one to three months out, and the good seats go the same day. No other restaurant belongs in the calendar.
+**A stop Stage 4 left open still gets its rows** — the inn or hotel deadline stands, and it is the reason to close the stay. **Restaurant windows live here, and only for the anchors they chose**: a room that books a fixed period ahead usually opens on the first of the month, one to three months out, and the good seats go the same day.
 
 Hand over the checklist with real dates, and the Stage 5 plan alongside it.
 
-### (d) The trip drawn as a page
+### (d) The trip drawn as a page — already done
 
-A single HTML file they open in a browser: the stops in travel order as bars sized by nights, every
-leg as a chip with its hours, changes, mode and where the number came from, each stay with its link and
-price band, and the totals as a table, drawn on a map of Japan with the inns'
-photos. **No `To confirm` list and no follow-ups of any kind** — the page is for understanding the
-trip, not running its logistics. The one exception is a rare **watch line** under a single leg chip,
-for a major transit flag only: an estimated or composed leg, a driving day, a ferry, a bus that must
-be reserved, a winter-risk pass. **`guides/trip-visual-template.html`** ships pre-filled with the sample plan: overwrite its five
-marked `EDIT` zones from the itinerary table (it is plain HTML, no script to run) and hand the file over
-the way `visualizing-the-trip.md` says for your environment (artifact, canvas, or a file to open in a browser);
-**`guides/visualizing-the-trip.md`** carries the rules and the pre-flight checklist, and
-**`guides/design-principles.md`** is the checklist a finished page is read against (with
-`guides/design-language.md` behind it, for the one case where the template itself must change).
+**This page is not offered here.** It is drawn unasked at the close of Stage 4 and updated at the close of
+Stage 5, so they already have it. Redraw it on request, or when something settled in this stage changes
+what it shows. What it is:
+
+A single HTML file they open in a browser: the stops in travel order as bars sized by nights, every leg
+as a chip with its hours, changes, mode and where the number came from, each stay with its link and price
+band, and the totals as a table, drawn on a map of Japan with the inns' photos. **No `To confirm` list and
+no follow-ups of any kind** — the page is for understanding the trip, not running its logistics. The one
+exception is a rare **watch line** under a leg chip, for a major transit flag only: an estimated or
+composed leg, a driving day, a ferry, a bus that must be reserved, a winter-risk pass.
+**`guides/trip-visual-template.html`** ships pre-filled with the sample plan: overwrite its five marked
+`EDIT` zones from the itinerary table (plain HTML, no script to run) and hand it over the way
+**`guides/visualizing-the-trip.md`** says for your environment — that file carries the rules and the
+pre-flight checklist, and **`guides/design-principles.md`** is what a finished page is read against.
 
 It also draws two candidate plans in one frame, which Stage 5 explains. If two versions are still
-open, offer this before (a), (b) or (c): the choice comes first.
+open, draw that before (a), (b) or (c): the choice comes first.
 
-Everything on the page comes from the plan; nothing is invented for it, and there are no day-by-day
-cards, since days are for after the trip is booked.
+Everything on the page comes from the plan; nothing is invented, and there are no day-by-day cards —
+days are for after the trip is booked.
 
 ---
 

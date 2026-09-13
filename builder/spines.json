@@ -22,7 +22,7 @@
   "are the ryokan towns and the STOP towns that sit on that leg, each a yes/no, inserted in the order they are declared. Two",
   "slots on two different legs are two answers: Yudanaka before Kanazawa AND Kaga after it, on one trip.",
   "",
-  "`end` is the END decision, unchanged: how the trip finishes — fly from the last city, one more ryokan night, or back through",
+  "`end` is the END decision, unchanged: how the trip finishes — fly from the last city, one more ryokan night, or back through An END option marked `ask_only: true` — every ending that puts Tokyo back on the route — is never taken by the engine on its own: not by the night filler, not by a ticket home from Haneda. Only `--set end=<n>` chooses it (owner, 2026-09-13: Tokyo is one stay unless they ask for two).",
   "Tokyo — with `stops[]`, `place: after|before <loc>` and `out` as before.",
   "",
   "Decision keys are what `--set` takes: `start`, `kansai`, `end` for the switches, `<city>.<name>` for an attachment",
@@ -161,7 +161,29 @@
      "stops": [
       "nikko"
      ],
-     "why_not": "Nikkō is an out-and-back from Tokyo; flying straight into Kansai there is no Tokyo stay to split"
+     "why_not": "Nikkō is an out-and-back from Tokyo; flying straight into Kansai there is no Tokyo stay to split",
+     "not_with": [
+      "kawaguchiko"
+     ]
+    },
+    {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
+      "nikko"
+     ],
+     "why_not": "The Fuji lakes are an out-and-back from Tokyo; flying straight into Kansai there is no Tokyo stay to split"
     },
     {
      "key": "kyoto.nara",
@@ -254,7 +276,8 @@
        "tokyo"
       ],
       "label_rev": "Tokyo at the close",
-      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home.",
+      "ask_only": true
      }
     ]
    }
@@ -336,6 +359,25 @@
    ],
    "attach": [
     {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
+      "nikko",
+      "yudanaka"
+     ]
+    },
+    {
      "key": "kyoto.nara",
      "city": [
       "kyoto",
@@ -380,7 +422,8 @@
        "question_rev": "A ryokan at Yudanaka on the way over the mountains to Tokyo?",
        "no_rev": "Straight through to Tokyo.",
        "not_with": [
-        "nikko"
+        "nikko",
+        "kawaguchiko"
        ]
       },
       {
@@ -394,7 +437,8 @@
         "nikko"
        ],
        "not_with": [
-        "yudanaka"
+        "yudanaka",
+        "kawaguchiko"
        ],
        "why_not": "one ryokan night on this leg: Nikkō or Yudanaka",
        "question_rev": "A ryokan at Nikkō on the way to Tokyo, instead of Yudanaka?",
@@ -491,7 +535,8 @@
        "hakone",
        "osaka@last"
       ],
-      "why_not": "the Fuji ryokan is on the Kyoto–Tokyo road: Kyoto must be the last Kansai city"
+      "why_not": "the Fuji ryokan is on the Kyoto–Tokyo road: Kyoto must be the last Kansai city",
+      "ask_only": true
      },
      {
       "label": "A Fuji ryokan, then fly home from Haneda",
@@ -523,7 +568,8 @@
       "not_with": [
        "kawaguchiko"
       ],
-      "why_not": "the Fuji inn is already on this route, on the way out of Kanazawa"
+      "why_not": "the Fuji inn is already on this route, on the way out of Kanazawa",
+      "ask_only": true
      }
     ]
    },
@@ -540,7 +586,7 @@
    },
    "band": [
     12,
-    19
+    18
    ],
    "io": "HND → HIJ",
    "in": "HND",
@@ -605,6 +651,27 @@
      "desc": "Carved shrines in cedar forest north of Tokyo; out and back from the city.",
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
+      "nikko"
+     ],
+     "not_with": [
+      "kawaguchiko"
+     ]
+    },
+    {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
       "nikko"
      ]
     },
@@ -740,7 +807,8 @@
        "tokyo"
       ],
       "label_rev": "Tokyo at the close",
-      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home.",
+      "ask_only": true
      }
     ]
    }
@@ -833,6 +901,27 @@
      "desc": "Carved shrines in cedar forest north of Tokyo; out and back from the city.",
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
+      "nikko"
+     ],
+     "not_with": [
+      "kawaguchiko"
+     ]
+    },
+    {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
       "nikko"
      ]
     },
@@ -1043,6 +1132,28 @@
      "stops": [
       "nikko"
      ],
+     "fill": "never",
+     "not_with": [
+      "kawaguchiko"
+     ]
+    },
+    {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
+      "nikko"
+     ],
      "fill": "never"
     },
     {
@@ -1164,7 +1275,8 @@
        "tokyo"
       ],
       "label_rev": "Tokyo at the close",
-      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home.",
+      "ask_only": true
      }
     ]
    }
@@ -1180,7 +1292,7 @@
    },
    "band": [
     9,
-    16
+    15
    ],
    "io": "HND → OIT",
    "in": "HND",
@@ -1274,6 +1386,28 @@
      "desc": "Carved shrines in cedar forest north of Tokyo; out and back from the city.",
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
+      "nikko"
+     ],
+     "fill": "never",
+     "not_with": [
+      "kawaguchiko"
+     ]
+    },
+    {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
       "nikko"
      ],
      "fill": "never"
@@ -1384,7 +1518,8 @@
        "tokyo"
       ],
       "label_rev": "Tokyo at the close",
-      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home.",
+      "ask_only": true
      }
     ]
    }
@@ -1527,6 +1662,28 @@
      "stops": [
       "nikko"
      ],
+     "fill": "never",
+     "not_with": [
+      "kawaguchiko"
+     ]
+    },
+    {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
+      "nikko"
+     ],
      "fill": "never"
     },
     {
@@ -1667,7 +1824,8 @@
        "tokyo"
       ],
       "label_rev": "Tokyo at the close",
-      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home.",
+      "ask_only": true
      }
     ]
    }
@@ -1772,6 +1930,27 @@
      "desc": "Carved shrines in cedar forest north of Tokyo; out and back from the city.",
      "no": "No Nikkō; the Tokyo stay runs unbroken.",
      "stops": [
+      "nikko"
+     ],
+     "not_with": [
+      "kawaguchiko"
+     ]
+    },
+    {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
       "nikko"
      ]
     },
@@ -1927,7 +2106,8 @@
        "tokyo"
       ],
       "label_rev": "Tokyo at the close",
-      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home.",
+      "ask_only": true
      }
     ]
    }
@@ -2019,6 +2199,28 @@
      "stops": [
       "nikko"
      ],
+     "fill": "never",
+     "not_with": [
+      "kawaguchiko"
+     ]
+    },
+    {
+     "key": "tokyo.fujilakes",
+     "city": [
+      "tokyo"
+     ],
+     "kind": "inn",
+     "at": "split",
+     "default": 1,
+     "question": "A night at the Fuji lakes instead of Nikkō?",
+     "desc": "A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay.",
+     "no": "No Fuji lakes; the Tokyo stay runs unbroken.",
+     "stops": [
+      "kawaguchiko"
+     ],
+     "not_with": [
+      "nikko"
+     ],
      "fill": "never"
     },
     {
@@ -2061,7 +2263,11 @@
       ],
       "out": "CTS",
       "label_rev": "A hot-spring ryokan",
-      "desc_rev": "A first night at Noboribetsu or Jōzankei, near the airport (no kit write-up at Noboribetsu; Jōzankei has one)."
+      "desc_rev": "A first night at Noboribetsu or Jōzankei, near the airport (no kit write-up at Noboribetsu; Jōzankei has one).",
+      "not_with": [
+       "noboribetsu"
+      ],
+      "why_not": "the Noboribetsu night is already on the route, off the plane"
      },
      {
       "label": "Back to Tokyo",
@@ -2070,7 +2276,8 @@
        "tokyo"
       ],
       "label_rev": "Tokyo at the close",
-      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home."
+      "desc_rev": "Two Tokyo nights at the end and a Haneda flight home.",
+      "ask_only": true
      }
     ]
    },

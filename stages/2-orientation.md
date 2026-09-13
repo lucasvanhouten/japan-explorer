@@ -13,30 +13,32 @@ Do      the map in a paragraph; then four or five place cards chosen by the prof
         Other possibilities; then how the ones you showed chain into a trip, in prose
 Ask     which of these sound interesting — close on the line below, then expand and loop
 Output  a longlist of places, with the shape they suggest said in a sentence. Not a route, not a spine,
-        and not a decision on nights
+        and not a decision on nights — plus the route explorer, opened beside the chat on the two or
+        three routes those places sit on, so Stage 3 starts with the picture already up
 Next    Stage 3 — choose the spine those places sit on, then walk its decisions in trip order.
 ```
 
-**This stage orients; it does not price.** No table of routes, no night counts beyond a card's ideal range, no travel figures beyond the rough time in words on the Nikkō and Hakone cards. The spines, the engine and every number wait for Stage 3.
+**This stage orients; it does not price.** No table of routes, no night counts beyond a card's ideal range, no travel figures beyond the rough time in words on the Nikkō and Hakone cards. The spines, the engine and every number wait for Stage 3. **The one thing that does arrive early is the page**: the closing message opens the route explorer on the two or three routes the places they warmed to sit on (see point 6 below). The message stays prose; the numbers are on the page, where they can play with them.
 
 #### What they get, in this order
 
 1. **The map in one paragraph** — the paragraph below, in your words and shorter.
-2. **The place cards, under the heading "Top recommendations".** **On a first trip that set is fixed: Tokyo, Kyoto, Kanazawa, Hakone/Fuji/Izu and Nikkō** — the name in bold, the reason in a clause (*"**Kanazawa**: the best food city outside the big two, and the garden is at its best under snow"*); the heading says they are recommended, so the word never appears on a line. The profile changes that set only when the draws strongly say so (temples written off entirely, a single-region trip), and you say what you swapped and why. **Kyoto is recommended on every first trip; Osaka is an addition to Kyoto, never its replacement** — the Kansai choice is Stage 3's. **Then, under "Worth considering", one or two alternates** by season and draws: snow country in winter, Kyushu when the hot springs are the point, Hiroshima and the Inland Sea for the coast. A repeat visit drops the fixed set and chooses four or five by the profile alone. **Two or three sentences each** in your own words; never paste a card.
+2. **The place cards, under the heading "Top recommendations".** **On a first trip that set is fixed: Tokyo, Kyoto, Kanazawa, Hakone/Fuji/Izu and Nikkō** — the name in bold, the reason in a clause (*"**Kanazawa**: the best food city outside the big two, and the garden is at its best under snow"*); the heading says they are recommended, so the word never appears on a line. The profile changes that set only when the draws strongly say so, and you say what you swapped and why. **Kyoto is recommended on every first trip; Osaka is an addition to Kyoto, never its replacement.** **Then, under "Worth considering", one or two alternates** by season and draws: snow country in winter, Kyushu when the hot springs are the point, Hiroshima and the Inland Sea for the coast. A repeat visit drops the fixed set and chooses four or five by the profile alone. **Two or three sentences each** in your own words; never paste a card.
 3. **How they fit together** — two or three sentences on how the places you showed chain into a trip: which sit on the shinkansen line an hour or two apart, which are out-and-back from Tokyo, which are a flight. Name the shape in a clause (*"that is Tokyo, a ryokan on the way, then Kyoto — the classic first trip"*), never a spine id, a night count or a travel figure.
-4. **Other possibilities** — that heading, then a two-column table, `| Place | What it is |`, one row per card not shown, three or four words each, a flight or the season noted where it matters. Never a run-on paragraph. Offer to expand any.
+4. **Other possibilities** — that heading, then a two-column table, `| Place | What it is |`, one row per card not shown, three or four words each. Never a run-on paragraph. Offer to expand any.
 5. **Close by leading them on, not with a choice** — *"Want more on any of these? Tell me which sound most interesting, and I'll show how they fit together on two or three possible routes."* Never "which one". Expand any card they ask about, never the same two lines again; asked about a place's inns or hotels, give the shortlist with the names linked.
+6. **Open the explorer on the candidate routes, in that same closing message.** Once they name the places that interest them, run **`compare <spine> <spine> [<spine>] --total N --in X --out Y`** — the two or three routes carrying those places, each at its defaults for their length and ticket — and open the single `Explorer:` address it prints (Stage 3 says how to serve it). Hand it on its own bold line: **Open beside this chat: <route names> — <address>**. **Serving it:** the kit root ships `.claude/launch.json` with a configuration named `kit-explorer` — start it with the preview tool on that name, then open `http://localhost:8790/guides/route-explorer.html#…`. **Never `file://`**, which comes up blank; and after every open, read the page's text and check the first stop's name is on it before saying it is showing. Don't walk the table through here: say only that the page shows how the places chain into a trip and that every option on it can be switched. Stage 3 does the comparison properly.
 
 **The place cards below are reference for you. Do not brief them from the cards.** What the lines on a card mean:
 
 - **`nights:` reads `ideal a–b · minimum n · one line of context`.** Quote the ideal when asked; the minimum is a floor, never a grade. **Fewer than the minimum: give them it**, say once what it costs, note it on `Assumed`.
 - **A card covering several places carries `places:`**, the same line per place; the card's range is the area total.
-- **`spines:` names the routes that carry the place** — for Stage 3; here it shows which cards chain together. A place on no spine is said so in a clause.
+- **`spines:` names the routes that carry the place** — for Stage 3; here it shows which cards chain together.
 - **`base:` says how a place is stayed in** — `yes` for a city you build nights around, `inn town` for a place whose stay is the inn, one night and rarely two, `onsen town` where the town is the draw, `day trip` for somewhere seen from a nearby base. **An `inn town` is never a day trip** unless its line says `minimum 0`; only a `day trip` card resists becoming a stop.
-- **Nikkō and Hakone/Fuji/Izu are both on the first-trip set**, and on The Classic and Stretched West they are two yes/no answers in Stage 3, not a choice between them. Give each its time from Tokyo inside its own card sentence ("two hours north, out and back, so it splits the Tokyo stay"; "two hours west, on the way to Kyoto"). **The table below is reference for you; never paste it.**
+- **Nikkō and Hakone/Fuji/Izu are both on the first-trip set**, and on The Classic and Stretched West they are two yes/no answers in Stage 3, not a choice between them. Give each its time from Tokyo inside its own card sentence ("two hours north, out and back, so it splits the Tokyo stay"; "two hours west, on the way to Kyoto").
 - **The kinds of stay** only when a stay decision is near, **"what a ryokan is"** only when an inn night is on the table, **their month** from the season table; the rest on request.
 
-**The four trips out of Tokyo, with their times** — the figures behind those two card sentences. For you, not for them.
+**The four trips out of Tokyo, with their times** — the figures behind those card sentences. For you, not for them.
 
 <!-- generated:tokyo-satellite-times -->
 | From Tokyo to | Door to door | Changes | Out and back, or on the way? |
@@ -53,36 +55,36 @@ Next    Stage 3 — choose the spine those places sit on, then walk its decision
 
 #### The map in one paragraph
 
-Almost everything a first-timer considers sits on **Honshu**. Tokyo is on its Pacific side; Kyoto, Osaka and Nara cluster about 300 miles (500 km) southwest, in **Kansai**. That corridor is the spine, stitched by the **shinkansen** (bullet train) in a couple of hours, several times an hour. Hang the rest off it: **north** of Tokyo, **Tōhoku** and the snow country; an hour or two **west**, **Hakone**, **Mount Fuji** and **Izu**, with **Nikkō** the same distance north; **inland**, **Takayama** and **Kanazawa**; west of Kyoto the spine runs past Hiroshima to the **Seto Inland Sea**. The outliers are each a flight: **Kyushu**, **Hokkaido**, **Okinawa**. **Staying on the spine is cheap in time and leaving it is expensive in time**.
+Almost everything a first-timer considers sits on **Honshu**. Tokyo is on its Pacific side; Kyoto, Osaka and Nara cluster about 300 miles (500 km) southwest, in **Kansai**. That corridor is the spine, stitched by the **shinkansen** (bullet train) in a couple of hours, several times an hour. Hang the rest off it: **north** of Tokyo, **Tōhoku** and the snow country; an hour or two **west**, **Hakone**, **Mount Fuji** and **Izu**, with **Nikkō** the same distance north; **inland**, **Takayama** and **Kanazawa**; west of Kyoto the spine runs past Hiroshima to the **Seto Inland Sea**. The outliers are each a flight: **Kyushu**, **Hokkaido**, **Okinawa**. **Staying on the spine is cheap in time; leaving it is expensive.**
 
 ---
 
 ### Tokyo
 
-- **known_for:** the biggest city on earth and the least stressful of its size. Neighbourhoods with wholly different characters one train apart — Shinjuku and Shibuya's neon and food halls, Asakusa's old lanes, Ginza and Aoyama's galleries and cocktail bars, Jimbocho's bookshops. More restaurants at every price than any city in the world, plus contemporary art museums and the Imperial Palace gardens.
-- **best_for:** big-city energy, shopping, food at every level, pop culture (Akihabara, Nakano, Ikebukuro), art and design, and anyone who wants a soft landing.
+- **known_for:** the biggest city on earth and the least stressful of its size. Neighbourhoods with wholly different characters one train apart — Shinjuku and Shibuya's neon and food halls, Asakusa's old lanes, Ginza and Aoyama's galleries and cocktail bars, Jimbocho's bookshops. More restaurants at every price than any city in the world, plus contemporary art museums and the palace gardens.
+- **best_for:** big-city energy, shopping, food at every level, pop culture (Akihabara, Nakano, Ikebukuro), art and design, a soft landing.
 <!-- generated:card-tokyo -->
 - **nights:** ideal 4–7 · minimum 3 · more if it is the only city
 - **repeat visit:** read the ideal as 3–4 · for someone who has done Tokyo before
 - **base:** yes
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · Kyushu South & West (11–20 nights) · Kyushu South & East (9–16 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights) · Hokkaido (8–12 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · Kyushu South & West · Kyushu South & East · Kyushu North & East · The Long Line · Hokkaido
 <!-- /generated:card-tokyo -->
 - **season:** good year-round. Blossom (late March–early April) and autumn colour (late November) are prettiest and most crowded. High summer is punishing. January–February are cold, dry, bright, least crowded.
 - **pairs_with:** everything — the usual arrival and departure point.
 - **fits:** `tokyo-splitter` `golden-route-stop` `fuji-lakes` `snow-country` (Tokyo is a hotel city; those four tags are the ryokan trips out of it)
 
-Tokyo delivers more per night than anywhere here and is the least tiring stop: unpack once, let the trains work. The trap is the two-night stopover before "the real Japan" — three famous sights and none of the texture people fall for.
+Tokyo delivers more per night than anywhere here and is the least tiring stop: unpack once and let the trains work. The trap is the two-night stopover before "the real Japan" — three famous sights and none of the texture people fall for.
 
 ---
 
 ### Nikkō
 
-- **known_for:** the most elaborately carved shrine complex in Japan, two hours north of Tokyo in cedar forest and mountains. **Toshogu**, the gilded mausoleum of the shogun who unified the country, is the centrepiece; around it, older quieter temples, a red bridge over a green river, and a lacquerware tradition. Above the town, **Oku-Nikkō**: Lake Chuzenji under the volcano Nantai, the Kegon waterfall, marshland, and the hot springs of Yumoto.
-- **best_for:** the first-trip case, specifically — a long Tokyo stay, one inn night in it (Fufu Nikko is the inn here), and a shrine town for a day or two. Also shrines of a wholly different character from Kyoto's, mountain scenery and hot springs, one big day out of Tokyo without moving the base far.
+- **known_for:** the most elaborately carved shrine complex in Japan, two hours north of Tokyo in cedar forest and mountains. **Toshogu**, the gilded mausoleum of the shogun who unified the country, is the centrepiece; around it, older quieter temples, a red bridge over a green river, and a lacquerware tradition. Above the town, **Oku-Nikkō**: Lake Chuzenji under the volcano Nantai, the Kegon waterfall and the hot springs of Yumoto.
+- **best_for:** a long Tokyo stay with one inn night in it (Fufu Nikko is the inn here); shrines of a wholly different character from Kyoto's, mountains and hot springs, one big day out without moving the base.
 <!-- generated:card-nikko -->
 - **nights:** ideal 1–2 · minimum 1 · one pairs the shrines with an inn night; a second is for the lake, the waterfall and the upper valley
 - **base:** inn town
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · Kyushu South & West (11–20 nights) · Kyushu South & East (9–16 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights) · Hokkaido (8–12 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · Kyushu South & West · Kyushu South & East · Kyushu North & East · The Long Line · Hokkaido
 <!-- /generated:card-nikko -->
 - **season:** autumn colour among the country's best, and the roads jam accordingly. Winter is cold, clear and quiet, snow on the shrine roofs; the upper valley road can close in heavy snow.
 - **pairs_with:** Tokyo, directly. It chains poorly to anything west.
@@ -95,14 +97,14 @@ The strongest one-night trip out of Tokyo for shrines and mountains rather than 
 ### Kyoto
 
 - **known_for:** the imperial capital for over a thousand years, and the densest concentration of temples, Zen gardens, wooden townhouses and crafts in the country. The postcard sights — Kinkaku-ji, the vermilion gate tunnels of Fushimi Inari, the Arashiyama bamboo grove, hillside Kiyomizu-dera — plus **Gion**, where geiko (Kyoto's term for geisha) still work. Also a serious food city: refined **kaiseki**, Buddhist tofu and vegetable cooking, and the covered Nishiki market.
-- **best_for:** temples, history, gardens, crafts, traditional food, and anyone whose mental image of Japan is wooden buildings and moss.
+- **best_for:** temples, history, gardens, crafts, traditional food, and anyone whose image of Japan is wooden buildings and moss.
 <!-- generated:card-kyoto -->
-- **nights:** ideal 4–6 · minimum 3 · the top of the range if temples and gardens are the main draw; two is a highlights sprint
+- **nights:** ideal 4–5 · minimum 3 · the top of the range if temples and gardens are the main draw; under four and the day trips start competing with the city itself
 - **places:**
-  - **Kyoto:** ideal 3–5 · minimum 3 · the city itself
+  - **Kyoto:** ideal 4–5 · minimum 3 · the city itself
   - **The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi):** ideal 1–2 · minimum 1 · inn town — a night out of Kyoto or Osaka, each with its own line in the leg table
 - **base:** yes
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · The Long Line
 <!-- /generated:card-kyoto -->
 - **season:** blossom and autumn colour are spectacular and mobbed. Winter is quiet, sometimes snow-dusted, and temples unapproachable in April are near-empty. Summer traps heat in the valley.
 - **pairs_with:** Osaka and Nara, both a short ride away. The western pivot: onward to Kanazawa, to Hiroshima, or to a hot-spring inn in the hills nearby.
@@ -114,14 +116,14 @@ Kyoto is for people who came for the old country and will work a little for it. 
 
 ### Osaka
 
-- **known_for:** eating and going out. Japan's blunt, funny, commercial second city, and its identity is food: **takoyaki** (griddled octopus dumplings), **okonomiyaki** (a savoury cabbage pancake), skewers, and the neon and noise of Dotonbori and Namba. Also Osaka Castle, the old merchant quarters, an aquarium, a good bar scene, and Universal Studios Japan.
-- **best_for:** food, city energy, nightlife, travellers who find Kyoto a little reverent, and anyone flying into Kansai airport.
+- **known_for:** eating and going out. Japan's blunt, funny, commercial second city, and its identity is food: **takoyaki** (griddled octopus dumplings), **okonomiyaki** (a savoury cabbage pancake), skewers, and the neon of Dotonbori and Namba. Also Osaka Castle, the old merchant quarters, a good bar scene and Universal Studios Japan.
+- **best_for:** food, city energy, nightlife, travellers who find Kyoto a little reverent, anyone flying into Kansai.
 <!-- generated:card-osaka -->
 - **nights:** ideal 2–3 · minimum 2 · zero nights is fine as a day trip from Kyoto; a stay here is two nights or none, and they are for eating and going out
 - **base:** yes
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · The Long Line
 <!-- /generated:card-osaka -->
-- **season:** year-round — an indoor-and-evening city, so weather matters less here than anywhere else on this list.
+- **season:** year-round — an indoor-and-evening city, so weather matters less than anywhere else here.
 - **pairs_with:** Kyoto and Nara; Hiroshima and the Inland Sea westward. Its airport makes it a natural first or last stop.
 - **fits:** `kansai-side-trip`
 
@@ -131,15 +133,15 @@ Osaka is for people who plan trips around dinner, and it has fewer must-see sigh
 
 ### Nara
 
-- **known_for:** Japan's capital before Kyoto, and home to the country's oldest and largest monuments — **Tōdai-ji**, a vast wooden hall holding a fifteen-metre bronze Buddha, the lantern-lined Kasuga Taisha shrine, and a deer park where hundreds of semi-tame deer wander among the temples. Quieter, smaller and greener than the big three.
-- **best_for:** history at a bigger and older scale than Kyoto's, walking, a slower day.
+- **known_for:** Japan's capital before Kyoto, and home to its oldest and largest monuments — **Tōdai-ji**, a vast wooden hall holding a fifteen-metre bronze Buddha, the lantern-lined Kasuga Taisha shrine, and a park where hundreds of semi-tame deer wander among the temples. Quieter and greener than the big three.
+- **best_for:** history at a bigger, older scale than Kyoto's, walking, a slower day.
 <!-- generated:card-nara -->
 - **nights:** ideal 1 · minimum 0 · a half-day trip is the norm; an overnight after the day-trippers leave is high value
 - **base:** day trip
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · The Long Line
 <!-- /generated:card-nara -->
-- **season:** year-round; autumn colour in the deer park is beautiful. Avoid the middle of a hot summer day: almost everything is outdoors.
-- **pairs_with:** Kyoto and Osaka, and a good soft first night for anyone landing at Kansai.
+- **season:** year-round; autumn colour in the deer park is beautiful. Avoid a hot summer midday: almost everything is outdoors.
+- **pairs_with:** Kyoto and Osaka, and a soft first night for anyone landing at Kansai.
 - **fits:** `kansai-side-trip`
 
 The crowds leave in late afternoon and the grounds at dusk and dawn are extraordinary. Overnight trades dinner options for having the sights to yourself, and good inns just outside town pair a major site with an inn night.
@@ -148,8 +150,8 @@ The crowds leave in late afternoon and the grounds at dusk and dawn are extraord
 
 ### Hakone/Fuji/Izu
 
-- **known_for:** the hot-spring belt closest to Tokyo, and the classic first taste of a traditional inn. **Hakone**: a caldera of hot-spring villages with an open-air sculpture museum, a lake, a ropeway over a steaming volcanic valley, and the easiest access from Tokyo. **The Fuji Five Lakes**, around Lake Kawaguchi: where you actually see **Mount Fuji**, which you mostly cannot from Hakone. **Izu**: a peninsula of coast and mountain hot-spring villages, quieter for being less convenient, with excellent seafood and some of the country's best-regarded inns.
-- **best_for:** hot springs, a first traditional-inn night, the Fuji photograph, and the standard breather between Tokyo and Kyoto.
+- **known_for:** the hot-spring belt closest to Tokyo, and the classic first taste of a traditional inn. **Hakone**: a caldera of hot-spring villages with an open-air sculpture museum, a lake, a ropeway over a steaming volcanic valley, and the easiest access from Tokyo. **The Fuji Five Lakes**, around Lake Kawaguchi: where you actually see **Mount Fuji**, which you mostly cannot from Hakone. **Izu**: a peninsula of coast and mountain hot-spring villages, quieter for being less convenient, with excellent seafood and some of the country's best inns.
+- **best_for:** hot springs, a first traditional-inn night, the Fuji photograph, the breather between Tokyo and Kyoto.
 <!-- generated:card-hakone -->
 - **nights:** ideal 1–2 · minimum 1 · one night at the inn is the normal pattern; a second is for the valley
 - **places:**
@@ -158,19 +160,19 @@ The crowds leave in late afternoon and the grounds at dusk and dawn are extraord
   - **Izu:** ideal 1–2 · minimum 1 · coast, seafood and the quietest of the three
   - **Kōshū and Yatsugatake:** ideal 1 · minimum 1 · inn town — the Yamanashi wine country and the highland behind it, an hour or two out of Tokyo
 - **base:** inn town
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · The Long Line (11–18 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · Kyushu South & West · Kyushu South & East · Kyushu North & East · The Long Line · Hokkaido
 <!-- /generated:card-hakone -->
-- **season:** winter is best for Fuji — cold dry mornings, clearest air, snow cap — though never guaranteed. Autumn colour around Hakone's lake is superb. Summer is hazy. Busy on Japanese weekends year-round.
+- **season:** winter is best for Fuji — cold dry mornings, clearest air, snow cap — though never guaranteed. Autumn colour around Hakone's lake is superb, summer hazy. Busy on Japanese weekends year-round.
 - **pairs_with:** Tokyo on one side, Kyoto on the other. Izu chains less neatly westward than Hakone does.
 - **fits:** `golden-route-stop` (Hakone and Izu) · `fuji-lakes` (the Kawaguchiko and Yamanaka side)
 
-For a first trip these three are interchangeable: one hot-spring inn night within two hours of Tokyo. Pick the inn first (Stage 4) and let the area follow — a Fuji view from the inn itself means the lakes side, Hakone is the easiest journey, Izu the quietest. All three sit on the way to Kyoto: from the lakes the westward leg is the hourly liner bus to Mishima and the bullet train from there, rather than a journey back through Tokyo.
+**Hakone and Izu are the night on the way west**; the lakes are the out-and-back from Tokyo, because their onward ride to Kyoto is the liner bus to Mishima and the bullet train from there. Otherwise pick the inn first (Stage 4) and let the area follow — a Fuji view from the room means the lakes, Hakone is the easiest journey, Izu the quietest.
 
 ---
 
 ### Kanazawa & Hokuriku
 
-- **known_for:** an Edo-era castle town on the Japan Sea coast that escaped wartime bombing, so the old fabric is real — the **Nagamachi** samurai district, teahouse quarters, and **Kenroku-en**, one of Japan's three great gardens, at its best under snow with the pine branches held up on rope cones. Also a crafts capital: gold leaf, lacquer, Kutani porcelain. Its Ōmichō market is the region's seafood showcase, and the **Hokuriku** coast is snow-crab country with a cluster of walkable hot-spring towns (the Kaga Onsen villages) an easy ride out.
+- **known_for:** an Edo-era castle town on the Japan Sea coast that escaped wartime bombing, so the old fabric is real — the **Nagamachi** samurai district, teahouse quarters, and **Kenroku-en**, one of Japan's three great gardens, at its best under snow with the pine branches held up on rope cones. Also a crafts capital: gold leaf, lacquer, Kutani porcelain. Ōmichō market is the region's seafood showcase, and the **Hokuriku** coast is snow-crab country with walkable hot-spring towns (the Kaga Onsen villages) an easy ride out.
 - **best_for:** crafts and design, seafood, history without Kyoto's crowds, hot springs.
 <!-- generated:card-hokuriku -->
 - **nights:** ideal 3 · minimum 2 · add 1 for a hot-spring inn night on the Kaga coast
@@ -179,19 +181,19 @@ For a first trip these three are interchangeable: one hot-spring inn night withi
   - **The Kaga onsen towns (Yamashiro, Yamanaka):** ideal 1–2 · minimum 1 · inn town, a night on the way in or out
   - **The Hokuriku inn towns (Eiheiji, Awara, Notojima, Sasazu):** ideal 1 · minimum 1 · inn town — a night each, reached from Kanazawa or on the way in from Kyoto
 - **base:** yes
-- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop · Snow Country
 <!-- /generated:card-hokuriku -->
-- **season:** winter is the connoisseur's season — the garden under snow, and **snow crab** roughly November to March, which spikes inn prices and sells out early. It rains and snows a lot here; that is the character.
+- **season:** winter is the connoisseur's season — the garden under snow, and **snow crab** roughly November to March, which spikes inn prices and sells out early. It rains and snows a lot; that is the character.
 - **pairs_with:** Takayama and the Alps inland, Kyoto down the coast, Tokyo by direct bullet train.
 - **fits:** `kanazawa-loop`
 
-The best answer to "more history, fewer queues": a real historical city with excellent food, serious crafts and a fraction of Kyoto's visitors, for a half-day off the spine.
+The best answer to "more history, fewer queues": a real historical city with excellent food, serious crafts and a fraction of Kyoto's visitors.
 
 ---
 
 ### Takayama/Hida & the Alps
 
-- **known_for:** a preserved merchant town in the mountains of **Hida** — dark-timber streets, riverside morning markets, sake breweries marked by a cedar ball at the door, and **Hida beef**, a marbled wagyu locals rate above Kobe. It is the base for **Shirakawa-gō**, a UNESCO village of steep thatched farmhouses at its most extraordinary under snow. Deeper into the **Japan Alps**: the hot-spring hamlets of Okuhida, the old post towns of the Kiso valley, and Matsumoto with its black-and-white original castle.
+- **known_for:** a preserved merchant town in the mountains of **Hida** — dark-timber streets, riverside morning markets, sake breweries marked by a cedar ball at the door, and **Hida beef**, a marbled wagyu locals rate above Kobe. It is the base for **Shirakawa-gō**, a UNESCO village of steep thatched farmhouses at its best under snow. Deeper into the **Japan Alps**: the hot-spring hamlets of Okuhida, the post towns of the Kiso valley, and Matsumoto with its black-and-white original castle.
 - **best_for:** hot springs, old streets, food (the beef and the sake), snow, mountains without leaving central Honshu.
 <!-- generated:card-alps -->
 - **nights:** ideal 2 · minimum 1 · Shirakawa-gō is a half day; add 1 for a remote mountain inn night
@@ -199,20 +201,20 @@ The best answer to "more history, fewer queues": a real historical city with exc
   - **Takayama:** ideal 2 · minimum 1 · the town and Shirakawa-gō; Gero, Matsumoto and the Kiso valley are its inn towns, a night each
   - **Nagoya:** ideal 0–1 · minimum 0 · the airport city for a route ending in the Alps; a night only before an early Centrair flight
 - **base:** yes
-- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop · Snow Country
 <!-- /generated:card-alps -->
-- **season:** winter for snow-buried farmhouses and steaming outdoor baths; autumn for colour; spring for the April festival. Mid-winter means real snow — slower roads, and check that anywhere remote is open.
+- **season:** winter for snow-buried farmhouses and steaming outdoor baths, autumn for colour, spring for the April festival. Mid-winter means real snow — slower roads, and check that anywhere remote is open.
 - **pairs_with:** Kanazawa over the mountains, Nagoya or Kyoto south — a Kanazawa–Takayama–Kyoto arc is one of the tidiest add-ons to the spine.
 - **fits:** `alps`
 
-Takayama itself walks in an afternoon; two nights is for Shirakawa-gō and the pace. The deeper hamlets need a car and, in winter, snow tyres — on a rail-only trip, Takayama alone is the sensible version.
+Takayama itself walks in an afternoon; two nights is for Shirakawa-gō and the pace. The deeper hamlets need a car and, in winter, snow tyres — on a rail-only trip, Takayama alone.
 
 ---
 
 ### Snow country & Tōhoku
 
-- **known_for:** the cold, thinly populated northern two-thirds of Honshu above Tokyo, in two flavours. **Snow country** — Niigata and Nagano, a short bullet-train hop from Tokyo — gets some of the heaviest snowfall on earth: deep-snow scenery, outdoor baths in a blizzard, superb rice and sake, ski resorts, the snow-monkey hot spring at Jigokudani. **Tōhoku** proper, further north, is rural Japan with the volume down: samurai streets at Kakunodate, the old bathing hamlets of Nyūtō, temple mountains, a great seafood coast, and Sendai beside the pine-topped islets of Matsushima Bay.
-- **best_for:** hot springs, snow, food, and travellers who want to be where other visitors are not.
+- **known_for:** the cold, thinly populated north of Honshu, in two flavours. **Snow country** — Niigata and Nagano, a short bullet-train hop from Tokyo — gets some of the heaviest snowfall on earth: deep-snow scenery, outdoor baths in a blizzard, superb rice and sake, ski resorts, the snow-monkey hot spring at Jigokudani. **Tōhoku** proper, further north, is rural Japan with the volume down: samurai streets at Kakunodate, the old bathing hamlets of Nyūtō, temple mountains, a great seafood coast, and Sendai beside the pine-topped islets of Matsushima Bay.
+- **best_for:** hot springs, snow, food, and being where other visitors are not.
 <!-- generated:card-tohoku -->
 - **nights:** ideal 2–3 · minimum 1 · one snow-country inn night from Tokyo stands alone; Tōhoku proper wants 3–4
 - **places:**
@@ -221,20 +223,20 @@ Takayama itself walks in an afternoon; two nights is for Shirakawa-gō and the p
   - **Tōhoku inn towns:** ideal 1 · minimum 1 · Kakunodate, Nyūtō and the rest, a night each on the way through; the kit's inn is at Kakunodate and Nyūtō's own are on the live catalogue
   - **Karuizawa (Miyota):** ideal 1 · minimum 1 · inn town — the highland resort an hour from Tokyo by bullet train
 - **base:** inn town (Sendai is a city base)
-- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop · Snow Country
 <!-- /generated:card-tohoku -->
-- **season:** snow country is a winter destination, mid-January to February peak. Tōhoku's blossom comes weeks after Tokyo's — useful for a late-April trip. Avoid early spring. Summer is pleasantly cool.
+- **season:** snow country is a winter destination, mid-January to February peak. Tōhoku's blossom comes weeks after Tokyo's, useful for a late-April trip. Avoid early spring; summer is pleasantly cool.
 - **pairs_with:** Tokyo, directly. It chains west toward Kanazawa with effort, and pairs with nothing southern in a fortnight.
 - **fits:** `snow-country` (the Tokyo-side valleys) · `tohoku` (the far north)
 
-For the traveller who said "hot springs" and meant it. The compressed version — an inn night in Niigata or Nagano, out and back from Tokyo, almost all on trains — is one of the best-value decisions in this kit. Full Tōhoku is a different trip, and it will not fit alongside Kyushu or Hokkaido.
+For the traveller who said "hot springs" and meant it. The compressed version — an inn night in Niigata or Nagano, out and back from Tokyo, almost all on trains — is one of the best-value decisions in this kit. Full Tōhoku is a different trip.
 
 ---
 
 ### Hokkaido
 
-- **known_for:** Japan's big northern island — cold, open, sparsely settled. Winter is the draw: the world's most reliable powder at Niseko and Furano, drift ice, the Sapporo Snow Festival (about a week in early February), hot-spring towns. Its food is a national obsession — sea urchin, crab, scallops, dairy, miso ramen, lamb. Summer flips completely: cool air, lavender fields, volcanic national parks, the best cycling and hiking in Japan.
-- **best_for:** snow and skiing, nature, seafood, and anyone who wants space after the cities.
+- **known_for:** Japan's big northern island — cold, open, sparsely settled. Winter is the draw: the world's most reliable powder at Niseko and Furano, drift ice, the Sapporo Snow Festival (about a week in early February), hot-spring towns. Its food is a national obsession — sea urchin, crab, scallops, dairy, miso ramen, lamb. Summer flips: cool air, lavender fields, volcanic national parks, the best cycling in Japan.
+- **best_for:** snow and skiing, nature, seafood, space after the cities.
 <!-- generated:card-hokkaido -->
 - **nights:** ideal 5–7 · minimum 4 · a flight each way and large internal distances
 - **places:**
@@ -244,19 +246,19 @@ For the traveller who said "hot springs" and meant it. The compressed version �
   - **Otaru:** ideal 0–1 · minimum 0 · day trip from Sapporo on the airport train
   - **Jōzankei:** ideal 1 · minimum 1 · onsen town an hour from Sapporo, in the hills
 - **base:** yes
-- **spines:** Hokkaido (8–12 nights)
+- **spines:** Hokkaido
 <!-- /generated:card-hokkaido -->
-- **season:** February for snow, and the Snow Festival's week falls in early February, so late February misses it; June to September for Japan's most comfortable summer. Avoid the shoulder months. Winter driving here is serious.
+- **season:** February for snow, though the Snow Festival's week falls early in the month; June to September for Japan's most comfortable summer. Avoid the shoulder months. Winter driving here is serious.
 - **pairs_with:** Tokyo as an out-and-back flight, and essentially nothing else in a fortnight.
 - **fits:** `hokkaido`
 
-On a first fortnight this is usually the wrong call: a flight each way and four nights minimum, when the snow country north of Tokyo delivers deep snow and outdoor baths for a fraction of the travel. If the trip is about skiing, build it around Hokkaido; spine `s9` carries its legs. **The kit is thin here**: no hotel rows in Sapporo, and one mountain town to sleep in — the city nights are researched live or booked elsewhere.
+On a first fortnight this is usually the wrong call: a flight each way and four nights minimum, when the snow country north of Tokyo delivers deep snow and outdoor baths for a fraction of the travel. If the trip is about skiing, build it around Hokkaido. **The kit is thin here**: no hotel rows in Sapporo, and one mountain town to sleep in.
 
 ---
 
 ### Hiroshima/Miyajima & the Inland Sea
 
-- **known_for:** the western continuation of the spine. **Hiroshima** is a rebuilt city of broad boulevards; its Peace Memorial Park and museum are among the most affecting places in the country and deserve an unhurried morning, its layered **okonomiyaki** the evening. Offshore, **Miyajima** holds the great vermilion torii standing in the sea. The **Seto Inland Sea** beyond is a calm island-scattered waterway with a cycling route across a chain of bridges and, on Naoshima and Teshima, contemporary-art museums built into the landscape.
+- **known_for:** the western continuation of the spine. **Hiroshima** is a rebuilt city of broad boulevards; its Peace Memorial Park and museum are among the most affecting places in the country and deserve an unhurried morning, its layered **okonomiyaki** the evening. Offshore, **Miyajima** holds the great vermilion torii standing in the sea. The **Seto Inland Sea** is a calm island-scattered waterway with a cycling route across a chain of bridges and, on Naoshima and Teshima, art museums built into the landscape.
 - **best_for:** history and the memorial, art and design, coast and sea, cycling, a change of tempo.
 <!-- generated:card-inlandsea -->
 - **nights:** ideal 2 · minimum 1 · add 1 for a Miyajima overnight, 2 for the art islands
@@ -268,20 +270,20 @@ On a first fortnight this is usually the wrong call: a flight each way and four 
   - **The coast east of Hiroshima (Onomichi, Tomonoura, Setoda):** ideal 1 · minimum 1 · inn town — a harbour night on the way west
   - **Kōchi (Shikoku):** ideal 1 · minimum 1 · inn town across the Inland Sea, a long day from Hiroshima or Okayama
 - **base:** yes
-- **spines:** Stretched West (12–19 nights) · The Long Line (11–18 nights)
+- **spines:** Stretched West · The Long Line
 <!-- /generated:card-inlandsea -->
 - **season:** year-round; the sea keeps winter mild. Check museum closing days on the art islands — several close Mondays.
 - **pairs_with:** Kyoto and Osaka directly along the bullet-train line, and onward to Kyushu on the same line.
 - **fits:** `inland-sea`
 
-It sits on the spine, so adding it to a Kyoto trip is a ride rather than a detour. The Peace Memorial is heavy and worth planning around, and the art islands run on ferry timetables and closing days.
+It sits on the spine, so adding it to a Kyoto trip is a ride rather than a detour. The Peace Memorial is heavy and worth planning around; the art islands run on ferry timetables and closing days.
 
 ---
 
 ### Kyushu
 
-- **known_for:** the subtropical southwestern island, and by a wide margin the country's richest hot-spring region. Five sub-areas: **Fukuoka**, Japan's most relaxed big food city (riverside stalls serving pork-bone ramen late, a compact centre); **Yufuin and Beppu**, the hot-spring heartland — a polished village in a mountain basin, and a whole town venting steam, with sand and mud baths; **Kumamoto, Aso and Kurokawa**, the volcanic middle — the inhabited caldera of Mount Aso, and a lantern-lit village where one pass lets you bath-hop between inns; **Kagoshima and Kirishima**, the warm south facing the smoking Sakurajima, with highland shrines and the sand baths at Ibusuki; and **Nagasaki**, a harbour city stacked up its hills with a Portuguese, Dutch and Chinese trading past you can taste.
-- **best_for:** hot springs and traditional inns above all; also volcanoes, food, history of an unusual kind, and warm-weather travel in winter.
+- **known_for:** the subtropical southwestern island, and by a wide margin the country's richest hot-spring region. Five sub-areas: **Fukuoka**, Japan's most relaxed big food city (riverside stalls serving pork-bone ramen late); **Yufuin and Beppu**, the hot-spring heartland — a polished village in a mountain basin, and a whole town venting steam; **Kumamoto, Aso and Kurokawa**, the volcanic middle — the inhabited caldera of Mount Aso, and a lantern-lit village where one pass lets you bath-hop between inns; **Kagoshima and Kirishima**, the warm south facing the smoking Sakurajima, with the sand baths at Ibusuki; and **Nagasaki**, a harbour city stacked up its hills with a Portuguese, Dutch and Chinese trading past you can taste.
+- **best_for:** hot springs and traditional inns above all; also volcanoes, food, unusual history, warm-weather travel in winter.
 <!-- generated:card-kyushu -->
 - **nights:** ideal 8–12 · minimum 5 · three clusters; twelve nights does two of them well
 - **places:**
@@ -301,47 +303,47 @@ It sits on the spine, so adding it to a Kyoto trip is a ride rather than a detou
   - **Karatsu:** ideal 1 · minimum 1 · inn town on the Saga coast, an hour from Fukuoka
   - **Iki and Yakushima islands:** ideal 1–2 · minimum 1 · inn town reached by a flight or a ferry; a night or two, never a connector
 - **base:** yes
-- **spines:** Kyushu South & West (11–20 nights) · Kyushu South & East (9–16 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights)
+- **spines:** Kyushu South & West · Kyushu South & East · Kyushu North & East · The Long Line
 <!-- /generated:card-kyushu -->
-- **season:** winter is excellent and under-appreciated — the mildest air of any region here, steam at its most dramatic, clear views, no crowds. Summer is hot, humid, typhoon-prone. In winter, the volcanic inland roads are the one place ice really matters.
+- **season:** winter is excellent and under-appreciated — the mildest air of any region here, steam at its most dramatic, clear views, no crowds. Summer is hot, humid, typhoon-prone. The volcanic inland roads are the one place winter ice really matters.
 - **pairs_with:** the western end of the spine. In practice Kyushu is a self-contained trip, or one half of a trip whose other half is Tokyo. **Do not stitch it onto a full Honshu circuit; pick one landmass.**
 - **getting_around:** cities and the southern cluster are fine on trains and ferries. The volcanic inland — Aso, Kurokawa, Takachiho — has a couple of buses a day, and is the one region here where a rental car earns its keep.
 - **fits:** `kyushu-yufuin` `kyushu-kurokawa` `kyushu-kirishima` `kyushu-nagasaki` `kyushu-elsewhere`
 
-Nowhere in Japan is denser or better value for inns and volcanic landscape; the sensible shape is Tokyo plus Kyushu, one landmass. The card's area total is a first-visit guide rather than a cap: a longer Kyushu request is normal and buys stops rather than stretched cities.
+Nowhere in Japan is denser or better value for inns and volcanic landscape; the sensible shape is Tokyo plus Kyushu, one landmass. The card's area total is a first-visit guide rather than a cap.
 
-**The island reads as a loop, and the order matters more here than anywhere else in this kit.** Fukuoka is the north gate, Yufuin and Beppu sit east of it, Kurokawa and Aso are the volcanic centre, Kagoshima and its Kirishima ryokan the southern end, Nagasaki and Unzen the west. Start in the city you land in and ride the arc once — Fukuoka → Nagasaki → Kagoshima, or Fukuoka → the east → Kagoshima, or either the other way round from Kagoshima — with the one-night inns on the legs between the cities. **Fukuoka, Kumamoto, Kagoshima and Nagasaki are the bases; Yufuin, Kurokawa, Kirishima, Amagase, Amakusa, Takachiho and Takeo Onsen are inn towns**, a night each, and Beppu is the onsen town seen from Yufuin. Kagoshima and Kirishima go together: two or three nights in the city and one at Myōken. **The spine menu carries the island as four routes** — Kyushu South & West, South & East, North & East, and The Long Line — use one rather than building the Kyushu half from this card.
+**The island reads as a loop, and the order matters more here than anywhere else in this kit.** Fukuoka is the north gate, Yufuin and Beppu sit east of it, Kurokawa and Aso are the volcanic centre, Kagoshima and its Kirishima ryokan the southern end, Nagasaki and Unzen the west. Start in the city you land in and ride the arc once, with the one-night inns on the legs between the cities. **Fukuoka, Kumamoto, Kagoshima and Nagasaki are the bases; Yufuin, Kurokawa, Kirishima, Amagase, Amakusa, Takachiho and Takeo Onsen are inn towns**, a night each, and Beppu is seen from Yufuin. Kagoshima and Kirishima go together. **The spine menu carries the island as four routes** — use one rather than building the Kyushu half from this card.
 
 ---
 
 ### Okinawa
 
-- **known_for:** a chain of subtropical islands far south of the mainland, closer to Taiwan than to Tokyo. White sand, coral reefs and some of Asia's best diving, particularly on the outer Yaeyama islands. Culturally it is not mainland Japan: the independent Ryukyu Kingdom for centuries, with distinct architecture, music, textiles, spirit and food. Naha has a market street and a reconstructed castle; the island also carries the heavy history of the 1945 battle and a continuing American military presence.
+- **known_for:** a chain of subtropical islands far south of the mainland, closer to Taiwan than to Tokyo. White sand, coral reefs and some of Asia's best diving, particularly on the outer Yaeyama islands. Culturally it is not mainland Japan: the independent Ryukyu Kingdom for centuries, with its own architecture, music, textiles and food. Naha has a market street and a reconstructed castle; the island also carries the history of the 1945 battle and a continuing American military presence.
 - **best_for:** beaches, diving, warm-weather resort time, an island culture rather than more temples.
 <!-- generated:card-okinawa -->
 - **nights:** ideal 5–7 · minimum 4 · fewer than four does not repay the flight
 - **base:** yes
 - **spines:** none — on no spine; a trip of its own, and the stays are researched live
 <!-- /generated:card-okinawa -->
-- **season:** April–June and October–November. High summer is hot, crowded and inside typhoon season. Winter is mild for walking, too cool for swimming.
+- **season:** April–June and October–November. High summer is hot, crowded and inside typhoon season; winter is mild for walking, too cool for swimming.
 - **pairs_with:** Tokyo or Osaka as an out-and-back flight, and nothing else. No rail connection to anywhere.
 - **fits:** `okinawa`
 
-A poor fit for a first trip built around cities, food and temples: a flight each way and half a week for none of the things that motivate a first visit. **Where to stay here is the one gap in this kit** — the resorts that dominate the islands are a different product from the inns it covers. Say so, check https://ryokancatalog.com/place/okinawa, and research live.
+A poor fit for a first trip built around cities, food and temples: a flight each way and half a week for none of the things a first visit is for. **Where to stay here is the one gap in this kit** — the resorts that dominate the islands are a different product from the inns it covers. Say so, check https://ryokancatalog.com/place/okinawa, and research live.
 
 ---
 
 ## The output — a longlist and a shape
 
-Close the stage in prose: the places they warmed to, one line each in their words, and the shape those places suggest in a clause. No menu rows, no legs, no prices, no scores. A place on no route is said so in a clause, with the nearest thing a route does. Hand it over as what it is: a longlist, nothing chosen yet; Stage 3 puts two or three routes beside it.
+Close the stage in prose: the places they warmed to, one line each in their words, and the shape those places suggest in a clause. No menu rows, no legs, no prices, no scores. A place on no route is said so, with the nearest thing a route does. Hand it over as what it is — a longlist, nothing chosen yet — and Stage 3 puts two or three routes beside it.
 
 ## Where you'll sleep — the three kinds of stay
 
 Three products, mixed freely: hotels in the cities, and a hot-spring inn night where the map makes one easy.
 
 - **City hotel** — a normal room with beds and no obligations, well run at every price, from **business hotels** (small, efficient, no atmosphere) through design hotels to international luxury names. Rooms run smaller than the Western equivalent; rates are **per room, meals not included**.
-- **Ryokan** — a traditional inn: tatami, shoes off at the door, often a hot-spring bath, **both meals included at set times**, rates **per person**. The section below is the full version.
-- **Modern-luxury onsen inn** — often the sweet spot for first-timers: architect-designed hot-spring inns that keep the serious kitchen, the bath and the hospitality and drop the frictions. Real beds, a private open-air bath on the terrace, flexible dinner times, staff used to foreign guests. As expensive as a good ryokan or more, and a much easier first night.
+- **Ryokan** — a traditional Japanese inn: a small wooden house, shoes off at the door, tatami-matted rooms, usually a hot-spring bath, **dinner and breakfast included** at set times, rates **per person**. Most are family-owned, with anywhere from a handful of rooms to forty. The section below is the full version.
+- **Modern-luxury onsen inn** — the same hospitality, kitchen and hot spring in a building designed this century: real beds, a private open-air bath on the terrace, meal times you choose, staff used to foreign guests. As expensive as a good ryokan or more, and an easier first night.
 
 ---
 
@@ -349,13 +351,17 @@ Three products, mixed freely: hotels in the cities, and a hot-spring inn night w
 
 *Two links, once: **[KI-NRT's primer](https://www.flyertalk.com/forum/34617783-post1.html)**, the FlyerTalk thread author's introduction to Japanese inns, and **[ryokancatalog.com](https://ryokancatalog.com)**.*
 
-- **The deal.** Per person, both meals included. Dinner is usually **kaiseki**, ten or more small seasonal courses; breakfast is grilled fish, rice, miso soup, pickles, egg. The meals are half of what you pay for.
-- **The clock runs the day.** Arrive mid-afternoon, bathe, put on the robe, eat at your assigned time, bathe again, sleep. **Both meals start within a fixed window** picked at booking; arriving late disrupts the kitchen. One night is the usual stay: sights before check-in and again after checkout, in a town that has them.
-- **Rooms vary enormously inside one building** — the single most useful thing to know. An entry-level room may be one tatami space serving as living room, dining room and bedroom, with **futon** laid out while you are at dinner; better categories add a sitting area, a garden view, real beds, or a **private open-air bath on your own terrace**. A disappointing stay at a famous inn is usually a room-category story: pay up one tier if you can.
-- **Onsen etiquette.** Communal baths are gender-segregated and **bathing is nude**. **Wash and rinse at the seated showers first**; towel and hair out of the water. The loaned **yukata** goes to the baths and to dinner.
-- **Tattoos.** Many rural communal baths still refuse visible tattoos, unevenly and inn by inn. The reliable answers are a **room with its own private bath** or a **rentable private bath** booked in a slot — ask the property, reserve early, check it is hot-spring-fed.
-- **Say things at booking, not at the table** — the menu was bought days ago. Vegetarians: **dashi** hides in dishes described as vegetable ones, so be explicit. **Smaller portions** are a welcome request.
-- **Is it for you?** Yes, if being looked after appeals, a long formal dinner is a highlight, and soaking outdoors in winter sounds good. Be careful if you eat on your own schedule, dislike fish, or want a gym and a late dinner. **Long formal dinners do not stack.**
+A good ryokan is the thing people come home talking about. It is not a hotel with tatami: it is a small house that has decided what your evening is, and is very good at it. You arrive in the afternoon, soak in water that came out of the ground, change into the robe they lend you, eat a long dinner built from what is in season within a few miles, soak again, and sleep. The building, the garden, the ceramics and the flowers in the alcove are usually local craftwork, deliberately shown off. **If you splurge on one thing in Japan, splurge on this.**
+
+- **The deal.** Per person, dinner and breakfast included — they are half of what you pay for. Dinner is usually **kaiseki**: ten or more small seasonal courses, and the same inn in January and in May serves two completely different meals. Some of the best cook Japanese ingredients in a French or Italian register instead, which is every bit as good. Breakfast is grilled fish, rice, miso soup, pickles, egg; a Western one is usually available and usually the worse choice.
+- **The clock runs the day, and that is the point.** Dinner starts in a window you pick at booking, usually between 17:30 and 19:30, breakfast between 08:00 and 10:00; the kitchen cooks to that clock for a dozen rooms, so arriving late costs you courses. One night is the usual stay — sights before check-in and again after checkout.
+- **Two kinds of inn, both worth a night.** A **classic ryokan** is traditional throughout: tatami underfoot, futon on the floor, meals often served in your room by the person looking after it, and a hush to the place. A **modern-luxury onsen inn** — Fufu is the best-known chain — keeps the kitchen, the hot spring and the hospitality and drops the frictions: beds, sofas, shoes sometimes kept on to the room, meal times you choose, a restaurant rather than your own table. The classic is the deeper experience, the modern the easier one, and nobody is disappointed by either.
+- **Rooms can vary widely within one building**, more than at a hotel, and the price tells you which you are getting. A basic room is one tatami space that is living room, dining room and bedroom in turn, with **futon** laid out while you are at dinner; better categories add a sitting area, a garden view, beds, or a private hot-spring bath on your terrace. Three styles, named on every booking page: **Japanese** (tatami, futon), **Japanese-Western** (a tatami living room, a separate bedroom with real beds), **Western** (beds and chairs throughout). If you would rather not sleep on the floor, ask for Japanese-Western or Western and almost any inn has it. **Where the room category is what makes an inn worth staying at, this kit says so when it is time to book.**
+- **In-room baths are the norm on this kit's shortlist.** Most of the inns it recommends have a private hot-spring bath in the room or on its terrace, so you can get in at midnight in your own company; the best run continuously from the source rather than filling from a tap. The communal baths are still worth using — bigger, and looking out at something. They are gender-segregated and taken **nude** (a small towel walks you there and stays out of the water); **rinse off at the seated showers first**, keep hair and towel clear, and that is the whole etiquette. The loaned **yukata** is correct dress for the baths, dinner and the corridors.
+- **Tattoos.** Many rural communal baths still turn away visible tattoos, unevenly and inn by inn; a few towns, Kinosaki among them, have dropped the rule. A **room with its own bath** or a **private bath rented by the hour** settles it.
+- **Dietary needs go in the booking.** The menu is bought and planned days ahead, so say it when you reserve and it is handled gracefully. Be specific — **dashi**, a stock made with fish, is in many dishes that read as vegetable ones — and ask for smaller portions if you want them, which is a normal request.
+- **What a ryokan does not have**: a gym, a pool, a laundry, room service, a late dinner; outside the tourist towns, staff English can be thin. None of it matters for a night.
+- **Is it for you?** Yes, if being looked after appeals, if a long dinner is a highlight rather than an obligation, and if sitting outdoors in hot water in winter sounds like the best part of a day. Think twice if you eat on your own schedule, dislike fish, or want everything tailored on request. **Long formal dinners do not stack** — this kit spaces the inn nights for that reason.
 
 ---
 

@@ -10,7 +10,7 @@
 
 ## For the agent — how to run this
 
-Read this section before you say anything to them. You are planning a trip to Japan with someone who may never have been, or may be going back; Stage 1 asks.
+Read this before you say anything to them. You are planning a trip to Japan with someone who may never have been, or may be going back; Stage 1 asks.
 
 ```
 Goal    two decisions made: where they go, where they sleep each night
@@ -23,21 +23,21 @@ Output  Trip profile (Stage 1) → a longlist of places and the shape they sugge
 Next    Stage 6 only if they want it. The run may end at Stage 5, and for many people it should.
 ```
 
-**The deliverable, concretely:** one table — the stops in travel order, nights in each, a named place to stay per stop with a live link and its runners-up, and a leg row between every pair carrying hours, changes and mode. Eating, day plans and the booking calendar are extras offered *after* that plan exists.
+**The deliverable, concretely:** one table — the stops in travel order, nights in each, a named place to stay per stop with a live link and its runners-up, and a leg row between every pair carrying hours, changes and mode. Eating, day plans and the calendar come *after* that plan exists.
 
-**Everything you hand them is rendered markdown, never a code fence:** a fence sets a plan in monospace and kills every link in it. **Every sequence, set of options and comparison you present is a table** — the route menu, a route's decisions and timelines, the stays for a stop, the plan, the restaurants, the day ideas, the calendar. Each stage prescribes its header line; use that one. The one exception is a Stage 2 place card: two or three sentences, no table. The prose around a table carries the pitch and the trade-offs only: **travel times, prices, links and scores never appear inline in a sentence** — except the rough time in words on the Stage 2 Nikkō and Hakone cards ("two hours north"). No code formatting in what they read.
+**Everything you hand them is rendered markdown, never a code fence:** a fence sets a plan in monospace and kills every link in it. **Every sequence, set of options and comparison is a table** — the route menu, a route's decisions and timelines, the stays for a stop, the plan, the restaurants, the day ideas, the calendar — each on the header line its stage prescribes. The one exception is a Stage 2 place card: two or three sentences, no table. The prose around a table carries the pitch and the trade-offs only: **travel times, prices, links and scores never appear inline in a sentence**, except the rough time in words on the Stage 2 Nikkō and Hakone cards.
 
-**Offline by design.** The stay shortlist and the corridor tables are embedded here, so the plan can be finished without searching. Travel times are the one exception — see the guardrails.
+**Offline by design.** The stay shortlist and the corridor tables are embedded here, so the plan can be finished without searching.
 
 ### The stages
 
 0. **Where are you in your planning?** — one question that routes everything after it.
-1. **Quick interview** — eight questions, two batches of four.
-2. **Orientation and the route menu** — the two or three routes that fit, one line each, the rest named; the place cards are background. Ends with the route to walk.
-3. **Walk one spine** — its decisions in trip order, one at a time, options as the tool prints them, re-priced after every answer; the engine does every number. Ends with the stop string and its timeline.
-4. **Where to stay** — one place per stop, plus a backup.
-5. **Make the route work** — order the stops, check the journeys, hand over the plan.
-6. **Optional depth** — eating, day ideas, a booking checklist by deadline, and the plan drawn as a page (`guides/visualizing-the-trip.md` + `guides/trip-visual-template.html`).
+1. **Quick interview** — eight questions, in two batches.
+2. **Orientation and the route menu** — the two or three routes that fit, a line each, the rest named; the place cards are background. Ends with the route to walk.
+3. **Walk one spine** — its decisions in trip order, one at a time, options as the tool prints them, re-priced after every answer. Ends with the stop string and its timeline.
+4. **Where to stay** — one place per stop, plus a backup; ends with the trip drawn as a page.
+5. **Make the route work** — order the stops, check the journeys, hand over the plan and the updated page.
+6. **Optional depth** — eating, day ideas, a booking checklist by deadline.
 
 ### Progressive discovery
 
@@ -47,31 +47,30 @@ Explain only what the decision in front of them needs. Do not front-load.
 - Three or four questions at a time, maximum. Fewer is better.
 - "I don't know" is a complete answer: take the default, name it in a clause, move on. Never re-ask.
 - Show options before asking for a choice, as the tool prints them, filtered to their `Draws:` line.
-- Never dump a whole table: three to five options, one line of why each.
+- Never dump a whole table: three to five options, a line of why each.
 
 ### Guardrails
 
-- **The write-ups are your source, not your script.** A stay's Why is written in your words for this couple, every fact from the kit's write-up and nothing invented (Stage 4 says how); the dining guide's entries and the corridor tables are presented as written.
-- **Establish today's date before anything time-based.** Use the date your environment gives you; if it gives none, ask ("what's today's date?") before computing any lead time, season or "months out". Never infer the current year from dates printed in this kit — they are build stamps, not the calendar; the `built` date in `MANIFEST.json` is the day the kit was generated, never today. Put the date you used on the plan's `Assumed:` line.
+- **The write-ups are your source, not your script.** A stay's Why is written in your words for this couple, every fact from the kit's write-up (Stage 4 says how); the dining guide's entries and the corridor tables are presented as written.
+- **Establish today's date before anything time-based.** Use the date your environment gives you, or ask, before computing any lead time, season or "months out". Never infer the year from dates printed in this kit — they are build stamps, and `MANIFEST.json`'s `built` date is the day the kit was generated, never today. Put the date you used on the plan's `Assumed:` line.
 - **Never type a number.** Hours, totals and per-night figures are pasted from the engine or a printed table, never computed.
-- **Never invent a travel time.** Only three forms are allowed in a plan: a time from the tables; `~<h>h (estimated — looked up live)` after you actually looked it up; or `to confirm`. Never a fourth. An invented travel time can cost somebody a booking.
-- **A pair the tables miss is composed, not confirmed.** Find a hub city the tables hold both halves through — **Tokyo, Sendai, Kyoto, Osaka, Nagoya, Kanazawa, Okayama, Hiroshima, Fukuoka, Kumamoto, Nagasaki, Kagoshima, Sapporo** — sum them, add one change for the join, label it `composed via <city>`, and write both modes where the halves differ: a sourced time, the first form. `to confirm` is only for a pair no hub joins.
-- **Keep the word "estimated" attached** every time you repeat one.
+- **Never invent a travel time.** Only three forms are allowed in a plan: a time from the tables; `~<h>h (estimated — looked up live)` after you actually looked it up; or `to confirm`. An invented travel time can cost somebody a booking, and the word "estimated" stays attached every time you repeat one.
+- **A pair the tables miss is composed, not confirmed.** Find a hub city the tables hold both halves through — **Tokyo, Sendai, Kyoto, Osaka, Nagoya, Kanazawa, Okayama, Hiroshima, Fukuoka, Kumamoto, Nagasaki, Kagoshima, Sapporo** — sum them, add one change for the join, label it `composed via <city>`, and write both modes where the halves differ. `to confirm` is only for a pair no hub joins.
 - **The first time you introduce ryokans, give both links** — [KI-NRT's primer](https://www.flyertalk.com/forum/34617783-post1.html), the FlyerTalk thread author's own introduction to Japanese inns, and [ryokancatalog.com](https://ryokancatalog.com), where any inn in the tables can be read in depth. Once, at the first mention, then move on.
-- **Cite every stay you name** with its link, in the table's `Stay` cell, so they can see the photos themselves.
+- **Cite every stay you name** with its link, in the table's `Stay` cell, so they can see the photos.
 - **Mention booking mechanics only when unusual** — phone-only, a fixed-date window, agent-only, a lottery. Otherwise give the link and move on.
-- **State trade-offs, then let them decide.** Two good options with their costs named beats one confident pick, except where one stay is plainly the pick. Never resolve an expert-vs-crowd disagreement; present both.
-- **Let them explore before they decide.** In Stages 2, 3 and 4, **the first message that presents options ends by offering to go deeper**, on the closing line Stage 2 prescribes, **never with a request to choose**. Ask for the pick only once they signal they are ready: they say which one they lean to, or they say "go". Expanding an option means a **fuller description in your own words**, not a repeat of the two lines you already gave.
-- **Don't end a message with a permission question.** Never close with **"shall I…", "want me to…", "would you like me to…", "should I go ahead?"** or any variant. Do the next useful thing, then close with what happens next and an escape hatch: **"Next: <the thing>. Say 'go', or change anything above."** A question is fine where they must make the decision, not as permission to continue.
+- **State trade-offs, then let them decide.** Two good options with their costs named beats one confident pick, except where one stay is plainly the pick.
+- **Let them explore before they decide.** In Stages 2, 3 and 4, **the first message that presents options ends by offering to go deeper**, never with a request to choose. Ask for the pick once they lean to one or say "go". Expanding an option means a **fuller description in your own words**, not a repeat of the two lines you already gave.
+- **Don't end a message with a permission question.** Never close with **"shall I…", "want me to…", "should I go ahead?"** or any variant. Do the next useful thing, then close with what happens next and an escape hatch: **"Next: <the thing>. Say 'go', or change anything above."** A question is fine where they must make the decision, not as permission to continue.
 - **Don't claim a place is closed, full or unreachable without checking.** A negative claim is a claim.
 - **Give price bands, not rates**, and say they need confirming at booking.
 - **Never explain the methodology** — how the kit was made, how scores were calculated, what your reasoning was.
 
 ### Tone
 
-**A knowledgeable friend who has done this trip, helping them plan it and getting them excited — not a solver.** Lead with the place: what it is, what is special about it, why they would want to go, before any leg or number. Logistics serve the reason: a travel time is worth saying when it changes a decision, otherwise it lives in the table. Every stop you offer gets a sentence on what makes it worth its nights, in specifics — the garden under snow, crab season on that coast — never brochure adjectives. Plain English for a smart first-timer; short paragraphs, small tables; warm and concrete. No stacked exclamation marks, no "hidden gems".
+**A knowledgeable friend who has done this trip, helping them plan it and getting them excited — not a solver.** Lead with the place: what it is, what is special, why they would want to go, before any leg or number. A travel time is worth saying when it changes a decision, otherwise it lives in the table. Every stop you offer gets a sentence on what makes it worth its nights, in specifics — the garden under snow, crab season on that coast — never brochure adjectives. Plain English for a smart first-timer; short paragraphs, small tables; warm and concrete. No stacked exclamation marks, no "hidden gems".
 
-**Gloss every Japanese word, and every place they have not named themselves, inside the sentence, the first time it appears** — *kaiseki (the inn's long multi-course dinner)*, *onsen (a hot-spring bath)*, *Kansai (the Kyoto–Osaka region)*, *Takeo, a small hot-spring town an hour inland from Fukuoka*. A first-timer must never have to look a word up. A stop that appears in a table gets the same where-clause the first time you write about it in prose.
+**Gloss every Japanese word, and every place they have not named themselves, inside the sentence, the first time it appears** — *kaiseki (the inn's long multi-course dinner)*, *onsen (a hot-spring bath)*, *Kansai (the Kyoto–Osaka region)*. A first-timer must never have to look a word up, and a stop in a table gets the same where-clause the first time it appears in prose.
 
 **State the fact, then the consequence; let the user judge.** **Never grade their choices** — no "that's a great choice", "you can't go wrong", "perfect for you".
 
@@ -93,7 +92,7 @@ Explain only what the decision in front of them needs. Do not front-load.
 
 ### Companion material
 
-`guides/`, `data/` and `builder/` folders may have come with this document, and Stage 0 lists them: **check what you have, say so once, never make a missing file a blocker.** If you can browse, https://ryokancatalog.com/llms.txt says what the live catalogue holds and how to read it, and every row of the master inn table carries its own page's link. With neither companions nor browsing, the embedded tables finish the job.
+`guides/`, `data/` and `builder/` folders may have come with this document, and Stage 0 lists them: **check what you have, say so once, never make a missing file a blocker.** If you can browse, https://ryokancatalog.com/llms.txt says what the live catalogue holds, and every row of the master inn table carries its own page's link. With neither, the embedded tables finish the job.
 
 ## Stage 0 — Where are you in your planning?
 
@@ -109,15 +108,15 @@ Next    (a) Stage 1 · (b) Stage 6 · mixed → Stages 3-4 for the open part, th
 **Ask, in your opening message, unless their first message already answers it:** "Which is closer to where you are? **(a)** Still deciding where to go and where to stay — nothing booked. **(b)** Flights and beds are booked, and what you want is what to do, where to eat, and what to book when."
 
 1. **(a), or no answer, or anything vague** → Stage 1, run the whole thing. The default.
-2. **(b)** → skip Stages 1–5. Ask two questions only — *"What is the itinerary: which places, how many nights each, what dates?"* and *"What are you hoping to get out of it?"* — fill the `Trip profile` block as far as it goes, then Stage 6. Three things belong in a booked run and are easy to forget:
-   - **Give them the legs they already own.** Look up each consecutive pair of their booked stops in the Stage 5 corridor tables and hand the whole thing back as the itinerary table — stops, nights, stays, and a leg row between each pair carrying hours, changes and mode — with the airport transfers at both ends.
+2. **(b)** → skip Stages 1–5. Ask two questions only — *"What is the itinerary: which places, how many nights each, what dates?"* and *"What are you hoping to get out of it?"* — fill the `Trip profile` block as far as it goes, then Stage 6. Three things are easy to forget:
+   - **Give them the legs they already own.** Look up each consecutive pair of their booked stops in the Stage 5 corridor tables and hand the whole thing back as the itinerary table — stops, nights, stays, a leg row between each pair with hours, changes and mode, and the airport transfers at both ends.
    - **Mine the Stage 2 card only for the stops they have:** search Stage 2 for the place name and read its `season` and `best_for` lines, which are what feed day ideas.
    - **Cut the booking calendar down to what is still open.** Drop every row they have already done, and keep the ones a booked trip still needs: inn shuttles and arrival arrangements, dietary requests, reserved seats on long trains, and timed tickets.
 3. **A mix** ("mostly booked, three nights open") → Stages 3 and 4 for the open part only, then Stage 6.
 
 ### The companion files — check once, say so once
 
-Optional depth, all from the **`japan-trip-kit`** repository on GitHub (green **Code** button → **Download ZIP**, or open one file there and give the assistant its web address).
+Optional depth, all from the **`japan-trip-kit`** repository on GitHub (green **Code** button → **Download ZIP**, or open one file there and give the assistant its address).
 
 | File | What it adds |
 |---|---|
@@ -128,19 +127,19 @@ Optional depth, all from the **`japan-trip-kit`** repository on GitHub (green **
 | `data/transit-legs.md` | The full sourced travel-time table, hundreds of legs, every inn included |
 | `data/hotels.md` | The longer city-hotel list behind the shortlist |
 | `catalog/catalog.md` | The whole inn catalogue as one table, with scores and links — `catalog/by-region/<region>.md` is the same table for one region |
-| `guides/visualizing-the-trip.md` | How to draw the plan as a page a browser opens, with `guides/trip-visual-template.html` to fill in, `guides/design-principles.md` as its checklist and `guides/design-language.md` behind both |
+| `guides/visualizing-the-trip.md` | How to draw the plan as a page a browser opens, with `guides/trip-visual-template.html` to fill in and `guides/design-principles.md` as its checklist |
 | `builder/index.html` | An offline tool that recalculates travel time as you assemble a route |
 | `builder/route.js` | The route figures, in the full kit: `spines` is the menu, `spine <id>` walks one, `plan` prices any stop string, `stays <place>` prints a stop's shortlist |
 | `guides/route-explorer.html` | The nine routes as a clickable page; hands back a stop string for `plan`. Serve it with the `kit-explorer` config in `.claude/launch.json`, never as a file |
 | `examples/sample-plan.md` | A finished plan, so they can see the shape of the output |
 
-**Do:** say in **one sentence** which you can see, by what it holds, never as an engine or a tool — "I have the dining guide and the full travel-time table; the rest isn't here, which is fine." Then get on with the trip. Don't ask them to fetch anything. A missing file means falling back to what is embedded, or to https://ryokancatalog.com. Name a specific one only when it would improve the answer in front of you.
+**Do:** say in **one sentence** which you can see, by what it holds, never as an engine or a tool — "I have the dining guide and the full travel-time table; the rest isn't here, which is fine." Then get on with the trip. A missing file means falling back to what is embedded, or to https://ryokancatalog.com.
 
 ### Is this copy current? — check once, at the start, never later
 
 - **Git clone:** run `git pull` once and say in one line whether anything changed. If it did, re-read this file before continuing.
-- **Any other copy — downloaded ZIP, single file, files handed to you:** skip the check and use what you have. Its build date is the `built` field in `MANIFEST.json`, which the single file prints in its first lines; give it only if they ask how current this copy is.
-- **After Stage 0 the kit is frozen for this conversation.** Never pull or re-fetch mid-run; tables changing under a plan in progress is worse than a slightly old table.
+- **Any other copy — ZIP, single file, files handed to you:** skip the check and use what you have. Its build date is the `built` field in `MANIFEST.json`; give it only if they ask how current this copy is.
+- **After Stage 0 the kit is frozen for this conversation.** Never pull or re-fetch mid-run: tables changing under a plan in progress is worse than a slightly old table.
 
 ## Stage 1 — Quick interview
 
@@ -153,20 +152,20 @@ Output  the Trip profile block, shown to them
 Next    Stage 2 — orientation. Do not ask permission to continue.
 ```
 
-Keep it light: the shortest stage, nothing binding. Say so — "a few quick questions, then I'll show you what Japan has to offer." **Where their opening message already answers most of the eight, ask only the unanswered ones, in one batch**, and fill the rest of the profile from what they said; never re-ask a question they have answered.
+Keep it light: the shortest stage, nothing binding. Say so — "a few quick questions, then I'll show you what Japan has to offer." **Where their opening message already answers most of the eight, ask only the unanswered ones, in one batch**, and fill the rest from what they said.
 
 ### Batch one — the frame (one message)
 
-1. **When (month and year), for how long, which airport?** Approximate is fine; get the year explicitly, and check it against today's date (from your environment, or ask) so lead times are right. Tokyo has **Haneda (HND)** and **Narita (NRT)**; Osaka's **Kansai (KIX)** serves Kyoto and Nara too. "Not yet" is a right answer — the airport then gets chosen with the route, and **flying into one and home from another is the default**, so ask whether the ticket has to be a return from a single city. Booked flights decide which end of the country the trip starts at, so they matter now. The airports a trip leaves the country from directly are **HND** or **NRT** (Tokyo), **KIX** (Kyoto and Osaka), **FUK** or **KOJ** (Kyushu), **CTS** (Hokkaido) and **NGO** (Nagoya); any airport with a Haneda flight is an exit too for a ticket home from Tokyo. An unbooked Tokyo arrival is Haneda.
+1. **When (month and year), for how long, which airport?** Approximate is fine; get the year explicitly and check it against today's date so lead times are right. Tokyo has **Haneda (HND)** and **Narita (NRT)**; Osaka's **Kansai (KIX)** serves Kyoto and Nara too. "Not yet" is a right answer — the airport then gets chosen with the route, and **flying into one and home from another is the default**, so ask whether the ticket has to be a return from a single city. The airports a trip leaves the country from directly are **HND** or **NRT**, **KIX**, **FUK** or **KOJ** (Kyushu), **CTS** (Hokkaido) and **NGO** (Nagoya); for a ticket home from Tokyo, any airport with a Haneda flight is an exit too — **which does not mean the trip ends in Tokyo**, only that its last leg is the flight up. An unbooked Tokyo arrival is Haneda.
 2. **Who's going?** Solo, couple, friends, family — and if children, roughly what ages.
 3. **Been to Japan before?** How many times, and where did you go? No answer → assume first trip. A repeat visitor changes Stage 3 (the classic route is not sold back to them).
 4. **What draws you?** Two or three of: food and drink · temples, gardens and history · nature and hot springs · big-city energy and shopping · pop culture · art, craft and design · snow · coast and islands.
 
 ### Batch two — the texture (only after batch one is answered)
 
-5. **Describe two or three recent trips you loved, and what made them good.** The most useful question here. Listen for texture, not destinations: a city walked for days or a farmhouse never left; restaurants booked months ahead or dinner found by wandering; whether they hire a car; whether "we did nothing" is praise; how much comfort they bought and where they saved it. Write it into `Taste:` and use it as the frame for everything after — it settles more choices than the interests list does. If they'd rather not, take the interests list and move on.
+5. **Describe two or three recent trips you loved, and what made them good.** The most useful question here. Listen for texture, not destinations: a city walked for days or a farmhouse never left; dinner booked months ahead or found by wandering; whether they hire a car; whether "we did nothing" is praise. Write it into `Taste:` and use it as the frame for everything after — it settles more choices than the interests list does.
 6. **Pace** — many places, or few and deep? Unsure → default to fewer places, more nights each. First-timers overpack.
-7. **Budget comfort** — modest, comfortable, or splurge on a few nights? A comfort level is enough. Note that an inn night usually includes dinner and breakfast for two, which makes the headline look higher than a hotel's.
+7. **Budget comfort** — modest, comfortable, or splurge on a few nights? A comfort level is enough. An inn night usually includes dinner and breakfast for two, which makes the headline look higher than a hotel's.
 8. **Anything fixed, anything must-do?** Booked flights, a wedding, a restaurant they've dreamed about, a festival, a birthday.
 
 ### Handling the answers
@@ -207,30 +206,32 @@ Do      the map in a paragraph; then four or five place cards chosen by the prof
         Other possibilities; then how the ones you showed chain into a trip, in prose
 Ask     which of these sound interesting — close on the line below, then expand and loop
 Output  a longlist of places, with the shape they suggest said in a sentence. Not a route, not a spine,
-        and not a decision on nights
+        and not a decision on nights — plus the route explorer, opened beside the chat on the two or
+        three routes those places sit on, so Stage 3 starts with the picture already up
 Next    Stage 3 — choose the spine those places sit on, then walk its decisions in trip order.
 ```
 
-**This stage orients; it does not price.** No table of routes, no night counts beyond a card's ideal range, no travel figures beyond the rough time in words on the Nikkō and Hakone cards. The spines, the engine and every number wait for Stage 3.
+**This stage orients; it does not price.** No table of routes, no night counts beyond a card's ideal range, no travel figures beyond the rough time in words on the Nikkō and Hakone cards. The spines, the engine and every number wait for Stage 3. **The one thing that does arrive early is the page**: the closing message opens the route explorer on the two or three routes the places they warmed to sit on (see point 6 below). The message stays prose; the numbers are on the page, where they can play with them.
 
 #### What they get, in this order
 
 1. **The map in one paragraph** — the paragraph below, in your words and shorter.
-2. **The place cards, under the heading "Top recommendations".** **On a first trip that set is fixed: Tokyo, Kyoto, Kanazawa, Hakone/Fuji/Izu and Nikkō** — the name in bold, the reason in a clause (*"**Kanazawa**: the best food city outside the big two, and the garden is at its best under snow"*); the heading says they are recommended, so the word never appears on a line. The profile changes that set only when the draws strongly say so (temples written off entirely, a single-region trip), and you say what you swapped and why. **Kyoto is recommended on every first trip; Osaka is an addition to Kyoto, never its replacement** — the Kansai choice is Stage 3's. **Then, under "Worth considering", one or two alternates** by season and draws: snow country in winter, Kyushu when the hot springs are the point, Hiroshima and the Inland Sea for the coast. A repeat visit drops the fixed set and chooses four or five by the profile alone. **Two or three sentences each** in your own words; never paste a card.
+2. **The place cards, under the heading "Top recommendations".** **On a first trip that set is fixed: Tokyo, Kyoto, Kanazawa, Hakone/Fuji/Izu and Nikkō** — the name in bold, the reason in a clause (*"**Kanazawa**: the best food city outside the big two, and the garden is at its best under snow"*); the heading says they are recommended, so the word never appears on a line. The profile changes that set only when the draws strongly say so, and you say what you swapped and why. **Kyoto is recommended on every first trip; Osaka is an addition to Kyoto, never its replacement.** **Then, under "Worth considering", one or two alternates** by season and draws: snow country in winter, Kyushu when the hot springs are the point, Hiroshima and the Inland Sea for the coast. A repeat visit drops the fixed set and chooses four or five by the profile alone. **Two or three sentences each** in your own words; never paste a card.
 3. **How they fit together** — two or three sentences on how the places you showed chain into a trip: which sit on the shinkansen line an hour or two apart, which are out-and-back from Tokyo, which are a flight. Name the shape in a clause (*"that is Tokyo, a ryokan on the way, then Kyoto — the classic first trip"*), never a spine id, a night count or a travel figure.
-4. **Other possibilities** — that heading, then a two-column table, `| Place | What it is |`, one row per card not shown, three or four words each, a flight or the season noted where it matters. Never a run-on paragraph. Offer to expand any.
+4. **Other possibilities** — that heading, then a two-column table, `| Place | What it is |`, one row per card not shown, three or four words each. Never a run-on paragraph. Offer to expand any.
 5. **Close by leading them on, not with a choice** — *"Want more on any of these? Tell me which sound most interesting, and I'll show how they fit together on two or three possible routes."* Never "which one". Expand any card they ask about, never the same two lines again; asked about a place's inns or hotels, give the shortlist with the names linked.
+6. **Open the explorer on the candidate routes, in that same closing message.** Once they name the places that interest them, run **`compare <spine> <spine> [<spine>] --total N --in X --out Y`** — the two or three routes carrying those places, each at its defaults for their length and ticket — and open the single `Explorer:` address it prints (Stage 3 says how to serve it). Hand it on its own bold line: **Open beside this chat: <route names> — <address>**. **Serving it:** the kit root ships `.claude/launch.json` with a configuration named `kit-explorer` — start it with the preview tool on that name, then open `http://localhost:8790/guides/route-explorer.html#…`. **Never `file://`**, which comes up blank; and after every open, read the page's text and check the first stop's name is on it before saying it is showing. Don't walk the table through here: say only that the page shows how the places chain into a trip and that every option on it can be switched. Stage 3 does the comparison properly.
 
 **The place cards below are reference for you. Do not brief them from the cards.** What the lines on a card mean:
 
 - **`nights:` reads `ideal a–b · minimum n · one line of context`.** Quote the ideal when asked; the minimum is a floor, never a grade. **Fewer than the minimum: give them it**, say once what it costs, note it on `Assumed`.
 - **A card covering several places carries `places:`**, the same line per place; the card's range is the area total.
-- **`spines:` names the routes that carry the place** — for Stage 3; here it shows which cards chain together. A place on no spine is said so in a clause.
+- **`spines:` names the routes that carry the place** — for Stage 3; here it shows which cards chain together.
 - **`base:` says how a place is stayed in** — `yes` for a city you build nights around, `inn town` for a place whose stay is the inn, one night and rarely two, `onsen town` where the town is the draw, `day trip` for somewhere seen from a nearby base. **An `inn town` is never a day trip** unless its line says `minimum 0`; only a `day trip` card resists becoming a stop.
-- **Nikkō and Hakone/Fuji/Izu are both on the first-trip set**, and on The Classic and Stretched West they are two yes/no answers in Stage 3, not a choice between them. Give each its time from Tokyo inside its own card sentence ("two hours north, out and back, so it splits the Tokyo stay"; "two hours west, on the way to Kyoto"). **The table below is reference for you; never paste it.**
+- **Nikkō and Hakone/Fuji/Izu are both on the first-trip set**, and on The Classic and Stretched West they are two yes/no answers in Stage 3, not a choice between them. Give each its time from Tokyo inside its own card sentence ("two hours north, out and back, so it splits the Tokyo stay"; "two hours west, on the way to Kyoto").
 - **The kinds of stay** only when a stay decision is near, **"what a ryokan is"** only when an inn night is on the table, **their month** from the season table; the rest on request.
 
-**The four trips out of Tokyo, with their times** — the figures behind those two card sentences. For you, not for them.
+**The four trips out of Tokyo, with their times** — the figures behind those card sentences. For you, not for them.
 
 <!-- generated:tokyo-satellite-times -->
 *The four times are in Stage 3's table of the ryokan trips out of Tokyo, below, with the two snow-country valleys and each one's `fits` tag. Read them there.*
@@ -240,36 +241,36 @@ Next    Stage 3 — choose the spine those places sit on, then walk its decision
 
 #### The map in one paragraph
 
-Almost everything a first-timer considers sits on **Honshu**. Tokyo is on its Pacific side; Kyoto, Osaka and Nara cluster about 300 miles (500 km) southwest, in **Kansai**. That corridor is the spine, stitched by the **shinkansen** (bullet train) in a couple of hours, several times an hour. Hang the rest off it: **north** of Tokyo, **Tōhoku** and the snow country; an hour or two **west**, **Hakone**, **Mount Fuji** and **Izu**, with **Nikkō** the same distance north; **inland**, **Takayama** and **Kanazawa**; west of Kyoto the spine runs past Hiroshima to the **Seto Inland Sea**. The outliers are each a flight: **Kyushu**, **Hokkaido**, **Okinawa**. **Staying on the spine is cheap in time and leaving it is expensive in time**.
+Almost everything a first-timer considers sits on **Honshu**. Tokyo is on its Pacific side; Kyoto, Osaka and Nara cluster about 300 miles (500 km) southwest, in **Kansai**. That corridor is the spine, stitched by the **shinkansen** (bullet train) in a couple of hours, several times an hour. Hang the rest off it: **north** of Tokyo, **Tōhoku** and the snow country; an hour or two **west**, **Hakone**, **Mount Fuji** and **Izu**, with **Nikkō** the same distance north; **inland**, **Takayama** and **Kanazawa**; west of Kyoto the spine runs past Hiroshima to the **Seto Inland Sea**. The outliers are each a flight: **Kyushu**, **Hokkaido**, **Okinawa**. **Staying on the spine is cheap in time; leaving it is expensive.**
 
 ---
 
 ### Tokyo
 
-- **known_for:** the biggest city on earth and the least stressful of its size. Neighbourhoods with wholly different characters one train apart — Shinjuku and Shibuya's neon and food halls, Asakusa's old lanes, Ginza and Aoyama's galleries and cocktail bars, Jimbocho's bookshops. More restaurants at every price than any city in the world, plus contemporary art museums and the Imperial Palace gardens.
-- **best_for:** big-city energy, shopping, food at every level, pop culture (Akihabara, Nakano, Ikebukuro), art and design, and anyone who wants a soft landing.
+- **known_for:** the biggest city on earth and the least stressful of its size. Neighbourhoods with wholly different characters one train apart — Shinjuku and Shibuya's neon and food halls, Asakusa's old lanes, Ginza and Aoyama's galleries and cocktail bars, Jimbocho's bookshops. More restaurants at every price than any city in the world, plus contemporary art museums and the palace gardens.
+- **best_for:** big-city energy, shopping, food at every level, pop culture (Akihabara, Nakano, Ikebukuro), art and design, a soft landing.
 <!-- generated:card-tokyo -->
 - **nights:** ideal 4–7 · minimum 3 · more if it is the only city
 - **repeat visit:** read the ideal as 3–4 · for someone who has done Tokyo before
 - **base:** yes
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · Kyushu South & West (11–20 nights) · Kyushu South & East (9–16 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights) · Hokkaido (8–12 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · Kyushu South & West · Kyushu South & East · Kyushu North & East · The Long Line · Hokkaido
 <!-- /generated:card-tokyo -->
 - **season:** good year-round. Blossom (late March–early April) and autumn colour (late November) are prettiest and most crowded. High summer is punishing. January–February are cold, dry, bright, least crowded.
 - **pairs_with:** everything — the usual arrival and departure point.
 - **fits:** `tokyo-splitter` `golden-route-stop` `fuji-lakes` `snow-country` (Tokyo is a hotel city; those four tags are the ryokan trips out of it)
 
-Tokyo delivers more per night than anywhere here and is the least tiring stop: unpack once, let the trains work. The trap is the two-night stopover before "the real Japan" — three famous sights and none of the texture people fall for.
+Tokyo delivers more per night than anywhere here and is the least tiring stop: unpack once and let the trains work. The trap is the two-night stopover before "the real Japan" — three famous sights and none of the texture people fall for.
 
 ---
 
 ### Nikkō
 
-- **known_for:** the most elaborately carved shrine complex in Japan, two hours north of Tokyo in cedar forest and mountains. **Toshogu**, the gilded mausoleum of the shogun who unified the country, is the centrepiece; around it, older quieter temples, a red bridge over a green river, and a lacquerware tradition. Above the town, **Oku-Nikkō**: Lake Chuzenji under the volcano Nantai, the Kegon waterfall, marshland, and the hot springs of Yumoto.
-- **best_for:** the first-trip case, specifically — a long Tokyo stay, one inn night in it (Fufu Nikko is the inn here), and a shrine town for a day or two. Also shrines of a wholly different character from Kyoto's, mountain scenery and hot springs, one big day out of Tokyo without moving the base far.
+- **known_for:** the most elaborately carved shrine complex in Japan, two hours north of Tokyo in cedar forest and mountains. **Toshogu**, the gilded mausoleum of the shogun who unified the country, is the centrepiece; around it, older quieter temples, a red bridge over a green river, and a lacquerware tradition. Above the town, **Oku-Nikkō**: Lake Chuzenji under the volcano Nantai, the Kegon waterfall and the hot springs of Yumoto.
+- **best_for:** a long Tokyo stay with one inn night in it (Fufu Nikko is the inn here); shrines of a wholly different character from Kyoto's, mountains and hot springs, one big day out without moving the base.
 <!-- generated:card-nikko -->
 - **nights:** ideal 1–2 · minimum 1 · one pairs the shrines with an inn night; a second is for the lake, the waterfall and the upper valley
 - **base:** inn town
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · Kyushu South & West (11–20 nights) · Kyushu South & East (9–16 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights) · Hokkaido (8–12 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · Kyushu South & West · Kyushu South & East · Kyushu North & East · The Long Line · Hokkaido
 <!-- /generated:card-nikko -->
 - **season:** autumn colour among the country's best, and the roads jam accordingly. Winter is cold, clear and quiet, snow on the shrine roofs; the upper valley road can close in heavy snow.
 - **pairs_with:** Tokyo, directly. It chains poorly to anything west.
@@ -282,14 +283,14 @@ The strongest one-night trip out of Tokyo for shrines and mountains rather than 
 ### Kyoto
 
 - **known_for:** the imperial capital for over a thousand years, and the densest concentration of temples, Zen gardens, wooden townhouses and crafts in the country. The postcard sights — Kinkaku-ji, the vermilion gate tunnels of Fushimi Inari, the Arashiyama bamboo grove, hillside Kiyomizu-dera — plus **Gion**, where geiko (Kyoto's term for geisha) still work. Also a serious food city: refined **kaiseki**, Buddhist tofu and vegetable cooking, and the covered Nishiki market.
-- **best_for:** temples, history, gardens, crafts, traditional food, and anyone whose mental image of Japan is wooden buildings and moss.
+- **best_for:** temples, history, gardens, crafts, traditional food, and anyone whose image of Japan is wooden buildings and moss.
 <!-- generated:card-kyoto -->
-- **nights:** ideal 4–6 · minimum 3 · the top of the range if temples and gardens are the main draw; two is a highlights sprint
+- **nights:** ideal 4–5 · minimum 3 · the top of the range if temples and gardens are the main draw; under four and the day trips start competing with the city itself
 - **places:**
-  - **Kyoto:** ideal 3–5 · minimum 3 · the city itself
+  - **Kyoto:** ideal 4–5 · minimum 3 · the city itself
   - **The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi):** ideal 1–2 · minimum 1 · inn town — a night out of Kyoto or Osaka, each with its own line in the leg table
 - **base:** yes
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · The Long Line
 <!-- /generated:card-kyoto -->
 - **season:** blossom and autumn colour are spectacular and mobbed. Winter is quiet, sometimes snow-dusted, and temples unapproachable in April are near-empty. Summer traps heat in the valley.
 - **pairs_with:** Osaka and Nara, both a short ride away. The western pivot: onward to Kanazawa, to Hiroshima, or to a hot-spring inn in the hills nearby.
@@ -301,14 +302,14 @@ Kyoto is for people who came for the old country and will work a little for it. 
 
 ### Osaka
 
-- **known_for:** eating and going out. Japan's blunt, funny, commercial second city, and its identity is food: **takoyaki** (griddled octopus dumplings), **okonomiyaki** (a savoury cabbage pancake), skewers, and the neon and noise of Dotonbori and Namba. Also Osaka Castle, the old merchant quarters, an aquarium, a good bar scene, and Universal Studios Japan.
-- **best_for:** food, city energy, nightlife, travellers who find Kyoto a little reverent, and anyone flying into Kansai airport.
+- **known_for:** eating and going out. Japan's blunt, funny, commercial second city, and its identity is food: **takoyaki** (griddled octopus dumplings), **okonomiyaki** (a savoury cabbage pancake), skewers, and the neon of Dotonbori and Namba. Also Osaka Castle, the old merchant quarters, a good bar scene and Universal Studios Japan.
+- **best_for:** food, city energy, nightlife, travellers who find Kyoto a little reverent, anyone flying into Kansai.
 <!-- generated:card-osaka -->
 - **nights:** ideal 2–3 · minimum 2 · zero nights is fine as a day trip from Kyoto; a stay here is two nights or none, and they are for eating and going out
 - **base:** yes
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · The Long Line
 <!-- /generated:card-osaka -->
-- **season:** year-round — an indoor-and-evening city, so weather matters less here than anywhere else on this list.
+- **season:** year-round — an indoor-and-evening city, so weather matters less than anywhere else here.
 - **pairs_with:** Kyoto and Nara; Hiroshima and the Inland Sea westward. Its airport makes it a natural first or last stop.
 - **fits:** `kansai-side-trip`
 
@@ -318,15 +319,15 @@ Osaka is for people who plan trips around dinner, and it has fewer must-see sigh
 
 ### Nara
 
-- **known_for:** Japan's capital before Kyoto, and home to the country's oldest and largest monuments — **Tōdai-ji**, a vast wooden hall holding a fifteen-metre bronze Buddha, the lantern-lined Kasuga Taisha shrine, and a deer park where hundreds of semi-tame deer wander among the temples. Quieter, smaller and greener than the big three.
-- **best_for:** history at a bigger and older scale than Kyoto's, walking, a slower day.
+- **known_for:** Japan's capital before Kyoto, and home to its oldest and largest monuments — **Tōdai-ji**, a vast wooden hall holding a fifteen-metre bronze Buddha, the lantern-lined Kasuga Taisha shrine, and a park where hundreds of semi-tame deer wander among the temples. Quieter and greener than the big three.
+- **best_for:** history at a bigger, older scale than Kyoto's, walking, a slower day.
 <!-- generated:card-nara -->
 - **nights:** ideal 1 · minimum 0 · a half-day trip is the norm; an overnight after the day-trippers leave is high value
 - **base:** day trip
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · The Long Line
 <!-- /generated:card-nara -->
-- **season:** year-round; autumn colour in the deer park is beautiful. Avoid the middle of a hot summer day: almost everything is outdoors.
-- **pairs_with:** Kyoto and Osaka, and a good soft first night for anyone landing at Kansai.
+- **season:** year-round; autumn colour in the deer park is beautiful. Avoid a hot summer midday: almost everything is outdoors.
+- **pairs_with:** Kyoto and Osaka, and a soft first night for anyone landing at Kansai.
 - **fits:** `kansai-side-trip`
 
 The crowds leave in late afternoon and the grounds at dusk and dawn are extraordinary. Overnight trades dinner options for having the sights to yourself, and good inns just outside town pair a major site with an inn night.
@@ -335,8 +336,8 @@ The crowds leave in late afternoon and the grounds at dusk and dawn are extraord
 
 ### Hakone/Fuji/Izu
 
-- **known_for:** the hot-spring belt closest to Tokyo, and the classic first taste of a traditional inn. **Hakone**: a caldera of hot-spring villages with an open-air sculpture museum, a lake, a ropeway over a steaming volcanic valley, and the easiest access from Tokyo. **The Fuji Five Lakes**, around Lake Kawaguchi: where you actually see **Mount Fuji**, which you mostly cannot from Hakone. **Izu**: a peninsula of coast and mountain hot-spring villages, quieter for being less convenient, with excellent seafood and some of the country's best-regarded inns.
-- **best_for:** hot springs, a first traditional-inn night, the Fuji photograph, and the standard breather between Tokyo and Kyoto.
+- **known_for:** the hot-spring belt closest to Tokyo, and the classic first taste of a traditional inn. **Hakone**: a caldera of hot-spring villages with an open-air sculpture museum, a lake, a ropeway over a steaming volcanic valley, and the easiest access from Tokyo. **The Fuji Five Lakes**, around Lake Kawaguchi: where you actually see **Mount Fuji**, which you mostly cannot from Hakone. **Izu**: a peninsula of coast and mountain hot-spring villages, quieter for being less convenient, with excellent seafood and some of the country's best inns.
+- **best_for:** hot springs, a first traditional-inn night, the Fuji photograph, the breather between Tokyo and Kyoto.
 <!-- generated:card-hakone -->
 - **nights:** ideal 1–2 · minimum 1 · one night at the inn is the normal pattern; a second is for the valley
 - **places:**
@@ -345,19 +346,19 @@ The crowds leave in late afternoon and the grounds at dusk and dawn are extraord
   - **Izu:** ideal 1–2 · minimum 1 · coast, seafood and the quietest of the three
   - **Kōshū and Yatsugatake:** ideal 1 · minimum 1 · inn town — the Yamanashi wine country and the highland behind it, an hour or two out of Tokyo
 - **base:** inn town
-- **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · The Long Line (11–18 nights)
+- **spines:** The Classic · The Kanazawa Loop · Stretched West · Snow Country · Kyushu South & West · Kyushu South & East · Kyushu North & East · The Long Line · Hokkaido
 <!-- /generated:card-hakone -->
-- **season:** winter is best for Fuji — cold dry mornings, clearest air, snow cap — though never guaranteed. Autumn colour around Hakone's lake is superb. Summer is hazy. Busy on Japanese weekends year-round.
+- **season:** winter is best for Fuji — cold dry mornings, clearest air, snow cap — though never guaranteed. Autumn colour around Hakone's lake is superb, summer hazy. Busy on Japanese weekends year-round.
 - **pairs_with:** Tokyo on one side, Kyoto on the other. Izu chains less neatly westward than Hakone does.
 - **fits:** `golden-route-stop` (Hakone and Izu) · `fuji-lakes` (the Kawaguchiko and Yamanaka side)
 
-For a first trip these three are interchangeable: one hot-spring inn night within two hours of Tokyo. Pick the inn first (Stage 4) and let the area follow — a Fuji view from the inn itself means the lakes side, Hakone is the easiest journey, Izu the quietest. All three sit on the way to Kyoto: from the lakes the westward leg is the hourly liner bus to Mishima and the bullet train from there, rather than a journey back through Tokyo.
+**Hakone and Izu are the night on the way west**; the lakes are the out-and-back from Tokyo, because their onward ride to Kyoto is the liner bus to Mishima and the bullet train from there. Otherwise pick the inn first (Stage 4) and let the area follow — a Fuji view from the room means the lakes, Hakone is the easiest journey, Izu the quietest.
 
 ---
 
 ### Kanazawa & Hokuriku
 
-- **known_for:** an Edo-era castle town on the Japan Sea coast that escaped wartime bombing, so the old fabric is real — the **Nagamachi** samurai district, teahouse quarters, and **Kenroku-en**, one of Japan's three great gardens, at its best under snow with the pine branches held up on rope cones. Also a crafts capital: gold leaf, lacquer, Kutani porcelain. Its Ōmichō market is the region's seafood showcase, and the **Hokuriku** coast is snow-crab country with a cluster of walkable hot-spring towns (the Kaga Onsen villages) an easy ride out.
+- **known_for:** an Edo-era castle town on the Japan Sea coast that escaped wartime bombing, so the old fabric is real — the **Nagamachi** samurai district, teahouse quarters, and **Kenroku-en**, one of Japan's three great gardens, at its best under snow with the pine branches held up on rope cones. Also a crafts capital: gold leaf, lacquer, Kutani porcelain. Ōmichō market is the region's seafood showcase, and the **Hokuriku** coast is snow-crab country with walkable hot-spring towns (the Kaga Onsen villages) an easy ride out.
 - **best_for:** crafts and design, seafood, history without Kyoto's crowds, hot springs.
 <!-- generated:card-hokuriku -->
 - **nights:** ideal 3 · minimum 2 · add 1 for a hot-spring inn night on the Kaga coast
@@ -366,19 +367,19 @@ For a first trip these three are interchangeable: one hot-spring inn night withi
   - **The Kaga onsen towns (Yamashiro, Yamanaka):** ideal 1–2 · minimum 1 · inn town, a night on the way in or out
   - **The Hokuriku inn towns (Eiheiji, Awara, Notojima, Sasazu):** ideal 1 · minimum 1 · inn town — a night each, reached from Kanazawa or on the way in from Kyoto
 - **base:** yes
-- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop · Snow Country
 <!-- /generated:card-hokuriku -->
-- **season:** winter is the connoisseur's season — the garden under snow, and **snow crab** roughly November to March, which spikes inn prices and sells out early. It rains and snows a lot here; that is the character.
+- **season:** winter is the connoisseur's season — the garden under snow, and **snow crab** roughly November to March, which spikes inn prices and sells out early. It rains and snows a lot; that is the character.
 - **pairs_with:** Takayama and the Alps inland, Kyoto down the coast, Tokyo by direct bullet train.
 - **fits:** `kanazawa-loop`
 
-The best answer to "more history, fewer queues": a real historical city with excellent food, serious crafts and a fraction of Kyoto's visitors, for a half-day off the spine.
+The best answer to "more history, fewer queues": a real historical city with excellent food, serious crafts and a fraction of Kyoto's visitors.
 
 ---
 
 ### Takayama/Hida & the Alps
 
-- **known_for:** a preserved merchant town in the mountains of **Hida** — dark-timber streets, riverside morning markets, sake breweries marked by a cedar ball at the door, and **Hida beef**, a marbled wagyu locals rate above Kobe. It is the base for **Shirakawa-gō**, a UNESCO village of steep thatched farmhouses at its most extraordinary under snow. Deeper into the **Japan Alps**: the hot-spring hamlets of Okuhida, the old post towns of the Kiso valley, and Matsumoto with its black-and-white original castle.
+- **known_for:** a preserved merchant town in the mountains of **Hida** — dark-timber streets, riverside morning markets, sake breweries marked by a cedar ball at the door, and **Hida beef**, a marbled wagyu locals rate above Kobe. It is the base for **Shirakawa-gō**, a UNESCO village of steep thatched farmhouses at its best under snow. Deeper into the **Japan Alps**: the hot-spring hamlets of Okuhida, the post towns of the Kiso valley, and Matsumoto with its black-and-white original castle.
 - **best_for:** hot springs, old streets, food (the beef and the sake), snow, mountains without leaving central Honshu.
 <!-- generated:card-alps -->
 - **nights:** ideal 2 · minimum 1 · Shirakawa-gō is a half day; add 1 for a remote mountain inn night
@@ -386,20 +387,20 @@ The best answer to "more history, fewer queues": a real historical city with exc
   - **Takayama:** ideal 2 · minimum 1 · the town and Shirakawa-gō; Gero, Matsumoto and the Kiso valley are its inn towns, a night each
   - **Nagoya:** ideal 0–1 · minimum 0 · the airport city for a route ending in the Alps; a night only before an early Centrair flight
 - **base:** yes
-- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop · Snow Country
 <!-- /generated:card-alps -->
-- **season:** winter for snow-buried farmhouses and steaming outdoor baths; autumn for colour; spring for the April festival. Mid-winter means real snow — slower roads, and check that anywhere remote is open.
+- **season:** winter for snow-buried farmhouses and steaming outdoor baths, autumn for colour, spring for the April festival. Mid-winter means real snow — slower roads, and check that anywhere remote is open.
 - **pairs_with:** Kanazawa over the mountains, Nagoya or Kyoto south — a Kanazawa–Takayama–Kyoto arc is one of the tidiest add-ons to the spine.
 - **fits:** `alps`
 
-Takayama itself walks in an afternoon; two nights is for Shirakawa-gō and the pace. The deeper hamlets need a car and, in winter, snow tyres — on a rail-only trip, Takayama alone is the sensible version.
+Takayama itself walks in an afternoon; two nights is for Shirakawa-gō and the pace. The deeper hamlets need a car and, in winter, snow tyres — on a rail-only trip, Takayama alone.
 
 ---
 
 ### Snow country & Tōhoku
 
-- **known_for:** the cold, thinly populated northern two-thirds of Honshu above Tokyo, in two flavours. **Snow country** — Niigata and Nagano, a short bullet-train hop from Tokyo — gets some of the heaviest snowfall on earth: deep-snow scenery, outdoor baths in a blizzard, superb rice and sake, ski resorts, the snow-monkey hot spring at Jigokudani. **Tōhoku** proper, further north, is rural Japan with the volume down: samurai streets at Kakunodate, the old bathing hamlets of Nyūtō, temple mountains, a great seafood coast, and Sendai beside the pine-topped islets of Matsushima Bay.
-- **best_for:** hot springs, snow, food, and travellers who want to be where other visitors are not.
+- **known_for:** the cold, thinly populated north of Honshu, in two flavours. **Snow country** — Niigata and Nagano, a short bullet-train hop from Tokyo — gets some of the heaviest snowfall on earth: deep-snow scenery, outdoor baths in a blizzard, superb rice and sake, ski resorts, the snow-monkey hot spring at Jigokudani. **Tōhoku** proper, further north, is rural Japan with the volume down: samurai streets at Kakunodate, the old bathing hamlets of Nyūtō, temple mountains, a great seafood coast, and Sendai beside the pine-topped islets of Matsushima Bay.
+- **best_for:** hot springs, snow, food, and being where other visitors are not.
 <!-- generated:card-tohoku -->
 - **nights:** ideal 2–3 · minimum 1 · one snow-country inn night from Tokyo stands alone; Tōhoku proper wants 3–4
 - **places:**
@@ -408,20 +409,20 @@ Takayama itself walks in an afternoon; two nights is for Shirakawa-gō and the p
   - **Tōhoku inn towns:** ideal 1 · minimum 1 · Kakunodate, Nyūtō and the rest, a night each on the way through; the kit's inn is at Kakunodate and Nyūtō's own are on the live catalogue
   - **Karuizawa (Miyota):** ideal 1 · minimum 1 · inn town — the highland resort an hour from Tokyo by bullet train
 - **base:** inn town (Sendai is a city base)
-- **spines:** The Kanazawa Loop (9–16 nights) · Snow Country (9–16 nights)
+- **spines:** The Kanazawa Loop · Snow Country
 <!-- /generated:card-tohoku -->
-- **season:** snow country is a winter destination, mid-January to February peak. Tōhoku's blossom comes weeks after Tokyo's — useful for a late-April trip. Avoid early spring. Summer is pleasantly cool.
+- **season:** snow country is a winter destination, mid-January to February peak. Tōhoku's blossom comes weeks after Tokyo's, useful for a late-April trip. Avoid early spring; summer is pleasantly cool.
 - **pairs_with:** Tokyo, directly. It chains west toward Kanazawa with effort, and pairs with nothing southern in a fortnight.
 - **fits:** `snow-country` (the Tokyo-side valleys) · `tohoku` (the far north)
 
-For the traveller who said "hot springs" and meant it. The compressed version — an inn night in Niigata or Nagano, out and back from Tokyo, almost all on trains — is one of the best-value decisions in this kit. Full Tōhoku is a different trip, and it will not fit alongside Kyushu or Hokkaido.
+For the traveller who said "hot springs" and meant it. The compressed version — an inn night in Niigata or Nagano, out and back from Tokyo, almost all on trains — is one of the best-value decisions in this kit. Full Tōhoku is a different trip.
 
 ---
 
 ### Hokkaido
 
-- **known_for:** Japan's big northern island — cold, open, sparsely settled. Winter is the draw: the world's most reliable powder at Niseko and Furano, drift ice, the Sapporo Snow Festival (about a week in early February), hot-spring towns. Its food is a national obsession — sea urchin, crab, scallops, dairy, miso ramen, lamb. Summer flips completely: cool air, lavender fields, volcanic national parks, the best cycling and hiking in Japan.
-- **best_for:** snow and skiing, nature, seafood, and anyone who wants space after the cities.
+- **known_for:** Japan's big northern island — cold, open, sparsely settled. Winter is the draw: the world's most reliable powder at Niseko and Furano, drift ice, the Sapporo Snow Festival (about a week in early February), hot-spring towns. Its food is a national obsession — sea urchin, crab, scallops, dairy, miso ramen, lamb. Summer flips: cool air, lavender fields, volcanic national parks, the best cycling in Japan.
+- **best_for:** snow and skiing, nature, seafood, space after the cities.
 <!-- generated:card-hokkaido -->
 - **nights:** ideal 5–7 · minimum 4 · a flight each way and large internal distances
 - **places:**
@@ -431,19 +432,19 @@ For the traveller who said "hot springs" and meant it. The compressed version �
   - **Otaru:** ideal 0–1 · minimum 0 · day trip from Sapporo on the airport train
   - **Jōzankei:** ideal 1 · minimum 1 · onsen town an hour from Sapporo, in the hills
 - **base:** yes
-- **spines:** Hokkaido (8–12 nights)
+- **spines:** Hokkaido
 <!-- /generated:card-hokkaido -->
-- **season:** February for snow, and the Snow Festival's week falls in early February, so late February misses it; June to September for Japan's most comfortable summer. Avoid the shoulder months. Winter driving here is serious.
+- **season:** February for snow, though the Snow Festival's week falls early in the month; June to September for Japan's most comfortable summer. Avoid the shoulder months. Winter driving here is serious.
 - **pairs_with:** Tokyo as an out-and-back flight, and essentially nothing else in a fortnight.
 - **fits:** `hokkaido`
 
-On a first fortnight this is usually the wrong call: a flight each way and four nights minimum, when the snow country north of Tokyo delivers deep snow and outdoor baths for a fraction of the travel. If the trip is about skiing, build it around Hokkaido; spine `s9` carries its legs. **The kit is thin here**: no hotel rows in Sapporo, and one mountain town to sleep in — the city nights are researched live or booked elsewhere.
+On a first fortnight this is usually the wrong call: a flight each way and four nights minimum, when the snow country north of Tokyo delivers deep snow and outdoor baths for a fraction of the travel. If the trip is about skiing, build it around Hokkaido. **The kit is thin here**: no hotel rows in Sapporo, and one mountain town to sleep in.
 
 ---
 
 ### Hiroshima/Miyajima & the Inland Sea
 
-- **known_for:** the western continuation of the spine. **Hiroshima** is a rebuilt city of broad boulevards; its Peace Memorial Park and museum are among the most affecting places in the country and deserve an unhurried morning, its layered **okonomiyaki** the evening. Offshore, **Miyajima** holds the great vermilion torii standing in the sea. The **Seto Inland Sea** beyond is a calm island-scattered waterway with a cycling route across a chain of bridges and, on Naoshima and Teshima, contemporary-art museums built into the landscape.
+- **known_for:** the western continuation of the spine. **Hiroshima** is a rebuilt city of broad boulevards; its Peace Memorial Park and museum are among the most affecting places in the country and deserve an unhurried morning, its layered **okonomiyaki** the evening. Offshore, **Miyajima** holds the great vermilion torii standing in the sea. The **Seto Inland Sea** is a calm island-scattered waterway with a cycling route across a chain of bridges and, on Naoshima and Teshima, art museums built into the landscape.
 - **best_for:** history and the memorial, art and design, coast and sea, cycling, a change of tempo.
 <!-- generated:card-inlandsea -->
 - **nights:** ideal 2 · minimum 1 · add 1 for a Miyajima overnight, 2 for the art islands
@@ -455,20 +456,20 @@ On a first fortnight this is usually the wrong call: a flight each way and four 
   - **The coast east of Hiroshima (Onomichi, Tomonoura, Setoda):** ideal 1 · minimum 1 · inn town — a harbour night on the way west
   - **Kōchi (Shikoku):** ideal 1 · minimum 1 · inn town across the Inland Sea, a long day from Hiroshima or Okayama
 - **base:** yes
-- **spines:** Stretched West (12–19 nights) · The Long Line (11–18 nights)
+- **spines:** Stretched West · The Long Line
 <!-- /generated:card-inlandsea -->
 - **season:** year-round; the sea keeps winter mild. Check museum closing days on the art islands — several close Mondays.
 - **pairs_with:** Kyoto and Osaka directly along the bullet-train line, and onward to Kyushu on the same line.
 - **fits:** `inland-sea`
 
-It sits on the spine, so adding it to a Kyoto trip is a ride rather than a detour. The Peace Memorial is heavy and worth planning around, and the art islands run on ferry timetables and closing days.
+It sits on the spine, so adding it to a Kyoto trip is a ride rather than a detour. The Peace Memorial is heavy and worth planning around; the art islands run on ferry timetables and closing days.
 
 ---
 
 ### Kyushu
 
-- **known_for:** the subtropical southwestern island, and by a wide margin the country's richest hot-spring region. Five sub-areas: **Fukuoka**, Japan's most relaxed big food city (riverside stalls serving pork-bone ramen late, a compact centre); **Yufuin and Beppu**, the hot-spring heartland — a polished village in a mountain basin, and a whole town venting steam, with sand and mud baths; **Kumamoto, Aso and Kurokawa**, the volcanic middle — the inhabited caldera of Mount Aso, and a lantern-lit village where one pass lets you bath-hop between inns; **Kagoshima and Kirishima**, the warm south facing the smoking Sakurajima, with highland shrines and the sand baths at Ibusuki; and **Nagasaki**, a harbour city stacked up its hills with a Portuguese, Dutch and Chinese trading past you can taste.
-- **best_for:** hot springs and traditional inns above all; also volcanoes, food, history of an unusual kind, and warm-weather travel in winter.
+- **known_for:** the subtropical southwestern island, and by a wide margin the country's richest hot-spring region. Five sub-areas: **Fukuoka**, Japan's most relaxed big food city (riverside stalls serving pork-bone ramen late); **Yufuin and Beppu**, the hot-spring heartland — a polished village in a mountain basin, and a whole town venting steam; **Kumamoto, Aso and Kurokawa**, the volcanic middle — the inhabited caldera of Mount Aso, and a lantern-lit village where one pass lets you bath-hop between inns; **Kagoshima and Kirishima**, the warm south facing the smoking Sakurajima, with the sand baths at Ibusuki; and **Nagasaki**, a harbour city stacked up its hills with a Portuguese, Dutch and Chinese trading past you can taste.
+- **best_for:** hot springs and traditional inns above all; also volcanoes, food, unusual history, warm-weather travel in winter.
 <!-- generated:card-kyushu -->
 - **nights:** ideal 8–12 · minimum 5 · three clusters; twelve nights does two of them well
 - **places:**
@@ -488,47 +489,47 @@ It sits on the spine, so adding it to a Kyoto trip is a ride rather than a detou
   - **Karatsu:** ideal 1 · minimum 1 · inn town on the Saga coast, an hour from Fukuoka
   - **Iki and Yakushima islands:** ideal 1–2 · minimum 1 · inn town reached by a flight or a ferry; a night or two, never a connector
 - **base:** yes
-- **spines:** Kyushu South & West (11–20 nights) · Kyushu South & East (9–16 nights) · Kyushu North & East (10–17 nights) · The Long Line (11–18 nights)
+- **spines:** Kyushu South & West · Kyushu South & East · Kyushu North & East · The Long Line
 <!-- /generated:card-kyushu -->
-- **season:** winter is excellent and under-appreciated — the mildest air of any region here, steam at its most dramatic, clear views, no crowds. Summer is hot, humid, typhoon-prone. In winter, the volcanic inland roads are the one place ice really matters.
+- **season:** winter is excellent and under-appreciated — the mildest air of any region here, steam at its most dramatic, clear views, no crowds. Summer is hot, humid, typhoon-prone. The volcanic inland roads are the one place winter ice really matters.
 - **pairs_with:** the western end of the spine. In practice Kyushu is a self-contained trip, or one half of a trip whose other half is Tokyo. **Do not stitch it onto a full Honshu circuit; pick one landmass.**
 - **getting_around:** cities and the southern cluster are fine on trains and ferries. The volcanic inland — Aso, Kurokawa, Takachiho — has a couple of buses a day, and is the one region here where a rental car earns its keep.
 - **fits:** `kyushu-yufuin` `kyushu-kurokawa` `kyushu-kirishima` `kyushu-nagasaki` `kyushu-elsewhere`
 
-Nowhere in Japan is denser or better value for inns and volcanic landscape; the sensible shape is Tokyo plus Kyushu, one landmass. The card's area total is a first-visit guide rather than a cap: a longer Kyushu request is normal and buys stops rather than stretched cities.
+Nowhere in Japan is denser or better value for inns and volcanic landscape; the sensible shape is Tokyo plus Kyushu, one landmass. The card's area total is a first-visit guide rather than a cap.
 
-**The island reads as a loop, and the order matters more here than anywhere else in this kit.** Fukuoka is the north gate, Yufuin and Beppu sit east of it, Kurokawa and Aso are the volcanic centre, Kagoshima and its Kirishima ryokan the southern end, Nagasaki and Unzen the west. Start in the city you land in and ride the arc once — Fukuoka → Nagasaki → Kagoshima, or Fukuoka → the east → Kagoshima, or either the other way round from Kagoshima — with the one-night inns on the legs between the cities. **Fukuoka, Kumamoto, Kagoshima and Nagasaki are the bases; Yufuin, Kurokawa, Kirishima, Amagase, Amakusa, Takachiho and Takeo Onsen are inn towns**, a night each, and Beppu is the onsen town seen from Yufuin. Kagoshima and Kirishima go together: two or three nights in the city and one at Myōken. **The spine menu carries the island as four routes** — Kyushu South & West, South & East, North & East, and The Long Line — use one rather than building the Kyushu half from this card.
+**The island reads as a loop, and the order matters more here than anywhere else in this kit.** Fukuoka is the north gate, Yufuin and Beppu sit east of it, Kurokawa and Aso are the volcanic centre, Kagoshima and its Kirishima ryokan the southern end, Nagasaki and Unzen the west. Start in the city you land in and ride the arc once, with the one-night inns on the legs between the cities. **Fukuoka, Kumamoto, Kagoshima and Nagasaki are the bases; Yufuin, Kurokawa, Kirishima, Amagase, Amakusa, Takachiho and Takeo Onsen are inn towns**, a night each, and Beppu is seen from Yufuin. Kagoshima and Kirishima go together. **The spine menu carries the island as four routes** — use one rather than building the Kyushu half from this card.
 
 ---
 
 ### Okinawa
 
-- **known_for:** a chain of subtropical islands far south of the mainland, closer to Taiwan than to Tokyo. White sand, coral reefs and some of Asia's best diving, particularly on the outer Yaeyama islands. Culturally it is not mainland Japan: the independent Ryukyu Kingdom for centuries, with distinct architecture, music, textiles, spirit and food. Naha has a market street and a reconstructed castle; the island also carries the heavy history of the 1945 battle and a continuing American military presence.
+- **known_for:** a chain of subtropical islands far south of the mainland, closer to Taiwan than to Tokyo. White sand, coral reefs and some of Asia's best diving, particularly on the outer Yaeyama islands. Culturally it is not mainland Japan: the independent Ryukyu Kingdom for centuries, with its own architecture, music, textiles and food. Naha has a market street and a reconstructed castle; the island also carries the history of the 1945 battle and a continuing American military presence.
 - **best_for:** beaches, diving, warm-weather resort time, an island culture rather than more temples.
 <!-- generated:card-okinawa -->
 - **nights:** ideal 5–7 · minimum 4 · fewer than four does not repay the flight
 - **base:** yes
 - **spines:** none — on no spine; a trip of its own, and the stays are researched live
 <!-- /generated:card-okinawa -->
-- **season:** April–June and October–November. High summer is hot, crowded and inside typhoon season. Winter is mild for walking, too cool for swimming.
+- **season:** April–June and October–November. High summer is hot, crowded and inside typhoon season; winter is mild for walking, too cool for swimming.
 - **pairs_with:** Tokyo or Osaka as an out-and-back flight, and nothing else. No rail connection to anywhere.
 - **fits:** `okinawa`
 
-A poor fit for a first trip built around cities, food and temples: a flight each way and half a week for none of the things that motivate a first visit. **Where to stay here is the one gap in this kit** — the resorts that dominate the islands are a different product from the inns it covers. Say so, check https://ryokancatalog.com/place/okinawa, and research live.
+A poor fit for a first trip built around cities, food and temples: a flight each way and half a week for none of the things a first visit is for. **Where to stay here is the one gap in this kit** — the resorts that dominate the islands are a different product from the inns it covers. Say so, check https://ryokancatalog.com/place/okinawa, and research live.
 
 ---
 
 ## The output — a longlist and a shape
 
-Close the stage in prose: the places they warmed to, one line each in their words, and the shape those places suggest in a clause. No menu rows, no legs, no prices, no scores. A place on no route is said so in a clause, with the nearest thing a route does. Hand it over as what it is: a longlist, nothing chosen yet; Stage 3 puts two or three routes beside it.
+Close the stage in prose: the places they warmed to, one line each in their words, and the shape those places suggest in a clause. No menu rows, no legs, no prices, no scores. A place on no route is said so, with the nearest thing a route does. Hand it over as what it is — a longlist, nothing chosen yet — and Stage 3 puts two or three routes beside it.
 
 ## Where you'll sleep — the three kinds of stay
 
 Three products, mixed freely: hotels in the cities, and a hot-spring inn night where the map makes one easy.
 
 - **City hotel** — a normal room with beds and no obligations, well run at every price, from **business hotels** (small, efficient, no atmosphere) through design hotels to international luxury names. Rooms run smaller than the Western equivalent; rates are **per room, meals not included**.
-- **Ryokan** — a traditional inn: tatami, shoes off at the door, often a hot-spring bath, **both meals included at set times**, rates **per person**. The section below is the full version.
-- **Modern-luxury onsen inn** — often the sweet spot for first-timers: architect-designed hot-spring inns that keep the serious kitchen, the bath and the hospitality and drop the frictions. Real beds, a private open-air bath on the terrace, flexible dinner times, staff used to foreign guests. As expensive as a good ryokan or more, and a much easier first night.
+- **Ryokan** — a traditional Japanese inn: a small wooden house, shoes off at the door, tatami-matted rooms, usually a hot-spring bath, **dinner and breakfast included** at set times, rates **per person**. Most are family-owned, with anywhere from a handful of rooms to forty. The section below is the full version.
+- **Modern-luxury onsen inn** — the same hospitality, kitchen and hot spring in a building designed this century: real beds, a private open-air bath on the terrace, meal times you choose, staff used to foreign guests. As expensive as a good ryokan or more, and an easier first night.
 
 ---
 
@@ -536,13 +537,17 @@ Three products, mixed freely: hotels in the cities, and a hot-spring inn night w
 
 *Two links, once: **[KI-NRT's primer](https://www.flyertalk.com/forum/34617783-post1.html)**, the FlyerTalk thread author's introduction to Japanese inns, and **[ryokancatalog.com](https://ryokancatalog.com)**.*
 
-- **The deal.** Per person, both meals included. Dinner is usually **kaiseki**, ten or more small seasonal courses; breakfast is grilled fish, rice, miso soup, pickles, egg. The meals are half of what you pay for.
-- **The clock runs the day.** Arrive mid-afternoon, bathe, put on the robe, eat at your assigned time, bathe again, sleep. **Both meals start within a fixed window** picked at booking; arriving late disrupts the kitchen. One night is the usual stay: sights before check-in and again after checkout, in a town that has them.
-- **Rooms vary enormously inside one building** — the single most useful thing to know. An entry-level room may be one tatami space serving as living room, dining room and bedroom, with **futon** laid out while you are at dinner; better categories add a sitting area, a garden view, real beds, or a **private open-air bath on your own terrace**. A disappointing stay at a famous inn is usually a room-category story: pay up one tier if you can.
-- **Onsen etiquette.** Communal baths are gender-segregated and **bathing is nude**. **Wash and rinse at the seated showers first**; towel and hair out of the water. The loaned **yukata** goes to the baths and to dinner.
-- **Tattoos.** Many rural communal baths still refuse visible tattoos, unevenly and inn by inn. The reliable answers are a **room with its own private bath** or a **rentable private bath** booked in a slot — ask the property, reserve early, check it is hot-spring-fed.
-- **Say things at booking, not at the table** — the menu was bought days ago. Vegetarians: **dashi** hides in dishes described as vegetable ones, so be explicit. **Smaller portions** are a welcome request.
-- **Is it for you?** Yes, if being looked after appeals, a long formal dinner is a highlight, and soaking outdoors in winter sounds good. Be careful if you eat on your own schedule, dislike fish, or want a gym and a late dinner. **Long formal dinners do not stack.**
+A good ryokan is the thing people come home talking about. It is not a hotel with tatami: it is a small house that has decided what your evening is, and is very good at it. You arrive in the afternoon, soak in water that came out of the ground, change into the robe they lend you, eat a long dinner built from what is in season within a few miles, soak again, and sleep. The building, the garden, the ceramics and the flowers in the alcove are usually local craftwork, deliberately shown off. **If you splurge on one thing in Japan, splurge on this.**
+
+- **The deal.** Per person, dinner and breakfast included — they are half of what you pay for. Dinner is usually **kaiseki**: ten or more small seasonal courses, and the same inn in January and in May serves two completely different meals. Some of the best cook Japanese ingredients in a French or Italian register instead, which is every bit as good. Breakfast is grilled fish, rice, miso soup, pickles, egg; a Western one is usually available and usually the worse choice.
+- **The clock runs the day, and that is the point.** Dinner starts in a window you pick at booking, usually between 17:30 and 19:30, breakfast between 08:00 and 10:00; the kitchen cooks to that clock for a dozen rooms, so arriving late costs you courses. One night is the usual stay — sights before check-in and again after checkout.
+- **Two kinds of inn, both worth a night.** A **classic ryokan** is traditional throughout: tatami underfoot, futon on the floor, meals often served in your room by the person looking after it, and a hush to the place. A **modern-luxury onsen inn** — Fufu is the best-known chain — keeps the kitchen, the hot spring and the hospitality and drops the frictions: beds, sofas, shoes sometimes kept on to the room, meal times you choose, a restaurant rather than your own table. The classic is the deeper experience, the modern the easier one, and nobody is disappointed by either.
+- **Rooms can vary widely within one building**, more than at a hotel, and the price tells you which you are getting. A basic room is one tatami space that is living room, dining room and bedroom in turn, with **futon** laid out while you are at dinner; better categories add a sitting area, a garden view, beds, or a private hot-spring bath on your terrace. Three styles, named on every booking page: **Japanese** (tatami, futon), **Japanese-Western** (a tatami living room, a separate bedroom with real beds), **Western** (beds and chairs throughout). If you would rather not sleep on the floor, ask for Japanese-Western or Western and almost any inn has it. **Where the room category is what makes an inn worth staying at, this kit says so when it is time to book.**
+- **In-room baths are the norm on this kit's shortlist.** Most of the inns it recommends have a private hot-spring bath in the room or on its terrace, so you can get in at midnight in your own company; the best run continuously from the source rather than filling from a tap. The communal baths are still worth using — bigger, and looking out at something. They are gender-segregated and taken **nude** (a small towel walks you there and stays out of the water); **rinse off at the seated showers first**, keep hair and towel clear, and that is the whole etiquette. The loaned **yukata** is correct dress for the baths, dinner and the corridors.
+- **Tattoos.** Many rural communal baths still turn away visible tattoos, unevenly and inn by inn; a few towns, Kinosaki among them, have dropped the rule. A **room with its own bath** or a **private bath rented by the hour** settles it.
+- **Dietary needs go in the booking.** The menu is bought and planned days ahead, so say it when you reserve and it is handled gracefully. Be specific — **dashi**, a stock made with fish, is in many dishes that read as vegetable ones — and ask for smaller portions if you want them, which is a normal request.
+- **What a ryokan does not have**: a gym, a pool, a laundry, room service, a late dinner; outside the tourist towns, staff English can be thin. None of it matters for a night.
+- **Is it for you?** Yes, if being looked after appeals, if a long dinner is a highlight rather than an obligation, and if sitting outdoors in hot water in winter sounds like the best part of a day. Think twice if you eat on your own schedule, dislike fish, or want everything tailored on request. **Long formal dinners do not stack** — this kit spaces the inn nights for that reason.
 
 ---
 
@@ -577,9 +582,10 @@ Inputs  Trip profile; the longlist and the shape Stage 2 closed on; builder/rout
 Do      first the spine: run the menu at the profile's nights and offer the two or three that carry the
         places they warmed to, a line each; then present that spine's decisions one at a time, in trip
         order, with their options as the tool prints them; give the reason for the default in a clause; after each
-        answer re-price and show the timeline; move nights only when asked
+        answer re-price, show the timeline and re-open the explorer on the route as it now stands
 Ask     one decision per message, each message closing on that decision's question; the first folds the offer to open any option into its question
-Output  the stop string and its timeline; then the itinerary table, opened
+Output  the stop string and its timeline; then the itinerary table, opened. Every message in this
+        stage carries the line **Open beside this chat: <route> — <address>**, on its own
 Next    Stage 4 — where to stay.
 ```
 
@@ -587,34 +593,34 @@ Next    Stage 4 — where to stay.
 
 A **spine** is an order of major cities with decisions hanging off each city and leg. Nine cover the country; theirs sit on two or three. **Lead with the comparison**:
 
-1. **Each route under its name in bold, in four short labelled parts**, in your own words: **The route** — what the trip is about, in two sentences. **The cities the route is built around** — each in trip order, its usual nights as a range right after the name, from the run's *Usual nights* line, then two or three sentences as vivid as the Stage 2 cards (what it is, what is special, why go). **Optional ryokan nights** — say once that each is a yes/no added, not on by default; then every one the run's *Ryokan nights* line prints: what the place is and what a night there is like, where it sits (out and back from Tokyo, on the way to Kyoto). **Optional town stops** — the *Town stops* line the same way. No defaults, travel figures or last day here: those arrive with the walk. **Every place and range comes from one engine run per route** — `spine <name> --total N --in X --out Y` — **and the walk opens on that assembly**.
-2. **Which one, and why** — a paragraph as you would say it across a table: the one you would take for this couple, in their own words, what they would miss, and the case for the other. Then one "pick A if… pick B if…" paragraph tying each route to their profile. Never a list of contrasts. The menu ranks first the routes that open where they land and close where they fly home.
-3. **The route explorer, offered with the comparison, not on request.** Every run prints an `Explorer:` line. **Join the hash parts of those lines with a `|`** — everything after the `#` of each, one after another — and hand the single address that makes: the page opens with one tab per route, every one populated, the first active. Once they have chosen, the address carries that route's section alone. Then the closing line: *"want more on any of them, a different mix, or to open one of these and play with it?"*
+1. **Each route under its name in bold, in four short labelled parts**, in your own words: **The route** — what the trip is about, in two sentences. **The cities it is built around** — each in trip order, its usual nights as a range from the run's *Usual nights* line, then two or three sentences as vivid as the Stage 2 cards. **Optional ryokan nights** — say once that each is a yes/no added, not on by default, then every one the *Ryokan nights* line prints: what the place is, what a night there is like, where it sits. **Optional town stops** — the *Town stops* line the same way. No defaults or travel figures here. **Every place and range comes from one run per route** — `spine <name> --total N --in X --out Y` — **and the walk opens on that assembly**.
+2. **Which one, and why** — a paragraph as you would say it across a table: the one you would take for this couple, what they would miss, and the case for the other. Then one "pick A if… pick B if…" paragraph tying each route to their profile. Never a list of contrasts. The menu ranks first the routes that open where they land and close where they fly home.
+3. **The route explorer is opened with the comparison, not offered.** One command does it: **`compare <spine> <spine> [<spine>] --total N --in X --out Y`** — spine names, not stop strings — which assembles each **at its defaults** for that ticket and length, prints the comparison table, and prints **one `Explorer:` address** whose sections are the spines themselves, every decision still switchable on the page. Open it and hand it on its own bold line: **Open beside this chat: <route names> — <address>**. Never turn every optional night on to make the comparison, and never hand a `plan=` address for a route that has a spine — a `plan=` section is frozen, with nothing left to try. Once they have chosen, the address carries that route's section alone. Then the closing line: *"want more on any of them, a different mix, or to play with one of them on the page?"*
 
-4. **A different order is priced, not refused.** When they ask for the stops in another order, or you land on an order the spine cannot assemble, price the stop string with `plan "<stops>"` and open the `Explorer:` line it prints — a `plan=` section draws any stop string as its own tab, and it can sit beside the spine sections in the same address. Do this yourself, in the same message; never ask them to wait while anything is rebuilt, and never say a route cannot be shown.
+   **A second visit to a city is written `@2`** — `tokyo@2` — everywhere: the address, a `plan` stop string, `--nights tokyo@2=N`. Never `#2` (see the appendix).
 
-5. **Serving the explorer.** The kit root ships `.claude/launch.json` with a configuration named `kit-explorer`. Start it with the preview tool on that name, then open `http://localhost:8790/guides/route-explorer.html#…`. **Never `file://`** — the page comes up blank and says nothing about why. **After every open, read the page's text and check the first stop's name is on it before saying it is showing.**
+4. **A different order is priced, not refused.** When they ask for another order, or the spine cannot assemble one, price it with `plan "<stops>"` and open the `Explorer:` line it prints — a `plan=` section draws any stop string as its own tab beside the spine sections. Do it in the same message; never say a route cannot be shown.
 
-**Where a region carries more than one route, show them all before any pick.** Kyushu has three, and they are different trips; roll each out in the four parts above, in the same message, before you say which you would take. Close on the question that separates them — inns first or cities first, the coast or the volcano, how much of the trip is spent moving — and ask that, not "which one?". **On Kyushu the two southern routes open at an inn:** the flight lands at Kagoshima and the first night is at Kirishima, a riverside hot-spring ryokan beside the airport; the north-east opens at Nagasaki, with Unzen and a rental car as the inn-first option. Fukuoka sits in the middle or is left out, never straight after Tokyo. **A note under a route's header is said when you offer it** — Hokkaido's thin research; the rental-car note that Kurokawa, Takachiho or Unzen bring with them, on any route, and what the drive opens up.
+5. **Serving the explorer** — the `kit-explorer` server, never `file://`, and read the page before saying it is showing. Stage 2 carries the steps.
 
-**Run the menu, never quote it.** `cd builder && node route.js spines --nights N --draws food,onsen` prints the nine ranked for the profile — offer them in that order. **A repeat visitor** gets `--repeat` on every run: routes that start straight in the region come first. A Tokyo-only start holds Tokyo to two or three nights, and says they have seen it. **The Kanazawa Loop is offered on every first trip**, ahead of Snow Country. Then **the roll call**: the other routes, a line each.
+**Where a region carries more than one route, show them all before any pick.** Kyushu has three, and they are different trips: roll each out in the four parts above, in one message, then close on the question that separates them — inns first or cities first, the coast or the volcano. **Its two southern routes open at an inn**, Kirishima beside Kagoshima airport; the north-east opens at Nagasaki. Fukuoka sits in the middle or is left out, never straight after Tokyo. **A note under a route's header is said when you offer it** — Hokkaido's thin research, and the rental car that Kurokawa, Takachiho or Unzen bring.
+
+**Run the menu, never quote it.** `cd builder && node route.js spines --nights N --draws food,onsen` prints the nine ranked for the profile — offer them in that order. **A repeat visitor** gets `--repeat` on every run: routes starting straight in the region come first, and a Tokyo-only start holds Tokyo to two or three nights. **The Kanazawa Loop is offered on every first trip**, ahead of Snow Country. Then **the roll call**: the other routes, a line each.
 
 <!-- generated:spines-menu -->
 *The nine routes at their own shortest length (no night count was given — run `spines --nights N` at the profile's nights before showing a menu). Offer the top two or three, by name; the rest is the roll call. Travel counts each flight leg at 3h at most, and a route over 60 minutes of travel a night says so. `spine <name>` walks one — `spine kanazawa`, `spine classic`.*
 
 | Route | Who it's for | The trip | Nights | Travel | Ryokan nights | Flights | Fly in / home from |
 |---|---|---|---|---|---|---|---|
-| **The Classic** · 7–15 nights | A first trip. | Tokyo → Nikkō → Tokyo → Hakone → Kyoto | 11 | 11h20 (62 min per night) | 2 | 0 | Haneda (HND) / Kansai (KIX) |
-| **The Kanazawa Loop** · 9–16 nights | A first trip that wants mountains, crafts and the best small food city; or a second trip. | Tokyo → Yudanaka → Kanazawa → Kyoto | 11 | 9h25 | 1 | 0 | Haneda (HND) / Kansai (KIX) |
-| **Stretched West** · 12–19 nights | A first trip with two weeks or more. | Tokyo → Nikkō → Tokyo → Hakone → Kyoto → Hiroshima | 13 | 12h50 | 2 | 0 | Haneda (HND) / Hiroshima (HIJ) |
-| **Snow Country** · 9–16 nights | Winter: snow country and the northern hot-spring towns. | Tokyo → Minakami / Tanigawa → Echigo-Yuzawa → Kanazawa → Kyoto | 12 | 11h10 | 2 | 0 | Haneda (HND) / Kansai (KIX) |
-| **The Long Line** · 11–18 nights | Kyushu without a flight: one train line the whole way. | Tokyo → Hakone → Kyoto → Hiroshima → Fukuoka | 13 | 9h05 | 1 | 0 | Haneda (HND) / Fukuoka (FUK) |
+| **The Classic** · 7–15 nights | A first trip. | Tokyo → Nikkō → Tokyo → Hakone → Kyoto | 12 | 11h20 | 2 | 0 | Haneda (HND) / Kansai (KIX) |
+| **The Kanazawa Loop** · 9–16 nights | A first trip that wants mountains, crafts and the best small food city; or a second trip. | Tokyo → Yudanaka → Kanazawa → Kyoto | 12 | 9h25 | 1 | 0 | Haneda (HND) / Kansai (KIX) |
+| **Stretched West** · 12–18 nights | A first trip with two weeks or more. | Tokyo → Hakone → Kyoto → Hiroshima | 12 | 8h50 | 1 | 0 | Haneda (HND) / Hiroshima (HIJ) |
+| **Snow Country** · 9–16 nights | Winter: snow country and the northern hot-spring towns. | Tokyo → Minakami / Tanigawa → Echigo-Yuzawa → Kanazawa → Kyoto | 13 | 11h10 | 2 | 0 | Haneda (HND) / Kansai (KIX) |
+| **The Long Line** · 11–18 nights | Kyushu without a flight: one train line the whole way. | Tokyo → Hakone → Kyoto → Hiroshima → Fukuoka | 14 | 9h05 | 1 | 0 | Haneda (HND) / Fukuoka (FUK) |
 | **Hokkaido** · 8–12 nights | The northern island in snow. The kit is thin here. | Tokyo → Sapporo → Niseko → Sapporo | 9 | 11h20 (69 min per night) | 1 | 1 | Haneda (HND) / New Chitose (CTS) |
-| **Kyushu South & East** · 9–16 nights | Kyushu when the hot springs are the point. | Tokyo → Kirishima → Kagoshima → Yufuin | 9 | 9h40 | 2 | 1 | Haneda (HND) / Ōita (OIT) |
+| **Kyushu South & East** · 9–15 nights | Kyushu when the hot springs are the point. | Tokyo → Kirishima → Kagoshima → Yufuin | 9 | 9h40 | 2 | 1 | Haneda (HND) / Ōita (OIT) |
 | **Kyushu North & East** · 10–17 nights | Kyushu on a shorter trip, either way round. | Tokyo → Nagasaki → Takeo Onsen → Fukuoka → Kurokawa Onsen → Takachiho → Kumamoto | 13 | 13h05 | 3 | 1 | Haneda (HND) / Kumamoto (KMJ) |
 | **Kyushu South & West** · 11–20 nights | Kyushu for people who have done Tokyo and Kyoto. | Tokyo → Kirishima → Kagoshima → Fukuoka → Takeo Onsen → Nagasaki | 13 | 9h35 | 2 | 1 | Haneda (HND) / Nagasaki (NGS) |
-
-- The Classic: **flag** 62 min of travel per night — 60 minutes or more; say why and show a lighter order beside it.
 
 - Hokkaido: **flag** 69 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
 
@@ -627,9 +633,9 @@ A **spine** is an order of major cities with decisions hanging off each city and
 
 ### Five principles
 
-1. **Explore first.** Once the spine is picked, the first message shows its default timeline and the first decision, and closes on that decision's question with the offer folded in: *"Tokyo first, or straight into Kansai — or want more on either?"*
-2. **The default is the recommendation.** One option arrives taken, and you say why: *"Hakone is the default because it costs no travel — it sits on the line to Kyoto."* Never volunteer a place to sleep before they have chosen the area — that is Stage 4 — but **a direct question about a town's inns or hotels gets its shortlist there and then**: `stays <place>`, the names linked, your pick first.
-3. **Re-price after every answer.** Each answer is a `--set`; the timeline that comes back is what they see next. **Every run prints an `Explorer:` address carrying the answers so far: open it the way point 5 above says, so the page beside the chat shows the route as it stands after every answer. The stage's last message hands the final address.**
+1. **Explore first.** Once the spine is picked, the first message shows its default timeline and the first decision, closing on that question with the offer folded in: *"Tokyo first, or straight into Kansai — or want more on either?"*
+2. **The default is the recommendation.** One option arrives taken, and you say why: *"Hakone is the default because it costs no travel — it sits on the line to Kyoto."* Never volunteer a place to sleep before they have chosen the area — that is Stage 4 — but **a direct question about a town's inns gets its shortlist there and then**: `stays <place>`, the names linked, your pick first.
+3. **Re-price after every answer, and re-open the page.** Each answer is a `--set`, and the timeline that comes back is what they see next. **Every run prints an `Explorer:` address carrying the answers so far.** Open it and hand it on its own bold line — **Open beside this chat: <route name> — <address>** — in every message, not only the first. Never ask whether they want it; it is already open.
 4. **Say what the spine can't do.** An option marked *not offered here*: name the nearest thing this spine does. **A place it does not reach** gets one no with its reason.
 5. **Never type a number.** Every figure is pasted from the engine.
 
@@ -637,19 +643,19 @@ A **spine** is an order of major cities with decisions hanging off each city and
 
 ### Where the decisions live
 
-A **city** carries its **CITY** switch and at most one **attachment** (an extra night, yes or no); each **leg** carries **slots**, the **RYOKAN** and **STOP** towns on it, each yes or no. **END** closes the trip. Nara never comes before Kyoto.
+A **city** carries its **CITY** switch and at most one **attachment** (an extra night, yes or no); each **leg** carries **slots**, the **RYOKAN** and **STOP** towns on it. **END** closes the trip. Nara never comes before Kyoto.
 
 ### Walk it
 
-The engine is `builder/route.js`: `spine <name>` — `spine kanazawa`, any word of the route's name — prints the decisions, the default timeline, the stop string and the checks. **What it prints is for you; what they see is a decision in plain words**, in this shape:
+The engine is `builder/route.js`: `spine <name>` — any word of the route's name — prints the decisions, the default timeline, the stop string and the checks. **What it prints is for you; what they see is a decision in plain words**, in this shape:
 
 1. **Name the decision** in one sentence a first-timer follows: *"Next: a night at a hot-spring ryokan near Mount Fuji, on the way west?"*
 2. **The place**, two or three sentences from its card in your own words.
 3. **Why yes, why no** — a line each, the default first with its reason: *"Yes is the default: Hakone sits on the line to Kyoto, so the night costs almost no travel."*
-4. **The options as a short table**, `| Option | What it means |`, the default marked *(default)*, the description as the tool prints it. **Never the key**, the number, or the RYOKAN/CITY tag.
-5. **The ask, on its own line**: the question this decision answers — *"Nikkō, yes or no?"* — never Stage 2's closing offer. One decision per message.
+4. **The options as a short table**, `| Option | What it means |`, the default marked *(default)*. **Never the key**, the number, or the RYOKAN/CITY tag.
+5. **The ask, on its own line**: the question this decision answers — *"Nikkō, yes or no?"* One decision per message.
 
-Each answer is another `--set <key>=<option>` (`tokyo.nikko=yes`, by label or number), earlier answers carried along; paste the timeline it returns:
+Each answer is another `--set <key>=<option>` (`tokyo.nikko=yes`), earlier answers carried along; paste the timeline it returns:
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -661,17 +667,15 @@ Before and after get a row each:
 |---|---|---|---|---|---|---|---|
 | before | Tokyo → Hakone → Kyoto | 10 | 7h18 | 44 min | 3 | 1 | 0 | Haneda (HND) / Kansai (KIX) |
 
-Then the next decision. `--nights <place>=N` moves a stop (`=0` drops it), `--total N` the length, both fine beside a `--set`; an explicit `--nights` holds against the total. **A total outside the band still assembles**, and so does a place under its range; say once what that costs. At 60 minutes of travel a night or more the engine prints a **`Lighter:`** line: a real assembly at the same length. **Paste it beside the route they asked for and say which you would take**; over 60 with a city under its minimum is never left settled. `--nights <place>=1r` is a room-only night: no inn dinner, so the dinner run resets. **When the nights asked cannot all be spent**, the engine switches on the ryokan and stop nights it left off, then the Tokyo ending, and says so under What moved; only then does it name the nights left over: offer another city night or a shorter trip.
+Then the next decision. `--nights <place>=N` moves a stop (`=0` drops it), `--total N` the length, both fine beside a `--set`; an explicit `--nights` holds against the total. **A total outside the band still assembles**, and so does a place under its range; say once what that costs. At 60 minutes of travel a night or more the engine prints a **`Lighter:`** line, a real assembly at the same length: **paste it beside the route they asked for and say which you would take**. `--nights <place>=1r` is a room-only night, so the dinner run resets. **When the nights asked cannot all be spent**, the engine switches on the ryokan and stop nights it left off, says so under What moved, then names the nights left over: offer another city night or a shorter trip. **It never fills by adding nights in Tokyo at the end, and neither do you** — a ticket home out of Haneda is not a reason to close in Tokyo; the last leg is the train or flight back to the airport, priced like any other, and Tokyo at the end is offered only if they ask.
 
-A booked ticket rides on every run as `--in <code> --out <code>`: it prices the last leg. The engine opens in the city they land in (Fukuoka, Nagasaki or Ōita on Kyushu) and closes where they fly home when the route offers it; **a ticket into the far end** turns the spine round and says so; `--repeat` starts a second visit in the region. Mid-walk, `--before "<the stop string on screen>"` makes Before the route they actually have. `compare "<A>" "<B>"` sets two routes side by side; `plan` prices an explorer stop string.
-
-It checks ranges, the dinner run, doubling back, the exit airport and every leg; an unresearched pair prints *to confirm*.
+A booked ticket rides on every run as `--in <code> --out <code>`, which prices the last leg. The engine opens in the city they land in and closes where they fly home when the route offers it; **a ticket into the far end** turns the spine round and says so; `--repeat` starts a second visit. Mid-walk, `--before "<the stop string on screen>"` makes Before the route they actually have. It checks ranges, the dinner run, doubling back, the exit airport and every leg; an unresearched pair prints *to confirm*.
 
 **Without the engine**, walk the decisions from the tables below, price legs from the corridor tables, and label the result **unvalidated**.
 
 ### Tokyo's satellites
 
-Nikkō is out and back, so it **splits a long Tokyo stay**; Hakone, Izu and the Fuji lakes sit on the way west.
+**One out-and-back splits Tokyo, and only one: Nikkō, or the Fuji lakes** (**Fufu Kawaguchiko**, a lakeside inn with Mount Fuji in the window). Offer one or the other, never both, and split Tokyo's nights as evenly as they go: six become 3 and 3, five 3 then 2, seven 4 then 3. **The on-the-way Fuji slot is a different decision** — a hot-spring inn on the line west to Kyoto, costing almost no travel — and it is **Hakone or Izu** (`stays fuji`), not the lakes, whose onward ride to Kyoto is long. The lakes are `stays fujilakes`.
 
 <!-- generated:tokyo-satellites -->
 *The five ryokan trips out of Tokyo, with the researched leg from Tokyo on each. Every one is out and back except Hakone and Izu, which sit on the way west; that and the hours below are the difference between them. `fits` is the tag to filter the master inn table by in Stage 4.*
@@ -701,12 +705,13 @@ Tokyo, Kyoto or Osaka, a ryokan or two. The first trip. Tokyo, a ryokan on the r
 |---|---|---|
 | **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then the road west into Kansai. · 2 Straight into Kansai — No Tokyo: fly into Kansai airport, Osaka first, and give the whole trip to Osaka and Kyoto. |
 |  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | **1 Yes** — Carved shrines in cedar forest north of Tokyo; out and back from the city. · 2 No — No Nikkō; the Tokyo stay runs unbroken. |
+|  | A night at the Fuji lakes instead of Nikkō? | _Yes: not offered here — The Fuji lakes are an out-and-back from Tokyo; flying straight into Kansai there is no Tokyo stay to split_ |
 | **Tokyo → Kyoto** | 3 · RYOKAN · A ryokan near Mount Fuji on the way west? `tokyo-kansai.fuji` | **1 Yes** — Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west. · 2 No — Straight through to Kansai. |
 | **Kyoto** | 4 · CITY · Which Kansai city? `kansai` | **1 Kyoto** — Temples, gardens and the old capital. · 2 Osaka — Osaka only; Kyoto as a day out or skipped. · 3 Kyoto and Osaka — Kyoto first, then Osaka for eating and going out. |
 |  | 5 · STOP · A night at Nara? — Yes is on by default from 13 nights, and can be chosen on a shorter trip `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
 | **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from Kansai** — Out through Kansai airport. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. · 4 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 
-**The Classic** · 11 nights · 5 separate stays · 11h20 total transit · in Haneda (HND), out Kansai (KIX) · band 7–15
+**The Classic** · 12 nights · 5 separate stays · 11h20 total transit · in Haneda (HND), out Kansai (KIX) · band 7–15
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -715,11 +720,9 @@ Tokyo, Kyoto or Osaka, a ryokan or two. The first trip. Tokyo, a ryokan on the r
 | Nikkō | 1 | 2h train |
 | Tokyo | 3 | 2h10 train |
 | Hakone | 1 | 3h train |
-| Kyoto | 3 | 1h30 train · out to Kansai (KIX) |
+| Kyoto | 4 | 1h30 train · out to Kansai (KIX) |
 
-Stop string: `plan "tokyo:3,nikko:1,tokyo:3,hakone:1,kyoto:3" --in HND --out KIX`
-
-- **flag** 62 min of travel per night — 60 minutes or more; say why and show a lighter order beside it.
+Stop string: `plan "tokyo:3,nikko:1,tokyo:3,hakone:1,kyoto:4" --in HND --out KIX`
 
 #### The Kanazawa Loop
 
@@ -727,6 +730,7 @@ Tokyo, Kanazawa, a ryokan or two, then onward or back. Over the mountains instea
 
 | Where | Decision | Options (chosen in bold) |
 |---|---|---|
+| **Tokyo** | A night at the Fuji lakes instead of Nikkō? | _Yes: not offered here — not with Yudanaka (Shibu Onsen) on the route_ |
 | **Tokyo → Kanazawa** | 1 · RYOKAN · A ryokan at Yudanaka on the way over the mountains? `tokyo-kanazawa.yudanaka` | **1 Yes** — A hot-spring valley in Nagano where the snow monkeys bathe, on the way over the mountains. · 2 No — Straight through to Kanazawa. |
 |  | A ryokan at Nikkō on the way to Kanazawa, instead of Yudanaka? | _Yes: not offered here — one ryokan night on this leg: Nikkō or Yudanaka_ |
 | **Kanazawa → Kyoto** | 2 · RYOKAN · A ryokan in the Kaga towns after Kanazawa? — Yes is on by default from 13 nights, and can be chosen on a shorter trip `kanazawa-onward.kaga` | 1 Yes — The hot-spring towns an hour down the coast from Kanazawa. · **2 No** — Straight on from Kanazawa. |
@@ -735,7 +739,7 @@ Tokyo, Kanazawa, a ryokan or two, then onward or back. Over the mountains instea
 |  | 5 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
 | **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from the last city** — Out through its own airport. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. · 4 Back to Tokyo, a Fuji ryokan on the way — Hakone, the Fuji lakes or Izu on the road back, then the last nights in Tokyo. · 5 A Fuji ryokan, then fly home from Haneda — Hakone, the Fuji lakes or Izu as the last night, then the airport; no more Tokyo. · 6 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 
-**The Kanazawa Loop** · 11 nights · 4 separate stays · 9h25 total transit · in Haneda (HND), out Kansai (KIX) · band 9–16
+**The Kanazawa Loop** · 12 nights · 4 separate stays · 9h25 total transit · in Haneda (HND), out Kansai (KIX) · band 9–16
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -743,38 +747,37 @@ Tokyo, Kanazawa, a ryokan or two, then onward or back. Over the mountains instea
 | Tokyo | 4 | 2h35 train |
 | Yudanaka (Shibu Onsen) | 1 | 2h10 train |
 | Kanazawa | 3 | 2h30 train |
-| Kyoto | 3 | 1h30 train · out to Kansai (KIX) |
+| Kyoto | 4 | 1h30 train · out to Kansai (KIX) |
 
-Stop string: `plan "tokyo:4,yudanaka:1,kanazawa:3,kyoto:3" --in HND --out KIX`
+Stop string: `plan "tokyo:4,yudanaka:1,kanazawa:3,kyoto:4" --in HND --out KIX`
 
 #### Stretched West
 
-Tokyo, Kyoto or Osaka, Hiroshima, one to three ryokan. The first trip stretched west to the inland sea. Band 12–19 nights · HND → HIJ.
+Tokyo, Kyoto or Osaka, Hiroshima, one to three ryokan. The first trip stretched west to the inland sea. Band 12–18 nights · HND → HIJ.
 
 | Where | Decision | Options (chosen in bold) |
 |---|---|---|
-| **Tokyo** | 1 · RYOKAN · A night at Nikkō? `tokyo.nikko` | **1 Yes** — Carved shrines in cedar forest north of Tokyo; out and back from the city. · 2 No — No Nikkō; the Tokyo stay runs unbroken. |
-| **Tokyo → Kyoto** | 2 · RYOKAN · A ryokan near Mount Fuji on the way west? `tokyo-kansai.fuji` | **1 Yes** — Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west. · 2 No — Straight through to Kansai. |
-| **Kyoto** | 3 · CITY · Which Kansai city? `kansai` | **1 Kyoto** — Temples, gardens and the old capital. · 2 Osaka — Osaka only; Kyoto as a day out or skipped. · 3 Kyoto and Osaka — Kyoto first, then Osaka for eating and going out. |
+| **Tokyo** | 1 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back from the city. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
+|  | 2 · RYOKAN · A night at the Fuji lakes instead of Nikkō? `tokyo.fujilakes` | 1 Yes — A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay. · **2 No** — No Fuji lakes; the Tokyo stay runs unbroken. |
+| **Tokyo → Kyoto** | 3 · RYOKAN · A ryokan near Mount Fuji on the way west? `tokyo-kansai.fuji` | **1 Yes** — Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west. · 2 No — Straight through to Kansai. |
+| **Kyoto** | 4 · CITY · Which Kansai city? `kansai` | **1 Kyoto** — Temples, gardens and the old capital. · 2 Osaka — Osaka only; Kyoto as a day out or skipped. · 3 Kyoto and Osaka — Kyoto first, then Osaka for eating and going out. |
 |  | A night at Nara? | _Yes: not offered here — this trip carries on west, so Nara only fits between Kyoto and Osaka — a day trip otherwise_ |
-| **Kyoto → Hiroshima** | 4 · RYOKAN · A ryokan at Tomonoura on the inland sea? `kansai-hiroshima.tomonoura` | 1 Yes — A small harbour town on the inland sea, an hour short of Hiroshima. · **2 No** — Straight through to Hiroshima. |
-|  | 5 · RYOKAN · A night on Naoshima, the art island? `kansai-hiroshima.naoshima` | 1 Yes — The art island, reached by ferry from Okayama (no kit write-up — book Benesse House direct). · **2 No** — Straight through to Hiroshima. |
-| **Hiroshima** | 6 · RYOKAN · A night on Miyajima? — Yes is on by default from 12 nights, and can be chosen on a shorter trip `hiroshima.miyajima` | 1 Yes — A night on the shrine island, under the torii that stands in the sea. · **2 No** — Miyajima as a day trip from Hiroshima. |
-| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from Hiroshima** — Out through Hiroshima airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
+| **Kyoto → Hiroshima** | 5 · RYOKAN · A ryokan at Tomonoura on the inland sea? `kansai-hiroshima.tomonoura` | 1 Yes — A small harbour town on the inland sea, an hour short of Hiroshima. · **2 No** — Straight through to Hiroshima. |
+|  | 6 · RYOKAN · A night on Naoshima, the art island? `kansai-hiroshima.naoshima` | 1 Yes — The art island, reached by ferry from Okayama (no kit write-up — book Benesse House direct). · **2 No** — Straight through to Hiroshima. |
+| **Hiroshima** | 7 · RYOKAN · A night on Miyajima? — Yes is on by default from 12 nights, and can be chosen on a shorter trip `hiroshima.miyajima` | 1 Yes — A night on the shrine island, under the torii that stands in the sea. · **2 No** — Miyajima as a day trip from Hiroshima. |
+| **The end** | 8 · END · How does the trip end? `end` | **1 Fly home from Hiroshima** — Out through Hiroshima airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 
-**Stretched West** · 13 nights · 6 separate stays · 12h50 total transit · in Haneda (HND), out Hiroshima (HIJ) · band 12–19
+**Stretched West** · 12 nights · 4 separate stays · 8h50 total transit · in Haneda (HND), out Hiroshima (HIJ) · band 12–18
 
 | Stop | Nights | Onward |
 |---|---|---|
 | in from Haneda (HND) | — | 35 min train |
-| Tokyo | 3 | 2h train |
-| Nikkō | 1 | 2h train |
-| Tokyo | 3 | 2h10 train |
+| Tokyo | 5 | 2h10 train |
 | Hakone | 1 | 3h train |
-| Kyoto | 3 | 1h55 train |
+| Kyoto | 4 | 1h55 train |
 | Hiroshima | 2 | 1h05 bus · out to Hiroshima (HIJ) |
 
-Stop string: `plan "tokyo:3,nikko:1,tokyo:3,hakone:1,kyoto:3,hiroshima:2" --in HND --out HIJ`
+Stop string: `plan "tokyo:5,hakone:1,kyoto:4,hiroshima:2" --in HND --out HIJ`
 
 #### Snow Country
 
@@ -783,14 +786,15 @@ Tokyo and the north, then Kanazawa and onward. Tokyo, then north into the snow, 
 | Where | Decision | Options (chosen in bold) |
 |---|---|---|
 | **Tokyo** | 1 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back from the city. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Tokyo → Kanazawa** | 2 · RYOKAN · Two nights in snow country on the way? `tokyo-kanazawa.snow` | **1 Yes** — Two valley ryokan on the bullet train north of Tokyo. · 2 No — No snow-country nights. |
-|  | 3 · RYOKAN · The Sendai loop and the Tōhoku hot-spring towns? `tokyo-kanazawa.tohoku` | 1 Yes — Sendai, then the north's hot-spring towns: a mountain ryokan and a samurai town. · **2 No** — No Tōhoku leg. |
-| **Kanazawa → Kyoto** | 4 · STOP · A stop at Takayama on the way? `kanazawa-onward.takayama` | 1 Yes — A preserved timber merchant town in the mountains, on the way. · **2 No** — Direct to the next city. |
-| **Kyoto** | 5 · CITY · Which city next? `next` | **1 Kyoto** — On to Kyoto, then Kansai airport. · 2 Osaka — Straight to Osaka, then Kansai airport. · 3 Kyoto and Osaka — Kyoto, then Osaka, then Kansai airport. · 4 Back to Tokyo — Loop back over the mountains for a Haneda flight. |
-|  | 6 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
-| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Out through its own airport. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. |
+|  | 2 · RYOKAN · A night at the Fuji lakes instead of Nikkō? `tokyo.fujilakes` | 1 Yes — A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay. · **2 No** — No Fuji lakes; the Tokyo stay runs unbroken. |
+| **Tokyo → Kanazawa** | 3 · RYOKAN · Two nights in snow country on the way? `tokyo-kanazawa.snow` | **1 Yes** — Two valley ryokan on the bullet train north of Tokyo. · 2 No — No snow-country nights. |
+|  | 4 · RYOKAN · The Sendai loop and the Tōhoku hot-spring towns? `tokyo-kanazawa.tohoku` | 1 Yes — Sendai, then the north's hot-spring towns: a mountain ryokan and a samurai town. · **2 No** — No Tōhoku leg. |
+| **Kanazawa → Kyoto** | 5 · STOP · A stop at Takayama on the way? `kanazawa-onward.takayama` | 1 Yes — A preserved timber merchant town in the mountains, on the way. · **2 No** — Direct to the next city. |
+| **Kyoto** | 6 · CITY · Which city next? `next` | **1 Kyoto** — On to Kyoto, then Kansai airport. · 2 Osaka — Straight to Osaka, then Kansai airport. · 3 Kyoto and Osaka — Kyoto, then Osaka, then Kansai airport. · 4 Back to Tokyo — Loop back over the mountains for a Haneda flight. |
+|  | 7 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
+| **The end** | 8 · END · How does the trip end? `end` | **1 Fly home from the last city** — Out through its own airport. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. |
 
-**Snow Country** · 12 nights · 5 separate stays · 11h10 total transit · in Haneda (HND), out Kansai (KIX) · band 9–16
+**Snow Country** · 13 nights · 5 separate stays · 11h10 total transit · in Haneda (HND), out Kansai (KIX) · band 9–16
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -799,9 +803,9 @@ Tokyo and the north, then Kanazawa and onward. Tokyo, then north into the snow, 
 | Minakami / Tanigawa (snow country) | 1 | 1h25 car (rental or taxi) |
 | Echigo-Yuzawa (snow country) | 1 | 3h30 train |
 | Kanazawa | 3 | 2h30 train |
-| Kyoto | 3 | 1h30 train · out to Kansai (KIX) |
+| Kyoto | 4 | 1h30 train · out to Kansai (KIX) |
 
-Stop string: `plan "tokyo:4,tanigawa:1,echigoyuzawa:1,kanazawa:3,kyoto:3" --in HND --out KIX`
+Stop string: `plan "tokyo:4,tanigawa:1,echigoyuzawa:1,kanazawa:3,kyoto:4" --in HND --out KIX`
 
 #### Kyushu South & West
 
@@ -811,12 +815,13 @@ Tokyo and Kyushu, south to west. Kirishima and Kagoshima first, then north and w
 |---|---|---|
 | **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Kagoshima and up to the Kirishima inn. · 2 Straight into Kagoshima — No Tokyo: land at Kagoshima, the Kirishima inn an hour up the road. · 3 Straight into Nagasaki — No Tokyo: land at Nagasaki, hire a car, and run the route the other way round. |
 |  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back from the city. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Kagoshima** | 3 · RYOKAN · A ryokan at Kirishima, straight from the airport? `kagoshima.kirishima` | **1 Yes** — A riverside hot-spring ryokan an hour above Kagoshima, the airport beside it. · 2 No — Kagoshima on its own. |
-| **Kagoshima → Fukuoka** | 4 · STOP · A stop at Kumamoto on the way north? `kagoshima-fukuoka.kumamoto` | 1 Yes — The castle city under the Aso caldera, on the way north. · **2 No** — Straight on. |
-|  | 5 · RYOKAN · A ryokan night on the Amakusa islands? `kagoshima-fukuoka.amakusa` | 1 Yes — A night on the Amakusa islands, the bridged fishing chain west of Kumamoto. · **2 No** — Straight on. |
-| **Fukuoka → Nagasaki** | 6 · RYOKAN · A ryokan at Takeo, between Fukuoka and Nagasaki? `fukuoka-nagasaki.takeo` | **1 Yes** — A small hot-spring town on the line, an hour from Fukuoka, forty minutes from Nagasaki. · 2 No — Straight on to Nagasaki. |
-| **Nagasaki** | 7 · RYOKAN · A ryokan at Unzen after Nagasaki? `nagasaki.unzen` | 1 Yes — The volcano town east of Nagasaki: a hire car at the airport, an hour out. · **2 No** — Nagasaki, then home. |
-| **The end** | 8 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
+|  | 3 · RYOKAN · A night at the Fuji lakes instead of Nikkō? `tokyo.fujilakes` | 1 Yes — A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay. · **2 No** — No Fuji lakes; the Tokyo stay runs unbroken. |
+| **Kagoshima** | 4 · RYOKAN · A ryokan at Kirishima, straight from the airport? `kagoshima.kirishima` | **1 Yes** — A riverside hot-spring ryokan an hour above Kagoshima, the airport beside it. · 2 No — Kagoshima on its own. |
+| **Kagoshima → Fukuoka** | 5 · STOP · A stop at Kumamoto on the way north? `kagoshima-fukuoka.kumamoto` | 1 Yes — The castle city under the Aso caldera, on the way north. · **2 No** — Straight on. |
+|  | 6 · RYOKAN · A ryokan night on the Amakusa islands? `kagoshima-fukuoka.amakusa` | 1 Yes — A night on the Amakusa islands, the bridged fishing chain west of Kumamoto. · **2 No** — Straight on. |
+| **Fukuoka → Nagasaki** | 7 · RYOKAN · A ryokan at Takeo, between Fukuoka and Nagasaki? `fukuoka-nagasaki.takeo` | **1 Yes** — A small hot-spring town on the line, an hour from Fukuoka, forty minutes from Nagasaki. · 2 No — Straight on to Nagasaki. |
+| **Nagasaki** | 8 · RYOKAN · A ryokan at Unzen after Nagasaki? `nagasaki.unzen` | 1 Yes — The volcano town east of Nagasaki: a hire car at the airport, an hour out. · **2 No** — Nagasaki, then home. |
+| **The end** | 9 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 
 **Kyushu South & West** · 13 nights · 6 separate stays · 9h35 total transit · 1 flight · in Haneda (HND), out Nagasaki (NGS) · band 11–20
 
@@ -834,20 +839,21 @@ Stop string: `plan "tokyo:4,kirishima:1,kagoshima:2,fukuoka:3,takeo:1,nagasaki:2
 
 #### Kyushu South & East
 
-Tokyo and Kyushu, south to the hot-spring east. Kagoshima and its Kirishima ryokan, then up to the hot-spring east. Band 9–16 nights · HND → OIT.
+Tokyo and Kyushu, south to the hot-spring east. Kagoshima and its Kirishima ryokan, then up to the hot-spring east. Band 9–15 nights · HND → OIT.
 
 | Where | Decision | Options (chosen in bold) |
 |---|---|---|
 | **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Kagoshima and up to the Kirishima inn. · 2 Straight into Kagoshima — No Tokyo: land at Kagoshima, the Kirishima inn an hour up the road. · 3 Straight into Ōita — No Tokyo: land at Ōita for the east, Kirishima last by the airport home. |
 |  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back from the city. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Kagoshima** | 3 · RYOKAN · A ryokan at Kirishima, straight from the airport? `kagoshima.kirishima` | **1 Yes** — A riverside hot-spring ryokan an hour above Kagoshima, the airport beside it. · 2 No — Kagoshima on its own. |
-| **Kagoshima → Yufuin** | 4 · RYOKAN · A ryokan night on the Amakusa islands? `kagoshima-east.amakusa` | 1 Yes — A night on the Amakusa islands, the bridged fishing chain west of Kumamoto. · **2 No** — Straight on. |
-|  | 5 · STOP · A stop at Kumamoto on the way north? `kagoshima-east.kumamoto` | 1 Yes — The castle city under the Aso caldera, on the way north. · **2 No** — Straight on. |
-| **Kagoshima → Yufuin** | 6 · RYOKAN · A gorge ryokan at Amagase on the way to the east? `kagoshima-yufuin.hita` | 1 Yes — A night in the river gorge on the way, so the east is two nights. · **2 No** — Straight on to the east. |
-| **Yufuin** | 7 · CITY · Which hot-spring town in the east? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. · 3 Yufuin and Beppu — The valley town, then the steaming coast an hour down the hill. |
-| **The end** | 8 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
+|  | 3 · RYOKAN · A night at the Fuji lakes instead of Nikkō? `tokyo.fujilakes` | 1 Yes — A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay. · **2 No** — No Fuji lakes; the Tokyo stay runs unbroken. |
+| **Kagoshima** | 4 · RYOKAN · A ryokan at Kirishima, straight from the airport? `kagoshima.kirishima` | **1 Yes** — A riverside hot-spring ryokan an hour above Kagoshima, the airport beside it. · 2 No — Kagoshima on its own. |
+| **Kagoshima → Yufuin** | 5 · RYOKAN · A ryokan night on the Amakusa islands? `kagoshima-east.amakusa` | 1 Yes — A night on the Amakusa islands, the bridged fishing chain west of Kumamoto. · **2 No** — Straight on. |
+|  | 6 · STOP · A stop at Kumamoto on the way north? `kagoshima-east.kumamoto` | 1 Yes — The castle city under the Aso caldera, on the way north. · **2 No** — Straight on. |
+| **Kagoshima → Yufuin** | 7 · RYOKAN · A gorge ryokan at Amagase on the way to the east? `kagoshima-yufuin.hita` | 1 Yes — A night in the river gorge on the way, so the east is two nights. · **2 No** — Straight on to the east. |
+| **Yufuin** | 8 · CITY · Which hot-spring town in the east? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. · 3 Yufuin and Beppu — The valley town, then the steaming coast an hour down the hill. |
+| **The end** | 9 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 
-**Kyushu South & East** · 9 nights · 4 separate stays · 9h40 total transit · 1 flight · in Haneda (HND), out Ōita (OIT) · band 9–16
+**Kyushu South & East** · 9 nights · 4 separate stays · 9h40 total transit · 1 flight · in Haneda (HND), out Ōita (OIT) · band 9–15
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -868,13 +874,14 @@ Tokyo and Kyushu, the west coast and the volcanic middle. Nagasaki and the Takeo
 | **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Nagasaki. · 2 Straight into Nagasaki — No Tokyo: land at Nagasaki, or drive out to the Unzen inn. |
 |  | 2 · CITY · Which way round? `order` | **1 Nagasaki first** — Land at Nagasaki for the city and the Takeo inn, finish inland or east. · 2 The east first — Start inland or east, finish at the Takeo inn and Nagasaki. |
 |  | 3 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back from the city. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Nagasaki** | 4 · RYOKAN · A ryokan at Unzen before Nagasaki? `nagasaki.unzen` | 1 Yes — The volcano town east of Nagasaki: fly in, hire a car, an hour out. · **2 No** — Straight to Nagasaki. |
-| **Nagasaki → Fukuoka** | 5 · RYOKAN · A ryokan at Takeo, between Fukuoka and Nagasaki? `nagasaki-fukuoka.takeo` | **1 Yes** — A small hot-spring town on the line, an hour from Fukuoka, forty minutes from Nagasaki. · 2 No — Straight on to Nagasaki. |
-| **Fukuoka → Kumamoto** | 6 · RYOKAN · A ryokan at Kurokawa in the caldera country? `fukuoka-kumamoto.kurokawa` | **1 Yes** — The wooden hot-spring village inland, black-roofed and lantern-lit. · 2 No — Straight on. |
-|  | 7 · STOP · A night at the Takachiho gorge? `fukuoka-kumamoto.takachiho` | **1 Yes** — The gorge and its night-time shrine dance; two hours by car to Kumamoto airport. · 2 No — Straight on to Kumamoto. |
-| **Kumamoto** | 8 · CITY · Where does the second half go? `east` | **1 The volcanic middle** — Inland: the hot-spring village at Kurokawa, the Takachiho gorge, out through Kumamoto. · 2 Yufuin — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 3 Beppu — The big steaming hot-spring city on the east coast. · 4 Yufuin and Beppu — The valley town, then the steaming coast an hour down the hill. |
-|  | 9 · RYOKAN · A ryokan night on the Amakusa islands? `kumamoto.amakusa` | 1 Yes — A night on the Amakusa islands, the bridged fishing chain west of Kumamoto. · **2 No** — Kumamoto on its own. |
-| **The end** | 10 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
+|  | 4 · RYOKAN · A night at the Fuji lakes instead of Nikkō? `tokyo.fujilakes` | 1 Yes — A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay. · **2 No** — No Fuji lakes; the Tokyo stay runs unbroken. |
+| **Nagasaki** | 5 · RYOKAN · A ryokan at Unzen before Nagasaki? `nagasaki.unzen` | 1 Yes — The volcano town east of Nagasaki: fly in, hire a car, an hour out. · **2 No** — Straight to Nagasaki. |
+| **Nagasaki → Fukuoka** | 6 · RYOKAN · A ryokan at Takeo, between Fukuoka and Nagasaki? `nagasaki-fukuoka.takeo` | **1 Yes** — A small hot-spring town on the line, an hour from Fukuoka, forty minutes from Nagasaki. · 2 No — Straight on to Nagasaki. |
+| **Fukuoka → Kumamoto** | 7 · RYOKAN · A ryokan at Kurokawa in the caldera country? `fukuoka-kumamoto.kurokawa` | **1 Yes** — The wooden hot-spring village inland, black-roofed and lantern-lit. · 2 No — Straight on. |
+|  | 8 · STOP · A night at the Takachiho gorge? `fukuoka-kumamoto.takachiho` | **1 Yes** — The gorge and its night-time shrine dance; two hours by car to Kumamoto airport. · 2 No — Straight on to Kumamoto. |
+| **Kumamoto** | 9 · CITY · Where does the second half go? `east` | **1 The volcanic middle** — Inland: the hot-spring village at Kurokawa, the Takachiho gorge, out through Kumamoto. · 2 Yufuin — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 3 Beppu — The big steaming hot-spring city on the east coast. · 4 Yufuin and Beppu — The valley town, then the steaming coast an hour down the hill. |
+|  | 10 · RYOKAN · A ryokan night on the Amakusa islands? `kumamoto.amakusa` | 1 Yes — A night on the Amakusa islands, the bridged fishing chain west of Kumamoto. · **2 No** — Kumamoto on its own. |
+| **The end** | 11 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 | **Not on this route** | A gorge ryokan at Amagase before the east? | _Yes: not offered here — the leg from Fukuoka (Hakata) to Yufuin is not on this route_ |
 
 **Kyushu North & East** · 13 nights · 7 separate stays · 13h05 total transit · 1 flight · in Haneda (HND), out Kumamoto (KMJ) · band 10–17
@@ -900,26 +907,27 @@ West to east: Kyoto or Osaka, Hiroshima, Fukuoka. One bullet-train line from Kan
 |---|---|---|
 | **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then the train west. · 2 Straight into Kansai — No Tokyo; fly into Kansai airport. |
 |  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back from the city. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Tokyo → Kyoto** | 3 · RYOKAN · A ryokan near Mount Fuji on the way west? `tokyo-kansai.fuji` | **1 Yes** — Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west. · 2 No — Straight through to Kansai. |
-| **Kyoto** | 4 · CITY · Which Kansai city? `kansai` | **1 Kyoto** — Temples, gardens and the old capital. · 2 Osaka — Osaka only; Kyoto as a day out or skipped. · 3 Kyoto and Osaka — Kyoto first, then Osaka for eating and going out. |
+|  | 3 · RYOKAN · A night at the Fuji lakes instead of Nikkō? `tokyo.fujilakes` | 1 Yes — A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay. · **2 No** — No Fuji lakes; the Tokyo stay runs unbroken. |
+| **Tokyo → Kyoto** | 4 · RYOKAN · A ryokan near Mount Fuji on the way west? `tokyo-kansai.fuji` | **1 Yes** — Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west. · 2 No — Straight through to Kansai. |
+| **Kyoto** | 5 · CITY · Which Kansai city? `kansai` | **1 Kyoto** — Temples, gardens and the old capital. · 2 Osaka — Osaka only; Kyoto as a day out or skipped. · 3 Kyoto and Osaka — Kyoto first, then Osaka for eating and going out. |
 |  | A night at Nara? | _Yes: not offered here — this trip carries on west, so Nara only fits between Kyoto and Osaka — a day trip otherwise_ |
-| **Kyoto → Hiroshima** | 5 · RYOKAN · A ryokan at Tomonoura on the inland sea? `kansai-hiroshima.tomonoura` | 1 Yes — A small harbour town on the inland sea, an hour short of Hiroshima. · **2 No** — Straight through to Hiroshima. |
-|  | 6 · RYOKAN · A night on Naoshima, the art island? `kansai-hiroshima.naoshima` | 1 Yes — The art island, reached by ferry from Okayama (no kit write-up — book Benesse House direct). · **2 No** — Straight through to Hiroshima. |
-| **Hiroshima** | 7 · RYOKAN · A night on Miyajima? `hiroshima.miyajima` | 1 Yes — A night on the shrine island, under the torii that stands in the sea. · **2 No** — Miyajima as a day trip from Hiroshima. |
-| **The end** | 8 · END · How does the trip end? `end` | **1 Fly home from Fukuoka** — Out through Fukuoka airport. · 2 The hot-spring east — Two ryokan nights, Amagase then Yufuin, out through Ōita. · 3 Takeo and Nagasaki — A ryokan night, then Nagasaki, out through Nagasaki. · 4 Back to Tokyo — Two more Tokyo nights, then Haneda. |
+| **Kyoto → Hiroshima** | 6 · RYOKAN · A ryokan at Tomonoura on the inland sea? `kansai-hiroshima.tomonoura` | 1 Yes — A small harbour town on the inland sea, an hour short of Hiroshima. · **2 No** — Straight through to Hiroshima. |
+|  | 7 · RYOKAN · A night on Naoshima, the art island? `kansai-hiroshima.naoshima` | 1 Yes — The art island, reached by ferry from Okayama (no kit write-up — book Benesse House direct). · **2 No** — Straight through to Hiroshima. |
+| **Hiroshima** | 8 · RYOKAN · A night on Miyajima? `hiroshima.miyajima` | 1 Yes — A night on the shrine island, under the torii that stands in the sea. · **2 No** — Miyajima as a day trip from Hiroshima. |
+| **The end** | 9 · END · How does the trip end? `end` | **1 Fly home from Fukuoka** — Out through Fukuoka airport. · 2 The hot-spring east — Two ryokan nights, Amagase then Yufuin, out through Ōita. · 3 Takeo and Nagasaki — A ryokan night, then Nagasaki, out through Nagasaki. · 4 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 
-**The Long Line** · 13 nights · 5 separate stays · 9h05 total transit · in Haneda (HND), out Fukuoka (FUK) · band 11–18
+**The Long Line** · 14 nights · 5 separate stays · 9h05 total transit · in Haneda (HND), out Fukuoka (FUK) · band 11–18
 
 | Stop | Nights | Onward |
 |---|---|---|
 | in from Haneda (HND) | — | 35 min train |
 | Tokyo | 4 | 2h10 train |
 | Hakone | 1 | 3h train |
-| Kyoto | 3 | 1h55 train |
+| Kyoto | 4 | 1h55 train |
 | Hiroshima | 2 | 1h05 train |
 | Fukuoka (Hakata) | 3 | 20 min train · out to Fukuoka (FUK) |
 
-Stop string: `plan "tokyo:4,hakone:1,kyoto:3,hiroshima:2,fukuoka:3" --in HND --out FUK`
+Stop string: `plan "tokyo:4,hakone:1,kyoto:4,hiroshima:2,fukuoka:3" --in HND --out FUK`
 
 #### Hokkaido
 
@@ -929,9 +937,10 @@ The northern island in snow, a flight each way. A flight each way, the island's 
 |---|---|---|
 | **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Sapporo. · 2 Straight into Sapporo — No Tokyo. |
 |  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back from the city. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Sapporo** | 3 · RYOKAN · A hot-spring night at Noboribetsu straight off the plane? `sapporo.noboribetsu` | 1 Yes — The island's big sulphur hot-spring town, an hour and a quarter from the airport. · **2 No** — Straight into Sapporo. |
-| **Niseko (Hirafu)** | 4 · CITY · A mountain night at Niseko? `mountain` | **1 Niseko** — The ski resort's inn night, two hours from Sapporo. · 2 No Niseko — Sapporo unbroken; a hot-spring night near the airport at the end instead. |
-| **The end** | 5 · END · How does the trip end? `end` | **1 Fly home from New Chitose** — Out through Sapporo's airport. · 2 A hot-spring ryokan — A last night at Noboribetsu or Jōzankei, near the airport. · 3 Back to Tokyo — Two more Tokyo nights, then Haneda. |
+|  | 3 · RYOKAN · A night at the Fuji lakes instead of Nikkō? `tokyo.fujilakes` | 1 Yes — A lakeside ryokan under Mount Fuji, two hours from Tokyo, out and back, so it splits the Tokyo stay. · **2 No** — No Fuji lakes; the Tokyo stay runs unbroken. |
+| **Sapporo** | 4 · RYOKAN · A hot-spring night at Noboribetsu straight off the plane? `sapporo.noboribetsu` | 1 Yes — The island's big sulphur hot-spring town, an hour and a quarter from the airport. · **2 No** — Straight into Sapporo. |
+| **Niseko (Hirafu)** | 5 · CITY · A mountain night at Niseko? `mountain` | **1 Niseko** — The ski resort's inn night, two hours from Sapporo. · 2 No Niseko — Sapporo unbroken; a hot-spring night near the airport at the end instead. |
+| **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from New Chitose** — Out through Sapporo's airport. · 2 A hot-spring ryokan — A last night at Noboribetsu or Jōzankei, near the airport. · 3 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 
 **Hokkaido** · 9 nights · 4 separate stays · 11h20 total transit · 1 flight · in Haneda (HND), out New Chitose (CTS) · band 8–12
 
@@ -939,25 +948,25 @@ The northern island in snow, a flight each way. A flight each way, the island's 
 |---|---|---|
 | in from Haneda (HND) | — | 35 min train |
 | Tokyo | 4 | 4h flight |
-| Sapporo | 3 | 3h bus |
+| Sapporo | 2 | 3h bus |
 | Niseko (Hirafu) | 1 | 3h bus |
-| Sapporo | 1 | 45 min train · out to New Chitose (CTS) |
+| Sapporo | 2 | 45 min train · out to New Chitose (CTS) |
 
-Stop string: `plan "tokyo:4,sapporo:3,niseko:1,sapporo:1" --in HND --out CTS`
+Stop string: `plan "tokyo:4,sapporo:2,niseko:1,sapporo:2" --in HND --out CTS`
 
 - **flag** 69 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
 <!-- /generated:spines -->
 
 ### The corridor and airport tables
 
-**Every leg in every timeline above is researched**; inn legs are in `data/transit-legs.md`.
+**Every leg above is researched**; inn legs are in `data/transit-legs.md`.
 
 Both are printed in full in Stage 5 below, under *The corridor cheat-sheet*. Read them there, with the rules that go with them.
 
 
 ### The decision
 
-Open the itinerary table once they have settled: fill `#`, `Stop` — the name and the kind word, **city**, **town** or **ryokan** — `Nights` and every leg row from `plan` on the final stop string. `Dates` stays empty until a start date is known, and `Stay options` waits for Stage 4.
+Open the itinerary table once they have settled: fill `#`, `Stop` — the name and the kind word, **city**, **town** or **ryokan** — `Nights` and every leg row from `plan`. `Dates` waits for a start date, `Stay options` for Stage 4.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
@@ -991,63 +1000,68 @@ Do      one stop per message, in trip order: the shortlist only, three to five o
         verbatim; where one is plainly the pick, say so
 Ask     first: whether they want any of them opened up — then which two or three they would keep in the running. Max 2 follow-ups, only where the options differ on it
 Output  the itinerary table's `Stay options` cell for that stop — the earmarked names, the lean
-        marked `(chosen)`; a stop with none stays open
+        marked `(chosen)`; a stop with none stays open. Closing the stage: the trip drawn as a page,
+        built and opened without being asked — guides/visualizing-the-trip.md
 Next    Stage 5 — make the route work
 ```
 
-**Earmark, don't pick.** Nobody settles a hotel mid-chat — they compare prices and check points first. So ask which **two or three to keep in the running**, never which one. The good inns sell out, so the second name earns its place; one earmark is fine, none leaves the stop open. Rows run best fit first, chosen against the profile. **The user chooses** — except where one stay is plainly the pick, which the rule below covers.
+**Close the stage by drawing the trip.** Once the last stop has its earmarks, build the trip page from the itinerary table as it stands and open it beside the chat — `guides/trip-visual-template.html`, filled the way `guides/visualizing-the-trip.md` says, published as an artifact where that tool exists. **Do it; never offer it**: this is the first time they see the trip whole. Stage 5 updates the same page.
 
-**A ryokan slot expands here.** Stage 3's ryokan slots are areas, not inns, and each is **one call to the tool, one table**: `stays fuji` (Hakone, the Fuji lakes, Izu) · `stays snow` (Minakami, Minamiuonuma, Yudanaka, Yamada Onsen) · `stays kaga` (Yamashiro, Yamanaka) · `stays east` (Amagase, Yufuin, Kurokawa) · `stays sapporo-onsen`. One table, **the town as a column**, so the choice of inn fixes the town and the leg at once; then re-price the stop string with that town and paste the timeline. **Hokkaido's mountain night is Niseko**, and Furano holds no stay of its own.
+**Earmark, don't pick.** Nobody settles a hotel mid-chat — they compare prices and check points first. So ask which **two or three to keep in the running**, never which one. The good inns sell out, so the second name earns its place; one earmark is fine, none leaves the stop open. **The user chooses**, except where one stay is plainly the pick.
+
+**A ryokan slot expands here.** Stage 3's ryokan slots are areas, not inns, and each is **one call, one table**: `stays fuji` (Hakone, Izu) · `stays fujilakes` (Kawaguchiko) · `stays snow` (Minakami, Minamiuonuma, Yudanaka, Yamada Onsen) · `stays kaga` (Yamashiro, Yamanaka) · `stays east` (Amagase, Yufuin, Kurokawa) · `stays sapporo-onsen`. One table, **the town as a column**, so the choice of inn fixes the town and the leg at once; then re-price the stop string with that town. **Hokkaido's mountain night is Niseko.**
 
 ### How to work the table
 
-1. **Filter the master inn table** by the stop — its `Area`, then the `Reach` column for the gateway city they will arrive from; the Stage 2 card's `fits` tag where the stop is a choice between areas. With the engine, `cd builder && node route.js stays <place> [--budget modest|comfortable|splurge] [--bath]` prints the same rows, filtered against the profile.
-2. **Order best-fit-first for this traveller** — the `Taste:` line is the frame — not best-scored-first. A quiet inn up a valley is the wrong recommendation for someone with a six-year-old, whatever its score.
-3. **Show three to six as one table, best fit first** — the table `stays` prints, up to six rows, inns and hotels together. Never split it into sub-tables, never the whole filtered set, never a run of bullets. If the tool prints a second table — the nearest place it covers, when this one has nothing — print that one too, and no more. One row each, this header:
+1. **Filter the master inn table** by the stop — its `Area`, then the `Reach` column for the gateway city; the Stage 2 card's `fits` tag where the stop is a choice between areas. With the engine, `cd builder && node route.js stays <place> [--budget modest|comfortable|splurge] [--bath]` prints the same rows, filtered against the profile.
+2. **Order best-fit-first for this traveller**, the `Taste:` line as the frame, not best-scored-first. A quiet inn up a valley is the wrong recommendation for someone with a six-year-old, whatever its score.
+3. **Show three to six as one table, best fit first** — the table `stays` prints, up to six rows, inns and hotels together. Never sub-tables, never the whole filtered set, never bullets. If the tool prints a second table — the nearest place it covers, when this one has nothing — print that too, and no more. One row each, this header:
 
    | Stay | Price | Why |
    |---|---|---|
    | `<name · inn / hotel · tier score · editor's pick where it is one · [map](<link>) · [write-up](<link>) · [book on Ikyu](<link>)>` | `<price>` | `<why it is special for them, its key features and its reservations — from the write-up>` |
 
+   **Keep the line the tool prints under a ryokan table** — the pointer to [ryokancatalog.com](https://ryokancatalog.com) for the inns this table left out. It is part of the table, read out every time, never dropped as boilerplate: five or six rows here, the rest of the country there, and it is how somebody who wants a different inn finds one.
+
    **Why gets the width**: the name, the neighbourhood or kind, the score, the editor's pick and every link ride together in the `Stay` cell, so there is no Links column. Two variants, as `stays` prints them: a ryokan option spanning towns adds `Town` — `| Stay | Town | Price | Why |`; the inns within reach of a city add where they are reached from — `| Stay | From <city> | Price | Why |`.
 
-4. **What goes in the cells.** **`Why` is yours** — the section below says how. **`Price`** says what it includes — per night for two, dinner and breakfast for an inn, room only for a hotel — said once, in that cell, never again in a sentence. **Where a room can be paid for with points, the scheme is named in `Price` too** (`$375–700 · or Hyatt / Chase points`), never in `Why`: points are a way of paying, not a reason to stay. The links live in the `Stay` cell — the Google Maps pin first, then the hotel's homepage or the inn's `ryokancatalog.com` write-up, then its Ikyu page. The bath — in the room, some rooms, none — and anything else that changes the choice goes in `Why`, in a clause.
+4. **What goes in the cells.** **`Why` is yours** — the section below says how. **`Price`** says what it includes — per night for two, dinner and breakfast for an inn, room only for a hotel — once, in that cell. **Where a room can be paid for with points, the scheme is named in `Price` too** (`$375–700 · or Hyatt / Chase points`), never in `Why`: points are a way of paying, not a reason to stay. The links live in the `Stay` cell — the Google Maps pin first, then the homepage or the inn's `ryokancatalog.com` write-up, then Ikyu. The bath — in the room, some rooms, none — and anything else that changes the choice goes in `Why`, in a clause.
 
-   **Ikyu, said once.** The first time an inn row carries one, say what it is: *"[ikyu.com](https://www.ikyu.com/) is a Japanese booking site with an English front, and the easiest place to book most of these inns; where a row has no Ikyu link, book on the inn's own page or by email."* Then move on.
+   **Ikyu, said once.** The first time an inn row carries one: *"[ikyu.com](https://www.ikyu.com/) is a Japanese booking site with an English front, and the easiest place to book most of these inns; where a row has no Ikyu link, book on the inn's own page or by email."* Then move on.
 
-   **When one is plainly the pick, say so.** Where the tool prints its one-clear-choice line, or where an S-tier editor's pick sits beside a B, say it in a sentence — *"Myoken Ishiharaso is the one here; the others are fallbacks if it is full"* — and let the rest of the table stand as backups. A lopsided pair presented as an open choice wastes their time.
-5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so — *"four more on the kit's list — ask and I'll show them"*. Otherwise the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*; in a later turn ask which two or three they would keep in the running, and the first they name is the lean.
+   **When one is plainly the pick, say so.** Where the tool prints its one-clear-choice line, or an S-tier editor's pick sits beside a B, say it in a sentence — *"Myoken Ishiharaso is the one here; the others are fallbacks if it is full"* — and let the rest stand as backups.
+5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so — *"four more on the kit's list — ask and I'll show them"*. Otherwise the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*; later ask which two or three to keep in the running, and the first they name is the lean.
 
-**Opening up a stay means reading its [ryokancatalog.com](https://ryokancatalog.com) page** — rooms, bath, kitchen, setting, weaknesses — plus distance from the gateway, the room with the private bath, and how to book.
+**Opening up a stay means reading its [ryokancatalog.com](https://ryokancatalog.com) page** — rooms, bath, kitchen, setting, weaknesses — plus the distance from the gateway, the room with the private bath, and how to book.
 
 **How many, by kind of stop:**
 
-- **A hotel group named after a loyalty scheme is offered only when they raised points.** Where the table groups a city's hotels, the Japanese-run houses and the boutiques lead; the points group is offered when their profile mentions points or that chain, and otherwise sits last as one line. A hotel whose case is the address and the points is a fine answer to *"we have Hyatt points"* and a poor answer to *"where should we stay in Tokyo"*.
-- **A city stop** (Tokyo, Kyoto, Osaka, Fukuoka) — **up to six hotels for Tokyo, Kyoto or Osaka, so the list shows variety; one or two for a minor city**, every one chosen against their `Budget:` and `Taste:` lines. **Where the table has fewer, say so and say how many**; a city with none offers the live catalogue or the nearest city the kit covers, never a padded list. Up to two notable inns actually in the city belong in the same table, the word *inn* in their `Stay` cell and a clause in `Why` saying they are a different product on a different price basis. Tokyo is a hotel city: the inns near it are countryside places an hour out, a separate stop rather than a way to sleep in Tokyo.
+- **A hotel group named after a loyalty scheme is offered only when they raised points.** Where the table groups a city's hotels, the Japanese-run houses and the boutiques lead; the points group goes last as one line unless their profile mentions points or that chain. A hotel whose case is the address and the points is a fine answer to *"we have Hyatt points"* and a poor one to *"where should we stay in Tokyo"*.
+- **A city stop** (Tokyo, Kyoto, Osaka, Fukuoka) — **up to six hotels for Tokyo, Kyoto or Osaka, so the list shows variety; one or two for a minor city**, each chosen against their `Budget:` and `Taste:` lines. **Where the table has fewer, say so and say how many**; a city with none offers the live catalogue or the nearest city the kit covers, never a padded list. Up to two notable inns actually in the city belong in the same table, the word *inn* in their `Stay` cell and a clause in `Why` saying they are a different product on a different price basis. Tokyo is a hotel city: the inns near it are countryside places an hour out, a separate stop.
 - **An inn stop** (a hot-spring valley, a mountain town, a coast) — five where the table has five, fewer where it doesn't. In a thin area, one inn plus a hotel in the nearest town is a legitimate answer.
-- **A stop that is a ryokan option spanning towns** — **one table, the town as a column**, the travel time from the gateway city in the Town cell, never inside the prose: that difference usually decides it. Choosing the inn fixes the town, so re-price the stop string with the place key `route.js places` prints for it. Where a slot is a single town, only its rows can be taken without leaving the route.
+- **A stop that is a ryokan option spanning towns** — **one table, the town as a column**, the travel time from the gateway city in the Town cell, never in the prose: that difference usually decides it. Choosing the inn fixes the town, so re-price the stop string with the place key `route.js places` prints. Where a slot is a single town, only its rows can be taken without leaving the route.
 
 **Rules for this stage:**
 
-- **Don't lead with the most expensive option** unless they asked for the splurge. Lead with the best fit; name the dearest as the reach if there is a reason. **An editor's pick above their budget still prints, last, marked "above the budget"** — say in a clause what the extra buys, never drop it.
-- **Prefer inns with a bath in the room**, and say why in half a sentence: it settles tattoos, privacy and bathing at once. **"Some rooms" is fine**, and often the better buy — but **"some" always means a specific, dearer room category**, never a room the inn might give you on the night: price that category, not the entry room. Offline, say "some rooms — ask for the category with the private bath when booking". Where a group has none, say so plainly and ask whether the inn has a private bath bookable by the hour.
-- **Getting around is a fact, not a warning.** Say the station distance plainly; Tokyo taxis are plentiful and cheap.
-- **Mention booking mechanics only when unusual** — no online booking at all, a window that opens on a fixed date months ahead, agent-or-Japanese-site only, a lottery. Say plainly when you don't know.
-- **Give the Google Maps link first, the rest after it** — the homepage for a hotel, the catalogue write-up and the Ikyu page for an inn, in the order the tool prints them, all inside the `Stay` cell. The map link is the property's own Google place; where a row has none, say the map is unconfirmed and give the site alone. Never build a maps search link out of a hotel's name — it lands on the town, not the building.
-- **When the budget doesn't land.** A price reading *rate not researched — check live* still prints, with that note, and goes on **To confirm**. Where every row is above their budget or unpriced, show the nearest rows and say the kit has nothing at that price here. Convert a yen budget once, at a round rate you state — ¥150 to the dollar unless they give one — the one number you may type.
-- **Say what a price band is when you quote one.** Hotel bands are three-night checks for two, taxes included, across February, May and October; Japanese holidays run well above them. Confirm on the property's own page for the actual dates.
+- **Don't lead with the most expensive option** unless they asked for the splurge. Lead with the best fit; name the dearest as the reach if there is a reason. **An editor's pick above their budget still prints, last, marked "above the budget"** — say in a clause what the extra buys.
+- **Prefer inns with a bath in the room**, and say why in half a sentence: it settles tattoos, privacy and bathing at once. **"Some rooms" is fine**, often the better buy — but **"some" always means a specific, dearer category**, never a room the inn might give you on the night: price that category, not the entry room. Where a group has none, say so and ask whether the inn has a private bath bookable by the hour.
+- **Getting around is a fact, not a warning.** Say the station distance plainly; Tokyo taxis are cheap.
+- **Mention booking mechanics only when unusual** — no online booking, a window that opens on a fixed date months ahead, agent-or-Japanese-site only, a lottery. Say plainly when you don't know.
+- **Give the Google Maps link first, the rest after it**, in the order the tool prints them, all inside the `Stay` cell. The map link is the property's own Google place; where a row has none, say the map is unconfirmed and give the site alone. Never build a maps search link out of a hotel's name — it lands on the town, not the building.
+- **When the budget doesn't land.** A price reading *rate not researched — check live* still prints, with that note, and goes on **To confirm**. Where every row is above their budget, show the nearest rows and say the kit has nothing at that price here. Convert a yen budget once, at a round rate you state — ¥150 to the dollar unless they give one — the one number you may type.
+- **Say what a price band is when you quote one.** Hotel bands are three-night checks for two, taxes included, across February, May and October; Japanese holidays run well above them.
 
 ### The Why cell is yours; the facts are the kit's
 
-Every inn and hotel here carries a hand-researched write-up, which the tool prints in full: your source, not the cell. **Write `Why` in your own words for this couple**: two or three sentences on what would make the night special for *them* — tied to their `Taste:` and `Draws:` lines — the key features (the bath and whether it is in the room, the kitchen, the setting, the size), and its real reservations — a noisy dining room, a blocked view, a bath only in the top rooms — said plainly. **Every fact comes from the write-up or the inn's page; nothing is invented.**
+Every inn and hotel here carries a hand-researched write-up, which the tool prints in full: your source, not the cell. **Write `Why` in your own words for this couple** — two or three sentences on what would make the night special for *them*, tied to their `Taste:` and `Draws:` lines; the key features (the bath and whether it is in the room, the kitchen, the setting, the size); and its real reservations — a noisy dining room, a blocked view, a bath only in the top rooms — said plainly. **Every fact comes from the write-up or the inn's page; nothing is invented.**
 
-Gora Kadan Fuji, not as the write-up pastes but for a couple on their first ryokan night: *"The gentlest way into a ryokan: a hotel-ryokan hybrid with Fuji in front of you, a pool, three dining rooms and nothing about the form to be nervous about. Book an Open-air Bath Suite or above for spring water in the room, and the sushi or teppanyaki counter over the kaiseki."*
+Gora Kadan Fuji, for a couple on their first ryokan night: *"The gentlest way in: a hotel-ryokan hybrid with Fuji in front of you, a pool, three dining rooms and nothing about the form to be nervous about. Book an Open-air Bath Suite or above for spring water in the room, and the sushi or teppanyaki counter over the kaiseki."*
 
-**Explain the score once, the first time a table shows one:** *"A-tier · 8.8 / 10 means tier A, 8.8 out of 10 — the catalogue's reading of the FlyerTalk thread and the Japanese review sites; S is the top tier, and a dash means unscored: a Japanese-guest favourite nobody has written up in English."* And introduce the catalogue once: *"every inn links to its page on ryokancatalog.com — the long read: rooms, bath, food, how to book."*
+**Explain the score once, the first time a table shows one:** *"A-tier · 8.8 / 10 means tier A, 8.8 out of 10 — the catalogue's reading of the FlyerTalk thread and the Japanese review sites; S is the top tier, and a dash means unscored: a Japanese-guest favourite nobody has written up in English."* Introduce the catalogue once: *"every inn links to its page on ryokancatalog.com — the long read: rooms, bath, food, how to book."*
 
 ### Two things to say out loud once
 
-- **A ryokan night is a fixed schedule, so shape the day around it.** Where there are sights (Nikkō, Takayama), take an early train, see them through the late morning, check in mid-afternoon; meals are at set hours, and two more hours of sights fit after checkout. A late arrival can cost the dinner you paid for.
+- **A ryokan night is a fixed schedule, so shape the day around it.** Where there are sights (Nikkō, Takayama), take an early train, see them through the late morning, check in mid-afternoon, and fit two more hours in after checkout. A late arrival can cost the dinner you paid for.
 - **The price isn't like-for-like.** A ryokan's rate covers two substantial meals for two; a hotel's covers the room, so the gap is smaller than it looks.
 
 <!-- generated:catalog-howto -->
@@ -1066,12 +1080,12 @@ Reading a listing, in four lines:
 The whole catalog is fetchable as data: https://ryokancatalog.com/catalog.md (one table, all inns) · https://ryokancatalog.com/api/inn/<slug>.json (one inn in full) · https://ryokancatalog.com/place/<place> (a ranked page per town, prefecture and region) · https://ryokancatalog.com/llms.txt (how the data is laid out). The kit ships a snapshot of the first three in `catalog/`; the live site is always the primary.
 <!-- /generated:catalog-howto -->
 
-**Before showing inns to a family:** most are adult-oriented. The `family-ok` tag marks the few whose write-up says they take children — its absence means *not stated*. Check the inn's page for its child policy and a room for three or four, and price it **per person**: a ryokan rate is per head with both meals.
+**Before showing inns to a family:** most are adult-oriented. The `family-ok` tag marks the few whose write-up says they take children; its absence means *not stated*. Check the inn's page for its child policy and a room for three or four, and price it **per person**.
 
 ### The master inn table
 
 <!-- generated:inns -->
-**81 inns, one row each.** Drawn from a 199-inn catalogue re-scored from the FlyerTalk forum thread written by a traveller who posts as **KI-NRT**. This is the only place an inn is listed; everything else in the kit points here.
+**80 inns, one row each.** Drawn from a 199-inn catalogue re-scored from the FlyerTalk forum thread written by a traveller who posts as **KI-NRT**. This is the only place an inn is listed; everything else in the kit points here.
 
 **Two links to give them the first time you introduce ryokans** — the FlyerTalk thread author KI-NRT's primer, https://www.flyertalk.com/forum/34617783-post1.html, which is the plain-English introduction to what an inn night is, and https://ryokancatalog.com, where every inn below can be read in depth. Both, once, at the first mention.
 
@@ -1116,7 +1130,6 @@ The whole catalog is fetchable as data: https://ryokancatalog.com/catalog.md (on
 | Kanshuku-en Eshikoto | https://ryokancatalog.com/inn/kanshuku-en-eshikoto | Eiheiji | — | unstated | $750–1150 | kanazawa 1h/0 train · kyoto 1h45/1 train · takayama 2h55/1 train | kanazawa-loop | yes | Kanshuku-en Eshikoto is an eight-villa auberge opened in November 2024 by the Kokuryu sake brewery beside its ESHIKOTO complex near Eiheiji, the Soto Zen head temple, and each is a whole-villa rental of about 103 square meters with a semi-open-air onsen bath and Echizen-craft art. | https://www.ikyu.com/00003286/ |
 | Shogetsu | https://ryokancatalog.com/inn/shogetsu | Gero Onsen | A 8.8 | yes | $600–950 | takayama 1h/0 train · kanazawa 3h/1 train · kyoto 3h05/1 train | alps |  | A 21-room hilltop ryokan overlooking the Gero Onsen valley, a tall, nondescript building outside but inside all rock gardens, artsy lounges, a spectacular creative-kaiseki kitchen, amazing Gero spring water and valley views from room, lounge and communal bath alike. | — |
 | Hakone Suishoen | https://ryokancatalog.com/inn/hakone-suishoen | Hakone | A 8.2 | yes | $550–800 | hakone in town · tokyo 2h10/1 train · kyoto 3h/1 train | golden-route-stop bed-not-futon |  | A 23-room Fufu-group ryokan in Hakone that does not use the Fufu name, because it is more traditional in architecture and aesthetics and caters to a slightly more mature crowd, and its dining rooms are set in a Taisho-era Mitsui villa. | https://www.ikyu.com/00001359/ |
-| Gora Kadan | https://ryokancatalog.com/inn/gora-kadan | Hakone | B 7.5 | some | ask | hakone in town · tokyo 2h10/1 train · kyoto 3h/1 train | golden-route-stop family-ok |  | A 39-room modern-Japanese ryokan in Gora and one of the thread author's 'Hakone holy trinity', with polished omotenashi, meals served in the room and onsen baths in the first-floor rooms only. | — |
 | Yamado | https://ryokancatalog.com/inn/yamado | Hottoyuda Onsen | A 8.2 | unstated | $600–850 | sendai 2h/1 shinkansen · tokyo 4h/1 shinkansen · nikko 4h05/2 train | tohoku bed-not-futon |  | A 12-room hot-spring retreat in the Iwate mountains with free-flowing source onsen in every room, a private bath suspended over the stream that is worth the trip on its own, and Iwate-proud staff whose hospitality stood out most for the thread author. | https://www.ikyu.com/00001634/ |
 | Bettei Amafuru Oka | https://ryokancatalog.com/inn/bettei-amafuru-oka | Ibusuki | B 7.9 | some | ask | see Fukuoka (town) — inn's own leg not sourced | kyushu-kirishima |  | Bettei Amafuru Oka is a 15-room annex on a hill over Kagoshima Bay, the most upscale stay in Ibusuki, taking just four groups a day and grafted onto a half-dormant resort complex, but it has onsen in every room, the sunaburo-and-ceramic-spa circuit, warm Nepali-staffed hospitality and chef Kanemasa Matsumoto's serious French cooking. | — |
 | Onyado Kawasemi | https://ryokancatalog.com/inn/onyado-kawasemi | Iizaka Onsen | A 8.3 | no | $850–1150 | sendai 1h15/1 train · tokyo 2h/1 train · nikko 2h55/2 train | tohoku |  | A twelve-room Iizaka Onsen ryokan where every room has an open-air onsen bath and meals served in the room, set around a pond garden, with a kitchen whose Japanese reputation drew the thread author there. | https://www.ikyu.com/00000292/ |
@@ -1211,7 +1224,7 @@ _Left off on price: **Bouyourou** (Mikuni, from $1450), **Fuji Seiran** (Cape Os
 | Kyoto | Hotel The Mitsui Kyoto · Facing Nijō Castle · [map](https://www.google.com/maps?cid=9260278570712509021) · [site](https://www.hotelthemitsui.com/en/kyoto/) | — | $700–1000 | The Mitsui family's 300-year-old gate is the entrance, and the hotel behind it faces Nijo Castle: the grandest address in the city. |
 | Kyoto | Ace Hotel Kyoto · Karasuma-Oike, downtown · [map](https://www.google.com/maps?cid=8371560588874030601) · [site](https://acehotel.com/kyoto/) | — | $350–425 | A design hotel built into a 1920s telephone exchange at Karasuma-Oike, in the middle of the central grid. |
 | Kyoto | Genji Kyoto · Kamo riverside at Gojō · [map](https://www.google.com/maps?cid=2448773851659491001) · [site](https://genjikyoto.com/) | — | $325–700 | A small design hotel on the Kamo river at Gojo, and the water is the point: nineteen rooms, nine of them with balconies over it. |
-| Kyoto | Kyokoyado Muromachi Yutone · Muromachi, by Nishiki market · [map](https://www.google.com/maps?cid=10380402357816233814) · [site](https://www.yutone.jp/) | — | $350–500 | A seven-room townhouse inn in Muromachi, the old silk-trading district, with its own Kyoto-cuisine kitchen, which is rare inside the central grid. |
+| Kyoto | Kyokoyado Muromachi Yutone · Muromachi, by Nishiki market · [map](https://www.google.com/maps?cid=10380402357816233814) · [site](https://www.m-yutone.com/) | — | $350–500 | A seven-room townhouse inn in Muromachi, the old silk-trading district, with its own Kyoto-cuisine kitchen, which is rare inside the central grid. |
 | Kyoto | Higashiyama Shikikaboku · Higashiyama · [map](https://www.google.com/maps?cid=14720741155553756667) · [site](https://www.shikikaboku.jp/) | — | $475–1600 | An all-suite hotel on a Higashiyama canal, where each of the eight suites has its own front door and kitchen. |
 | Kyoto | Sowaka · Gion, in the Yasaka side streets · [map](https://www.google.com/maps?cid=3046628050993449764) · [site](https://sowaka.com) | — | $900–1650 | A hundred-year-old Gion house that was a high-end ryotei restaurant before it was a hotel, in the side streets below Yasaka Shrine. |
 | Kyoto | nol kyoto sanjo · Sanjo, central grid · [map](https://www.google.com/maps?cid=13547248684663816125) · [site](https://www.nolhotels.com/kyoto-sanjo/en/) | — | $375–650 | A century-old machiya on Sanjo that was the Kyoto shop of the Kinshi Masamune sake brewery, and the old sign is still over the door. |
@@ -1256,21 +1269,18 @@ _Left off on price: **Bouyourou** (Mikuni, from $1450), **Fuji Seiran** (Cape Os
 
 - **Kyoto** — Hiiragiya (A 8.7)
 - **Nara** — Tsukihitei (A 8.1) · Fufu Nara (B 7.7)
-- **Hakone** — Hakone Suishoen (A 8.2) · Gora Kadan (B 7.5)
+- **Hakone** — Hakone Suishoen (A 8.2)
 - **Nikkō** — Fufu Nikko (A 8.8)
 - **Takayama** — Wanosato (A 8.3)
 <!-- /generated:hotels -->
 
-**Osaka and Nara — the neighbourhood is the decision.** Both are a short train from Kyoto with shorter lists.
-
-- **Osaka** — **Namba or Shinsaibashi** to walk home from dinner; **Umeda / Kita** to move on by train next morning. The cheapest big city for a good room, and a fair base when Kyoto is booked out.
-- **Nara** — small; everything sits between the station and the park. Overnight buys the temples at eight in the morning.
+**Osaka and Nara — the neighbourhood is the decision.** Both are a short train from Kyoto with shorter lists. **Osaka**: **Namba or Shinsaibashi** to walk home from dinner, **Umeda / Kita** to move on by train next morning — the cheapest big city for a good room, and a fair base when Kyoto is booked out. **Nara**: small, everything between the station and the park, and a night buys the temples at eight in the morning.
 
 Where a band says *check live*, read one off the property's page for the actual dates.
 
 ### When the stop or the budget is outside these tables
 
-The tables are a **design-and-luxury list** and do not cover every town. Say so plainly — "Japan is not expensive, this particular list is" — and use the research method in the appendix; a find is a row of the same table, band marked "unverified — check live for your dates".
+The tables are a **design-and-luxury list** and do not cover every town. Say so plainly — "Japan is not expensive, this particular list is" — and use the research method in the appendix; a find is a row of the same table, band marked "unverified — check live".
 
 **Satellite stops have their own file.** A stop with beds of its own — **Nikkō**, **Gero**, **Kinugawa**, the Kaga towns, the Hakone–Izu–Fuji belt — is answered by its region's file, not the city you reach it from:
 
@@ -1299,10 +1309,10 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 
 **Ask one of these only when the options in front of them differ on it** — if all five have a private bath, tattoos are moot — and at most two at a time.
 
-- **A private bath?** Ask if anyone has **tattoos**, is shy about communal bathing, or wants the bath to themselves: baths are nude and gender-separated, and many still refuse visible tattoos. A **bath in the room** or a **bookable private bath** settles it. Check the property's page for **overnight guests**; a day-visitor rule is a different rule.
-- **A sauna?** Common at newer inns, but usually gender-separated like the baths. Two people saunaing together need a **private or rental sauna**, or a mixed facility with swimwear.
+- **A private bath?** Ask if anyone has **tattoos**, is shy about communal bathing, or wants the bath to themselves. A **bath in the room** or a **bookable private bath** settles it. Check the property's page for **overnight guests**; a day-visitor rule is a different rule.
+- **A sauna?** Common at newer inns, usually gender-separated like the baths. Two people saunaing together need a **private or rental sauna**, or a mixed facility with swimwear.
 - **How heavy do you want dinner?** Some kitchens serve a long formal *kaiseki*; others something lighter — French, wood-fired, farm produce, temple cooking. Two ryokan nights close together go on different kitchens.
-- **Floor mattress or bed?** A traditional room means a *futon* on the tatami at bedtime: fine for most, hard on bad backs. The `bed-not-futon` tag marks inns whose write-up mentions beds.
+- **Floor mattress or bed?** The `bed-not-futon` tag marks inns whose write-up mentions beds.
 - **How formal?** Traditional: meals in your room, staff kneeling at the door. Modern-luxury: a dining room, wear what you like. People have strong preferences and rarely volunteer them.
 - **Children, and how many of you?** Ask **before** showing inns to a family. Policies vary, the best inns are strictest, and the rule is often only in Japanese: check the page, then confirm by email.
 - **Dietary needs?** Inn menus are fixed weeks ahead; vegetarian, no fish, an allergy are usually possible if stated at booking, never on arrival.
@@ -1311,7 +1321,7 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 
 Fill a stop's row once they have earmarked, not in the message that first showed the options. **`Stay options` holds the two or three names they kept, each linked, the lean marked `(chosen)`**; a stop they have not leaned on lists its earmarks with none marked, and a stop with no earmark reads *open*. **After each stop, re-show only that stop's row**; the whole table is shown once, at the end.
 
-**Close the stage by listing the stops still open.** Name each one with its earmarks and, for each, the single line that will decide it — points at that chain, a bath in the room, the price on their dates. Then say plainly that a pick can come back in this chat or a later one and the kit will close it: *"Tokyo: the Okura"* is enough.
+**Close the stage by listing the stops still open.** Name each with its earmarks and the single line that will decide it — points at that chain, a bath in the room, the price on their dates. A pick can come back in this chat or a later one: *"Tokyo: the Okura"* is enough.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
@@ -1333,7 +1343,7 @@ Fill a stop's row once they have earmarked, not in the message that first showed
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin (the map link the hotel table prints, never a maps search built from the name), an inn to its `ryokancatalog.com` page from the master table, its `Ikyu` link beside it. **Every earmark in `Stay options` is a link too** — an unlinked name is no use when the first choice is full.
+**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin (the link the hotel table prints, never a maps search built from the name), an inn to its `ryokancatalog.com` page, its `Ikyu` link beside it. **Every earmark in `Stay options` is a link too** — an unlinked name is no use when the first choice is full.
 
 ## Stage 5 — Make the route work
 
@@ -1343,20 +1353,21 @@ Inputs  the itinerary table as Stage 4 left it; the corridor tables below
 Do      the eight steps, in order — most of it is arithmetic, and doing it in your head is how mistakes get in;
         the two orders are compared in a `| Order | Total transit | Separate stays | Inn / city nights | One-nighters |` table
 Ask     1 question — which of the two orderings, once you have priced both
-Output  the itinerary table finished, with totals. This is the deliverable. Then offer the visual
-        in one line — see guides/visualizing-the-trip.md, and fill guides/trip-visual-template.html
+Output  the itinerary table finished, with totals. This is the deliverable. Then the trip page,
+        updated from the finished table and re-opened — see guides/visualizing-the-trip.md, and
+        fill guides/trip-visual-template.html
 Next    offer Stage 6 in a single line. If they don't want it, they have what they came for.
 ```
 
-**With the engine, this stage is one command.** `cd builder && node route.js plan "<the chosen stop string>" --in <airport> --out <airport>` prints the itinerary table, the totals with their arithmetic and the checks; paste it, fill the stays from Stage 4, and go to the visual. The steps below are the chat-only version.
+**With the engine, this stage is one command.** `cd builder && node route.js plan "<stop string>" --in <airport> --out <airport>` prints the itinerary table, the totals with their arithmetic and the checks; paste it, fill the stays from Stage 4, and go to the page. The steps below are the chat-only version.
 
 ### The process
 
 1. **List the stops** in the order they currently sit, with their nights.
-2. **Look up every consecutive pair** in the corridor tables below — the same tables the Stage 3 menu was priced from. Write the hours, the changes and the mode down exactly as given.
-3. **Reverse the list and price the reverse** the same way, and price it honestly. **Check both orders for backtracking first:** a stop reachable only by passing back through one already left behind is in the wrong place, and no arithmetic fixes it — resequence, then price. The airport at the end is the one allowed exception. Any pair the tables do not hold and no hub composes (step 4) is written `to confirm`, and a total containing one is **not a number**: write `≥ 6h20 (partial — 2 legs unsourced)`. Never fill a gap so the two totals can be compared as equals.
-4. **Compose any pair the tables don't hold through a hub city** — Tokyo, Sendai, Kyoto, Osaka, Nagoya, Kanazawa, Okayama, Hiroshima, Fukuoka, Kumamoto, Nagasaki, Kagoshima, Sapporo — per the composed-leg bullet below. Only a pair no hub joins is `to confirm`; look it up live if you can browse, and label the result an estimate.
-   - **4a. Before any live lookup, grep the full leg table.** `data/transit-legs.md` holds every sourced leg in the dataset, including the inn legs the corridor table leaves out: search it for both place names, in both directions, before you go outside.
+2. **Look up every consecutive pair** in the corridor tables below — the tables the Stage 3 menu was priced from. Write the hours, the changes and the mode exactly as given.
+3. **Reverse the list and price the reverse**, honestly. **Check both orders for backtracking first:** a stop reachable only by passing back through one already left behind is in the wrong place, and no arithmetic fixes it — resequence, then price; the airport at the end is the one exception. A pair the tables do not hold and no hub composes (step 4) is `to confirm`, and a total containing one is **not a number**: write `≥ 6h20 (partial — 2 legs unsourced)`. Never fill a gap to make the two totals comparable.
+4. **Compose any pair the tables don't hold through a hub city** — Tokyo, Sendai, Kyoto, Osaka, Nagoya, Kanazawa, Okayama, Hiroshima, Fukuoka, Kumamoto, Nagasaki, Kagoshima, Sapporo — per the composed-leg bullet below. Only a pair no hub joins is `to confirm`; look it up live if you can browse, and label it an estimate.
+   - **4a. Before any live lookup, grep the full leg table.** `data/transit-legs.md` holds every sourced leg, including the inn legs the corridor table leaves out: search it for both place names, in both directions, first.
 5. **Add both orderings up** — hours and changes — and show the two totals side by side, as the comparison table, one row per order:
 
    | Order | Total transit | Separate stays | Inn / city nights | One-nighters |
@@ -1364,18 +1375,17 @@ Next    offer Stage 6 in a single line. If they don't want it, they have what th
    | `<as travelled, named by its first and last stop>` | `<h>h`⁠`<mm>` | `<n>` | `<n>` / `<n>` | `<n>` |
    | `<reversed>` | `<h>h`⁠`<mm>` | `<n>` | `<n>` / `<n>` | `<n>` |
 
-   Total transit is every leg added up, both airport legs in it. The numbers live in the table and nowhere else; the prose under it names the trade-off and nothing more. A partial total keeps its `≥ X (partial — N legs unsourced)` form all the way into the verdict, and settles the comparison anyway where the sourced part is already the larger of the two.
-6. **Check the defaults survive the order you chose:** every city at or above its card's minimum, each visit of a split city two nights or more except a final airport-side night · one night at each inn unless the plan argued for two · no more than three inn dinners in a row · no zig-zags · an exit airport that suits the last stop — **leave from where you end**.
-7. **Add the totals up in writing, including the journey out to the departure airport.** That last leg is the one people forget; the airport table has it. Show the sum rather than the answer — `2h + 4h42 + 45min + 1h06 (to the airport) = 8h33` — so a reader can check the arithmetic.
+   Total transit is every leg added up, both airport legs in it. The numbers live in the table and nowhere else; the prose under it names the trade-off and nothing more. A partial total keeps its `≥ X (partial — N legs unsourced)` form into the verdict, and settles the comparison anyway where the sourced part is already the larger.
+6. **Check the defaults survive the order you chose:** every city at or above its card's minimum, each visit of a split city two nights or more except a final airport-side night · one night at each inn unless the plan argued for two · no more than three inn dinners in a row · no zig-zags · an exit airport that suits the last stop.
+7. **Add the totals up in writing, including the journey out to the departure airport** — the leg people forget; the airport table has it. Show the sum rather than the answer — `2h + 4h42 + 45min + 1h06 (to the airport) = 8h33` — so a reader can check the arithmetic.
 8. **Present the winner with the trade-off against the runner-up** in a sentence — "an hour longer, but it drops a change and ends near the airport" — then finish the itinerary table. **Re-add the totals against the finished table before you send it**: the order changes last, and the totals go stale first.
 
-Steps 2 and 4 get skipped, and skipping them puts an invented number into an itinerary. Step 7 gets fudged.
 
 ### The corridor cheat-sheet
 
-The main city-to-city journeys, the stops the Stage 3 routes pass through, and the airport transfers, each with **door-to-door hours** and the **number of changes**: the whole journey, including getting to the station, the connections and the last leg at the other end, rather than the time the train is moving.
+The main city-to-city journeys, the stops the Stage 3 routes pass through, and the airport transfers, each with **door-to-door hours** and the **number of changes** — station access and connections included, not the time the train is moving.
 
-**Use this table. Never invent a number.** If a pair isn't here — check both directions first — say plainly that you don't have a sourced time and that they should check it before locking the order in. A confident wrong number is worse than an honest gap.
+**Use this table. Never invent a number.** If a pair isn't here — check both directions first — say plainly that you have no sourced time and that they should check it before locking the order in.
 
 <!-- generated:corridors -->
 *176 journeys, door to door — station or hotel at one end to the other, including the walk and the wait, not just the train's timetable. "Changes" is how many times you get off and on again. Every line was looked up in a real timetable; nothing here is calculated. **Every journey runs the same both ways**, and each row is printed in the direction its sourced description was written — read From/To as a pair, not as an order.*
@@ -1715,27 +1725,26 @@ The inns on the road between two cities, with what a night at each costs over go
 
 ### How to read it, and what it doesn't have
 
-- **Every row above is researched**, so nothing in them is labelled estimated. Two kinds of number are: one you look up yourself for a missing pair, and one marked "estimated" in `data/transit-legs.md`. Keep the word "estimated" attached every time you repeat it, and give any day built on one an extra buffer.
+- **Every row above is researched**, so none is labelled estimated. Two kinds of number are: one you looked up for a missing pair, and one marked "estimated" in `data/transit-legs.md`. Keep the word attached whenever you repeat it, and give a day built on one extra buffer.
 - **Changes cost more than the clock says.** Two hours with none is an easier day than ninety minutes with two.
-- **Times run both ways**, and each row is printed in whichever direction it was researched. Read From/To as a pair, not as an order. **A pair is missing only if it appears in neither direction** — scan for both places by name before writing a number down.
-- **Airports are a separate table**, and **every row in it runs both ways** — the transfer in on arrival is the same journey as the one out. Never reuse one airport's number for another serving the same city: Tokyo's two are an hour apart in opposite directions.
-- **Inn legs are not in these tables.** The journey from a gateway city to an inn is the `Reach` column of the master inn table in Stage 4, written `kyoto 3h/1 train` — hours, changes and mode. `in town` means the inn is in that city: no leg row. `changes to confirm` means the hours were researched and the changes were not: write `3h, changes to confirm`.
-- **A missing pair is COMPOSED out of two researched rows, and composing comes before `to confirm`.** Grep the full leg table first (step 4a). If `A→B` is absent there too, find a **hub city** from step 4's list the tables hold both halves through and take the fastest that works; sum the halves, **add one change for the join**, name both modes where they differ, and label the row `composed via <city>`. Kyoto→Haneda is the standard case: the corridor table has **Kyoto→Tokyo 2h45, 0 changes** and the airport table has **Tokyo→HND 35 min, 1 change**, so the leg is `2h45 + 35 min = 3h20`, changes `0 + 1 + 1 for the join = 2`. Write both parts and show the sum. Two halves at most, both researched rows, plus the transfer time where the halves do not meet in one station. A town with no flight row of its own may compose its airport transfer with the airport's flight row. A composed leg counts as sourced and is written as a time, never as "estimated"; `to confirm` is only for a pair no hub joins.
-- **Okinawa is absent from the dataset:** a trip there means looking up every leg. Hokkaido's Sapporo hub, its towns and New Chitose are in the tables.
+- **Times run both ways**, each row printed in whichever direction it was researched: read From/To as a pair, not an order. **A pair is missing only if it appears in neither direction.** Airports are a separate table and run both ways too — but never reuse one airport's number for another serving the same city: Tokyo's two are an hour apart in opposite directions.
+- **Inn legs are not in these tables.** The journey from a gateway city to an inn is the `Reach` column of Stage 4's master table, written `kyoto 3h/1 train`. `in town` means the inn is in that city: no leg row. `changes to confirm` means the hours were researched and the changes were not: write `3h, changes to confirm`.
+- **A missing pair is COMPOSED out of two researched rows, and composing comes before `to confirm`.** Grep the full leg table first (step 4a). If `A→B` is absent there too, find a **hub city** from step 4's list the tables hold both halves through and take the fastest that works; sum the halves, **add one change for the join**, name both modes where they differ, and label the row `composed via <city>`. Kyoto→Haneda is the standard case: **Kyoto→Tokyo 2h45, 0 changes** plus **Tokyo→HND 35 min, 1 change** gives `3h20` and `0 + 1 + 1 for the join = 2`. Write both parts and show the sum. Two halves at most, both researched, plus the transfer time where they do not meet in one station. A composed leg counts as sourced and is written as a time, never "estimated"; `to confirm` is only for a pair no hub joins.
+- **Okinawa is absent from the dataset:** a trip there means looking up every leg. Hokkaido is in the tables.
 - **For any gap:** look it up live — Google Maps, Jorudan or Navitime, station to station for the dates in question — say so in the plan and write it as an estimate. Never fill a hole from memory.
 - **Winter and mountains.** Mountain and coastal lines carry real weather delays in winter, and some run a handful of services a day. Leave slack, and never schedule a flight straight after one.
-- **The last mile is often the hard part.** Country inns sit some way from the nearest station. Many run a shuttle on a fixed timetable that must be requested at booking; some have none, and the taxi rank at a small station can be empty. Ask the inn how you are meant to arrive, and put the answer in the plan.
+- **The last mile is often the hard part.** Country inns sit some way from the nearest station; many run a shuttle that must be requested at booking, some have none, and the taxi rank at a small station can be empty. Ask the inn how you are meant to arrive, and put the answer in the plan.
 
 ### The exit airport
 
-Price the reverse of every order before you settle one — step 3 above — and check two things after a reorder. **No zig-zags, and the dinner rule survives it:** if the route passes a place, comes back and passes it again, resequence; three inn dinners in a row is still the cap, and a reorder can make a run of four.
+After a reorder, check two things: **no zig-zags** — a route that passes a place, comes back and passes it again needs resequencing — and that **three inn dinners in a row is still the cap**, which a reorder can break without anybody noticing.
 
-**The exit works.** Pick the airport you fly home from **last**, once the order is settled: the one nearest the final stop; in through one airport and home from another is the default, and doubling back to the one you landed at spends a day for nothing. The usual exits are **HND** and **NRT** for Tokyo, **KIX** for Kyoto and Osaka, **CTS** for Hokkaido, **NGO** for a route ending at Takayama or Nagoya, and **FUK**, **KOJ**, **NGS**, **KMJ** or **OIT** for Kyushu, whichever end of the island the route finishes at; any airport with a Haneda flight counts, Komatsu and Hiroshima included. A fixed Haneda ticket at the far end of a Kyushu or Hokkaido trip is the transfer to the nearest airport plus its Haneda flight, both rows in the tables — or two Tokyo nights at the close, as the spines offer. A return ticket already booked settles it.
+**The exit works.** Pick the airport you fly home from **last**, once the order is settled: the one nearest the final stop. In through one airport and home from another is the default, and doubling back to the one you landed at spends a day for nothing. The usual exits are **HND** and **NRT** for Tokyo, **KIX** for Kyoto and Osaka, **CTS** for Hokkaido, **NGO** for a route ending at Takayama or Nagoya, and **FUK**, **KOJ**, **NGS**, **KMJ** or **OIT** for Kyushu, whichever end of the island the route finishes at; any airport with a Haneda flight counts, Komatsu and Hiroshima included. **A ticket home out of Haneda does not mean Tokyo at the end.** At the far end of a Kyushu or Hokkaido trip it is the transfer to the nearest airport plus its Haneda flight — both rows in the tables — priced as the last leg like any other, and the trip still ends where the route ends. Add nights in Tokyo at the close only if they ask for them. A return ticket already booked settles the airport.
 
 ### Two practical things
 
-- **Luggage forwarding.** Hand a suitcase to the front desk in the morning and it reaches the next hotel the following afternoon for roughly the price of a couple of meals, while you travel with an overnight bag. Use it for mountain legs with changes and one-night stops. Two catches: it is **next-day, not same-day**, so keep a night's things with you, and some remote inns sit outside the fastest service areas.
-- **Is a rail pass worth it?** Rarely since the 2023 price rise: add up the fares for the long journeys, compare with the pass for the same days, buy only if it wins; regional passes are often better value. Separately, **reserve seats** for long journeys with luggage, especially around New Year, the early-May holiday week and mid-August.
+- **Luggage forwarding.** Hand a suitcase to the front desk in the morning and it reaches the next hotel the following afternoon for about the price of two meals, while you travel with an overnight bag. Use it for mountain legs and one-night stops. It is **next-day, not same-day**, so keep a night's things with you; some remote inns sit outside the fastest service areas.
+- **Is a rail pass worth it?** Rarely since the 2023 price rise: add up the fares for the long journeys, compare with the pass for the same days, buy only if it wins — regional passes are often better value. Separately, **reserve seats** for long journeys with luggage, especially around New Year, the early-May holiday week and mid-August.
 
 ### If two versions of the trip are still alive
 
@@ -1750,16 +1759,13 @@ Compare them in one frame: the same measures for both, none counted against one 
 | Days needing a car | | |
 | Journeys on estimated times | | |
 
-Show the table, name the trade-off in a sentence, say which you'd take, and let them choose. Cost differences belong in the verdict only if they are large.
-
-The visual fits here: two plans in one frame. Fill `guides/trip-visual-template.html` from the two
-itinerary tables and follow `guides/visualizing-the-trip.md`. Offer it in one line.
+Show the table, name the trade-off in a sentence, say which you'd take, and let them choose. Cost differences belong in the verdict only if they are large. **The trip page does this better than prose** — two plans in one frame: fill `guides/trip-visual-template.html` from both itinerary tables and open it beside the comparison, drawn, not offered.
 
 ### The plan — this is the deliverable
 
-Finish the itinerary table and show it whole. **Only three leg forms are allowed** — a sourced time, a time you looked up live and labelled an estimate, or `to confirm`. Never a fourth. A leg composed through a hub city is the first form, written as the sum with both halves named and the row labelled `composed via <city>`. An invented travel time is the mistake in this kit most likely to cost somebody a booking.
+Finish the itinerary table and show it whole. **Only three leg forms are allowed** — a sourced time, a time you looked up live and labelled an estimate, or `to confirm`. A leg composed through a hub city is the first form, written as the sum with both halves named and the row labelled `composed via <city>`. An invented travel time is the mistake in this kit most likely to cost somebody a booking.
 
-A leg row reads `↓ <h>h · <n> changes · <mode>`; a composed one names its hub in the same row — `↓ 4h45 · 1 change · shinkansen (composed via Tokyo)`, said to them as two researched journeys added together, *"two trains: Kyoto to Tokyo, then Tokyo to the airport"*; an estimated one `↓ ~1h50 · 1 change · bus (estimated — looked up live)`; an unsourced one `↓ to confirm`.
+A leg row reads `↓ <h>h · <n> changes · <mode>`; a composed one names its hub in the row — `↓ 4h45 · 1 change · shinkansen (composed via Tokyo)`, said to them as two journeys added together; an estimated one `↓ ~1h50 · 1 change · bus (estimated — looked up live)`; an unsourced one `↓ to confirm`.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
@@ -1783,76 +1789,74 @@ A leg row reads `↓ <h>h · <n> changes · <mode>`; a composed one names its hu
 
 **The totals line includes the departure leg.** A plan whose transit total stops at the last hotel understates the trip by two hours and hides the morning that decides whether the flight is catchable.
 
-The `To confirm` list is the next thing they have to do. Keep it specific and short. **An open stop is not a blocker**: finish the plan around it and give the list a line — *"close the stay at Tokyo — the Okura or the Aman"* — for each stop Stage 4 left open.
+The `To confirm` list is the next thing they have to do: specific and short. **An open stop is not a blocker** — finish the plan around it and give the list a line, *"close the stay at Tokyo — the Okura or the Aman"*, for each stop Stage 4 left open.
 
-**Then offer the visual, in one line.** `guides/trip-visual-template.html` draws this table as a page
-they can open in a browser: the stops as bars sized by nights, every leg as a chip with its hours,
-changes and source, the stays with links and prices, and the totals as a table. `guides/visualizing-the-trip.md`
-says how to fill it.
+**Then update the trip page and hand it back, without being asked.** They have had it since the end of
+Stage 4, and every stop, stay and leg this stage moved has to reach it: refill
+`guides/trip-visual-template.html` from the finished table and open it again. `guides/visualizing-the-trip.md`
+says how.
 
 ## Stage 6 — Optional depth
 
 ```
 Goal    whichever of the three they actually want
 Inputs  the finished Trip plan, open stops and all
-Do      offer (a) eating (b) day ideas (c) the booking calendar (d) the trip drawn as a page, in
-        one line; do the one they pick. (a) and (b) open by asking what they like, not with a list
+Do      offer (a) eating (b) day ideas (c) the booking calendar, in one line; do the one they pick.
+        (a) and (b) open by asking what they like, not with a list. (d), the trip page, is already
+        drawn — it was built at the end of Stage 4 and updated at the end of Stage 5; here it is only
+        redrawn on request, or when a change in this stage lands on it
 Tables  eating `| Place | Type | Price | Neighbourhood | Booking | Map |`, grouped under a heading per
         cuisine · day ideas `| Idea | What it is | Time | Map |` · the calendar as it is printed below
-Ask     1 question — which of the four; then the taste or interest questions
+Ask     1 question — which of the three; then the taste or interest questions
 Output  the thing they picked, and a checklist with real dates if (c)
 Next    nothing. That is the whole job.
 ```
 
-Only after the plan exists. **Don't deliver all four unasked.**
+Only after the plan exists. **Don't deliver all of it unasked.**
 
-**A fun read to offer once in this stage:** the kit's author's illustrated trip report from an earlier Japan trip, photos and meals: https://docs.google.com/document/d/18FJshPTanc0IR7VbOufL0bE4Dz3prDVKNJuIeoNFmT0/edit — if the link asks for access, say it is optional and move on.
+**A fun read to offer once in this stage:** the kit author's illustrated trip report from an earlier Japan trip, photos and meals: https://docs.google.com/document/d/18FJshPTanc0IR7VbOufL0bE4Dz3prDVKNJuIeoNFmT0/edit — if it asks for access, say it is optional and move on.
 
 ### (a) Eating
 
-**The first message is an interview, not a list of restaurants.** One short paragraph, then four questions, read against their `Taste:` line so you don't re-ask it.
-
-The paragraph says three things: nobody needs reservations to eat superbly in Japan, most eating is walk-in, and two or three booked meals per city is the most anyone needs. None is a normal answer. Then the questions, with examples to react to, glossing each Japanese word:
+**The first message is an interview, not a list of restaurants.** One short paragraph, then four questions, read against their `Taste:` line so you don't re-ask it. The paragraph says three things: nobody needs reservations to eat superbly in Japan, most eating is walk-in, and two or three booked meals per city is the most anyone needs — none is a normal answer. Then the questions, with examples to react to, glossing each Japanese word:
 
 1. **Which styles pull at you?** — sushi counter, izakaya, ramen, soba, udon, kaiseki, yakitori, tempura, tonkatsu, yakiniku, French or Italian in Japan, wine bars, cocktail bars, coffee, listening bars (built around a record collection).
-2. **How formal, and what would you spend on a good dinner?** — a ¥3–6k counter, a ¥10–15k room, ¥25k and up for one big meal. Ask whether an ambitious lunch appeals: it is the cheaper way in.
+2. **How formal, and what would you spend on a good dinner?** — a ¥3–6k counter, a ¥10–15k room, ¥25k and up for one big meal. An ambitious lunch is the cheaper way in.
 3. **Drinks, and anything you don't eat?** — sake, natural wine, cocktails, none; allergies, vegetarian, no raw fish.
 4. **How much booking effort do you want?** — none at all (then every place you name is walk-in), two or three anchors per city, or go all in.
 
 **Name the two sources once.**
 
-- **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 each in Osaka and Kagoshima, 25 in Kanazawa, and shorter sections for Kobe, Hiroshima, Takayama, Sendai, Nara and Yanagawa. Written from one traveller's palate — creative low-key rooms, counters, natural wine — and every entry checked for whether a table can be got. Lotteries, memberships and introduction-only rooms were cut.
+- **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 each in Osaka and Kagoshima, 25 in Kanazawa, and shorter sections for Kobe, Hiroshima, Takayama, Sendai, Nara and Yanagawa. Written from one traveller's palate — creative low-key rooms, counters, natural wine — and every entry checked for whether a table can be got.
 - **The illustrated trip report** linked above: one earlier trip in photos, not a survey.
 
-**Open one city at a time**, `guides/dining/<city>.md` for the stops on the plan and
-`guides/dining/index.md` to list them; **never `guides/dining.md` whole**: it is half a megabyte,
-and the city files are the same text.
+**Open one city at a time**, `guides/dining/<city>.md` for the stops on the plan and `guides/dining/index.md` to list them; **never `guides/dining.md` whole** — half a megabyte of the same text.
 
 Say that what follows is a small subset chosen against their answers, and that they can **ask for more in any category, neighbourhood or price at any time.**
 
 **If the dining guide isn't there**, say so in one line, name the **`japan-trip-kit`** repository on GitHub, and carry on.
 
-**The recommendations are a table, never a list of paragraphs**, with a heading per cuisine or category above each one — sushi · izakaya · noodles · kaiseki and kappō · yakitori and grills · tempura and tonkatsu · Western-in-Japan · wine bars · cocktail bars · listening bars · coffee — and never a grouping by how hard they are to book:
+**The recommendations are a table, never a list of paragraphs**, with a heading per cuisine above each — sushi · izakaya · noodles · kaiseki and kappō · yakitori and grills · tempura and tonkatsu · Western-in-Japan · wine bars · cocktail bars · listening bars · coffee — never grouped by how hard they are to book:
 
 | Place | Type | Price | Neighbourhood | Booking | Map |
 |---|---|---|---|---|---|
 | `<name>` | `<cuisine or room type>` | `<band per head, dinner or lunch>` | `<neighbourhood, not the address>` | `<walk-in · Tabelog · TableCheck · OMAKASE.in · phone, in Japanese · through the hotel>` | [map](`<link>`) |
 
-One line of prose per place at most, under the table, and only where the pitch needs it; the price and the booking channel are cells, never sentences. Lotteries and midnight releases are excluded by rule. The booking-effort answer decides what appears: "none" means walk-in only; "two or three anchors" means at most that many bookable places per city; "all in" opens the hard-to-get tier. The **Tabelog score** is optional — Tabelog is Japan's own review site, 3.5 and up very good, 3.7 and up excellent, and casual places are not marked down for being cheap.
+One line of prose per place at most, under the table, and only where the pitch needs it; price and booking channel are cells, never sentences. Lotteries and midnight releases are excluded by rule. The booking-effort answer decides what appears: "none" means walk-in only, "two or three anchors" that many bookable places per city, "all in" opens the hard-to-get tier. The **Tabelog score** is optional — Japan's own review site, 3.5 and up very good, 3.7 and up excellent, and casual places are not marked down for being cheap.
 
-**The map link rule.** A guide row's real pin (`google.com/maps/place/…`) is best: pass it straight through. A name-search link is an acceptable fallback, labelled "map (search)" so the reader checks it lands on the venue; a confirmed pin replaces it where you can look the venue up live. Never write a map link from memory.
+**The map link rule.** A guide row's real pin (`google.com/maps/place/…`) is best: pass it through. A name-search link is the fallback, labelled "map (search)" so the reader checks it lands on the venue. Never write a map link from memory.
 
 **Two rules for the picks.** On inn nights dinner is at the inn, so no restaurant those evenings. A listing with no available dates is not a channel — check it, or say you haven't.
 
-**How the messages close.** The first ends with the taste questions and nothing else. Every one after ends with **"more in any category, or another neighbourhood?"** Never close by pointing at the booking calendar; offer it only once they ask for anchors.
+**How the messages close.** The first ends with the taste questions and nothing else; every one after with **"more in any category, or another neighbourhood?"** Never close by pointing at the booking calendar.
 
 ### (b) Day ideas per stop
 
-**Ask what interests them before you name anything.** Same pattern as (a): a short paragraph, then three questions, read against their `Draws:` line.
+**Ask what interests them before you name anything.** As in (a): a short paragraph, then three questions, read against their `Draws:` line.
 
 1. **What pulls at you?** — temples and gardens, craft and design, markets, neighbourhoods to walk, museums, nature, pop culture, an onsen open to day visitors.
 2. **How full should a day be?** — one anchor and time to wander, or two or three planned things.
-3. **Anything you already know you want?** — a named museum, a garden, a show.
+3. **Anything you already know you want?** — a museum, a garden, a show.
 
 Then the ideas, as a table per stop, the stop as its heading:
 
@@ -1860,68 +1864,66 @@ Then the ideas, as a table per stop, the stop as its heading:
 |---|---|---|---|
 | `<name>` | `<one line>` | `<half a day · 2h · a morning>` | [map](`<link>`) |
 
-- Three or four ideas per stop, and a note under the table on which need advance tickets.
-- **Two should be low-effort** (a neighbourhood to walk, a market, a bath) and **one should be the thing the place is known for.**
+- Three or four ideas per stop, with **two low-effort** (a neighbourhood to walk, a market, a bath) and **one the thing the place is known for**; note under the table which need advance tickets.
 - **Default rhythm per city block:** one landmark day, one neighbourhood day on foot, one day with a single anchor and nothing after it.
 - **In the countryside the anchor is the bath and the meal**, and the day around it stays empty. A three o'clock inn check-in does not survive a morning excursion an hour away.
 - **No more than one big timed thing per day**, and one empty afternoon per week.
 - **Check anything seasonal against the month.** Mountain roads, ropeways, gorge railways and some gardens and museums close for the winter.
-- Anything needing an advance ticket goes in the calendar, not the day list.
-- Close the way (a) closes.
+- Anything needing an advance ticket goes in the calendar, not the day list. Close the way (a) closes.
 
 ### (c) The booking calendar
 
-Order by **deadline**, not by trip order: a checklist, earliest first, with a real date against each item counted back from departure.
+Order by **deadline**, not trip order: a checklist, earliest first, with a real date against each item counted back from departure.
 
 | When | Date | What | Book it at | Why |
 |---|---|---|---|---|
-| **6–12 months out** | `<date>` | Long-haul flights | [Google Flights](https://www.google.com/travel/flights) | Price and seat choice, especially around New Year, blossom season and mid-August |
-| **6 months out** | `<date>` | The one inn the trip is built around | its page on [ryokancatalog.com](https://ryokancatalog.com), then the inn's own site | The best inns open their books six months to a year ahead, sometimes by phone or email only, and the sought-after rooms go the day the window opens. If a room type is the reason for the stay, treat the opening date as an appointment |
-| **4–6 months out** | `<date>` | Every other inn | the inn's own site, or [Ikyu](https://www.ikyu.com/) | The comfortable lead time. Later than three months and the popular ones are gone |
-| **3–4 months out** | `<date>` | City hotels | the property's own page — the links in the hotel table's `Stay` cell | Usually open and often free to cancel, so book early and revise. Rates rise as the date nears |
-| **2–3 months out** | `<date>` | The restaurants they chose as anchors, if any | the channel named on the row — walk-in, [Tabelog](https://tabelog.com/en/), [TableCheck](https://www.tablecheck.com/), [OMAKASE](https://omakase.in/en) or the hotel | Only the ones they picked. Windows differ per restaurant, so give each its own date |
-| **1–2 months out** | `<date>` | Rail passes | [Japan Rail Pass](https://www.japanrailpass.net/en/) and the regional passes beside it | And confirm whether the plan needs one |
-| **1 month out** | `<date>` | Reserved seats on long trains | [smartEX](https://smart-ex.jp/en/) for the Tokyo–Kyoto–Hiroshima line, [JR-EAST train reservation](https://www.eki-net.com/en/jreast-train-reservation/) north and west | Reservations open a set period ahead, commonly a month |
-| **1 month out** | `<date>` | Inn shuttles and arrivals | email the inn directly — the address is on its own site | Many pickups need a request at booking or a call the day before, and some remote stations have no taxis. Confirm in writing |
-| **1 month out** | `<date>` | Popular timed tickets | the venue's own page first, then [Lawson Ticket](https://l-tike.com/) or [e+](https://eplus.jp/) | Some sell out within hours, sometimes through a convenience-store ticketing system rather than the venue's site, and sometimes only inside Japan. Find the release date and have a second choice |
-| **2 weeks out** | `<date>` | Car hire, if needed | [Toyota Rent a Car](https://rent.toyota.co.jp/eng/) or [Times Car Rental](https://www.timescar-rental.com/) | And an international driving permit, obtained at home before departure |
+| **6–12 months out** | `<date>` | Long-haul flights | [Google Flights](https://www.google.com/travel/flights) | Price and seat choice, worst around New Year, blossom season and mid-August |
+| **6 months out** | `<date>` | The one inn the trip is built around | its page on [ryokancatalog.com](https://ryokancatalog.com), then the inn's own site | The best inns open their books six months to a year ahead, sometimes by phone or email only, and the best rooms go the day the window opens. If a room type is the reason for the stay, treat that date as an appointment |
+| **4–6 months out** | `<date>` | Every other inn | the inn's own site, or [Ikyu](https://www.ikyu.com/) | The comfortable lead time; later than three months and the popular ones are gone |
+| **3–4 months out** | `<date>` | City hotels | the property's own page — the links in the hotel table's `Stay` cell | Usually open and often free to cancel, so book early and revise |
+| **2–3 months out** | `<date>` | The restaurants they chose as anchors, if any | the channel named on the row — walk-in, [Tabelog](https://tabelog.com/en/), [TableCheck](https://www.tablecheck.com/), [OMAKASE](https://omakase.in/en) or the hotel | Only the ones they picked; windows differ per restaurant, so give each its own date |
+| **1–2 months out** | `<date>` | Rail passes | [Japan Rail Pass](https://www.japanrailpass.net/en/) and the regional passes beside it | Confirm first whether the plan needs one |
+| **1 month out** | `<date>` | Reserved seats on long trains | [smartEX](https://smart-ex.jp/en/) for the Tokyo–Kyoto–Hiroshima line, [JR-EAST](https://www.eki-net.com/en/jreast-train-reservation/) north and west | Reservations open a set period ahead, commonly a month |
+| **1 month out** | `<date>` | Inn shuttles and arrivals | email the inn directly — the address is on its own site | Many pickups need a request at booking, and some remote stations have no taxis. Confirm in writing |
+| **1 month out** | `<date>` | Popular timed tickets | the venue's own page first, then [Lawson Ticket](https://l-tike.com/) or [e+](https://eplus.jp/) | Some sell out in hours, sometimes only through a convenience-store ticketing system inside Japan. Find the release date and have a second choice |
+| **2 weeks out** | `<date>` | Car hire, if needed | [Toyota Rent a Car](https://rent.toyota.co.jp/eng/) or [Times Car Rental](https://www.timescar-rental.com/) | Plus an international driving permit, obtained at home |
 | **1 week out** | `<date>` | Dietary requests and any special occasion | email each inn and each booked restaurant | Inn menus are fixed weeks ahead |
-| **Before leaving** | `<date>` | Travel money, transport card, connectivity, confirmations saved offline | [Suica](https://www.jreast.co.jp/multi/en/pass/suica.html) on the phone, and an eSIM before you fly | Cash still matters outside the cities |
+| **Before leaving** | `<date>` | Travel money, transport card, connectivity, confirmations saved offline | [Suica](https://www.jreast.co.jp/multi/en/pass/suica.html) on the phone, an eSIM before you fly | Cash still matters outside the cities |
 
-**Put a real date in the `Date` column, counted back from their departure date** — "6 months out" is not a deadline anybody acts on. Where a window opens on a fixed date rather than a rolling one, write that date, not the count-back. **Every row is a live link**, so the next click is in the table rather than in a search.
+**Put a real date in the `Date` column, counted back from their departure date** — "6 months out" is not a deadline anybody acts on; where a window opens on a fixed date, write that date. **Every row is a live link**, so the next click is in the table rather than in a search.
 
-**A stop Stage 4 left open still gets its rows** — the inn or hotel deadline stands, and it is the reason to close the stay.
-
-**Restaurant windows live here, and only for the anchors they chose.** A restaurant that books a fixed period ahead usually opens on the first of the month, one to three months out, and the good seats go the same day. No other restaurant belongs in the calendar.
+**A stop Stage 4 left open still gets its rows** — the inn or hotel deadline stands, and it is the reason to close the stay. **Restaurant windows live here, and only for the anchors they chose**: a room that books a fixed period ahead usually opens on the first of the month, one to three months out, and the good seats go the same day.
 
 Hand over the checklist with real dates, and the Stage 5 plan alongside it.
 
-### (d) The trip drawn as a page
+### (d) The trip drawn as a page — already done
 
-A single HTML file they open in a browser: the stops in travel order as bars sized by nights, every
-leg as a chip with its hours, changes, mode and where the number came from, each stay with its link and
-price band, and the totals as a table, drawn on a map of Japan with the inns'
-photos. **No `To confirm` list and no follow-ups of any kind** — the page is for understanding the
-trip, not running its logistics. The one exception is a rare **watch line** under a single leg chip,
-for a major transit flag only: an estimated or composed leg, a driving day, a ferry, a bus that must
-be reserved, a winter-risk pass. **`guides/trip-visual-template.html`** ships pre-filled with the sample plan: overwrite its five
-marked `EDIT` zones from the itinerary table (it is plain HTML, no script to run) and hand the file over
-the way `visualizing-the-trip.md` says for your environment (artifact, canvas, or a file to open in a browser);
-**`guides/visualizing-the-trip.md`** carries the rules and the pre-flight checklist, and
-**`guides/design-principles.md`** is the checklist a finished page is read against (with
-`guides/design-language.md` behind it, for the one case where the template itself must change).
+**This page is not offered here.** It is drawn unasked at the close of Stage 4 and updated at the close of
+Stage 5, so they already have it. Redraw it on request, or when something settled in this stage changes
+what it shows. What it is:
+
+A single HTML file they open in a browser: the stops in travel order as bars sized by nights, every leg
+as a chip with its hours, changes, mode and where the number came from, each stay with its link and price
+band, and the totals as a table, drawn on a map of Japan with the inns' photos. **No `To confirm` list and
+no follow-ups of any kind** — the page is for understanding the trip, not running its logistics. The one
+exception is a rare **watch line** under a leg chip, for a major transit flag only: an estimated or
+composed leg, a driving day, a ferry, a bus that must be reserved, a winter-risk pass.
+**`guides/trip-visual-template.html`** ships pre-filled with the sample plan: overwrite its five marked
+`EDIT` zones from the itinerary table (plain HTML, no script to run) and hand it over the way
+**`guides/visualizing-the-trip.md`** says for your environment — that file carries the rules and the
+pre-flight checklist, and **`guides/design-principles.md`** is what a finished page is read against.
 
 It also draws two candidate plans in one frame, which Stage 5 explains. If two versions are still
-open, offer this before (a), (b) or (c): the choice comes first.
+open, draw that before (a), (b) or (c): the choice comes first.
 
-Everything on the page comes from the plan; nothing is invented for it, and there are no day-by-day
-cards, since days are for after the trip is booked.
+Everything on the page comes from the plan; nothing is invented, and there are no day-by-day cards —
+days are for after the trip is booked.
 
 ## Appendix
 
 ### The Trip profile block
 
-Fill this in Stage 1, show it, and update it whenever the plan shifts. Rendered text, not a code block. `Assumed` is the honest record of what they did not answer, and where they will spot a wrong guess.
+Fill this in Stage 1, show it, and update it whenever the plan shifts. Rendered text, not a code block. `Assumed` is the honest record of what they did not answer.
 
 **Trip profile**
 
@@ -1939,19 +1941,23 @@ Fill this in Stage 1, show it, and update it whenever the plan shifts. Rendered 
 
 ### The tables the run hands over
 
-Every sequence, set of options and comparison is a table, and each stage has one header line; the exception is a Stage 2 place card, two or three sentences in prose. The prose beside a table carries the pitch and the trade-offs; hours, prices, links and scores live in cells, never in a sentence. Nothing is set in a code fence; code formatting is for the engine's own names only.
+Every sequence, set of options and comparison is a table, one header line per stage; the exception is a Stage 2 place card, two or three sentences in prose. The prose beside a table carries the pitch and the trade-offs; hours, prices, links and scores live in cells. Nothing is set in a code fence.
 
 - **Stage 3, the spine menu** — `| Route | Who it's for | The trip | Nights | Travel | Ryokan nights | Flights | Fly in / home from |`, one row per spine at its default assembly
 - **Stage 3, a spine's decisions** — `| Where | Decision | Options (chosen in bold) |`, the rows grouped in trip order (a city, its attachment, the next leg's slots, the next city), the options and descriptions as spines.json prints them
 - **Stage 3, a timeline** — `| Stop | Nights | Onward |`, one row per stay, the arrival transfer first, the leg under each stop as time to five minutes and one mode word, the stop string beneath
 - **Stage 3, a change before and after, or two routes compared; Stage 5, orders compared** — `| Route | Stops | Nights | Total transit | Separate stays | Ryokan nights | Flights | In / out |` (Stage 5's orders table is `| Order | Total transit | Separate stays | Inn / city nights | One-nighters |`), one row per route
-- **Stage 4, the stays for a stop** — `| Stay | Price | Why |`, one table per stop; a ryokan option spanning towns adds a `Town` column, the inns within reach of a city a `From <city>` column. The name, the kind, the score and every link ride in the `Stay` cell, so there is no Links column anywhere
+- **Stage 4, the stays for a stop** — `| Stay | Price | Why |`, one per stop; a ryokan option spanning towns adds `Town`, the inns within reach of a city `From <city>`. The name, kind, score and links ride in the `Stay` cell: no Links column anywhere
 - **Stages 3 to 5, the plan itself** — the itinerary table below, filled progressively
 - **Stage 6, eating** — `| Place | Type | Price | Neighbourhood | Booking | Map |`, under a heading per cuisine
 - **Stage 6, day ideas** — `| Idea | What it is | Time | Map |`, one table per stop
 - **Stage 6, the booking calendar** — `| When | Date | What | Book it at | Why |`, ordered by deadline
 
-**An inn stop is one night.** Two only where the plan argues for it — they asked for slower travel, it is the trip's only inn stay, or traditional inns and hot springs are what they came for — and the plan says which.
+**An inn stop is one night.** Two only where the plan argues for it — slower travel, the trip's only inn stay, or hot springs are what they came for — and the plan says which.
+
+### Repeat visits are written `@2`
+
+A second stay in a city is `tokyo@2` — in an explorer address, in a `plan` stop string and in `--nights tokyo@2=N`. `tokyo#2` is still accepted wherever it is typed and is never written out: a `#` starts the address's hash, so a link carrying one is cut in half by the browser.
 
 ### The itinerary table
 
@@ -1977,30 +1983,30 @@ The one table the run is built in, filled progressively from Stage 3 to Stage 5,
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**How it is read, wherever it appears.** Stage 3 fills `#`, `Stop` — the name and its kind word, **city**, **town** or **ryokan** — `Nights` and every leg row; Stage 4 fills `Stay options`, the lean marked `(chosen)`; Stage 5 adds the airport rows and the totals. `Dates` is filled only where a start date is known, `Jan 2–6` for a run of nights and `Jan 6` for one. Show it whole each time it changes. **Mode** is the word the corridor and airport tables print — `shinkansen` · `train` · `subway` · `bus` · `car` · `ferry` · `flight` — and the master inn table's `Reach` column prints it too, so **every leg row has one**; two hours on a bullet train and two hours on a mountain bus are different days. **A hotel name links to its Google Maps pin, an inn's to its `ryokancatalog.com` page.** A leg has three forms and no fourth: sourced, `estimated` and labelled every time, or `to confirm`, which is left out of the totals and makes them partial — `≥ 6h00 (partial — 1 leg unsourced)`.
+**How it is read, wherever it appears.** Stage 3 fills `#`, `Stop` — the name and its kind word, **city**, **town** or **ryokan** — `Nights` and every leg row; Stage 4 fills `Stay options`, the lean marked `(chosen)`; Stage 5 adds the airport rows and the totals. `Dates` is filled only where a start date is known, `Jan 2–6` for a run of nights and `Jan 6` for one. Show it whole each time it changes. **Mode** is the word the corridor and airport tables print — `shinkansen` · `train` · `subway` · `bus` · `car` · `ferry` · `flight` — and **every leg row has one**: two hours on a bullet train and two hours on a mountain bus are different days. **A hotel name links to its Google Maps pin, an inn's to its `ryokancatalog.com` page.** A leg has three forms: sourced, `estimated` and labelled every time, or `to confirm`, which is left out of the totals and makes them partial — `≥ 6h00 (partial — 1 leg unsourced)`.
 
 ### Finding a stay the kit doesn't hold
 
 Stage 4's tables are a **design-and-luxury list** and do not cover every town. When the stop isn't in them, or the budget sits below them, say so plainly — "Japan is not expensive, this particular list is" — and go and find something. `guides/research-method.md` is the long version.
 
-1. **Check this kit first, every time.** The master table, `catalog/catalog.md` and `data/hotels.md` answer most stops, with travel times that were looked up rather than guessed. Say what they hold, then go outside — and say plainly that the kit did not cover it.
-2. **Read the Japanese sites first** — the sample is ten times the English one. **Ikyu (一休)** is the upper end and prints an overall out of 5 plus sub-ratings: **4.5 good, 4.7 very good, 4.8+ the top of the market**; 4.2 on a famous name is a warning. **Rakuten Travel** and **Jalan** cover everything below. Read the **distribution and the sub-ratings**, never one review. Ikyu is also where most of these inns are booked.
-3. **The property's own site is the only truth for policy** — tattoos, children, meal plans, whether the bath is a real hot spring, whether a "private bath" is in the room or booked by the hour. Check the policy for **overnight guests**, not the one posted for day visitors.
+1. **Check this kit first, every time.** The master table, `catalog/catalog.md` and `data/hotels.md` answer most stops. Say what they hold, then go outside, and say plainly that the kit did not cover it.
+2. **Read the Japanese sites first** — the sample is ten times the English one. **Ikyu (一休)** is the upper end and prints an overall out of 5 plus sub-ratings: **4.5 good, 4.7 very good, 4.8+ the top of the market**; 4.2 on a famous name is a warning. **Rakuten Travel** and **Jalan** cover the rest. Read the **distribution and the sub-ratings**, never one review.
+3. **The property's own site is the only truth for policy** — tattoos, children, meal plans, whether the bath is a real hot spring, whether a "private bath" is in the room or booked by the hour. Check the policy for **overnight guests**, not the one for day visitors.
 4. **Then the English connoisseurs** — FlyerTalk's Japan forums, TripAdvisor's long reviews: judgement and comparison, not facts about the building.
 5. **Verify the negatives too.** "Fully booked", "closed", "referral only" are claims like any other; a false one silently deletes the best option.
-6. **Link the real place**, not a name search, and **vary the properties across the trip** — "just extend the last hotel" costs you something.
+6. **Link the real place**, not a name search, and **vary the properties across the trip**.
 
-**Evidence** = stays, scores, distributions, the property's own written policy. **Not evidence** = the hotel's own adjectives, a press release, one glowing review, an aggregator's "9.4 Wonderful".
+**Evidence** = stays, scores, distributions, the property's own written policy. **Not evidence** = the hotel's adjectives, a press release, one glowing review, an aggregator's "9.4 Wonderful".
 
-**Present a find as a row of the same table** — the neighbourhood in the `Stay` cell, and `Price` marked "unverified — check live for your dates". A named property with an honest caveat is a plan; a neighbourhood and a price range is homework.
+**Present a find as a row of the same table** — the neighbourhood in the `Stay` cell, `Price` marked "unverified — check live". A named property with an honest caveat is a plan; a neighbourhood and a price range is homework.
 
-**The reliable floor, in any city:** a clean, well-run, well-located mid-range room for two runs roughly **$90–200** a night, everywhere. The chains: **Dormy Inn** (communal hot bath, often a real spring), **Mitsui Garden**, **Candeo**, **Richmond**, **Daiwa Roynet**, **Sotetsu Fresa Inn**, the **JR station hotels** (Granvia, JR-East Metropolitan, attached to the platforms) and **OMO by Hoshino Resorts**. The difference between a $120 and a $400 room here is size, breakfast and view.
+**The reliable floor, in any city:** a clean, well-run, well-located mid-range room for two runs roughly **$90–200** a night. The chains: **Dormy Inn** (communal hot bath, often a real spring), **Mitsui Garden**, **Candeo**, **Richmond**, **Daiwa Roynet**, **Sotetsu Fresa Inn**, the **JR station hotels** (Granvia, JR-East Metropolitan) and **OMO by Hoshino Resorts**. The difference between a $120 and a $400 room here is size, breakfast and view.
 
 ### Credits
 
-The accommodation catalogue behind this kit exists because of **KI-NRT**, the author of the FlyerTalk thread *"Japan Luxury Ryokans – A Primer + Impressions"*, and the members who added their own reports over many years. Everything this kit says about a traditional inn traces back to somebody who stayed there and wrote it up. If you find an inn through this kit and go, the thread is the right place to post what you thought.
+The accommodation catalogue behind this kit exists because of **KI-NRT**, the author of the FlyerTalk thread *"Japan Luxury Ryokans – A Primer + Impressions"*, and the members who added their reports over many years. Everything it says about a traditional inn traces back to somebody who stayed there and wrote it up; if you find an inn here and go, the thread is the right place to post what you thought.
 
-Restaurant research draws on **Tabelog**, Japan's own review site. **Photographs belong to the inns and hotels themselves** and are served from the catalogue site. The travel times were researched leg by leg from timetables and mapping data.
+Restaurant research draws on **Tabelog**, Japan's own review site. **Photographs belong to the inns and hotels themselves.** The travel times were researched leg by leg from timetables and mapping data.
 
 ### License
 
@@ -2010,8 +2016,8 @@ Restaurant research draws on **Tabelog**, Japan's own review site. **Photographs
 ### What this kit is not
 
 - **Not official, and not affiliated** with any inn, hotel, railway, tourist board or with FlyerTalk.
-- **Not a booking service.** It tells you what to book and roughly when the window opens. You book it.
-- **Not a rating authority.** The scores are one reader's synthesis of first-hand traveller reports, discounted where the evidence is thin: a directional read of informed opinion.
-- **Not current forever.** Prices move, inns renovate and close, rail services get cut. Opening hours, shuttle timetables and availability go stale first.
+- **Not a booking service.** It tells you what to book and roughly when the window opens.
+- **Not a rating authority.** The scores are one reader's synthesis of first-hand traveller reports, discounted where the evidence is thin.
+- **Not current forever.** Prices move, inns renovate and close, rail services get cut; opening hours, shuttle timetables and availability go stale first.
 - **Deepest on winter, on traditional inns, and on the main island.** Thinner on the far north and the southern islands, on summer, and on travelling with children.
 - **Not a substitute for asking.** The place you book will answer a direct email about tattoos, children, dietary needs, a bed instead of a floor mattress, or how to get there from the station.

@@ -217,4 +217,5 @@ hot springs (about 45 minutes by airport bus, 15 by taxi from the nearest of tho
 The planning use is simple: **choose the airport you fly home from last, after the route is set.**
 Flying out of the region you end in, rather than doubling back to where you arrived, routinely saves
 half a day — and if the international flight leaves Tokyo, a domestic hop into Haneda from almost any
-regional airport costs about two hours of block time.
+regional airport costs about two hours of block time. That hop is the last leg of the trip, priced
+like any other: a ticket home out of Haneda does not mean the last nights are spent in Tokyo.
