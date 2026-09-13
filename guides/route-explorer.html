@@ -288,7 +288,7 @@ let REPEAT=false;
 const NQ=loc=>{const r=NIGHTS[loc]||[1,1,2,1,1];if(!REPEAT||r[5]==null)return r;
  return [Math.max(1,r[5]),Math.min(r[1],r[5]),Math.min(r[2],r[6]+1),r[5],r[6]];};
 function stopsOf(sp){const {locs}=resolve(sp);const count={};locs.forEach(l=>{count[l]=(count[l]||0)+1;});
- const defOf=(loc,n,i)=>{const r=NQ(loc);let def=Math.max(1,r[0]);if(count[loc]>1&&BASE.has(loc)){const airportSide=n===count[loc]&&locs.slice(i+1).every(l=>!BASE.has(l));def=loc==="tokyo"?(n===1?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;}return def;};
+ const defOf=(loc,n,i)=>{const r=NQ(loc);let def=Math.max(1,r[0]);if(count[loc]>1&&BASE.has(loc)){const airportSide=n===count[loc]&&locs.slice(i+1).every(l=>!BASE.has(l));const prev=locs.slice(0,i).lastIndexOf(loc),splitVisit=prev>=0&&locs.slice(prev+1,i).every(l=>!BASE.has(l));def=loc==="tokyo"?(n===1?3:splitVisit?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;}return def;};
  /* a held count on the first visit of a city the route now splits is the whole stay: the later visits take their
   * defaults out of it and the split is written back, so adding Nikkō to a Tokyo of 5 gives 3 + 1 + 2, never 5 + 1 + 2
   * (owner, 2026-09-12) */
@@ -350,7 +350,7 @@ function sayNights(desc,n){if(!desc||!/\bnights?\b/.test(desc))return desc;
 function defsFor(locs){const count={};locs.forEach(l=>{count[l]=(count[l]||0)+1;});const seen={};
  return locs.map((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);const r=NQ(loc);let def=usualNights(loc);
   if(count[loc]>1&&BASE.has(loc)){const airportSide=n===count[loc]&&locs.slice(i+1).every(l=>!BASE.has(l));
-   def=loc==="tokyo"?(n===1?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;}
+   const prev=locs.slice(0,i).lastIndexOf(loc),splitVisit=prev>=0&&locs.slice(prev+1,i).every(l=>!BASE.has(l));def=loc==="tokyo"?(n===1?3:splitVisit?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;}
   return def;});}
 /* CITY / RYOKAN / TOWN — the kind tag is the place's role, not the decision's wording */
 function kindOf(sp,loc){if(CITY.has(loc))return "city";if(KX[loc])return KX[loc];
@@ -614,7 +614,8 @@ function trip(sp){
   const o=d.options[j]||{};
   const od=sayNights(plainly(o.desc||""),n);
   /* an either/or: the sibling it replaces is said first, and whatever travels with that sibling is named */
-  let desc=reason||od;
+  /* an option the route cannot take right now still says what it is, then why (owner, 2026-09-12) */
+  let desc=reason?(od?od.replace(/[.\s]*$/,"")+". ":"")+cap(reason):od;
   if(swap){const lead=nm(swap[0]),rest=swap.slice(1).map(nm);
    desc="instead of "+lead+(rest.length?" — "+(rest.length<2?rest[0]+" goes":rest.slice(0,-1).join(", ")+" and "+rest[rest.length-1]+" go")+" with it":"")+(od?". "+cap(od):"");}
   /* a place that splits a stay adds nights the row itself does not name — Nikkō is one night there and two more back in

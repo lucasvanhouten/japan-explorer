@@ -833,7 +833,10 @@ function defaultStops(locs, repeat) {
     let d = Math.max(1, range[0]);
     if (count[loc] > 1 && isBaseKind(p.kind)) {
       const airportSide = n === count[loc] && locs.slice(i + 1).every((l) => !isBaseKind(placeOf(l).kind));
-      d = loc === "tokyo" ? (n === 1 ? 3 : 2) : n === 1 ? Math.max(2, range[0]) : airportSide ? 1 : 2;
+      /* Tokyo splits 3/3 around an out-and-back night (owner, 2026-09-12: Tokyo 3 · Nikkō 1 · Tokyo 3 · Hakone 1 · Kyoto 4);
+       * a Tokyo that returns at the END, other cities between, is the two-night close */
+      const prev = locs.slice(0, i).lastIndexOf(loc), splitVisit = prev >= 0 && locs.slice(prev + 1, i).every((l) => !isBaseKind(placeOf(l).kind));
+      d = loc === "tokyo" ? (n === 1 ? 3 : splitVisit ? 3 : 2) : n === 1 ? Math.max(2, range[0]) : airportSide ? 1 : 2;
     }
     return stopOf(loc, d, null, false);
   });

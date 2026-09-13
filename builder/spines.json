@@ -172,7 +172,7 @@
      "kind": "stop",
      "at": "after",
      "default": 1,
-     "on_at": 12,
+     "on_at": 13,
      "question": "A night at Nara?",
      "desc": "A night among the temples and the deer park, after Kyoto.",
      "no": "Nara as a day trip instead.",
@@ -562,7 +562,7 @@
      "kind": "stop",
      "at": "after",
      "default": 1,
-     "on_at": 12,
+     "on_at": 13,
      "question": "A night at Nara?",
      "desc": "A night among the temples and the deer park, between Kyoto and Osaka.",
      "no": "Nara as a day trip instead.",
@@ -1009,7 +1009,7 @@
      "at": "after",
      "default": 0,
      "question": "A ryokan at Kirishima with Kagoshima?",
-     "desc": "Myōken's riverside ryokan, an hour above Kagoshima bay: the classic pairing with the city.",
+     "desc": "A riverside hot-spring ryokan an hour above Kagoshima, the classic pairing with the city.",
      "no": "Kagoshima on its own.",
      "stops": [
       "kirishima"
@@ -1230,7 +1230,7 @@
      "at": "after",
      "default": 0,
      "question": "A ryokan at Kirishima with Kagoshima?",
-     "desc": "Myōken's riverside ryokan, an hour above Kagoshima bay: the classic pairing with the city.",
+     "desc": "A riverside hot-spring ryokan an hour above Kagoshima, the classic pairing with the city.",
      "no": "Kagoshima on its own.",
      "stops": [
       "kirishima"
