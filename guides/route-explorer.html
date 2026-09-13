@@ -276,7 +276,7 @@ function whyNot(sp,d,o,ch){const t=Object.assign({},ch);const empty=d.options.fi
  if(!need.length&&!clash.length&&!anchor&&!struct)return null;
  const nm=l=>C[l.replace(/@(first|last)$/,"")]||l;
  return o.why_not||struct||(need.length?"needs "+need.map(nm).join(" and ")+" on the route":clash.length?"not with "+clash.map(nm).join(" or ")+" on the route":"needs "+nm(anchors[0])+" on the route");}
-function resolve(sp){const ch=choicesOf(sp);for(let pass=0;pass<6;pass++){let changed=false;for(const d of decs(sp)){if(!whyNot(sp,d,d.options[ch[d.key]],ch))continue;const fb=d.options.findIndex((x,j)=>j!==ch[d.key]&&!(x.stops||[]).length&&!x.reverse&&!whyNot(sp,d,x,ch));const nx=fb>=0?fb:d.options.findIndex((x,j)=>j!==ch[d.key]&&!whyNot(sp,d,x,ch));if(nx<0)break;ch[d.key]=nx;changed=true;}if(!changed)break;}
+function resolve(sp,ov){const ch=Object.assign(choicesOf(sp),ov||{});for(let pass=0;pass<6;pass++){let changed=false;for(const d of decs(sp)){if(!whyNot(sp,d,d.options[ch[d.key]],ch))continue;const fb=d.options.findIndex((x,j)=>j!==ch[d.key]&&!(x.stops||[]).length&&!x.reverse&&!whyNot(sp,d,x,ch));const nx=fb>=0?fb:d.options.findIndex((x,j)=>j!==ch[d.key]&&!whyNot(sp,d,x,ch));if(nx<0)break;ch[d.key]=nx;changed=true;}if(!changed)break;}
  const na={};for(const d of decs(sp))d.options.forEach((o,j)=>{if(j===ch[d.key])return;const w=whyNot(sp,d,o,ch);if(w)na[d.key+"/"+j]=w;});const A=assembleOnce(sp,ch);return {ch,locs:A.locs,cities:A.cities,reversed:A.reversed,na};}
 /* the decisions grouped in trip order, exactly as the engine prints them: a city, its attachment, the slots on the leg
  * to the next city, the next city, and END last */
@@ -304,20 +304,26 @@ function groupsOf(sp,R){const ds=decs(sp),cl=R.cities,groups=[],done=new Set(),h
 let REPEAT=false;
 const NQ=loc=>{const r=NIGHTS[loc]||[1,1,2,1,1];if(!REPEAT||r[5]==null)return r;
  return [Math.max(1,r[5]),Math.min(r[1],r[5]),Math.min(r[2],r[6]+1),r[5],r[6]];};
-function stopsOf(sp){const {locs}=resolve(sp);const count={};locs.forEach(l=>{count[l]=(count[l]||0)+1;});
- const defOf=(loc,n,i)=>{const r=NQ(loc);let def=Math.max(1,r[0]);if(count[loc]>1&&BASE.has(loc)){const airportSide=n===count[loc]&&locs.slice(i+1).every(l=>!BASE.has(l));const prev=locs.slice(0,i).lastIndexOf(loc),splitVisit=prev>=0&&locs.slice(prev+1,i).every(l=>!BASE.has(l));def=loc==="tokyo"?(n===1?3:splitVisit?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;}return def;};
- /* a held count on the first visit of a city the route now splits is the whole stay: the later visits take their
-  * defaults out of it and the split is written back, so adding Nikkō to a Tokyo of 5 gives 3 + 1 + 2, never 5 + 1 + 2
-  * (owner, 2026-09-12) */
- {const seen={};const vis={};locs.forEach((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);(vis[loc]=vis[loc]||[]).push([n,i]);});
-  Object.keys(vis).forEach(loc=>{if(vis[loc].length<2||!BASE.has(loc))return;const k=n=>SID(sp)+"/"+loc+"#"+n;
-   if(nightsOv[k(1)]==null||vis[loc].slice(1).some(([n])=>nightsOv[k(n)]!=null))return;
-   /* only a true split — the visits separated by nothing but the out-and-back night — shares one stay; a city that
-    * returns at the END (the Tokyo close) is a stay of its own */
-   if(!locs.slice(vis[loc][0][1]+1,vis[loc][1][1]).every(l=>!BASE.has(l)))return;
-   let rest=0;vis[loc].slice(1).forEach(([n,i])=>{const d=defOf(loc,n,i);nightsOv[k(n)]=d;rest+=d;});nightsOv[k(1)]=Math.max(1,nightsOv[k(1)]-rest);});}
- const seen={};return locs.map((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);const r=NQ(loc);let min=r[1],max=r[2];const def=defOf(loc,n,i);if(count[loc]>1&&BASE.has(loc))min=1;
- const key=SID(sp)+"/"+loc+"#"+n;const v=nightsOv[key]!=null?nightsOv[key]:def;return {loc,key,n:v,def,min:Math.max(0,min),max};});}
+/* the nights a route opens on — builder/route.js `defaultStops`: every place at its usual low, and a city stayed at
+ * twice split the way the assembler splits it */
+function stopsFor(sp,R){const locs=R.locs,count={};locs.forEach(l=>{count[l]=(count[l]||0)+1;});
+ const defNights=(loc,n,i)=>{const r=NQ(loc);let def=Math.max(1,r[0]);if(count[loc]>1&&BASE.has(loc)){const airportSide=n===count[loc]&&locs.slice(i+1).every(l=>!BASE.has(l));const prev=locs.slice(0,i).lastIndexOf(loc),splitVisit=prev>=0&&locs.slice(prev+1,i).every(l=>!BASE.has(l));def=loc==="tokyo"?(n===1?3:splitVisit?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;}return def;};
+ const seen={};const rows=locs.map((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);const r=NQ(loc);let min=r[1],max=r[2];
+  const def=defNights(loc,n,i);if(count[loc]>1&&BASE.has(loc))min=1;
+  const key=SID(sp)+"/"+loc+"#"+n;const held=nightsOv[key]!=null;
+  return {loc,key,n:held?nightsOv[key]:def,def,held,fixed:false,min:Math.max(0,min),max};});
+ /* a city the ENDING adds is a close, not a base: it holds its two nights and the fill grows the cities before it */
+ {const endD=decs(sp).find(d=>d.owner.type==="end"),eo=endD&&endD.options[R.ch[endD.key]];
+  if(eo&&(eo.stops||[]).length){const last=eo.stops[eo.stops.length-1],i=R.reversed&&last!=="tokyo"?0:rows.length-1;
+   if(rows[i]&&rows[i].loc===last&&BASE.has(last)&&rows.some((r,j)=>j!==i&&r.loc===last)){if(!rows[i].held)rows[i].n=2;rows[i].fixed=true;}}}
+ /* a city visited three times over defaults past its own usual high: the earlier visits give the surplus back first */
+ {const by={};rows.forEach(r=>{if(BASE.has(r.loc))(by[r.loc]=by[r.loc]||[]).push(r);});
+  Object.keys(by).forEach(loc=>{const list=by[loc];if(list.length<2)return;const cap=bandOf(loc)[1];
+   let sum=list.reduce((a,r)=>a+r.n,0),g=0;
+   while(sum>cap&&g++<30){const pick=f=>list.filter(x=>!x.fixed&&!x.held&&x.n>f).sort((a,b)=>b.n-a.n)[0];
+    const r=pick(2)||pick(1);if(!r)break;r.n--;sum--;}});}
+ return rows;}
+function stopsOf(sp){return stopsFor(sp,resolve(sp));}
 /* the airports the engine prints: the option taken, else the ticket the address carries, else a leading or trailing
  * Tokyo reads Haneda, else the spine's own, else the place's nearest. A booked airport no choice on this route declares
  * is still the booked airport: the trip flies to it and the last leg is priced to it (owner, 2026-09-13) */
@@ -425,104 +431,115 @@ function endFamilies(d){const by={},out={};
    out[k]={places,find,all:g.map(x=>x.j)};});
  return out;}
 
-/* ---------- the recommended version lands on the settled nights ----------
- * the engine's own counts come out of stopsOf; the difference to the target is then spread over the flexible city rows
- * (the BASE places), the widest usual range first, never past a row's ceiling nor under its floor. The steppers the
- * reader presses sit on top of that, so a nudge still moves the total. What the cities cannot absorb is reported. */
-/* the fit is settled once — on load, on a new target, on a start or direction flip — and then held: adding a place
- * later cannot quietly take nights off the places already on the trip, it overruns the target and the summary says so */
-const fitPin={};
-function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.loc]||0)+1;});
- const rows=st.map(s=>Object.assign({},s));
- const q=l=>NQ(l);
- /* the room a row has inside its USUAL count — the fit never goes outside it, so the recommended load cannot arrive
-  * wearing its own amber warning, and a place added later takes its nights from the overrun, not from another row */
- /* a city split around an out-and-back night is read as one stay, so a visit of it comes down to the split floor —
-  * two nights, or one where the later visit is the airport-side night — while the whole stay is held inside its usual */
- const splitFloor=r=>{const idx=rows.indexOf(r),last=rows.map(x=>x.loc).lastIndexOf(r.loc)===idx;
-  return last&&rows.slice(idx+1).every(x=>!BASE.has(x.loc))?1:2;};
- const room=r=>{const b=bandOf(r.loc);return {lo:cnt[r.loc]>1?Math.min(r.def,splitFloor(r)):b[0],hi:Math.max(r.def,b[1])};};
- /* the nights a row opens on: its usual count, and for a place stayed at twice the split the assembler chose */
- const base=r=>cnt[r.loc]>1?r.def:usualNights(r.loc);
- const hardLo=r=>cnt[r.loc]>1?1:Math.max(1,q(r.loc)[1]);
- /* the spread is over the defaults alone, so a stepper the reader presses still moves the total by exactly that much;
-  * the cities take the difference first, the smaller places only if the cities run out of usual room. Trip order is
-  * the order they are read in: the rule below chooses between them by the nights they hold, not by the width of a band */
- /* the last resort: the range the steppers themselves allow. A route whose usual counts cannot add up to the
-  * settled nights still lands on them — the row that went outside its usual count says so beside its stepper */
- const reach=r=>({lo:hardLo(r),hi:stepMax(r.loc)});
- const pin=fitPin[SID(sp)]=fitPin[SID(sp)]||{};
- /* the spread happens once, when the route or the target is new. After that every row is held where it landed: a place
-  * added later arrives at its own usual count and the overrun is reported, never taken off the stays already there */
- const fresh=!NFIX&&!Object.keys(pin).length;
- rows.forEach(r=>{r.def=pin[r.key]!=null?pin[r.key]:base(r);});
- /* a night the reader set by hand is theirs: the spread works around it rather than over it */
- const held=r=>nightsOv[r.key]!=null;
- const open=fresh?rows.filter(r=>!held(r)):[];
- const cities=open.filter(r=>BASE.has(r.loc)),rest=open.filter(r=>!BASE.has(r.loc));
- /* the nights a row is holding right now, and what a place holds across the whole stay — a city split around an
-  * out-and-back night (Tokyo 3 + Nikko + Tokyo 3) is read as one stay of six, not as two of three */
- const val=r=>held(r)?nightsOv[r.key]:r.def;
- const locTot=l=>rows.reduce((a,r)=>a+(r.loc===l?val(r):0),0);
- const surplus=r=>locTot(r.loc)-bandOf(r.loc)[0];
- let diff=target-rows.reduce((a,r)=>a+val(r),0);
- /* fewer nights than the places hold: the place sitting furthest above its usual low gives one up first, later in the
-  * trip on a tie — so Tokyo is never cut below its usual while another city is still above its own, and a split city
-  * gives the night from its later visit. Only when nothing is above its usual does it go in reverse trip order.
-  * More nights: the night goes to the place nearest the low end of its usual count, earliest in the trip on a tie, and
-  * only once every city stands at its usual top does the one night over it follow, lowest first (owner, 2026-09-12) */
- const spread=(pool,bnd)=>{for(let guard=0;diff!==0&&guard<200;guard++){
-  let pick=null,fall=null,best=0;
-  for(const r of pool){const rm=bnd(r);
-   if(diff<0){if(r.def<=rm.lo)continue;fall=r;
-    const s=surplus(r);if(s>0&&s>=best){best=s;pick=r;}}
-   else{if(r.def>=rm.hi)continue;
-    const d=surplus(r);if(!pick||d<best){best=d;pick=r;}}}
-  if(diff<0&&!pick)pick=fall;
-  if(!pick)break;
-  if(diff<0){pick.def--;diff++;}else{pick.def++;diff--;}}};
- [[cities,room],[cities.concat(rest),room],[cities.concat(rest),reach]].forEach(([pool,bnd])=>spread(pool,bnd));
- rows.forEach(r=>{pin[r.key]=r.def;r.n=nightsOv[r.key]!=null?nightsOv[r.key]:r.def;});
- /* what the usual counts cannot absorb is reported as it stands: the summary flags it and the line below says what to do */
- rows.short=diff;
- /* the row to nudge is one that can really take the night, cities before the smaller places */
- const room2=r=>diff>0?stepMax(r.loc)-r.def:r.def-hardLo(r);
- const cand=rows.filter(r=>room2(r)>0).sort((a,b)=>room2(b)-room2(a)||(BASE.has(b.loc)?1:0)-(BASE.has(a.loc)?1:0));
- rows.nudge=diff===0||!cand.length?null:nm(cand[0].loc);
+/* ══════════ THE FILL — builder/route.js `fitTotal` + `assembleSpine`, step for step (2026-09-13) ══════════
+ * Short of the count asked for, the nights are spent in this order:
+ *   (1) every city at its usual low — where the assembly already leaves them;
+ *   (2) every city up to its `default`, the kit's own opinion of how long to stay (Tokyo 5 of its 4–6), in trip order;
+ *   (3) the optional ryokan and stop nights this route left off, switched on in trip order, one at a time — never an
+ *       ending, never a decision flagged `fill:"never"`, never an answer the address or the reader gave;
+ *   (4) the cities to their usual high, the one nearest its own low first (the first city on a tie);
+ *   (5) what is still unspent is reported unspent — no city is ever filled past its usual high.
+ * Over the count, the same road backwards: the cities to their `default`, the fill's own stops off in reverse trip
+ * order, the cities to their low, to their minimum, the spine's own stops off, and under the minimums last.
+ * A city with an inn attached before or after it reads its range with that inn night counted in (Kirishima with
+ * Kagoshima). Every path ends with the out-and-back halves levelled, the extra night on the first half. */
+/* places.json's `default` where it is not simply the low end of the usual range. The explorer's NIGHTS table has no
+ * `default` column of its own (build-spines.js emits [low, minimum, ceiling, low, high]); Tokyo is the one place the
+ * two differ, so it is named here — read the column instead as soon as the table carries one. */
+const DEFN={tokyo:5};
+const defaultNights=loc=>{const b=bandOf(loc),d=DEFN[loc]==null?b[0]:DEFN[loc];return Math.max(b[0],Math.min(d,b[1]));};
+/* which inn night belongs to which city — an attachment sitting before or after its city is part of that stay */
+function attachedOf(sp,R){const at={};for(const d of decs(sp)){if(d.owner.type!=="city"||!d.owner.city||d.owner.at==="split")continue;
+ const o=d.options[R.ch[d.key]];if(!o||!(o.stops||[]).length)continue;
+ const city=d.owner.city.find(c=>R.locs.includes(c));if(city==null)continue;
+ (o.stops||[]).forEach(l=>{if(R.locs.includes(l))at[l]=city;});}return at;}
+/* the halves of one stay broken by a night away: consecutive visits with nothing but smaller places between them */
+function splitRuns(rows){const by={},out=[];
+ rows.forEach((r,i)=>{if(BASE.has(r.loc))(by[r.loc]=by[r.loc]||[]).push(i);});
+ Object.keys(by).forEach(loc=>{const ix=by[loc];let run=[ix[0]];
+  for(let k=1;k<ix.length;k++){if(rows.slice(ix[k-1]+1,ix[k]).some(x=>BASE.has(x.loc))){if(run.length>1)out.push(run);run=[ix[k]];}
+   else run.push(ix[k]);}
+  if(run.length>1)out.push(run);});
+ return out;}
+/* the split is as even as the nights allow, the extra night on the first half: 6 → 3/3, 5 → 3/2, 7 → 4/3. A half the
+ * address names by number (tokyo@2:1) is left exactly where it was put; a first half named alone is the whole stay */
+function evenSplits(rows){splitRuns(rows).forEach(run=>{
+ if(run.some(i=>rows[i].fixed)||run.slice(1).some(i=>rows[i].held))return;
+ const sum=run.reduce((a,i)=>a+rows[i].n,0),k=run.length;
+ const want=run.map((_,j)=>Math.floor(sum/k)+(j<sum%k?1:0));
+ if(want.some(n=>n<1))return;run.forEach((i,j)=>{rows[i].n=want[j];});});}
+function fillRows(sp,rows,N,attached,depth){
+ const isBase=r=>BASE.has(r.loc)&&!r.fixed&&!r.held;
+ const tot=()=>rows.reduce((a,r)=>a+r.n,0);
+ const atLoc=l=>rows.reduce((a,r)=>a+(r.loc===l?r.n:0),0);
+ const areaAt=l=>atLoc(l)+rows.reduce((a,r)=>a+(attached[r.loc]===l?r.n:0),0);
+ /* a city split in two keeps two nights a visit, unless the later visit is the airport-side night */
+ const vFloor=(r,i)=>{const vis=rows.filter(x=>x.loc===r.loc).length,last=rows.map(x=>x.loc).lastIndexOf(r.loc)===i;
+  return vis>1&&!(last&&rows.slice(i+1).every(x=>!BASE.has(x.loc)))?2:1;};
+ let g=0;
+ while(tot()<N&&g++<200){const r=rows.find(x=>isBase(x)&&areaAt(x.loc)<defaultNights(x.loc));if(!r)break;r.n++;}
+ g=0;
+ while(!depth&&tot()<N&&g++<200){let pick=null,best=Infinity;
+  rows.forEach(r=>{if(!isBase(r))return;const b=bandOf(r.loc);if(atLoc(r.loc)>=b[1])return;
+   const gap=areaAt(r.loc)-b[0];if(gap<best){best=gap;pick=r;}});
+  if(!pick)break;pick.n++;}
+ const shrinkTo=fl=>{let k=0;while(tot()>N&&k++<200){let pick=null,best=0;
+  rows.forEach((r,i)=>{if(!isBase(r))return;const su=areaAt(r.loc)-fl(r);
+   if(su>0&&su>=best&&r.n>vFloor(r,i)&&atLoc(r.loc)>NQ(r.loc)[1]){pick=r;best=su;}});
+  if(!pick)break;pick.n--;}};
+ shrinkTo(r=>defaultNights(r.loc));
+ if(depth===1)return rows;
+ shrinkTo(r=>bandOf(r.loc)[0]);
+ const down=floorFor=>{let k=0;while(tot()>N&&k++<200){let moved=false;
+  for(let i=rows.length-1;i>=0;i--){const r=rows[i];if(tot()<=N)break;
+   if(isBase(r)&&r.n>vFloor(r,i)&&floorFor(r)){r.n--;moved=true;}}
+  if(!moved)break;}};
+ down(r=>atLoc(r.loc)>NQ(r.loc)[1]);
+ if(depth===2)return rows;
+ down(()=>true);
  return rows;}
+/* one fill of one assembly: the rows as they would stand, and what is unspent or over */
+function fillOf(sp,ov,N,depth){const R=resolve(sp,ov),rows=stopsFor(sp,R);
+ fillRows(sp,rows,N,attachedOf(sp,R),depth);evenSplits(rows);
+ const t=rows.reduce((a,r)=>a+r.n,0);
+ return {R,rows,gap:Math.max(0,N-t),over:Math.max(0,t-N)};}
+function fit(sp){return fillOf(sp,null,target,0).rows;}
 
-/* ---------- spend the nights asked before handing any back ----------
- * the mirror of the engine's own rule in builder/route.js (QA round 10): when the target is more than the places on
- * this route can hold — every city at its ceiling — the ryokan and stop nights the route left off are switched on in
- * trip order, then an ending that carries nights. Only a default moves: anything the reader or the link chose stays. */
+/* ---------- (3): the nights asked for are spent on the places the route left off ----------
+ * the mirror of assembleSpine's own loop: with every city at the length the kit would give it, the optional ryokan and
+ * stop nights go on in trip order, one at a time, re-assembling each time — and off again in reverse order when the
+ * count asked for is shorter. An ending is never switched on here: Tokyo is one stay unless the traveller asks for two
+ * (owner, 2026-09-13). Only the page's own defaults move; an answer in the address or made by a click is never touched. */
 const autoOn={};
-/* the most this assembly can hold the engine's way: every city up to its ceiling, the smaller places at their own count */
-/* the nights the route opens on when none are asked for: every stop at the count the assembly gives it */
 function defaultTotal(sp){return stopsOf(sp).reduce((a,s)=>a+s.def,0);}
-function capacity(sp){const seen=new Set();let n=0;
- stopsOf(sp).forEach(s=>{if(!BASE.has(s.loc)){n+=s.def;return;}if(seen.has(s.loc))return;seen.add(s.loc);n+=NQ(s.loc)[2];});return n;}
+/* the count a bare address opens on: what the places hold at their own defaults, or the spine's band low if that is
+ * more — the engine's `opt.total || (sum < band[0] ? band[0] : null)` */
+function openTotal(sp){const R=resolve(sp),sum=stopsFor(sp,R).reduce((a,s)=>a+s.def,0);
+ const first=(sp.cities||[])[0],startsTokyo=first==="tokyo"||(first&&first.options&&((first.options[0].cities||[])[0]==="tokyo"));
+ const drop=startsTokyo&&R.locs[0]!=="tokyo"?bandOf("tokyo")[0]:0;
+ return Math.max(sum,sp.band[0]-drop);}
 function spendNights(sp){
+ /* what the page switched on last time is forgotten first, so a new count is filled from the route as it is authored */
  Object.keys(autoOn).forEach(k=>{if(k.indexOf(SID(sp)+"/")===0&&sel[k]===autoOn[k]){delete sel[k];delete autoOn[k];}});
- if(capacity(sp)>=target)return;
- const take=(d,j)=>{const k=SID(sp)+"/"+d.key;sel[k]=j;autoOn[k]=j;};
- const drop=d=>{const k=SID(sp)+"/"+d.key;delete sel[k];delete autoOn[k];};
- for(const d of decs(sp)){if(capacity(sp)>=target)break;
-  if(!(d.kind==="inn"||d.kind==="stop")||d.fill==="never"||sel[SID(sp)+"/"+d.key]!=null)continue;
-  const R=resolve(sp),cur=d.options[R.ch[d.key]];if(cur&&(cur.stops||[]).length)continue;
-  const j=d.options.findIndex(o=>(o.stops||[]).length);if(j<0||whyNot(sp,d,d.options[j],R.ch))continue;
-  take(d,j);}
- const endD=decs(sp).find(d=>d.owner.type==="end");
- if(capacity(sp)<target&&endD&&sel[SID(sp)+"/"+endD.key]==null){const R=resolve(sp);
-  if(!(((endD.options[R.ch[endD.key]]||{}).stops)||[]).length){
-   /* an ending that returns to a city the trip already stays in is the traveller's own choice — the nights asked for are
-    * never spent on it (owner, 2026-09-13); the last ride back to the airport is normal and priced */
-   const onRoute=new Set(R.locs);
-   /* the ending that spends most of what is left, the earliest on a tie — the engine's own choice */
-   let best=null;endD.options.forEach((o,j)=>{if(!(o.stops||[]).length||whyNot(sp,endD,o,R.ch))return;
-    if((o.stops||[]).some(l=>onRoute.has(l)))return;
-    take(endD,j);const c=Math.min(capacity(sp),target);drop(endD);
-    const tk=REPEAT&&(o.stops||[]).includes("tokyo")?1:0;if(!best||tk<best.tk||(tk===best.tk&&c>best.c))best={j,c,tk};});
-   if(best&&best.c>Math.min(capacity(sp),target))take(endD,best.j);}}}
+ const N=target,userSet=d=>sel[SID(sp)+"/"+d.key]!=null;
+ const movable=decs(sp).filter(d=>(d.kind==="inn"||d.kind==="stop")&&!userSet(d));
+ /* a night the SPINE itself puts on the route is the last thing to go: a short trip loses a city night first */
+ const spineOn=d=>((((d.options[defOf(d)])||{}).stops)||[]).length>0;
+ const extra={};
+ let p=fillOf(sp,extra,N,1);
+ for(const d of movable){if(!p.gap)break;if(d.fill==="never")continue;
+  const cur=d.options[p.R.ch[d.key]];if(cur&&(cur.stops||[]).length)continue;
+  const j=d.options.findIndex(o=>(o.stops||[]).length);if(j<0||whyNot(sp,d,d.options[j],p.R.ch))continue;
+  const t=Object.assign({},extra);t[d.key]=j;const T=fillOf(sp,t,N,1);
+  if(T.gap>=p.gap||T.over)continue;extra[d.key]=j;p=T;}
+ const turnOff=(list,depth)=>{let q=fillOf(sp,extra,N,depth);
+  for(const d of list){if(!q.over)break;const cur=d.options[q.R.ch[d.key]];if(!cur||!(cur.stops||[]).length)continue;
+   const j=d.options.findIndex(o=>!(o.stops||[]).length&&!o.reverse);if(j<0||whyNot(sp,d,d.options[j],q.R.ch))continue;
+   const t=Object.assign({},extra);t[d.key]=j;const T=fillOf(sp,t,N,depth);
+   if(T.over>=q.over)continue;extra[d.key]=j;q=T;}};
+ const back=movable.slice().reverse();
+ turnOff(back.filter(d=>!spineOn(d)),1);turnOff(back.filter(d=>spineOn(d)),2);
+ Object.keys(extra).forEach(k=>{const key=SID(sp)+"/"+k;sel[key]=extra[k];autoOn[key]=extra[k];});}
 
 /* ---------- the settled facts live in the URL hash ---------- */
 let addedSec=-1;
@@ -568,7 +585,7 @@ let NFIX=false;
 function readHash(){const raw=location.hash.replace(/^#/,"");
  /* a link the page did not write is a new trip: the answers, the nights and the fits it was holding go, so an address
   * always shows what it says rather than the last one with this one laid over it (owner, 2026-09-13) */
- if(raw!==LASTWROTE){[sel,nightsOv,fitPin,autoOn,PLANOFF].forEach(o=>Object.keys(o).forEach(k=>{delete o[k];}));
+ if(raw!==LASTWROTE){[sel,nightsOv,autoOn,PLANOFF].forEach(o=>Object.keys(o).forEach(k=>{delete o[k];}));
   lastSig=null;addedSec=-1;SEC=0;LASTWROTE=raw;}
  SECTIONS=readSections();if(SEC>=SECTIONS.length)SEC=0;const p=hashParams();
  REPEAT=/^(1|yes|true|on)$/i.test(String(p.repeat||""));
@@ -580,7 +597,7 @@ function readHash(){const raw=location.hash.replace(/^#/,"");
  if(!cur)return p;
  /* no nights in the address: open on the route's own default assembly — the nights every stop opens on, added up, the
   * same plan the route engine prints when it is given no total; never the band's low end nor the ceiling (owner, 2026-09-12) */
- const n=parseInt(p.nights,10);target=n>0?n:defaultTotal(cur);
+ const n=parseInt(p.nights,10);target=n>0?n:openTotal(cur);
  /* a booked ticket picks the option that declares it; if the route's own airport is the one booked, any decision that
   * moved it goes back to its default instead */
  const want={in:(p.in||"").toUpperCase(),out:(p.out||"").toUpperCase()};
@@ -624,8 +641,8 @@ function setHash(patch){const secs=readSections();if(SEC>=secs.length)SEC=Math.m
  secs[SEC]=Object.assign({},secs[SEC]||{},patch);writeSections(secs);}
 /* the answers taken away from the route's own default — the ones the reader (or the link) chose; a night the page
  * spent by itself is not one of them, so a later change of total can still spend it somewhere else */
-function setPart(){if(!cur)return "";
- return decs(cur).filter(d=>{const k=SID(cur)+"/"+d.key;return sel[k]!=null&&autoOn[k]==null&&sel[k]!==defOf(d);})
+function setPart(fresh){if(!cur)return "";
+ return decs(cur).filter(d=>{const k=SID(cur)+"/"+d.key;return sel[k]!=null&&(!fresh||autoOn[k]==null)&&sel[k]!==defOf(d);})
   .map(d=>d.key+":"+sel[SID(cur)+"/"+d.key]).join(",");}
 /* the nights on screen: every city stay, in trip order, plus any other stay the reader moved themselves */
 function nPart(){if(!cur)return "";
@@ -1121,7 +1138,7 @@ function barHtml(T,sp){const F=[];
 document.addEventListener("click",e=>{const t=e.target.closest?e.target.closest("[data-tgt]"):null;
  if(!t||t.disabled)return;
  if(cur)Object.keys(nightsOv).forEach(k=>{if(k.indexOf(SID(cur)+"/")===0)delete nightsOv[k];});
- setHash({nights:Math.max(1,Math.min(40,target+(+t.dataset.tgt))),set:setPart(),n:""});});
+ setHash({nights:Math.max(1,Math.min(40,target+(+t.dataset.tgt))),set:setPart(true),n:""});});
 
 /* ---------- the page ---------- */
 function giveHtml(T){const stops=planStr(T.st);
@@ -1174,7 +1191,7 @@ function render(){readHash();
  if(isPlanSec(p)){app.innerHTML=planPageHtml(p);fitMaps();return;}
  if(cur){const sd=startDec(cur),dd=dirDec(cur);
   const sig=[SEC,cur.id,target,sd?sel[SID(cur)+"/"+sd.key]:"",dd?sel[SID(cur)+"/"+dd.key]:""].join("|");
-  if(sig!==lastSig){lastSig=sig;delete fitPin[SID(cur)];if(!NFIX)spendNights(cur);}}
+  if(sig!==lastSig){lastSig=sig;if(!NFIX)spendNights(cur);}}
  app.innerHTML=pageHtml(cur);if(cur)fitMaps();}
 render();
 addEventListener("hashchange",render);
@@ -1270,5 +1287,5 @@ app.addEventListener("change",e=>{const sl=e.target.closest?e.target.closest("[d
  const v=parseInt(e.target.value,10);
  /* a new total is a new fit: the figures the page was holding are let go, the answers are kept */
  Object.keys(nightsOv).forEach(k=>{if(cur&&k.indexOf(SID(cur)+"/")===0)delete nightsOv[k];});
- setHash({nights:v>0?Math.min(40,v):"",set:setPart(),n:""});});
+ setHash({nights:v>0?Math.min(40,v):"",set:setPart(true),n:""});});
 </script>
