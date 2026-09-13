@@ -511,24 +511,24 @@
        "hakone",
        "osaka@last"
       ],
-      "why_not": "the Fuji ryokan sits on the Kyoto–Tokyo road, so this ending wants Kyoto as the last Kansai city"
+      "why_not": "the Fuji ryokan is on the Kyoto–Tokyo road: Kyoto must be the last Kansai city"
      },
      {
       "label": "A Fuji ryokan, then fly home from Haneda",
-      "desc": "Hakone, the Fuji lakes or Izu as the last night, and the airport from there; no more Tokyo.",
+      "desc": "Hakone, the Fuji lakes or Izu as the last night, then the airport; no more Tokyo.",
       "place": "after kyoto|osaka",
       "stops": [
        "hakone"
       ],
       "out": "HND",
       "label_rev": "In through Haneda to a Fuji ryokan first",
-      "desc_rev": "Land at Haneda and go straight to Hakone, the Fuji lakes or Izu; no Tokyo first.",
+      "desc_rev": "Land at Haneda and go straight to a Fuji ryokan; no Tokyo first.",
       "not_with": [
        "hakone",
        "nara",
        "osaka@last"
       ],
-      "why_not": "the Fuji ryokan sits on the Kyoto–Tokyo road, so this ending wants Kyoto as the last Kansai stop — not Osaka, and not the Nara night"
+      "why_not": "the Fuji ryokan is on the Kyoto–Tokyo road: Kyoto must be the last Kansai stop, no Nara night"
      },
      {
       "label": "Back to Tokyo",
