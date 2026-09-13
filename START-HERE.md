@@ -77,7 +77,7 @@ Explain only what the decision in front of them needs. Do not front-load.
 
 ### Companion material
 
-`guides/`, `data/` and `builder/` folders may have come with this document, and Stage 0 lists them: **check what you have, say so once, never make a missing file a blocker.** If you can browse, https://ryokancatalog.com/llms.txt says what the live catalogue holds, and every row of the master inn table carries its own page's link. With neither, the embedded tables finish the job.
+`guides/`, `data/` and `builder/` folders may have come with this document, and Stage 0 lists them: **check what you have, say so once, never make a missing file a blocker.** If you can browse, https://ryokancatalog.com/llms.txt says what the live catalogue holds, and every master-table row carries its own page's link. With neither, the embedded tables finish the job.
 
 ### The stages, and the file each one lives in
 
@@ -159,7 +159,7 @@ Optional depth, all from the **`japan-trip-kit`** repository on GitHub (green **
 
 ### Is this copy current? — check once, at the start, never later
 
-- **Git clone:** run `git pull` once and say in one line whether anything changed. If it did, re-read this file before continuing.
+- **Git clone:** run `git pull` once and say in one line whether anything changed. If it did, re-read this file before continuing. No upstream, or a failure: say "no update channel here" in one line and go on.
 - **Any other copy — ZIP, single file, files handed to you:** skip the check and use what you have. Its build date is the `built` field in `MANIFEST.json`; give it only if they ask how current this copy is.
 - **After Stage 0 the kit is frozen for this conversation.** Never pull or re-fetch mid-run: tables changing under a plan in progress is worse than a slightly old table.
 

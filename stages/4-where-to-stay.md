@@ -17,11 +17,11 @@ Output  the itinerary table's `Stay options` cell for that stop — the earmarke
 Next    Stage 5 — make the route work
 ```
 
-**Close the stage by drawing the trip.** Once the last stop has its earmarks, build the trip page from the itinerary table as it stands and open it beside the chat — `guides/trip-visual-template.html`, filled the way `guides/visualizing-the-trip.md` says, published as an artifact where that tool exists. **Do it; never offer it**: this is the first time they see the trip whole. Stage 5 updates the same page.
+**Close the stage by drawing the trip.** Once the last stop has its earmarks, build the trip page from the itinerary table as it stands and open it beside the chat — `guides/trip-visual-template.html`, filled as `guides/visualizing-the-trip.md` says, published as an artifact where that tool exists. **Do it; never offer it**: this is the first time they see the trip whole. Stage 5 updates the same page.
 
-**Earmark, don't pick.** Nobody settles a hotel mid-chat — they compare prices and check points first. So ask which **two or three to keep in the running**, never which one. The good inns sell out, so the second name earns its place; one earmark is fine, none leaves the stop open. **The user chooses**, except where one stay is plainly the pick.
+**Earmark, don't pick.** Nobody settles a hotel mid-chat — they compare prices and check points first. So ask which **two or three to keep in the running**, never which one. The good inns sell out, so the second name earns its place; one earmark is fine, none leaves the stop open. **The user chooses**, unless one stay is plainly the pick.
 
-**A ryokan slot expands here.** Stage 3's ryokan slots are areas, not inns, and each is **one call, one table**: `stays fuji` (Hakone, Izu) · `stays fujilakes` (Kawaguchiko) · `stays snow` (Minakami, Minamiuonuma, Yudanaka, Yamada Onsen) · `stays kaga` (Yamashiro, Yamanaka) · `stays east` (Amagase, Yufuin, Kurokawa) · `stays sapporo-onsen`. One table, **the town as a column**, so the choice of inn fixes the town and the leg at once; then re-price the stop string with that town. **Hokkaido's mountain night is Niseko.**
+**A ryokan slot expands here.** Stage 3's ryokan slots are areas, not inns, and each is **one call, one table**: `stays fuji` (Hakone, Izu) · `stays fujilakes` (Kawaguchiko) · `stays snow` (Minakami, Minamiuonuma, Yudanaka, Yamada Onsen) · `stays kaga` (Yamashiro, Yamanaka) · `stays east` (Amagase, Yufuin, Kurokawa) · `stays sapporo-onsen`. One table, **the town as a column**, so the choice of inn fixes the town and the leg at once; then re-price the stop string with it. **Hokkaido's mountain night is Niseko.**
 
 ### How to work the table
 
@@ -41,7 +41,7 @@ Next    Stage 5 — make the route work
 
    **Ikyu, said once.** The first time an inn row carries one: *"[ikyu.com](https://www.ikyu.com/) is a Japanese booking site with an English front, and the easiest place to book most of these inns; where a row has no Ikyu link, book on the inn's own page or by email."* Then move on.
 
-   **When one is plainly the pick, say so.** Where the tool prints its one-clear-choice line, or an S-tier editor's pick sits beside a B, say it in a sentence — *"Myoken Ishiharaso is the one here; the others are fallbacks if it is full"* — and let the rest stand as backups.
+   **When one is plainly the pick, say so.** Where the tool prints its one-clear-choice line, or an S-tier editor's pick sits beside a B, say it in a sentence — *"Myoken Ishiharaso is the one here; the others are fallbacks if it is full"* ; the rest stand as backups.
 5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so — *"four more on the kit's list — ask and I'll show them"*. Otherwise the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*; later ask which two or three to keep in the running, and the first they name is the lean.
 
 **Opening up a stay means reading its [ryokancatalog.com](https://ryokancatalog.com) page** — rooms, bath, kitchen, setting, weaknesses — plus the distance from the gateway, the room with the private bath, and how to book.
@@ -65,7 +65,7 @@ Next    Stage 5 — make the route work
 
 ### The Why cell is yours; the facts are the kit's
 
-Every inn and hotel here carries a hand-researched write-up, which the tool prints in full: your source, not the cell. **Write `Why` in your own words for this couple** — two or three sentences on what would make the night special for *them*, tied to their `Taste:` and `Draws:` lines; the key features (the bath and whether it is in the room, the kitchen, the setting, the size); and its real reservations — a noisy dining room, a blocked view, a bath only in the top rooms — said plainly. **Every fact comes from the write-up or the inn's page; nothing is invented.**
+Every inn and hotel carries a hand-researched write-up, printed in full by the tool: your source, not the cell. **Write `Why` in your own words for this couple** — two or three sentences on what would make the night special for *them*, tied to their `Taste:` and `Draws:` lines; the key features (the bath and whether it is in the room, the kitchen, the setting, the size); and its real reservations — a noisy dining room, a blocked view, a bath only in the top rooms — said plainly. **Every fact comes from the write-up or the inn's page; nothing is invented.**
 
 Gora Kadan Fuji, for a couple on their first ryokan night: *"The gentlest way in: a hotel-ryokan hybrid with Fuji in front of you, a pool, three dining rooms and nothing about the form to be nervous about. Book an Open-air Bath Suite or above for spring water in the room, and the sushi or teppanyaki counter over the kaiseki."*
 
@@ -282,7 +282,7 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 
 ### The decision — earmark, don't pick
 
-Fill a stop's row once they have earmarked, not in the message that first showed the options. **`Stay options` holds the two or three names they kept, each linked, the lean marked `(chosen)`**; a stop they have not leaned on lists its earmarks with none marked, and a stop with no earmark reads *open*. **After each stop, re-show only that stop's row**; the whole table is shown once, at the end.
+Fill a stop's row once they have earmarked, not in the message that first showed the options. **`Stay options` holds the two or three names they kept, each linked, the lean marked `(chosen)`**; a stop they have not leaned on lists its earmarks unmarked, and a stop with no earmark reads *open*. **After each stop, re-show only that stop's row**; the whole table is shown once, at the end.
 
 **Close the stage by listing the stops still open.** Name each with its earmarks and the single line that will decide it — points at that chain, a bath in the room, the price on their dates. A pick can come back in this chat or a later one: *"Tokyo: the Okura"* is enough.
 
@@ -306,7 +306,7 @@ Fill a stop's row once they have earmarked, not in the message that first showed
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin (the link the hotel table prints, never a maps search built from the name), an inn to its `ryokancatalog.com` page, its `Ikyu` link beside it. **Every earmark in `Stay options` is a link too** — an unlinked name is no use when the first choice is full.
+**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin (the link the hotel table prints, never a maps search on the name), an inn to its `ryokancatalog.com` page, its `Ikyu` link beside it. **Every earmark in `Stay options` is a link too** — an unlinked name is no use when the first choice is full.
 
 ---
 

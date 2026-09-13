@@ -302,8 +302,8 @@ function groupsOf(sp,R){const ds=decs(sp),cl=R.cities,groups=[],done=new Set(),h
 /* a repeat visitor (#repeat=1): where places.json holds a repeat band for a place, it replaces the usual one —
  * the same swap `--repeat` makes in the engine, so the page's "usually a–b" and its opening nights agree with it */
 let REPEAT=false;
-const NQ=loc=>{const r=NIGHTS[loc]||[1,1,2,1,1];if(!REPEAT||r[5]==null)return r;
- return [Math.max(1,r[5]),Math.min(r[1],r[5]),Math.min(r[2],r[6]+1),r[5],r[6]];};
+const NQ=loc=>{const r=NIGHTS[loc]||[1,1,2,1,1,1];if(!REPEAT||r[6]==null)return r;
+ return [Math.max(1,r[6]),Math.min(r[1],r[6]),Math.min(r[2],r[7]+1),r[6],r[7],Math.max(1,r[6])];};
 /* the nights a route opens on — builder/route.js `defaultStops`: every place at its usual low, and a city stayed at
  * twice split the way the assembler splits it */
 function stopsFor(sp,R){const locs=R.locs,count={};locs.forEach(l=>{count[l]=(count[l]||0)+1;});
@@ -443,11 +443,9 @@ function endFamilies(d){const by={},out={};
  * order, the cities to their low, to their minimum, the spine's own stops off, and under the minimums last.
  * A city with an inn attached before or after it reads its range with that inn night counted in (Kirishima with
  * Kagoshima). Every path ends with the out-and-back halves levelled, the extra night on the first half. */
-/* places.json's `default` where it is not simply the low end of the usual range. The explorer's NIGHTS table has no
- * `default` column of its own (build-spines.js emits [low, minimum, ceiling, low, high]); Tokyo is the one place the
- * two differ, so it is named here — read the column instead as soon as the table carries one. */
-const DEFN={tokyo:5};
-const defaultNights=loc=>{const b=bandOf(loc),d=DEFN[loc]==null?b[0]:DEFN[loc];return Math.max(b[0],Math.min(d,b[1]));};
+/* places.json's `default` — the sixth NIGHTS column (2026-09-13), the low end of the usual range wherever the two
+ * agree; under `#repeat=1` NQ carries the repeat low through as the default. */
+const defaultNights=loc=>{const b=bandOf(loc),r=NQ(loc),d=r[5]==null?b[0]:r[5];return Math.max(b[0],Math.min(d,b[1]));};
 /* which inn night belongs to which city — an attachment sitting before or after its city is part of that stay */
 function attachedOf(sp,R){const at={};for(const d of decs(sp)){if(d.owner.type!=="city"||!d.owner.city||d.owner.at==="split")continue;
  const o=d.options[R.ch[d.key]];if(!o||!(o.stops||[]).length)continue;
