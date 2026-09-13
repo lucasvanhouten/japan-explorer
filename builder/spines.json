@@ -387,7 +387,7 @@
        "kind": "inn",
        "default": 0,
        "question": "A ryokan at Yudanaka on the way over the mountains?",
-       "desc": "A hot-spring valley in Nagano, on the way over the mountains.",
+       "desc": "A hot-spring valley in Nagano where the snow monkeys bathe, on the way over the mountains.",
        "no": "Straight through to Kanazawa.",
        "stops": [
         "yudanaka"
@@ -419,7 +419,8 @@
         "yamashiro"
        ],
        "question_rev": "A ryokan in the Kaga towns before Kanazawa?",
-       "no_rev": "Straight on to Kanazawa."
+       "no_rev": "Straight on to Kanazawa.",
+       "on_at": 13
       },
       {
        "key": "takayama",
@@ -595,7 +596,8 @@
      "not_with": [
       "tokyo@last"
      ],
-     "why_not": "the island night is the last one west; a trip that then turns round and ends in Tokyo doubles back. Miyajima as a day trip from Hiroshima instead"
+     "why_not": "the island night is the last one west; a trip that then turns round and ends in Tokyo doubles back. Miyajima as a day trip from Hiroshima instead",
+     "on_at": 12
     }
    ],
    "legs": [

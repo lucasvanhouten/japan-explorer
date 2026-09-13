@@ -502,7 +502,8 @@ function readHash(){const p=hashParams();
  const found=findSpine(p.spine);ask=p.spine&&!found?p.spine:null;
  cur=found||(ask?null:spines[0]);
  if(!cur)return p;
- const n=parseInt(p.nights,10);target=n>0?n:cur.band[0];
+ /* no nights in the address: open on the route's own default assembly, not the band's low end (owner, 2026-09-12) */
+ const n=parseInt(p.nights,10);target=n>0?n:(typeof capacity==="function"?capacity(cur):cur.band[0]);
  /* a booked ticket picks the option that declares it; if the route's own airport is the one booked, any decision that
   * moved it goes back to its default instead */
  const want={in:(p.in||"").toUpperCase(),out:(p.out||"").toUpperCase()};

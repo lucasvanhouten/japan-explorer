@@ -941,8 +941,8 @@
   "kind": "city",
   "base": true,
   "ideal": [
-   4,
-   6
+   3,
+   5
   ],
   "minimum": 3,
   "region": "kansai",

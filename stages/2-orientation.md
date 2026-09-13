@@ -99,7 +99,7 @@ The strongest one-night trip out of Tokyo for shrines and mountains rather than 
 <!-- generated:card-kyoto -->
 - **nights:** ideal 4–6 · minimum 3 · the top of the range if temples and gardens are the main draw; two is a highlights sprint
 - **places:**
-  - **Kyoto:** ideal 4–6 · minimum 3 · the city itself
+  - **Kyoto:** ideal 3–5 · minimum 3 · the city itself
   - **The Kansai inn towns (Arima, Kinosaki, the Tango coast, Ise-Shima, Yunoyama, Katsuragi):** ideal 1–2 · minimum 1 · inn town — a night out of Kyoto or Osaka, each with its own line in the leg table
 - **base:** yes
 - **spines:** The Classic (7–15 nights) · The Kanazawa Loop (9–16 nights) · Stretched West (12–19 nights) · Snow Country (9–16 nights) · The Long Line (11–18 nights)

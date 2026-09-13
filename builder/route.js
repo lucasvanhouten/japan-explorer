@@ -861,12 +861,22 @@ function fitTotal(stops, N, repeat) {
     if (!moved) break;
   }
   guard = 0;
+  /* over the count asked for: the city with the most nights above its usual low gives one up first, later in the trip
+   * on a tie — so Tokyo is never cut below its usual while another city still sits above its own (owner, 2026-09-12) */
+  const floorOf = (s, i) => { const visits = stops.filter((x) => x.loc === s.loc).length, last = stops.map((x) => x.loc).lastIndexOf(s.loc) === i;
+    const airportSide = last && stops.slice(i + 1).every((x) => !isBaseKind(x.kind)); return visits > 1 && !airportSide ? 2 : 1; };
+  while (total() > N && guard++ < 200) {
+    let pick = null, best = 0;
+    for (const [s, i] of bases) { const surplus = atLoc(s.loc) - rangeOf(s.loc, { repeat })[0];
+      if (surplus > 0 && surplus >= best && s.nights > floorOf(s, i) && atLoc(s.loc) > placeOf(s.loc).minimum) { pick = s; best = surplus; } }
+    if (!pick) break;
+    pick.nights--; steps.push(`${label(pick.loc)} gives up a night (${pick.nights + 1} → ${pick.nights})`);
+  }
+  guard = 0;
   while (total() > N && guard++ < 200) {
     let moved = false;
     for (const [s, i] of bases.slice().reverse()) { if (total() <= N) break;
-      const visits = stops.filter((x) => x.loc === s.loc).length, last = stops.map((x) => x.loc).lastIndexOf(s.loc) === i;
-      const airportSide = last && stops.slice(i + 1).every((x) => !isBaseKind(x.kind));
-      const floor = visits > 1 && !airportSide ? 2 : 1;
+      const floor = floorOf(s, i);
       if (s.nights > floor && atLoc(s.loc) > placeOf(s.loc).minimum) { s.nights--; moved = true; steps.push(`${label(s.loc)} gives up a night (${s.nights + 1} → ${s.nights})`); } }
     if (!moved) break;
   }
