@@ -154,7 +154,7 @@
      ],
      "kind": "inn",
      "at": "split",
-     "default": 1,
+     "default": 0,
      "question": "A night at Nikkō?",
      "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.",
      "no": "No Nikkō; the Tokyo stay runs unbroken.",

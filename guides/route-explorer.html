@@ -295,6 +295,9 @@ function stopsOf(sp){const {locs}=resolve(sp);const count={};locs.forEach(l=>{co
  {const seen={};const vis={};locs.forEach((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);(vis[loc]=vis[loc]||[]).push([n,i]);});
   Object.keys(vis).forEach(loc=>{if(vis[loc].length<2||!BASE.has(loc))return;const k=n=>sp.id+"/"+loc+"#"+n;
    if(nightsOv[k(1)]==null||vis[loc].slice(1).some(([n])=>nightsOv[k(n)]!=null))return;
+   /* only a true split — the visits separated by nothing but the out-and-back night — shares one stay; a city that
+    * returns at the END (the Tokyo close) is a stay of its own */
+   if(!locs.slice(vis[loc][0][1]+1,vis[loc][1][1]).every(l=>!BASE.has(l)))return;
    let rest=0;vis[loc].slice(1).forEach(([n,i])=>{const d=defOf(loc,n,i);nightsOv[k(n)]=d;rest+=d;});nightsOv[k(1)]=Math.max(1,nightsOv[k(1)]-rest);});}
  const seen={};return locs.map((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);const r=NQ(loc);let min=r[1],max=r[2];const def=defOf(loc,n,i);if(count[loc]>1&&BASE.has(loc))min=1;
  const key=sp.id+"/"+loc+"#"+n;const v=nightsOv[key]!=null?nightsOv[key]:def;return {loc,key,n:v,def,min:Math.max(0,min),max};});}
@@ -644,7 +647,7 @@ function trip(sp){
    if(own.has(nl[k])&&at==null)at=m;
    /* a repeat visit of a city already on the route is a SPLIT of that stay, not new nights (owner, 2026-09-12: Nikkō
     * read "+3 nights: 1 in Nikkō, 2 back in Tokyo" — it is one night, and it splits whatever Tokyo has) */
-   if(BASE.has(nl[k])&&R.locs.includes(nl[k]))continue;
+   if(d.owner.type==="city"&&d.owner.at==="split"&&BASE.has(nl[k])&&R.locs.includes(nl[k]))continue;
    n+=defs[k];adds.push([nl[k],defs[k]]);}
   return at==null?null:{at,n,adds};};
  const posOf=at=>at>=st.length?endPos:rowAt(at);
