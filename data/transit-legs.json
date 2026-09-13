@@ -3,7 +3,7 @@
   "what": "Every travel leg in the Japan Trip Kit's dataset: door-to-door hours and number of changes between two places, each looked up in a real timetable.",
   "generated_by": "planning/build-kit.js (from LEGS in route-builder-logic.js)",
   "catalog_as_of": "2026-09-07",
-  "count": 788,
+  "count": 790,
   "reads": "Times are door to door and run both ways. `transfers` is how many times you change vehicle. `source` is \"researched\" for a looked-up leg and \"composed\" where two researched halves were added together.",
   "note": "Places are short keys (e.g. \"tokyo\", \"tanigawa\"). The region table below says which keys sit in which region and which big cities that region is normally entered from."
  },
@@ -6490,6 +6490,16 @@
   },
   {
    "from": "takachiho",
+   "to": "kmj",
+   "hours": 2,
+   "transfers": 0,
+   "mode": "car",
+   "source": "researched",
+   "flags": {},
+   "route": "Rental car Takachiho→Aso Kumamoto Airport: R218/R325 via Takamori and the Aso caldera to the airport at Mashiki, approx. 2 hours per the Takachiho tourism association (the buses are one a day and change at Aso Station)."
+  },
+  {
+   "from": "takachiho",
    "to": "kumamoto",
    "hours": 2,
    "transfers": 0,
@@ -8356,6 +8366,16 @@
    "source": "researched",
    "flags": {},
    "route": "Ken-ei bus Unzen→Nagasaki (~1h40), or back to Isahaya and Ltd Exp on. By car ~47 km / ~1h15 (R57 down the mountain → Chijiwa → Isahaya) — only the top ~10 km of the descent carries ice risk."
+  },
+  {
+   "from": "unzen",
+   "to": "ngs",
+   "hours": 1.25,
+   "transfers": 0,
+   "mode": "car",
+   "source": "researched",
+   "flags": {},
+   "route": "Rental car Unzen Onsen→Nagasaki Airport (Ōmura): R57 down the mountain → Chijiwa → Isahaya → airport, ~70–80 min (KAI Unzen access page says 70 min; JNTO says about 1h20). The car is the point of an Unzen night on a Nagasaki flight — the buses go through Nagasaki city."
   },
   {
    "from": "unzen",

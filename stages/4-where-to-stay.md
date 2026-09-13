@@ -39,7 +39,7 @@ Next    Stage 5 — make the route work
    **When one is plainly the pick, say so.** Where the tool prints its one-clear-choice line, or where an S-tier editor's pick sits beside a B, say it in a sentence — *"Myoken Ishiharaso is the one here; the others are fallbacks if it is full"* — and let the rest of the table stand as backups. A lopsided pair presented as an open choice wastes their time.
 5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so — *"four more on the kit's list — ask and I'll show them"*. Otherwise the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*; in a later turn ask which two or three they would keep in the running, and the first they name is the lean.
 
-**Opening up a stay means reading its page on [ryokancatalog.com](https://ryokancatalog.com)** — rooms, bath, kitchen, setting, where it is weakest — plus distance from the gateway city, the room with the private bath, and what booking needs.
+**Opening up a stay means reading its [ryokancatalog.com](https://ryokancatalog.com) page** — rooms, bath, kitchen, setting, weaknesses — plus distance from the gateway, the room with the private bath, and how to book.
 
 **How many, by kind of stop:**
 
@@ -50,9 +50,10 @@ Next    Stage 5 — make the route work
 
 **Rules for this stage:**
 
-- **Don't lead with the most expensive option** unless they asked for the splurge: it makes everything after it read as a compromise. Lead with the best fit, and name the expensive one as the reach if there is a reason. **An editor's pick above their budget still prints, last, marked "above the budget"** — say in a clause what the extra buys, never drop it.
+- **Don't lead with the most expensive option** unless they asked for the splurge. Lead with the best fit; name the dearest as the reach if there is a reason. **An editor's pick above their budget still prints, last, marked "above the budget"** — say in a clause what the extra buys, never drop it.
 - **Prefer inns with a bath in the room**, and say why in half a sentence: it settles tattoos, privacy and bathing at once. **"Some rooms" is fine**, and often the better buy — but **"some" always means a specific, dearer room category**, never a room the inn might give you on the night: price that category, not the entry room. Offline, say "some rooms — ask for the category with the private bath when booking". Where a group has none, say so plainly and ask whether the inn has a private bath bookable by the hour.
-- **Mention booking mechanics only when unusual** — no online booking at all, a window that opens on a fixed date months ahead, agent-or-Japanese-site only, a lottery. Those change what they have to do and when. Say plainly when you don't know.
+- **Getting around is a fact, not a warning.** Say the station distance plainly; Tokyo taxis are plentiful and cheap, so a hotel off the lines is nothing to flag.
+- **Mention booking mechanics only when unusual** — no online booking at all, a window that opens on a fixed date months ahead, agent-or-Japanese-site only, a lottery. Say plainly when you don't know.
 - **Give the Google Maps link first, the rest after it** — the homepage for a hotel, the catalogue write-up and the Ikyu page for an inn, in the order the tool prints them, all inside the `Stay` cell. The map link is the property's own Google place; where a row has none, say the map is unconfirmed and give the site alone. Never build a maps search link out of a hotel's name — it lands on the town, not the building.
 - **When the budget doesn't land.** A price reading *rate not researched — check live* still prints, with that note, and goes on **To confirm**. Where every row is above their budget or unpriced, show the nearest rows and say the kit has nothing at that price here. Convert a yen budget once, at a round rate you state — ¥150 to the dollar unless they give one — the one number you may type.
 - **Say what a price band is when you quote one.** Hotel bands are three-night checks for two, taxes included, across February, May and October; Japanese holidays run well above them. Confirm on the property's own page for the actual dates.
@@ -304,7 +305,7 @@ Fill a stop's row once they have earmarked, not in the message that first showed
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin — the map link the hotel table prints, never a maps search built out of the name — and an inn to its `ryokancatalog.com` page, the `Link` column of the master table, with its `Ikyu` column beside it. **Every earmark in `Stay options` is a link too** — an unlinked name is no use when the first choice is full.
+**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin (the map link the hotel table prints, never a maps search built from the name), an inn to its `ryokancatalog.com` page from the master table, its `Ikyu` link beside it. **Every earmark in `Stay options` is a link too** — an unlinked name is no use when the first choice is full.
 
 ---
 

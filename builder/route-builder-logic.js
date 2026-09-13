@@ -522,6 +522,8 @@ const LEGS={
   "tokyo>nrt":L(1.1,0,"train","JR Narita Express (N'EX) Tokyo Station→Narita Airport Terminal 2·3 ~53 min, Terminal 1 ~56–60 min — direct, 1–2 an hour (JR East timetable; japan-guide Narita access). ⚠ From a central HOTEL door add ~20–30 min to reach the trunk → ~1h20 real; the door-to-terminal Airport Limousine bus from the big hotels runs ~85–120 min depending on traffic, and the Keisei Skyliner from Ueno/Nippori is ~41–46 min if you are staying on that side."),
   "fukuoka>fuk":L(0.3,0,"subway","Fukuoka City Subway Hakata→Fukuoka Airport (2 stops, ~5 min)."),
   "nagasaki>ngs":L(1.0,0,"bus","Airport limousine bus Nagasaki Station→Nagasaki Airport (~45 min)."),
+  "unzen>ngs":L(1.25,0,"car","Rental car Unzen Onsen→Nagasaki Airport (Ōmura): R57 down the mountain → Chijiwa → Isahaya → airport, ~70–80 min (KAI Unzen access page says 70 min; JNTO says about 1h20). The car is the point of an Unzen night on a Nagasaki flight — the buses go through Nagasaki city."),
+  "takachiho>kmj":L(2.0,0,"car","Rental car Takachiho→Aso Kumamoto Airport: R218/R325 via Takamori and the Aso caldera to the airport at Mashiki, approx. 2 hours per the Takachiho tourism association (the buses are one a day and change at Aso Station)."),
   "kumamoto>kmj":L(0.9,0,"bus","Airport limousine bus Kumamoto Stn/Sakuramachi→Kumamoto Airport (KMJ) at Mashiki (~55 min)."),
   "takeo>ngs":L(0.75,1,"train","Nishi-Kyushu Shinkansen Takeo-Onsen→Shin-Ōmura (~12 min), then the airport shuttle to Nagasaki Airport (~15 min) — NGS sits between Takeo and Nagasaki, ~40 min door to door."),
   "kagoshima>koj":L(1.1,0,"bus","Airport limousine bus Kagoshima-Chūō→Kagoshima Airport (~40–60 min)."),
