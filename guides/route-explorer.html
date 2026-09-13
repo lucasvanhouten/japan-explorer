@@ -411,6 +411,19 @@ const sameSet=(a,b)=>{const x=new Set(a),y=new Set(b);if(x.size!==y.size)return 
 const optFor=(d,set,add)=>{let j=d.options.findIndex(o=>sameSet(o.cities||[],[...set]));
  if(j<0&&add)j=d.options.findIndex(o=>sameSet(o.cities||[],[add]));return j;};
 const emptyEnd=d=>d.options.findIndex(o=>!(o.stops||[]).length);
+/* an ending that is really a small set of places, offered every which way — the Fuji night, the Tokyo close, and the
+ * option that takes both — is read as its places, not as its options: the page then offers one row per place and adds
+ * or drops them a place at a time, landing on whichever option carries exactly the set that leaves (owner, 2026-09-13).
+ * A family is only read this way when it flies from one airport and every one of its places can stand alone. */
+const sortKey=a=>a.slice().sort().join("|");
+function endFamilies(d){const by={},out={};
+ (d.options||[]).forEach((o,j)=>{const st=(o.stops||[]).slice();if(!st.length)return;
+  const k=o.out||"";(by[k]=by[k]||[]).push({j,st});});
+ Object.keys(by).forEach(k=>{const g=by[k],places=[...new Set(g.reduce((a,x)=>a.concat(x.st),[]))];
+  const find=set=>{const want=sortKey([...set]);const f=g.find(x=>sortKey(x.st)===want);return f?f.j:-1;};
+  if(places.length>1&&places.every(p=>find([p])>=0)&&g.every(x=>x.st.every(p=>places.indexOf(p)>=0)))
+   out[k]={places,find,all:g.map(x=>x.j)};});
+ return out;}
 
 /* ---------- the recommended version lands on the settled nights ----------
  * the engine's own counts come out of stopsOf; the difference to the target is then spread over the flexible city rows
@@ -782,11 +795,18 @@ function trip(sp){
     const gone=reason||keeps?null:goneIf(d,j).sort((a,b)=>(set.has(b)?1:0)-(set.has(a)?1:0));
     const w=withOpt(d,j);
     ghosts.push({p:w&&!reason?posOf(w.at):swPos(d,set),r:1,g:ghostOf(d,j,[c],reason,gone,w)});}));}
-  else if(isEnd(d)){d.options.forEach((o,j)=>{if(j===R.ch[d.key]||!(o.stops||[]).length)return;
-   const w=withOpt(d,j),rs=friendly(sp,d,j,R);
-   /* one ending replaces another: what this one would take off the trip is named first, as a swap */
-   const gone=rs?null:goneIf(d,j);
-   ghosts.push({p:w&&!rs?posOf(w.at):endPos,r:2,g:ghostOf(d,j,o.stops,rs,gone,w)});});}});
+  else if(isEnd(d)){const fams=endFamilies(d),on=((d.options[R.ch[d.key]]||{}).stops)||[],covered=new Set();
+   const push=(j,locs)=>{const w=withOpt(d,j),rs=friendly(sp,d,j,R);
+    /* one ending replaces another: what this one would take off the trip is named first, as a swap */
+    const gone=rs?null:goneIf(d,j);
+    ghosts.push({p:w&&!rs?posOf(w.at):endPos,r:2,g:ghostOf(d,j,locs,rs,gone,w)});};
+   /* a place at a time: the row says what that one place adds, and the option it lands on is the one whose stops are
+    * exactly the ending as it stands plus this place. A place already on the route is not offered — its row removes it */
+   Object.keys(fams).forEach(k=>{const F=fams[k];F.all.forEach(j=>covered.add(j));
+    const here=on.filter(p=>F.places.indexOf(p)>=0);
+    F.places.forEach(p=>{if(on.indexOf(p)>=0)return;
+     const j=F.find(here.concat([p]));if(j<0||j===R.ch[d.key])return;push(j,[p]);});});
+   d.options.forEach((o,j)=>{if(j===R.ch[d.key]||!(o.stops||[]).length||covered.has(j))return;push(j,o.stops);});}});
  /* ── the two figures ── */
  const lIn=st.length&&APLEG[st[0].loc+">"+apIn],lOut=st.length&&APLEG[st[st.length-1].loc+">"+apOut];
  let mins=0,unk=0;const add=L=>{if(L)mins+=L[0];else unk++;};
