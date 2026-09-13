@@ -73,7 +73,7 @@ The engine is `builder/route.js`: `spine <name>` — `spine kanazawa`, any word 
 2. **The place**, two or three sentences from its card in your own words.
 3. **Why yes, why no** — a line each, the default first with its reason: *"Yes is the default: Hakone sits on the line to Kyoto, so the night costs almost no travel."*
 4. **The options as a short table**, `| Option | What it means |`, the default marked *(default)*, the description as the tool prints it. **Never the key**, the number, or the RYOKAN/CITY tag.
-5. **The ask, on its own line**: the question this decision answers — *"Nikkō, yes or no?"* — never Stage 2's "a different mix". One decision per message.
+5. **The ask, on its own line**: the question this decision answers — *"Nikkō, yes or no?"* — never Stage 2's closing offer. One decision per message.
 
 Each answer is another `--set <key>=<option>` — `tokyo.nikko=yes`, `kansai=osaka`, by label or number — earlier answers carried along; paste the timeline it returns:
 
