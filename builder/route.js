@@ -650,8 +650,10 @@ function choicesOf(sp, sets, total, repeat, apIn, apOut) {
       let j = d.options.findIndex((o) => ok(o) && (!apOut || !o.out || o.out === apOut)); if (j < 0) j = d.options.findIndex(ok); if (j >= 0) i = j; }
     /* a booked flight home picks the ending that lands there: the option that declares that `out`, or the one whose last
      * stop is that airport's own city — a Haneda ticket home from Kyushu closes with two Tokyo nights (QA round 8) */
-    if (apOut && d.key === "end" && sp.out !== apOut) { const hubs = (AIRPORT[apOut] || {}).hubs || [];
-      const j = d.options.findIndex((o) => o.out === apOut || (o.stops || []).length && hubs.includes(o.stops[o.stops.length - 1]));
+    /* …only an ending that declares that airport: the trip may close anywhere with a same-day hop to the ticket, so a
+     * Haneda return does not take the Tokyo close by itself — it is offered (owner, 2026-09-12: "why is Tokyo split?") */
+    if (apOut && d.key === "end" && sp.out !== apOut) {
+      const j = d.options.findIndex((o) => o.out === apOut);
       if (j >= 0 && !(d.options[j].in && apIn && d.options[j].in !== apIn)) i = j; }
     if (d.on_at && total && total >= d.on_at) i = 0;
     if (sets && sets[d.key] != null) i = sets[d.key];
@@ -919,6 +921,12 @@ function assembleSpine(sp, optIn) {
   let locs = A.locs, cities = A.cities, reversed = A.reversed, choices = A.choices, unavailable = A.unavailable;
   if (!locs.length) throw new Error(`${sp.id}: the choices leave no stop`);
   let stops = defaultStops(locs, opt.repeat), steps = [];
+  /* a city the ENDING adds ("two more Tokyo nights and a Haneda flight home") is a close, not a base: it holds its two
+   * nights and the total filler grows the cities before it (owner, 2026-09-12: a 13-night Classic on a Haneda return
+   * came back Tokyo 4 · Hakone 1 · Kyoto 5 · Tokyo 3) */
+  { const endD = decisionsOf(sp).find((d) => d.owner.type === "end"), eo = endD && endD.options[choices[endD.key]];
+    if (eo && (eo.stops || []).length) { const last = eo.stops[eo.stops.length - 1], i = reversed && last !== "tokyo" ? 0 : stops.length - 1;
+      if (stops[i] && stops[i].loc === last && isBaseKind(stops[i].kind) && stops.some((s, j) => j !== i && s.loc === last)) { stops[i].nights = 2; stops[i].fixedNights = true; } } }
   const dropped = [];
   for (const ov of opt.nightsAt || []) {
     const m = /^([^=#]+)(?:#(\d+))?=(\d+)(r)?$/.exec(String(ov).trim()); if (!m) throw new Error("--nights takes loc=N (or loc#2=N for a second visit; N r for room only, 0 to drop the stop), e.g. --nights kyoto=5");
@@ -1011,6 +1019,22 @@ function assembleSpine(sp, optIn) {
 /* ── printers ── */
 /* one band line for the whole print (2026-09-13): the spine's own band, and in brackets the band this
  * assembly is read against when its Tokyo start was dropped. The timeline never repeats it. */
+/* the route's shape the way the explorer shows it (owner, 2026-09-12): the cities in order, then every ryokan option
+ * and every town option this assembly offers, each marked on or off — so a comparison names Nikkō and Kaga even when
+ * they are off, and nothing turns up later as a surprise */
+function shapeLines(sp, P) {
+  const off = new Set((P.unavailable || []).map((u) => `${u.key}#${u.index}`));
+  const tag = (d) => { const j = d.options.findIndex((o) => (o.stops || []).length); if (j < 0 || off.has(`${d.key}#${j}`)) return null;
+    return `${label(d.options[j].stops[0])} (${P.choices[d.key] === j ? "on" : "off"})`; };
+  const list = (kind) => decisionsOf(sp).filter((d) => d.kind === kind && d.owner.type !== "end").map(tag).filter(Boolean);
+  const cities = (P.cities || []).map(label);
+  const endD = decisionsOf(sp).find((d) => d.owner.type === "end"), endO = endD && endD.options[P.choices[endD.key]];
+  if (endO && (endO.stops || []).length) cities.push(label(endO.stops[endO.stops.length - 1]));
+  const ends = endD ? endD.options.map((o, j) => off.has(`${endD.key}#${j}`) ? null : (j === P.choices[endD.key] ? `**${optWord(o, P.reversed).label}**` : optWord(o, P.reversed).label)).filter(Boolean) : [];
+  const ry = list("inn"), tw = list("stop");
+  return [`**Cities:** ${cities.join(" → ")}`, `**Ryokan nights:** ${ry.length ? ry.join(" · ") : "none on this route"}`,
+    `**Town stops:** ${tw.length ? tw.join(" · ") : "none on this route"}`, `**Ending:** ${ends.join(" · ")}`];
+}
 function spineHead(sp, band, opt, P) {
   const own = sp.band.join("–"), here = band ? band.join("–") : own;
   const io = (opt && (opt.in || opt.out)) ? `${opt.in ? apLabel(opt.in) : "—"} → ${opt.out ? apLabel(opt.out) : "—"}` : P && P.opt ? `${apLabel(P.opt.in)} → ${apLabel(P.opt.out)}` : sp.io;
@@ -1256,6 +1280,9 @@ function betterReversed(sp, opt) {
     const F = assembleSpine(sp, Object.assign({}, opt, { set: (opt.from || []).concat(opt.set || []), lenientNights: true }));
     const st = decisionOf(sp, "start"), so = st && st.options[F.choices.start];
     if (so && so.in && so.in === opt.in) return false;   // a straight-in start the ticket itself picked is the direction
+    /* they land where the trip already starts: never turn it round to carry them past it (owner, 2026-09-12: a Haneda
+     * round-trip Classic was reversed to Kyoto first once the Tokyo close stopped being forced) */
+    if (opt.in && F.cities && F.cities.length && ((AIRPORT[opt.in] || {}).hubs || []).includes(F.cities[0])) return false;
     const R = assembleSpine(sp, Object.assign({}, opt, { set: (opt.from || []).concat(opt.set || []), lenientNights: true, reverse: true }));
     if ((R.droppedSets || []).length > (F.droppedSets || []).length) return false;   // never turn round by losing an answer
     return R.flights < F.flights || (R.flights === F.flights && R.totals.hours <= F.totals.hours - 0.5); } catch (e) { return false; }
@@ -1285,6 +1312,7 @@ function cmdSpine(ref, opt) {
   const chosenOpts = decisionsOf(sp).map((d) => d.options[after.choices[d.key]]);
   const L = [spineHead(sp, after.band, opt, after), "", lineOf(sp, chosenOpts), "",
     `Explorer: \`guides/route-explorer.html#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}\` — the page to hand them, prefilled with this route.`, ""];
+  L.push(...shapeLines(sp, after), "");
   if (autoRev) L.push(`Run the other way round for your ticket — in at ${apLabel(after.opt.in)}, home from ${apLabel(after.opt.out)}. The engine turns it round by itself whenever the ticket is on every run (\`--in\`/\`--out\`); do not add \`--reverse\` on top, that would turn it back.`, "");
   L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed, null, after.stops.map((s) => s.loc)), "");
   /* one of the two, never both (2026-09-13): a run that asked for a change and moved nothing says so, and

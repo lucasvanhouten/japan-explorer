@@ -434,8 +434,7 @@ function readHash(){const p=hashParams();
   const now=airportsOf(cur,stopsOf(cur))[side==="in"?0:1];if(now===code)return;
   for(const d of decs(cur)){const j=d.options.findIndex(o=>o[side]===code);if(j>=0){sel[cur.id+"/"+d.key]=j;return;}}
   /* no option declares it: a ticket home picks the ending whose last stop is that airport's own city (a Haneda ticket closes in Tokyo) */
-  if(side==="out"){const hub=l=>l==="tokyo"?/^(HND|NRT)$/.test(code):((AP[l]||{}).out===code);
-   for(const d of decs(cur)){if(d.owner.type!=="end")continue;const j=d.options.findIndex(o=>(o.stops||[]).length&&hub(o.stops[o.stops.length-1]));if(j>=0){sel[cur.id+"/"+d.key]=j;return;}}}
+  /* (a ticket home no longer takes the Tokyo close by itself: the trip may end anywhere with a same-day hop — owner, 2026-09-12) */
   if(code!==(cur[side]||"").toUpperCase())return;
   for(const d of decs(cur)){const o=d.options[choicesOf(cur)[d.key]];
    if(o&&o[side]&&o[side]!==code)sel[cur.id+"/"+d.key]=defOf(d);}});
