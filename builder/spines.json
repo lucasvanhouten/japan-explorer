@@ -251,13 +251,13 @@
      },
      {
       "label": "A Kōyasan ryokan",
-      "desc": "A last night on the mountain south of Osaka, then Kansai airport.",
+      "desc": "A last night at Amanosato near Kōyasan, a destination ryokan whose French-Japanese tasting menu is the best meal of many members’ travels; then Kansai airport.",
       "stops": [
        "katsuragi"
       ],
       "out": "KIX",
       "label_rev": "A Kōyasan ryokan",
-      "desc_rev": "A first night on the mountain south of Osaka, from Kansai airport."
+      "desc_rev": "A first night at Amanosato near Kōyasan, the destination ryokan with the French-Japanese tasting menu, from Kansai airport."
      },
      {
       "label": "Kinosaki",

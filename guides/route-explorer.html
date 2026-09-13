@@ -249,8 +249,16 @@ function groupsOf(sp,R){const ds=decs(sp),cl=R.cities,groups=[],done=new Set(),h
 let REPEAT=false;
 const NQ=loc=>{const r=NIGHTS[loc]||[1,1,2,1,1];if(!REPEAT||r[5]==null)return r;
  return [Math.max(1,r[5]),Math.min(r[1],r[5]),Math.min(r[2],r[6]+1),r[5],r[6]];};
-function stopsOf(sp){const {locs}=resolve(sp);const count={};locs.forEach(l=>{count[l]=(count[l]||0)+1;});const seen={};return locs.map((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);const r=NQ(loc);let def=Math.max(1,r[0]),min=r[1],max=r[2];
- if(count[loc]>1&&BASE.has(loc)){const airportSide=n===count[loc]&&locs.slice(i+1).every(l=>!BASE.has(l));def=loc==="tokyo"?(n===1?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;min=1;}
+function stopsOf(sp){const {locs}=resolve(sp);const count={};locs.forEach(l=>{count[l]=(count[l]||0)+1;});
+ const defOf=(loc,n,i)=>{const r=NQ(loc);let def=Math.max(1,r[0]);if(count[loc]>1&&BASE.has(loc)){const airportSide=n===count[loc]&&locs.slice(i+1).every(l=>!BASE.has(l));def=loc==="tokyo"?(n===1?3:2):n===1?Math.max(2,r[0]):airportSide?1:2;}return def;};
+ /* a held count on the first visit of a city the route now splits is the whole stay: the later visits take their
+  * defaults out of it and the split is written back, so adding Nikkō to a Tokyo of 5 gives 3 + 1 + 2, never 5 + 1 + 2
+  * (owner, 2026-09-12) */
+ {const seen={};const vis={};locs.forEach((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);(vis[loc]=vis[loc]||[]).push([n,i]);});
+  Object.keys(vis).forEach(loc=>{if(vis[loc].length<2||!BASE.has(loc))return;const k=n=>sp.id+"/"+loc+"#"+n;
+   if(nightsOv[k(1)]==null||vis[loc].slice(1).some(([n])=>nightsOv[k(n)]!=null))return;
+   let rest=0;vis[loc].slice(1).forEach(([n,i])=>{const d=defOf(loc,n,i);nightsOv[k(n)]=d;rest+=d;});nightsOv[k(1)]=Math.max(1,nightsOv[k(1)]-rest);});}
+ const seen={};return locs.map((loc,i)=>{const n=(seen[loc]=(seen[loc]||0)+1);const r=NQ(loc);let min=r[1],max=r[2];const def=defOf(loc,n,i);if(count[loc]>1&&BASE.has(loc))min=1;
  const key=sp.id+"/"+loc+"#"+n;const v=nightsOv[key]!=null?nightsOv[key]:def;return {loc,key,n:v,def,min:Math.max(0,min),max};});}
 /* the airports the engine prints: a leading or trailing Tokyo reads Haneda; else the option taken, else the spine's own, else the place's nearest */
 function airportsOf(sp,st){const {ch}=resolve(sp);const chosen=decs(sp).map(d=>d.options[ch[d.key]]);const oIn=chosen.map(o=>o.in).filter(Boolean)[0],oOut=chosen.map(o=>o.out).filter(Boolean).pop();
@@ -594,6 +602,9 @@ function trip(sp){
    if(m<R.locs.length&&R.locs[m]===nl[k]){m++;continue;}
    /* every night the option inserts counts, the split's own extra nights included; its own place fixes where it falls */
    if(own.has(nl[k])&&at==null)at=m;
+   /* a repeat visit of a city already on the route is a SPLIT of that stay, not new nights (owner, 2026-09-12: Nikkō
+    * read "+3 nights: 1 in Nikkō, 2 back in Tokyo" — it is one night, and it splits whatever Tokyo has) */
+   if(BASE.has(nl[k])&&R.locs.includes(nl[k]))continue;
    n+=defs[k];adds.push([nl[k],defs[k]]);}
   return at==null?null:{at,n,adds};};
  const posOf=at=>at>=st.length?endPos:rowAt(at);

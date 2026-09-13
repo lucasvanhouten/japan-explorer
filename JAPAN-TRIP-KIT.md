@@ -606,7 +606,7 @@ A **spine** is an order of major cities, with every decision hanging off a city 
 3. **"Pick A if… Pick B if…"** — one paragraph tying each route to their profile's words, and which you would take.
 4. **The route explorer, offered with the comparison, not on request**: one address per route, pasted from each run's `Explorer:` line (it carries the nights, the ticket and every answer given so far), with `&routes=<slug>,<slug>` added naming the routes under discussion so the page pins those and folds the rest. Then the closing line: *"want more on any of them, a different mix, or to open one of these and play with it?"*
 
-**Never show a backend id** (`s1`): the engine takes the name. **Run the menu, never quote it.** `cd builder && node route.js spines --nights N --draws food,onsen` prints the nine at the profile's nights, ranked by nights, draws and first visit or repeat — offer them in that order. **A repeat visitor** gets `--repeat` on every run: routes that start straight in the region come first. A Tokyo-only start holds Tokyo to two or three nights, and says they have seen it. **A ticket into the far end** (Kansai in, Tokyo home) runs the spine backwards; say so — the walk turns it round by itself. **The Kanazawa Loop is offered on every first trip**, ahead of Snow Country. Then **the roll call**: the other routes, a line each; a place on no spine (Okinawa, Shikoku) said so.
+**Never show a backend id.** **Run the menu, never quote it.** `cd builder && node route.js spines --nights N --draws food,onsen` prints the nine at the profile's nights, ranked by nights, draws and first visit or repeat — offer them in that order. **A repeat visitor** gets `--repeat` on every run: routes that start straight in the region come first. A Tokyo-only start holds Tokyo to two or three nights, and says they have seen it. **A ticket into the far end** (Kansai in, Tokyo home) runs the spine backwards; say so — the walk turns it round by itself. **The Kanazawa Loop is offered on every first trip**, ahead of Snow Country. Then **the roll call**: the other routes, a line each; a place on no spine (Okinawa, Shikoku) said so.
 
 <!-- generated:spines-menu -->
 *The nine routes at their own shortest length (no night count was given — run `spines --nights N` at the profile's nights before showing a menu). Offer the top two or three, by name; the rest is the roll call. Travel counts each flight leg at 3h at most, and a route over 60 minutes of travel a night says so. `spine <name>` walks one — `spine kanazawa`, `spine classic`.*
@@ -676,7 +676,7 @@ It checks ranges, the three-dinner run, doubling back, the exit airport, travel 
 
 ### Tokyo's satellites
 
-Nikkō is out and back, so it **splits a long Tokyo stay**; Hakone, Izu and the Fuji lakes sit on the way west. **With Tokyo at four nights or more, offer both by name.**
+Nikkō is out and back, so it **splits a long Tokyo stay**; Hakone, Izu and the Fuji lakes sit on the way west. **At four Tokyo nights or more, offer both.**
 
 <!-- generated:tokyo-satellites -->
 *The five ryokan trips out of Tokyo, with the researched leg from Tokyo on each. Every one is out and back except Hakone and Izu, which sit on the way west; that and the hours below are the difference between them. `fits` is the tag to filter the master inn table by in Stage 4.*
@@ -709,7 +709,7 @@ Tokyo, Kyoto or Osaka, a ryokan or two. The first trip. Tokyo, a ryokan on the r
 | **Tokyo → Kyoto** | 3 · RYOKAN · A ryokan near Mount Fuji on the way west? `tokyo-kansai.fuji` | **1 Yes** — Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west. · 2 No — Straight through to Kansai. |
 | **Kyoto** | 4 · CITY · Which Kansai city? `kansai` | **1 Kyoto** — Temples, gardens and the old capital. · 2 Osaka — Osaka only; Kyoto as a day out or skipped. · 3 Kyoto and Osaka — Kyoto first, then Osaka for eating and going out. |
 |  | 5 · STOP · A night at Nara? — Yes is on by default from 12 nights, and can be chosen on a shorter trip `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
-| **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from Kansai** — Out through Kansai airport. · 2 A Kōyasan ryokan — A last night on the mountain south of Osaka, then Kansai airport. · 3 Kinosaki — A last night in the Japan Sea hot-spring town, then Itami airport. · 4 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
+| **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from Kansai** — Out through Kansai airport. · 2 A Kōyasan ryokan — A last night at Amanosato near Kōyasan, a destination ryokan whose French-Japanese tasting menu is the best meal of many members’ travels; then Kansai airport. · 3 Kinosaki — A last night in the Japan Sea hot-spring town, then Itami airport. · 4 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 | **Not on this route** | A ryokan at Arima between Osaka and Kyoto? | _Yes: not offered here — the leg from Osaka to Kyoto is not on this route_ |
 
 **The Classic** · 9 nights · 3 check-ins · 7h20 of travel · 49 min per night · in Haneda (HND), out Kansai (KIX) · band 7–15
@@ -947,7 +947,7 @@ Stop string: `plan "tokyo:4,sapporo:3,niseko:1,sapporo:1" --in HND --out CTS`
 
 ### The corridor and airport tables
 
-**Every leg in every timeline above is researched** — the city journeys, the flights and the airport transfers; inn legs are in `data/transit-legs.md`. A pair not here: check both directions, then compose through a hub.
+**Every leg in every timeline above is researched** — the city journeys, the flights and the airport transfers; inn legs are in `data/transit-legs.md`.
 
 Both are printed in full in Stage 5 below, under *The corridor cheat-sheet*. Read them there, with the rules that go with them.
 
