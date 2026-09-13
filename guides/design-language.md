@@ -169,7 +169,7 @@ A label column plus one column per plan, on one hairline-ruled grid
 (`grid-template-columns:15ch repeat(n,minmax(0,1fr))`), labels mono uppercase `.62rem` `--dim` on the
 left, values mono `.78rem` right-aligned, the headline figure inside them at `.92rem/800`. Same rows,
 same order, same units for every plan — a measure counted against one plan is counted against all.
-The standing set: total travel hours **including both airport legs**, changes, check-ins, one-night
+The standing set: total transit **including both airport legs**, separate stays, one-night
 stops, inn nights / city nights, longest run of inn dinners, days needing a car, legs not from the
 tables. Derived measures that are arithmetic of each other collapse into one row.
 

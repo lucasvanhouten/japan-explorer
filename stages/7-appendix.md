@@ -6,7 +6,7 @@
 
 ### The Trip profile block
 
-Fill this in Stage 1, show it, and update it whenever the plan shifts. Rendered text, not a code block.
+Fill this in Stage 1, show it, and update it whenever the plan shifts. Rendered text, not a code block. `Assumed` is the honest record of what they did not answer, and where they will spot a wrong guess.
 
 **Trip profile**
 
@@ -22,17 +22,15 @@ Fill this in Stage 1, show it, and update it whenever the plan shifts. Rendered 
 - **Wish list** — `<must-dos>`
 - **Assumed** — `<every default you chose for them>`
 
-`Assumed` is the honest record of what they did not answer, and where they will spot a wrong guess.
-
 ### The tables the run hands over
 
-Every sequence, set of options and comparison is a table, and each stage has one header line; the one exception is a Stage 2 place card, two or three sentences in prose. The prose beside a table carries the pitch and the trade-offs; hours, prices, links and scores live in cells and never in a sentence. Nothing is set in a code fence; code formatting is for the engine's own names only (a spine id, a decision key, a stop string), never for prose.
+Every sequence, set of options and comparison is a table, and each stage has one header line; the exception is a Stage 2 place card, two or three sentences in prose. The prose beside a table carries the pitch and the trade-offs; hours, prices, links and scores live in cells, never in a sentence. Nothing is set in a code fence; code formatting is for the engine's own names only.
 
 - **Stage 3, the spine menu** — `| Route | Who it's for | The trip | Nights | Travel | Ryokan nights | Flights | Fly in / home from |`, one row per spine at its default assembly
 - **Stage 3, a spine's decisions** — `| Where | Decision | Options (chosen in bold) |`, the rows grouped in trip order (a city, its attachment, the next leg's slots, the next city), the options and descriptions as spines.json prints them
 - **Stage 3, a timeline** — `| Stop | Nights | Onward |`, one row per stay, the arrival transfer first, the leg under each stop as time to five minutes and one mode word, the stop string beneath
-- **Stage 3, a change before and after, or two routes compared; Stage 5, orders compared** — `| Route | Stops | Nights | Travel | Per night | Check-ins | Ryokan nights | Flights | In / out |` (Stage 5 keeps `| Order | Hours | Per night | Changes | Check-ins | Inn / city nights | One-nighters |`), one row per route
-- **Stage 4, the stays for a stop** — `| Stay | Town | Band | Bath | Why | Links |`, one table per stop, the town as a column where a ryokan option spans towns
+- **Stage 3, a change before and after, or two routes compared; Stage 5, orders compared** — `| Route | Stops | Nights | Total transit | Separate stays | Ryokan nights | Flights | In / out |` (Stage 5's orders table is `| Order | Total transit | Separate stays | Inn / city nights | One-nighters |`), one row per route
+- **Stage 4, the stays for a stop** — `| Stay | Price | Why |`, one table per stop; a ryokan option spanning towns adds a `Town` column, the inns within reach of a city a `From <city>` column. The name, the kind, the score and every link ride in the `Stay` cell, so there is no Links column anywhere
 - **Stages 3 to 5, the plan itself** — the itinerary table below, filled progressively
 - **Stage 6, eating** — `| Place | Type | Price | Neighbourhood | Booking | Map |`, under a heading per cuisine
 - **Stage 6, day ideas** — `| Idea | What it is | Time | Map |`, one table per stop
@@ -46,17 +44,17 @@ The one table the run is built in, filled progressively from Stage 3 to Stage 5,
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Earmarked |
-|---|---|---|---|---|---|
-| | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 2 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 3 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ out to `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
+| # | Stop | Dates | Nights | Stay options |
+|---|---|---|---|---|
+| | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | |
+| 1 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | |
+| 2 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | |
+| 3 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ out to `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | |
 
-**Totals:** `<n>` travel hours · `<n>` changes · `<n>` check-ins · `<n>` inn nights / `<n>` city nights · `<n>` one-nighters. Every figure here comes from `plan`, the airport legs' changes included, never typed; the travel total sums the leg rows above, both airport legs in it, rounded to five minutes.
+**Totals:** `<n>` total transit · `<n>` separate stays · `<n>` inn nights / `<n>` city nights · `<n>` one-nighters. Every figure here comes from `plan`, never typed; the transit total sums the leg rows above, both airport legs in it, rounded to five minutes.
 
 **Notes:** `<shuttle window, last-mile detail>`, one per stop that needs one. **Assumed:** `<every default you chose for them>`.
 
@@ -64,30 +62,30 @@ The one table the run is built in, filled progressively from Stage 3 to Stage 5,
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**How it is read, wherever it appears.** Stage 3 fills `#`, `Stop`, `Nights` and every leg row; Stage 4 fills `Stay`, `Band` and `Earmarked`; Stage 5 adds the airport rows and the totals. Show it whole each time it changes. **Mode** is the word the corridor and airport tables print — `shinkansen` · `train` · `subway` · `bus` · `car` · `ferry` · `flight` — and the master inn table's `Reach` column prints it too, so **every leg row has one**; two hours on a bullet train and two hours on a mountain bus are different days. **A hotel's `Stay` links to its Google Maps pin, an inn's to its `ryokancatalog.com` page.** A leg has three forms and no fourth: sourced, `estimated` and labelled every time, or `to confirm`, which is left out of the totals and makes them partial — `≥ 6h00 (partial — 1 leg unsourced)`.
+**How it is read, wherever it appears.** Stage 3 fills `#`, `Stop` — the name and its kind word, **city**, **town** or **ryokan** — `Nights` and every leg row; Stage 4 fills `Stay options`, the lean marked `(chosen)`; Stage 5 adds the airport rows and the totals. `Dates` is filled only where a start date is known, `Jan 2–6` for a run of nights and `Jan 6` for one. Show it whole each time it changes. **Mode** is the word the corridor and airport tables print — `shinkansen` · `train` · `subway` · `bus` · `car` · `ferry` · `flight` — and the master inn table's `Reach` column prints it too, so **every leg row has one**; two hours on a bullet train and two hours on a mountain bus are different days. **A hotel name links to its Google Maps pin, an inn's to its `ryokancatalog.com` page.** A leg has three forms and no fourth: sourced, `estimated` and labelled every time, or `to confirm`, which is left out of the totals and makes them partial — `≥ 6h00 (partial — 1 leg unsourced)`.
 
 ### Finding a stay the kit doesn't hold
 
 Stage 4's tables are a **design-and-luxury list** and do not cover every town. When the stop isn't in them, or the budget sits below them, say so plainly — "Japan is not expensive, this particular list is" — and go and find something. `guides/research-method.md` is the long version.
 
-1. **Check this kit first, every time.** The master table, `catalog/catalog.md` and `data/hotels.md` already answer most stops, with travel times that were looked up rather than guessed. Say what they hold for this stop, then go outside — and say plainly that the kit did not cover it.
-2. **Read the Japanese sites first** — the sample is ten times the English one. **Ikyu (一休)** is the upper end and prints an overall out of 5 plus sub-ratings: **4.5 good, 4.7 very good, 4.8+ the top of the market**; 4.2 on a famous name is a warning. **Rakuten Travel** and **Jalan** cover everything below. Read the **distribution and the sub-ratings**, never one review.
-3. **The property's own site is the only truth for policy** — tattoos, children, meal plans, whether the bath is a real hot spring, whether a "private bath" is in the room or booked by the hour. Note the policy for **overnight guests**, which is not always the one posted for day visitors.
-4. **Then the English connoisseurs** — FlyerTalk's Japan forums, TripAdvisor's long reviews. For judgement and comparison, not for facts about the building.
-5. **Verify the negatives too.** "Fully booked", "closed", "referral only" are claims like any other, and a false one silently deletes the best option.
+1. **Check this kit first, every time.** The master table, `catalog/catalog.md` and `data/hotels.md` answer most stops, with travel times that were looked up rather than guessed. Say what they hold, then go outside — and say plainly that the kit did not cover it.
+2. **Read the Japanese sites first** — the sample is ten times the English one. **Ikyu (一休)** is the upper end and prints an overall out of 5 plus sub-ratings: **4.5 good, 4.7 very good, 4.8+ the top of the market**; 4.2 on a famous name is a warning. **Rakuten Travel** and **Jalan** cover everything below. Read the **distribution and the sub-ratings**, never one review. Ikyu is also where most of these inns are booked.
+3. **The property's own site is the only truth for policy** — tattoos, children, meal plans, whether the bath is a real hot spring, whether a "private bath" is in the room or booked by the hour. Check the policy for **overnight guests**, not the one posted for day visitors.
+4. **Then the English connoisseurs** — FlyerTalk's Japan forums, TripAdvisor's long reviews: judgement and comparison, not facts about the building.
+5. **Verify the negatives too.** "Fully booked", "closed", "referral only" are claims like any other; a false one silently deletes the best option.
 6. **Link the real place**, not a name search, and **vary the properties across the trip** — "just extend the last hotel" costs you something.
 
 **Evidence** = stays, scores, distributions, the property's own written policy. **Not evidence** = the hotel's own adjectives, a press release, one glowing review, an aggregator's "9.4 Wonderful".
 
-**Present a find as a row of the same table** — the neighbourhood goes in `Why`, and the band cell is marked "unverified — check live for your dates". A named property with an honest caveat is a plan; a neighbourhood and a price range is homework.
+**Present a find as a row of the same table** — the neighbourhood in the `Stay` cell, and `Price` marked "unverified — check live for your dates". A named property with an honest caveat is a plan; a neighbourhood and a price range is homework.
 
-**The reliable floor, in any city:** a clean, well-run, well-located mid-range room for two runs roughly **$90–200** a night, everywhere. The chains: **Dormy Inn** (communal hot bath, often a real spring), **Mitsui Garden**, **Candeo**, **Richmond**, **Daiwa Roynet**, **Sotetsu Fresa Inn**, the **JR station hotels** (Granvia, JR-East Metropolitan — attached to the platforms, which on a moving trip beats everything) and **OMO by Hoshino Resorts**. The difference between a $120 and a $400 room here is size, breakfast and view.
+**The reliable floor, in any city:** a clean, well-run, well-located mid-range room for two runs roughly **$90–200** a night, everywhere. The chains: **Dormy Inn** (communal hot bath, often a real spring), **Mitsui Garden**, **Candeo**, **Richmond**, **Daiwa Roynet**, **Sotetsu Fresa Inn**, the **JR station hotels** (Granvia, JR-East Metropolitan, attached to the platforms) and **OMO by Hoshino Resorts**. The difference between a $120 and a $400 room here is size, breakfast and view.
 
 ### Credits
 
-The accommodation catalogue behind this kit exists because of **KI-NRT**, the author of the FlyerTalk thread *"Japan Luxury Ryokans – A Primer + Impressions"* (flyertalk.com), and the members who added their own reports over many years. Everything this kit says about a traditional inn traces back to somebody who stayed there and wrote it up. If you find an inn through this kit and go, the thread is the right place to post what you thought — that is how it stays useful.
+The accommodation catalogue behind this kit exists because of **KI-NRT**, the author of the FlyerTalk thread *"Japan Luxury Ryokans – A Primer + Impressions"*, and the members who added their own reports over many years. Everything this kit says about a traditional inn traces back to somebody who stayed there and wrote it up. If you find an inn through this kit and go, the thread is the right place to post what you thought.
 
-Restaurant research draws on **Tabelog**, Japan's own review site. **Photographs belong to the inns and hotels themselves** and are served from the catalogue site, not redistributed here. The travel times were researched leg by leg from timetables and mapping data — figures somebody checked.
+Restaurant research draws on **Tabelog**, Japan's own review site. **Photographs belong to the inns and hotels themselves** and are served from the catalogue site. The travel times were researched leg by leg from timetables and mapping data.
 
 ### License
 
@@ -98,10 +96,10 @@ Restaurant research draws on **Tabelog**, Japan's own review site. **Photographs
 
 - **Not official, and not affiliated** with any inn, hotel, railway, tourist board or with FlyerTalk.
 - **Not a booking service.** It tells you what to book and roughly when the window opens. You book it.
-- **Not a rating authority.** The scores are one reader's careful synthesis of first-hand traveller reports, discounted where the evidence is thin. A directional read of informed opinion.
-- **Not current forever.** Prices move, inns renovate and close, rail services get cut, museums change their opening seasons. Opening hours, shuttle timetables and availability are the first things to go stale.
-- **Deepest on winter, on traditional inns, and on the main island.** Thinner on the far north and the southern islands, on summer, and on travelling with children — good on all of them, but not equally.
-- **Not a substitute for asking.** The place you book will answer a direct email about tattoos, children, dietary needs, a bed instead of a floor mattress, or how to get there from the station. Ask them.
+- **Not a rating authority.** The scores are one reader's synthesis of first-hand traveller reports, discounted where the evidence is thin: a directional read of informed opinion.
+- **Not current forever.** Prices move, inns renovate and close, rail services get cut. Opening hours, shuttle timetables and availability go stale first.
+- **Deepest on winter, on traditional inns, and on the main island.** Thinner on the far north and the southern islands, on summer, and on travelling with children.
+- **Not a substitute for asking.** The place you book will answer a direct email about tattoos, children, dietary needs, a bed instead of a floor mattress, or how to get there from the station.
 
 ---
 

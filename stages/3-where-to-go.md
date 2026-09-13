@@ -22,9 +22,14 @@ Next    Stage 4 — where to stay.
 A **spine** is an order of major cities with decisions hanging off each city and leg. Nine cover the country; theirs sit on two or three. **Lead with the comparison**:
 
 1. **Each route under its name in bold, in four short labelled parts**, in your own words: **The route** — what the trip is about, in two sentences. **The cities the route is built around** — each in trip order, its usual nights as a range right after the name, from the run's *Usual nights* line, then two or three sentences as vivid as the Stage 2 cards (what it is, what is special, why go). **Optional ryokan nights** — say once that each is a yes/no added, not on by default; then every one the run's *Ryokan nights* line prints: what the place is and what a night there is like, where it sits (out and back from Tokyo, on the way to Kyoto). **Optional town stops** — the *Town stops* line the same way. No defaults, travel figures or last day here: those arrive with the walk. **Every place and range comes from one engine run per route** — `spine <name> --total N --in X --out Y` — **and the walk opens on that assembly**.
-2. **Which one, and why** — a paragraph as you would say it across a table: the one you would take for this couple and why in their words, what they would miss, and the one case for the other. Never a list of contrasts. The menu ranks first the routes that open where they land and close where they fly home.
-3. **"Pick A if… Pick B if…"** — one paragraph tying each route to their profile's words, and which you would take.
-4. **The route explorer, offered with the comparison, not on request**: one address per route, pasted from each run's `Explorer:` line, its `routes=` widened to every route under discussion so the page pins those and folds the rest; once one is chosen the address pins it alone. Then the closing line: *"want more on any of them, a different mix, or to open one of these and play with it?"*
+2. **Which one, and why** — a paragraph as you would say it across a table: the one you would take for this couple, in their own words, what they would miss, and the case for the other. Then one "pick A if… pick B if…" paragraph tying each route to their profile. Never a list of contrasts. The menu ranks first the routes that open where they land and close where they fly home.
+3. **The route explorer, offered with the comparison, not on request.** Every run prints an `Explorer:` line. **Join the hash parts of those lines with a `|`** — everything after the `#` of each, one after another — and hand the single address that makes: the page opens with one tab per route, every one populated, the first active. Once they have chosen, the address carries that route's section alone. Then the closing line: *"want more on any of them, a different mix, or to open one of these and play with it?"*
+
+4. **A different order is priced, not refused.** When they ask for the stops in another order, or you land on an order the spine cannot assemble, price the stop string with `plan "<stops>"` and open the `Explorer:` line it prints — a `plan=` section draws any stop string as its own tab, and it can sit beside the spine sections in the same address. Do this yourself, in the same message; never ask them to wait while anything is rebuilt, and never say a route cannot be shown.
+
+5. **Serving the explorer.** The kit root ships `.claude/launch.json` with a configuration named `kit-explorer`. Start it with the preview tool on that name, then open `http://localhost:8790/guides/route-explorer.html#…`. **Never `file://`** — the page comes up blank and says nothing about why. **After every open, read the page's text and check the first stop's name is on it before saying it is showing.**
+
+**Where a region carries more than one route, show them all before any pick.** Kyushu has three, and they are different trips; roll each out in the four parts above, in the same message, before you say which you would take. Close on the question that separates them — inns first or cities first, the coast or the volcano, how much of the trip is spent moving — and ask that, not "which one?". **On Kyushu the routes open at an inn:** each lands and goes straight to a hot-spring town — Kirishima, below an active volcano in the far south, or Takeo, a small hot-spring town an hour inland from Fukuoka — with Fukuoka in the middle of the trip rather than at the start. Fukuoka straight after Tokyo is a second big city when what they came south for is the countryside.
 
 **Run the menu, never quote it.** `cd builder && node route.js spines --nights N --draws food,onsen` prints the nine ranked for the profile — offer them in that order. **A repeat visitor** gets `--repeat` on every run: routes that start straight in the region come first. A Tokyo-only start holds Tokyo to two or three nights, and says they have seen it. **The Kanazawa Loop is offered on every first trip**, ahead of Snow Country. Then **the roll call**: the other routes, a line each.
 
@@ -39,13 +44,15 @@ A **spine** is an order of major cities with decisions hanging off each city and
 | **Snow Country** · 9–16 nights | Winter: snow country and the northern hot-spring towns. | Tokyo → Minakami / Tanigawa → Echigo-Yuzawa → Kanazawa → Kyoto | 12 | 11h10 | 2 | 0 | Haneda (HND) / Kansai (KIX) |
 | **The Long Line** · 11–18 nights | Kyushu without a flight: one train line the whole way. | Tokyo → Hakone → Kyoto → Hiroshima → Fukuoka | 13 | 9h05 | 1 | 0 | Haneda (HND) / Fukuoka (FUK) |
 | **Hokkaido** · 8–12 nights | The northern island in snow. The kit is thin here: no hotel rows in Sapporo, and one mountain town to sleep in. | Tokyo → Sapporo → Niseko → Sapporo | 9 | 11h20 (69 min per night) | 1 | 1 | Haneda (HND) / New Chitose (CTS) |
-| **Kyushu South & East** · 11–19 nights | Kyushu when the hot springs are the point. | Tokyo → Fukuoka → Amagase → Yufuin → Kagoshima → Kirishima | 12 | 11h40 | 3 | 1 | Haneda (HND) / Kagoshima (KOJ) |
-| **Kyushu North & East** · 10–17 nights | Kyushu on a shorter trip, either way round. | Tokyo → Nagasaki → Takeo Onsen → Fukuoka → Amagase → Yufuin | 12 | 10h20 | 3 | 1 | Haneda (HND) / Ōita (OIT) |
-| **Kyushu South & West** · 11–20 nights | Kyushu for people who have done Tokyo and Kyoto. | Tokyo → Fukuoka → Takeo Onsen → Nagasaki → Kagoshima → Kirishima | 13 | 10h25 | 2 | 1 | Haneda (HND) / Kagoshima (KOJ) |
+| **Kyushu South & East** · 11–19 nights | Kyushu when the hot springs are the point. | Tokyo → Kirishima → Kagoshima → Fukuoka → Yufuin | 11 | 10h05 | 2 | 1 | Haneda (HND) / Ōita (OIT) |
+| **Kyushu North & East** · 10–17 nights | Kyushu on a shorter trip, either way round. | Tokyo → Takeo Onsen → Nagasaki → Fukuoka → Amagase → Yufuin | 12 | 10h35 | 3 | 1 | Haneda (HND) / Ōita (OIT) |
+| **Kyushu South & West** · 11–20 nights | Kyushu for people who have done Tokyo and Kyoto. | Tokyo → Takeo Onsen → Nagasaki → Unzen → Kagoshima → Kirishima | 11 | 11h45 (61 min per night) | 3 | 1 | Haneda (HND) / Kagoshima (KOJ) |
 
 - The Classic: **flag** 62 min of travel per night — 60 minutes or more; say why and show a lighter order beside it.
 
 - Hokkaido: **flag** 69 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
+
+- Kyushu South & West: **flag** 61 min of travel per night — 60 minutes or more; say why (3h30 of it is flying, counted at 3h a leg) and show a lighter order beside it.
 <!-- /generated:spines-menu -->
 
 ### Walk the spine
@@ -56,7 +63,7 @@ A **spine** is an order of major cities with decisions hanging off each city and
 
 1. **Explore first.** Once the spine is picked, the first message shows its default timeline and the first decision, and closes on that decision's question with the offer folded in: *"Tokyo first, or straight into Kansai — or want more on either?"*
 2. **The default is the recommendation.** One option arrives taken, and you say why: *"Hakone is the default because it costs no travel — it sits on the line to Kyoto."* Never volunteer a place to sleep before they have chosen the area — that is Stage 4 — but **a direct question about a town's inns or hotels gets its shortlist there and then**: `stays <place>`, the names linked, your pick first.
-3. **Re-price after every answer.** Each answer is a `--set`; the timeline that comes back is what they see next. **Every run prints an `Explorer:` address carrying the answers so far: open it in the browser pane when one is there (the Claude Code desktop app), so the page beside the chat shows the route as it stands after every answer; otherwise paste it. The stage's last message hands the final address.**
+3. **Re-price after every answer.** Each answer is a `--set`; the timeline that comes back is what they see next. **Every run prints an `Explorer:` address carrying the answers so far: open it the way point 5 above says, so the page beside the chat shows the route as it stands after every answer. The stage's last message hands the final address.**
 4. **Say what the spine can't do.** An option marked *not offered here*: name the nearest thing this spine does. **A place it does not reach** gets one no with its reason.
 5. **Never type a number.** Every figure is pasted from the engine.
 
@@ -84,13 +91,13 @@ Each answer is another `--set <key>=<option>` (`tokyo.nikko=yes`, by label or nu
 
 Before and after get a row each:
 
-| Route | Stops | Nights | Travel | Per night | Check-ins | Ryokan nights | Flights | In / out |
-|---|---|---|---|---|---|---|---|---|
+| Route | Stops | Nights | Total transit | Separate stays | Ryokan nights | Flights | In / out |
+|---|---|---|---|---|---|---|---|
 | before | Tokyo → Hakone → Kyoto | 10 | 7h18 | 44 min | 3 | 1 | 0 | Haneda (HND) / Kansai (KIX) |
 
-Then the next decision. `--nights <place>=N` moves a stop (`=0` drops it), `--total N` the length, both fine beside a `--set`; an explicit `--nights` holds against the total. **A total outside the band still assembles**, and so does a place under its range; say once what that costs. At 60 minutes of travel a night or more the engine prints a **`Lighter:`** line: a real assembly at the same length. **Paste it beside the route they asked for and say which you would take**; over 60 with a city under its minimum is never left settled. `--nights <place>=1r` is a room-only night: no inn dinner, so the dinner run resets. **When the nights asked cannot all be spent**, the engine switches on the ryokan and stop nights it left off, then the Tokyo ending, and says so under What moved; only then does it name the nights left over: offer another city night or a shorter trip; a city is never padded past its cap.
+Then the next decision. `--nights <place>=N` moves a stop (`=0` drops it), `--total N` the length, both fine beside a `--set`; an explicit `--nights` holds against the total. **A total outside the band still assembles**, and so does a place under its range; say once what that costs. At 60 minutes of travel a night or more the engine prints a **`Lighter:`** line: a real assembly at the same length. **Paste it beside the route they asked for and say which you would take**; over 60 with a city under its minimum is never left settled. `--nights <place>=1r` is a room-only night: no inn dinner, so the dinner run resets. **When the nights asked cannot all be spent**, the engine switches on the ryokan and stop nights it left off, then the Tokyo ending, and says so under What moved; only then does it name the nights left over: offer another city night or a shorter trip.
 
-A booked ticket rides on every run as `--in <code> --out <code>`: it prices the last leg. The engine opens in the city they land in (Fukuoka, Nagasaki or Ōita on Kyushu) and closes where they fly home when the route offers it (a Haneda return flies from the last city; the Tokyo close is offered); **a ticket into the far end** turns the spine round and says so; `--repeat` starts a second visit in the region. Mid-walk, `--before "<the stop string on screen>"` makes Before the route they actually have; it is a `spine` flag, `plan` has none. `compare "<A>" "<B>"` sets two routes side by side; `plan` prices an explorer stop string.
+A booked ticket rides on every run as `--in <code> --out <code>`: it prices the last leg. The engine opens in the city they land in (Fukuoka, Nagasaki or Ōita on Kyushu) and closes where they fly home when the route offers it; **a ticket into the far end** turns the spine round and says so; `--repeat` starts a second visit in the region. Mid-walk, `--before "<the stop string on screen>"` makes Before the route they actually have. `compare "<A>" "<B>"` sets two routes side by side; `plan` prices an explorer stop string.
 
 It checks ranges, the dinner run, doubling back, the exit airport and every leg; an unresearched pair prints *to confirm*.
 
@@ -133,7 +140,7 @@ Tokyo, Kyoto or Osaka, a ryokan or two. The first trip. Tokyo, a ryokan on the r
 |  | 5 · STOP · A night at Nara? — Yes is on by default from 13 nights, and can be chosen on a shorter trip `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
 | **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from Kansai** — Out through Kansai airport. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. · 4 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 
-**The Classic** · 11 nights · 5 check-ins · 11h20 of travel · 62 min per night · in Haneda (HND), out Kansai (KIX) · band 7–15
+**The Classic** · 11 nights · 5 separate stays · 11h20 total transit · in Haneda (HND), out Kansai (KIX) · band 7–15
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -158,11 +165,12 @@ Tokyo, Kanazawa, a ryokan or two, then onward or back. Over the mountains instea
 |  | A ryokan at Nikkō on the way to Kanazawa, instead of Yudanaka? | _Yes: not offered here — one ryokan night on this leg: Nikkō or Yudanaka_ |
 | **Kanazawa → Kyoto** | 2 · RYOKAN · A ryokan in the Kaga towns after Kanazawa? — Yes is on by default from 13 nights, and can be chosen on a shorter trip `kanazawa-onward.kaga` | 1 Yes — The hot-spring towns an hour down the coast from Kanazawa. · **2 No** — Straight on from Kanazawa. |
 |  | 3 · STOP · A stop at Takayama on the way? `kanazawa-onward.takayama` | 1 Yes — A preserved timber merchant town in the mountains, on the way. · **2 No** — Direct to the next city. |
+|  | A lakeside inn under Fuji on the way back to Tokyo? | _Yes: not offered here — the Fuji inn only works on a loop that closes in Tokyo and comes down through Takayama, without the Kaga night too_ |
 | **Kyoto** | 4 · CITY · Which city next? `next` | **1 Kyoto** — On to Kyoto, then Kansai airport. · 2 Osaka — Straight to Osaka for eating and going out, then Kansai airport. · 3 Kyoto and Osaka — Kyoto, then Osaka, then Kansai airport. · 4 Back to Tokyo — Loop back over the mountains for a Haneda flight. |
 |  | 5 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
 | **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from the last city** — Kansai or Haneda, whichever the route reaches. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. |
 
-**The Kanazawa Loop** · 11 nights · 4 check-ins · 9h25 of travel · 51 min per night · in Haneda (HND), out Kansai (KIX) · band 9–16
+**The Kanazawa Loop** · 11 nights · 4 separate stays · 9h25 total transit · in Haneda (HND), out Kansai (KIX) · band 9–16
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -189,7 +197,7 @@ Tokyo, Kyoto or Osaka, Hiroshima, one to three ryokan. The first trip stretched 
 | **Hiroshima** | 6 · RYOKAN · A night on Miyajima? — Yes is on by default from 12 nights, and can be chosen on a shorter trip `hiroshima.miyajima` | 1 Yes — A night on the shrine island, under the torii that stands in the sea. · **2 No** — Miyajima as a day trip from Hiroshima. |
 | **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from Hiroshima** — Out through Hiroshima airport. · 2 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 
-**Stretched West** · 12 nights · 4 check-ins · 8h50 of travel · 44 min per night · in Haneda (HND), out Hiroshima (HIJ) · band 12–19
+**Stretched West** · 12 nights · 4 separate stays · 8h50 total transit · in Haneda (HND), out Hiroshima (HIJ) · band 12–19
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -215,7 +223,7 @@ Tokyo and the north, then Kanazawa and onward. Tokyo, then north into the snow o
 |  | 6 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
 | **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Kansai or Haneda, whichever the route reaches. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. |
 
-**Snow Country** · 12 nights · 5 check-ins · 11h10 of travel · 56 min per night · in Haneda (HND), out Kansai (KIX) · band 9–16
+**Snow Country** · 12 nights · 5 separate stays · 11h10 total transit · in Haneda (HND), out Kansai (KIX) · band 9–16
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -230,90 +238,93 @@ Stop string: `plan "tokyo:4,tanigawa:1,echigoyuzawa:1,kanazawa:3,kyoto:3" --in H
 
 #### Kyushu South & West
 
-Tokyo and Kyushu, west and south. Fukuoka, Takeo, Nagasaki, then south to Kagoshima and its Kirishima ryokan. Band 11–20 nights · HND → KOJ.
+Tokyo and Kyushu, west and south. Takeo and Nagasaki first, then south past Unzen to Kagoshima. Band 11–20 nights · HND → KOJ.
 
 | Where | Decision | Options (chosen in bold) |
 |---|---|---|
-| **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Fukuoka. · 2 Straight into Fukuoka — No Tokyo: start in the city you land in. · 3 Straight into Kagoshima — No Tokyo: the loop run the other way, Kagoshima first, Fukuoka last. · 4 Straight into Nagasaki — No Tokyo: land at Nagasaki, south to Kagoshima, Fukuoka last. |
-|  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Fukuoka → Nagasaki** | 3 · RYOKAN · A ryokan at Takeo on the way to Nagasaki? `fukuoka-nagasaki.takeo` | **1 Yes** — A small hot-spring town on the line to Nagasaki. · 2 No — Straight through. |
-| **Nagasaki → Kagoshima** | 4 · RYOKAN · A ryokan at Unzen on the way south? `nagasaki-kagoshima.unzen` | 1 Yes — The volcano town east of Nagasaki, a night on the way south. · **2 No** — Straight south. |
-| **Kagoshima** | 5 · RYOKAN · A ryokan at Kirishima with Kagoshima? `kagoshima.kirishima` | **1 Yes** — A riverside hot-spring ryokan an hour above Kagoshima, the classic pairing with the city. · 2 No — Kagoshima on its own. |
-| **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from the last city** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
+| **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Fukuoka and straight to the Takeo inn. · 2 Straight into Kyushu — No Tokyo: the Fukuoka flight, then the train inland to the Takeo inn. · 3 Straight into Kagoshima — No Tokyo: the route run the other way, Kagoshima first, Nagasaki and Takeo last. · 4 Straight into Nagasaki — No Tokyo: the Nagasaki flight lands at Ōmura, half an hour from the Takeo inn. |
+|  | 2 · CITY · Fukuoka on the way in? `north` | **1 Straight to the Takeo inn** — No city night first: the inn is an hour from the Fukuoka flight. · 2 Fukuoka first — A night or two in the relaxed food city, then Takeo and Nagasaki. |
+|  | 3 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
+| **Nagasaki** | 4 · RYOKAN · A ryokan at Takeo, the first night off the plane? `nagasaki.takeo` | **1 Yes** — A small hot-spring town an hour inland from the Fukuoka flight, a soft landing before Nagasaki. · 2 No — Straight to Nagasaki. |
+| **Nagasaki → Kagoshima** | 5 · RYOKAN · A ryokan at Unzen on the way south? `nagasaki-kagoshima.unzen` | **1 Yes** — The volcano town east of Nagasaki, a night on the way south. · 2 No — Straight south. |
+| **Kagoshima** | 6 · RYOKAN · A ryokan at Kirishima with Kagoshima? `kagoshima.kirishima` | **1 Yes** — A riverside hot-spring ryokan an hour above Kagoshima, the classic pairing with the city. · 2 No — Kagoshima on its own. |
+| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 
-**Kyushu South & West** · 13 nights · 6 check-ins · 10h25 of travel · 46 min per night · 1 flight · in Haneda (HND), out Kagoshima (KOJ) · band 11–20
+**Kyushu South & West** · 11 nights · 6 separate stays · 11h45 total transit · 1 flight · in Haneda (HND), out Kagoshima (KOJ) · band 11–20
 
 | Stop | Nights | Onward |
 |---|---|---|
 | in from Haneda (HND) | — | 36 min train |
 | Tokyo | 4 | 3h30 flight |
-| Fukuoka (Hakata) | 3 | 1h train |
 | Takeo Onsen | 1 | 42 min train |
-| Nagasaki | 2 | 3h train |
+| Nagasaki | 2 | 1h42 bus |
+| Unzen | 1 | 3h36 ferry |
 | Kagoshima | 2 | 54 min train |
 | Kirishima (Myōken Onsen) | 1 | 45 min bus · out to Kagoshima (KOJ) |
 
-Stop string: `plan "tokyo:4,fukuoka:3,takeo:1,nagasaki:2,kagoshima:2,kirishima:1" --in HND --out KOJ`
+Stop string: `plan "tokyo:4,takeo:1,nagasaki:2,unzen:1,kagoshima:2,kirishima:1" --in HND --out KOJ`
+
+- **flag** 61 min of travel per night — 60 minutes or more; say why (3h30 of it is flying, counted at 3h a leg) and show a lighter order beside it.
 
 #### Kyushu South & East
 
-Tokyo and Kyushu, north and south. Fukuoka, the hot-spring east, then south to Kagoshima and its Kirishima ryokan. Band 11–19 nights · HND → KOJ.
+Tokyo and Kyushu, south to north. Kagoshima and its Kirishima ryokan first, Fukuoka in the middle, then the hot-spring east. Band 11–19 nights · HND → OIT.
 
 | Where | Decision | Options (chosen in bold) |
 |---|---|---|
-| **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Fukuoka. · 2 Straight into Fukuoka — No Tokyo: start in the city you land in. · 3 Straight into Kagoshima — No Tokyo: the loop run the other way, Kagoshima first, Fukuoka last. · 4 Straight into Ōita — No Tokyo: land at Ōita for the hot-spring east, south to Kagoshima, Fukuoka last. |
+| **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Kagoshima and up to the Kirishima inn. · 2 Straight into Kagoshima — No Tokyo: land at Kagoshima, the Kirishima inn an hour up the road. · 3 Straight into Ōita — No Tokyo: land at Ōita for the east, Kirishima last beside the airport home. |
 |  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Fukuoka → Yufuin** | 3 · RYOKAN · A gorge ryokan at Amagase before Yufuin? `fukuoka-yufuin.hita` | **1 Yes** — A night in the river gorge on the way, so the east is two nights rather than one. · 2 No — One night in the east. |
-| **Yufuin** | 4 · CITY · Which hot-spring town in the east? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. · 3 Yufuin and Beppu — The valley town first, then the steaming coast an hour down the hill. |
-| **Yufuin → Kagoshima** | 5 · STOP · A stop at Kumamoto on the way south? `east-kagoshima.kumamoto` | 1 Yes — The castle city under the Aso caldera, on the way south. · **2 No** — Straight to Kagoshima. |
-| **Kagoshima** | 6 · RYOKAN · A ryokan at Kirishima with Kagoshima? `kagoshima.kirishima` | **1 Yes** — A riverside hot-spring ryokan an hour above Kagoshima, the classic pairing with the city. · 2 No — Kagoshima on its own. |
-| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
+| **Kagoshima** | 3 · RYOKAN · A ryokan at Kirishima, straight from the airport? `kagoshima.kirishima` | **1 Yes** — A riverside hot-spring ryokan an hour above Kagoshima, the airport beside it: the first night is in a bath. · 2 No — Kagoshima on its own. |
+| **Kagoshima → Fukuoka** | 4 · STOP · A stop at Kumamoto on the way north? `kagoshima-fukuoka.kumamoto` | 1 Yes — The castle city under the Aso caldera, on the way north. · **2 No** — Straight on to Fukuoka. |
+| **Fukuoka → Yufuin** | 5 · RYOKAN · A gorge ryokan at Amagase before Yufuin? `fukuoka-east.hita` | 1 Yes — A night in the river gorge on the way, so the east is two nights rather than one. · **2 No** — One night in the east. |
+| **Yufuin** | 6 · CITY · Which hot-spring town in the east? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. · 3 Yufuin and Beppu — The valley town first, then the steaming coast an hour down the hill. |
+| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Ōita, or Kagoshima run the other way round. · 2 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 | **Not on this route** | A ryokan night on the Amakusa islands? | _Yes: not offered here — Kumamoto is not on this route_ |
 
-**Kyushu South & East** · 12 nights · 6 check-ins · 11h40 of travel · 56 min per night · 1 flight · in Haneda (HND), out Kagoshima (KOJ) · band 11–19
+**Kyushu South & East** · 11 nights · 5 separate stays · 10h05 total transit · 1 flight · in Haneda (HND), out Ōita (OIT) · band 11–19
 
 | Stop | Nights | Onward |
 |---|---|---|
 | in from Haneda (HND) | — | 36 min train |
-| Tokyo | 4 | 3h30 flight |
-| Fukuoka (Hakata) | 3 | 1h45 train |
-| Amagase (Hita) | 1 | 1h train |
-| Yufuin | 1 | 3h12 train |
-| Kagoshima | 2 | 54 min train |
-| Kirishima (Myōken Onsen) | 1 | 45 min bus · out to Kagoshima (KOJ) |
+| Tokyo | 4 | 4h flight |
+| Kirishima (Myōken Onsen) | 1 | 54 min train |
+| Kagoshima | 2 | 1h24 train |
+| Fukuoka (Hakata) | 3 | 2h10 train |
+| Yufuin | 1 | 1h bus · out to Ōita (OIT) |
 
-Stop string: `plan "tokyo:4,fukuoka:3,hita:1,yufuin:1,kagoshima:2,kirishima:1" --in HND --out KOJ`
+Stop string: `plan "tokyo:4,kirishima:1,kagoshima:2,fukuoka:3,yufuin:1" --in HND --out OIT`
 
 #### Kyushu North & East
 
-Tokyo and Kyushu, north and east. Nagasaki, Takeo, Fukuoka, then the hot-spring east. Runs either way round. Band 10–17 nights · HND → OIT, or HND → NGS.
+Tokyo and Kyushu, north and east. Takeo, Nagasaki, Fukuoka, then the hot-spring east. Runs either way round. Band 10–17 nights · HND → OIT, or HND → NGS.
 
 | Where | Decision | Options (chosen in bold) |
 |---|---|---|
-| **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Kyushu. · 2 Straight into Kyushu — No Tokyo. |
-|  | 2 · CITY · Which way round? `order` | **1 Nagasaki first** — Land at Nagasaki, finish in the hot-spring east, out through Ōita. · 2 The east first — Land at Ōita, finish in Nagasaki, out through Nagasaki. |
+| **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Fukuoka and straight to the Takeo inn. · 2 Straight into Kyushu — No Tokyo: the Fukuoka flight, then the train inland to the Takeo inn. |
+|  | 2 · CITY · Which way round? `order` | **1 Nagasaki first** — Land at Fukuoka for Takeo and Nagasaki, finish in the hot-spring east, out through Ōita. · 2 The east first — Land at Ōita for the hot-spring east, finish at Nagasaki and the Takeo inn, out through Fukuoka. |
 |  | 3 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Nagasaki → Fukuoka** | 4 · RYOKAN · A ryokan at Unzen, out on the peninsula? `nagasaki-fukuoka.unzen` | 1 Yes — The hot-spring town on the peninsula east of Nagasaki. · **2 No** — No Unzen night. |
-|  | 5 · RYOKAN · A ryokan at Takeo on the line to Fukuoka? `nagasaki-fukuoka.takeo` | **1 Yes** — A small hot-spring town on the line to Fukuoka. · 2 No — Straight through. |
+| **Nagasaki** | 4 · RYOKAN · A ryokan at Takeo, the first night off the plane? `nagasaki.takeo` | **1 Yes** — A small hot-spring town an hour inland from the Fukuoka flight, a soft landing before Nagasaki. · 2 No — Straight to Nagasaki. |
+| **Nagasaki → Fukuoka** | 5 · RYOKAN · A ryokan at Unzen, out on the peninsula? `nagasaki-fukuoka.unzen` | 1 Yes — The hot-spring town on the peninsula east of Nagasaki. · **2 No** — No Unzen night. |
 | **Fukuoka → Yufuin** | 6 · RYOKAN · A gorge ryokan at Amagase before Yufuin? `fukuoka-yufuin.hita` | **1 Yes** — A night in the river gorge on the way, so the east is two nights rather than one. · 2 No — One night in the east. |
 | **Yufuin** | 7 · CITY · Which way does the east go? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. · 3 Yufuin and Beppu — The valley town first, then the steaming coast an hour down the hill. · 4 The volcanic middle — Inland instead: the caldera country and Kumamoto, out through Kumamoto. |
 | **The end** | 8 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Ōita, Kumamoto or Nagasaki, via Haneda. · 2 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 | **Not on this route** | A ryokan at Kurokawa in the caldera country? | _Yes: not offered here — the leg from Fukuoka (Hakata) to Kumamoto is not on this route_ |
 |  | A night at the Takachiho gorge? | _Yes: not offered here — the leg from Fukuoka (Hakata) to Kumamoto is not on this route_ |
+|  | A ryokan night on the Amakusa islands? | _Yes: not offered here — Kumamoto is not on this route_ |
 
-**Kyushu North & East** · 12 nights · 6 check-ins · 10h20 of travel · 45 min per night · 1 flight · in Haneda (HND), out Ōita (OIT) · band 10–17
+**Kyushu North & East** · 12 nights · 6 separate stays · 10h35 total transit · 1 flight · in Haneda (HND), out Ōita (OIT) · band 10–17
 
 | Stop | Nights | Onward |
 |---|---|---|
 | in from Haneda (HND) | — | 36 min train |
-| Tokyo | 4 | 4h15 flight |
-| Nagasaki | 2 | 42 min train |
-| Takeo Onsen | 1 | 1h train |
+| Tokyo | 4 | 3h30 flight |
+| Takeo Onsen | 1 | 42 min train |
+| Nagasaki | 2 | 2h train |
 | Fukuoka (Hakata) | 3 | 1h45 train |
 | Amagase (Hita) | 1 | 1h train |
 | Yufuin | 1 | 1h bus · out to Ōita (OIT) |
 
-Stop string: `plan "tokyo:4,nagasaki:2,takeo:1,fukuoka:3,hita:1,yufuin:1" --in HND --out OIT`
+Stop string: `plan "tokyo:4,takeo:1,nagasaki:2,fukuoka:3,hita:1,yufuin:1" --in HND --out OIT`
 
 #### The Long Line
 
@@ -331,7 +342,7 @@ West to east: Kyoto or Osaka, Hiroshima, Fukuoka. One bullet-train line from Kan
 | **Hiroshima** | 7 · RYOKAN · A night on Miyajima? `hiroshima.miyajima` | 1 Yes — A night on the shrine island, under the torii that stands in the sea. · **2 No** — Miyajima as a day trip from Hiroshima. |
 | **The end** | 8 · END · How does the trip end? `end` | **1 Fly home from Fukuoka** — Out through Fukuoka airport. · 2 The hot-spring east — Two ryokan nights, Amagase then Yufuin, out through Ōita. · 3 Takeo and Nagasaki — A ryokan night, then Nagasaki, out through Nagasaki. · 4 Back to Tokyo — A flight up from Fukuoka, two more Tokyo nights and a Haneda flight home. |
 
-**The Long Line** · 13 nights · 5 check-ins · 9h05 of travel · 42 min per night · in Haneda (HND), out Fukuoka (FUK) · band 11–18
+**The Long Line** · 13 nights · 5 separate stays · 9h05 total transit · in Haneda (HND), out Fukuoka (FUK) · band 11–18
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -355,7 +366,7 @@ The northern island in snow, a flight each way. A flight each way, the island's 
 | **Niseko (Hirafu)** | 3 · CITY · A mountain night at Niseko? `mountain` | **1 Niseko** — The ski resort's inn night, two hours from Sapporo. · 2 No Niseko — Sapporo unbroken; a hot-spring night near the airport at the end instead. |
 | **The end** | 4 · END · How does the trip end? `end` | **1 Fly home from New Chitose** — Out through Sapporo's airport. · 2 A hot-spring ryokan — A last night at Noboribetsu or Jōzankei, near the airport (no kit write-up at Noboribetsu; Jōzankei has one). · 3 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 
-**Hokkaido** · 9 nights · 4 check-ins · 11h20 of travel · 69 min per night · 1 flight · in Haneda (HND), out New Chitose (CTS) · band 8–12
+**Hokkaido** · 9 nights · 4 separate stays · 11h20 total transit · 1 flight · in Haneda (HND), out New Chitose (CTS) · band 8–12
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -580,21 +591,21 @@ Any pair not in these tables was not in the source data. Look it up on a timetab
 
 ### The decision
 
-Open the itinerary table once they have settled: fill `#`, `Stop`, `Nights` and every leg row from `plan` on the final stop string; `Stay`, `Band` and `Earmarked` wait for Stage 4.
+Open the itinerary table once they have settled: fill `#`, `Stop` — the name and the kind word, **city**, **town** or **ryokan** — `Nights` and every leg row from `plan` on the final stop string. `Dates` stays empty until a start date is known, and `Stay options` waits for Stage 4.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Earmarked |
-|---|---|---|---|---|---|
-| | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 2 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 3 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ out to `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
+| # | Stop | Dates | Nights | Stay options |
+|---|---|---|---|---|
+| | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | |
+| 1 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | |
+| 2 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | |
+| 3 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ out to `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | |
 
-**Totals:** `<n>` travel hours · `<n>` changes · `<n>` check-ins · `<n>` inn nights / `<n>` city nights · `<n>` one-nighters. Every figure here comes from `plan`, the airport legs' changes included, never typed; the travel total sums the leg rows above, both airport legs in it, rounded to five minutes.
+**Totals:** `<n>` total transit · `<n>` separate stays · `<n>` inn nights / `<n>` city nights · `<n>` one-nighters. Every figure here comes from `plan`, never typed; the transit total sums the leg rows above, both airport legs in it, rounded to five minutes.
 
 **Notes:** `<shuttle window, last-mile detail>`, one per stop that needs one. **Assumed:** `<every default you chose for them>`.
 

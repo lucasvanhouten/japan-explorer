@@ -342,7 +342,7 @@ function checks(stops, legs, t, opt) {
     if (total > cap) V(`${nm}: ${total} nights is over its ceiling of ${cap} (ideal ${range[0]}–${range[1]}) — ${p.max ? "the kit caps it there" : "past the +1 ceiling"} unless they asked.`);
     else if (total > range[1]) N(`${nm}: ${total} nights sits at the +1 ceiling (ideal ${range[0]}–${range[1]}); say so.`);
     if (isBaseKind(p.kind) && visits.length > 1) {
-      N(`${nm} is split ${visits.map((v) => v.nights).join(" + ")} = ${total} nights against its range ${range[0]}–${range[1]}; each visit is its own check-in.`);
+      N(`${nm} is split ${visits.map((v) => v.nights).join(" + ")} = ${total} nights against its range ${range[0]}–${range[1]}; each visit is its own separate stay.`);
       visits.forEach((v) => { if (v.nights >= 2) return;
         /* the final visit, with only inn-town nights between it and the airport, is the airport-side night and may stand alone */
         const airportSide = v.i === visits[visits.length - 1].i && stops.slice(v.i + 1).every((s) => !isBaseKind(s.kind));
@@ -413,27 +413,47 @@ const perNightTxt = (t) => (t.unsourced ? `≥ ${t.perNight} min per night (part
 const hoursTxt = (t) => (t.unsourced ? `≥ ${hm(t.hours)} (partial — ${t.unsourced} leg${t.unsourced > 1 ? "s" : ""} unsourced)` : hm(t.hours));
 const hoursTxt5 = (t) => (t.unsourced ? `≥ ${hm5(t.hours)} (partial — ${t.unsourced} leg${t.unsourced > 1 ? "s" : ""} unsourced)` : hm5(t.hours));
 const apLabel = (code) => (code && AIRPORT[code] ? AIRPORT[code].label : "—");
+const ITIN_HEAD = ["| # | Stop | Dates | Nights | Stay options |", "|---|---|---|---|---|"];
+/* the explorer address (2026-09-13): one hash section per route, `plan=` for a plain stop string. The page path is
+ * the one `spine` prints, so every command hands over the same file; sections are joined with `|` by the assistant. */
+const EXPLORER_PAGE = "guides/route-explorer.html";
+const planHash = (P) => { const seen = {}; return P.stops.map((st) => { seen[st.loc] = (seen[st.loc] || 0) + 1; return `${st.loc}${seen[st.loc] > 1 ? `#${seen[st.loc]}` : ""}:${st.nights}`; }).join(","); };
+const explorerPlanSection = (P) => `plan=${planHash(P)}${P.opt.in ? `&in=${P.opt.in}` : ""}${P.opt.out ? `&out=${P.opt.out}` : ""}`;
+/* the stop's kind in the word the reader uses: a ryokan, a city, or a town (2026-09-13) */
+const kindWord = (st) => (st.kind === "inn" ? "ryokan" : st.kind === "city" ? "city" : "town");
+const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/* `--start YYYY-MM-DD` fills the Dates column and the title: a stop of n nights from day d reads `Jan 2–6`,
+ * a one-night stop reads `Jan 6`. Without a start date the column is empty and the title says `<dates>`. */
+function parseStart(s) { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || "").trim()); if (!m) throw new Error("--start takes a date as YYYY-MM-DD, e.g. --start YYYY-MM-DD");
+  const d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])); if (isNaN(d.getTime())) throw new Error(`--start: ${s} is not a date`); return d; }
+const dayTxt = (d) => `${MONTH_ABBR[d.getUTCMonth()]} ${d.getUTCDate()}`;
+const addDays = (d, n) => new Date(d.getTime() + n * 86400000);
+function dateSpan(from, nights) { if (!from) return ""; const to = addDays(from, nights);
+  if (nights <= 1) return dayTxt(from);
+  return from.getUTCMonth() === to.getUTCMonth() ? `${dayTxt(from)}–${to.getUTCDate()}` : `${dayTxt(from)} – ${dayTxt(to)}`; }
 function printPlan(P, opt) {
   const L = [], t = P.totals, o = P.opt || opt;
-  L.push(`**Trip plan** · ${t.nights} nights · arrive ${apLabel(o.in)}${o.inDefault ? " (assumed)" : ""}, depart ${apLabel(o.out)}${o.outDefault ? " (nearest)" : ""}`, "");
-  L.push("| # | Stop | Nights | Stay | Band | Earmarked |", "|---|---|---|---|---|---|");
-  let li = 0; if (o.in) L.push(`| | ${legCell(P.legs[li++])} | | | | |`);
-  P.stops.forEach((st, i) => { L.push(`| ${i + 1} | ${st.name} | ${nightsCell(st)} | ${st.inn ? `[${RYK[st.inn].name}](https://ryokancatalog.com/inn/${slugOf(st.inn)})` : ""} | | |`);
-    if (i < P.stops.length - 1) L.push(`| | ${legCell(P.legs[li++])} | | | | |`); });
-  if (o.out) L.push(`| | ${legCell(P.legs[li++])} | | | | |`);
-  const capNote = t.flightCapped ? ` Per night counts each flight leg at ${FLIGHT_CAP_H}h at most (${hm5(t.hoursCapped)} counted); the table prints the true time.` : "";
-  /* one rounding only (2026-09-13): the legs read exact and the total reads to five minutes, with no
-   * arithmetic string printed beside it — two roundings of the same journey never agree */
-  L.push("", `**Totals:** ${hoursTxt5(t)} of travel · ${perNightTxt(t)} · ${t.changes} change${t.changes === 1 ? "" : "s"} · ${t.checkins} check-in${t.checkins === 1 ? "" : "s"} · ${t.innNights} inn night${t.innNights === 1 ? "" : "s"} / ${t.cityNights} city night${t.cityNights === 1 ? "" : "s"}${t.roomOnlyNights ? ` (${t.roomOnlyNights} room only)` : ""} · ${t.oneNighters} one-nighter${t.oneNighters === 1 ? "" : "s"}.${capNote}`);
+  const start = (opt && opt.start) || null;
+  L.push(`**Trip plan** · ${start ? dateSpan(start, t.nights) : "<dates>"} · ${t.nights} nights · arrive ${apLabel(o.in)}${o.inDefault ? " (assumed)" : ""}, depart ${apLabel(o.out)}${o.outDefault ? " (nearest)" : ""}`, "");
+  L.push(ITIN_HEAD[0], ITIN_HEAD[1]);
+  let li = 0; if (o.in) L.push(`| | ${legCell(P.legs[li++])} | | | |`);
+  let day = start;
+  P.stops.forEach((st, i) => { const dates = day ? dateSpan(day, st.nights) : ""; if (day) day = addDays(day, st.nights);
+    L.push(`| ${i + 1} | ${st.inn ? label(st.loc) : st.name} · ${kindWord(st)} | ${dates} | ${nightsCell(st)} | ${st.inn ? `[${RYK[st.inn].name}](https://ryokancatalog.com/inn/${slugOf(st.inn)}) (chosen)` : ""} |`);
+    if (i < P.stops.length - 1) L.push(`| | ${legCell(P.legs[li++])} | | | |`); });
+  if (o.out) L.push(`| | ${legCell(P.legs[li++])} | | | |`);
+  /* the Totals line carries what the reader counts (2026-09-13): the travel, the stays, the nights and the
+   * one-nighters. Per night and the number of changes are still computed — the Checks may flag them — but they
+   * are not printed here. */
+  L.push("", `**Totals:** ${hoursTxt5(t)} total transit · ${t.checkins} separate stay${t.checkins === 1 ? "" : "s"} · ${t.innNights} inn night${t.innNights === 1 ? "" : "s"} / ${t.cityNights} city night${t.cityNights === 1 ? "" : "s"}${t.roomOnlyNights ? ` (${t.roomOnlyNights} room only)` : ""} · ${t.oneNighters} one-nighter${t.oneNighters === 1 ? "" : "s"}.`);
   L.push("", "**Checks**", ""); if (!P.checks.length) L.push("- clean: every stop inside its range, no run over three, no backtrack, under 60 min a night.");
   P.checks.forEach((c) => L.push(`- ${mark(c)} ${c.msg}`));
   const tc = P.legs.filter((l) => l.estimated); if (tc.length) { L.push("", "**To confirm**", ""); tc.forEach((l, i) => L.push(`${i + 1}. ${l.kind === "leg" ? `${label(l.from)} → ${label(l.to)}` : "airport leg " + l.code}: no researched leg, even through a hub.`)); }
   return L.join("\n");
 }
 function orderRow(P, name, rec) { const t = P.totals;
-  const per = t.unsourced ? `≥ ${t.perNight} min (partial — ${t.unsourced} unsourced)` : `${t.perNight} min`;
-  return `| ${name}${rec ? " — **Recommended**" : ""} | ${hoursTxt(t)} | ${per} | ${t.changes} | ${t.checkins} | ${t.innNights} / ${t.cityNights} | ${t.oneNighters} |`; }
-const ORDER_HEAD = ["| Order | Hours | Per night | Changes | Check-ins | Inn / city nights | One-nighters |", "|---|---|---|---|---|---|---|"];
+  return `| ${name}${rec ? " — **Recommended**" : ""} | ${hoursTxt(t)} | ${t.checkins} | ${t.innNights} / ${t.cityNights} | ${t.oneNighters} |`; }
+const ORDER_HEAD = ["| Order | Total transit | Separate stays | Inn / city nights | One-nighters |", "|---|---|---|---|---|"];
 const chain = (stops) => stops.map((s) => short(s.loc)).join(" → ");
 /* Stage 3's shape table — `| Stop | Nights | Onward |` under a header line read off the rows (nights summed, one
  * check-in per stop row), the arrival transfer as a first row so the totals reconcile, the legs in the Onward
@@ -441,7 +461,7 @@ const chain = (stops) => stops.map((s) => short(s.loc)).join(" → ");
 const onward = (l) => `${l.kind === "out" ? `out to ${AIRPORT[l.code].label} · ` : ""}${legBody(l)}${halvesTxt(l)}`;
 function shapeTable(P, opt, name, stamp) {
   const t = P.totals, L = [], o = P.opt || opt;
-  L.push(`**${name || chain(P.stops)}** · ${t.nights} nights · ${t.checkins} check-ins · in ${apLabel(o.in)}, out ${apLabel(o.out)}${stamp ? ` · run ${stamp}` : ""}`, "");
+  L.push(`**${name || chain(P.stops)}** · ${t.nights} nights · ${t.checkins} separate stay${t.checkins === 1 ? "" : "s"} · in ${apLabel(o.in)}, out ${apLabel(o.out)}${stamp ? ` · run ${stamp}` : ""}`, "");
   L.push("| Stop | Nights | Onward |", "|---|---|---|");
   let li = 0;
   if (o.in) { const l = P.legs[li++]; L.push(`| in from ${AIRPORT[l.code].label} | — | ${onward(l)} |`); }
@@ -453,7 +473,9 @@ function shapeTable(P, opt, name, stamp) {
 function cmdPlan(spec, opt) { const P = buildPlan(parseStops(spec), opt); if (opt.json) return JSON.stringify(P, null, 1);
   if (opt.before) return `\`plan\` prices one stop string and has no Before: for a before-and-after, run \`compare "${opt.before}" "${spec}"\`${opt.in || opt.out ? ` with the same \`--in\`/\`--out\`` : ""}.\n\n` + cmdPlan(spec, Object.assign({}, opt, { before: undefined }));
   /* a heavy route carries its lighter shape, found by the engine, never by hand (2026-09-13) */
-  const lt = lighterLine(P, opt); return printPlan(P, opt) + (lt ? `\n\n${lt}` : ""); }
+  const lt = lighterLine(P, opt);
+  const ex = `Explorer: \`${EXPLORER_PAGE}#${explorerPlanSection(P)}\` — the page to hand them, drawn as "Your plan": the map, the stops with their kind and night steppers.`;
+  return printPlan(P, opt) + (lt ? `\n\n${lt}` : "") + `\n\n${ex}`; }
 const MAX_ORDER_STOPS = 10, MAX_SEQUENCES = 60000;
 function cmdOrders(spec, opt) {
   const stops = parseStops(spec); if (stops.length > MAX_ORDER_STOPS) throw new Error(`orders: at most ${MAX_ORDER_STOPS} stops`);
@@ -498,11 +520,11 @@ function cmdOrders(spec, opt) {
     P.checks.forEach((c) => L.push(`- ${mark(c)} ${c.msg}`)); });
   if (top[1]) { const a = top[0].totals, b = top[1].totals, dh = b.hours - a.hours, dx = b.changes - a.changes;
     const diff = [b.oneNighters !== a.oneNighters ? `${b.oneNighters} one-nighter${b.oneNighters === 1 ? "" : "s"} against ${a.oneNighters}` : "", b.innNights !== a.innNights ? `${b.innNights} inn nights against ${a.innNights}` : ""].filter(Boolean).join(", ");
-    L.push("", `Runner-up: ${chain(top[1].stops)} costs ${dh > 0 ? "+" : "−"}${hm(Math.abs(dh))}${dx ? ` and ${dx > 0 ? "+" : "−"}${Math.abs(dx)} change${Math.abs(dx) === 1 ? "" : "s"}` : ""}; ${diff || "the same check-ins, inn nights and one-nighters"}.`); }
+    L.push("", `Runner-up: ${chain(top[1].stops)} costs ${dh > 0 ? "+" : "−"}${hm(Math.abs(dh))}${dx ? ` and ${dx > 0 ? "+" : "−"}${Math.abs(dx)} change${Math.abs(dx) === 1 ? "" : "s"}` : ""}; ${diff || "the same stays, inn nights and one-nighters"}.`); }
   if (top.length) { L.push("", `**Order table** · run ${id} · stops \`${stopString(stops)}\``, "", ...ORDER_HEAD); top.forEach((P, i) => L.push(orderRow(P, chain(P.stops), i === 0))); }
-  if (notOffered.length) { L.push("", `**Not offered** · run ${id} · stops \`${stopString(stops)}\` — each carries a violation or an unsourced leg`, "", "| Order | Hours | Per night | Why not |", "|---|---|---|---|");
+  if (notOffered.length) { L.push("", `**Not offered** · run ${id} · stops \`${stopString(stops)}\` — each carries a violation or an unsourced leg`, "", "| Order | Total transit | Why not |", "|---|---|---|");
     notOffered.forEach((P) => { const why = P.totals.unsourced ? `contains ${P.totals.unsourced} unsourced leg${P.totals.unsourced > 1 ? "s" : ""}` : P.checks.filter((c) => c.level === "violation").map((c) => c.msg.replace(/ — .*$/, "")).join("; ");
-      L.push(`| ${chain(P.stops)} | ${hoursTxt(P.totals)} | ${P.totals.unsourced ? `≥ ${P.totals.perNight} min (partial)` : P.totals.perNight + " min"} | ${why} |`); }); }
+      L.push(`| ${chain(P.stops)} | ${hoursTxt(P.totals)} | ${why} |`); }); }
   if (cands.length && !clean.length) { const shared = cands[0].checks.filter((c) => c.level === "violation").map((c) => c.msg.replace(/ — .*$/, "")).filter((m) => cands.every((P) => P.checks.some((c) => c.msg.replace(/ — .*$/, "") === m)));
     L.push("", `Every order of these stops carries a violation${shared.length ? `; all of them share: ${shared.join("; ")}` : ""}. Change the stop string — a city split in two (\`sapporo:2,…,sapporo:1\`), a room-only night (\`:1r\`), or a stop dropped — and run again.`); }
   if (!cands.length) L.push("", "No order could be built: every arrangement of these stops doubles back on itself.");
@@ -1143,7 +1165,7 @@ function decisionsTable(sp, choices, unavailable, cities, reversed, opt, locs) {
 function timelineTable(P, name, noBand) {
   const t = P.totals, o = P.opt, L = [];
   const band = P.band && !noBand ? ` · band ${P.band.join("–")}${t.nights < P.band[0] || t.nights > P.band[1] ? " (outside it)" : ""}` : "";
-  L.push(`**${name || (P.spine ? P.spine.name : chain(P.stops))}** · ${t.nights} nights · ${t.checkins} check-ins · ${hoursTxt5(t)} of travel · ${perNightTxt(t)}${P.flights ? ` · ${P.flights} flight${P.flights > 1 ? "s" : ""}` : ""} · in ${apLabel(o.in)}, out ${apLabel(o.out)}${band}`, "");
+  L.push(`**${name || (P.spine ? P.spine.name : chain(P.stops))}** · ${t.nights} nights · ${t.checkins} separate stay${t.checkins === 1 ? "" : "s"} · ${hoursTxt5(t)} total transit${P.flights ? ` · ${P.flights} flight${P.flights > 1 ? "s" : ""}` : ""} · in ${apLabel(o.in)}, out ${apLabel(o.out)}${band}`, "");
   L.push("| Stop | Nights | Onward |", "|---|---|---|");
   let li = 0;
   if (o.in) { const l = P.legs[li++]; L.push(`| in from ${AIRPORT[l.code].label} | — | ${legWord(l)} |`); }
@@ -1226,8 +1248,8 @@ function lighterLine(P, opt) {
   if (pick.kind === "none") return "No lighter shape at this length; every option on this route weighs as much or more.";
   return `No lighter shape at this length; the next is ${shapeLine(pick.P)} · ${perNightTxt(pick.P.totals)} — ${pick.what}.`;
 }
-const COMPARE_HEAD = ["| Route | Stops | Nights | Travel | Per night | Check-ins | Ryokan nights | Flights | In / out |", "|---|---|---|---|---|---|---|---|---|"];
-const compareRow = (P, name) => { const t = P.totals; return `| ${name} | ${chain(P.stops)} | ${t.nights} | ${hoursTxt5(t)} | ${perNightTxt(t).replace(" per night", "")}${t.perNight >= DENSITY_MAX && !t.unsourced ? " (≥60)" : ""} | ${t.checkins} | ${t.innNights} | ${P.flights != null ? P.flights : P.legs.filter((l) => l.flightH || l.mode === "flight").length} | ${apLabel(P.opt.in)} / ${apLabel(P.opt.out)} |`; };
+const COMPARE_HEAD = ["| Route | Stops | Nights | Total transit | Separate stays | Ryokan nights | Flights | In / out |", "|---|---|---|---|---|---|---|---|"];
+const compareRow = (P, name) => { const t = P.totals; return `| ${name} | ${chain(P.stops)} | ${t.nights} | ${hoursTxt5(t)} | ${t.checkins} | ${t.innNights} | ${P.flights != null ? P.flights : P.legs.filter((l) => l.flightH || l.mode === "flight").length} | ${apLabel(P.opt.in)} / ${apLabel(P.opt.out)} |`; };
 const legsLine = (P) => P.legs.map((l) => `${l.kind === "in" ? `in from ${AIRPORT[l.code].label}` : l.kind === "out" ? `out to ${AIRPORT[l.code].label}` : `${short(l.from)} → ${short(l.to)}`} ${legWord(l)}`).join(" · ");
 /* ── commands ── */
 /* the menu (level 1): every spine at its default assembly — at --nights N where given — with the engine's figures */
@@ -1365,6 +1387,7 @@ function cmdCompare(specs, opt) {
   Ps.forEach((P, i) => L.push(compareRow(P, `**${names[i]}**`)));
   L.push("");
   Ps.forEach((P, i) => { L.push(`**${names[i]}** · \`plan "${stopString(P.stops)}" --in ${P.opt.in} --out ${P.opt.out}\` — ${legsLine(P)}`); P.checks.filter((c) => c.level !== "note").forEach((c) => L.push(`- ${mark(c)} ${c.msg}`)); L.push(""); });
+  L.push(`Explorer: \`${EXPLORER_PAGE}#${Ps.map(explorerPlanSection).join("|")}\` — one tab per route, the first active.`);
   return L.join("\n").trimEnd();
 }
 /* the shortlist for a place: three to five rows against the profile, write-ups verbatim, from shortlist.json */
@@ -1460,21 +1483,24 @@ function cmdStays(q, opt) {
   const shownTxt = [nFit ? `${nFit} inn${nFit === 1 ? "" : "s"}` : "", nFitH ? `${nFitH} hotel${nFitH === 1 ? "" : "s"}` : ""].filter(Boolean).join(" and ") || "nothing";
   const above = [reach.length ? `${reach.length} inn${reach.length === 1 ? "" : "s"} above it, ${reach.length === 1 ? "an editor's pick" : "editor's picks"}` : "", topUp.length ? `${topUp.length} hotel${topUp.length === 1 ? "" : "s"} above it, the cheapest there ${topUp.length === 1 ? "is" : "are"}` : ""].filter(Boolean);
   const reachTxt = above.length ? `, then ${above.join(" and ")}` : "";
-  const L = [`*${where} (${G ? `${G.locs.length} towns, one table` : p.kind + (p.unlisted ? ", no card line" : "")}): ${shownTxt}${budget ? ` at the ${budget} end of the list (${budget === "splurge" ? "no cap" : `inn bands starting under $${BUDGET.inn[budget]}, hotels under $${BUDGET.hotel[budget]}`})` : ""}${opt.bath ? ", in-room bath only" : ""}, best first${reachTxt}${held ? ` — ${held} more on the shortlist here (--all for every one)` : ""}. The Why column is the kit's write-up, your source for a Why in your own words; the band is per night for two, dinner and breakfast included for an inn, room only for a hotel.*`, ""];
+  const L = [`*${where} (${G ? `${G.locs.length} towns, one table` : p.kind + (p.unlisted ? ", no card line" : "")}): ${shownTxt}${budget ? ` at the ${budget} end of the list (${budget === "splurge" ? "no cap" : `inn bands starting under $${BUDGET.inn[budget]}, hotels under $${BUDGET.hotel[budget]}`})` : ""}${opt.bath ? ", in-room bath only" : ""}, best first${reachTxt}${held ? ` — ${held} more on the shortlist here (--all for every one)` : ""}. The Why column is the kit's write-up, your source for a Why in your own words; the price is per night for two, dinner and breakfast included for an inn, room only for a hotel.*`, ""];
   /* the town is a column (2026-09-12): a RYOKAN option spans towns, and choosing the inn fixes the town and the leg */
   /* the table gives its width to Why (owner, 2026-09-12): the kind, the score and an editor's pick ride in the Stay cell,
    * Town is a column only when the option spans towns, a hotel city has no Bath column, and a mixed inn-and-hotel table
    * keeps Bath with a hotel's cell reading `unstated` (an empty cell would read as none) */
-  const hotelsOnly = !rowsI.length && rowsH.length > 0;
   /* no Bath column (owner, 2026-09-12: it contradicted the write-ups and repeated them); the bath is in the Why */
-  const HEAD = hotelsOnly ? "| Stay | Band | Why | Links |" : G ? "| Stay | Town | Band | Why | Links |" : "| Stay | Band | Why | Links |";
+  /* the links fold into the Stay cell and Band becomes Price (2026-09-13, owner): the Why gets the width */
+  const HEAD = G ? "| Stay | Town | Price | Why |" : "| Stay | Price | Why |";
   L.push(HEAD, HEAD.replace(/[^|]+/g, "---"));
   /* the score in words a first-timer reads unaided (owner, 2026-09-12): "A-tier · 8.4 / 10 · editor's pick" */
   const tierWord = (t) => { const m = /^([SABCD])\s+([\d.]+)$/.exec(String(t || "").trim()); return m ? `${m[1]}-tier · ${m[2]} / 10` : /^[—-]?$/.test(String(t || "").trim()) ? "unscored" : String(t); };
-  const innStay = (i) => `${i.name} · inn · ${tierWord(i.tier)}${i.pinned ? " · editor's pick" : ""}`;
+  /* every link the row has rides in the Stay cell, in the order they are used: the property's own Google place, the
+   * kit's write-up, then Ikyu — the easy English booking site — where the row carries one (2026-09-13, owner) */
+  const innStay = (i) => [`${i.name} · inn · ${tierWord(i.tier)}${i.pinned ? " · editor's pick" : ""}`,
+    i.map ? `[map](${i.map})` : null, i.url ? `[write-up](${i.url})` : null, i.ikyu ? `[book on Ikyu](${i.ikyu})` : null].filter(Boolean).join(" · ");
   /* the Bath cell in the words Stage 4 prescribes, never the shortlist's raw yes/some/no (QA round 8) */
   const bathWord = (b) => ({ yes: "in the room", some: "some rooms", no: "none in the room" })[String(b || "").toLowerCase()] || "unstated";
-  const innRow = (i, town) => `| ${innStay(i)} | ${G ? `${town} | ` : ""}${i.band} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`;
+  const innRow = (i, town) => `| ${innStay(i)} | ${G ? `${town} | ` : ""}${i.band} | ${i.writeup} |`;
   /* the Town cell of a group table carries the time from the group's gateway city (Stage 4: "the leg is visible beside the
    * name"), never a slug (QA round 6) */
   const gate = G ? (GROUP_GATE[norm(q).replace(/ /g, "-")] || Object.keys(STAY_GROUPS).map((k) => [k, STAY_GROUPS[k].locs]).filter(([k, ls]) => ls.includes(loc)).map(([k]) => GROUP_GATE[k])[0] || null) : null;
@@ -1482,11 +1508,18 @@ function cmdStays(q, opt) {
     return r ? `${t} · from ${label(gate)} ${hm(r.h)}${r.x ? `, ${r.x} change${r.x > 1 ? "s" : ""}` : r.x === 0 ? ", direct" : ", changes to confirm"}` : `${t} · from ${label(gate)}: to confirm`; };
   rowsI.filter((i) => !reachRows.includes(i)).forEach((i) => L.push(innRow(i, townOf(i))));
   rowsH.forEach((h) => { const isInn = /^inn\b/.test(String(h.kind || ""));
-    const links = [h.map ? `[map](${h.map})` : "map unconfirmed", isInn && h.url ? `[full write-up](${h.url})` : h.site ? `[site](${h.site})` : ""].filter(Boolean).join(" · ");
-    /* a hotel's Stay cell is its name and neighbourhood; the points or luxury group is already in its write-up */
-    const stay = `${h.name}${isInn ? " · inn" : ""}${h.area ? ` · ${h.area}` : ""}`;
-    L.push(`| ${stay} | ${G ? `${label(h.city)} | ` : ""}${h.rate} | ${h.why} | ${links} |`); });
+    const links = [h.map ? `[map](${h.map})` : "map unconfirmed", isInn && h.url ? `[write-up](${h.url})` : h.site ? `[site](${h.site})` : ""].filter(Boolean).join(" · ");
+    /* a hotel's Stay cell is its name, its neighbourhood and its links; a room payable with points says so in Price */
+    const stay = `${h.name}${isInn ? " · inn" : ""}${h.area ? ` · ${h.area}` : ""} · ${links}`;
+    L.push(`| ${stay} | ${G ? `${label(h.city)} | ` : ""}${h.rate}${h.points ? ` · or ${h.points}` : ""} | ${h.why} |`); });
   reachRows.forEach((i) => L.push(innRow(i, townOf(i))));
+  /* where one inn is plainly the pick, say so rather than leaving four rows that read as equals (owner, 2026-09-13:
+   * Myōken against Isshin). A clear gap is a full point of score, or two tiers. */
+  const TIERS = ["S", "A", "B", "C", "D"], tierIx = (t) => { const m = /^([SABCD])\b/.exec(String(t || "").trim()); return m ? TIERS.indexOf(m[1]) : -1; };
+  const scoreOf = (i) => { if (typeof i.score === "number") return i.score; const m = /^[SABCD]\s+([\d.]+)$/.exec(String(i.tier || "").trim()); return m ? +m[1] : null; };
+  if (rowsI.length >= 2) { const a = rowsI[0], b = rowsI[1], sa = scoreOf(a), sb = scoreOf(b), ta = tierIx(a.tier), tb = tierIx(b.tier);
+    if ((sa != null && sb != null && sa - sb >= 1.0) || (ta >= 0 && tb >= 0 && tb - ta >= 2))
+      L.push("", `*One clear choice here: ${a.name}. The rest are fallbacks if it is full.*`); }
   /* the stop keys behind the names (2026-09-13): a group table's rows span towns, and the stop string is written in
    * locs, so choosing an inn here means looking its loc up somewhere else (QA round 8: shortlist.json was opened to
    * find `oyama`). The line is the assistant's own working note, not something to read out. */
@@ -1497,7 +1530,7 @@ function cmdStays(q, opt) {
   /* nothing here: the cell says so plainly — never an instruction to the assistant — and the inns a night away
    * follow it, so the reader still has somewhere to sleep (2026-09-13) */
   if (!rowsI.length && !rowsH.length) {
-    L.push(`| — | — | — | no shortlist stay here${droppedInns.length || droppedHotels.length ? " inside that filter" : ""} | — |`);
+    L.push(`| — | ${G ? "— | " : ""}— | no shortlist stay here${droppedInns.length || droppedHotels.length ? " inside that filter" : ""} |`);
     /* a city with no inn IN it is rarely a city with no inn to sleep at: every shortlist row carries its own
      * researched reach, so the inns within a couple of hours are listed here exactly as `stays/<city>.md` lists
      * them, best first (QA round 8: Sapporo said "no shortlist stay here" with six inns within reach of it) */
@@ -1507,13 +1540,13 @@ function cmdStays(q, opt) {
     if (near.length) {
       const rows = near.slice(0, opt.all ? Infinity : 6);
       L.push("", `No stay is in ${label(loc)} itself. These are the shortlist's inns within reach of it, each with its own researched leg${near.length > rows.length ? ` (${near.length - rows.length} more, --all for every one)` : ""}:`, "",
-        `| Stay | From ${label(loc)} | Band | Why | Links |`, "|---|---|---|---|---|");
-      rows.forEach((i) => L.push(`| ${innStay(i)} | ${hm(i.r.h)}${i.r.x ? `, ${i.r.x} change${i.r.x > 1 ? "s" : ""}` : i.r.x === 0 ? ", direct" : ", changes to confirm"} | ${i.band} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`));
+        `| Stay | From ${label(loc)} | Price | Why |`, "|---|---|---|---|");
+      rows.forEach((i) => L.push(`| ${innStay(i)} | ${hm(i.r.h)}${i.r.x ? `, ${i.r.x} change${i.r.x > 1 ? "s" : ""}` : i.r.x === 0 ? ", direct" : ", changes to confirm"} | ${i.band} | ${i.writeup} |`));
       L.push(...keyLine(rows));
     } else {
       const nr = nearestStay(loc, group);
-      if (nr) { L.push("", `The nearest place the kit covers is ${label(nr.loc)}, ${Math.round(nr.km)} km away:`, "", "| Stay | Band | Why | Links |", "|---|---|---|---|");
-        nr.inns.slice(0, 3).forEach((i) => L.push(`| ${innStay(i)} | ${i.band} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`)); }
+      if (nr) { L.push("", `The nearest place the kit covers is ${label(nr.loc)}, ${Math.round(nr.km)} km away:`, "", "| Stay | Price | Why |", "|---|---|---|");
+        nr.inns.slice(0, 3).forEach((i) => L.push(`| ${innStay(i)} | ${i.band} | ${i.writeup} |`)); }
     }
   }
   if (droppedInns.length || droppedHotels.length) L.push("", `Left out by the filter: ${droppedInns.map((i) => i.name).concat(droppedHotels.map((h) => h.name)).join(", ")}.`);
@@ -1533,6 +1566,7 @@ function main(argv) {
     else if (a === "--nights") { const v = String(argv[++i] || ""); if (/=/.test(v)) opt.nightsAt.push(...v.split(/,(?=[a-z]+(?:#\d)?=)/i)); else { opt.nights = +v; if (!opt.nights || opt.nights < 1) throw new Error("--nights takes a whole number of nights, or loc=N on a spine"); } }
     else if (a === "--total") { opt.total = +argv[++i]; if (!opt.total || opt.total < 1) throw new Error("--total takes a whole number of nights"); }
     else if (a === "--reverse") opt.reverse = true; else if (a === "--before") opt.before = String(argv[++i] || "");
+    else if (a === "--start") opt.start = parseStart(argv[++i]);
     else if (a === "--set") opt.set.push(String(argv[++i] || "")); else if (a === "--from") opt.from.push(String(argv[++i] || ""));
     else if (a === "--budget") opt.budget = String(argv[++i] || ""); else if (a === "--draws") opt.draws.push(...String(argv[++i] || "").split(",")); else if (a === "--month") opt.month = String(argv[++i] || "");
     else pos.push(a); }
@@ -1554,7 +1588,7 @@ function main(argv) {
     "  spine <id> [--set key=option …] [--nights loc=N …] [--total N] [--in X --out Y] [--repeat] [--reverse] [--before \"<stops>\"]   one spine: decisions, timeline, stop string, checks",
     "  compare \"<stops A>\" \"<stops B>\" [\"<stops C>\"] [--in X --out Y]   two or three full routes side by side",
     "  stays <place|fuji|snow|kaga|east|sapporo-onsen> [--budget modest|comfortable|splurge] [--bath] [--all]   the shortlist for one place, or for a whole ryokan option across its towns, write-ups verbatim",
-    "  plan \"tokyo:4,nikko:2r,tokyo:2,kyoto:4\" --in HND --out KIX [--repeat] [--nights N]   (2r = two room-only nights)",
+    "  plan \"tokyo:4,nikko:2r,tokyo:2,kyoto:4\" --in HND --out KIX [--repeat] [--nights N] [--start YYYY-MM-DD]   (2r = two room-only nights; --start fills Dates)",
     "  connectors <cityA> <cityB> [--all]   (inn:<slug> works for either)", "  exit <lastStop>", "  legs <a> <b>", "  places",
     `places read from ${PLACES_SRC || "nothing (no places.json, no ../stages/2-orientation.md)"}; spines ${SPINES ? SPINES.length : "not found"}; shortlist ${SHORTLIST ? `${(SHORTLIST.inns || []).length} inns, ${(SHORTLIST.hotels || []).length} hotels` : "not found"}; airports: ${AP_CODES.join(" ")}`].join("\n");
 }

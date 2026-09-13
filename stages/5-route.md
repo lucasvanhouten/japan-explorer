@@ -8,41 +8,41 @@
 Goal    the stops in an order that doesn't waste days, with every journey sourced
 Inputs  the itinerary table as Stage 4 left it; the corridor tables below
 Do      the eight steps, in order — most of it is arithmetic, and doing it in your head is how mistakes get in;
-        the two orders are compared in a `| Order | Hours | Per night | Changes | Check-ins | Inn / city nights | One-nighters |` table
+        the two orders are compared in a `| Order | Total transit | Separate stays | Inn / city nights | One-nighters |` table
 Ask     1 question — which of the two orderings, once you have priced both
 Output  the itinerary table finished, with totals. This is the deliverable. Then offer the visual
         in one line — see guides/visualizing-the-trip.md, and fill guides/trip-visual-template.html
 Next    offer Stage 6 in a single line. If they don't want it, they have what they came for.
 ```
 
-**With the engine, this stage is one command.** `cd builder && node route.js plan "<the chosen stop string>" --in <airport> --out <airport>` prints the itinerary table, the totals with their arithmetic and the checks; paste it, fill the stays from Stage 4, and go to the visual. The steps below are the chat-only version of the same arithmetic.
+**With the engine, this stage is one command.** `cd builder && node route.js plan "<the chosen stop string>" --in <airport> --out <airport>` prints the itinerary table, the totals with their arithmetic and the checks; paste it, fill the stays from Stage 4, and go to the visual. The steps below are the chat-only version.
 
 ### The process
 
 1. **List the stops** in the order they currently sit, with their nights.
-2. **Look up every consecutive pair** in the corridor tables below — the same tables the Stage 3 menu was priced from, so most of these rows are already filled in. Write the hours, the changes and the mode down exactly as given.
-3. **Reverse the list and price the reverse** the same way — and price it honestly. **Check both orders for backtracking first:** a stop that can only be reached by passing back through one already left behind is in the wrong place, and no amount of arithmetic fixes it — resequence, then price. The airport at the end is the one allowed exception. Any pair the tables do not hold and no hub composes (step 4) is written `to confirm`, and a total that contains one is **not a number**: write it as `≥ 6h20 (partial — 2 legs unsourced)`, the sum of the legs you actually have, the `≥`, and the count of the ones you do not. Never fill a gap so that the two totals can be compared as equals; if the reverse is partial, say which order is provably cheaper and which is only probably.
+2. **Look up every consecutive pair** in the corridor tables below — the same tables the Stage 3 menu was priced from. Write the hours, the changes and the mode down exactly as given.
+3. **Reverse the list and price the reverse** the same way, and price it honestly. **Check both orders for backtracking first:** a stop reachable only by passing back through one already left behind is in the wrong place, and no arithmetic fixes it — resequence, then price. The airport at the end is the one allowed exception. Any pair the tables do not hold and no hub composes (step 4) is written `to confirm`, and a total containing one is **not a number**: write `≥ 6h20 (partial — 2 legs unsourced)`. Never fill a gap so the two totals can be compared as equals.
 4. **Compose any pair the tables don't hold through a hub city** — Tokyo, Sendai, Kyoto, Osaka, Nagoya, Kanazawa, Okayama, Hiroshima, Fukuoka, Kumamoto, Nagasaki, Kagoshima, Sapporo — per the composed-leg bullet below. Only a pair no hub joins is `to confirm`; look it up live if you can browse, and label the result an estimate.
-   - **4a. Before any live lookup, grep the full leg table.** In the split layout `data/transit-legs.md` holds every sourced leg in the dataset — hundreds of them, including the inn legs the corridor table leaves out — so search it for both place names, in both directions, before you go outside. Only look a pair up live if it is absent there too.
+   - **4a. Before any live lookup, grep the full leg table.** `data/transit-legs.md` holds every sourced leg in the dataset, including the inn legs the corridor table leaves out: search it for both place names, in both directions, before you go outside.
 5. **Add both orderings up** — hours and changes — and show the two totals side by side, as the comparison table, one row per order:
 
-   | Order | Hours | Per night | Changes | Check-ins | Inn / city nights | One-nighters |
-   |---|---|---|---|---|---|---|
-   | `<as travelled, named by its first and last stop>` | `<n>` | `<min>` | `<n>` | `<n>` | `<n>` / `<n>` | `<n>` |
-   | `<reversed>` | `<n>` | `<min>` | `<n>` | `<n>` | `<n>` / `<n>` | `<n>` |
+   | Order | Total transit | Separate stays | Inn / city nights | One-nighters |
+   |---|---|---|---|---|
+   | `<as travelled, named by its first and last stop>` | `<h>h`⁠`<mm>` | `<n>` | `<n>` / `<n>` | `<n>` |
+   | `<reversed>` | `<h>h`⁠`<mm>` | `<n>` | `<n>` / `<n>` | `<n>` |
 
-   Per night is the total, both airport legs in it, divided by the nights and rounded half up to the minute, with each domestic flight leg counted at three hours at most; the Hours cell prints the true time. The numbers live in the table and nowhere else; the prose under it names the trade-off and nothing more. Where one side has an unsourced leg, its total keeps the `≥ X h (partial — N legs unsourced)` form all the way into the verdict. If the sourced part of the partial total is already the larger of the two, the comparison is settled and you can say so.
+   Total transit is every leg added up, both airport legs in it. The numbers live in the table and nowhere else; the prose under it names the trade-off and nothing more. A partial total keeps its `≥ X (partial — N legs unsourced)` form all the way into the verdict, and settles the comparison anyway where the sourced part is already the larger of the two.
 6. **Check the defaults survive the order you chose:** every city at or above its card's minimum, each visit of a split city two nights or more except a final airport-side night · one night at each inn unless the plan argued for two · no more than three inn dinners in a row · no zig-zags · an exit airport that suits the last stop — **leave from where you end**.
-7. **Add the totals up in writing, including the journey out to the departure airport.** That last leg is part of the trip and is the one people forget; the airport table has it. Show the sum rather than the answer — `2h + 4h42 + 45min + 1h06 (to the airport) = 8h33`, and `changes 0+2+0+0 = 2` — so a reader can check the arithmetic.
+7. **Add the totals up in writing, including the journey out to the departure airport.** That last leg is the one people forget; the airport table has it. Show the sum rather than the answer — `2h + 4h42 + 45min + 1h06 (to the airport) = 8h33` — so a reader can check the arithmetic.
 8. **Present the winner with the trade-off against the runner-up** in a sentence — "an hour longer, but it drops a change and ends near the airport" — then finish the itinerary table. **Re-add the totals against the finished table before you send it**: the order changes last, and the totals go stale first.
 
-Steps 2 and 4 are the ones that get skipped, and skipping them is what puts an invented number into an itinerary. Step 7 gets fudged.
+Steps 2 and 4 get skipped, and skipping them puts an invented number into an itinerary. Step 7 gets fudged.
 
 ### The corridor cheat-sheet
 
-The main city-to-city journeys, the stops the Stage 3 shapes route through, and the airport transfers, each with **door-to-door hours** and the **number of changes**: the whole journey, including getting to the station, the connections and the last leg at the other end, rather than the time the train is moving.
+The main city-to-city journeys, the stops the Stage 3 routes pass through, and the airport transfers, each with **door-to-door hours** and the **number of changes**: the whole journey, including getting to the station, the connections and the last leg at the other end, rather than the time the train is moving.
 
-**Use this table. Never invent a number.** If a pair isn't here — check both directions before deciding it isn't — say plainly that you don't have a sourced time and that they should check it before locking the order in. A confident wrong number is worse than an honest gap. The same the other way: don't round a four-hour leg down to "a few hours".
+**Use this table. Never invent a number.** If a pair isn't here — check both directions first — say plainly that you don't have a sourced time and that they should check it before locking the order in. A confident wrong number is worse than an honest gap.
 
 <!-- generated:corridors -->
 *176 journeys, door to door — station or hotel at one end to the other, including the walk and the wait, not just the train's timetable. "Changes" is how many times you get off and on again. Every line was looked up in a real timetable; nothing here is calculated. **Every journey runs the same both ways**, and each row is printed in the direction its sourced description was written — read From/To as a pair, not as an order.*
@@ -241,7 +241,7 @@ Any pair not in these tables was not in the source data. Look it up on a timetab
 
 ### The connector inns
 
-The inns that sit on the road between two cities, with what a night at each costs over going straight through — read only when a plan wants an inn night on a leg that has none.
+The inns on the road between two cities, with what a night at each costs over going straight through — read only when a plan wants an inn night on a leg that has none.
 
 <!-- generated:connectors -->
 *130 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
@@ -384,69 +384,65 @@ The inns that sit on the road between two cities, with what a night at each cost
 
 ### How to read it, and what it doesn't have
 
-- **Every row above is researched**, so nothing in them is labelled estimated. Two kinds of number are: one you look up yourself for a missing pair, and one marked "estimated" in `data/transit-legs.md` or the route builder. Say where the number came from, keep the word "estimated" attached every time you repeat it, and give any day built on one an extra buffer.
-- **Changes cost more than the clock says.** Two hours with no changes is an easier day than ninety minutes with two.
-- **Times run both ways**, and each row is printed in whichever direction it was researched. Read From/To as a pair, not as an order. **A pair is missing only if it appears in neither direction** — scan for both places by name before writing a number down. Don't work from a memorised list of gaps: the tables are regenerated as legs are researched.
-- **Airports are a separate table** covering fewer cities than the main one, and **every row in it runs both ways** — the transfer in from the terminal on arrival is the same journey as the one out. Check it specifically before promising a transfer, and never reuse one airport's number for another serving the same city: Tokyo's two are an hour apart in opposite directions.
-- **Inn legs are not in these tables.** The journey from a gateway city to an individual inn is the `Reach` column of the master inn table in Stage 4, written `kyoto 3h/1 train` — hours, changes and mode, from the same researched leg table as the rows above. **Every leg row carries a mode**, and the Reach tag gives you one, so there is never a reason to leave it off. A tag reading `in town` means the inn is in that city: no journey, so no leg row. Where a reach tag says `changes to confirm`, the hours were researched and the number of changes was not: write it as `3h, changes to confirm`.
-- **An airport leg may be COMPOSED out of two rows that are both in the tables.** A missing row is usually a journey the tables hold in two parts. Kyoto→Haneda is the standard case — no Kyoto→HND row, but the corridor table has **Kyoto→Tokyo 2h45, 0 changes** and the airport table has **Tokyo→HND 36 min, 1 change**, so the leg is `2h45 + 36min = 3h21`, changes `0 + 1 = 1`, **plus one for the join at Tokyo = 2**. Write both parts, show the sum, and count the extra change — a plan that swallows it understates the morning. Two rules: **compose only where both halves are researched rows of these tables** (two halves at most — a three-part chain is a live lookup), and **add the transfer time at the join** if the halves do not meet in the same station. A composed leg counts as sourced and is written as a time.
-- **ANY leg composes the same way, not just an airport one — and composing comes before `to confirm`.** Grep the full leg table first (step 4a); if `A→B` is absent there too, find a **hub city** from step 4's list the tables hold both halves through and take the fastest that works; a town with no flight row of its own may compose its airport transfer with the airport's flight row. Sum the halves, add **one change for the join**, name both modes where the halves differ, and label the row `composed via <city>`: `2h + 2h45 = 4h45`, `changes 0+0+1 = 1`. Same rules as above. A composed leg is sourced, never "estimated"; `to confirm` is only for a pair no hub joins.
+- **Every row above is researched**, so nothing in them is labelled estimated. Two kinds of number are: one you look up yourself for a missing pair, and one marked "estimated" in `data/transit-legs.md`. Keep the word "estimated" attached every time you repeat it, and give any day built on one an extra buffer.
+- **Changes cost more than the clock says.** Two hours with none is an easier day than ninety minutes with two.
+- **Times run both ways**, and each row is printed in whichever direction it was researched. Read From/To as a pair, not as an order. **A pair is missing only if it appears in neither direction** — scan for both places by name before writing a number down.
+- **Airports are a separate table**, and **every row in it runs both ways** — the transfer in on arrival is the same journey as the one out. Never reuse one airport's number for another serving the same city: Tokyo's two are an hour apart in opposite directions.
+- **Inn legs are not in these tables.** The journey from a gateway city to an inn is the `Reach` column of the master inn table in Stage 4, written `kyoto 3h/1 train` — hours, changes and mode, from the same researched leg table. **Every leg row carries a mode**, and the Reach tag gives you one. `in town` means the inn is in that city: no journey, no leg row. `changes to confirm` means the hours were researched and the changes were not: write `3h, changes to confirm`.
+- **A missing pair is COMPOSED out of two researched rows, and composing comes before `to confirm`.** Grep the full leg table first (step 4a). If `A→B` is absent there too, find a **hub city** from step 4's list the tables hold both halves through and take the fastest that works; sum the halves, **add one change for the join**, name both modes where they differ, and label the row `composed via <city>`. Kyoto→Haneda is the standard case: the corridor table has **Kyoto→Tokyo 2h45, 0 changes** and the airport table has **Tokyo→HND 36 min, 1 change**, so the leg is `2h45 + 36min = 3h21`, changes `0 + 1 + 1 for the join = 2`. Write both parts and show the sum — a plan that swallows the join understates the morning. Two halves at most (a three-part chain is a live lookup), both of them researched rows of these tables, and add the transfer time where the halves do not meet in the same station. A town with no flight row of its own may compose its airport transfer with the airport's flight row. A composed leg counts as sourced and is written as a time, never as "estimated"; `to confirm` is only for a pair no hub joins.
 - **Okinawa is absent from the dataset:** a trip there means looking up every leg. Hokkaido's Sapporo hub, its towns and New Chitose are in the tables.
-- **For any gap:** look it up live — Google Maps, Jorudan or Navitime, station to station for the dates in question — say in the plan that you looked it up, and write it as an estimate. Never fill a hole from memory.
-- **Winter and mountains.** Mountain and coastal lines carry real weather delays in winter, and some are single-track with a handful of services a day. Leave slack, and never schedule a flight immediately after one.
-- **The last mile is often the hard part.** Country inns sit some way from the nearest station. Many run a shuttle on a fixed timetable that must be requested at booking; some have none, and the rank at a small station can be empty. Ask the inn how you are meant to arrive, and put the answer in the plan.
+- **For any gap:** look it up live — Google Maps, Jorudan or Navitime, station to station for the dates in question — say so in the plan and write it as an estimate. Never fill a hole from memory.
+- **Winter and mountains.** Mountain and coastal lines carry real weather delays in winter, and some run a handful of services a day. Leave slack, and never schedule a flight straight after one.
+- **The last mile is often the hard part.** Country inns sit some way from the nearest station. Many run a shuttle on a fixed timetable that must be requested at booking; some have none, and the taxi rank at a small station can be empty. Ask the inn how you are meant to arrive, and put the answer in the plan.
 
-### Try it in both directions
+### The exit airport
 
-Lay the stop list out along the geography, then **reverse it and price the reverse**. Reversals routinely save hours: a painful backtrack in one direction sits directly on the line in the other. Show both totals in the comparison table of step 5, a row each; the lower one usually wins outright. Then check three things:
+Price the reverse of every order before you settle one — step 3 above — and check two things after a reorder. **No zig-zags, and the dinner rule survives it:** if the route passes a place, comes back and passes it again, resequence; three inn dinners in a row is still the cap, and a reorder can make a run of four.
 
-1. **No zig-zags, and the dinner rule survives the reorder.** If the route passes a place, comes back and passes it again, resequence; three inn dinners in a row is still the cap, and a reorder can make a run of four.
-2. **The exit works.** Pick the airport you fly home from **last**, once the order is settled, and pick the one nearest the final stop: flying into one airport and home from another is the default, and doubling back across the country to leave from the one you landed at spends a day for nothing. The usual exits are **HND** and **NRT** for Tokyo, **KIX** for Kyoto and Osaka, **CTS** for Hokkaido, **NGO** for a route ending at Takayama or Nagoya, and **FUK**, **KOJ**, **NGS**, **KMJ** or **OIT** for Kyushu, whichever end of the island the route finishes at; any airport with a Haneda flight counts, Komatsu and Hiroshima included. A fixed Haneda ticket at the far end of a Kyushu or Hokkaido trip is the transfer to the nearest airport plus that airport's Haneda flight, both rows in the tables — or two Tokyo nights at the close, which is what the spines offer. A return ticket already booked out of one city settles the question before the route starts.
+**The exit works.** Pick the airport you fly home from **last**, once the order is settled, and pick the one nearest the final stop: flying into one airport and home from another is the default, and doubling back across the country to leave from the one you landed at spends a day for nothing. The usual exits are **HND** and **NRT** for Tokyo, **KIX** for Kyoto and Osaka, **CTS** for Hokkaido, **NGO** for a route ending at Takayama or Nagoya, and **FUK**, **KOJ**, **NGS**, **KMJ** or **OIT** for Kyushu, whichever end of the island the route finishes at; any airport with a Haneda flight counts, Komatsu and Hiroshima included. A fixed Haneda ticket at the far end of a Kyushu or Hokkaido trip is the transfer to the nearest airport plus that airport's Haneda flight, both rows in the tables — or two Tokyo nights at the close, which is what the spines offer. A return ticket already booked out of one city settles the question before the route starts.
 
 ### Two practical things
 
-- **Luggage forwarding.** Hand a suitcase to the front desk in the morning and it reaches the next hotel the following afternoon for roughly the price of a couple of meals, while you travel with an overnight bag. Use it for mountain legs with changes, one-night stops, and anything that means wrestling a case onto a crowded train. Two catches: it is **next-day, not same-day**, so keep a night's things with you, and some remote inns sit outside the fastest service areas.
-- **Is a rail pass worth it?** Sometimes. The nationwide pass rose sharply in 2023, so it no longer pays for itself on a trip that mostly sits in two cities. The test: add up the individual fares for the long journeys in the plan, compare with the pass price for the same days, buy only if it wins. Regional passes are often better value for these shapes. Separately, **reserve seats** for long journeys with luggage, especially around New Year, the early-May holiday week and mid-August, when some trains are reserved-only.
+- **Luggage forwarding.** Hand a suitcase to the front desk in the morning and it reaches the next hotel the following afternoon for roughly the price of a couple of meals, while you travel with an overnight bag. Use it for mountain legs with changes and one-night stops. Two catches: it is **next-day, not same-day**, so keep a night's things with you, and some remote inns sit outside the fastest service areas.
+- **Is a rail pass worth it?** Sometimes. The nationwide pass rose sharply in 2023, so it no longer pays for itself on a trip that mostly sits in two cities. The test: add up the individual fares for the long journeys, compare with the pass price for the same days, buy only if it wins. Regional passes are often better value. Separately, **reserve seats** for long journeys with luggage, especially around New Year, the early-May holiday week and mid-August.
 
 ### If two versions of the trip are still alive
 
-Compare them in one frame — the same measures applied to both, no measure counted against one and forgiven in the other.
+Compare them in one frame: the same measures for both, none counted against one and forgiven in the other.
 
 | | Version A | Version B |
 |---|---|---|
-| Total travel hours (including the journey to the airport at the end) | | |
-| Number of changes | | |
-| Number of separate check-ins | | |
+| Total transit (including the journey to the airport at the end) | | |
+| Separate stays | | |
 | One-night stops | | |
 | Nights at inns vs nights in cities | | |
 | Days needing a car | | |
 | Journeys on estimated times | | |
 
-Show the table, name the trade-off in a sentence, say which you'd take — and let them choose. Cost differences belong in the verdict only if they are large; a few hundred either way on a trip this size is noise.
+Show the table, name the trade-off in a sentence, say which you'd take, and let them choose. Cost differences belong in the verdict only if they are large.
 
 The visual fits here: two plans in one frame. Fill `guides/trip-visual-template.html` from the two
-itinerary tables and follow `guides/visualizing-the-trip.md`. Offer it in one line; build it if they
-say yes.
+itinerary tables and follow `guides/visualizing-the-trip.md`. Offer it in one line.
 
 ### The plan — this is the deliverable
 
-Finish the itinerary table and show it whole. **Only three leg forms are allowed** — a sourced time, a time you looked up live and labelled an estimate, or `to confirm`. Never a fourth. A leg composed out of two researched rows through a hub city (Kyoto→Tokyo + Tokyo→HND) is the first form, written as the sum with both halves named and the row labelled `composed via <city>`; `to confirm` is only for a pair with no researched path even through a hub. An invented travel time is the mistake in this kit most likely to cost somebody a booking.
+Finish the itinerary table and show it whole. **Only three leg forms are allowed** — a sourced time, a time you looked up live and labelled an estimate, or `to confirm`. Never a fourth. A leg composed through a hub city is the first form, written as the sum with both halves named and the row labelled `composed via <city>`. An invented travel time is the mistake in this kit most likely to cost somebody a booking.
 
 A leg row reads `↓ <h>h · <n> changes · <mode>`; a composed one names its hub in the same row — `↓ 4h45 · 1 change · shinkansen (composed via Tokyo)`, said to them as two researched journeys added together, *"two trains: Kyoto to Tokyo, then Tokyo to the airport"*; an estimated one `↓ ~1h50 · 1 change · bus (estimated — looked up live)`; an unsourced one `↓ to confirm`.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Earmarked |
-|---|---|---|---|---|---|
-| | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 2 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | | |
-| 3 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
-| | ↓ out to `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
+| # | Stop | Dates | Nights | Stay options |
+|---|---|---|---|---|
+| | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | |
+| 1 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | |
+| 2 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ `<h>h` · `<n>` changes · `<mode>` | | | |
+| 3 | `<stop>` · `<city / town / ryokan>` | `<dates>` | `<n>` | [`<name>`](`<link>`) (chosen) · [`<name>`](`<link>`) |
+| | ↓ out to `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | |
 
-**Totals:** `<n>` travel hours · `<n>` changes · `<n>` check-ins · `<n>` inn nights / `<n>` city nights · `<n>` one-nighters. Every figure here comes from `plan`, the airport legs' changes included, never typed; the travel total sums the leg rows above, both airport legs in it, rounded to five minutes.
+**Totals:** `<n>` total transit · `<n>` separate stays · `<n>` inn nights / `<n>` city nights · `<n>` one-nighters. Every figure here comes from `plan`, never typed; the transit total sums the leg rows above, both airport legs in it, rounded to five minutes.
 
 **Notes:** `<shuttle window, last-mile detail>`, one per stop that needs one. **Assumed:** `<every default you chose for them>`.
 
@@ -454,14 +450,14 @@ A leg row reads `↓ <h>h · <n> changes · <mode>`; a composed one names its hu
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**The totals line includes the departure leg.** A plan whose travel hours stop at the last hotel understates the trip by two hours and hides the morning that decides whether the flight is catchable.
+**The totals line includes the departure leg.** A plan whose transit total stops at the last hotel understates the trip by two hours and hides the morning that decides whether the flight is catchable.
 
-The `To confirm` list is the next thing they have to do. Keep it specific and short. **An open stop is not a blocker**: finish the plan around it and give the list a line — *"close the stay at Tokyo — the Okura or the Aman"* — for every stop Stage 4 left open.
+The `To confirm` list is the next thing they have to do. Keep it specific and short. **An open stop is not a blocker**: finish the plan around it and give the list a line — *"close the stay at Tokyo — the Okura or the Aman"* — for each stop Stage 4 left open.
 
 **Then offer the visual, in one line.** `guides/trip-visual-template.html` draws this table as a page
 they can open in a browser: the stops as bars sized by nights, every leg as a chip with its hours,
-changes and source, the stays with links and bands, and the totals as a table. `guides/visualizing-the-trip.md`
-says how to fill it and what not to put on it. It shows the plan and nothing beyond it.
+changes and source, the stays with links and prices, and the totals as a table. `guides/visualizing-the-trip.md`
+says how to fill it.
 
 ---
 

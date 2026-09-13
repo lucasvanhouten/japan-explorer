@@ -158,8 +158,8 @@ Everything below comes from the plan. Nothing else goes on the page.
   reason it feels like a trip rather than a spreadsheet.
 - **Inn nights and city nights visually distinct**, both named in a legend. An inn night includes
   dinner and breakfast; a city night does not, and that changes what the evening is.
-- **The comparison metrics, one row per measure, one column per plan** — travel hours including both
-  airport legs, changes, check-ins, one-night stops, inn/city nights, the longest run of inn dinners,
+- **The comparison metrics, one row per measure, one column per plan** — total transit including both
+  airport legs, separate stays, one-night stops, inn/city nights, the longest run of inn dinners,
   days needing a car, legs not from the tables. Same measures for every plan, no blank cells; a single
   plan keeps the matrix with its one column.
 - **A watch line under a leg, where that leg carries a major transit flag** — and nowhere else. See

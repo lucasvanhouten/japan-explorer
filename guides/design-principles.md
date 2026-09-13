@@ -8,9 +8,9 @@ Agent-facing. These govern every page, card or comparison you build from a Trip 
 2. **No unexplained marks.** Every glyph, colour or symbol either self-explains to a stranger or becomes a labelled chip or is deleted. Kanji are decoration on a labelled cell, never the only label.
 3. **Subtract, don't accrete.** A new element must displace something. Ask "what did this addition replace?"
 4. **One fact, one place.** A name, score or number renders exactly once per card. A new component replaces its predecessor, never joins it.
-5. **Don't say what is visible.** No "city stay" under a city, no captions restating the photo. Show real information instead: the chosen stay, its band, its link.
+5. **Don't say what is visible.** No "city stay" under a city, no captions restating the photo. Show real information instead: the chosen stay, its price, its link.
 6. **A comparison surface carries only what helps choose.** Booking windows, shuttle logistics and lead times belong in the booking pass, not the comparison. Park them in data; do not render them.
-7. **Derived metrics that are arithmetic of each other collapse to one line.** Check-ins is always stops; pack-ups is stays minus one. Bars whose numbers already say it become text.
+7. **Derived metrics that are arithmetic of each other collapse to one line.** Separate stays is always the number of stops; pack-ups is stays minus one. Bars whose numbers already say it become text.
 8. **Numbers only where they are the story.** Nights, yes. Transit hours live in the metrics row, never in a headline. Headlines describe what a route is: places, stays, experiences.
 9. **Describe things by what they are, never by negation.** "Room-only, so evenings belong to the town", not "no dinner". Negation is allowed only in a real trade-off ("bath or view, not both").
 10. **No internal vocabulary and no process narration.** Nothing about rules, caps, audits, sources being "checked" or options being "cut". The page shows the current state of the plan; how it got there is not on the page.

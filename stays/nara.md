@@ -6,13 +6,13 @@
 
 ## The inns — 7 within reach
 
-- `tsukihitei` · Tsukihitei editor's pick · A 8.1 · bath unstated · $750–950 · in Nara
-- `fufu-nara` · Fufu Nara · B 7.7 · bath yes · $780–1200 · in Nara
+- `tsukihitei` · Tsukihitei editor's pick · A 8.1 · bath unstated · $750–950 · [book on Ikyu](https://www.ikyu.com/00001181/) · in Nara
+- `fufu-nara` · Fufu Nara · B 7.7 · bath yes · $780–1200 · [book on Ikyu](https://www.ikyu.com/00002739/) · in Nara
 - `neold-private-house` · NEOLD Private House · B 7.7 · bath unstated · $560–660 · in Nara
 - `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 45 min/0 from Nara
 - `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h36/2 from Nara
-- `auberge-yusura` · Auberge Yusura · B 7.6 · bath yes · $870–1200 · 2h/2 from Nara
-- `sanso-amanosato` · Sanso Amanosato editor's pick · A 8.6 · bath no · $650–1000 · 2h15/2 from Nara
+- `auberge-yusura` · Auberge Yusura · B 7.6 · bath yes · $870–1200 · [book on Ikyu](https://www.ikyu.com/00002538/) · 2h/2 from Nara
+- `sanso-amanosato` · Sanso Amanosato editor's pick · A 8.6 · bath no · $650–1000 · [book on Ikyu](https://www.ikyu.com/00002284/) · 2h15/2 from Nara
 
 ## City hotels
 
@@ -20,7 +20,7 @@ _No hotel rows for Nara: the kit's hotel research does not reach here, and the i
 
 ---
 
-**How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
+**How to read the index.** Each line is `slug · name · tier score · in-room bath · price band · the Ikyu booking link where the kit has one · the researched time and number of changes from this file's gateway city`, written `2h15/1 from Tokyo` — two and a quarter hours, one change. **The full record — the link, the hook, the fits tags, every city that reaches it — is one row of the master inn table in `stages/4-where-to-stay.md`. Look the slug up there; do not re-research it.** A page for any slug is also at `https://ryokancatalog.com/inn/<slug>`.
 
 Tier: **S** ≥ 9 · **A** ≥ 8 · **B** ≥ 7; `—` means nobody has written the inn up in English. Nothing below 7.5 is on this list. Bath: **yes** every room · **some** certain rooms · **no** · **unstated** ask the inn. Price bands are US dollars for two with both meals (`ask` = quotes on request) for an inn, room only for a hotel — not comparable as printed. A row marked **editor's pick** is kept whatever the sort would do with it. **Every time here was looked up in a real timetable**; a journey that is not here is a gap to look up live and label an estimate. Where a line says `changes to confirm`, the hours were researched and the number of changes was not.
 
