@@ -621,8 +621,10 @@ function trip(sp){
    const say=ord.map(l=>seen[l]+(locs.includes(l)?" in ":" back in ")+nm(l));
    desc=`+${n} ${n===1?"night":"nights"}: `+(say.length<2?say[0]:say.slice(0,-1).join(", ")+", "+say[say.length-1])+(desc?". "+cap(desc):"");}
   /* an ending that changes which airport the trip flies from says it here, where the choice is made */
-  if(!reason){if(o.out&&o.out!==apOut)desc+=` · home from ${apName(o.out)} instead`;
-   if(o.in&&o.in!==apIn)desc+=` · in at ${apName(o.in)} instead`;}
+  /* an option that moves the trip to another airport says so inside its sentence, in plain words (owner, 2026-09-12) */
+  if(!reason){const j=t=>{desc=desc.replace(/[.\s]+$/,"")+(desc?", ":"")+t+".";};
+   if(o.out&&o.out!==apOut)j(`flying home from ${apName(o.out)}`);
+   if(o.in&&o.in!==apIn)j(`arriving at ${apName(o.in)}`);}
   const g={t:"ghost",locs,name:locs.length<2?nm(locs[0]):locs.slice(0,-1).map(nm).join(", ")+" and "+nm(locs[locs.length-1]),kind:kindOf(sp,locs[0]),
    parts:locs.map(l=>({n:nm(l),k:kindOf(sp,l)})),swap:!!swap,
    n,desc,rec:j===defOf(d),dis:!!reason,k:d.key,j};
