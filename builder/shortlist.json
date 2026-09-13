@@ -1456,6 +1456,27 @@
    "map": "https://www.google.com/maps?cid=12876939545693936145"
   },
   {
+   "slug": "hanamurasaki",
+   "key": "hanamurasaki",
+   "name": "Hanamurasaki",
+   "loc": "yamanaka",
+   "area": "Yamanaka Onsen",
+   "tier": "A 8.1",
+   "score": 8.1,
+   "bath": "no",
+   "band": "$600–1000",
+   "reach": "kanazawa 54 min/0 train · kyoto 1h36/1 train · takayama 2h48/1 train",
+   "fits": [
+    "kanazawa-loop",
+    "bed-not-futon"
+   ],
+   "pinned": false,
+   "hook": "A large, modern luxury ryokan above the Kakusenkei gorge, and the food (spectacular winter snow crab above all) is the main reason anyone comes; source-fed bathing reaches only its top suites.",
+   "writeup": "A large, modern luxury ryokan above the Kakusenkei gorge, and the food (spectacular winter snow crab above all) is the main reason anyone comes; source-fed bathing reaches only its top suites. the thread author's reservations (restaurant-only dining, a view-less private bath, baffling ordering) kept it at 'merely one of the top choices in Hokuriku' for him in 2018; the 2024 renovation and simplified set menu have since answered some of that, and a 2025 guest called it the perfect choice for a food-first stay.",
+   "url": "https://ryokancatalog.com/inn/hanamurasaki",
+   "map": "https://www.google.com/maps?cid=14207292464644160742"
+  },
+  {
    "slug": "kayotei",
    "key": "kayotei",
    "name": "Kayotei",
@@ -1495,27 +1516,6 @@
    "writeup": "A stylish Japanese-modern ryokan in Yamashiro Onsen that does almost everything right (a top suite the thread author called perfect, in-room onsen, gorgeous grounds, an excellent crab-season kitchen), and then serves dinner in one shared, echoing dining hall with no private or in-room option. That single flaw is why he gave it a rare reserved verdict, is \"not in love\" with it, and would try neighbors before returning, even as crowds and ryokan first-timers adore it. Book a top suite and the earliest dinner seating.",
    "url": "https://ryokancatalog.com/inn/beniya-mukayu",
    "map": "https://www.google.com/maps?cid=4039024310210234348"
-  },
-  {
-   "slug": "hanamurasaki",
-   "key": "hanamurasaki",
-   "name": "Hanamurasaki",
-   "loc": "yamanaka",
-   "area": "Yamashiro Onsen",
-   "tier": "A 8.1",
-   "score": 8.1,
-   "bath": "no",
-   "band": "$600–1000",
-   "reach": "kanazawa 54 min/0 train · kyoto 1h36/1 train · takayama 2h48/1 train",
-   "fits": [
-    "kanazawa-loop",
-    "bed-not-futon"
-   ],
-   "pinned": false,
-   "hook": "A large, modern luxury ryokan above the Kakusenkei gorge, and the food (spectacular winter snow crab above all) is the main reason anyone comes; source-fed bathing reaches only its top suites.",
-   "writeup": "A large, modern luxury ryokan above the Kakusenkei gorge, and the food (spectacular winter snow crab above all) is the main reason anyone comes; source-fed bathing reaches only its top suites. the thread author's reservations (restaurant-only dining, a view-less private bath, baffling ordering) kept it at 'merely one of the top choices in Hokuriku' for him in 2018; the 2024 renovation and simplified set menu have since answered some of that, and a 2025 guest called it the perfect choice for a food-first stay.",
-   "url": "https://ryokancatalog.com/inn/hanamurasaki",
-   "map": "https://www.google.com/maps?cid=14207292464644160742"
   },
   {
    "slug": "yado-shiontei",

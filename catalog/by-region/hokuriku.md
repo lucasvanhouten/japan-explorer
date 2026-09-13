@@ -6,7 +6,7 @@
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Bouyourou | Mikuni, Fukui | Chubu | A | 8.5 | 4.5 | 4.5 | 5 | 4 | 4 | 7 | — |  | bouyourou |
 | Beniya Mukayu | Yamashiro Onsen, Ishikawa | Chubu | A | 8.4 | 4.5 | 4.5 | 3.5 | 5 | 4.5 | 17 | Yes (open-air, top room) | 4.84 | beniya-mukayu |
-| Hanamurasaki | Yamashiro Onsen, Ishikawa | Chubu | A | 8.1 | 4.5 | 3.5 | 4.5 | 3.5 | 4 |  | No | 4.57 | hanamurasaki |
+| Hanamurasaki | Yamanaka Onsen, Ishikawa | Chubu | A | 8.1 | 4.5 | 3.5 | 4.5 | 3.5 | 4 |  | No | 4.57 | hanamurasaki |
 | Kagaya Bettei Matsunomidori | Wakura Onsen, Ishikawa | Chubu | B | 7.9 | 4 | 3 | 4 | 4 | 4.5 |  | Yes |  | kagaya-bettei-matsunomidori |
 | Lamp no Yado | Suzu, Noto Peninsula, Ishikawa | Chubu | B | 7.7 | 4 | 4 |  | 4 | 4.5 | 14 | No (very nice communal) |  | lamp-no-yado |
 | Kayotei | Yamanaka Onsen, Ishikawa | Chubu | B | 7.6 | 3.5 | 3.5 | 3.5 | 3.5 | 4.5 | 10 | Yes (top room) |  | kayotei |

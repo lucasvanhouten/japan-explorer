@@ -459,9 +459,9 @@
   "Kagaya Bettei Matsunomidori": "wakura",
   "Sankara Hotel & Spa Yakushima": "yakushima",
   "Fujiiso": "yamadaonsen",
+  "Hanamurasaki": "yamanaka",
   "Kayotei": "yamanaka",
   "Beniya Mukayu": "yamashiro",
-  "Hanamurasaki": "yamanaka",
   "Yado Shiontei": "yonago",
   "NEOLD Private House": "nara",
   "Shoraiso": "yudanaka",
@@ -1392,9 +1392,9 @@
    "kagaya-bettei-matsunomidori": "wakura",
    "sankara-hotel-spa-yakushima": "yakushima",
    "fujiiso": "yamadaonsen",
+   "hanamurasaki": "yamanaka",
    "kayotei": "yamanaka",
    "beniya-mukayu": "yamashiro",
-   "hanamurasaki": "yamanaka",
    "yado-shiontei": "yonago",
    "neold-private-house": "nara",
    "shoraiso": "yudanaka",
@@ -1417,8 +1417,8 @@
   "planning/kit-src/companions/explorer/route-explorer.template.html": "71e117b67f3bea77fda061b2832d0f8c37896fb011c848e6c406373452c5bab4",
   "planning/kit-src/companions/route-engine/route.js": "f4fbf85322e08d4cff62e5f10f1fe808c2d20d56c455f58eb39d7705a0fb2ff9",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
-  "deploy/catalog.json": "ff69603d5c9bcdae34cff80b103ef0bc70151da0025010115592f3db45c7463b",
-  "deploy/catalog.md": "3733a773b9f4da10f9c7bca15e46abd7dc49c2f42f33d499da6abcc13c977669",
+  "deploy/catalog.json": "7ceff44f442c76b2e38ce395d4f8c216c341b3a2c52e7bc58c74a6d6fb500deb",
+  "deploy/catalog.md": "285cfbf7b2784c33c43471eb6ef193c8bc2b9a4059824d68c78b6a577497d614",
   "deploy/llms.txt": "7a86b4c61a633e6eb83e4633f8fee78ef15cfccc66e24db8bd042a525b95935e",
   "research/dining-notes.md": "9be9507e6499a9b8eca990a1d68b09dea07c4796bad35734f1429295e0c69a41",
   "research/dining-notes-process.md": "902b413beb5190960d7c54709dfd40d10d4a6db3b67e0f0d896b5275b62ed6dd",
@@ -1460,8 +1460,8 @@
    "bytes": 25970
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "e409763f61fa75c20a51e86a1ae806185940762f6b5beb1de7b97cc45afdf41c",
-   "bytes": 291864
+   "sha256": "8b432d9aab5c3c8a19cd5fb0aac52c5b60912d9e4fad579db4de6e3854c077ed",
+   "bytes": 291863
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1508,8 +1508,8 @@
    "bytes": 1213
   },
   "builder/shortlist.json": {
-   "sha256": "e0be1521060951ba20b273dd8dd170869683067c124b248731976066cb04bd31",
-   "bytes": 138298
+   "sha256": "de34d1e533fa807d28280a41e30e8f2d4a8c81a93a3ab3849e6c5c87b1f3530a",
+   "bytes": 138297
   },
   "builder/spines.json": {
    "sha256": "7beee1b388e0e3572c7afa52b3f2a141dacef6d2004df8689f5cebf8fc0d955c",
@@ -1528,8 +1528,8 @@
    "bytes": 2587
   },
   "catalog/by-region/hokuriku.md": {
-   "sha256": "94e4038e3898006937fc1da8333677da283b851a37c31103a415ae098092b903",
-   "bytes": 2617
+   "sha256": "f98f0ddd3e5202c0ece0a1999472e38889bbc5a4dc8a9995e4242fe74f295a1e",
+   "bytes": 2616
   },
   "catalog/by-region/index.md": {
    "sha256": "a69870f5f18a383755dd12514c831b3667eec2856992766b6760eaeba4bafc0e",
@@ -1572,12 +1572,12 @@
    "bytes": 1078
   },
   "catalog/catalog.json": {
-   "sha256": "ff69603d5c9bcdae34cff80b103ef0bc70151da0025010115592f3db45c7463b",
-   "bytes": 1161425
+   "sha256": "7ceff44f442c76b2e38ce395d4f8c216c341b3a2c52e7bc58c74a6d6fb500deb",
+   "bytes": 1161424
   },
   "catalog/catalog.md": {
-   "sha256": "3733a773b9f4da10f9c7bca15e46abd7dc49c2f42f33d499da6abcc13c977669",
-   "bytes": 29838
+   "sha256": "285cfbf7b2784c33c43471eb6ef193c8bc2b9a4059824d68c78b6a577497d614",
+   "bytes": 29905
   },
   "catalog/llms.txt": {
    "sha256": "7a86b4c61a633e6eb83e4633f8fee78ef15cfccc66e24db8bd042a525b95935e",
@@ -1708,8 +1708,8 @@
    "bytes": 85178
   },
   "stages/4-where-to-stay.md": {
-   "sha256": "385891db19568b7282d589f4a65188caf053f26ca243d234c480cc28fa4e0b87",
-   "bytes": 64710
+   "sha256": "cba8d2fc3b401df52fa7e9a2b575e6d43ad91103a6209b8ed4cdd03f79d98c32",
+   "bytes": 64709
   },
   "stages/5-route.md": {
    "sha256": "f76bffa468b640e63ab2efb5f0aea221d0d63fdf91f2e5f6040c0645d5b29704",

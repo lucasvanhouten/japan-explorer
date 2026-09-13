@@ -4,7 +4,7 @@
   "site": "https://ryokancatalog.com",
   "as_of": "2026-09-07",
   "count": 199,
-  "src_sha": "4e19bb2a82c790b69c8c1415783288c4f874ce070a11309cd1db2d01f62e9494",
+  "src_sha": "e2f1cd6f6545922272741e5193e76dc56b41f3e052e6b653b4353e2d99c77f22",
   "score_scale": "1-10 overall (evidence-adjusted), 1-5 per aspect",
   "source": "KI-NRT's FlyerTalk 'Japan Luxury Ryokans' thread + TripAdvisor + Japanese booking sites"
  },
@@ -7613,7 +7613,7 @@
    "slug": "hanamurasaki",
    "name": "Hanamurasaki",
    "url": "https://ryokancatalog.com/inn/hanamurasaki",
-   "location": "Yamashiro Onsen",
+   "location": "Yamanaka Onsen",
    "prefecture": "Ishikawa",
    "region": "Chubu",
    "geo": {
