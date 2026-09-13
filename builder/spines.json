@@ -437,26 +437,6 @@
        "stops": [
         "takayama"
        ]
-      },
-      {
-       "key": "fuji",
-       "kind": "inn",
-       "default": 1,
-       "question": "A ryokan near Mount Fuji on the way back to Tokyo?",
-       "desc": "Hakone, the Fuji lakes or Izu: back through Tokyo to a ryokan under the mountain, then the last nights in the city.",
-       "no": "Straight back to Tokyo.",
-       "stops": [
-        "hakone"
-       ],
-       "requires": [
-        "tokyo@last"
-       ],
-       "why_not": "the Fuji ryokan sits on the road straight back from Kanazawa to Tokyo; after Kyoto it is the ending instead, and not with the Kaga night too — four inn dinners running",
-       "not_with": [
-        "yamashiro",
-        "kyoto",
-        "osaka"
-       ]
       }
      ]
     }
