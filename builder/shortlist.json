@@ -11,7 +11,7 @@
    "score": 8.4,
    "bath": "unstated",
    "band": "$1000–1400",
-   "reach": "sendai 2h15/1 train · tokyo 3h06/1 train · nikko 3h48/2 train",
+   "reach": "sendai 2h15/1 train · tokyo 3h05/1 train · nikko 3h50/2 train",
    "fits": [
     "tohoku"
    ],
@@ -32,7 +32,7 @@
    "score": 8.3,
    "bath": "some",
    "band": "$600–900",
-   "reach": "sendai 1h36/1 shinkansen · tokyo 2h30/0 shinkansen · nikko 2h48/1 shinkansen",
+   "reach": "sendai 1h35/1 shinkansen · tokyo 2h30/0 shinkansen · nikko 2h50/1 shinkansen",
    "fits": [
     "tohoku"
    ],
@@ -53,7 +53,7 @@
    "score": 7.8,
    "bath": "unstated",
    "band": "$850–1100",
-   "reach": "sendai 1h36/1 shinkansen · tokyo 2h30/0 shinkansen · nikko 2h48/1 shinkansen",
+   "reach": "sendai 1h35/1 shinkansen · tokyo 2h30/0 shinkansen · nikko 2h50/1 shinkansen",
    "fits": [
     "tohoku",
     "bed-not-futon"
@@ -75,7 +75,7 @@
    "score": 8.6,
    "bath": "yes",
    "band": "$420–600",
-   "reach": "kumamoto 1h42/1 train · fukuoka 1h45/0 train · kagoshima 2h40/1 scenic",
+   "reach": "kumamoto 1h40/1 train · fukuoka 1h45/0 train · kagoshima 2h40/1 scenic",
    "fits": [
     "kyushu-yufuin"
    ],
@@ -96,7 +96,7 @@
    "score": 9.4,
    "bath": "yes",
    "band": "$1200–2700",
-   "reach": "kumamoto 1h12/0 car/train · fukuoka 1h54/1 train · kagoshima 2h18/1 train",
+   "reach": "kumamoto 1h10/0 car/train · fukuoka 1h55/1 train · kagoshima 2h20/1 train",
    "fits": [
     "kyushu-elsewhere"
    ],
@@ -117,7 +117,7 @@
    "score": 7.9,
    "bath": "some",
    "band": "ask",
-   "reach": "osaka 1h06/0 bus · nara 1h36/2 train · kyoto 1h45/2 train",
+   "reach": "osaka 1h05/0 bus · nara 1h35/2 train · kyoto 1h45/2 train",
    "fits": [
     "kansai-side-trip",
     "bed-not-futon"
@@ -139,7 +139,7 @@
    "score": 8.3,
    "bath": "some",
    "band": "$450–800",
-   "reach": "sendai 1h/1 shinkansen · tokyo 2h12/1 shinkansen · nikko 2h48/2 shinkansen",
+   "reach": "sendai 1h/1 shinkansen · tokyo 2h10/1 shinkansen · nikko 2h50/2 shinkansen",
    "fits": [
     "tohoku"
    ],
@@ -160,7 +160,7 @@
    "score": 8,
    "bath": "unstated",
    "band": "ask",
-   "reach": "sendai 1h/1 shinkansen · tokyo 2h12/1 shinkansen · nikko 2h48/2 shinkansen",
+   "reach": "sendai 1h/1 shinkansen · tokyo 2h10/1 shinkansen · nikko 2h50/2 shinkansen",
    "fits": [
     "tohoku",
     "bed-not-futon"
@@ -204,7 +204,7 @@
    "score": null,
    "bath": "unstated",
    "band": "$750–1150",
-   "reach": "kanazawa 1h/0 train · kyoto 1h45/1 train · takayama 2h54/1 train",
+   "reach": "kanazawa 1h/0 train · kyoto 1h45/1 train · takayama 2h55/1 train",
    "fits": [
     "kanazawa-loop"
    ],
@@ -225,7 +225,7 @@
    "score": 8.8,
    "bath": "yes",
    "band": "$600–950",
-   "reach": "takayama 1h/0 train · kanazawa 3h/1 train · kyoto 3h06/1 train",
+   "reach": "takayama 1h/0 train · kanazawa 3h/1 train · kyoto 3h05/1 train",
    "fits": [
     "alps"
    ],
@@ -246,7 +246,7 @@
    "score": 8.2,
    "bath": "yes",
    "band": "$550–800",
-   "reach": "hakone in town · tokyo 2h12/1 train · kyoto 3h/1 train",
+   "reach": "hakone in town · tokyo 2h10/1 train · kyoto 3h/1 train",
    "fits": [
     "golden-route-stop",
     "bed-not-futon"
@@ -268,7 +268,7 @@
    "score": 7.5,
    "bath": "some",
    "band": "ask",
-   "reach": "hakone in town · tokyo 2h12/1 train · kyoto 3h/1 train",
+   "reach": "hakone in town · tokyo 2h10/1 train · kyoto 3h/1 train",
    "fits": [
     "golden-route-stop",
     "family-ok"
@@ -290,7 +290,7 @@
    "score": 8.2,
    "bath": "unstated",
    "band": "$600–850",
-   "reach": "sendai 2h/1 shinkansen · tokyo 4h/1 shinkansen · nikko 4h06/2 train",
+   "reach": "sendai 2h/1 shinkansen · tokyo 4h/1 shinkansen · nikko 4h05/2 train",
    "fits": [
     "tohoku",
     "bed-not-futon"
@@ -333,7 +333,7 @@
    "score": 8.3,
    "bath": "no",
    "band": "$850–1150",
-   "reach": "sendai 1h15/1 train · tokyo 2h/1 train · nikko 2h54/2 train",
+   "reach": "sendai 1h15/1 train · tokyo 2h/1 train · nikko 2h55/2 train",
    "fits": [
     "tohoku"
    ],
@@ -397,7 +397,7 @@
    "score": 8.9,
    "bath": "yes",
    "band": "$620–780",
-   "reach": "sendai 2h15/0 shinkansen · tokyo 3h06/0 shinkansen · nikko 4h36/2 shinkansen",
+   "reach": "sendai 2h15/0 shinkansen · tokyo 3h05/0 shinkansen · nikko 4h35/2 shinkansen",
    "fits": [
     "tohoku"
    ],
@@ -439,7 +439,7 @@
    "score": 7.9,
    "bath": "no",
    "band": "$300–550",
-   "reach": "fukuoka 1h15/0 train · kumamoto 2h36/1 train · nagasaki 3h/2 train",
+   "reach": "fukuoka 1h15/0 train · kumamoto 2h35/1 train · nagasaki 3h/2 train",
    "fits": [
     "kyushu-nagasaki"
    ],
@@ -460,7 +460,7 @@
    "score": 8.6,
    "bath": "no",
    "band": "$650–1000",
-   "reach": "osaka 1h24/1 train · nara 2h15/2 train · kyoto 2h30/2 train",
+   "reach": "osaka 1h25/1 train · nara 2h15/2 train · kyoto 2h30/2 train",
    "fits": [
     "kansai-side-trip"
    ],
@@ -526,7 +526,7 @@
    "score": 8.8,
    "bath": "no",
    "band": "$700–1000",
-   "reach": "kyoto 2h30/0 train · osaka 2h45/0 train · nara 3h18/1 train",
+   "reach": "kyoto 2h30/0 train · osaka 2h45/0 train · nara 3h20/1 train",
    "fits": [
     "kansai-side-trip"
    ],
@@ -568,7 +568,7 @@
    "score": 9.5,
    "bath": "yes",
    "band": "$550–900",
-   "reach": "kagoshima 54 min/0 train · kumamoto 2h30/1 train · fukuoka 2h45/1 train",
+   "reach": "kagoshima 55 min/0 train · kumamoto 2h30/1 train · fukuoka 2h45/1 train",
    "fits": [
     "kyushu-kirishima"
    ],
@@ -589,7 +589,7 @@
    "score": 7.7,
    "bath": "yes",
    "band": "ask",
-   "reach": "kagoshima 54 min/0 train · kumamoto 2h30/1 train · fukuoka 2h45/1 train",
+   "reach": "kagoshima 55 min/0 train · kumamoto 2h30/1 train · fukuoka 2h45/1 train",
    "fits": [
     "kyushu-kirishima",
     "bed-not-futon"
@@ -611,7 +611,7 @@
    "score": 8.6,
    "bath": "yes",
    "band": "ask",
-   "reach": "sapporo 36 min/0 train",
+   "reach": "sapporo 35 min/0 train",
    "fits": [
     "hokkaido",
     "bed-not-futon"
@@ -655,7 +655,7 @@
    "score": 9.3,
    "bath": "yes",
    "band": "$1300–1800",
-   "reach": "kumamoto 1h51/0 car · beppu 2h24/0 bus · fukuoka 2h30/0 car",
+   "reach": "kumamoto 1h50/0 car · beppu 2h25/0 bus · fukuoka 2h30/0 car",
    "fits": [
     "kyushu-kurokawa",
     "bed-not-futon"
@@ -677,7 +677,7 @@
    "score": 8.5,
    "bath": "yes",
    "band": "$900–1400",
-   "reach": "kumamoto 1h51/0 car · beppu 2h24/0 bus · fukuoka 2h30/0 car",
+   "reach": "kumamoto 1h50/0 car · beppu 2h25/0 bus · fukuoka 2h30/0 car",
    "fits": [
     "kyushu-kurokawa"
    ],
@@ -785,7 +785,7 @@
    "score": 8,
    "bath": "some",
    "band": "$900–1800",
-   "reach": "tokyo 1h48/0 train · hakone 1h54/1 train · kyoto 2h36/0 train",
+   "reach": "tokyo 1h50/0 train · hakone 1h55/1 train · kyoto 2h35/0 train",
    "fits": [
     "fuji-lakes",
     "golden-route-stop",
@@ -830,7 +830,7 @@
    "score": 8.7,
    "bath": "some",
    "band": "$550–750",
-   "reach": "tokyo 1h40/0 train · sendai 2h30/1 train · nikko 2h48/2 shinkansen",
+   "reach": "tokyo 1h40/0 train · sendai 2h30/1 train · nikko 2h50/2 shinkansen",
    "fits": [
     "snow-country",
     "bed-not-futon"
@@ -852,7 +852,7 @@
    "score": 8.8,
    "bath": "some",
    "band": "$520–970",
-   "reach": "tokyo 1h45/0 train · sendai 3h/1 train · nikko 3h12/2 shinkansen",
+   "reach": "tokyo 1h45/0 train · sendai 3h/1 train · nikko 3h10/2 shinkansen",
    "fits": [
     "snow-country"
    ],
@@ -873,7 +873,7 @@
    "score": 8.3,
    "bath": "some",
    "band": "$500–800",
-   "reach": "tokyo 1h45/0 train · sendai 3h/1 train · nikko 3h12/2 shinkansen",
+   "reach": "tokyo 1h45/0 train · sendai 3h/1 train · nikko 3h10/2 shinkansen",
    "fits": [
     "snow-country"
    ],
@@ -894,7 +894,7 @@
    "score": 8.1,
    "bath": "no",
    "band": "$470–830",
-   "reach": "hiroshima 1h/1 train · fukuoka 2h15/2 train · kyoto 2h42/2 train",
+   "reach": "hiroshima 1h/1 train · fukuoka 2h15/2 train · kyoto 2h40/2 train",
    "fits": [
     "inland-sea"
    ],
@@ -957,7 +957,7 @@
    "score": 8.5,
    "bath": "unstated",
    "band": "ask",
-   "reach": "tokyo 3h12/2 train",
+   "reach": "tokyo 3h10/2 train",
    "fits": [
     "snow-country"
    ],
@@ -1063,7 +1063,7 @@
    "score": 8.8,
    "bath": "yes",
    "band": "$850–1200",
-   "reach": "nikko in town · tokyo 2h/0 train · sendai 2h18/1 train",
+   "reach": "nikko in town · tokyo 2h/0 train · sendai 2h20/1 train",
    "fits": [
     "tokyo-splitter",
     "golden-route-stop"
@@ -1128,7 +1128,7 @@
    "score": 7.6,
    "bath": "unstated",
    "band": "$540–650",
-   "reach": "hiroshima 1h/1 train · kyoto 2h18/1 shinkansen",
+   "reach": "hiroshima 1h/1 train · kyoto 2h20/1 shinkansen",
    "fits": [
     "inland-sea"
    ],
@@ -1149,7 +1149,7 @@
    "score": 7.8,
    "bath": "yes",
    "band": "ask",
-   "reach": "sapporo 36 min/0 train",
+   "reach": "sapporo 35 min/0 train",
    "fits": [
     "hokkaido"
    ],
@@ -1214,7 +1214,7 @@
    "score": 9.4,
    "bath": "some",
    "band": "$1100–1600",
-   "reach": "tokyo 1h45/0 train · hakone 1h48/2 train · kyoto 2h42/0 train",
+   "reach": "tokyo 1h45/0 train · hakone 1h50/2 train · kyoto 2h40/0 train",
    "fits": [
     "golden-route-stop"
    ],
@@ -1235,7 +1235,7 @@
    "score": 8.1,
    "bath": "unstated",
    "band": "$350–650",
-   "reach": "sendai 1h18/1 train · tokyo 1h45/1 train · nikko 2h48/2 shinkansen",
+   "reach": "sendai 1h20/1 train · tokyo 1h45/1 train · nikko 2h50/2 shinkansen",
    "fits": [
     "tohoku"
    ],
@@ -1277,7 +1277,7 @@
    "score": 8.9,
    "bath": "some",
    "band": "$600–1100",
-   "reach": "kumamoto 2h/0 car · fukuoka 3h30/0 bus · kagoshima 4h12/1 bus",
+   "reach": "kumamoto 2h/0 car · fukuoka 3h30/0 bus · kagoshima 4h10/1 bus",
    "fits": [
     "kyushu-kurokawa",
     "bed-not-futon"
@@ -1299,7 +1299,7 @@
    "score": 8.3,
    "bath": "no",
    "band": "$550–850",
-   "reach": "takayama in town · kanazawa 2h24/0 bus · kyoto 3h48/1 train",
+   "reach": "takayama in town · kanazawa 2h25/0 bus · kyoto 3h50/1 train",
    "fits": [
     "alps",
     "bed-not-futon"
@@ -1321,7 +1321,7 @@
    "score": null,
    "bath": "unstated",
    "band": "$600–950",
-   "reach": "takayama in town · kanazawa 2h24/0 bus · kyoto 3h48/1 train",
+   "reach": "takayama in town · kanazawa 2h25/0 bus · kyoto 3h50/1 train",
    "fits": [
     "alps"
    ],
@@ -1342,7 +1342,7 @@
    "score": 8.2,
    "bath": "yes",
    "band": "$550–1400",
-   "reach": "nagasaki 42 min/0 shinkansen · fukuoka 1h/0 train · kumamoto 1h48/1 train",
+   "reach": "nagasaki 40 min/0 shinkansen · fukuoka 1h/0 train · kumamoto 1h50/1 train",
    "fits": [
     "kyushu-nagasaki"
    ],
@@ -1363,7 +1363,7 @@
    "score": 8.4,
    "bath": "yes",
    "band": "$600–850",
-   "reach": "sendai 2h15/0 shinkansen · tokyo 3h06/0 shinkansen · nikko 4h36/2 shinkansen",
+   "reach": "sendai 2h15/0 shinkansen · tokyo 3h05/0 shinkansen · nikko 4h35/2 shinkansen",
    "fits": [
     "tohoku",
     "bed-not-futon"
@@ -1385,7 +1385,7 @@
    "score": 8.5,
    "bath": "yes",
    "band": "$470–800",
-   "reach": "hiroshima 1h12/1 train · kyoto 2h12/1 train · fukuoka 2h30/0 shinkansen",
+   "reach": "hiroshima 1h10/1 train · kyoto 2h10/1 train · fukuoka 2h30/0 shinkansen",
    "fits": [
     "inland-sea"
    ],
@@ -1449,7 +1449,7 @@
    "score": 8.4,
    "bath": "yes",
    "band": "ask",
-   "reach": "nagasaki 1h15/0 car · kumamoto 2h12/2 ferry · fukuoka 3h/2 bus",
+   "reach": "nagasaki 1h15/0 car · kumamoto 2h10/2 ferry · fukuoka 3h/2 bus",
    "fits": [
     "kyushu-nagasaki",
     "bed-not-futon"
@@ -1493,7 +1493,7 @@
    "score": 8.9,
    "bath": "no",
    "band": "$750–1500",
-   "reach": "kagoshima 2h30/1 flight · fukuoka 2h45/1 flight · kumamoto 3h18/2 flight",
+   "reach": "kagoshima 2h30/1 flight · fukuoka 2h45/1 flight · kumamoto 3h20/2 flight",
    "fits": [
     "kyushu-kirishima"
    ],
@@ -1514,7 +1514,7 @@
    "score": 7.7,
    "bath": "yes",
    "band": "$480–900",
-   "reach": "kanazawa 2h/0 train · tokyo 2h18/0 train · takayama 3h06/1 shinkansen",
+   "reach": "kanazawa 2h/0 train · tokyo 2h20/0 train · takayama 3h05/1 shinkansen",
    "fits": [
     "alps",
     "bed-not-futon"
@@ -1536,7 +1536,7 @@
    "score": 8.1,
    "bath": "no",
    "band": "$600–1000",
-   "reach": "kanazawa 54 min/0 train · kyoto 1h36/1 train · takayama 2h48/1 train",
+   "reach": "kanazawa 55 min/0 train · kyoto 1h35/1 train · takayama 2h50/1 train",
    "fits": [
     "kanazawa-loop",
     "bed-not-futon"
@@ -1558,7 +1558,7 @@
    "score": 7.6,
    "bath": "some",
    "band": "$700–1100",
-   "reach": "kanazawa 54 min/0 train · kyoto 1h36/1 train · takayama 2h48/1 train",
+   "reach": "kanazawa 55 min/0 train · kyoto 1h35/1 train · takayama 2h50/1 train",
    "fits": [
     "kanazawa-loop"
    ],
@@ -1579,7 +1579,7 @@
    "score": 8.4,
    "bath": "some",
    "band": "$800–1200",
-   "reach": "kanazawa 36 min/0 train · kyoto 2h/1 train · takayama 2h36/1 train",
+   "reach": "kanazawa 35 min/0 train · kyoto 2h/1 train · takayama 2h35/1 train",
    "fits": [
     "kanazawa-loop",
     "bed-not-futon"
@@ -1644,7 +1644,7 @@
    "score": null,
    "bath": "yes",
    "band": "$730–1100",
-   "reach": "kanazawa 2h12/1 train · tokyo 2h36/1 train · takayama 3h24/2 shinkansen",
+   "reach": "kanazawa 2h10/1 train · tokyo 2h35/1 train · takayama 3h25/2 shinkansen",
    "fits": [
     "snow-country"
    ],
@@ -1665,7 +1665,7 @@
    "score": 9,
    "bath": "yes",
    "band": "$1000–1400",
-   "reach": "beppu 1h/0 bus · fukuoka 2h10/0 train · kumamoto 2h24/1 train",
+   "reach": "beppu 1h/0 bus · fukuoka 2h10/0 train · kumamoto 2h25/1 train",
    "fits": [
     "kyushu-yufuin",
     "bed-not-futon"
@@ -1687,7 +1687,7 @@
    "score": 8.4,
    "bath": "yes",
    "band": "$950–2000",
-   "reach": "beppu 1h/0 bus · fukuoka 2h10/0 train · kumamoto 2h24/1 train",
+   "reach": "beppu 1h/0 bus · fukuoka 2h10/0 train · kumamoto 2h25/1 train",
    "fits": [
     "kyushu-yufuin"
    ],
@@ -1708,7 +1708,7 @@
    "score": null,
    "bath": "unstated",
    "band": "$760–1500",
-   "reach": "beppu 1h/0 bus · fukuoka 2h10/0 train · kumamoto 2h24/1 train",
+   "reach": "beppu 1h/0 bus · fukuoka 2h10/0 train · kumamoto 2h25/1 train",
    "fits": [
     "kyushu-yufuin",
     "bed-not-futon"
@@ -1730,7 +1730,7 @@
    "score": 7.8,
    "bath": "some",
    "band": "$520–1100",
-   "reach": "tokyo 2h12/1 train · hakone 2h24/2 train · kyoto 3h03/1 train",
+   "reach": "tokyo 2h10/1 train · hakone 2h25/2 train · kyoto 3h05/1 train",
    "fits": [
     "golden-route-stop"
    ],

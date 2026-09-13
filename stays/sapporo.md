@@ -6,8 +6,8 @@
 
 ## The inns — 6 within reach
 
-- `soneka` · Soneka · A 8.6 · bath yes · ask · [book on Ikyu](https://www.ikyu.com/00003285/) · 36 min/0 from Sapporo
-- `kuramure` · Kuramure · B 7.8 · bath yes · ask · [book on Ikyu](https://www.ikyu.com/00001350/) · 36 min/0 from Sapporo
+- `soneka` · Soneka · A 8.6 · bath yes · ask · [book on Ikyu](https://www.ikyu.com/00003285/) · 35 min/0 from Sapporo
+- `kuramure` · Kuramure · B 7.8 · bath yes · ask · [book on Ikyu](https://www.ikyu.com/00001350/) · 35 min/0 from Sapporo
 - `chalet-ivy-jozankei` · Chalet Ivy Jozankei · A 8.2 · bath yes · $900–1400 · [book on Ikyu](https://www.ikyu.com/00002679/) · 1h/0 from Sapporo
 - `shiguchi` · Shiguchi · A 8.8 · bath yes · ask · 3h/0 from Sapporo — _long day; another gateway is closer_
 - `zaborin` · Zaborin · B 7.9 · bath yes · ask · [book on Ikyu](https://www.ikyu.com/00002195/) · 3h/0 from Sapporo — _long day; another gateway is closer_

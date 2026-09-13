@@ -42,7 +42,7 @@ Next    Stage 3 — choose the spine those places sit on, then walk its decision
 | From Tokyo to | Door to door | Changes | Out and back, or on the way? |
 |---|---|---|---|
 | Nikkō | 2h | 0 | out and back, so it splits a long Tokyo stay |
-| Hakone | 2h12 | 1 | on the way to Kyoto |
+| Hakone | 2h10 | 1 | on the way to Kyoto |
 | Izu peninsula (Shuzenji) | 1h45 | 0 | on the way to Kyoto, a little off the line |
 | Lake Kawaguchi (Mt Fuji) | 2h | 0 | out and back, or on west by bus to Mishima |
 

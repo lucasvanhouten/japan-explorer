@@ -8,8 +8,8 @@
 
 - `kinsuikan` · Kinsuikan · A 8.1 · bath no · $470–830 · [book on Ikyu](https://www.ikyu.com/00001261/) · 1h/1 from Hiroshima
 - `ryokan-nishiyama` · Ryokan Nishiyama · B 7.6 · bath unstated · $540–650 · [book on Ikyu](https://www.ikyu.com/00003049/) · 1h/1 from Hiroshima
-- `migiwatei-ochi-kochi` · Migiwatei Ochi Kochi · A 8.5 · bath yes · $470–800 · [book on Ikyu](https://www.ikyu.com/00001673/) · 1h12/1 from Hiroshima
-- `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 1h54/0 from Hiroshima
+- `migiwatei-ochi-kochi` · Migiwatei Ochi Kochi · A 8.5 · bath yes · $470–800 · [book on Ikyu](https://www.ikyu.com/00001673/) · 1h10/1 from Hiroshima
+- `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 1h55/0 from Hiroshima
 - `hotel-ridge` · Hotel Ridge · A 8.3 · bath no · ask · [book on Ikyu](https://www.ikyu.com/00001682/) · no researched leg from this file's cities — look it up live
 - `kohanyu` · Kohanyu · A 8.3 · bath yes · $800–1700 · [book on Ikyu](https://www.ikyu.com/00002663/) · no researched leg from this file's cities — look it up live
 - `minamikan` · Minamikan · A 8.3 · bath yes · ask · no researched leg from this file's cities — look it up live

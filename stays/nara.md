@@ -10,7 +10,7 @@
 - `fufu-nara` · Fufu Nara · B 7.7 · bath yes · $780–1200 · [book on Ikyu](https://www.ikyu.com/00002739/) · in Nara
 - `neold-private-house` · NEOLD Private House · B 7.7 · bath unstated · $560–660 · in Nara
 - `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 45 min/0 from Nara
-- `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h36/2 from Nara
+- `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h35/2 from Nara
 - `auberge-yusura` · Auberge Yusura · B 7.6 · bath yes · $870–1200 · [book on Ikyu](https://www.ikyu.com/00002538/) · 2h/2 from Nara
 - `sanso-amanosato` · Sanso Amanosato editor's pick · A 8.6 · bath no · $650–1000 · [book on Ikyu](https://www.ikyu.com/00002284/) · 2h15/2 from Nara
 

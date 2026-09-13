@@ -6,14 +6,14 @@
 
 ## The inns — 14 within reach
 
-- `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · [book on Ikyu](https://www.ikyu.com/00001145/) · 36 min/0 from Kanazawa
-- `hanamurasaki` · Hanamurasaki · A 8.1 · bath no · $600–1000 · [book on Ikyu](https://www.ikyu.com/00001325/) · 54 min/0 from Kanazawa
-- `kayotei` · Kayotei · B 7.6 · bath some · $700–1100 · 54 min/0 from Kanazawa
+- `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · [book on Ikyu](https://www.ikyu.com/00001145/) · 35 min/0 from Kanazawa
+- `hanamurasaki` · Hanamurasaki · A 8.1 · bath no · $600–1000 · [book on Ikyu](https://www.ikyu.com/00001325/) · 55 min/0 from Kanazawa
+- `kayotei` · Kayotei · B 7.6 · bath some · $700–1100 · 55 min/0 from Kanazawa
 - `kanshuku-en-eshikoto` · Kanshuku-en Eshikoto editor's pick · — · bath unstated · $750–1150 · [book on Ikyu](https://www.ikyu.com/00003286/) · 1h/0 from Kanazawa
 - `fujiiso` · Fujiiso · B 7.7 · bath yes · $480–900 · [book on Ikyu](https://www.ikyu.com/00001534/) · 2h/0 from Kanazawa
-- `shoraiso` · Shoraiso editor's pick · — · bath yes · $730–1100 · [book on Ikyu](https://www.ikyu.com/00003198/) · 2h12/1 from Kanazawa
-- `wanosato` · Wanosato · A 8.3 · bath no · $550–850 · 2h24/0 from Kanazawa
-- `machiyado-ichiryu` · Machiyado Ichiryu · — · bath unstated · $600–950 · [book on Ikyu](https://www.ikyu.com/00003312/) · 2h24/0 from Kanazawa
+- `shoraiso` · Shoraiso editor's pick · — · bath yes · $730–1100 · [book on Ikyu](https://www.ikyu.com/00003198/) · 2h10/1 from Kanazawa
+- `wanosato` · Wanosato · A 8.3 · bath no · $550–850 · 2h25/0 from Kanazawa
+- `machiyado-ichiryu` · Machiyado Ichiryu · — · bath unstated · $600–950 · [book on Ikyu](https://www.ikyu.com/00003312/) · 2h25/0 from Kanazawa
 - `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 2h30/1 from Kanazawa
 - `shogetsu` · Shogetsu · A 8.8 · bath yes · $600–950 · 3h/1 from Kanazawa — _long day; another gateway is closer_
 - `iwanoyu` · Iwanoyu · A 8.3 · bath some · $400–750 · 3h/2 from Kanazawa — _long day; another gateway is closer_

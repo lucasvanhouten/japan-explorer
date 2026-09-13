@@ -11,20 +11,20 @@
 - `fufu-nara` · Fufu Nara · B 7.7 · bath yes · $780–1200 · [book on Ikyu](https://www.ikyu.com/00002739/) · 45 min/0 from Kyoto
 - `neold-private-house` · NEOLD Private House · B 7.7 · bath unstated · $560–660 · 45 min/0 from Kyoto
 - `kyo-yunohana-resort-suisen` · Kyo Yunohana Resort Suisen · B 7.6 · bath yes · ask · 45 min/1 from Kyoto
-- `hanamurasaki` · Hanamurasaki · A 8.1 · bath no · $600–1000 · [book on Ikyu](https://www.ikyu.com/00001325/) · 1h36/1 from Kyoto
-- `kayotei` · Kayotei · B 7.6 · bath some · $700–1100 · 1h36/1 from Kyoto
+- `hanamurasaki` · Hanamurasaki · A 8.1 · bath no · $600–1000 · [book on Ikyu](https://www.ikyu.com/00001325/) · 1h35/1 from Kyoto
+- `kayotei` · Kayotei · B 7.6 · bath some · $700–1100 · 1h35/1 from Kyoto
 - `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h45/2 from Kyoto
 - `kanshuku-en-eshikoto` · Kanshuku-en Eshikoto editor's pick · — · bath unstated · $750–1150 · [book on Ikyu](https://www.ikyu.com/00003286/) · 1h45/1 from Kyoto
 - `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · [book on Ikyu](https://www.ikyu.com/00001145/) · 2h/1 from Kyoto
 - `auberge-yusura` · Auberge Yusura · B 7.6 · bath yes · $870–1200 · [book on Ikyu](https://www.ikyu.com/00002538/) · 2h/1 from Kyoto
-- `migiwatei-ochi-kochi` · Migiwatei Ochi Kochi · A 8.5 · bath yes · $470–800 · [book on Ikyu](https://www.ikyu.com/00001673/) · 2h12/1 from Kyoto
-- `ryokan-nishiyama` · Ryokan Nishiyama · B 7.6 · bath unstated · $540–650 · [book on Ikyu](https://www.ikyu.com/00003049/) · 2h18/1 from Kyoto
+- `migiwatei-ochi-kochi` · Migiwatei Ochi Kochi · A 8.5 · bath yes · $470–800 · [book on Ikyu](https://www.ikyu.com/00001673/) · 2h10/1 from Kyoto
+- `ryokan-nishiyama` · Ryokan Nishiyama · B 7.6 · bath unstated · $540–650 · [book on Ikyu](https://www.ikyu.com/00003049/) · 2h20/1 from Kyoto
 - `nishimuraya-honkan` · Nishimuraya Honkan · A 8.8 · bath no · $700–1000 · [book on Ikyu](https://www.ikyu.com/00000476/) · 2h30/0 from Kyoto
 - `sanso-amanosato` · Sanso Amanosato editor's pick · A 8.6 · bath no · $650–1000 · [book on Ikyu](https://www.ikyu.com/00002284/) · 2h30/2 from Kyoto
 - `taiza-onsen-sumihei` · Taiza Onsen Sumihei · A 8.1 · bath some · $600–900 · [book on Ikyu](https://www.ikyu.com/00001465/) · 2h30/0 from Kyoto
-- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · [book on Ikyu](https://www.ikyu.com/00003331/) · 2h36/0 from Kyoto — _long day; another gateway is closer_
-- `asaba` · Asaba editor's pick · S 9.4 · bath some · $1100–1600 · [book on Ikyu](https://www.ikyu.com/00002155/) · 2h42/0 from Kyoto — _long day; another gateway is closer_
-- `kinsuikan` · Kinsuikan · A 8.1 · bath no · $470–830 · [book on Ikyu](https://www.ikyu.com/00001261/) · 2h42/2 from Kyoto — _long day; another gateway is closer_
+- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · [book on Ikyu](https://www.ikyu.com/00003331/) · 2h35/0 from Kyoto — _long day; another gateway is closer_
+- `asaba` · Asaba editor's pick · S 9.4 · bath some · $1100–1600 · [book on Ikyu](https://www.ikyu.com/00002155/) · 2h40/0 from Kyoto — _long day; another gateway is closer_
+- `kinsuikan` · Kinsuikan · A 8.1 · bath no · $470–830 · [book on Ikyu](https://www.ikyu.com/00001261/) · 2h40/2 from Kyoto — _long day; another gateway is closer_
 - `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · [book on Ikyu](https://www.ikyu.com/00001359/) · 3h/1 from Kyoto — _long day; another gateway is closer_
 - `gora-kadan` · Gora Kadan · B 7.5 · bath some · ask · 3h/1 from Kyoto — _long day; another gateway is closer_
 - `yunotani-senkei` · Yunotani Senkei · B 7.6 · bath no · ask · no researched leg from this file's cities — look it up live

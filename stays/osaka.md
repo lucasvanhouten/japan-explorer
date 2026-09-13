@@ -10,8 +10,8 @@
 - `tsukihitei` · Tsukihitei editor's pick · A 8.1 · bath unstated · $750–950 · [book on Ikyu](https://www.ikyu.com/00001181/) · 1h/0 from Osaka
 - `fufu-nara` · Fufu Nara · B 7.7 · bath yes · $780–1200 · [book on Ikyu](https://www.ikyu.com/00002739/) · 1h/0 from Osaka
 - `neold-private-house` · NEOLD Private House · B 7.7 · bath unstated · $560–660 · 1h/0 from Osaka
-- `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h06/0 from Osaka
-- `sanso-amanosato` · Sanso Amanosato editor's pick · A 8.6 · bath no · $650–1000 · [book on Ikyu](https://www.ikyu.com/00002284/) · 1h24/1 from Osaka
+- `nakanobo-zuien` · Nakanobo Zuien · B 7.9 · bath some · ask · 1h05/0 from Osaka
+- `sanso-amanosato` · Sanso Amanosato editor's pick · A 8.6 · bath no · $650–1000 · [book on Ikyu](https://www.ikyu.com/00002284/) · 1h25/1 from Osaka
 - `kyo-yunohana-resort-suisen` · Kyo Yunohana Resort Suisen · B 7.6 · bath yes · ask · 1h30/2 from Osaka
 - `nishimuraya-honkan` · Nishimuraya Honkan · A 8.8 · bath no · $700–1000 · [book on Ikyu](https://www.ikyu.com/00000476/) · 2h45/0 from Osaka — _long day; another gateway is closer_
 

@@ -8,13 +8,13 @@
 
 - `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · [book on Ikyu](https://www.ikyu.com/00002740/) · in Nikkō
 - `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu editor's pick · A 8.3 · bath some · $570–800 · [book on Ikyu](https://www.ikyu.com/00001149/) · 2h45/1 from Nikkō — _long day; another gateway is closer_
-- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · [book on Ikyu](https://www.ikyu.com/00000604/) · 2h48/2 from Nikkō — _long day; another gateway is closer_
-- `atamiso` · Atamiso · A 8.3 · bath some · $450–800 · [book on Ikyu](https://www.ikyu.com/00002188/) · 2h48/2 from Nikkō — _long day; another gateway is closer_
-- `yamagata-the-takinami` · Yamagata The Takinami · A 8.3 · bath some · $600–900 · [book on Ikyu](https://www.ikyu.com/00002496/) · 2h48/1 from Nikkō — _long day; another gateway is closer_
-- `otogi-no-yado-yoneya` · Otogi no Yado Yoneya · A 8.1 · bath unstated · $350–650 · [book on Ikyu](https://www.ikyu.com/00001344/) · 2h48/2 from Nikkō — _long day; another gateway is closer_
-- `auberge-suzukane` · Auberge Suzukane · A 8.0 · bath unstated · ask · 2h48/2 from Nikkō — _long day; another gateway is closer_
-- `osteria-sincerita` · Osteria Sincerità · B 7.8 · bath unstated · $850–1100 · [book on Ikyu](https://www.ikyu.com/00003078/) · 2h48/1 from Nikkō — _long day; another gateway is closer_
-- `onyado-kawasemi` · Onyado Kawasemi · A 8.3 · bath no · $850–1150 · [book on Ikyu](https://www.ikyu.com/00000292/) · 2h54/2 from Nikkō — _long day; another gateway is closer_
+- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · [book on Ikyu](https://www.ikyu.com/00000604/) · 2h50/2 from Nikkō — _long day; another gateway is closer_
+- `atamiso` · Atamiso · A 8.3 · bath some · $450–800 · [book on Ikyu](https://www.ikyu.com/00002188/) · 2h50/2 from Nikkō — _long day; another gateway is closer_
+- `yamagata-the-takinami` · Yamagata The Takinami · A 8.3 · bath some · $600–900 · [book on Ikyu](https://www.ikyu.com/00002496/) · 2h50/1 from Nikkō — _long day; another gateway is closer_
+- `otogi-no-yado-yoneya` · Otogi no Yado Yoneya · A 8.1 · bath unstated · $350–650 · [book on Ikyu](https://www.ikyu.com/00001344/) · 2h50/2 from Nikkō — _long day; another gateway is closer_
+- `auberge-suzukane` · Auberge Suzukane · A 8.0 · bath unstated · ask · 2h50/2 from Nikkō — _long day; another gateway is closer_
+- `osteria-sincerita` · Osteria Sincerità · B 7.8 · bath unstated · $850–1100 · [book on Ikyu](https://www.ikyu.com/00003078/) · 2h50/1 from Nikkō — _long day; another gateway is closer_
+- `onyado-kawasemi` · Onyado Kawasemi · A 8.3 · bath no · $850–1150 · [book on Ikyu](https://www.ikyu.com/00000292/) · 2h55/2 from Nikkō — _long day; another gateway is closer_
 
 ## City hotels
 

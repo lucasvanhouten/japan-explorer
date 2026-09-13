@@ -146,7 +146,7 @@ for rail, `--verm` for road (bus, car, taxi, ferry), `--dim` and dashed for an a
 Tokyo → Kyoto · shinkansen · 2 hr 45 min · direct          from the tables — plain
 Nikkō → Kyoto · shinkansen · 4 hr 42 min · 2 changes · composed via Tokyo
 Kanazawa → Takayama · bus · ~2 hr 24 min · 1 change · estimated    --warn ink and edge
-Haneda (HND) → Tokyo · train · 36 min · 1 change           dashed edge, an airport leg
+Haneda (HND) → Tokyo · train · 35 min · 1 change           dashed edge, an airport leg
 Takayama → Kanazawa · to confirm                           --warn, out of every total
 ```
 

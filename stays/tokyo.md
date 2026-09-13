@@ -7,7 +7,7 @@
 **Ryokan trips from Tokyo — four, with the travel time to each.**
 
 - **Nikkō** (`tokyo-splitter`), 2h — carved shrines in cedar forest, a lake and a waterfall above it. Out and back, so it splits a long Tokyo stay rather than interrupting the run west.
-- **Hakone and Izu** (`golden-route-stop`), 2h12 to Hakone, 1h45 to the Izu peninsula — the hot-spring belt on the way to Kyoto, so the night costs nothing in travel. You do not see Mt Fuji from Hakone.
+- **Hakone and Izu** (`golden-route-stop`), 2h10 to Hakone, 1h45 to the Izu peninsula — the hot-spring belt on the way to Kyoto, so the night costs nothing in travel. You do not see Mt Fuji from Hakone.
 - **The Fuji lakes** (`fuji-lakes`), 2h — Kawaguchiko and Yamanaka, where the mountain is actually in the window; led by **Gora Kadan Fuji** and **Fufu Kawaguchiko**. Clearest on a cold winter morning, never guaranteed.
 - **The snow country** (`snow-country`), 1h45 / 1h40 direct on the bullet train — Echigo-Yuzawa and Minakami, villages buried to the first floor, outdoor baths in falling snow.
 
@@ -19,25 +19,25 @@
 - `ryugon` · ryugon · A 8.8 · bath some · $520–970 · [book on Ikyu](https://www.ikyu.com/00000631/) · 1h45/0 from Tokyo
 - `satoyama-jujo` · Satoyama Jujo · A 8.3 · bath some · $500–800 · 1h45/0 from Tokyo
 - `otogi-no-yado-yoneya` · Otogi no Yado Yoneya · A 8.1 · bath unstated · $350–650 · [book on Ikyu](https://www.ikyu.com/00001344/) · 1h45/1 from Tokyo
-- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · [book on Ikyu](https://www.ikyu.com/00003331/) · 1h48/0 from Tokyo
+- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · [book on Ikyu](https://www.ikyu.com/00003331/) · 1h50/0 from Tokyo
 - `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · [book on Ikyu](https://www.ikyu.com/00002740/) · 2h/0 from Tokyo
 - `onyado-kawasemi` · Onyado Kawasemi · A 8.3 · bath no · $850–1150 · [book on Ikyu](https://www.ikyu.com/00000292/) · 2h/1 from Tokyo
 - `fufu-kawaguchiko` · Fufu Kawaguchiko editor's pick · B 7.9 · bath yes · $930–1300 · [book on Ikyu](https://www.ikyu.com/00002583/) · 2h/0 from Tokyo
-- `atamiso` · Atamiso · A 8.3 · bath some · $450–800 · [book on Ikyu](https://www.ikyu.com/00002188/) · 2h12/1 from Tokyo
-- `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · [book on Ikyu](https://www.ikyu.com/00001359/) · 2h12/1 from Tokyo
-- `auberge-suzukane` · Auberge Suzukane · A 8.0 · bath unstated · ask · 2h12/1 from Tokyo
-- `arcana-izu` · Arcana Izu · B 7.8 · bath some · $520–1100 · [book on Ikyu](https://www.ikyu.com/00001289/) · 2h12/1 from Tokyo
-- `gora-kadan` · Gora Kadan · B 7.5 · bath some · ask · 2h12/1 from Tokyo
+- `atamiso` · Atamiso · A 8.3 · bath some · $450–800 · [book on Ikyu](https://www.ikyu.com/00002188/) · 2h10/1 from Tokyo
+- `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · [book on Ikyu](https://www.ikyu.com/00001359/) · 2h10/1 from Tokyo
+- `auberge-suzukane` · Auberge Suzukane · A 8.0 · bath unstated · ask · 2h10/1 from Tokyo
+- `arcana-izu` · Arcana Izu · B 7.8 · bath some · $520–1100 · [book on Ikyu](https://www.ikyu.com/00001289/) · 2h10/1 from Tokyo
+- `gora-kadan` · Gora Kadan · B 7.5 · bath some · ask · 2h10/1 from Tokyo
 - `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu editor's pick · A 8.3 · bath some · $570–800 · [book on Ikyu](https://www.ikyu.com/00001149/) · 2h15/0 from Tokyo
-- `fujiiso` · Fujiiso · B 7.7 · bath yes · $480–900 · [book on Ikyu](https://www.ikyu.com/00001534/) · 2h18/0 from Tokyo
+- `fujiiso` · Fujiiso · B 7.7 · bath yes · $480–900 · [book on Ikyu](https://www.ikyu.com/00001534/) · 2h20/0 from Tokyo
 - `iwanoyu` · Iwanoyu · A 8.3 · bath some · $400–750 · 2h30/0 from Tokyo
 - `yamagata-the-takinami` · Yamagata The Takinami · A 8.3 · bath some · $600–900 · [book on Ikyu](https://www.ikyu.com/00002496/) · 2h30/0 from Tokyo
 - `sui-suwako` · Sui Suwako · A 8.1 · bath yes · $450–750 · 2h30/0 from Tokyo
 - `osteria-sincerita` · Osteria Sincerità · B 7.8 · bath unstated · $850–1100 · [book on Ikyu](https://www.ikyu.com/00003078/) · 2h30/0 from Tokyo
-- `shoraiso` · Shoraiso editor's pick · — · bath yes · $730–1100 · [book on Ikyu](https://www.ikyu.com/00003198/) · 2h36/1 from Tokyo — _long day; another gateway is closer_
+- `shoraiso` · Shoraiso editor's pick · — · bath yes · $730–1100 · [book on Ikyu](https://www.ikyu.com/00003198/) · 2h35/1 from Tokyo — _long day; another gateway is closer_
 - `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 2h45/0 from Tokyo — _long day; another gateway is closer_
 - `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · [book on Ikyu](https://www.ikyu.com/00001145/) · 3h/0 from Tokyo — _long day; another gateway is closer_
-- `kansuiro` · Kansuiro · A 8.5 · bath unstated · ask · 3h12/2 from Tokyo — _long day; another gateway is closer_
+- `kansuiro` · Kansuiro · A 8.5 · bath unstated · ask · 3h10/2 from Tokyo — _long day; another gateway is closer_
 - `kinugawa-kanaya-hotel` · Kinugawa Kanaya Hotel · B 7.8 · bath no · ask · no researched leg from this file's cities — look it up live
 - `yunohanaso` · Yunohanaso · B 7.7 · bath yes · ask · no researched leg from this file's cities — look it up live
 

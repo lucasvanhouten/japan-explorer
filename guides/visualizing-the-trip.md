@@ -97,7 +97,7 @@ or on the map.
 ```
 Kanazawa → Takayama · bus · 2 hr 24 min · direct
 Nikkō → Kyoto · shinkansen · 4 hr 42 min · 2 changes
-Haneda (HND) → Tokyo · train · 36 min · 1 change
+Haneda (HND) → Tokyo · train · 35 min · 1 change
 ```
 
 Uppercase mono, hairline above and below, and a **mode-coloured left edge** set by the class after
@@ -118,7 +118,7 @@ collapses and nothing else moves.
 chat, not on the page. Travel totals include the journey in from the arrival airport and out to the
 departure airport. A leg marked **to confirm** is left out of every total, and the total then reads
 `≥ 5 hr 15 min` with a note saying how many legs are missing — never a clean number. Times read as
-words, to the minute, in the template's own form: `36 min`, `2 hr 45 min`, `4 hr 42 min`, `3 hr`.
+words, as the plan prints them (to five minutes), in the template's own form: `35 min`, `2 hr 45 min`, `4 hr 40 min`, `3 hr`.
 **One plan on the page keeps the matrix**, with one value column: put `single` on the section
 (`<section class="mx single">`), which sizes that column to its content beside the labels.
 
@@ -289,7 +289,7 @@ you can tell when an edit would break one.
 - [ ] Each inn has three photographs and they load; the page still reads with images blocked.
 - [ ] The metrics row is complete for every plan, with no blank cells; a single plan keeps the matrix
       with one column, `single` on the section.
-- [ ] Every time on the page is in the template's form — `36 min`, `4 hr 42 min` — to the minute.
+- [ ] Every time on the page is in the template's form — `35 min`, `4 hr 40 min` — as the plan prints it, to five minutes.
 - [ ] There is no `To confirm` block, and no standard follow-up anywhere on the page.
 - [ ] Any watch line sits inside its own leg bar, names a major transit flag, and comes from the
       leg's note in the tables — and there are at most one or two on the whole page.

@@ -6,18 +6,18 @@
 
 ## The inns — 17 within reach
 
-- `onyado-chikurintei` · Onyado Chikurintei · A 8.2 · bath yes · $550–1400 · [book on Ikyu](https://www.ikyu.com/00000735/) · 42 min/0 from Nagasaki
-- `myoken-ishiharaso` · Myoken Ishiharaso editor's pick · S 9.5 · bath yes · $550–900 · [book on Ikyu](https://www.ikyu.com/00000305/) · 54 min/0 from Kagoshima
-- `isshin` · Isshin · B 7.7 · bath yes · ask · 54 min/0 from Kagoshima
+- `onyado-chikurintei` · Onyado Chikurintei · A 8.2 · bath yes · $550–1400 · [book on Ikyu](https://www.ikyu.com/00000735/) · 40 min/0 from Nagasaki
+- `myoken-ishiharaso` · Myoken Ishiharaso editor's pick · S 9.5 · bath yes · $550–900 · [book on Ikyu](https://www.ikyu.com/00000305/) · 55 min/0 from Kagoshima
+- `isshin` · Isshin · B 7.7 · bath yes · ask · 55 min/0 from Kagoshima
 - `sanso-murata` · Sanso Murata editor's pick · S 9.0 · bath yes · $1000–1400 · [book on Ikyu](https://www.ikyu.com/00003248/) · 1h/0 from Beppu
 - `enowa-yufuin` · Enowa Yufuin editor's pick · A 8.4 · bath yes · $950–2000 · [book on Ikyu](https://www.ikyu.com/00002995/) · 1h/0 from Beppu
 - `kamenoi-besso` · Kamenoi Besso editor's pick · — · bath unstated · $760–1500 · [book on Ikyu](https://www.ikyu.com/00002470/) · 1h/0 from Beppu
-- `tayuta` · Tayuta editor's pick · S 9.4 · bath yes · $1200–2700 · [book on Ikyu](https://www.ikyu.com/00003246/) · 1h12/0 from Kumamoto
+- `tayuta` · Tayuta editor's pick · S 9.4 · bath yes · $1200–2700 · [book on Ikyu](https://www.ikyu.com/00003246/) · 1h10/0 from Kumamoto
 - `mt-resort-unzen-kyushu-hotel` · Mt.Resort Unzen Kyushu Hotel · A 8.4 · bath yes · ask · [book on Ikyu](https://www.ikyu.com/00001108/) · 1h15/0 from Nagasaki
 - `yoyokaku` · Yoyokaku · B 7.9 · bath no · $300–550 · [book on Ikyu](https://www.ikyu.com/00001186/) · 1h15/0 from Fukuoka
-- `sanso-tensui` · Sanso Tensui editor's pick · A 8.6 · bath yes · $420–600 · [book on Ikyu](https://www.ikyu.com/00002020/) · 1h42/1 from Kumamoto
-- `takefue` · Takefue editor's pick · S 9.3 · bath yes · $1300–1800 · [book on Ikyu](https://www.ikyu.com/00001491/) · 1h51/0 from Kumamoto
-- `gosho-gekkoju` · Gosho Gekkoju · A 8.5 · bath yes · $900–1400 · [book on Ikyu](https://www.ikyu.com/00002369/) · 1h51/0 from Kumamoto
+- `sanso-tensui` · Sanso Tensui editor's pick · A 8.6 · bath yes · $420–600 · [book on Ikyu](https://www.ikyu.com/00002020/) · 1h40/1 from Kumamoto
+- `takefue` · Takefue editor's pick · S 9.3 · bath yes · $1300–1800 · [book on Ikyu](https://www.ikyu.com/00001491/) · 1h50/0 from Kumamoto
+- `gosho-gekkoju` · Gosho Gekkoju · A 8.5 · bath yes · $900–1400 · [book on Ikyu](https://www.ikyu.com/00002369/) · 1h50/0 from Kumamoto
 - `shinsen` · Shinsen · A 8.9 · bath some · $600–1100 · [book on Ikyu](https://www.ikyu.com/00001608/) · 2h/0 from Kumamoto
 - `kinsuikan` · Kinsuikan · A 8.1 · bath no · $470–830 · [book on Ikyu](https://www.ikyu.com/00001261/) · 2h15/2 from Fukuoka
 - `sankara-hotel-spa-yakushima` · Sankara Hotel & Spa Yakushima · A 8.9 · bath no · $750–1500 · [book on Ikyu](https://www.ikyu.com/00001577/) · 2h30/1 from Kagoshima

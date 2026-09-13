@@ -114,7 +114,7 @@ Those answers fill the `Stay options` column the table left empty: the lean mark
 
 | # | Stop | Dates | Nights | Stay options |
 |---|---|---|---|---|
-| | ↓ in from Haneda (HND) · 36 min · 1 change · train | | | |
+| | ↓ in from Haneda (HND) · 35 min · 1 change · train | | | |
 | 1 | Tokyo · city | Apr 12–17 | 5 | [Hotel Toranomon Hills](https://www.google.com/maps?cid=12819761384697507953) (chosen) · [K5](https://www.google.com/maps?cid=10906498574121315795) |
 | | ↓ 2h45 · 0 changes · shinkansen | | | |
 | 2 | Kyoto · city | Apr 17–22 | 5 | [Sowaka](https://www.google.com/maps?cid=3046628050993449764) (chosen) · [Hotel The Mitsui Kyoto](https://www.google.com/maps?cid=9260278570712509021) |
@@ -132,7 +132,7 @@ mid-April dates; the splurge spent on the inn rather than the hotels.
 
 **To confirm**
 
-1. The arrival transfer, once the flight is booked — the 36 minutes above is Haneda, and Narita is a
+1. The arrival transfer, once the flight is booked — the 35 minutes above is Haneda, and Narita is a
    different and longer journey.
 2. Tsukihitei's dinner sitting, and whether it takes a dietary request.
 3. Both hotels' cancellation terms, before booking anything else.

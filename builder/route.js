@@ -119,7 +119,8 @@ const norm = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toL
 function label(loc) { if (PLACES[loc] && PLACES[loc].label) return PLACES[loc].label; if (LABEL[loc]) return LABEL[loc]; return cap(String(loc)); }
 const short = (loc) => label(loc).replace(/\s*\(.*/, "");
 /* hours print as the tables do — `2h45`, `36 min`; a minute is the unit, half rounds up */
-const hm = (h) => { const t = Math.round(h * 60), H = Math.floor(t / 60), M = t % 60; return H ? `${H}h${M ? String(M).padStart(2, "0") : ""}` : `${M} min`; };
+/* every duration the kit prints rounds to five minutes (owner, 2026-09-13: the rule was only on the Totals line and the menu) */
+const hm = (h) => { let t = Math.round((h * 60) / 5) * 5; if (t === 0 && h > 0) t = 5; const H = Math.floor(t / 60), M = t % 60; return H ? `${H}h${M ? String(M).padStart(2, "0") : ""}` : `${M} min`; };
 const chg = (n) => `${n} change${n === 1 ? "" : "s"}`;
 const roundHalfUp = (x) => Math.floor(x + 0.5);
 
