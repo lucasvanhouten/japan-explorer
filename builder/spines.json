@@ -336,21 +336,6 @@
    ],
    "attach": [
     {
-     "key": "tokyo.nikko",
-     "city": [
-      "tokyo"
-     ],
-     "kind": "inn",
-     "at": "split",
-     "default": 1,
-     "question": "A night at Nikkō?",
-     "desc": "Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay.",
-     "no": "No Nikkō; the Tokyo stay runs unbroken.",
-     "stops": [
-      "nikko"
-     ]
-    },
-    {
      "key": "kyoto.nara",
      "city": [
       "kyoto",
@@ -393,7 +378,27 @@
         "yudanaka"
        ],
        "question_rev": "A ryokan at Yudanaka on the way over the mountains to Tokyo?",
-       "no_rev": "Straight through to Tokyo."
+       "no_rev": "Straight through to Tokyo.",
+       "not_with": [
+        "nikko"
+       ]
+      },
+      {
+       "key": "nikko",
+       "kind": "inn",
+       "default": 1,
+       "question": "A ryokan at Nikkō on the way to Kanazawa, instead of Yudanaka?",
+       "desc": "Carved shrines in cedar forest north of Tokyo; the Kanazawa train is caught at Ōmiya, so it costs no return to Tokyo.",
+       "no": "Not this way; Yudanaka is the night on the way.",
+       "stops": [
+        "nikko"
+       ],
+       "not_with": [
+        "yudanaka"
+       ],
+       "why_not": "one ryokan night on this leg: Nikkō or Yudanaka",
+       "question_rev": "A ryokan at Nikkō on the way to Tokyo, instead of Yudanaka?",
+       "desc_rev": "Carved shrines in cedar forest north of Tokyo, reached from Ōmiya on the way in."
       }
      ]
     },

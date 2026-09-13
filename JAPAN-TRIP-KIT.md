@@ -233,7 +233,7 @@ Next    Stage 3 — choose the spine those places sit on, then walk its decision
 - **A card covering several places carries `places:`**, the same line per place; the card's range is the area total.
 - **`spines:` names the routes that carry the place** — for Stage 3; here it shows which cards chain together. A place on no spine is said so in a clause.
 - **`base:` says how a place is stayed in** — `yes` for a city you build nights around, `inn town` for a place whose stay is the inn, one night and rarely two, `onsen town` where the town is the draw, `day trip` for somewhere seen from a nearby base. **An `inn town` is never a day trip** unless its line says `minimum 0`; only a `day trip` card resists becoming a stop.
-- **Nikkō and Hakone/Fuji/Izu are both on the first-trip set**, and on The Classic and Stretched West they are two yes/no answers in Stage 3, not a choice between them; The Kanazawa Loop and Snow Country ask about Nikkō alone — say so in a clause, and give each its time from Tokyo inside its own card sentence ("two hours north, out and back, so it splits the Tokyo stay"; "two hours west, on the way to Kyoto"). **The table below is reference for you; never paste it.**
+- **Nikkō and Hakone/Fuji/Izu are both on the first-trip set**, and on The Classic and Stretched West they are two yes/no answers in Stage 3, not a choice between them; Snow Country asks about Nikkō alone, and on the Kanazawa Loop Nikkō is the mountain-leg night instead of Yudanaka — say so in a clause, and give each its time from Tokyo inside its own card sentence ("two hours north, out and back, so it splits the Tokyo stay"; "two hours west, on the way to Kyoto"). **The table below is reference for you; never paste it.**
 - **The kinds of stay** only when a stay decision is near, **"what a ryokan is"** only when an inn night is on the table, **their month** from the season table, the rest on request.
 
 **The four trips out of Tokyo, with their times** — the figures behind those two card sentences. For you, not for them.
@@ -733,13 +733,13 @@ Tokyo, Kanazawa, a ryokan or two, then onward or back. Over the mountains instea
 
 | Where | Decision | Options (chosen in bold) |
 |---|---|---|
-| **Tokyo** | 1 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **Tokyo → Kanazawa** | 2 · RYOKAN · A ryokan at Yudanaka on the way over the mountains? `tokyo-kanazawa.yudanaka` | **1 Yes** — A hot-spring valley in Nagano where the snow monkeys bathe, on the way over the mountains. · 2 No — Straight through to Kanazawa. |
-| **Kanazawa → Kyoto** | 3 · RYOKAN · A ryokan in the Kaga towns after Kanazawa? — Yes is on by default from 13 nights, and can be chosen on a shorter trip `kanazawa-onward.kaga` | 1 Yes — The hot-spring towns an hour down the coast from Kanazawa. · **2 No** — Straight on from Kanazawa. |
-|  | 4 · STOP · A stop at Takayama on the way? `kanazawa-onward.takayama` | 1 Yes — A preserved timber merchant town in the mountains, on the way. · **2 No** — Direct to the next city. |
-| **Kyoto** | 5 · CITY · Which city next? `next` | **1 Kyoto** — On to Kyoto, then Kansai airport. · 2 Osaka — Straight to Osaka for eating and going out, then Kansai airport. · 3 Kyoto and Osaka — Kyoto, then Osaka, then Kansai airport. · 4 Back to Tokyo — Loop back over the mountains for a Haneda flight. |
-|  | 6 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
-| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Kansai or Haneda, whichever the route reaches. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. |
+| **Tokyo → Kanazawa** | 1 · RYOKAN · A ryokan at Yudanaka on the way over the mountains? `tokyo-kanazawa.yudanaka` | **1 Yes** — A hot-spring valley in Nagano where the snow monkeys bathe, on the way over the mountains. · 2 No — Straight through to Kanazawa. |
+|  | A ryokan at Nikkō on the way to Kanazawa, instead of Yudanaka? | _Yes: not offered here — one ryokan night on this leg: Nikkō or Yudanaka_ |
+| **Kanazawa → Kyoto** | 2 · RYOKAN · A ryokan in the Kaga towns after Kanazawa? — Yes is on by default from 13 nights, and can be chosen on a shorter trip `kanazawa-onward.kaga` | 1 Yes — The hot-spring towns an hour down the coast from Kanazawa. · **2 No** — Straight on from Kanazawa. |
+|  | 3 · STOP · A stop at Takayama on the way? `kanazawa-onward.takayama` | 1 Yes — A preserved timber merchant town in the mountains, on the way. · **2 No** — Direct to the next city. |
+| **Kyoto** | 4 · CITY · Which city next? `next` | **1 Kyoto** — On to Kyoto, then Kansai airport. · 2 Osaka — Straight to Osaka for eating and going out, then Kansai airport. · 3 Kyoto and Osaka — Kyoto, then Osaka, then Kansai airport. · 4 Back to Tokyo — Loop back over the mountains for a Haneda flight. |
+|  | 5 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
+| **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from the last city** — Kansai or Haneda, whichever the route reaches. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. |
 
 **The Kanazawa Loop** · 11 nights · 4 check-ins · 9h25 of travel · 51 min per night · in Haneda (HND), out Kansai (KIX) · band 9–16
 

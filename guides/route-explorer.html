@@ -414,10 +414,9 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
  /* the nights a row opens on: its usual count, and for a place stayed at twice the split the assembler chose */
  const base=r=>cnt[r.loc]>1?r.def:usualNights(r.loc);
  const hardLo=r=>cnt[r.loc]>1?1:Math.max(1,q(r.loc)[1]);
- const wide=r=>{const b=bandOf(r.loc);return b[1]-b[0];};
  /* the spread is over the defaults alone, so a stepper the reader presses still moves the total by exactly that much;
-  * the cities take the difference first, the smaller places only if the cities run out of usual room */
- const ord=a=>a.sort((x,y)=>wide(y)-wide(x)||rows.indexOf(x)-rows.indexOf(y));
+  * the cities take the difference first, the smaller places only if the cities run out of usual room. Trip order is
+  * the order they are read in: the rule below chooses between them by the nights they hold, not by the width of a band */
  /* the last resort: the range the steppers themselves allow. A route whose usual counts cannot add up to the
   * settled nights still lands on them — the row that went outside its usual count says so beside its stepper */
  const reach=r=>({lo:hardLo(r),hi:stepMax(r.loc)});
@@ -429,14 +428,29 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
  /* a night the reader set by hand is theirs: the spread works around it rather than over it */
  const held=r=>nightsOv[r.key]!=null;
  const open=fresh?rows.filter(r=>!held(r)):[];
- const cities=ord(open.filter(r=>BASE.has(r.loc))),rest=ord(open.filter(r=>!BASE.has(r.loc)));
- let diff=target-rows.reduce((a,r)=>a+(held(r)?nightsOv[r.key]:r.def),0);
- [[cities,room],[cities.concat(rest),room],[cities.concat(rest),reach]].forEach(([pool,bnd])=>{
-  for(let guard=0;diff!==0&&guard<120;guard++){let moved=false;
-   for(const r of pool){if(diff===0)break;const rm=bnd(r);
-    if(diff>0&&r.def<rm.hi){r.def++;diff--;moved=true;}
-    else if(diff<0&&r.def>rm.lo){r.def--;diff++;moved=true;}}
-   if(!moved)break;}});
+ const cities=open.filter(r=>BASE.has(r.loc)),rest=open.filter(r=>!BASE.has(r.loc));
+ /* the nights a row is holding right now, and what a place holds across the whole stay — a city split around an
+  * out-and-back night (Tokyo 3 + Nikko + Tokyo 3) is read as one stay of six, not as two of three */
+ const val=r=>held(r)?nightsOv[r.key]:r.def;
+ const locTot=l=>rows.reduce((a,r)=>a+(r.loc===l?val(r):0),0);
+ const surplus=r=>locTot(r.loc)-bandOf(r.loc)[0];
+ const deficit=r=>bandOf(r.loc)[1]-locTot(r.loc);
+ let diff=target-rows.reduce((a,r)=>a+val(r),0);
+ /* fewer nights than the places hold: the place sitting furthest above its usual low gives one up first, later in the
+  * trip on a tie — so Tokyo is never cut below its usual while another city is still above its own, and a split city
+  * gives the night from its later visit. Only when nothing is above its usual does it go in reverse trip order.
+  * More nights: the place furthest below its usual top takes one first, earlier in the trip on a tie (owner, 2026-09-12) */
+ const spread=(pool,bnd)=>{for(let guard=0;diff!==0&&guard<200;guard++){
+  let pick=null,fall=null,best=0;
+  for(const r of pool){const rm=bnd(r);
+   if(diff<0){if(r.def<=rm.lo)continue;fall=r;
+    const s=surplus(r);if(s>0&&s>=best){best=s;pick=r;}}
+   else{if(r.def>=rm.hi)continue;
+    const d=deficit(r);if(!pick||d>best){best=d;pick=r;}}}
+  if(diff<0&&!pick)pick=fall;
+  if(!pick)break;
+  if(diff<0){pick.def--;diff++;}else{pick.def++;diff--;}}};
+ [[cities,room],[cities.concat(rest),room],[cities.concat(rest),reach]].forEach(([pool,bnd])=>spread(pool,bnd));
  rows.forEach(r=>{pin[r.key]=r.def;r.n=nightsOv[r.key]!=null?nightsOv[r.key]:r.def;});
  /* what the usual counts cannot absorb is reported as it stands: the summary flags it and the line below says what to do */
  rows.short=diff;
