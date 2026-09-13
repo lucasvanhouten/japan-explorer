@@ -65,7 +65,7 @@ Next    Stage 5 — make the route work
 
 ### The Why cell is yours; the facts are the kit's
 
-Every inn and hotel carries a hand-researched write-up, printed in full by the tool: your source, not the cell. **Write `Why` in your own words for this couple** — two or three sentences on what would make the night special for *them*, tied to their `Taste:` and `Draws:` lines; the key features (the bath and whether it is in the room, the kitchen, the setting, the size); and its real reservations — a noisy dining room, a blocked view, a bath only in the top rooms — said plainly. **Every fact comes from the write-up or the inn's page; nothing is invented.**
+Every inn and hotel carries a hand-researched write-up, printed in full by the tool: your source, not the cell. **Write `Why` in your own words for this couple** — two-thirds what makes it special and why they would pick it, a reservation or two at the end — — two or three sentences on what would make the night special for *them*, tied to their `Taste:` and `Draws:` lines; the key features (the bath and whether it is in the room, the kitchen, the setting, the size); and its real reservations — a noisy dining room, a blocked view, a bath only in the top rooms — said plainly. **Every fact comes from the write-up or the inn's page; nothing is invented.**
 
 Gora Kadan Fuji, for a couple on their first ryokan night: *"The gentlest way in: a hotel-ryokan hybrid with Fuji in front of you, a pool, three dining rooms and nothing about the form to be nervous about. Book an Open-air Bath Suite or above for spring water in the room, and the sushi or teppanyaki counter over the kaiseki."*
 

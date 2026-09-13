@@ -93,6 +93,9 @@ const HUBS = ["tokyo", "sendai", "kanazawa", "takayama", "kyoto", "nara", "osaka
 const DENSITY_MAX = 60;        // minutes of travel per night — the kit's flag
 const TICKET_FLIGHT_MAX = 3;   // domestic flights a booked ticket may force before the menu row stops printing a figure
 const FLIGHT_CAP_H = 3;        // a domestic flight leg counts at most this much in the per-night figure
+const CHECKIN_H = 0.5;         // stated bag-drop-and-security allowance on any flown airport leg (owner, 2026-09-13)
+const NEAR_MODE_H = 1 / 3;     // within twenty minutes the two modes are a wash; the easier one wins
+const r5h = (h) => Math.round(h * 12) / 12;   // the two modes are compared on the figures the reader is shown, to five minutes
 /* lat/lng for the city locs no inn sits in (inn locs average their inns' SYNTH geo) */
 const CITY_GEO = { tokyo: [35.681, 139.767], kyoto: [34.985, 135.758], osaka: [34.702, 135.495], nagoya: [35.171, 136.882],
   okayama: [34.666, 133.918], hiroshima: [34.397, 132.475], fukuoka: [33.590, 130.420], nagasaki: [32.752, 129.871],
@@ -282,14 +285,21 @@ function airportLeg(loc, code) {
     const fl = researchedDirect(apKey(A), lc); if (!fl || !fl.flight) return;
     cands.push({ h: t1.t[0] + fl.t[0], x: t1.t[1] + fl.t[1] + 1, flightH: fl.t[0], mode: "flight",
       source: `composed via ${AIRPORT[A].label}`, via: [A], text: `${t1.text} Then ${fl.text}`, halves: [{ h: t1.t[0], x: t1.t[1], mode: t1.mode, what: `${short(loc)} → ${AIRPORT[A].label}` }, { h: fl.t[0], x: fl.t[1], mode: "flight", what: `${AIRPORT[A].label} → ${ap.label}` }] }); });
-  /* the shortest TRUE door-to-door time wins, flights included, fewer changes breaking a tie (owner, 2026-09-13).
-   * There is no ranking penalty on a flight: the old 1h30 "airport time" made a 2h45 hop lose to a 3h50 train, which
-   * is not the trip anyone would actually take. The runner-up by the other mode rides along for the Checks. */
-  cands.sort((p, q) => p.h - q.h || p.x - q.x);
-  const best = cands[0];
-  if (!best) return { h: null, x: null, flightH: 0, mode: "—", source: "to confirm", text: "no airport leg in the tables", estimated: true };
+  /* the shortest TRUE door-to-door time wins, flights included — but flying costs half an hour at the desk before the
+   * gate, and that is STATED and counted, never hidden as a ranking penalty (owner, 2026-09-13). The flight rows
+   * already carry about twenty minutes of ground padding; the check-in allowance is the rest of what the day costs.
+   * Where the two modes land within twenty minutes of each other the easier one wins — fewer changes, and the ground
+   * unless flying saves two changes or more — because a quarter hour is not worth a bag drop, and one change is not
+   * either. The runner-up by the other mode rides along for the Checks. */
   const flighty = (c) => !!(c.flightH || c.mode === "flight");
-  best.alt = cands.slice(1).find((c) => flighty(c) !== flighty(best)) || null;
+  cands.forEach((c) => { if (flighty(c)) { c.h += CHECKIN_H; c.checkin = CHECKIN_H; } });
+  cands.sort((p, q) => p.h - q.h || p.x - q.x);
+  const bestG = cands.find((c) => !flighty(c)), bestF = cands.find(flighty);
+  const best = bestG && bestF
+    ? (Math.abs(r5h(bestF.h) - r5h(bestG.h)) <= NEAR_MODE_H + 1e-9 ? (bestF.x <= bestG.x - 2 ? bestF : bestG) : (bestF.h < bestG.h ? bestF : bestG))
+    : bestG || bestF;
+  if (!best) return { h: null, x: null, flightH: 0, mode: "—", source: "to confirm", text: "no airport leg in the tables", estimated: true };
+  best.alt = (best === bestF ? bestG : bestF) || null;
   return best;
 }
 /* "connects to Haneda": the tables hold the airport's own flight to HND */
@@ -406,7 +416,7 @@ function checks(stops, legs, t, opt) {
   }
   if (opt.out && !opt.outDefault) { const chosen = legs[legs.length - 1]; const best = airportsRanked(stops[stops.length - 1].loc, !!AIRPORT[opt.out].intl)[0];
     if (chosen.estimated) V(`no researched leg reaches ${AIRPORT[opt.out].label} from ${label(stops[stops.length - 1].loc)} — look it up on a timetable.`);
-    else if (chosen.halves) N(`the ticket home leaves from ${AIRPORT[opt.out].label}: ${label(stops[stops.length - 1].loc)} reaches it by a domestic flight, both halves in the table (${chosen.halves.map((h) => `${h.what} ${hm(h.h)}`).join(", ")})${chosen.alt && chosen.alt.h != null ? ` — or ${hm5(chosen.alt.h)} by ${modeWord(chosen.alt.mode)}${/via /.test(String(chosen.alt.source)) ? ` ${chosen.alt.source.replace(/^composed /, "")}` : ""}` : ""}.`);
+    else if (chosen.halves) N(`the ticket home leaves from ${AIRPORT[opt.out].label}: ${label(stops[stops.length - 1].loc)} reaches it by a domestic flight, both halves in the table (${chosen.halves.map((h) => `${h.what} ${hm(h.h)}`).join(", ")}${chosen.checkin ? `, plus ${hm5(chosen.checkin)} check-in` : ""})${chosen.alt && chosen.alt.h != null ? ` — or ${hm5(chosen.alt.h)} by ${modeWord(chosen.alt.mode)}${/via /.test(String(chosen.alt.source)) ? ` ${chosen.alt.source.replace(/^composed /, "")}` : ""}` : ""}.`);
     else if (best && best.code !== opt.out && best.leg.h + 0.25 < chosen.h) F(`exit via ${AIRPORT[opt.out].label} is ${hm(chosen.h)} from ${label(stops[stops.length - 1].loc)}; ${best.label} (${best.cls}) is nearer at ${hm(best.leg.h)} — a fixed ticket settles it, say what it costs.`); }
   if (opt.in && !opt.inDefault) { const chosen = legs[0]; const best = airportsRanked(stops[0].loc, !!AIRPORT[opt.in].intl)[0];
     if (chosen.estimated) V(`no researched leg reaches ${label(stops[0].loc)} from ${AIRPORT[opt.in].label} — look it up on a timetable.`);
@@ -428,7 +438,7 @@ const mark = (c) => (c.level === "violation" ? "**!**" : c.level === "flag" ? "*
 const legBody = (l) => (l.estimated ? "to confirm" : `${hm(l.h)} · ${l.x ? chg(l.x) : "direct"} · ${modeShown(l.mode)}${l.source === "table" ? "" : ` · ${l.source}`}`);
 /* a composed airport leg prints both halves, in the direction travelled (an arrival reads airport → town) */
 const halfWhat = (h, back) => (back ? h.what.split(" → ").reverse().join(" → ") : h.what);
-const halvesTxt = (l) => (l.halves ? ` (${(l.kind === "in" ? l.halves.slice().reverse() : l.halves).map((h) => `${halfWhat(h, l.kind === "in")} ${hm(h.h)} · ${h.x ? chg(h.x) : "direct"} · ${modeShown(h.mode)}`).join("; ")})` : "");
+const halvesTxt = (l) => (l.halves ? ` (${(l.kind === "in" ? l.halves.slice().reverse() : l.halves).map((h) => `${halfWhat(h, l.kind === "in")} ${hm(h.h)} · ${h.x ? chg(h.x) : "direct"} · ${modeShown(h.mode)}`).join("; ")}${l.checkin ? `; plus ${hm5(l.checkin)} check-in` : ""})` : "");
 function legCell(l) { const pre = l.kind === "in" ? `in from ${AIRPORT[l.code].label} · ` : l.kind === "out" ? `out to ${AIRPORT[l.code].label} · ` : "";
   return `↓ ${pre}${legBody(l)}${halvesTxt(l)}`; }
 const nightsCell = (st) => `${st.nights}${st.roomOnly ? " · room only" : ""}`;
@@ -1335,7 +1345,7 @@ function endExit(o, out) {
   if (!L || L.h == null) return ` (with your ${apLabel(out)} ticket the last day runs to ${apShort(out)}, time to confirm)`;
   /* the clause says the path the engine actually priced — "1h30 to Kansai and a flight", not a rail figure it rejected */
   const via = (L.halves || [])[0];
-  if (L.flightH && via && (L.via || [])[0]) return ` (with your ${apLabel(out)} ticket the last day is ${hm5(via.h)} to ${apShort(L.via[0])} and a ${hm5(L.flightH)} flight, ${hm5(L.h)} in all)`;
+  if (L.flightH && via && (L.via || [])[0]) return ` (with your ${apLabel(out)} ticket the last day is ${hm5(via.h)} to ${apShort(L.via[0])}${L.checkin ? `, ${hm5(L.checkin)} check-in` : ""} and a ${hm5(L.flightH)} flight, ${hm5(L.h)} in all)`;
   return ` (with your ${apLabel(out)} ticket the last day is ${hm5(L.h)} to ${apShort(out)}${L.x == null ? "" : `, ${L.x} change${L.x === 1 ? "" : "s"}`})`;
 }
 const optCell = (d, i, chosen, rev, opt) => d.options.map((o, j) => { let w = optWord(o, rev && !d.options.some((x) => x.reverse));   // a "which way round" decision keeps its own wording
