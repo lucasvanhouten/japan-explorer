@@ -14,8 +14,6 @@ body{background:var(--paper);color:var(--prose);font-family:var(--sans);font-siz
 h1{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin:0 0 .7rem}
 h1 .jp{font-family:var(--jp);font-weight:400;color:var(--verm);margin-right:.5rem}
 .lede{max-width:68ch;margin:0 0 1.4rem;color:var(--ink2)}
-h2{font-size:1.15rem;font-weight:800;letter-spacing:-.015em;color:var(--ink);margin:0 0 .15rem}
-p.why{max-width:80ch;font-size:.84rem;line-height:1.45;color:var(--ink2);margin:0 0 .1rem}p.why b{color:var(--ink)}
 .prompt{font-size:.86rem;color:var(--ink2);margin:.2rem 0 1rem}.prompt b{color:var(--ink)}
 /* tabs */
 .tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .9rem}
@@ -71,6 +69,8 @@ svg.jm tspan.x{font-weight:800}
 /* preferences strip — labelled fields, no separators */
 .pfl{font-size:.6rem;color:var(--dim);display:block;margin:0 0 .3rem}
 .pfv{display:flex;align-items:center;min-height:1.7rem;font-size:.82rem;font-weight:700;color:var(--ink)}
+/* a figure is never set in sans: the two counted values take the face the stepper's own figure is set in */
+.pfv.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .pfv b{font-weight:700}
 .pfc{display:block;font-size:.72rem;color:var(--dim);margin:.25rem 0 0}
 .pfv.over,.pfc.over{color:var(--verm)}
@@ -140,9 +140,14 @@ svg.jm tspan.x{font-weight:800}
 .row.ghost .no{color:var(--dim)}
 .row.ghost .nmt{font-size:.88rem;font-weight:600;color:var(--ink2)}
 .row.ghost .kindtag{color:var(--dim)}
-/* not yet on the route: the line stays beside the name while it fits and drops to a second line when it does not —
-   it is never cut (owner, 2026-09-12) */
-.row.ghost .d{flex:1 1 auto;margin:0;color:var(--ink2)}
+/* not yet on the route: name, kind and the line are one flowing block — the line starts on the name's own line and
+   wraps under it when it runs out of width. It is never cut (owner, 2026-09-12) */
+.row.ghost .nm{display:block}
+.row.ghost .nmt,.row.ghost .kindtag,.row.ghost .d{display:inline}
+.row.ghost .nmt{margin-right:.34rem}
+.row.ghost .kindtag{margin-right:.4rem}
+.row.ghost .gl{margin-right:.34rem}
+.row.ghost .d{margin:0;color:var(--ink2)}
 .row.ghost:hover .nmt{color:var(--ink)}
 .row.ghost.c:hover{border-left-color:var(--dc)}
 .row.ghost.i:hover{border-left-color:var(--verm)}
@@ -175,14 +180,16 @@ svg.jm tspan.x{font-weight:800}
 .pf{min-width:0}
 .pfv{white-space:nowrap}
 .nn.tgt{padding-top:0}
-p.startl{max-width:80ch;font-size:.84rem;line-height:1.45;color:var(--ink2);margin:0 0 .7rem}
-p.startl b{color:var(--ink);font-weight:700}
-p.startl .s{color:var(--dim);padding:0 .45rem}
-button.alt{font:inherit;font-size:.84rem;color:var(--dc);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
-button.alt.on{color:var(--ink);font-weight:700;text-decoration-thickness:2px}
-button.alt:hover:enabled{color:var(--ink)}
-button.alt:disabled{color:var(--dim);text-decoration:none;cursor:default}
-button.alt:focus-visible{outline:2px solid var(--dc);outline-offset:2px}
+/* a field whose value is a choice: set in the same type as every other value, square, no browser chrome —
+   the caret is the affordance, and it is the only thing that marks it as one */
+.pfsel{position:relative;display:inline-flex;align-items:center}
+.pfsel select{font:inherit;font-family:var(--sans);font-size:.82rem;font-weight:700;line-height:1.4;color:var(--ink);
+ background:var(--panel);border:1px solid var(--hair2);border-radius:2px;padding:.16rem 1.4rem .16rem .42rem;
+ -webkit-appearance:none;appearance:none;cursor:pointer;max-width:100%}
+.pfsel select:hover{border-color:var(--ink)}
+.pfsel select:focus-visible{outline:2px solid var(--dc);outline-offset:2px}
+.pfsel::after{content:"";position:absolute;right:.5rem;top:50%;width:.32rem;height:.32rem;
+ border:solid var(--ink2);border-width:0 1.5px 1.5px 0;transform:translateY(-70%) rotate(45deg);pointer-events:none}
 @media (max-width:600px){.pfs{flex-direction:column;align-items:stretch}}
 </style>
 <div class="wrap">
@@ -882,6 +889,16 @@ function fitMaps(){document.querySelectorAll("svg.jm").forEach(sv=>{
  sv.querySelectorAll("circle.hit").forEach(c=>c.setAttribute("r",r));});}
 
 /* ---------- preferences and constraints: the only controls outside the list and the map ---------- */
+/* a choice set in a field: every option visible in the list, and an option the route cannot take says why in its own
+ * words rather than hiding the reason behind a hover */
+function choiceHtml(T,d,labelOf,aria){const ch=T.R.ch[d.key];
+ const opts=d.options.map((o,j)=>{const na=j===ch?null:T.R.na[d.key+"/"+j];
+  return `<option value="${j}"${j===ch?" selected":""}${na?" disabled":""}>`
+   +esc(labelOf(o,j))+(na?` — ${esc(plainly(na))}`:"")+`</option>`;}).join("");
+ /* the field is sized off the longest label, never off the longest reason: an option the route cannot take carries
+  * its reason in the open list, where there is room for it, and the row stays a row of fields */
+ const w=Math.max(...d.options.map((o,j)=>labelOf(o,j).length));
+ return `<span class="pfsel"><select data-sel="${esc(d.key)}" aria-label="${esc(aria)}" style="width:calc(${w}ch + 1.9rem)">${opts}</select></span>`;}
 function barHtml(T,sp){const F=[];
  const fld=(lab,val,cap)=>`<div class="pf"><span class="pfl">${lab}</span><span class="pfv">${val}</span>${cap?`<span class="pfc">${cap}</span>`:""}</div>`;
  /* the stepper is the row stepper, exactly: same buttons, same figure, no unit word — the label already says nights */
@@ -890,26 +907,20 @@ function barHtml(T,sp){const F=[];
   +`<span class="n">${target}</span>`
   +`<button data-tgt="1"${target>=40?" disabled":""} aria-label="One night more">+</button></span>`,
   `runs ${sp.band.join("–")}`));
+ /* where the trip starts, and which way round it runs, are route decisions — they sit in the row as fields like the
+  * rest, not as a line of their own. Where the reverse IS one of the start options it stays in Start under its own
+  * name: one choice, one field. A route with neither keeps neither field */
+ const sd=startDec(sp),dd=dirDec(sp);
+ if(sd)F.push(fld("Start",choiceHtml(T,sd,o=>o.label,sd.question||"Where does the trip start?")));
+ if(dd&&(!sd||dd.key!==sd.key))
+  F.push(fld("Direction",choiceHtml(T,dd,o=>o.label||(o.reverse?"The other way round":"As drawn"),dd.question||"Which way round?")));
  const over=T.total-target,tone=over>0?"over":over<0?"under":"";
  const flag=over>0?`${over} too many`:over<0?`${-over} too few`:"";
- F.push(`<div class="pf"><span class="pfl">Nights on the route</span><span class="pfv${tone?" "+tone:""}">${T.total}</span>${flag?`<span class="pfc ${tone}">${esc(flag)}</span>`:""}</div>`);
- F.push(`<div class="pf"><span class="pfl">Travel</span><span class="pfv">${hmS(T.mins)}</span>${T.unk?`<span class="pfc">+ ${T.unk} to confirm</span>`:""}</div>`);
+ F.push(`<div class="pf"><span class="pfl">Nights on the route</span><span class="pfv num${tone?" "+tone:""}">${T.total}</span>${flag?`<span class="pfc ${tone}">${esc(flag)}</span>`:""}</div>`);
+ F.push(`<div class="pf"><span class="pfl">Travel</span><span class="pfv num">${hmS(T.mins)}</span>${T.unk?`<span class="pfc">+ ${T.unk} to confirm</span>`:""}</div>`);
  F.push(fld("Arrive",esc(apName(T.apIn)),""));
  F.push(fld("Depart",esc(apName(T.apOut)),""));
  return `<div class="chat"><div class="pfs">`+F.join("")+`</div></div>`;}
-/* where the trip starts is a route decision, not a preference: it reads as a line under the blurb, the other options
- * links — and running it the other way round is the last of them, on the routes that have a reverse */
-function startLine(T,sp){const d=startDec(sp);if(!d)return "";
- const dd=dirDec(sp),ri=dd?revIdx(dd):-1,same=!!dd&&dd.key===d.key;
- const ch=T.R.ch[d.key];
- /* when the reverse IS one of the start options, it leaves the list and comes back as the link at the end — the
-  * reader should meet it once, in the words they think in, not twice */
- const parts=d.options.map((o,j)=>{if(same&&j===ri)return null;const na=T.R.na[d.key+"/"+j];
-  return j===ch?`<b>${esc(o.label)}</b>`
-   :`<button class="alt" data-sw="${esc(d.key)}" data-j="${j}"${na?` disabled title="${esc(plainly(na))}"`:""}>${esc(o.label)}</button>`;}).filter(Boolean);
- if(dd){const on=T.R.ch[dd.key]===ri,back=dd.options.findIndex(o=>!o.reverse),na=on?null:T.R.na[dd.key+"/"+ri];
-  parts.push(`<button class="alt${on?" on":""}" data-sw="${esc(dd.key)}" data-j="${on?back:ri}"${na?` disabled title="${esc(plainly(na))}"`:""}>the other way round</button>`);}
- return `<p class="startl">Start: `+parts.join(`<span class="s">·</span>`)+`</p>`;}
 /* the one bar control the list itself does not own: the target nights */
 document.addEventListener("click",e=>{const t=e.target.closest?e.target.closest("[data-tgt]"):null;
  if(!t||t.disabled)return;
@@ -940,10 +951,9 @@ function pageHtml(sp){
  /* a link that could mean two routes picks neither: the tabs stand open and the page says so in a line */
  if(!sp)return tabsHtml(null)+`<p class="prompt">Which route? <b>${esc(ask||"")}</b> matches more than one of them — pick one above.</p>`;
  const T=trip(sp);
- const chosen=T.ds.map(d=>d.options[T.R.ch[d.key]]).filter(Boolean);
- const line=plainly(chosen.map(o=>o.line).filter(Boolean)[0]||`${sp.blurb?sp.blurb+" ":""}${sp.line}`);
+ /* no prose about the route: the selected tab names it, the row and the list say what it is. The chat does the
+  * describing (owner, 2026-09-12) */
  return tabsHtml(sp)
- +`<h2>${esc(sp.name)}</h2><p class="why">${esc(line)}</p>`+startLine(T,sp)
  +`<div class="core">${barHtml(T,sp)}<div class="tl"><div class="pairF">${mapCtl(T,sp)}${itinHtml(T,sp)}</div></div>${giveHtml(T)}</div>`;}
 
 const app=document.getElementById("app");
@@ -998,7 +1008,16 @@ function fallback(t,done){const a=document.createElement("textarea");a.value=t;a
 app.addEventListener("keydown",e=>{if(e.key!=="Enter"&&e.key!==" ")return;
  const t=e.target;if(!t||!t.getAttribute||t.getAttribute("role")!=="button")return;
  e.preventDefault();act(t);});
-app.addEventListener("change",e=>{if(e.target.id!=="nights")return;
+/* a field whose value is a choice rewrites the route the moment it changes — and the ticket with it, since the two
+ * airports move with the route (the same patch the old links applied) */
+app.addEventListener("change",e=>{const sl=e.target.closest?e.target.closest("[data-sel]"):null;
+ if(sl){if(!cur)return;const d=decs(cur).find(x=>x.key===sl.dataset.sel);if(!d)return;
+  sel[cur.id+"/"+d.key]=+sl.value;
+  const ap=airportsOf(cur,stopsOf(cur));
+  const patch={in:ap[0]&&ap[0]!=="—"?ap[0]:"",out:ap[1]&&ap[1]!=="—"?ap[1]:""};
+  if(isStart(d))patch.start=sl.value;else patch.reverse=d.options[+sl.value].reverse?"1":"";
+  keepHash(patch);return;}
+ if(e.target.id!=="nights")return;
  const v=parseInt(e.target.value,10);
  /* a new total is a new fit: the figures the page was holding are let go, the answers are kept */
  Object.keys(nightsOv).forEach(k=>{if(cur&&k.indexOf(cur.id+"/")===0)delete nightsOv[k];});

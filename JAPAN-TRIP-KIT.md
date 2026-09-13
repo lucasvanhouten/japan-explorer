@@ -709,8 +709,7 @@ Tokyo, Kyoto or Osaka, a ryokan or two. The first trip. Tokyo, a ryokan on the r
 | **Tokyo → Kyoto** | 3 · RYOKAN · A ryokan near Mount Fuji on the way west? `tokyo-kansai.fuji` | **1 Yes** — Hakone, the Fuji lakes or Izu: two hours from Tokyo, on the way west. · 2 No — Straight through to Kansai. |
 | **Kyoto** | 4 · CITY · Which Kansai city? `kansai` | **1 Kyoto** — Temples, gardens and the old capital. · 2 Osaka — Osaka only; Kyoto as a day out or skipped. · 3 Kyoto and Osaka — Kyoto first, then Osaka for eating and going out. |
 |  | 5 · STOP · A night at Nara? — Yes is on by default from 12 nights, and can be chosen on a shorter trip `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
-| **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from Kansai** — Out through Kansai airport. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport. · 3 Kinosaki — The Japan Sea hot-spring town: old inns, seven public baths, crab in winter. · 4 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
-| **Not on this route** | A ryokan at Arima between Osaka and Kyoto? | _Yes: not offered here — the leg from Osaka to Kyoto is not on this route_ |
+| **The end** | 6 · END · How does the trip end? `end` | **1 Fly home from Kansai** — Out through Kansai airport. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. · 4 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 
 **The Classic** · 9 nights · 3 check-ins · 7h20 of travel · 49 min per night · in Haneda (HND), out Kansai (KIX) · band 7–15
 
@@ -735,7 +734,7 @@ Tokyo, Kanazawa, a ryokan or two, then onward or back. Over the mountains instea
 |  | 4 · STOP · A stop at Takayama on the way? `kanazawa-onward.takayama` | 1 Yes — A preserved timber merchant town in the mountains, on the way. · **2 No** — Direct to the next city. |
 | **Kyoto** | 5 · CITY · Which city next? `next` | **1 Kyoto** — On to Kyoto, then Kansai airport. · 2 Osaka — Straight to Osaka for eating and going out, then Kansai airport. · 3 Kyoto and Osaka — Kyoto, then Osaka, then Kansai airport. · 4 Back to Tokyo — Loop back over the mountains for a Haneda flight. |
 |  | 6 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
-| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Kansai or Haneda, whichever the route reaches. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport. · 3 Kinosaki — The Japan Sea hot-spring town: old inns, seven public baths, crab in winter. |
+| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Kansai or Haneda, whichever the route reaches. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. |
 
 **The Kanazawa Loop** · 12 nights · 4 check-ins · 9h25 of travel · 47 min per night · in Haneda (HND), out Kansai (KIX) · band 9–16
 
@@ -788,7 +787,7 @@ Tokyo and the north, then Kanazawa and onward. Tokyo, then north into the snow o
 | **Kanazawa → Kyoto** | 4 · STOP · A stop at Takayama on the way? `kanazawa-onward.takayama` | 1 Yes — A preserved timber merchant town in the mountains, on the way. · **2 No** — Direct to the next city. |
 | **Kyoto** | 5 · CITY · Which city next? `next` | **1 Kyoto** — On to Kyoto, then Kansai airport. · 2 Osaka — Straight to Osaka, then Kansai airport. · 3 Kyoto and Osaka — Kyoto, then Osaka, then Kansai airport. · 4 Back to Tokyo — Loop back over the mountains for a Haneda flight. |
 |  | 6 · STOP · A night at Nara? `kyoto.nara` | 1 Yes — A night among the temples and the deer park, after Kyoto. · **2 No** — Nara as a day trip instead. |
-| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Kansai or Haneda, whichever the route reaches. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport. · 3 Kinosaki — The Japan Sea hot-spring town: old inns, seven public baths, crab in winter. |
+| **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Kansai or Haneda, whichever the route reaches. · 2 A Kōyasan ryokan — A world-class destination gourmet ryokan south of Osaka. · 3 Kinosaki — The Japan Sea hot-spring town of old inns and public baths. |
 
 **Snow Country** · 13 nights · 5 check-ins · 11h10 of travel · 52 min per night · in Haneda (HND), out Kansai (KIX) · band 9–16
 
@@ -839,7 +838,7 @@ Tokyo and Kyushu, north and south. Fukuoka, the hot-spring east, then south to K
 | **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Fukuoka. · 2 Straight into Fukuoka — No Tokyo: start in the city you land in. · 3 Straight into Kagoshima — No Tokyo: the loop run the other way, Kagoshima first, Fukuoka last. · 4 Straight into Ōita — No Tokyo: land at Ōita for the hot-spring east, south to Kagoshima, Fukuoka last. |
 |  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
 | **Fukuoka → Yufuin** | 3 · RYOKAN · A gorge ryokan at Amagase before Yufuin? `fukuoka-yufuin.hita` | **1 Yes** — A night in the river gorge on the way, so the east is two nights rather than one. · 2 No — One night in the east. |
-| **Yufuin** | 4 · CITY · Which hot-spring town in the east? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. |
+| **Yufuin** | 4 · CITY · Which hot-spring town in the east? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. · 3 Yufuin and Beppu — The valley town first, then the steaming coast an hour down the hill. |
 | **Yufuin → Kagoshima** | 5 · STOP · A stop at Kumamoto on the way south? `east-kagoshima.kumamoto` | 1 Yes — The castle city under the Aso caldera, on the way south. · **2 No** — Straight to Kagoshima. |
 | **Kagoshima** | 6 · RYOKAN · A ryokan at Kirishima with Kagoshima? `kagoshima.kirishima` | **1 Yes** — Myōken's riverside ryokan, an hour above Kagoshima bay: the classic pairing with the city. · 2 No — Kagoshima on its own. |
 | **The end** | 7 · END · How does the trip end? `end` | **1 Fly home from the last city** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
@@ -871,7 +870,7 @@ Tokyo and Kyushu, north and east. Nagasaki, Takeo, Fukuoka, then the hot-spring 
 | **Nagasaki → Fukuoka** | 4 · RYOKAN · A ryokan at Unzen, out on the peninsula? `nagasaki-fukuoka.unzen` | 1 Yes — The hot-spring town on the peninsula east of Nagasaki. · **2 No** — No Unzen night. |
 |  | 5 · RYOKAN · A ryokan at Takeo on the line to Fukuoka? `nagasaki-fukuoka.takeo` | **1 Yes** — A small hot-spring town on the line to Fukuoka. · 2 No — Straight through. |
 | **Fukuoka → Yufuin** | 6 · RYOKAN · A gorge ryokan at Amagase before Yufuin? `fukuoka-yufuin.hita` | **1 Yes** — A night in the river gorge on the way, so the east is two nights rather than one. · 2 No — One night in the east. |
-| **Yufuin** | 7 · CITY · Which way does the east go? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. · 3 The volcanic middle — Inland instead: the caldera country and Kumamoto, out through Kumamoto. |
+| **Yufuin** | 7 · CITY · Which way does the east go? `east` | **1 Yufuin** — The valley town under Mount Yufu, small ryokans and a mountain skyline. · 2 Beppu — The big steaming hot-spring city on the east coast. · 3 Yufuin and Beppu — The valley town first, then the steaming coast an hour down the hill. · 4 The volcanic middle — Inland instead: the caldera country and Kumamoto, out through Kumamoto. |
 | **The end** | 8 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Ōita, Kumamoto or Nagasaki, via Haneda. · 2 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 | **Not on this route** | A ryokan at Kurokawa in the caldera country? | _Yes: not offered here — the leg from Fukuoka (Hakata) to Kumamoto is not on this route_ |
 |  | A night at the Takachiho gorge? | _Yes: not offered here — the leg from Fukuoka (Hakata) to Kumamoto is not on this route_ |

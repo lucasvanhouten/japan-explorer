@@ -107,9 +107,7 @@
   "label": "Arima Onsen",
   "lat": 34.7967,
   "lng": 135.2467,
-  "spines": [
-   "s1"
-  ]
+  "spines": []
  },
  {
   "loc": "atami",

@@ -212,28 +212,6 @@
        "no_rev": "Straight through to Tokyo."
       }
      ]
-    },
-    {
-     "key": "osaka-kyoto",
-     "from": [
-      "osaka"
-     ],
-     "to": [
-      "kyoto"
-     ],
-     "slots": [
-      {
-       "key": "arima",
-       "kind": "inn",
-       "default": 1,
-       "question": "A ryokan at Arima between Osaka and Kyoto?",
-       "desc": "The hot-spring town behind Kobe, between Osaka and Kyoto.",
-       "no": "Straight through.",
-       "stops": [
-        "arima"
-       ]
-      }
-     ]
     }
    ],
    "end": {
@@ -251,23 +229,23 @@
      },
      {
       "label": "A Kōyasan ryokan",
-      "desc": "A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport.",
+      "desc": "A world-class destination gourmet ryokan south of Osaka.",
       "stops": [
        "katsuragi"
       ],
       "out": "KIX",
       "label_rev": "A Kōyasan ryokan",
-      "desc_rev": "A world-class destination gourmet ryokan on the mountain south of Osaka, from Kansai airport."
+      "desc_rev": "A world-class destination gourmet ryokan south of Osaka."
      },
      {
       "label": "Kinosaki",
-      "desc": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter.",
+      "desc": "The Japan Sea hot-spring town of old inns and public baths.",
       "stops": [
        "kinosaki"
       ],
       "out": "ITM",
       "label_rev": "Kinosaki",
-      "desc_rev": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter."
+      "desc_rev": "The Japan Sea hot-spring town of old inns and public baths."
      },
      {
       "label": "Back to Tokyo",
@@ -472,25 +450,25 @@
      },
      {
       "label": "A Kōyasan ryokan",
-      "desc": "A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport.",
+      "desc": "A world-class destination gourmet ryokan south of Osaka.",
       "place": "after kyoto|osaka",
       "stops": [
        "katsuragi"
       ],
       "out": "KIX",
       "label_rev": "A Kōyasan ryokan",
-      "desc_rev": "A world-class destination gourmet ryokan on the mountain south of Osaka, from Kansai airport."
+      "desc_rev": "A world-class destination gourmet ryokan south of Osaka."
      },
      {
       "label": "Kinosaki",
-      "desc": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter.",
+      "desc": "The Japan Sea hot-spring town of old inns and public baths.",
       "stops": [
        "kinosaki"
       ],
       "place": "after kyoto|osaka",
       "out": "ITM",
       "label_rev": "Kinosaki",
-      "desc_rev": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter."
+      "desc_rev": "The Japan Sea hot-spring town of old inns and public baths."
      }
     ]
    },
@@ -901,25 +879,25 @@
      },
      {
       "label": "A Kōyasan ryokan",
-      "desc": "A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport.",
+      "desc": "A world-class destination gourmet ryokan south of Osaka.",
       "place": "after kyoto|osaka",
       "stops": [
        "katsuragi"
       ],
       "out": "KIX",
       "label_rev": "A Kōyasan ryokan",
-      "desc_rev": "A world-class destination gourmet ryokan on the mountain south of Osaka, from Kansai airport."
+      "desc_rev": "A world-class destination gourmet ryokan south of Osaka."
      },
      {
       "label": "Kinosaki",
-      "desc": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter.",
+      "desc": "The Japan Sea hot-spring town of old inns and public baths.",
       "stops": [
        "kinosaki"
       ],
       "place": "after kyoto|osaka",
       "out": "ITM",
       "label_rev": "Kinosaki",
-      "desc_rev": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter."
+      "desc_rev": "The Japan Sea hot-spring town of old inns and public baths."
      }
     ]
    },
@@ -1208,6 +1186,20 @@
         "kagoshima@first"
        ],
        "why_not": "run south to north, the train from Kagoshima's side to Beppu doubles back through the city — Yufuin instead"
+      },
+      {
+       "label": "Yufuin and Beppu",
+       "desc": "The valley town first, then the steaming coast an hour down the hill.",
+       "cities": [
+        "yufuin",
+        "beppu"
+       ],
+       "label_rev": "Beppu and Yufuin",
+       "desc_rev": "The steaming coast first, then the valley town an hour up the hill.",
+       "not_with": [
+        "kagoshima@first"
+       ],
+       "why_not": "run south to north, the train from Kagoshima's side to Beppu doubles back through the city — Yufuin instead"
       }
      ]
     },
@@ -1439,6 +1431,16 @@
        "cities": [
         "beppu"
        ]
+      },
+      {
+       "label": "Yufuin and Beppu",
+       "desc": "The valley town first, then the steaming coast an hour down the hill.",
+       "cities": [
+        "yufuin",
+        "beppu"
+       ],
+       "label_rev": "Beppu and Yufuin",
+       "desc_rev": "The steaming coast first, then the valley town an hour up the hill."
       },
       {
        "label": "The volcanic middle",
