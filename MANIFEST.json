@@ -1417,12 +1417,12 @@
   "planning/kit-src/companions/explorer/route-explorer.template.html": "71e117b67f3bea77fda061b2832d0f8c37896fb011c848e6c406373452c5bab4",
   "planning/kit-src/companions/route-engine/route.js": "f4fbf85322e08d4cff62e5f10f1fe808c2d20d56c455f58eb39d7705a0fb2ff9",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
-  "deploy/catalog.json": "7ceff44f442c76b2e38ce395d4f8c216c341b3a2c52e7bc58c74a6d6fb500deb",
+  "deploy/catalog.json": "7ee63864e7defaf3ee9ded100136c8051130f3a18903d22a9a0f4b714acf4d7a",
   "deploy/catalog.md": "285cfbf7b2784c33c43471eb6ef193c8bc2b9a4059824d68c78b6a577497d614",
   "deploy/llms.txt": "7a86b4c61a633e6eb83e4633f8fee78ef15cfccc66e24db8bd042a525b95935e",
   "research/dining-notes.md": "9be9507e6499a9b8eca990a1d68b09dea07c4796bad35734f1429295e0c69a41",
   "research/dining-notes-process.md": "902b413beb5190960d7c54709dfd40d10d4a6db3b67e0f0d896b5275b62ed6dd",
-  "ryokans/ryokan_data.json": "6da53e3f1d33180717b8e07d12ee3f492482d55dcbfc209f160e58527af98554",
+  "ryokans/ryokan_data.json": "eff5ae0e97d50158e592b2ebcac9138a3dcb4302281a4822dfb50e87a1b53ca6",
   "planning/kit-src/kit/00-traveler.md": "57e5f8c6ad14b80a784dde85b1ffbed445e35cd96a2a46c45f03ccd63f4b16cb",
   "planning/kit-src/kit/01-agent.md": "3b14b892ed0e532db562ca2f1d80860735cba057a3f1798728337c80772198b4",
   "planning/kit-src/kit/02-interview.md": "444c0a417ccb46e25a296431a921c2d336185753b1acc6135e9c79253daf13b5",
@@ -1572,8 +1572,8 @@
    "bytes": 1078
   },
   "catalog/catalog.json": {
-   "sha256": "7ceff44f442c76b2e38ce395d4f8c216c341b3a2c52e7bc58c74a6d6fb500deb",
-   "bytes": 1161424
+   "sha256": "7ee63864e7defaf3ee9ded100136c8051130f3a18903d22a9a0f4b714acf4d7a",
+   "bytes": 1160706
   },
   "catalog/catalog.md": {
    "sha256": "285cfbf7b2784c33c43471eb6ef193c8bc2b9a4059824d68c78b6a577497d614",
