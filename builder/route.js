@@ -1119,7 +1119,7 @@ function assembleSpine(sp, optIn) {
   const shortOf = (r) => (r.fitNote && r.fitNote.kind === "unspent" ? r.fitNote.n : 0);
   const switchSteps = [], extra = {};
   if (R.total) {
-    const probeOf = (want, depth) => { try { return build(want, depth || 1); } catch (e) { return null; } };
+    const probeOf = (want, depth) => { try { return build(want, depth === undefined ? 1 : depth); } catch (e) { return null; } };
     const gap = (p) => (p && p.fitNote && p.fitNote.kind === "unspent" ? p.fitNote.n : 0);
     const over = (p) => (p && p.fitNote && p.fitNote.kind === "over" ? p.fitNote.n : 0);
     const askedAs = (d) => String((R.reversed && d.question_rev) || d.question || "").replace(/\?\s*$/, "").replace(/^./, (c) => c.toLowerCase());
@@ -1127,15 +1127,23 @@ function assembleSpine(sp, optIn) {
     /* a night the SPINE itself puts on the route (its own default answer is Yes) is the last thing to go: the
      * Takeo inn is what the route is for, and a short trip loses a city night before it loses the inn (owner, 2026-09-13) */
     const spineOn = (d) => (((d.options[d.default || 0] || {}).stops) || []).length > 0;
-    let probe = probeOf(asked, 1);
+    /* once the traveller has answered an optional night by name, the walk is theirs: a night they just freed by
+     * saying No goes to a city under its high first, and only a night NO city can take reaches the next optional
+     * stop (owner, 2026-09-13, round 11 k04 — No to Kaga switched Takayama on, No to Takayama switched Nara on).
+     * The measure is then the full fill rather than the probe that stops at each city's own `default`. */
+    const steered = decisionsOf(sp).some((d) => (d.kind === "inn" || d.kind === "stop") && userSet[d.key] != null);
+    let probe = probeOf(asked, steered ? 0 : 1);
     /* (3) the optional nights ON, in trip order, while the probe still has nights to spend */
     for (const d of movable) {
       if (!gap(probe)) break;
       if (d.fill === "never") continue;
+      /* an out-and-back that splits a city — Nikkō, the Fuji lakes — is an alternative put to the traveller, never
+       * a night the filler helps itself to: saying No to Nikkō must not bring the lakes on in its place (k05) */
+      if (d.owner.type === "city" && d.owner.at === "split") continue;
       const cur = d.options[(probe || R).choices[d.key]]; if (cur && (cur.stops || []).length) continue;   // already on
       const j = d.options.findIndex((o) => (o.stops || []).length);
       if (j < 0 || whyNot(sp, d, d.options[j], (probe || R).choices, opt)) continue;
-      const T = probeOf(Object.assign({}, asked, extra, { [d.key]: j }), 1);
+      const T = probeOf(Object.assign({}, asked, extra, { [d.key]: j }), steered ? 0 : 1);
       if (!T || gap(T) >= gap(probe) || over(T)) continue;
       extra[d.key] = j; probe = T; switchSteps.push(`${label(d.options[j].stops[0])} switched on to spend the nights asked (${askedAs(d)})`);
     }
@@ -1240,7 +1248,12 @@ const lineOf = (sp, chosenOpts) => chosenOpts.map((o) => o && o.line).filter(Boo
 /* a route run the other way round prints the option's reversed wording where the data carries one (label_rev / desc_rev,
  * 2026-09-12, QA round 6: "Tokyo first" and "fly home from Ōita" are mirror images on a reversed trip) */
 const optWord = (o, rev) => (rev && o.label_rev ? { label: o.label_rev, desc: o.desc_rev || o.desc } : o);
-const optCell = (d, i, chosen, rev, opt) => d.options.map((o, j) => { const w = optWord(o, rev && !d.options.some((x) => x.reverse));   // a "which way round" decision keeps its own wording
+const optCell = (d, i, chosen, rev, opt) => d.options.map((o, j) => { let w = optWord(o, rev && !d.options.some((x) => x.reverse));   // a "which way round" decision keeps its own wording
+  /* the ending the traveller is actually on, when a ticket names the exit: the airport is theirs and the last leg is
+   * the one the timeline priced, not the airport the spine's data assumed (round 11, k: "Fly home from Kansai" printed
+   * on a route that leaves Nara for Haneda by train) */
+  if (j === chosen && d.owner && d.owner.type === "end" && !(o.stops || []).length && opt && opt.exit)
+    w = { label: rev ? "Arrive at the first city" : "Fly home from the last city", desc: opt.exit };
   /* an END that names an airport the ticket does not use says so (QA round 7: "Fly home from Kansai" on a Haneda return) */
   const tk = opt && opt.out && o.out && o.out !== opt.out && d.owner && d.owner.type === "end" ? ` (your ticket leaves from ${apLabel(opt.out)}, so the last leg runs there)` : "";
   return `${j === chosen ? `**${j + 1} ${w.label}**` : `${j + 1} ${w.label}`} — ${w.desc}${tk}`; }).join(" · ");
@@ -1254,8 +1267,12 @@ function groupsOf(sp, choices, cities, reversed, locs) {
   for (const d of ds) { if (d.owner.type !== "city" || d.owner.city) continue;
     const o = d.options[choices[d.key]], made = ((o && o.cities) || []).find((c) => cl.includes(c));
     if (made != null) homed[cl.indexOf(made)] = (homed[cl.indexOf(made)] || []).concat([d]); }
+  /* run the other way round, the END decision settles where the trip BEGINS and the START one where it ends — the
+   * questions already swap (`qWord`), and from 2026-09-13 the headers swap with them, so a traveller asking to change
+   * the ending is never shown the options that change the opening (round 11, h05) */
+  const revStart = rev ? ds.find((d) => d.key === "start" && d.owner.type === "city" && !d.owner.city) : null;
   /* a switch that adds no city of its own — the direction, a start that skips Tokyo — is asked at the first city */
-  const loose = ds.filter((d) => d.owner.type === "city" && !d.owner.city && !Object.values(homed).some((a) => a.includes(d)));
+  const loose = ds.filter((d) => d.owner.type === "city" && !d.owner.city && d !== revStart && !Object.values(homed).some((a) => a.includes(d)));
   cl.forEach((c, i) => {
     /* the switches that settle this city, in the order spines.json declares them — a start before the direction */
     const items = (i === 0 ? loose : []).concat(homed[i] || []).sort((x, y) => ds.indexOf(x) - ds.indexOf(y));
@@ -1268,7 +1285,9 @@ function groupsOf(sp, choices, cities, reversed, locs) {
       done.add(d.owner.key); groups.push({ where: `${short(c)} → ${short(cl[i + 1])}`, kind: "leg", leg: d.owner.key, items: slots }); }
   });
   const endD = ds.find((d) => d.owner.type === "end");
-  if (endD) groups.push({ where: "The end", kind: "end", items: [endD] });
+  if (endD) { const g = { where: rev ? "The start" : "The end", kind: "end", items: [endD] };
+    if (rev) groups.unshift(g); else groups.push(g); }
+  if (revStart) groups.push({ where: "The end", kind: "end", items: [revStart] });
   /* an attachment whose owner city is not a city of the spine but IS a stop this assembly put on the route
    * (Amakusa hangs off Kumamoto, itself a leg slot) belongs under that stop, beside the decision that put it
    * there — never under "Not on this route" (QA round 8, the mirror of assembleOnce's own `missing` pass) */
@@ -1483,6 +1502,14 @@ function betterReversed(sp, opt) {
     if ((R.droppedSets || []).length > (F.droppedSets || []).length) return false;   // never turn round by losing an answer
     return R.flights < F.flights || (R.flights === F.flights && R.totals.hours <= F.totals.hours - 0.5); } catch (e) { return false; }
 }
+/* what the decisions table needs to know about the ticket: the exit airport it names and the leg the timeline priced
+ * to reach it, in one sentence ("Haneda (HND) by train from Nara, 4h05") */
+function exitOpt(P, opt) {
+  const o = Object.assign({}, opt);
+  const last = (P.stops || [])[(P.stops || []).length - 1], out = P.legs && P.legs.filter((l) => l.kind === "out").pop();
+  if (o.out && last && out) o.exit = `${apLabel(P.opt.out)} ${out.estimated ? "from" : `by ${modeWord(out.mode)} from`} ${label(last.loc)}${out.estimated ? ", time to confirm" : `, ${hm5(out.h)}`}`;
+  return o;
+}
 function cmdSpine(ref, opt) {
   const sp = spineOf(ref);
   const autoRev = betterReversed(sp, opt); if (autoRev) opt = Object.assign({}, opt, { reverse: true });
@@ -1509,10 +1536,10 @@ function cmdSpine(ref, opt) {
   /* a spine that carries a `caveat` says it under its own header, on the menu and on its own walk (2026-09-13,
    * owner): Hokkaido had the least research behind it and the reader is told so rather than left to find out */
   const L = [spineHead(sp, after.band, opt, after), "", lineOf(sp, chosenOpts), ...(sp.caveat ? ["", `**Read this first:** ${sp.caveat}`] : []), ...carLine(after.stops.map((x) => x.loc), decisionsOf(sp).flatMap((d) => d.options.flatMap((o) => o.stops || []))), "",
-    `Explorer: \`${EXPLORER_PAGE}#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${hashSets(sp, opt, after)}${hashNights(after)}&routes=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}\` — the page to hand them, prefilled with this route, its answers so far and the nights on screen; it pins this route and folds the rest — widen routes= to the other slugs while they are still comparing.`, ""];
+    `Explorer: \`${EXPLORER_PAGE}#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${opt.total || after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${opt.reverse ? "&reverse=1" : ""}${hashSets(sp, opt, after)}${hashNights(after)}&routes=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}\` — the page to hand them, prefilled with this route, its answers so far and the nights on screen; it pins this route and folds the rest — widen routes= to the other slugs while they are still comparing.`, ""];
   L.push(...shapeLines(sp, after), "");
   if (autoRev) L.push(`Run the other way round for your ticket — in at ${apLabel(after.opt.in)}, home from ${apLabel(after.opt.out)}. The engine turns it round by itself whenever the ticket is on every run (\`--in\`/\`--out\`); do not add \`--reverse\` on top, that would turn it back.`, "");
-  L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed, null, after.stops.map((s) => s.loc)), "");
+  L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed, exitOpt(after, opt), after.stops.map((s) => s.loc)), "");
   /* one of the two, never both (2026-09-13): a run that asked for a change and moved nothing says so, and
    * the night lines the defaults filled in are not dressed up as a change they made */
   const nothingMoved = changed && !moved;
@@ -1540,8 +1567,13 @@ function cmdCompare(specs, opt) {
   const names = ["A", "B", "C", "D"];
   const sps = specs.map(spineArg);
   const Ps = specs.map((s, i) => { if (sps[i]) { const sp = sps[i];
-      const P = assembleSpine(sp, { total: opt.total, in: opt.in, out: opt.out, repeat: opt.repeat || undefined, set: opt.set || [], lenientNights: true });
-      P.spineSlug = spineSlug(sp); P.spineName = sp.name; P.spineRef = sp; return P; }
+      /* the ticket is read exactly as `spine` reads it, this route's own way round included (round 11, h05: a
+       * KIX-in / HND-home Kanazawa Loop was compared Tokyo-first at 13h while its own walk ran it Kyoto-first at
+       * 9h25). A comparison that prices a different trip from the walk is not a comparison. */
+      const o = { total: opt.total, in: opt.in, out: opt.out, repeat: opt.repeat || undefined, set: opt.set || [], lenientNights: true };
+      if (opt.reverse || betterReversed(sp, o)) o.reverse = true;
+      const P = assembleSpine(sp, o);
+      P.spineSlug = spineSlug(sp); P.spineName = sp.name; P.spineRef = sp; P.spineRev = !!o.reverse; return P; }
     const P = buildPlan(parseStops(s), defined({ in: opt.in, out: opt.out, repeat: opt.repeat })); P.flights = P.legs.filter((l) => l.flightH || l.mode === "flight").length; return P; });
   if (opt.json) return JSON.stringify(Ps.map((P, i) => ({ name: names[i], stops: P.stops, totals: P.totals, flights: P.flights, opt: P.opt, checks: P.checks, stopString: stopString(P.stops) })), null, 1);
   const L = [`*${Ps.length} routes compared, each priced leg by leg from the tables. Per night counts each flight leg at ${FLIGHT_CAP_H}h at most; (≥${DENSITY_MAX}) is the flag.*`, "", ...COMPARE_HEAD];
@@ -1556,7 +1588,7 @@ function cmdCompare(specs, opt) {
    * Yudanaka · Kanazawa 3 · Kyoto 5 where the engine had Yamashiro and the Fuji night on. The address must reproduce
    * the assembly that was just priced, stop for stop. */
   const section = (P) => (P.spineSlug
-    ? `spine=${P.spineSlug}&nights=${P.totals.nights}${P.opt.in ? `&in=${P.opt.in}` : ""}${P.opt.out ? `&out=${P.opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${hashSets(P.spineRef, opt, P)}${hashNights(P)}`
+    ? `spine=${P.spineSlug}&nights=${opt.total || P.totals.nights}${P.opt.in ? `&in=${P.opt.in}` : ""}${P.opt.out ? `&out=${P.opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${P.spineRev ? "&reverse=1" : ""}${hashSets(P.spineRef, opt, P)}${hashNights(P)}`
     : explorerPlanSection(P));
   L.push(allSpines
     ? `Explorer: \`${EXPLORER_PAGE}#${Ps.map(section).join("|")}&routes=${Ps.map((P) => P.spineSlug).join(",")}\` — one tab per route, the first active, each still carrying its own decisions.`

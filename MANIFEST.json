@@ -1412,10 +1412,10 @@
   "planning/kit-src/kit-hotels.json": "cf518d3a982027a400eac3109bc3247b35dcd862681349f30191360255e6b34f",
   "planning/kit-src/pinned-inns.json": "2fc30d000ed06e40a611042c05f00ffb0f4978899dc1c6cee13d86d6a93a0501",
   "planning/kit-src/places.json": "74ec6716b5e14af75d9a63e607267b042d8c0683a9efd72c89598cd023611075",
-  "planning/kit-src/tools/spines.json": "0012b80a64bc3dea42718870041b2a57c21c6bb583dbaab0286bbb591f66ea51",
+  "planning/kit-src/tools/spines.json": "1ab4b2d0f185d065e54b6eeb58943a58eb02cc9609028511adc3f9a77505f904",
   "planning/kit-src/tools/build-spines.js": "d9c27648cbe21b2ada924f6c305e7ff07b1dca06417389c10083dfdbc12771c3",
   "planning/kit-src/companions/explorer/route-explorer.template.html": "d5c5a21c65e1ab2feeb009a4ede716bbd9c83abb409469500f87cf156358a756",
-  "planning/kit-src/companions/route-engine/route.js": "5a1a8b22191621f1301890f12543bc67723687d1325843d62682cc05a93bb44e",
+  "planning/kit-src/companions/route-engine/route.js": "08680b53641c5efa86fb6616e9c32c39900e6cdf46b24b64fbf3fa297a2feb75",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
   "deploy/catalog.json": "1e46171cac9cb9f1a132af7c4fb2e905959207b78541584089c4cb659e0dd213",
   "deploy/catalog.md": "285cfbf7b2784c33c43471eb6ef193c8bc2b9a4059824d68c78b6a577497d614",
@@ -1506,8 +1506,8 @@
    "bytes": 9240
   },
   "builder/route.js": {
-   "sha256": "5a1a8b22191621f1301890f12543bc67723687d1325843d62682cc05a93bb44e",
-   "bytes": 177909
+   "sha256": "08680b53641c5efa86fb6616e9c32c39900e6cdf46b24b64fbf3fa297a2feb75",
+   "bytes": 181069
   },
   "builder/serve.js": {
    "sha256": "eb267d4277a3465f86f32b07945917c78aeb7ce2b3bfabb2894b8cdc48c77b21",
@@ -1518,8 +1518,8 @@
    "bytes": 140901
   },
   "builder/spines.json": {
-   "sha256": "0012b80a64bc3dea42718870041b2a57c21c6bb583dbaab0286bbb591f66ea51",
-   "bytes": 62211
+   "sha256": "1ab4b2d0f185d065e54b6eeb58943a58eb02cc9609028511adc3f9a77505f904",
+   "bytes": 62321
   },
   "catalog/by-region/alps.md": {
    "sha256": "d0f354bd4ce38232d3158ab78ae6760200bcad313ad9f19bdc47ee235eb2f6c8",
@@ -1674,8 +1674,8 @@
    "bytes": 9168
   },
   "guides/route-explorer-data.js": {
-   "sha256": "0872adbd2023b5140dbbb6a238458c3fec6c6abaa12f256cc2190d8b4a3a9092",
-   "bytes": 106008
+   "sha256": "4b63eaffe27d056e4fcbab957256900c8395643341b2b0cade075bead3edb2c6",
+   "bytes": 106083
   },
   "guides/route-explorer.html": {
    "sha256": "828fd4c2ed15522880e8b52e4b2f6e8cb4db584fdf534703856aef4f6488ef2c",

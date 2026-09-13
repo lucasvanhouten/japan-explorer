@@ -183,7 +183,8 @@
      "not_with": [
       "nikko"
      ],
-     "why_not": "The Fuji lakes are an out-and-back from Tokyo; flying straight into Kansai there is no Tokyo stay to split"
+     "why_not": "The Fuji lakes are an out-and-back from Tokyo; flying straight into Kansai there is no Tokyo stay to split",
+     "fill": "never"
     },
     {
      "key": "kyoto.nara",
@@ -375,7 +376,8 @@
      "not_with": [
       "nikko",
       "yudanaka"
-     ]
+     ],
+     "fill": "never"
     },
     {
      "key": "kyoto.nara",
@@ -673,7 +675,8 @@
      ],
      "not_with": [
       "nikko"
-     ]
+     ],
+     "fill": "never"
     },
     {
      "key": "kyoto.nara",
@@ -923,7 +926,8 @@
      ],
      "not_with": [
       "nikko"
-     ]
+     ],
+     "fill": "never"
     },
     {
      "key": "kyoto.nara",
@@ -1952,7 +1956,8 @@
      ],
      "not_with": [
       "nikko"
-     ]
+     ],
+     "fill": "never"
     },
     {
      "key": "kyoto.nara",
