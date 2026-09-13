@@ -1469,7 +1469,9 @@ function cmdStays(q, opt) {
   /* no Bath column (owner, 2026-09-12: it contradicted the write-ups and repeated them); the bath is in the Why */
   const HEAD = hotelsOnly ? "| Stay | Band | Why | Links |" : G ? "| Stay | Town | Band | Why | Links |" : "| Stay | Band | Why | Links |";
   L.push(HEAD, HEAD.replace(/[^|]+/g, "---"));
-  const innStay = (i) => `${i.name} · inn${i.tier ? ` · ${i.tier}` : ""}${i.pinned ? " · editor's pick" : ""}`;
+  /* the score in words a first-timer reads unaided (owner, 2026-09-12): "A-tier · 8.4 / 10 · editor's pick" */
+  const tierWord = (t) => { const m = /^([SABCD])\s+([\d.]+)$/.exec(String(t || "").trim()); return m ? `${m[1]}-tier · ${m[2]} / 10` : /^[—-]?$/.test(String(t || "").trim()) ? "unscored" : String(t); };
+  const innStay = (i) => `${i.name} · inn · ${tierWord(i.tier)}${i.pinned ? " · editor's pick" : ""}`;
   /* the Bath cell in the words Stage 4 prescribes, never the shortlist's raw yes/some/no (QA round 8) */
   const bathWord = (b) => ({ yes: "in the room", some: "some rooms", no: "none in the room" })[String(b || "").toLowerCase()] || "unstated";
   const innRow = (i, town) => `| ${innStay(i)} | ${G ? `${town} | ` : ""}${i.band} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`;

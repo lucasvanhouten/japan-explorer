@@ -57,7 +57,7 @@ Every inn and hotel here carries a hand-researched write-up, which the tool prin
 
 Gora Kadan Fuji, not as the write-up pastes but for a couple on their first ryokan night: *"The gentlest way into a ryokan: a hotel-ryokan hybrid with Fuji in front of you, a pool, three dining rooms and nothing about the form to be nervous about. Book an Open-air Bath Suite or above for spring water in the room, and the sushi or teppanyaki counter over the kaiseki."*
 
-**Explain the score once, the first time a table shows one:** *"A 8.8 means tier A, 8.8 out of 10 — the catalogue's reading of the FlyerTalk thread and the Japanese review sites; S is the top tier, and a dash means unscored: a Japanese-guest favourite nobody has written up in English."* And introduce the catalogue once: *"every inn links to its page on ryokancatalog.com — the long read: rooms, bath, food, how to book."*
+**Explain the score once, the first time a table shows one:** *"A-tier · 8.8 / 10 means tier A, 8.8 out of 10 — the catalogue's reading of the FlyerTalk thread and the Japanese review sites; S is the top tier, and a dash means unscored: a Japanese-guest favourite nobody has written up in English."* And introduce the catalogue once: *"every inn links to its page on ryokancatalog.com — the long read: rooms, bath, food, how to book."*
 
 ### Two things to say out loud once
 
