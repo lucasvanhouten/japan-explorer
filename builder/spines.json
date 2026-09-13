@@ -251,23 +251,23 @@
      },
      {
       "label": "A Kōyasan ryokan",
-      "desc": "A last night at Amanosato near Kōyasan, a destination ryokan whose French-Japanese tasting menu is the best meal of many members’ travels; then Kansai airport.",
+      "desc": "A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport.",
       "stops": [
        "katsuragi"
       ],
       "out": "KIX",
       "label_rev": "A Kōyasan ryokan",
-      "desc_rev": "A first night at Amanosato near Kōyasan, the destination ryokan with the French-Japanese tasting menu, from Kansai airport."
+      "desc_rev": "A world-class destination gourmet ryokan on the mountain south of Osaka, from Kansai airport."
      },
      {
       "label": "Kinosaki",
-      "desc": "A last night in the Japan Sea hot-spring town, then Itami airport.",
+      "desc": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter.",
       "stops": [
        "kinosaki"
       ],
       "out": "ITM",
       "label_rev": "Kinosaki",
-      "desc_rev": "A first night in the Japan Sea hot-spring town, in through Itami airport."
+      "desc_rev": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter."
      },
      {
       "label": "Back to Tokyo",
@@ -471,15 +471,26 @@
       "desc_rev": "Kansai or Haneda, whichever the route starts from."
      },
      {
+      "label": "A Kōyasan ryokan",
+      "desc": "A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport.",
+      "place": "after kyoto|osaka",
+      "stops": [
+       "katsuragi"
+      ],
+      "out": "KIX",
+      "label_rev": "A Kōyasan ryokan",
+      "desc_rev": "A world-class destination gourmet ryokan on the mountain south of Osaka, from Kansai airport."
+     },
+     {
       "label": "Kinosaki",
-      "desc": "A last night in the Japan Sea hot-spring town, then Itami airport.",
+      "desc": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter.",
       "stops": [
        "kinosaki"
       ],
       "place": "after kyoto|osaka",
       "out": "ITM",
       "label_rev": "Kinosaki",
-      "desc_rev": "A first night in the Japan Sea hot-spring town, in through Itami airport."
+      "desc_rev": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter."
      }
     ]
    },
@@ -889,15 +900,26 @@
       "desc_rev": "Kansai or Haneda, whichever the route starts from."
      },
      {
+      "label": "A Kōyasan ryokan",
+      "desc": "A world-class destination gourmet ryokan on the mountain south of Osaka, then Kansai airport.",
+      "place": "after kyoto|osaka",
+      "stops": [
+       "katsuragi"
+      ],
+      "out": "KIX",
+      "label_rev": "A Kōyasan ryokan",
+      "desc_rev": "A world-class destination gourmet ryokan on the mountain south of Osaka, from Kansai airport."
+     },
+     {
       "label": "Kinosaki",
-      "desc": "A last night in the Japan Sea hot-spring town after Kyoto, then Itami airport.",
+      "desc": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter.",
       "stops": [
        "kinosaki"
       ],
       "place": "after kyoto|osaka",
       "out": "ITM",
       "label_rev": "Kinosaki",
-      "desc_rev": "A first night in the Japan Sea hot-spring town before Kyoto, in through Itami airport."
+      "desc_rev": "The Japan Sea hot-spring town: old inns, seven public baths, crab in winter."
      }
     ]
    },
