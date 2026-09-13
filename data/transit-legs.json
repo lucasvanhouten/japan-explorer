@@ -4419,12 +4419,12 @@
   {
    "from": "kurokawa",
    "to": "fukuoka",
-   "hours": 2.7,
+   "hours": 2.5,
    "transfers": 0,
-   "mode": "bus",
+   "mode": "car",
    "source": "researched",
    "flags": {},
-   "route": "Direct highway bus Kurokawa→Hakata/Fukuoka (~2.5–3h, reserve) — no train changes at all."
+   "route": "Rental car ~117 km / ~2h30: R212 to Hita IC, Ōita Expwy → Tosu JCT → Kyushu Expwy → Dazaifu IC (Kurokawa Onsen Ryokan Association and Ichinoi access pages, 2026-09-13). Studless tyres Dec–Feb. Without a car: the direct highway bus Kurokawa→Hakata (~2.5–3h, reserve)."
   },
   {
    "from": "kurokawa",
@@ -4452,14 +4452,14 @@
   {
    "from": "kurokawa",
    "to": "kumamoto",
-   "hours": 2.6,
+   "hours": 1.85,
    "transfers": 0,
-   "mode": "bus",
+   "mode": "car",
    "source": "researched",
    "flags": {
     "awkward": 1
    },
-   "route": "Kyushu Ōdan bus one-seat Kurokawa→Kumamoto Stn (~2h38; 3/day down, only 2/day back up — reserve). Also stops at Kumamoto Airport (~1h50) en route. By car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice."
+   "route": "Rental car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice (owner: the volcanic middle assumes a car, 2026-09-13). Without a car: Kyushu Ōdan bus one-seat Kurokawa→Kumamoto Stn (~2h38; 3/day down, only 2/day back up — reserve). Also stops at Kumamoto Airport (~1h50) en route. By car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice."
   },
   {
    "from": "kurokawa",
@@ -8360,12 +8360,12 @@
   {
    "from": "unzen",
    "to": "nagasaki",
-   "hours": 1.7,
+   "hours": 1.25,
    "transfers": 0,
-   "mode": "bus",
+   "mode": "car",
    "source": "researched",
    "flags": {},
-   "route": "Ken-ei bus Unzen→Nagasaki (~1h40), or back to Isahaya and Ltd Exp on. By car ~47 km / ~1h15 (R57 down the mountain → Chijiwa → Isahaya) — only the top ~10 km of the descent carries ice risk."
+   "route": "Rental car ~47 km / ~1h15 (R57 down the mountain → Chijiwa → Isahaya → Nagasaki) — only the top ~10 km of the descent carries ice risk (owner: Unzen assumes a car, 2026-09-13). Without a car: Ken-ei bus Unzen→Nagasaki (~1h40), or back to Isahaya and Ltd Exp on."
   },
   {
    "from": "unzen",

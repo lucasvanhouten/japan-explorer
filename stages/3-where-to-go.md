@@ -45,7 +45,7 @@ A **spine** is an order of major cities with decisions hanging off each city and
 | **The Long Line** · 11–18 nights | Kyushu without a flight: one train line the whole way. | Tokyo → Hakone → Kyoto → Hiroshima → Fukuoka | 13 | 9h05 | 1 | 0 | Haneda (HND) / Fukuoka (FUK) |
 | **Hokkaido** · 8–12 nights | The northern island in snow. The kit is thin here. | Tokyo → Sapporo → Niseko → Sapporo | 9 | 11h20 (69 min per night) | 1 | 1 | Haneda (HND) / New Chitose (CTS) |
 | **Kyushu South & East** · 9–16 nights | Kyushu when the hot springs are the point. | Tokyo → Kirishima → Kagoshima → Yufuin | 9 | 9h40 | 2 | 1 | Haneda (HND) / Ōita (OIT) |
-| **Kyushu North & East** · 10–17 nights | Kyushu on a shorter trip, either way round. | Tokyo → Nagasaki → Takeo Onsen → Fukuoka → Kurokawa Onsen → Takachiho → Kumamoto | 13 | 13h20 | 3 | 1 | Haneda (HND) / Kumamoto (KMJ) |
+| **Kyushu North & East** · 10–17 nights | Kyushu on a shorter trip, either way round. | Tokyo → Nagasaki → Takeo Onsen → Fukuoka → Kurokawa Onsen → Takachiho → Kumamoto | 13 | 13h05 | 3 | 1 | Haneda (HND) / Kumamoto (KMJ) |
 | **Kyushu South & West** · 11–20 nights | Kyushu for people who have done Tokyo and Kyoto. | Tokyo → Kirishima → Kagoshima → Fukuoka → Takeo Onsen → Nagasaki | 13 | 9h35 | 2 | 1 | Haneda (HND) / Nagasaki (NGS) |
 
 - The Classic: **flag** 62 min of travel per night — 60 minutes or more; say why and show a lighter order beside it.
@@ -311,7 +311,7 @@ Tokyo and Kyushu, the west coast and the volcanic middle. Nagasaki and the Takeo
 | **The end** | 10 · END · How does the trip end? `end` | **1 Fly home from the last stop** — Out through its own airport. · 2 Back to Tokyo — Two more Tokyo nights, then Haneda. |
 | **Not on this route** | A gorge ryokan at Amagase before the east? | _Yes: not offered here — the leg from Fukuoka (Hakata) to Yufuin is not on this route_ |
 
-**Kyushu North & East** · 13 nights · 7 separate stays · 13h20 total transit · 1 flight · in Haneda (HND), out Kumamoto (KMJ) · band 10–17
+**Kyushu North & East** · 13 nights · 7 separate stays · 13h05 total transit · 1 flight · in Haneda (HND), out Kumamoto (KMJ) · band 10–17
 
 | Stop | Nights | Onward |
 |---|---|---|
@@ -319,7 +319,7 @@ Tokyo and Kyushu, the west coast and the volcanic middle. Nagasaki and the Takeo
 | Tokyo | 4 | 4h15 flight |
 | Nagasaki | 2 | 42 min train |
 | Takeo Onsen | 1 | 1h train |
-| Fukuoka (Hakata) | 3 | 2h42 bus |
+| Fukuoka (Hakata) | 3 | 2h30 taxi |
 | Kurokawa Onsen | 1 | 1h09 taxi |
 | Takachiho | 1 | 2h taxi |
 | Kumamoto | 1 | 54 min bus · out to Kumamoto (KMJ) |
@@ -460,7 +460,7 @@ The same tables `stages/5-route.md` prints, repeated so a change is priced where
 | Fukuoka (Hakata) | Miyajima | 2h15 | 2 | train | Sanyo Shinkansen Nozomi Hakata→Hiroshima (~1h), JR Sanyo Main Line→Miyajimaguchi (~25 min), then the ~10-min ferry to Miyajima + short walk. |
 | Yufuin | Fukuoka (Hakata) | 2h10 | 0 | train | Ltd Exp back toward Hakata (~2h10). |
 | Amakusa (Matsushima) | Fukuoka (Hakata) | 1h54 | 1 | train | Inn-arranged car Tayuta→JR Kumamoto ~1h (per Tayuta's own access chart) via the Five Bridges + Misumi — coastal, snow-proof — then Kyushu Shinkansen 'Sakura'/'Mizuho' Kumamoto→Hakata (~33 min, every 20-30 min). Rail alt: 20-min taxi/boat→Misumi + JR Misumi line 50 min→Kumamoto (+1 change). |
-| Kurokawa Onsen | Fukuoka (Hakata) | 2h42 | 0 | bus | Direct highway bus Kurokawa→Hakata/Fukuoka (~2.5–3h, reserve) — no train changes at all. |
+| Kurokawa Onsen | Fukuoka (Hakata) | 2h30 | 0 | car | Rental car ~117 km / ~2h30: R212 to Hita IC, Ōita Expwy → Tosu JCT → Kyushu Expwy → Dazaifu IC (Kurokawa Onsen Ryokan Association and Ichinoi access pages, 2026-09-13). Studless tyres Dec–Feb. Without a car: the direct highway bus Kurokawa→Hakata (~2.5–3h, reserve). |
 | Amagase (Hita) | Fukuoka (Hakata) | 1h45 | 0 | train | Kyudai-line Ltd Exp 'Yufu'/'Yufuin no Mori' Amagase→Hakata, 1h35 ride + the Tensui pickup to Amagase Station. |
 | Beppu | Kumamoto | 2h30 | 1 | train | Ltd Exp 'Sonic' Beppu→Kokura (~1h25, ~2/hr), change inside Kokura to the Kyushu Shinkansen 'Mizuho'/'Sakura'→Kumamoto (~50 min). ~2h30 door-to-door, one change at a single station. (The DIRECT cross-island option — the Hōhi-line Ltd Exp over the Aso caldera — is the scenic one but takes ~3h–3h30 and runs only 2/day, departing Kumamoto just after 09:00 and 15:00; treat it as a sightseeing choice, not the transfer.) |
 | Beppu | Nagasaki | 4h | 2 | train | The long diagonal: Ltd Exp 'Sonic' Beppu→Hakata (~1h55–2h05), 'Relay Kamome'→Takeo-Onsen, timed cross-platform change to the Nishi-Kyushu Shinkansen 'Kamome'→Nagasaki (~2h Hakata→Nagasaki all told). ~4h, two changes, both high-frequency. By car ~245 km / ~3h15 (Ōita Expwy → Tosu JCT → Nagasaki Expwy) — the Nagasaki Expwy has no winter-regulated section, but the Hita–Hiji stretch at the Beppu end is an official winter-tire zone in January. |
@@ -470,7 +470,7 @@ The same tables `stages/5-route.md` prints, repeated so a change is priced where
 | Kumamoto | Nagasaki | 2h | 2 | train | Shinkansen→Shin-Tosu (~25 min), 'Relay Kamome'→Takeo-Onsen (timed cross-platform change), 'Kamome'→Nagasaki — ~2h all told. (The Ocean Arrow ferry + Shimabara Railway route is scenic and ~3.5h.) |
 | Kumamoto | Kagoshima | 48 min | 0 | shinkansen | 'Mizuho'/'Sakura' Kumamoto→Kagoshima-Chūō (~44–57 min, ~hourly+). |
 | Amakusa (Matsushima) | Kumamoto | 1h12 | 0 | car | By car ~1h10 via the Five Bridges, Misumi and R57 — coastal and effectively snow-proof. Carless parity (~1¼h): 15-min Takarajima-Line boat Matsushima Port⇄Misumi port (+2-min walk to the station) or 20-min taxi, then Misumi Line⇄Kumamoto ~50–60 min — both Tayuta and Amanojyaku sync pickups. ('Amakusa-gō' rapid bus Matsushima→Sakuramachi BT ~1h20, ~9/day, no reservation.) |
-| Kurokawa Onsen | Kumamoto | 2h36 | 0 | bus | Kyushu Ōdan bus one-seat Kurokawa→Kumamoto Stn (~2h38; 3/day down, only 2/day back up — reserve). Also stops at Kumamoto Airport (~1h50) en route. By car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice. |
+| Kurokawa Onsen | Kumamoto | 1h51 | 0 | car | Rental car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice (owner: the volcanic middle assumes a car, 2026-09-13). Without a car: Kyushu Ōdan bus one-seat Kurokawa→Kumamoto Stn (~2h38; 3/day down, only 2/day back up — reserve). Also stops at Kumamoto Airport (~1h50) en route. By car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice. |
 | Takachiho | Kumamoto | 2h | 0 | car | By car ~85 km via R218 + the free E77 Kyushu-Chūō sections (open since Feb 2024): ~1h45 normal, budget 2h in January. R218 stays off the Aso rim (occasional chain regulation on the Kyushu-sanchi crossing; avoid the higher R325/Takamori route in ice). (Transit: 'Takachiho-gō' express bus→Sakuramachi BT ~2h45, only 2/day — reserve.) |
 | Kagoshima | Nagasaki | 3h | 2 | shinkansen | Kyushu Shinkansen 'Mizuho'/'Sakura' Kagoshima-Chūō→Shin-Tosu (~1h10–1h25), change to the 'Relay Kamome' Ltd Exp→Takeo-Onsen (~50 min), then cross-platform to the Nishi-Kyushu Shinkansen 'Kamome'→Nagasaki (~30 min). ~3h, 2 changes. |
 | Amakusa (Matsushima) | Nagasaki | 3h24 | 3 | train | Carless via the Misumi corridor: inn-synced 15–20-min boat/taxi to Misumi, Misumi Line→Kumamoto (~50–60 min), then Shinkansen→Shin-Tosu + Relay Kamome→Kamome to Nagasaki (~2h) — all-rail, snow-proof. Drivers' variant (the ferry drive): ~45 min to Oniike Port, Shimatetsu car ferry→Kuchinotsu (30 min, ~every 45), then ~1h45 down the Shimabara peninsula with Sakitsu Church and the Unzen jigoku en route (~3.5h; winter gales occasionally cancel the strait ferry). |

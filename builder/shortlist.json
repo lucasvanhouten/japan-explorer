@@ -655,7 +655,7 @@
    "score": 9.3,
    "bath": "yes",
    "band": "$1300–1800",
-   "reach": "beppu 2h24/0 bus · kumamoto 2h36/0 bus · fukuoka 2h42/0 bus",
+   "reach": "kumamoto 1h51/0 car · beppu 2h24/0 bus · fukuoka 2h30/0 car",
    "fits": [
     "kyushu-kurokawa",
     "bed-not-futon"
@@ -677,7 +677,7 @@
    "score": 8.5,
    "bath": "yes",
    "band": "$900–1400",
-   "reach": "beppu 2h24/0 bus · kumamoto 2h36/0 bus · fukuoka 2h42/0 bus",
+   "reach": "kumamoto 1h51/0 car · beppu 2h24/0 bus · fukuoka 2h30/0 car",
    "fits": [
     "kyushu-kurokawa"
    ],
@@ -1449,7 +1449,7 @@
    "score": 8.4,
    "bath": "yes",
    "band": "ask",
-   "reach": "nagasaki 1h42/0 bus · kumamoto 2h12/2 ferry · fukuoka 3h/2 bus",
+   "reach": "nagasaki 1h15/0 car · kumamoto 2h12/2 ferry · fukuoka 3h/2 bus",
    "fits": [
     "kyushu-nagasaki",
     "bed-not-futon"

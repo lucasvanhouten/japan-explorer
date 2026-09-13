@@ -4,7 +4,7 @@
 *For every researched city pair, the inn that sits on the road between them — both halves of the journey researched, and what the stop costs over going straight through. `node builder/route.js connectors <A> <B>` prints the same rows for one pair; this file is the whole table, for reading without a terminal.*
 
 <!-- generated:connectors -->
-*130 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
+*128 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
 
 | From → To | Direct | Connector inn | Leg in | Leg out | Detour |
 |---|---|---|---|---|---|
@@ -17,25 +17,23 @@
 | Kyoto → Yamashiro Onsen | 2h/1 | [Hanamurasaki](https://ryokancatalog.com/inn/hanamurasaki) · Yamanaka Onsen | 1h36/1 train | 30 min/0 car | +6 min |
 | Nagasaki → Kurokawa Onsen | 4h36/2 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 3h/0 car | 1h45/0 bus | +9 min |
 | Tokyo → Osaka | 3h15/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 2h45/0 shinkansen | 45 min/0 train | +15 min |
-| Fukuoka → Kurokawa Onsen | 2h42/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h45/0 train | 1h15/0 car | +18 min |
 | Nagasaki → Kagoshima | 3h/2 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 42 min/0 shinkansen | 2h36/1 train | +18 min |
 | Nagasaki → Amakusa | 3h24/3 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 42 min/0 shinkansen | 3h/2 train | +18 min |
 | Beppu → Kurokawa Onsen | 2h24/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 1h/0 bus | 1h45/0 bus | +21 min |
-| Kumamoto → Kurokawa Onsen | 2h36/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h42/1 train | 1h15/0 car | +21 min |
+| Nagasaki → Amakusa | 3h24/3 | [Mt.Resort Unzen Kyushu Hotel](https://ryokancatalog.com/inn/mt-resort-unzen-kyushu-hotel) · Unzen | 1h15/0 car | 2h30/0 car | +21 min |
 | Nara → Kansai airport | 1h54/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h30/0 train | +21 min |
 | Osaka → Hakone | 3h24/2 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 3h/1 train | +21 min |
 | Sendai → Kanazawa | 4h30/1 | [Atamiso](https://ryokancatalog.com/inn/atamiso) · Bandai-Atami | 1h/1 shinkansen | 3h54/2 shinkansen | +24 min |
 | Sendai → Kanazawa | 4h30/1 | [Tsuchiyu Bettei Satonoyu](https://ryokancatalog.com/inn/tsuchiyu-bettei-satonoyu) · Tsuchiyu Onsen | 1h/0 train | 3h54/1 shinkansen | +24 min |
 | Kyoto → Yamashiro Onsen | 2h/1 | [Kanshuku-en Eshikoto](https://ryokancatalog.com/inn/kanshuku-en-eshikoto) · Eiheiji | 1h45/1 train | 40 min/0 car | +25 min |
 | Nagasaki → Nagasaki airport | 1h/0 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 42 min/0 shinkansen | 45 min/1 train | +27 min |
+| Fukuoka → Kurokawa Onsen | 2h30/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h45/0 train | 1h15/0 car | +30 min |
 | Kanazawa → Osaka | 2h45/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 2h30/1 train | 45 min/0 train | +30 min |
 | Kumamoto → Nagasaki | 2h/2 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 1h48/1 train | 42 min/0 shinkansen | +30 min |
 | Nara → Osaka | 1h/0 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 45 min/0 train | +30 min |
 | Sendai → Kanazawa | 4h30/1 | [Otogi no Yado Yoneya](https://ryokancatalog.com/inn/otogi-no-yado-yoneya) · Sukagawa | 1h18/1 train | 3h42/2 shinkansen | +30 min |
 | Yufuin → Kurokawa Onsen | 1h45/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h/0 train | 1h15/0 car | +30 min |
-| Fukuoka → Kurokawa Onsen | 2h42/0 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 1h/0 train | 2h15/0 car | +33 min |
 | Kagoshima → Kagoshima airport | 1h06/0 | [Myoken Ishiharaso](https://ryokancatalog.com/inn/myoken-ishiharaso) · Kirishima | 54 min/0 train | 45 min/0 bus | +33 min |
-| Kumamoto → Kurokawa Onsen | 2h36/0 | [Shinsen](https://ryokancatalog.com/inn/shinsen) · Takachiho | 2h/0 car | 1h09/0 car | +33 min |
 | Osaka → Hiroshima | 2h06/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h54/0 shinkansen | +33 min |
 | Fukuoka → Yufuin | 2h10/0 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 1h/0 train | 1h45/0 car | +35 min |
 | Fukuoka → Yufuin | 2h10/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h45/0 train | 1h/0 train | +35 min |
@@ -44,18 +42,20 @@
 | Takayama → Osaka | 3h54/2 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 3h48/1 train | 45 min/0 train | +39 min |
 | Tokyo → Takayama | 4h54/1 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 3h/0 shinkansen | 2h36/1 train | +42 min |
 | Tokyo → Nyūtō Onsen | 4h/1 | [Wabizakura](https://ryokancatalog.com/inn/wabizakura) · Kakunodate | 3h06/0 shinkansen | 1h36/1 train | +42 min |
+| Fukuoka → Kurokawa Onsen | 2h30/0 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 1h/0 train | 2h15/0 car | +45 min |
 | Fukuoka → Amagase | 1h45/0 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 1h/0 train | 1h30/0 car | +45 min |
 | Izu peninsula → Haneda airport | 2h/2 | [Arcana Izu](https://ryokancatalog.com/inn/arcana-izu) · Yugashima | 30 min/0 car | 2h15/2 train | +45 min |
 | Takayama → Kyoto | 3h48/1 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 2h36/1 train | 2h/1 train | +48 min |
 | Kanazawa → Takayama | 2h24/0 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 36 min/0 train | 2h36/1 train | +48 min |
-| Nagasaki → Amakusa | 3h24/3 | [Mt.Resort Unzen Kyushu Hotel](https://ryokancatalog.com/inn/mt-resort-unzen-kyushu-hotel) · Unzen | 1h42/0 bus | 2h30/0 car | +48 min |
 | Beppu → Kumamoto | 2h30/1 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 1h/0 bus | 2h24/1 train | +54 min |
 | Kyoto → Yamanaka Onsen | 1h36/1 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 2h/1 train | 30 min/0 car | +54 min |
 | Tokyo → Kanazawa | 2h42/0 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 3h/0 shinkansen | 36 min/0 train | +54 min |
 | Sendai → Kanazawa | 4h30/1 | [Onyado Kawasemi](https://ryokancatalog.com/inn/onyado-kawasemi) · Iizaka Onsen | 1h15/1 train | 4h12/2 shinkansen | +57 min |
 | Tokyo → Izu peninsula | 1h45/0 | [Arcana Izu](https://ryokancatalog.com/inn/arcana-izu) · Yugashima | 2h12/1 train | 30 min/0 car | +57 min |
 | Beppu → Kagoshima | 3h12/1 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 1h/0 bus | 3h12/1 scenic | +1h |
+| Kumamoto → Takachiho | 2h/0 | [Takefue](https://ryokancatalog.com/inn/takefue) · Kurokawa Onsen | 1h51/0 car | 1h09/0 car | +1h |
 | Kanazawa → Nikkō | 4h/2 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 36 min/0 train | 4h30/3 train (two researched halves) | +1h06 |
+| Kumamoto → Kurokawa Onsen | 1h51/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h42/1 train | 1h15/0 car | +1h06 |
 | Kyoto → Kansai airport | 1h30/0 | [Tsukihitei](https://ryokancatalog.com/inn/tsukihitei) · Nara | 45 min/0 train | 1h54/1 train | +1h09 |
 | Osaka → Fukuoka | 3h06/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 3h30/0 shinkansen | +1h09 |
 | Osaka → Kansai airport | 1h06/0 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h30/0 train | +1h09 |
@@ -69,6 +69,7 @@
 | Kanazawa → Nikkō | 4h/2 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 3h18/2 shinkansen | +1h18 |
 | Kanazawa → Echigo-Yuzawa | 3h30/1 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 2h48/1 shinkansen | +1h18 |
 | Kanazawa → Takayama | 2h24/0 | [Hanamurasaki](https://ryokancatalog.com/inn/hanamurasaki) · Yamanaka Onsen | 54 min/0 train | 2h48/1 train | +1h18 |
+| Kumamoto → Kurokawa Onsen | 1h51/0 | [Shinsen](https://ryokancatalog.com/inn/shinsen) · Takachiho | 2h/0 car | 1h09/0 car | +1h18 |
 | Kyoto → Izu peninsula | 2h42/0 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 2h36/0 train | 1h24/1 train | +1h18 |
 | Tokyo → Echigo-Yuzawa | 1h45/0 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 1h40/0 train | 1h24/0 car | +1h19 |
 | Tokyo → Hakone | 2h12/1 | [Asaba](https://ryokancatalog.com/inn/asaba) · Izu peninsula | 1h45/0 train | 1h48/2 train | +1h21 |
@@ -78,18 +79,19 @@
 | Sendai → Minakami / Tanigawa | 2h30/1 | [Atamiso](https://ryokancatalog.com/inn/atamiso) · Bandai-Atami | 1h/1 shinkansen | 2h54/2 shinkansen | +1h24 |
 | Sendai → Minakami / Tanigawa | 2h30/1 | [Tsuchiyu Bettei Satonoyu](https://ryokancatalog.com/inn/tsuchiyu-bettei-satonoyu) · Tsuchiyu Onsen | 1h/0 train | 2h54/1 train | +1h24 |
 | Fukuoka → Amagase | 1h45/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 2h10/0 train | 1h/0 train | +1h25 |
+| Kumamoto → Nagasaki | 2h/2 | [Mt.Resort Unzen Kyushu Hotel](https://ryokancatalog.com/inn/mt-resort-unzen-kyushu-hotel) · Unzen | 2h12/2 ferry | 1h15/0 car | +1h27 |
 | Kyoto → Fukuoka | 3h30/0 | [Kinsuikan](https://ryokancatalog.com/inn/kinsuikan) · Miyajima | 2h42/2 train | 2h15/2 train | +1h27 |
 | Tokyo → Izu peninsula | 1h45/0 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 1h48/0 train | 1h24/1 train | +1h27 |
 | Tokyo → Minakami / Tanigawa | 1h40/0 | [ryugon](https://ryokancatalog.com/inn/ryugon) · Echigo-Yuzawa | 1h45/0 train | 1h24/0 car | +1h29 |
 | Kurokawa Onsen → Amagase | 1h15/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 1h45/0 bus | 1h/0 train | +1h30 |
 | Kyoto → Hakone | 3h/1 | [Asaba](https://ryokancatalog.com/inn/asaba) · Izu peninsula | 2h42/0 train | 1h48/2 train | +1h30 |
 | Kyoto → Hakone | 3h/1 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 2h36/0 train | 1h54/1 train | +1h30 |
+| Nagasaki → Nagasaki airport | 1h/0 | [Mt.Resort Unzen Kyushu Hotel](https://ryokancatalog.com/inn/mt-resort-unzen-kyushu-hotel) · Unzen | 1h15/0 car | 1h15/0 car | +1h30 |
 | Tokyo → Hakone | 2h12/1 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 1h48/0 train | 1h54/1 train | +1h30 |
 | Tokyo → Nagoya | 2h06/0 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 2h45/0 shinkansen | 54 min/0 shinkansen | +1h33 · a stop, not a free connector |
 | Tokyo → Kyoto | 2h45/0 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 1h48/0 train | 2h36/0 train | +1h39 · a stop, not a free connector |
 | Kyoto → Miyajima | 2h42/2 | [Migiwatei Ochi Kochi](https://ryokancatalog.com/inn/migiwatei-ochi-kochi) · Tomonoura | 2h12/1 train | 2h12/2 shinkansen | +1h42 · a stop, not a free connector |
 | Tokyo → Kyoto | 2h45/0 | [Asaba](https://ryokancatalog.com/inn/asaba) · Izu peninsula | 1h45/0 train | 2h42/0 train | +1h42 · a stop, not a free connector |
-| Kumamoto → Takachiho | 2h/0 | [Takefue](https://ryokancatalog.com/inn/takefue) · Kurokawa Onsen | 2h36/0 bus | 1h09/0 car | +1h45 · a stop, not a free connector |
 | Kyoto → Nikkō | 4h42/2 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 2h/1 train | 4h30/3 train (two researched halves) | +1h48 · a stop, not a free connector |
 | Kyoto → Miyajima | 2h42/2 | [Ryokan Nishiyama](https://ryokancatalog.com/inn/ryokan-nishiyama) · Onomichi | 2h18/1 shinkansen | 2h18/3 ferry | +1h54 · a stop, not a free connector |
 | Takayama → Nagoya | 2h45/0 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 3h48/1 train | 54 min/0 shinkansen | +1h57 · a stop, not a free connector |
@@ -107,7 +109,6 @@
 | Kyoto → Nikkō | 4h42/2 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 4h15/1 shinkansen | 2h48/2 shinkansen | +2h21 · a stop, not a free connector |
 | Fukuoka → Amakusa | 1h54/1 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h45/0 train | 2h30/0 car | +2h21 · a stop, not a free connector |
 | Fukuoka → Kumamoto | 42 min/0 | [Tayuta](https://ryokancatalog.com/inn/tayuta) · Amakusa | 1h54/1 train | 1h12/0 car | +2h24 · a stop, not a free connector |
-| Kumamoto → Takachiho | 2h/0 | [Tayuta](https://ryokancatalog.com/inn/tayuta) · Amakusa | 1h12/0 car | 3h12/0 car | +2h24 · a stop, not a free connector |
 | Fukuoka → Miyajima | 2h15/2 | [Migiwatei Ochi Kochi](https://ryokancatalog.com/inn/migiwatei-ochi-kochi) · Tomonoura | 2h30/0 shinkansen | 2h12/2 shinkansen | +2h27 · a stop, not a free connector |
 | Tokyo → Nikkō | 2h/0 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 1h40/0 train | 2h48/2 shinkansen | +2h28 · a stop, not a free connector |
 | Beppu → Kagoshima | 3h12/1 | [Takefue](https://ryokancatalog.com/inn/takefue) · Kurokawa Onsen | 2h24/0 bus | 3h18/1 train | +2h30 · a stop, not a free connector |
@@ -120,11 +121,8 @@
 | Sendai → Kakunodate | 2h15/0 | [Tsuchiyu Bettei Satonoyu](https://ryokancatalog.com/inn/tsuchiyu-bettei-satonoyu) · Tsuchiyu Onsen | 1h/0 train | 3h54/1 shinkansen | +2h39 · a stop, not a free connector |
 | Tokyo → Kakunodate | 3h06/0 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 1h40/0 train | 4h06/1 shinkansen | +2h40 · a stop, not a free connector |
 | Kyoto → Lake Kawaguchi | 4h15/1 | [Arcana Izu](https://ryokancatalog.com/inn/arcana-izu) · Yugashima | 3h03/1 train | 3h54/3 train | +2h42 · a stop, not a free connector |
-| Kumamoto → Takachiho | 2h/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h42/1 train | 3h/0 car | +2h42 · a stop, not a free connector |
-| Kumamoto → Takachiho | 2h/0 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 1h48/1 train | 3h/0 car | +2h48 · a stop, not a free connector |
 | Tokyo → Kakunodate | 3h06/0 | [Onyado Kawasemi](https://ryokancatalog.com/inn/onyado-kawasemi) · Iizaka Onsen | 2h/1 train | 3h54/2 shinkansen | +2h48 · a stop, not a free connector |
 | Kagoshima → Amakusa | 2h18/1 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 2h40/1 scenic | 2h30/0 car | +2h52 · a stop, not a free connector |
-| Kumamoto → Takachiho | 2h/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 2h24/1 train | 2h30/0 car | +2h54 · a stop, not a free connector |
 | Sendai → Kakunodate | 2h15/0 | [Onyado Kawasemi](https://ryokancatalog.com/inn/onyado-kawasemi) · Iizaka Onsen | 1h15/1 train | 3h54/2 shinkansen | +2h54 · a stop, not a free connector |
 | Tokyo → Nikkō | 2h/0 | [Onyado Kawasemi](https://ryokancatalog.com/inn/onyado-kawasemi) · Iizaka Onsen | 2h/1 train | 2h54/2 train | +2h54 · a stop, not a free connector |
 | Tokyo → Kakunodate | 3h06/0 | [ryugon](https://ryokancatalog.com/inn/ryugon) · Echigo-Yuzawa | 1h45/0 train | 4h18/1 shinkansen | +2h57 · a stop, not a free connector |
@@ -137,7 +135,7 @@
 | Kagoshima → Amakusa | 2h18/1 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 2h36/1 train | 3h/2 train | +3h18 · a stop, not a free connector |
 | Fukuoka → Amakusa | 1h54/1 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 2h10/0 train | 3h06/0 car | +3h22 · a stop, not a free connector |
 | Sendai → Kakunodate | 2h15/0 | [Otogi no Yado Yoneya](https://ryokancatalog.com/inn/otogi-no-yado-yoneya) · Sukagawa | 1h18/1 train | 4h24/2 shinkansen | +3h27 · a stop, not a free connector |
-| Fukuoka → Amakusa | 1h54/1 | [Mt.Resort Unzen Kyushu Hotel](https://ryokancatalog.com/inn/mt-resort-unzen-kyushu-hotel) · Unzen | 3h/2 bus | 2h30/0 car | +3h36 · a stop, not a free connector |
+| Fukuoka → Amakusa | 1h54/1 | [Takefue](https://ryokancatalog.com/inn/takefue) · Kurokawa Onsen | 2h30/0 car | 2h54/0 car | +3h30 · a stop, not a free connector |
 
 *Hours are door to door and run both ways; `2h/1` is two hours and one change. A detour of `none` or less means the two halves come to no more than the direct journey. Up to 1h30 extra still counts as a free connector; past that the row is marked **a stop, not a free connector** — the place is worth a night of its own, and the detour is the price of it. Those marked rows appear only where a pair has no free connector at all.*
 <!-- /generated:connectors -->

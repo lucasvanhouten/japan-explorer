@@ -13,13 +13,13 @@
 - `enowa-yufuin` · Enowa Yufuin editor's pick · A 8.4 · bath yes · $950–2000 · [book on Ikyu](https://www.ikyu.com/00002995/) · 1h/0 from Beppu
 - `kamenoi-besso` · Kamenoi Besso editor's pick · — · bath unstated · $760–1500 · [book on Ikyu](https://www.ikyu.com/00002470/) · 1h/0 from Beppu
 - `tayuta` · Tayuta editor's pick · S 9.4 · bath yes · $1200–2700 · [book on Ikyu](https://www.ikyu.com/00003246/) · 1h12/0 from Kumamoto
+- `mt-resort-unzen-kyushu-hotel` · Mt.Resort Unzen Kyushu Hotel · A 8.4 · bath yes · ask · [book on Ikyu](https://www.ikyu.com/00001108/) · 1h15/0 from Nagasaki
 - `yoyokaku` · Yoyokaku · B 7.9 · bath no · $300–550 · [book on Ikyu](https://www.ikyu.com/00001186/) · 1h15/0 from Fukuoka
 - `sanso-tensui` · Sanso Tensui editor's pick · A 8.6 · bath yes · $420–600 · [book on Ikyu](https://www.ikyu.com/00002020/) · 1h42/1 from Kumamoto
-- `mt-resort-unzen-kyushu-hotel` · Mt.Resort Unzen Kyushu Hotel · A 8.4 · bath yes · ask · [book on Ikyu](https://www.ikyu.com/00001108/) · 1h42/0 from Nagasaki
+- `takefue` · Takefue editor's pick · S 9.3 · bath yes · $1300–1800 · [book on Ikyu](https://www.ikyu.com/00001491/) · 1h51/0 from Kumamoto
+- `gosho-gekkoju` · Gosho Gekkoju · A 8.5 · bath yes · $900–1400 · [book on Ikyu](https://www.ikyu.com/00002369/) · 1h51/0 from Kumamoto
 - `shinsen` · Shinsen · A 8.9 · bath some · $600–1100 · [book on Ikyu](https://www.ikyu.com/00001608/) · 2h/0 from Kumamoto
 - `kinsuikan` · Kinsuikan · A 8.1 · bath no · $470–830 · [book on Ikyu](https://www.ikyu.com/00001261/) · 2h15/2 from Fukuoka
-- `takefue` · Takefue editor's pick · S 9.3 · bath yes · $1300–1800 · [book on Ikyu](https://www.ikyu.com/00001491/) · 2h24/0 from Beppu
-- `gosho-gekkoju` · Gosho Gekkoju · A 8.5 · bath yes · $900–1400 · [book on Ikyu](https://www.ikyu.com/00002369/) · 2h24/0 from Beppu
 - `sankara-hotel-spa-yakushima` · Sankara Hotel & Spa Yakushima · A 8.9 · bath no · $750–1500 · [book on Ikyu](https://www.ikyu.com/00001577/) · 2h30/1 from Kagoshima
 - `migiwatei-ochi-kochi` · Migiwatei Ochi Kochi · A 8.5 · bath yes · $470–800 · [book on Ikyu](https://www.ikyu.com/00001673/) · 2h30/0 from Fukuoka
 - `bettei-amafuru-oka` · Bettei Amafuru Oka · B 7.9 · bath some · ask · no researched leg from this file's cities — look it up live
