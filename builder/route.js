@@ -1022,6 +1022,13 @@ function assembleSpine(sp, optIn) {
 /* the route's shape the way the explorer shows it (owner, 2026-09-12): the cities in order, then every ryokan option
  * and every town option this assembly offers, each marked on or off — so a comparison names Nikkō and Kaga even when
  * they are off, and nothing turns up later as a surprise */
+/* the explorer address carries what the walk has settled (owner, 2026-09-12: the page opened on raw defaults after
+ * decisions had been made): `set=<key>:<option index>` for every answer given by name, `n=<loc>[#visit]:<nights>` for
+ * every city stay as priced */
+function hashSets(sp, opt) { let s; try { s = parseSets(sp, (opt.from || []).concat(opt.set || [])); } catch (e) { return ""; }
+  const ks = Object.keys(s); return ks.length ? `&set=${ks.map((k) => `${k}:${s[k]}`).join(",")}` : ""; }
+function hashNights(P) { const seen = {}; const out = (P.stops || []).filter((s) => isBaseKind(s.kind)).map((s) => { seen[s.loc] = (seen[s.loc] || 0) + 1; return `${s.loc}${seen[s.loc] > 1 ? `#${seen[s.loc]}` : ""}:${s.nights}`; });
+  return out.length ? `&n=${out.join(",")}` : ""; }
 function shapeLines(sp, P) {
   const off = new Set((P.unavailable || []).map((u) => `${u.key}#${u.index}`)), rev = P.reversed;
   /* where an option sits, in trip direction: on the way between two cities, out and back from one, before or after it */
@@ -1314,7 +1321,7 @@ function cmdSpine(ref, opt) {
   if (opt.json) return JSON.stringify({ spine: sp.id, before: moved ? before : undefined, after, choices: after.choices, stopString: stopString(after.stops) }, null, 1);
   const chosenOpts = decisionsOf(sp).map((d) => d.options[after.choices[d.key]]);
   const L = [spineHead(sp, after.band, opt, after), "", lineOf(sp, chosenOpts), "",
-    `Explorer: \`guides/route-explorer.html#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}\` — the page to hand them, prefilled with this route.`, ""];
+    `Explorer: \`guides/route-explorer.html#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${hashSets(sp, opt)}${hashNights(after)}\` — the page to hand them, prefilled with this route, its answers so far and the nights on screen.`, ""];
   L.push(...shapeLines(sp, after), "");
   if (autoRev) L.push(`Run the other way round for your ticket — in at ${apLabel(after.opt.in)}, home from ${apLabel(after.opt.out)}. The engine turns it round by itself whenever the ticket is on every run (\`--in\`/\`--out\`); do not add \`--reverse\` on top, that would turn it back.`, "");
   L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed, null, after.stops.map((s) => s.loc)), "");

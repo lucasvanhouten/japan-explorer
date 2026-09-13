@@ -23,6 +23,7 @@ p.why{max-width:74ch;font-size:.84rem;color:var(--ink2);margin:.2rem 0 .9rem}p.w
 .tab{font:inherit;font-size:.8rem;font-weight:700;color:var(--ink2);background:var(--panel);border:1px solid var(--hair2);border-radius:2px;padding:.28rem .6rem;cursor:pointer}
 .tab:hover{border-color:var(--ink);color:var(--ink)}
 .tab.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tab.more{font-weight:600;color:var(--dim)}
 .tab:focus-visible,.act:focus-visible,.seg button:focus-visible,.nn button:focus-visible,.sub:focus-visible,.row.ghost:focus-visible,g.opt:focus-visible{outline:2px solid var(--dc);outline-offset:1px}
 
 /* ── one type scale for tags and figures ───────────────── */
@@ -354,7 +355,7 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
  const pin=fitPin[sp.id]=fitPin[sp.id]||{};
  /* the spread happens once, when the route or the target is new. After that every row is held where it landed: a place
   * added later arrives at its own usual count and the overrun is reported, never taken off the stays already there */
- const fresh=!Object.keys(pin).length;
+ const fresh=!NFIX&&!Object.keys(pin).length;
  rows.forEach(r=>{r.def=pin[r.key]!=null?pin[r.key]:base(r);});
  /* a night the reader set by hand is theirs: the spread works around it rather than over it */
  const held=r=>nightsOv[r.key]!=null;
@@ -414,11 +415,17 @@ function findSpine(q){if(!q)return null;const s=String(q).toLowerCase().replace(
  if(ALIAS[s]){const al=spines.find(x=>slugOf(x)===ALIAS[s]);if(al)return al;}
  const hits=spines.filter(x=>words(x).includes(s)||slugOf(x).indexOf(s)>=0);
  return hits.length===1?hits[0]:null;}
-const HKEYS=["spine","nights","in","out","start","reverse","repeat"];
+/* set= the answers already made (<decision key>:<option index>, the engine's own choices); n= the nights on screen
+ * (<place>[#visit]:<nights>, in trip order); routes= the routes under discussion. A link carries the whole shape */
+const HKEYS=["spine","nights","in","out","start","reverse","repeat","set","n","routes"];
 function hashParams(){const o={};location.hash.replace(/^#/,"").split("&").forEach(kv=>{if(!kv)return;const i=kv.indexOf("=");
  const k=decodeURIComponent(i<0?kv:kv.slice(0,i)).toLowerCase(),v=decodeURIComponent((i<0?"":kv.slice(i+1)).replace(/\+/g," "));if(k)o[k]=v;});return o;}
-const hashStr=p=>HKEYS.filter(k=>p[k]!=null&&p[k]!=="").map(k=>k+"="+encodeURIComponent(p[k])).join("&");
+/* the list punctuation stays as it is written — a shared address reads as one */
+const hEnc=v=>encodeURIComponent(v).replace(/%2C/gi,",").replace(/%3A/gi,":").replace(/%23/gi,"#");
+const hashStr=p=>HKEYS.filter(k=>p[k]!=null&&p[k]!=="").map(k=>k+"="+hEnc(p[k])).join("&");
 let cur=spines[0],target=spines[0].band[0],ask=null;
+/* true while the address carries the nights itself: the fit holds them and the auto-spend stands down */
+let NFIX=false;
 /* every render reads the hash again, so a fresh link overrides whatever the page was holding: the nights, the start, the
  * direction and the two airports all come from it when it carries them */
 function readHash(){const p=hashParams();
@@ -443,9 +450,33 @@ function readHash(){const p=hashParams();
   if(j>=0)sel[cur.id+"/"+d.key]=j;}}
  if(p.reverse!=null&&p.reverse!==""){const d=dirDec(cur);if(d){const on=/^(1|y|yes|true|on)$/i.test(p.reverse);
   sel[cur.id+"/"+d.key]=on?revIdx(d):d.options.findIndex(o=>!o.reverse);}}
+ /* the answers already made, applied as if the reader had clicked them: a key this route does not carry, or an option
+  * index it does not have, is passed over in silence rather than shifting the route to something else */
+ if(p.set)String(p.set).split(",").forEach(pair=>{const i=pair.lastIndexOf(":");if(i<0)return;
+  const key=pair.slice(0,i).trim(),j=parseInt(pair.slice(i+1),10);
+  if(!key||!(j>=0))return;const d=decs(cur).find(x=>x.key===key);
+  if(!d||j>=d.options.length)return;sel[cur.id+"/"+d.key]=j;});
+ /* the nights on screen, the same figures the steppers set — with these the page shows what the link says and neither
+  * re-spreads the total nor spends it on more places */
+ NFIX=false;
+ if(p.n)String(p.n).split(",").forEach(pair=>{const i=pair.lastIndexOf(":");if(i<0)return;
+  let loc=pair.slice(0,i).trim();const v=parseInt(pair.slice(i+1),10);if(!loc||!(v>0))return;
+  let visit=1;const h=loc.indexOf("#");if(h>=0){visit=parseInt(loc.slice(h+1),10)||1;loc=loc.slice(0,h);}
+  nightsOv[cur.id+"/"+loc+"#"+visit]=Math.min(stepMax(loc),Math.max(1,v));NFIX=true;});
  return p;}
 function setHash(patch){const p=hashParams();Object.assign(p,patch);const s=hashStr(p);
  if("#"+s===location.hash)render();else location.hash=s;}
+/* the answers taken away from the route's own default — the ones the reader (or the link) chose; a night the page
+ * spent by itself is not one of them, so a later change of total can still spend it somewhere else */
+function setPart(){if(!cur)return "";
+ return decs(cur).filter(d=>{const k=cur.id+"/"+d.key;return sel[k]!=null&&autoOn[k]==null&&sel[k]!==defOf(d);})
+  .map(d=>d.key+":"+sel[cur.id+"/"+d.key]).join(",");}
+/* the nights on screen: every city stay, in trip order, plus any other stay the reader moved themselves */
+function nPart(){if(!cur)return "";
+ return fit(cur).filter(r=>kindOf(cur,r.loc)==="city"||nightsOv[r.key]!=null)
+  .map(r=>r.key.slice(r.key.indexOf("/")+1).replace(/#1$/,"")+":"+r.n).join(",");}
+/* a change the reader made keeps the address current, so the link they copy reopens exactly this shape */
+const keepHash=patch=>setHash(Object.assign({set:setPart(),n:nPart()},patch||{}));
 
 /* ---------- the trip: the rows, the ghosts, the map ---------- */
 /* the indices of `long` that `short` no longer holds — used to ask the assembler itself which decision put a stop
@@ -828,8 +859,17 @@ function giveHtml(T){const stops=T.st.map(s=>s.loc+":"+s.n).join(",");
  return `<div class="give"><b>Give this to your assistant</b><div class="plan">${plan}<span class="s">·</span>in at <b>${esc(apName(T.apIn))}</b><span class="s">·</span>home from <b>${esc(apName(T.apOut))}</b></div><div class="cbox"><code id="cmd">${esc(cmd)}</code>`
  +`<button class="copy" data-copy="1">Copy</button></div>`
  +`<p>Paste that line into the chat and the kit's route tool prices the whole trip, leg by leg, and checks it.</p></div>`;}
-const tabsHtml=sp=>`<div class="tabs" role="group" aria-label="The nine routes">`
- +spines.map(s=>`<button class="tab${s===sp?" on":""}" data-tab="${esc(slugOf(s))}">${esc(s.name)}</button>`).join("")+`</div>`;
+/* the routes under discussion, in the order the link names them — the rest wait behind one button */
+let MORE=false;
+function pinned(){const out=[];
+ String(hashParams().routes||"").split(",").forEach(q=>{const sp=findSpine(q);if(sp&&out.indexOf(sp)<0)out.push(sp);});
+ return out;}
+function tabsHtml(sp){const pin=pinned(),rest=pin.length?spines.filter(x=>pin.indexOf(x)<0):[];
+ const show=pin.length?pin.concat(MORE?rest:[]):spines;
+ return `<div class="tabs" role="group" aria-label="${pin.length?"The routes":"The nine routes"}">`
+ +show.map(s=>`<button class="tab${s===sp?" on":""}" data-tab="${esc(slugOf(s))}">${esc(s.name)}</button>`).join("")
+ +(rest.length?`<button class="tab more" data-more="1">${MORE?"Fewer routes":"Explore more routes"}</button>`:"")
+ +`</div>`;}
 function pageHtml(sp){
  /* a link that could mean two routes picks neither: the tabs stand open and the page says so in a line */
  if(!sp)return tabsHtml(null)+`<p class="prompt">Which route? <b>${esc(ask||"")}</b> matches more than one of them — pick one above.</p>`;
@@ -845,7 +885,7 @@ let lastSig=null;
 function render(){readHash();
  if(cur){const sd=startDec(cur),dd=dirDec(cur);
   const sig=[cur.id,target,sd?sel[cur.id+"/"+sd.key]:"",dd?sel[cur.id+"/"+dd.key]:""].join("|");
-  if(sig!==lastSig){lastSig=sig;delete fitPin[cur.id];spendNights(cur);}}
+  if(sig!==lastSig){lastSig=sig;delete fitPin[cur.id];if(!NFIX)spendNights(cur);}}
  app.innerHTML=pageHtml(cur);if(cur)fitMaps();}
 render();
 addEventListener("hashchange",render);
@@ -853,8 +893,12 @@ let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(fitMaps,120
 
 /* ---------- the four things a click can mean ---------- */
 function act(el){
+ const more=el.closest?el.closest("[data-more]"):null;
+ if(more){MORE=!MORE;render();return true;}
  const tab=el.closest?el.closest("[data-tab]"):null;
- if(tab){setHash({spine:tab.dataset.tab,start:"",reverse:"",in:"",out:""});return true;}
+ /* the ticket, the nights asked for, the repeat visit and the routes under discussion belong to the trip and stay;
+  * the answers, the nights on screen, the start and the direction belong to the route being left */
+ if(tab){setHash({spine:tab.dataset.tab,start:"",reverse:"",set:"",n:""});return true;}
  if(!cur)return false;
  const sw=el.closest?el.closest("[data-sw]"):null;
  if(sw){if(sw.disabled)return true;const d=decs(cur).find(x=>x.key===sw.dataset.sw);
@@ -866,14 +910,14 @@ function act(el){
   const ap=airportsOf(cur,stopsOf(cur));
   const patch={in:ap[0]&&ap[0]!=="—"?ap[0]:"",out:ap[1]&&ap[1]!=="—"?ap[1]:""};
   if(isStart(d))patch.start=sw.dataset.j;else patch.reverse=d.options[+sw.dataset.j].reverse?"1":"";
-  setHash(patch);
+  keepHash(patch);
   return true;}
  const nb=el.closest?el.closest("[data-nk]"):null;
  if(nb){if(nb.disabled)return true;const key=nb.dataset.nk,loc=key.slice(key.indexOf("/")+1,key.lastIndexOf("#"));
   const st=fit(cur).find(s=>s.key===key);if(!st)return true;
-  nightsOv[key]=Math.min(stepMax(loc),Math.max(1,st.n+(+nb.dataset.d)));render();return true;}
+  nightsOv[key]=Math.min(stepMax(loc),Math.max(1,st.n+(+nb.dataset.d)));keepHash();return true;}
  const k=el.dataset&&el.dataset.k!=null?el:(el.closest?el.closest("[data-k]"):null);
- if(k){sel[cur.id+"/"+k.dataset.k]=+k.dataset.j;render();return true;}
+ if(k){sel[cur.id+"/"+k.dataset.k]=+k.dataset.j;keepHash();return true;}
  return false;}
 app.addEventListener("click",e=>{
  const c=e.target.closest("[data-copy]");
@@ -889,5 +933,8 @@ app.addEventListener("keydown",e=>{if(e.key!=="Enter"&&e.key!==" ")return;
  const t=e.target;if(!t||!t.getAttribute||t.getAttribute("role")!=="button")return;
  e.preventDefault();act(t);});
 app.addEventListener("change",e=>{if(e.target.id!=="nights")return;
- const v=parseInt(e.target.value,10);setHash({nights:v>0?Math.min(40,v):""});});
+ const v=parseInt(e.target.value,10);
+ /* a new total is a new fit: the figures the page was holding are let go, the answers are kept */
+ Object.keys(nightsOv).forEach(k=>{if(cur&&k.indexOf(cur.id+"/")===0)delete nightsOv[k];});
+ setHash({nights:v>0?Math.min(40,v):"",set:setPart(),n:""});});
 </script>
