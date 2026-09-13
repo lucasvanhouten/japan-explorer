@@ -6,20 +6,20 @@
 
 ## The inns — 16 within reach
 
-- `atamiso` · Atamiso · A 8.3 · bath some · $450–800 · [book on Ikyu](https://www.ikyu.com/00002188/) · 1h/1 from Sendai
-- `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu editor's pick · A 8.3 · bath some · $570–800 · [book on Ikyu](https://www.ikyu.com/00001149/) · 1h/0 from Sendai
+- `atamiso` · Atamiso · A 8.3 · bath some · $450–800 · [book on Ikyu](https://www.ikyu.com/en-us/00002188/) · 1h/1 from Sendai
+- `tsuchiyu-bettei-satonoyu` · Tsuchiyu Bettei Satonoyu editor's pick · A 8.3 · bath some · $570–800 · [book on Ikyu](https://www.ikyu.com/en-us/00001149/) · 1h/0 from Sendai
 - `auberge-suzukane` · Auberge Suzukane · A 8.0 · bath unstated · ask · 1h/1 from Sendai
-- `onyado-kawasemi` · Onyado Kawasemi · A 8.3 · bath no · $850–1150 · [book on Ikyu](https://www.ikyu.com/00000292/) · 1h15/1 from Sendai
-- `otogi-no-yado-yoneya` · Otogi no Yado Yoneya · A 8.1 · bath unstated · $350–650 · [book on Ikyu](https://www.ikyu.com/00001344/) · 1h20/1 from Sendai
-- `yamagata-the-takinami` · Yamagata The Takinami · A 8.3 · bath some · $600–900 · [book on Ikyu](https://www.ikyu.com/00002496/) · 1h35/1 from Sendai
-- `osteria-sincerita` · Osteria Sincerità · B 7.8 · bath unstated · $850–1100 · [book on Ikyu](https://www.ikyu.com/00003078/) · 1h35/1 from Sendai
-- `yamado` · Yamado · A 8.2 · bath unstated · $600–850 · [book on Ikyu](https://www.ikyu.com/00001634/) · 2h/1 from Sendai
-- `wabizakura` · Wabizakura · A 8.9 · bath yes · $620–780 · [book on Ikyu](https://www.ikyu.com/00001740/) · 2h15/0 from Sendai
-- `aizu-tsuruga-higashiyama-sohonzan` · Aizu Tsuruga Higashiyama Sohonzan · A 8.4 · bath unstated · $1000–1400 · [book on Ikyu](https://www.ikyu.com/00003014/) · 2h15/1 from Sendai
-- `miyakowasure` · Miyakowasure · A 8.4 · bath yes · $600–850 · [book on Ikyu](https://www.ikyu.com/00001102/) · 2h15/0 from Sendai
-- `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · [book on Ikyu](https://www.ikyu.com/00002740/) · 2h20/1 from Sendai
-- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · [book on Ikyu](https://www.ikyu.com/00000604/) · 2h30/1 from Sendai
-- `ryugon` · ryugon · A 8.8 · bath some · $520–970 · [book on Ikyu](https://www.ikyu.com/00000631/) · 3h/1 from Sendai — _long day; another gateway is closer_
+- `onyado-kawasemi` · Onyado Kawasemi · A 8.3 · bath no · $850–1150 · [book on Ikyu](https://www.ikyu.com/en-us/00000292/) · 1h15/1 from Sendai
+- `otogi-no-yado-yoneya` · Otogi no Yado Yoneya · A 8.1 · bath unstated · $350–650 · [book on Ikyu](https://www.ikyu.com/en-us/00001344/) · 1h20/1 from Sendai
+- `yamagata-the-takinami` · Yamagata The Takinami · A 8.3 · bath some · $600–900 · [book on Ikyu](https://www.ikyu.com/en-us/00002496/) · 1h35/1 from Sendai
+- `osteria-sincerita` · Osteria Sincerità · B 7.8 · bath unstated · $850–1100 · [book on Ikyu](https://www.ikyu.com/en-us/00003078/) · 1h35/1 from Sendai
+- `yamado` · Yamado · A 8.2 · bath unstated · $600–850 · [book on Ikyu](https://www.ikyu.com/en-us/00001634/) · 2h/1 from Sendai
+- `wabizakura` · Wabizakura · A 8.9 · bath yes · $620–780 · [book on Ikyu](https://www.ikyu.com/en-us/00001740/) · 2h15/0 from Sendai
+- `aizu-tsuruga-higashiyama-sohonzan` · Aizu Tsuruga Higashiyama Sohonzan · A 8.4 · bath unstated · $1000–1400 · [book on Ikyu](https://www.ikyu.com/en-us/00003014/) · 2h15/1 from Sendai
+- `miyakowasure` · Miyakowasure · A 8.4 · bath yes · $600–850 · [book on Ikyu](https://www.ikyu.com/en-us/00001102/) · 2h15/0 from Sendai
+- `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · [book on Ikyu](https://www.ikyu.com/en-us/00002740/) · 2h20/1 from Sendai
+- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · [book on Ikyu](https://www.ikyu.com/en-us/00000604/) · 2h30/1 from Sendai
+- `ryugon` · ryugon · A 8.8 · bath some · $520–970 · [book on Ikyu](https://www.ikyu.com/en-us/00000631/) · 3h/1 from Sendai — _long day; another gateway is closer_
 - `satoyama-jujo` · Satoyama Jujo · A 8.3 · bath some · $500–800 · 3h/1 from Sendai — _long day; another gateway is closer_
 - `shiki-no-yado-michinokuan` · Shiki no Yado Michinokuan · B 7.7 · bath unstated · ask · no researched leg from this file's cities — look it up live
 

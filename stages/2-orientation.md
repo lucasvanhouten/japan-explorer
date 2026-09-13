@@ -193,12 +193,12 @@ The best answer to "more history, fewer queues": a real historical city with exc
 
 ### Takayama/Hida & the Alps
 
-- **known_for:** a preserved merchant town in the mountains of **Hida** — dark-timber streets, riverside morning markets, sake breweries marked by a cedar ball at the door, and **Hida beef**, a marbled wagyu locals rate above Kobe. It is the base for **Shirakawa-gō**, a UNESCO village of steep thatched farmhouses at its best under snow. Deeper into the **Japan Alps**: the hot-spring hamlets of Okuhida, the post towns of the Kiso valley, and Matsumoto with its black-and-white original castle.
+- **known_for:** a preserved merchant town in the mountains of **Hida** — dark-timber streets, riverside morning markets, sake breweries marked by a cedar ball at the door, and **Hida beef**, a marbled wagyu locals rate above Kobe. **Shirakawa-gō**, a UNESCO village of steep thatched farmhouses at its best under snow, sits on the Kanazawa–Takayama bus: get off, walk it for two hours, take the next bus on. Deeper into the **Japan Alps**: the hot-spring hamlets of Okuhida, the post towns of the Kiso valley, and Matsumoto with its black-and-white original castle.
 - **best_for:** hot springs, old streets, food (the beef and the sake), snow, mountains without leaving central Honshu.
 <!-- generated:card-alps -->
-- **nights:** ideal 2 · minimum 1 · Shirakawa-gō is a half day; add 1 for a remote mountain inn night
+- **nights:** ideal 2 · minimum 1 · Shirakawa-gō is a two-hour stop on the Kanazawa–Takayama bus; add 1 for a remote mountain inn night
 - **places:**
-  - **Takayama:** ideal 2 · minimum 1 · the town and Shirakawa-gō; Gero, Matsumoto and the Kiso valley are its inn towns, a night each
+  - **Takayama:** ideal 2 · minimum 1 · two nights for the town; Shirakawa-gō is a stop on the bus in; Gero, Matsumoto and the Kiso valley are its inn towns, a night each
   - **Nagoya:** ideal 0–1 · minimum 0 · the airport city for a route ending in the Alps; a night only before an early Centrair flight
 - **base:** yes
 - **spines:** The Kanazawa Loop · Snow Country
@@ -207,7 +207,7 @@ The best answer to "more history, fewer queues": a real historical city with exc
 - **pairs_with:** Kanazawa over the mountains, Nagoya or Kyoto south — a Kanazawa–Takayama–Kyoto arc is one of the tidiest add-ons to the spine.
 - **fits:** `alps`
 
-Takayama itself walks in an afternoon; two nights is for Shirakawa-gō and the pace. The deeper hamlets need a car and, in winter, snow tyres — on a rail-only trip, Takayama alone.
+Two nights is the usual stay: a full day for the old town and the morning markets, with Shirakawa-gō seen as a stop on the bus in. The deeper hamlets need a car and, in winter, snow tyres.
 
 ---
 

@@ -251,14 +251,14 @@
       "desc_rev": "In through Kansai airport."
      },
      {
-      "label": "A Kōyasan ryokan",
-      "desc": "A world-class destination gourmet ryokan south of Osaka.",
+      "label": "Sansō Amanosato, below Kōyasan",
+      "desc": "An eight-room auberge in the Wakayama hills below Kōyasan, booked for its French-Japanese dinner — the FlyerTalk author left calling it one of the best culinary destinations anywhere, and stays through 2025 say the kitchen is still there. A last night built around one dinner, then home.",
       "stops": [
        "katsuragi"
       ],
       "out": "KIX",
-      "label_rev": "A Kōyasan ryokan",
-      "desc_rev": "A world-class destination gourmet ryokan south of Osaka."
+      "label_rev": "Sansō Amanosato, below Kōyasan",
+      "desc_rev": "The first night: an eight-room auberge below Kōyasan whose French-Japanese dinner is one of the best culinary destinations anywhere, then Kansai."
      },
      {
       "label": "Kinosaki",
@@ -478,11 +478,12 @@
        "kind": "stop",
        "default": 1,
        "question": "A stop at Takayama on the way?",
-       "desc": "A preserved timber merchant town in the mountains, on the way.",
+       "desc": "A preserved timber merchant town in the mountains, on the way; the bus from Kanazawa stops at the Shirakawa-gō farmhouses.",
        "no": "Direct to the next city.",
        "stops": [
         "takayama"
-       ]
+       ],
+       "desc_rev": "A preserved timber merchant town in the mountains, on the way; the bus on to Kanazawa stops at the Shirakawa-gō farmhouses."
       }
      ]
     }
@@ -501,15 +502,15 @@
       "desc_rev": "In through its own airport."
      },
      {
-      "label": "A Kōyasan ryokan",
-      "desc": "A world-class destination gourmet ryokan south of Osaka.",
+      "label": "Sansō Amanosato, below Kōyasan",
+      "desc": "An eight-room auberge in the Wakayama hills below Kōyasan, booked for its French-Japanese dinner — the FlyerTalk author left calling it one of the best culinary destinations anywhere, and stays through 2025 say the kitchen is still there. A last night built around one dinner, then home.",
       "place": "after kyoto|osaka",
       "stops": [
        "katsuragi"
       ],
       "out": "KIX",
-      "label_rev": "A Kōyasan ryokan",
-      "desc_rev": "A world-class destination gourmet ryokan south of Osaka."
+      "label_rev": "Sansō Amanosato, below Kōyasan",
+      "desc_rev": "The first night: an eight-room auberge below Kōyasan whose French-Japanese dinner is one of the best culinary destinations anywhere, then Kansai."
      },
      {
       "label": "Kinosaki",
@@ -1004,11 +1005,12 @@
        "kind": "stop",
        "default": 1,
        "question": "A stop at Takayama on the way?",
-       "desc": "A preserved timber merchant town in the mountains, on the way.",
+       "desc": "A preserved timber merchant town in the mountains, on the way; the bus from Kanazawa stops at the Shirakawa-gō farmhouses.",
        "no": "Direct to the next city.",
        "stops": [
         "takayama"
-       ]
+       ],
+       "desc_rev": "A preserved timber merchant town in the mountains, on the way; the bus on to Kanazawa stops at the Shirakawa-gō farmhouses."
       }
      ]
     }
@@ -1027,15 +1029,15 @@
       "desc_rev": "In through its own airport."
      },
      {
-      "label": "A Kōyasan ryokan",
-      "desc": "A world-class destination gourmet ryokan south of Osaka.",
+      "label": "Sansō Amanosato, below Kōyasan",
+      "desc": "An eight-room auberge in the Wakayama hills below Kōyasan, booked for its French-Japanese dinner — the FlyerTalk author left calling it one of the best culinary destinations anywhere, and stays through 2025 say the kitchen is still there. A last night built around one dinner, then home.",
       "place": "after kyoto|osaka",
       "stops": [
        "katsuragi"
       ],
       "out": "KIX",
-      "label_rev": "A Kōyasan ryokan",
-      "desc_rev": "A world-class destination gourmet ryokan south of Osaka."
+      "label_rev": "Sansō Amanosato, below Kōyasan",
+      "desc_rev": "The first night: an eight-room auberge below Kōyasan whose French-Japanese dinner is one of the best culinary destinations anywhere, then Kansai."
      },
      {
       "label": "Kinosaki",

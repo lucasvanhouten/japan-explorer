@@ -271,21 +271,26 @@ function legRaw(a, b) {
 function airportLeg(loc, code) {
   const ap = AIRPORT[code]; if (!ap) throw new Error(`unknown airport ${code} (${AP_CODES.join(", ")})`);
   const lc = apKey(code), direct = rawLeg(loc, lc);
-  if (direct && direct.source !== "estimated") return { h: direct.t[0], x: direct.t[1], flightH: isFlight(direct) ? direct.t[0] : 0, mode: modeOf(direct), source: "table", text: direct.text };
   const cands = [];
+  /* a researched direct row is one candidate among the others, never the answer by itself (owner, 2026-09-13):
+   * Kōyasan to Haneda is 3h50 of train through Tokyo, and 1h30 by car to Kansai plus a 1h15 flight */
+  if (direct && direct.source !== "estimated") cands.push({ h: direct.t[0], x: direct.t[1], flightH: isFlight(direct) ? direct.t[0] : 0, mode: modeOf(direct), source: "table", text: direct.text });
   ap.hubs.forEach((hub) => { const acc = researchedDirect(hub, lc); if (!acc) return; const to = leg(loc, hub); if (to.estimated) return;
     cands.push({ h: to.h + acc.t[0], x: to.x + acc.t[1] + (loc === hub ? 0 : 1), flightH: to.flightH, mode: to.mode,
       source: to.source === "table" ? "composed via " + short(hub) : to.source, text: `${to.text} Then ${acc.text}` }); });
   AP_CODES.forEach((A) => { if (A === code) return; const t1 = researchedDirect(loc, apKey(A)); if (!t1 || t1.flight) return;
     const fl = researchedDirect(apKey(A), lc); if (!fl || !fl.flight) return;
     cands.push({ h: t1.t[0] + fl.t[0], x: t1.t[1] + fl.t[1] + 1, flightH: fl.t[0], mode: "flight",
-      source: `composed via ${AIRPORT[A].label}`, text: `${t1.text} Then ${fl.text}`, halves: [{ h: t1.t[0], x: t1.t[1], mode: t1.mode, what: `${short(loc)} → ${AIRPORT[A].label}` }, { h: fl.t[0], x: fl.t[1], mode: "flight", what: `${AIRPORT[A].label} → ${ap.label}` }] }); });
-  /* a composed flight is ranked with 1h30 of airport time on top (check-in, security, the walk out), so a 2h30 hop via
-   * Itami does not beat a 3h20 bullet train to Haneda (QA round 7); the printed time stays the researched one */
-  const FLIGHT_OVERHEAD_H = 1.5;
-  const rank = (c) => c.h + (c.mode === "flight" ? FLIGHT_OVERHEAD_H : 0);
-  cands.sort((p, q) => rank(p) - rank(q) || p.x - q.x);
-  return cands[0] || { h: null, x: null, flightH: 0, mode: "—", source: "to confirm", text: "no airport leg in the tables", estimated: true };
+      source: `composed via ${AIRPORT[A].label}`, via: [A], text: `${t1.text} Then ${fl.text}`, halves: [{ h: t1.t[0], x: t1.t[1], mode: t1.mode, what: `${short(loc)} → ${AIRPORT[A].label}` }, { h: fl.t[0], x: fl.t[1], mode: "flight", what: `${AIRPORT[A].label} → ${ap.label}` }] }); });
+  /* the shortest TRUE door-to-door time wins, flights included, fewer changes breaking a tie (owner, 2026-09-13).
+   * There is no ranking penalty on a flight: the old 1h30 "airport time" made a 2h45 hop lose to a 3h50 train, which
+   * is not the trip anyone would actually take. The runner-up by the other mode rides along for the Checks. */
+  cands.sort((p, q) => p.h - q.h || p.x - q.x);
+  const best = cands[0];
+  if (!best) return { h: null, x: null, flightH: 0, mode: "—", source: "to confirm", text: "no airport leg in the tables", estimated: true };
+  const flighty = (c) => !!(c.flightH || c.mode === "flight");
+  best.alt = cands.slice(1).find((c) => flighty(c) !== flighty(best)) || null;
+  return best;
 }
 /* "connects to Haneda": the tables hold the airport's own flight to HND */
 const hanedaRow = (code) => (code === "HND" || code === "NRT" ? null : researchedDirect(apKey(code), "hnd"));
@@ -354,7 +359,7 @@ function checks(stops, legs, t, opt) {
     if (total < p.minimum) F(`${nm}: ${total} night${total === 1 ? "" : "s"} is under the card's minimum of ${p.minimum} — allowed because they asked; say once what it costs.`);
     else if (total < range[0]) N(`${nm}: ${total} nights is under the ideal ${range[0] === range[1] ? range[0] : `${range[0]}–${range[1]}`}; it has room to absorb spare nights.`);
     const cap = capOf(loc, { repeat: opt.repeat });
-    if (total > cap) V(`${nm}: ${total} nights is over its usual high of ${cap} (ideal ${range[0]}–${range[1]}) — the kit never fills a city past that unless they asked.`);
+    if (total > cap) V(`${nm}: ${total} nights is over its usual ${cap} (places.json, ideal ${range[0]}–${range[1]}) — the kit never fills a place past that unless they asked.`);
     if (isBaseKind(p.kind) && visits.length > 1) {
       N(`${nm} is split ${visits.map((v) => v.nights).join(" + ")} = ${total} nights against its range ${range[0]}–${range[1]}; each visit is its own separate stay.`);
       visits.forEach((v) => { if (v.nights >= 2) return;
@@ -363,7 +368,8 @@ function checks(stops, legs, t, opt) {
         if (airportSide) N(`${nm}: the final one-night visit is the airport-side night, which may stand alone.`);
         else V(`${nm}: a split visit of ${v.nights} night — each visit of a city split in two is two nights or more, except a final airport-side night.`); });
     }
-    if (isInnKind(p.kind) && visits.some((v) => v.nights > 1 && !v.roomOnly)) N(`${nm}: a second inn night needs a stated reason (slower travel, the only inn stay, or a strong interest in inns).`);
+    /* a place whose own card asks for two — Takayama is ideal 2–2 — is not being stretched by a second night */
+    if (isInnKind(p.kind) && range[1] < 2 && visits.some((v) => v.nights > 1 && !v.roomOnly)) N(`${nm}: a second inn night needs a stated reason (slower travel, the only inn stay, or a strong interest in inns).`);
     if (visits.some((v) => v.roomOnly)) N(`${nm}: room only — no inn dinner, so the run of inn dinners resets there.`);
   });
   /* the three-dinner ceiling: consecutive nights whose dinner is at an inn; a city or room-only night resets it */
@@ -400,7 +406,7 @@ function checks(stops, legs, t, opt) {
   }
   if (opt.out && !opt.outDefault) { const chosen = legs[legs.length - 1]; const best = airportsRanked(stops[stops.length - 1].loc, !!AIRPORT[opt.out].intl)[0];
     if (chosen.estimated) V(`no researched leg reaches ${AIRPORT[opt.out].label} from ${label(stops[stops.length - 1].loc)} — look it up on a timetable.`);
-    else if (chosen.halves) N(`the ticket home leaves from ${AIRPORT[opt.out].label}: ${label(stops[stops.length - 1].loc)} reaches it by a domestic flight, both halves in the table (${chosen.halves.map((h) => `${h.what} ${hm(h.h)}`).join(", ")}).`);
+    else if (chosen.halves) N(`the ticket home leaves from ${AIRPORT[opt.out].label}: ${label(stops[stops.length - 1].loc)} reaches it by a domestic flight, both halves in the table (${chosen.halves.map((h) => `${h.what} ${hm(h.h)}`).join(", ")})${chosen.alt && chosen.alt.h != null ? ` — or ${hm5(chosen.alt.h)} by ${modeWord(chosen.alt.mode)}${/via /.test(String(chosen.alt.source)) ? ` ${chosen.alt.source.replace(/^composed /, "")}` : ""}` : ""}.`);
     else if (best && best.code !== opt.out && best.leg.h + 0.25 < chosen.h) F(`exit via ${AIRPORT[opt.out].label} is ${hm(chosen.h)} from ${label(stops[stops.length - 1].loc)}; ${best.label} (${best.cls}) is nearer at ${hm(best.leg.h)} — a fixed ticket settles it, say what it costs.`); }
   if (opt.in && !opt.inDefault) { const chosen = legs[0]; const best = airportsRanked(stops[0].loc, !!AIRPORT[opt.in].intl)[0];
     if (chosen.estimated) V(`no researched leg reaches ${label(stops[0].loc)} from ${AIRPORT[opt.in].label} — look it up on a timetable.`);
@@ -879,7 +885,11 @@ function whyNot(sp, d, o, choices, opt) {
     if (opt.in && tin && tin !== opt.in && AIRPORT[opt.in]) return `the ticket lands at ${AIRPORT[opt.in].label}, not ${AIRPORT[tin] ? AIRPORT[tin].label : tin}`;
     /* a START option's `out` is where its loop happens to finish, not the point of the option: a Kagoshima round trip still
      * starts straight into Kagoshima and the ticket prices the last leg (QA round 9, r02) */
-    if (opt.out && tout && tout !== opt.out && AIRPORT[opt.out] && d.key !== "start") return `the ticket home is from ${AIRPORT[opt.out].label}, not ${AIRPORT[tout] ? AIRPORT[tout].label : tout}`;
+    /* an ENDING is never disqualified by the airport it assumes (owner, 2026-09-13): `out` on an END option is the
+     * exit it was written around, not a requirement. Kōyasan and Kinosaki are fine trips to close on with a Haneda
+     * ticket — the last day is simply longer, and that is priced and said rather than used to withhold the option.
+     * A START option's airport guard stays: you cannot land at Kansai on a ticket into Haneda. */
+    if (opt.out && tout && tout !== opt.out && AIRPORT[opt.out] && d.key !== "start" && !(d.owner && d.owner.type === "end")) return `the ticket home is from ${AIRPORT[opt.out].label}, not ${AIRPORT[tout] ? AIRPORT[tout].label : tout}`;
     /* the plain "fly home from the last city" ending stays offered on a ticket home from elsewhere: a same-day flight to
      * the ticket's airport is a fine close (owner, 2026-09-12); the Tokyo close is the default there, never forced */ }
   /* a booked flight into the region waives the option's `requires` guard (spines.json `or_in`) */
@@ -1294,7 +1304,15 @@ function shapeLines(sp, P) {
   const endD = decisionsOf(sp).find((d) => d.owner.type === "end");
   const ends = endD ? endD.options.map((o, j) => off.has(`${endD.key}#${j}`) ? null : optWord(o, rev).label).filter(Boolean) : [];
   const ry = list("inn"), tw = list("stop");
-  const nights = [...new Set(P.cities || [])].map((c) => `${label(c)} ${[...new Set(rangeOf(c, { repeat: P.opt && P.opt.repeat }))].join("–")}`);
+  /* every kind of stop carries its usual, not only the cities (owner, 2026-09-13: a walk read "Takayama 2" as an
+   * excess because the line stopped at the cities and its own card says two) */
+  const usual = (l) => [...new Set(rangeOf(l, { repeat: P.opt && P.opt.repeat }))].join("–");
+  const optLocs = (kind) => [...new Set(decisionsOf(sp).filter((d) => d.kind === kind && d.owner.type !== "end")
+    .map((d) => { const j = d.options.findIndex((o) => (o.stops || []).length); return j < 0 || off.has(`${d.key}#${j}`) ? null : d.options[j].stops[0]; }).filter(Boolean))];
+  const innLocs = optLocs("inn"), odd = innLocs.filter((l) => usual(l) !== "1");
+  const nights = [...new Set(P.cities || [])].map((c) => `${label(c)} ${usual(c)}`)
+    .concat(optLocs("stop").map((l) => `${label(l)} ${usual(l)}`))
+    .concat(innLocs.length ? [`ryokan nights 1 each${odd.length ? ` (${odd.map((l) => `${label(l)} ${usual(l)}`).join(", ")})` : ""}`] : []);
   return [`**Cities:** ${cities.join(" → ")}`, `**Ryokan nights:** ${ry.length ? ry.join(" · ") : "none on this route"}`,
     `**Town stops:** ${tw.length ? tw.join(" · ") : "none on this route"}`, `**Ending:** ${ends.join(" · ")}`, `**Usual nights:** ${nights.join(" · ")}`];
 }
@@ -1308,14 +1326,27 @@ const lineOf = (sp, chosenOpts) => chosenOpts.map((o) => o && o.line).filter(Boo
 /* a route run the other way round prints the option's reversed wording where the data carries one (label_rev / desc_rev,
  * 2026-09-12, QA round 6: "Tokyo first" and "fly home from Ōita" are mirror images on a reversed trip) */
 const optWord = (o, rev) => (rev && o.label_rev ? { label: o.label_rev, desc: o.desc_rev || o.desc } : o);
+/* the ride from an ending's last night to the airport the TICKET names, priced from the tables and said in words */
+const apShort = (c) => String(apLabel(c)).replace(/\s*\([^)]*\)\s*$/, "");
+function endExit(o, out) {
+  const st = o.stops || [], from = st.length ? st[st.length - 1] : null;
+  if (!from || !out || (o.out && o.out === out)) return "";
+  let L; try { L = airportLeg(from, out); } catch (e) { return ""; }
+  if (!L || L.h == null) return ` (with your ${apLabel(out)} ticket the last day runs to ${apShort(out)}, time to confirm)`;
+  /* the clause says the path the engine actually priced — "1h30 to Kansai and a flight", not a rail figure it rejected */
+  const via = (L.halves || [])[0];
+  if (L.flightH && via && (L.via || [])[0]) return ` (with your ${apLabel(out)} ticket the last day is ${hm5(via.h)} to ${apShort(L.via[0])} and a ${hm5(L.flightH)} flight, ${hm5(L.h)} in all)`;
+  return ` (with your ${apLabel(out)} ticket the last day is ${hm5(L.h)} to ${apShort(out)}${L.x == null ? "" : `, ${L.x} change${L.x === 1 ? "" : "s"}`})`;
+}
 const optCell = (d, i, chosen, rev, opt) => d.options.map((o, j) => { let w = optWord(o, rev && !d.options.some((x) => x.reverse));   // a "which way round" decision keeps its own wording
   /* the ending the traveller is actually on, when a ticket names the exit: the airport is theirs and the last leg is
    * the one the timeline priced, not the airport the spine's data assumed (round 11, k: "Fly home from Kansai" printed
    * on a route that leaves Nara for Haneda by train) */
   if (j === chosen && d.owner && d.owner.type === "end" && !(o.stops || []).length && opt && opt.exit)
     w = { label: rev ? "Arrive at the first city" : "Fly home from the last city", desc: opt.exit };
-  /* an END that names an airport the ticket does not use says so (QA round 7: "Fly home from Kansai" on a Haneda return) */
-  const tk = opt && opt.out && o.out && o.out !== opt.out && d.owner && d.owner.type === "end" ? ` (your ticket leaves from ${apLabel(opt.out)}, so the last leg runs there)` : "";
+  /* an END that assumes another airport prices the ride to the ticket's own, right inside the option (owner,
+   * 2026-09-13): the traveller sees what the ending costs them on the day rather than being told it is unavailable */
+  const tk = d.owner && d.owner.type === "end" && !rev ? endExit(o, opt && opt.out) : "";
   return `${j === chosen ? `**${j + 1} ${w.label}**` : `${j + 1} ${w.label}`} — ${w.desc}${tk}`; }).join(" · ");
 /* the decisions grouped in trip order (v2, 2026-09-13): a city, the attachment that belongs to it, the slots on the leg
  * to the next city, the next city, and the END last. Returns [{ where, kind, items[] }] — `where` is what the table's
@@ -1405,7 +1436,7 @@ function timelineTable(P, name, noBand) {
   L.push("| Stop | Nights | Onward |", "|---|---|---|");
   let li = 0;
   if (o.in) { const l = P.legs[li++]; L.push(`| in from ${AIRPORT[l.code].label} | — | ${legWord(l)} |`); }
-  P.stops.forEach((st) => { const l = P.legs[li++]; L.push(`| ${st.name} | ${nightsCell(st)} | ${l ? `${legWord(l)}${l.kind === "out" ? ` · out to ${AIRPORT[l.code].label}` : ""}` : "—"} |`); });
+  P.stops.forEach((st) => { const l = P.legs[li++]; L.push(`| ${st.name} | ${nightsCell(st)} | ${l ? `${legWord(l)}${l.kind === "out" ? ` · out to ${AIRPORT[l.code].label}` : ""}${l.kind === "in" || l.kind === "out" ? halvesTxt(l) : ""}` : "—"} |`); });
   /* ready to paste: the stops inside the quotes, the flags outside them (2026-09-13) */
   L.push("", `Stop string: \`plan "${stopString(P.stops)}" --in ${o.in} --out ${o.out}${o.repeat ? " --repeat" : ""}\``);
   return L.join("\n");

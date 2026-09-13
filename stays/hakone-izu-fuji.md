@@ -6,15 +6,15 @@
 
 ## The inns — 9 within reach
 
-- `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · [book on Ikyu](https://www.ikyu.com/00001359/) · in Hakone
-- `asaba` · Asaba editor's pick · S 9.4 · bath some · $1100–1600 · [book on Ikyu](https://www.ikyu.com/00002155/) · 1h50/2 from Hakone
-- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · [book on Ikyu](https://www.ikyu.com/00003331/) · 1h55/1 from Hakone
-- `arcana-izu` · Arcana Izu · B 7.8 · bath some · $520–1100 · [book on Ikyu](https://www.ikyu.com/00001289/) · 2h25/2 from Hakone
-- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · [book on Ikyu](https://www.ikyu.com/00000604/) · 3h/2 from Hakone — _long day; another gateway is closer_
+- `hakone-suishoen` · Hakone Suishoen · A 8.2 · bath yes · $550–800 · [book on Ikyu](https://www.ikyu.com/en-us/00001359/) · in Hakone
+- `asaba` · Asaba editor's pick · S 9.4 · bath some · $1100–1600 · [book on Ikyu](https://www.ikyu.com/en-us/00002155/) · 1h50/2 from Hakone
+- `gora-kadan-fuji` · Gora Kadan Fuji editor's pick · A 8.0 · bath some · $900–1800 · [book on Ikyu](https://www.ikyu.com/en-us/00003331/) · 1h55/1 from Hakone
+- `arcana-izu` · Arcana Izu · B 7.8 · bath some · $520–1100 · [book on Ikyu](https://www.ikyu.com/en-us/00001289/) · 2h25/2 from Hakone
+- `bettei-senjuan` · Bettei Senjuan editor's pick · A 8.7 · bath some · $550–750 · [book on Ikyu](https://www.ikyu.com/en-us/00000604/) · 3h/2 from Hakone — _long day; another gateway is closer_
 - `hiiragiya` · Hiiragiya editor's pick · A 8.7 · bath no · ask · 3h/1 from Hakone — _long day; another gateway is closer_
-- `fuefukigawa-onsen-zabou` · Fuefukigawa Onsen Zabou · B 7.5 · bath yes · $450–650 · [book on Ikyu](https://www.ikyu.com/00001645/) · 3h15/3 from Hakone — _long day; another gateway is closer_
-- `fufu-kawaguchiko` · Fufu Kawaguchiko editor's pick · B 7.9 · bath yes · $930–1300 · [book on Ikyu](https://www.ikyu.com/00002583/) · 3h45/3 from Hakone — _long day; another gateway is closer_
-- `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · [book on Ikyu](https://www.ikyu.com/00002740/) · 4h/3 from Hakone — _long day; another gateway is closer_
+- `fuefukigawa-onsen-zabou` · Fuefukigawa Onsen Zabou · B 7.5 · bath yes · $450–650 · [book on Ikyu](https://www.ikyu.com/en-us/00001645/) · 3h15/3 from Hakone — _long day; another gateway is closer_
+- `fufu-kawaguchiko` · Fufu Kawaguchiko editor's pick · B 7.9 · bath yes · $930–1300 · [book on Ikyu](https://www.ikyu.com/en-us/00002583/) · 3h45/3 from Hakone — _long day; another gateway is closer_
+- `fufu-nikko` · Fufu Nikko editor's pick · A 8.8 · bath yes · $850–1200 · [book on Ikyu](https://www.ikyu.com/en-us/00002740/) · 4h/3 from Hakone — _long day; another gateway is closer_
 
 ## City hotels
 

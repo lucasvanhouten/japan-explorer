@@ -6,14 +6,14 @@
 
 ## The inns — 10 within reach
 
-- `machiyado-ichiryu` · Machiyado Ichiryu · — · bath unstated · $600–950 · [book on Ikyu](https://www.ikyu.com/00003312/) · in Takayama
+- `machiyado-ichiryu` · Machiyado Ichiryu · — · bath unstated · $600–950 · [book on Ikyu](https://www.ikyu.com/en-us/00003312/) · in Takayama
 - `wanosato` · Wanosato · A 8.3 · bath no · $550–850 · in Takayama
 - `shogetsu` · Shogetsu · A 8.8 · bath yes · $600–950 · 1h/0 from Takayama
-- `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · [book on Ikyu](https://www.ikyu.com/00001145/) · 2h35/1 from Takayama — _long day; another gateway is closer_
-- `hanamurasaki` · Hanamurasaki · A 8.1 · bath no · $600–1000 · [book on Ikyu](https://www.ikyu.com/00001325/) · 2h50/1 from Takayama — _long day; another gateway is closer_
+- `beniya-mukayu` · Beniya Mukayu editor's pick · A 8.4 · bath some · $800–1200 · [book on Ikyu](https://www.ikyu.com/en-us/00001145/) · 2h35/1 from Takayama — _long day; another gateway is closer_
+- `hanamurasaki` · Hanamurasaki · A 8.1 · bath no · $600–1000 · [book on Ikyu](https://www.ikyu.com/en-us/00001325/) · 2h50/1 from Takayama — _long day; another gateway is closer_
 - `kayotei` · Kayotei · B 7.6 · bath some · $700–1100 · 2h50/1 from Takayama — _long day; another gateway is closer_
-- `kanshuku-en-eshikoto` · Kanshuku-en Eshikoto editor's pick · — · bath unstated · $750–1150 · [book on Ikyu](https://www.ikyu.com/00003286/) · 2h55/1 from Takayama — _long day; another gateway is closer_
-- `fujiiso` · Fujiiso · B 7.7 · bath yes · $480–900 · [book on Ikyu](https://www.ikyu.com/00001534/) · 3h05/1 from Takayama — _long day; another gateway is closer_
+- `kanshuku-en-eshikoto` · Kanshuku-en Eshikoto editor's pick · — · bath unstated · $750–1150 · [book on Ikyu](https://www.ikyu.com/en-us/00003286/) · 2h55/1 from Takayama — _long day; another gateway is closer_
+- `fujiiso` · Fujiiso · B 7.7 · bath yes · $480–900 · [book on Ikyu](https://www.ikyu.com/en-us/00001534/) · 3h05/1 from Takayama — _long day; another gateway is closer_
 - `iwanoyu` · Iwanoyu · A 8.3 · bath some · $400–750 · 3h15/1 from Takayama — _long day; another gateway is closer_
 - `sui-suwako` · Sui Suwako · A 8.1 · bath yes · $450–750 · 3h15/1 from Takayama — _long day; another gateway is closer_
 
