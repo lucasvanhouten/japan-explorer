@@ -108,7 +108,7 @@
 | Kyoto → Nikkō | 4h42/2 | [Hakone Suishoen](https://ryokancatalog.com/inn/hakone-suishoen) · Hakone | 3h/1 train | 4h/3 train | +2h18 · a stop, not a free connector |
 | Kyoto → Nikkō | 4h42/2 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 4h15/1 shinkansen | 2h48/2 shinkansen | +2h21 · a stop, not a free connector |
 | Fukuoka → Amakusa | 1h54/1 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h45/0 train | 2h30/0 car | +2h21 · a stop, not a free connector |
-| Fukuoka → Kumamoto | 42 min/0 | [Tayuta](https://ryokancatalog.com/inn/tayuta) · Amakusa | 1h54/1 train | 1h12/0 car | +2h24 · a stop, not a free connector |
+| Fukuoka → Kumamoto | 42 min/0 | [Tayuta](https://ryokancatalog.com/inn/tayuta) · Amakusa | 1h54/1 train | 1h12/0 car/train | +2h24 · a stop, not a free connector |
 | Fukuoka → Miyajima | 2h15/2 | [Migiwatei Ochi Kochi](https://ryokancatalog.com/inn/migiwatei-ochi-kochi) · Tomonoura | 2h30/0 shinkansen | 2h12/2 shinkansen | +2h27 · a stop, not a free connector |
 | Tokyo → Nikkō | 2h/0 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 1h40/0 train | 2h48/2 shinkansen | +2h28 · a stop, not a free connector |
 | Beppu → Kagoshima | 3h12/1 | [Takefue](https://ryokancatalog.com/inn/takefue) · Kurokawa Onsen | 2h24/0 bus | 3h18/1 train | +2h30 · a stop, not a free connector |

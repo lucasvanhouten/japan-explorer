@@ -96,7 +96,7 @@
    "score": 9.4,
    "bath": "yes",
    "band": "$1200–2700",
-   "reach": "kumamoto 1h12/0 car · fukuoka 1h54/1 train · kagoshima 2h18/1 train",
+   "reach": "kumamoto 1h12/0 car/train · fukuoka 1h54/1 train · kagoshima 2h18/1 train",
    "fits": [
     "kyushu-elsewhere"
    ],

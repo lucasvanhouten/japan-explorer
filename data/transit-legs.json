@@ -347,7 +347,7 @@
    "to": "kumamoto",
    "hours": 1.2,
    "transfers": 0,
-   "mode": "car",
+   "mode": "car/train",
    "source": "researched",
    "flags": {
     "car": 1

@@ -225,7 +225,15 @@ const rawLeg = (a, b) => B.LEGS[a + ">" + b] || B.LEGS[b + ">" + a];   // LEGS i
 const isFlight = (l) => !!l && (/flight/i.test(String(l.mode || "")) || !!(l.flags && l.flags.flight));
 /* a self-drive car leg (LEGS flag drive:1) is "drive"; a plain car leg is a taxi or a hire car (owner, 2026-09-13) */
 const modeOf = (l) => (l && l.mode === "car" && l.flags && l.flags.drive ? "drive" : (l && l.mode) || "train");
-const modeShown = (m) => (m === "car" ? "car (rental or taxi)" : m);
+const modeShown = (m) => (m === "car" ? "car (rental or taxi)" : m === "car/train" ? "car or train" : m);
+/* the rental-car note rides with the PLACES that need one (places.json `car`), not with a route (owner, 2026-09-13):
+ * Kurokawa, Takachiho and Unzen are where the car earns its keep, whichever spine they sit on */
+const CAR_NOTE = "assume a rental car: pick it up in the nearest city, drop it at the airport or the next city. Driving in Japan is easy even on the left — quiet roads, English signs and satnav, automatic cars — and the car is what opens the middle of Kyushu: the Aso caldera, Kurokawa's lanes, the Takachiho gorge; at Unzen it is an hour from the Nagasaki flight to the inn. US and most licences need an International Driving Permit, bought at home. Say this whenever one of these places comes up.";
+const carPlaces = (locs) => [...new Set(locs)].filter((l) => (placeOf(l) || {}).car).map(label);
+const carLine = (onRoute, offered) => { const on = carPlaces(onRoute), off = carPlaces(offered).filter((n) => !on.includes(n));
+  if (!on.length && !off.length) return [];
+  const names = on.length ? on : off, verb = names.length > 1 ? "" : "s";
+  return ["", `**Rental car:** ${names.join(", ").replace(/, ([^,]+)$/, " and $1")}${on.length ? "" : " (offered on this route)"} ${CAR_NOTE.replace("assume", "assume" + verb)}${on.length && off.length ? ` The same goes for ${off.join(" and ")} if it comes on.` : ""}`]; };
 function researchedDirect(a, b) { const f = B.LEGS[a + ">" + b], r = B.LEGS[b + ">" + a]; const l = f || r; if (!l || l.source === "estimated") return null;
   /* a self-drive car leg (LEGS flag drive:1) reads "drive"; a plain car leg is a taxi or a hire car (owner, 2026-09-13) */
   return { t: l.t, mode: modeOf(l), text: (f ? "" : "Reverse of: ") + (l.text || ""), flags: l.flags || {}, flight: isFlight(l) }; }
@@ -442,7 +450,8 @@ function printPlan(P, opt) {
   const L = [], t = P.totals, o = P.opt || opt;
   const start = (opt && opt.start) || null;
   L.push(`**Trip plan** · ${start ? dateSpan(start, t.nights) : "<dates>"} · ${t.nights} nights · arrive ${apLabel(o.in)}${o.inDefault ? " (assumed)" : ""}, depart ${apLabel(o.out)}${o.outDefault ? " (nearest)" : ""}`, "");
-  L.push(ITIN_HEAD[0], ITIN_HEAD[1]);
+  L.push(...carLine(P.stops.map((x) => x.loc), []));
+  L.push("", ITIN_HEAD[0], ITIN_HEAD[1]);
   let li = 0; if (o.in) L.push(`| | ${legCell(P.legs[li++])} | | | |`);
   let day = start;
   P.stops.forEach((st, i) => { const dates = day ? dateSpan(day, st.nights) : ""; if (day) day = addDays(day, st.nights);
@@ -607,7 +616,7 @@ const capOf = (loc, opt) => { const p = placeOf(loc), r = rangeOf(loc, opt); ret
 const defaultOf = (loc, opt) => { const p = placeOf(loc), r = rangeOf(loc, opt); return Math.max(r[0], Math.min(p.default == null ? r[0] : p.default, r[1])); };
 /* hours to the nearest five minutes with one mode word — the timeline's leg cell (never a transfer count; those stay in the checks) */
 const hm5 = (h) => { let m = Math.round((h * 60) / 5) * 5; if (m === 0 && h > 0) m = 5; const H = Math.floor(m / 60), M = m % 60; return H ? `${H}h${M ? String(M).padStart(2, "0") : ""}` : `${M} min`; };
-const modeWord = (m) => { const s = String(m || "").toLowerCase(); return /flight|fly|plane/.test(s) ? "flight" : /drive/.test(s) ? "drive" : /car|taxi/.test(s) ? "car (rental or taxi)" : /ferry|boat/.test(s) ? "ferry" : /bus|coach/.test(s) ? "bus" : "train"; };
+const modeWord = (m) => { const s = String(m || "").toLowerCase(); return /flight|fly|plane/.test(s) ? "flight" : /car\/train/.test(s) ? "car or train" : /drive/.test(s) ? "drive" : /car|taxi/.test(s) ? "car (rental or taxi)" : /ferry|boat/.test(s) ? "ferry" : /bus|coach/.test(s) ? "bus" : "train"; };
 const legWord = (l) => (l.estimated ? "to confirm" : `${hm(l.h)} ${modeWord(l.mode)}`);
 
 function spineOf(ref) {
@@ -1457,7 +1466,7 @@ function cmdSpine(ref, opt) {
   const chosenOpts = decisionsOf(sp).map((d) => d.options[after.choices[d.key]]);
   /* a spine that carries a `caveat` says it under its own header, on the menu and on its own walk (2026-09-13,
    * owner): Hokkaido had the least research behind it and the reader is told so rather than left to find out */
-  const L = [spineHead(sp, after.band, opt, after), "", lineOf(sp, chosenOpts), ...(sp.caveat ? ["", `**Read this first:** ${sp.caveat}`] : []), "",
+  const L = [spineHead(sp, after.band, opt, after), "", lineOf(sp, chosenOpts), ...(sp.caveat ? ["", `**Read this first:** ${sp.caveat}`] : []), ...carLine(after.stops.map((x) => x.loc), decisionsOf(sp).flatMap((d) => d.options.flatMap((o) => o.stops || []))), "",
     `Explorer: \`${EXPLORER_PAGE}#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${hashSets(sp, opt)}${hashNights(after)}&routes=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}\` — the page to hand them, prefilled with this route, its answers so far and the nights on screen; it pins this route and folds the rest — widen routes= to the other slugs while they are still comparing.`, ""];
   L.push(...shapeLines(sp, after), "");
   if (autoRev) L.push(`Run the other way round for your ticket — in at ${apLabel(after.opt.in)}, home from ${apLabel(after.opt.out)}. The engine turns it round by itself whenever the ticket is on every run (\`--in\`/\`--out\`); do not add \`--reverse\` on top, that would turn it back.`, "");
