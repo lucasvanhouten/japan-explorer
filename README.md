@@ -60,6 +60,15 @@ present the assistant uses it for extra depth, and when it isn't, it falls back 
 
 **To get everything at once:** use the green **Code** button above and choose **Download ZIP**.
 
+## What you need, and what to expect
+
+- **Nothing, for the chat route.** Paste or upload `JAPAN-TRIP-KIT.md` and the assistant has everything: the questions, the places, the routes, the inns and hotels, the travel times.
+- **Node.js (18 or newer) for the route tool and the map page.** The assistant runs `builder/route.js` to price and check routes leg by leg, and serves `guides/route-explorer.html`, the clickable map of every route, from the kit folder. Both come with the kit; there is nothing to install beyond Node itself. Without Node the assistant still plans from the printed tables and says so.
+- **In the Claude Code desktop app the map opens beside the chat** and updates as you decide; `.claude/launch.json` in this folder is what starts it. Any other assistant gives you the same page as a local address to open in a browser, and at the end a single-page drawing of your trip (`japan-trip-plan.html`).
+- **Give it a fresh chat and your dates, nights and airports**, then answer its questions. It leads; you decide. Expect four to six stages — where to go, the route, where to stay, making the legs work — each ending on a question for you.
+- **Prices and opening hours date from September 2026.** Every band and travel time was researched and sourced, but confirm the rate on the property's own page for your dates. Where the kit does not know something it says "to confirm" rather than guessing.
+- **This is a first-trip kit, Japan-wide.** Nine routes, from the classic Tokyo–Kyoto line to Kyushu and Hokkaido, built for two to three weeks. A trip that leaves those routes still gets priced from the same tables.
+
 ## The builder (optional)
 
 A small itinerary tool that runs entirely in a browser with no installation: download the ZIP, unzip

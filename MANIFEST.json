@@ -1434,7 +1434,7 @@
   "planning/kit-src/kit/07-optional-depth.md": "d178b87131c5ecee401c6f2ce6121082b0961acc56e8eee95506b053338c48ff",
   "planning/kit-src/kit/08-appendix.md": "38252c48545fe6830e321f05aabbbcb37d30ad294ec60aa8902f7604bff8e1d6",
   "planning/kit-src/companions/LICENSE": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
-  "planning/kit-src/companions/README.md": "c78fc667173c1f254b2b4192754e869e13392a6056e61f34605f12efe63f3e57",
+  "planning/kit-src/companions/README.md": "f88352378937d78a915dbe7998492b32c35feb51abc57d577433b1928f501f90",
   "planning/kit-src/companions/builder-README.md": "3e7321b664fbf2f90ce8fc3e0f11ebe9b7a7a3bc3c53713b35d531625e20b976",
   "planning/kit-src/companions/design-language.md": "014112c6fc2d56eea956a1e992a793aec176b358bde7a718f64d04b166ab4b9e",
   "planning/kit-src/companions/design-principles.md": "1ba0605e7de720f7b5f0282ef730d2b3cf6dd7d444aeec8eba77d465c24e0cc9",
@@ -1474,8 +1474,8 @@
    "bytes": 3418
   },
   "README.md": {
-   "sha256": "c78fc667173c1f254b2b4192754e869e13392a6056e61f34605f12efe63f3e57",
-   "bytes": 7527
+   "sha256": "f88352378937d78a915dbe7998492b32c35feb51abc57d577433b1928f501f90",
+   "bytes": 9163
   },
   "START-HERE.md": {
    "sha256": "9d0152908ba3c40ec2319869c1490146ad1d5a5f22b147d2cd6496976a2a32f0",
