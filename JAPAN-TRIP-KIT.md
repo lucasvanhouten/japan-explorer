@@ -988,7 +988,7 @@ If the total overshoots, say which nights you would give up; never trim silently
 Goal    one place to sleep plus one alternate, for every stop
 Inputs  the itinerary table from Stage 3; Taste and Budget from the Trip profile
 Do      one stop per message, in trip order: the shortlist only, three to five options chosen against the
-        profile in one `| Stay | Band | Bath | Why | Links |` table, best fit first, Why in your words from the write-ups
+        profile in one `| Stay | Band | Why | Links |` table, best fit first, Why in your words from the write-ups
         verbatim, no default and no pick of your own; offer more on any of them
 Ask     first: whether they want any of them opened up — then the pick, once they lean. Max 2 follow-up questions, and only where the options in front of them differ on it
 Output  the itinerary table with Stay, Band and Alternate filled
@@ -1005,11 +1005,11 @@ The alternate matters: the good inns sell out, so have the second answer ready. 
 2. **Order best-fit-first for this traveller** — the `Taste:` line is the frame — not best-scored-first. A quiet inn up a valley is the wrong recommendation for someone with a six-year-old, whatever its score.
 3. **Show three to six as one table, best fit first** — the table `stays` prints, up to six rows, inns and hotels together with `Kind` telling them apart. Never split it into sub-tables by kind or by town, never the whole filtered set, and never the options as a run of bullets. If the tool prints a second table — the nearest place it covers, when this one has nothing — print that one too, and no more than those two. One row each, this header:
 
-   | Stay | Band | Bath | Why | Links |
+   | Stay | Band | Why | Links |
    |---|---|---|---|---|
    | `<name · inn / hotel · tier score · editor's pick where it is one>` | `<band>` | `<in the room · some rooms · none in the room · unstated>` | `<why it is special for them, and its key features — from the write-up>` | [map](`<link>`) · [full write-up](`<link>`) |
 
-   **Why gets the width**: kind, score and editor's pick ride in the Stay cell; no Town column, since they know the town. Two variants, as `stays` prints them: a RYOKAN option spanning towns adds `Town` — `| Stay | Town | Band | Bath | Why | Links |`; a city of hotels has no bath — `| Stay | Band | Why | Links |`.
+   **Why gets the width**: kind, score and editor's pick ride in the Stay cell; no Town column, since they know the town. Two variants, as `stays` prints them: a RYOKAN option spanning towns adds `Town` — `| Stay | Town | Band | Why | Links |`; a city of hotels has no bath — `| Stay | Band | Why | Links |`.
 
 4. **What goes in the cells.** **`Why` is yours** — what makes it special for this couple and its key features, every fact from the write-up (below). Where the stop is a RYOKAN option spanning towns, `Town` carries the time from the gateway city from the corridor table, so the leg is visible beside the name. `Band` says what it includes — per night for two, dinner and breakfast included for an inn, room only for a hotel — and the band itself is said once, in that cell, never again in a sentence. `Links` is the Google Maps pin first, then the hotel's homepage or the inn's `ryokancatalog.com` page. Anything else that changes the choice — no natural spring, a bed rather than a floor mattress, out of town — goes in `Why`, in a clause.
 5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so in their words — *"four more on the kit's list — ask and I'll show them"* — so they can ask. No "I would take X", no "recommended": the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*. Ask for the choice in a later turn, once they name one they lean to or say "go", and record the second choice as the alternate. If they ask which you would take, answer in one line, with the reason.

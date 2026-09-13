@@ -477,7 +477,7 @@
   "corridors": 176,
   "legs": 788,
   "region_cards": 13,
-  "front_door_words": 49456,
+  "front_door_words": 49450,
   "start_here_words": 4318,
   "stage_files": 6,
   "stays_files": 12
@@ -1415,7 +1415,7 @@
   "planning/kit-src/tools/spines.json": "7beee1b388e0e3572c7afa52b3f2a141dacef6d2004df8689f5cebf8fc0d955c",
   "planning/kit-src/tools/build-spines.js": "d9c27648cbe21b2ada924f6c305e7ff07b1dca06417389c10083dfdbc12771c3",
   "planning/kit-src/companions/explorer/route-explorer.template.html": "71e117b67f3bea77fda061b2832d0f8c37896fb011c848e6c406373452c5bab4",
-  "planning/kit-src/companions/route-engine/route.js": "f34bf7f81df0f7beb2accd6ceec05f03a2719c880fdf4d197a6054f3101a05c1",
+  "planning/kit-src/companions/route-engine/route.js": "f0335109071c7a06b3d63f3eb960eee862ffc72c6bc69e1c83314687b0b36846",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
   "deploy/catalog.json": "ff69603d5c9bcdae34cff80b103ef0bc70151da0025010115592f3db45c7463b",
   "deploy/catalog.md": "3733a773b9f4da10f9c7bca15e46abd7dc49c2f42f33d499da6abcc13c977669",
@@ -1428,7 +1428,7 @@
   "planning/kit-src/kit/02-interview.md": "444c0a417ccb46e25a296431a921c2d336185753b1acc6135e9c79253daf13b5",
   "planning/kit-src/kit/03-orientation.md": "cc2df675bd93ef042521916e430c6cade640483213ca38e98adf464e618cb520",
   "planning/kit-src/kit/04-where-to-go.md": "5a7f740c039aae6437b73cd1c96b1e412ad73665c3e8b367ef662dbc12013c55",
-  "planning/kit-src/kit/05-where-to-stay.md": "38d7d11e0e0ee13a96701ef52171387a8a9ce9413195076bf618684a044422cf",
+  "planning/kit-src/kit/05-where-to-stay.md": "f8a5da63a24a10706294b2d7475b5167cb8140bb38b35d940387036ba75ea681",
   "planning/kit-src/kit/06-route.md": "41475dfc0d09eb5f701bb7dbd8b72b9d8d3ec3d6e7f87a5169dc2de54272c496",
   "planning/kit-src/kit/07-optional-depth.md": "a33e15c690c8e4bc5f41b950d60a0712ed5107b8e9256d3b9c7adb81e749c809",
   "planning/kit-src/kit/08-appendix.md": "d67288bf269e6cf6bb8f21ed4cbce0f60a690a0e0d28303d91f3b6df0d970992",
@@ -1460,8 +1460,8 @@
    "bytes": 25970
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "6cc48b0326886d09388f0c3c97840c85df2dec357f1096361cd0073816d82d78",
-   "bytes": 291872
+   "sha256": "37b8d703e443387a392f9ee5ec75d2b09ebb53b0469e35a4dc803b953cee89c7",
+   "bytes": 291851
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1500,8 +1500,8 @@
    "bytes": 9240
   },
   "builder/route.js": {
-   "sha256": "f34bf7f81df0f7beb2accd6ceec05f03a2719c880fdf4d197a6054f3101a05c1",
-   "bytes": 156528
+   "sha256": "f0335109071c7a06b3d63f3eb960eee862ffc72c6bc69e1c83314687b0b36846",
+   "bytes": 156530
   },
   "builder/serve.js": {
    "sha256": "eb267d4277a3465f86f32b07945917c78aeb7ce2b3bfabb2894b8cdc48c77b21",
@@ -1708,8 +1708,8 @@
    "bytes": 85178
   },
   "stages/4-where-to-stay.md": {
-   "sha256": "b4e86e09b63387edb25453fe9e5e21f431a4e9312109bb238c73379019cb3850",
-   "bytes": 64718
+   "sha256": "eda1e66472e79797e892bf0321e1a02b20060e3fe760cf06137c52a74e241bbe",
+   "bytes": 64697
   },
   "stages/5-route.md": {
    "sha256": "f76bffa468b640e63ab2efb5f0aea221d0d63fdf91f2e5f6040c0645d5b29704",

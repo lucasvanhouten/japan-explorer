@@ -125,7 +125,7 @@ const roundHalfUp = (x) => Math.floor(x + 0.5);
 
 /* ───────────── 3. places: night ranges from places.json or ../stages/2-orientation.md ───────────── */
 const ALIAS = { "fuji lakes": ["kawaguchiko", "oyama"], "izu": ["izu", "yugashima", "izukogen", "atami", "shimoda", "yugawara"],
-  "the kaga onsen towns yamashiro yamanaka": ["yamashiro", "yamanaka"], "takayama hida the alps": ["takayama", "gero", "matsumoto", "kiso", "suwa", "inuyama"],
+  "the kaga onsen towns yamashiro yamanaka": ["yamashiro", "yamanaka", "eiheiji"], "takayama hida the alps": ["takayama", "gero", "matsumoto", "kiso", "suwa", "inuyama"],
   "each snow valley": ["tanigawa", "echigoyuzawa", "matsunoyama", "yudanaka", "yamadaonsen"],
   "tohoku inn towns": ["kakunodate", "hottoyuda", "shizukuishi", "tsuchiyu", "iizaka", "bandaiatami", "aizuwakamatsu", "sukagawa", "akayu", "kaminoyama", "kamasaki"],
   "miyajima": ["miyajima", "hatsukaichi"], "amagase": ["hita"], "takeo onsen": ["takeo"], "hakone": ["hakone"], "nikko": ["nikko"] };
@@ -1382,7 +1382,7 @@ const GROUP_GATE = { fuji: "tokyo", snow: "tokyo", kaga: "kanazawa", east: "fuku
 const STAY_GROUPS = {
   fuji: { name: "Near Mount Fuji", locs: ["hakone", "kawaguchiko", "oyama", "izu", "yugashima", "izukogen", "atami", "shimoda", "yugawara"] },
   snow: { name: "Snow country", locs: ["tanigawa", "echigoyuzawa", "yudanaka", "matsunoyama", "yamadaonsen"] },
-  kaga: { name: "The Kaga onsen towns", locs: ["yamashiro", "yamanaka", "mikuni"] },
+  kaga: { name: "The Kaga onsen towns", locs: ["yamashiro", "yamanaka", "mikuni", "eiheiji"] },
   east: { name: "The hot-spring east", locs: ["hita", "yufuin", "kurokawa", "beppu"] },
   "sapporo-onsen": { name: "The hot-spring inns near Sapporo", locs: ["noboribetsu", "jozankei"] } };
 const stayGroup = (q) => STAY_GROUPS[norm(q).replace(/ /g, "-")] || null;
@@ -1466,12 +1466,13 @@ function cmdStays(q, opt) {
    * Town is a column only when the option spans towns, a hotel city has no Bath column, and a mixed inn-and-hotel table
    * keeps Bath with a hotel's cell reading `unstated` (an empty cell would read as none) */
   const hotelsOnly = !rowsI.length && rowsH.length > 0;
-  const HEAD = hotelsOnly ? "| Stay | Band | Why | Links |" : G ? "| Stay | Town | Band | Bath | Why | Links |" : "| Stay | Band | Bath | Why | Links |";
+  /* no Bath column (owner, 2026-09-12: it contradicted the write-ups and repeated them); the bath is in the Why */
+  const HEAD = hotelsOnly ? "| Stay | Band | Why | Links |" : G ? "| Stay | Town | Band | Why | Links |" : "| Stay | Band | Why | Links |";
   L.push(HEAD, HEAD.replace(/[^|]+/g, "---"));
   const innStay = (i) => `${i.name} · inn${i.tier ? ` · ${i.tier}` : ""}${i.pinned ? " · editor's pick" : ""}`;
   /* the Bath cell in the words Stage 4 prescribes, never the shortlist's raw yes/some/no (QA round 8) */
   const bathWord = (b) => ({ yes: "in the room", some: "some rooms", no: "none in the room" })[String(b || "").toLowerCase()] || "unstated";
-  const innRow = (i, town) => `| ${innStay(i)} | ${G ? `${town} | ` : ""}${i.band} | ${bathWord(i.bath)} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`;
+  const innRow = (i, town) => `| ${innStay(i)} | ${G ? `${town} | ` : ""}${i.band} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`;
   /* the Town cell of a group table carries the time from the group's gateway city (Stage 4: "the leg is visible beside the
    * name"), never a slug (QA round 6) */
   const gate = G ? (GROUP_GATE[norm(q).replace(/ /g, "-")] || Object.keys(STAY_GROUPS).map((k) => [k, STAY_GROUPS[k].locs]).filter(([k, ls]) => ls.includes(loc)).map(([k]) => GROUP_GATE[k])[0] || null) : null;
@@ -1482,7 +1483,7 @@ function cmdStays(q, opt) {
     const links = [h.map ? `[map](${h.map})` : "map unconfirmed", isInn && h.url ? `[full write-up](${h.url})` : h.site ? `[site](${h.site})` : ""].filter(Boolean).join(" · ");
     /* a hotel's Stay cell is its name and neighbourhood; the points or luxury group is already in its write-up */
     const stay = `${h.name}${isInn ? " · inn" : ""}${h.area ? ` · ${h.area}` : ""}`;
-    L.push(`| ${stay} | ${G ? `${label(h.city)} | ` : ""}${h.rate} | ${hotelsOnly ? "" : "unstated | "}${h.why} | ${links} |`); });
+    L.push(`| ${stay} | ${G ? `${label(h.city)} | ` : ""}${h.rate} | ${h.why} | ${links} |`); });
   reachRows.forEach((i) => L.push(innRow(i, townOf(i))));
   /* the stop keys behind the names (2026-09-13): a group table's rows span towns, and the stop string is written in
    * locs, so choosing an inn here means looking its loc up somewhere else (QA round 8: shortlist.json was opened to
@@ -1504,13 +1505,13 @@ function cmdStays(q, opt) {
     if (near.length) {
       const rows = near.slice(0, opt.all ? Infinity : 6);
       L.push("", `No stay is in ${label(loc)} itself. These are the shortlist's inns within reach of it, each with its own researched leg${near.length > rows.length ? ` (${near.length - rows.length} more, --all for every one)` : ""}:`, "",
-        `| Stay | From ${label(loc)} | Band | Bath | Why | Links |`, "|---|---|---|---|---|---|");
-      rows.forEach((i) => L.push(`| ${innStay(i)} | ${hm(i.r.h)}${i.r.x ? `, ${i.r.x} change${i.r.x > 1 ? "s" : ""}` : i.r.x === 0 ? ", direct" : ", changes to confirm"} | ${i.band} | ${bathWord(i.bath)} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`));
+        `| Stay | From ${label(loc)} | Band | Why | Links |`, "|---|---|---|---|---|");
+      rows.forEach((i) => L.push(`| ${innStay(i)} | ${hm(i.r.h)}${i.r.x ? `, ${i.r.x} change${i.r.x > 1 ? "s" : ""}` : i.r.x === 0 ? ", direct" : ", changes to confirm"} | ${i.band} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`));
       L.push(...keyLine(rows));
     } else {
       const nr = nearestStay(loc, group);
-      if (nr) { L.push("", `The nearest place the kit covers is ${label(nr.loc)}, ${Math.round(nr.km)} km away:`, "", "| Stay | Band | Bath | Why | Links |", "|---|---|---|---|---|");
-        nr.inns.slice(0, 3).forEach((i) => L.push(`| ${innStay(i)} | ${i.band} | ${bathWord(i.bath)} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`)); }
+      if (nr) { L.push("", `The nearest place the kit covers is ${label(nr.loc)}, ${Math.round(nr.km)} km away:`, "", "| Stay | Band | Why | Links |", "|---|---|---|---|");
+        nr.inns.slice(0, 3).forEach((i) => L.push(`| ${innStay(i)} | ${i.band} | ${i.writeup} | ${i.map ? `[map](${i.map}) · ` : ""}[full write-up](${i.url}) |`)); }
     }
   }
   if (droppedInns.length || droppedHotels.length) L.push("", `Left out by the filter: ${droppedInns.map((i) => i.name).concat(droppedHotels.map((h) => h.name)).join(", ")}.`);
