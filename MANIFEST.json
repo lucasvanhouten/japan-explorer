@@ -1415,7 +1415,7 @@
   "planning/kit-src/tools/spines.json": "be777433ba3cc19ecba4c69f4f3db149700904abb6bac273447d5abd982cf6df",
   "planning/kit-src/tools/build-spines.js": "d9c27648cbe21b2ada924f6c305e7ff07b1dca06417389c10083dfdbc12771c3",
   "planning/kit-src/companions/explorer/route-explorer.template.html": "2101c05ef73cc2e8726f5f6072c618f45004602cbff710cdb73712c764fef99e",
-  "planning/kit-src/companions/route-engine/route.js": "50f19dfc833b9f407409e2e4a5cf148179f47cb664e8f456f8e7a6d48e676366",
+  "planning/kit-src/companions/route-engine/route.js": "61ec2ae3fb17bf83f07ea6f9837eb6e7d09a2d0bfd1e9bb0807ec300fd918599",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
   "deploy/catalog.json": "d80b1bef8421f4724ceaa7f7fe3cb3a7fdc2d02b8b01d8da3b6ec62758b1d300",
   "deploy/catalog.md": "285cfbf7b2784c33c43471eb6ef193c8bc2b9a4059824d68c78b6a577497d614",
@@ -1445,7 +1445,7 @@
   "planning/kit-src/companions/transit-know-how.md": "9e89de3f3f10740975faca4543d9b2090337bb1857a630a77df296956f6e02df",
   "planning/kit-src/companions/trip-visual-stops.json": "2b5e735bafd9323bdba08dc72af177b81375dfcc68a6b3e41315653ef97099a5",
   "planning/kit-src/companions/trip-visual-template.html": "e412558bc56bc929c887691fbece9b4977e32367e1aebc93498755300204c3ba",
-  "planning/kit-src/companions/visualizing-the-trip.md": "15236ae631ccfc0291678a77142908041f7f48f0a8a01ef2854d081988f8f137",
+  "planning/kit-src/companions/visualizing-the-trip.md": "e39aa66d879115c8f1944c0184e12fb6a3b0edab0b6d5d603a7c1d7551fe0432",
   "planning/kit-src/scrub.js": "e700e7effd7cb6bca726210eb87a1f884dc5ac29d1763389106dccf816efeaeb"
  },
  "outputs": {
@@ -1506,8 +1506,8 @@
    "bytes": 9240
   },
   "builder/route.js": {
-   "sha256": "50f19dfc833b9f407409e2e4a5cf148179f47cb664e8f456f8e7a6d48e676366",
-   "bytes": 160191
+   "sha256": "61ec2ae3fb17bf83f07ea6f9837eb6e7d09a2d0bfd1e9bb0807ec300fd918599",
+   "bytes": 160315
   },
   "builder/serve.js": {
    "sha256": "eb267d4277a3465f86f32b07945917c78aeb7ce2b3bfabb2894b8cdc48c77b21",
@@ -1702,8 +1702,8 @@
    "bytes": 49831
   },
   "guides/visualizing-the-trip.md": {
-   "sha256": "15236ae631ccfc0291678a77142908041f7f48f0a8a01ef2854d081988f8f137",
-   "bytes": 20688
+   "sha256": "e39aa66d879115c8f1944c0184e12fb6a3b0edab0b6d5d603a7c1d7551fe0432",
+   "bytes": 21107
   },
   "stages/2-orientation.md": {
    "sha256": "f1d01708239aa3270e39616e87cd94b575828a0cdefd35ddf960c61e4c5b2319",

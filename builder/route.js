@@ -416,7 +416,7 @@ const apLabel = (code) => (code && AIRPORT[code] ? AIRPORT[code].label : "—");
 const ITIN_HEAD = ["| # | Stop | Dates | Nights | Stay options |", "|---|---|---|---|---|"];
 /* the explorer address (2026-09-13): one hash section per route, `plan=` for a plain stop string. The page path is
  * the one `spine` prints, so every command hands over the same file; sections are joined with `|` by the assistant. */
-const EXPLORER_PAGE = "guides/route-explorer.html";
+const EXPLORER_PAGE = "http://localhost:8790/guides/route-explorer.html"; /* served by the kit's .claude/launch.json (kit-explorer); a file:// open renders blank (live QA 2026-09-13) */
 const planHash = (P) => { const seen = {}; return P.stops.map((st) => { seen[st.loc] = (seen[st.loc] || 0) + 1; return `${st.loc}${seen[st.loc] > 1 ? `#${seen[st.loc]}` : ""}:${st.nights}`; }).join(","); };
 const explorerPlanSection = (P) => `plan=${planHash(P)}${P.opt.in ? `&in=${P.opt.in}` : ""}${P.opt.out ? `&out=${P.opt.out}` : ""}`;
 /* the stop's kind in the word the reader uses: a ryokan, a city, or a town (2026-09-13) */
@@ -1359,7 +1359,7 @@ function cmdSpine(ref, opt) {
   if (opt.json) return JSON.stringify({ spine: sp.id, before: moved ? before : undefined, after, choices: after.choices, stopString: stopString(after.stops) }, null, 1);
   const chosenOpts = decisionsOf(sp).map((d) => d.options[after.choices[d.key]]);
   const L = [spineHead(sp, after.band, opt, after), "", lineOf(sp, chosenOpts), "",
-    `Explorer: \`guides/route-explorer.html#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${hashSets(sp, opt)}${hashNights(after)}&routes=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}\` — the page to hand them, prefilled with this route, its answers so far and the nights on screen; it pins this route and folds the rest — widen routes= to the other slugs while they are still comparing.`, ""];
+    `Explorer: \`${EXPLORER_PAGE}#spine=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}&nights=${after.totals.nights}${opt.in ? `&in=${opt.in}` : ""}${opt.out ? `&out=${opt.out}` : ""}${opt.repeat ? "&repeat=1" : ""}${hashSets(sp, opt)}${hashNights(after)}&routes=${slugify(sp.name.replace(/[^a-z0-9 ]/gi, " ").replace(/\s+/g, " ").trim())}\` — the page to hand them, prefilled with this route, its answers so far and the nights on screen; it pins this route and folds the rest — widen routes= to the other slugs while they are still comparing.`, ""];
   L.push(...shapeLines(sp, after), "");
   if (autoRev) L.push(`Run the other way round for your ticket — in at ${apLabel(after.opt.in)}, home from ${apLabel(after.opt.out)}. The engine turns it round by itself whenever the ticket is on every run (\`--in\`/\`--out\`); do not add \`--reverse\` on top, that would turn it back.`, "");
   L.push(`**Decisions in trip order** — options as the kit's data prints them; \`spine "${sp.name}" --set <key>=<number or label>\` takes one, \`--nights <loc>=N\` moves nights (\`=0\` drops the stop), \`--total N\` sets the length, \`--reverse\` runs it the other way round, \`--before "<stop string>"\` names the route they already have.`, "", decisionsTable(sp, after.choices, after.unavailable, after.cities, after.reversed, null, after.stops.map((s) => s.loc)), "");

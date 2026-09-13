@@ -211,6 +211,8 @@ images** — if they come back blank, say so plainly and republish without the `
 blocks; the page is designed to read without them. Do not add a CDN script, a webfont or a data
 fetch to an artifact: they are blocked, silently.
 
+**In the Claude Code desktop app, also show it in the browser pane**: write it as `japan-trip-plan.html` in the kit root, start the `kit-explorer` server from the kit's `.claude/launch.json` (it serves the whole kit) and open `http://localhost:8790/japan-trip-plan.html` — never the file path, which renders blank — then read the page's text and confirm the first stop's name is on it before saying it is showing.
+
 **(b) ChatGPT, Codex, or any assistant with a canvas or a file workspace.** Put the whole file in
 the canvas (or write it into the workspace as `japan-trip-plan.html`) and tell them to download it
 and open it. A canvas that renders HTML shows it directly; one that does not still holds the file
