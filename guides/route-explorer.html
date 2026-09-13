@@ -434,19 +434,19 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
  const val=r=>held(r)?nightsOv[r.key]:r.def;
  const locTot=l=>rows.reduce((a,r)=>a+(r.loc===l?val(r):0),0);
  const surplus=r=>locTot(r.loc)-bandOf(r.loc)[0];
- const deficit=r=>bandOf(r.loc)[1]-locTot(r.loc);
  let diff=target-rows.reduce((a,r)=>a+val(r),0);
  /* fewer nights than the places hold: the place sitting furthest above its usual low gives one up first, later in the
   * trip on a tie — so Tokyo is never cut below its usual while another city is still above its own, and a split city
   * gives the night from its later visit. Only when nothing is above its usual does it go in reverse trip order.
-  * More nights: the place furthest below its usual top takes one first, earlier in the trip on a tie (owner, 2026-09-12) */
+  * More nights: the night goes to the place nearest the low end of its usual count, earliest in the trip on a tie, and
+  * only once every city stands at its usual top does the one night over it follow, lowest first (owner, 2026-09-12) */
  const spread=(pool,bnd)=>{for(let guard=0;diff!==0&&guard<200;guard++){
   let pick=null,fall=null,best=0;
   for(const r of pool){const rm=bnd(r);
    if(diff<0){if(r.def<=rm.lo)continue;fall=r;
     const s=surplus(r);if(s>0&&s>=best){best=s;pick=r;}}
    else{if(r.def>=rm.hi)continue;
-    const d=deficit(r);if(!pick||d>best){best=d;pick=r;}}}
+    const d=surplus(r);if(!pick||d<best){best=d;pick=r;}}}
   if(diff<0&&!pick)pick=fall;
   if(!pick)break;
   if(diff<0){pick.def--;diff++;}else{pick.def++;diff--;}}};

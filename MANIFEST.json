@@ -1414,8 +1414,8 @@
   "planning/kit-src/places.json": "8ad92f43fbabfff59caea33ded75590b54a06cf9e563490d27ca6e3f5ce192c1",
   "planning/kit-src/tools/spines.json": "7beee1b388e0e3572c7afa52b3f2a141dacef6d2004df8689f5cebf8fc0d955c",
   "planning/kit-src/tools/build-spines.js": "d9c27648cbe21b2ada924f6c305e7ff07b1dca06417389c10083dfdbc12771c3",
-  "planning/kit-src/companions/explorer/route-explorer.template.html": "d5b93988a48e1f857862a8c1296ff5e7f80167f6eb4cfb4f97b3e082a74fdbf8",
-  "planning/kit-src/companions/route-engine/route.js": "cc49b698ea2ab1d45a5c8ac170df3a1826582a88369c2157ac00f8302c0e067e",
+  "planning/kit-src/companions/explorer/route-explorer.template.html": "6c9beadfd7b880c5ccba0ec6407f198208e5d1a942b928f890a6ae21542eb8aa",
+  "planning/kit-src/companions/route-engine/route.js": "f34bf7f81df0f7beb2accd6ceec05f03a2719c880fdf4d197a6054f3101a05c1",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
   "deploy/catalog.json": "ff69603d5c9bcdae34cff80b103ef0bc70151da0025010115592f3db45c7463b",
   "deploy/catalog.md": "3733a773b9f4da10f9c7bca15e46abd7dc49c2f42f33d499da6abcc13c977669",
@@ -1500,8 +1500,8 @@
    "bytes": 9240
   },
   "builder/route.js": {
-   "sha256": "cc49b698ea2ab1d45a5c8ac170df3a1826582a88369c2157ac00f8302c0e067e",
-   "bytes": 156255
+   "sha256": "f34bf7f81df0f7beb2accd6ceec05f03a2719c880fdf4d197a6054f3101a05c1",
+   "bytes": 156528
   },
   "builder/serve.js": {
    "sha256": "eb267d4277a3465f86f32b07945917c78aeb7ce2b3bfabb2894b8cdc48c77b21",
@@ -1672,8 +1672,8 @@
    "bytes": 95864
   },
   "guides/route-explorer.html": {
-   "sha256": "7cb668fc299319b9947733ff1e667e98b235662436a90d89317299905f638b5b",
-   "bytes": 98974
+   "sha256": "21121bfa3398468bb3c0a56389f378521410a075b7e15859696c13556ad5cc24",
+   "bytes": 99039
   },
   "guides/token-guide.md": {
    "sha256": "50e98dcfc53a642f9b5a478cb26784167f164f61dda2057d4d1b53b9b74a8b44",

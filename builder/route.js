@@ -855,10 +855,13 @@ function fitTotal(stops, N, repeat) {
   const steps = [], total = () => stops.reduce((a, s) => a + s.nights, 0), atLoc = (loc) => stops.filter((s) => s.loc === loc).reduce((a, s) => a + s.nights, 0);
   const bases = stops.map((s, i) => [s, i]).filter(([s]) => isBaseKind(s.kind) && !s.fixedNights);
   let guard = 0;
+  /* short of the count asked for: the night goes to the city nearest the low end of its usual range, the first city on a
+   * tie (owner, 2026-09-12) — so Kyoto at its low takes the night before Tokyo already above its own */
+  const lowest = (ok) => { let pick = null, best = Infinity; for (const [s] of bases) { const r = rangeOf(s.loc, { repeat }), gap = atLoc(s.loc) - r[0];
+      if (ok(s, r) && gap < best) { pick = s; best = gap; } } return pick; };
   while (total() < N && guard++ < 200) {
-    let moved = false;
-    for (const [s] of bases) { if (total() >= N) break; if (atLoc(s.loc) < rangeOf(s.loc, { repeat })[1]) { s.nights++; moved = true; steps.push(`${label(s.loc)} takes a night (${s.nights - 1} → ${s.nights}, inside its ${rangeOf(s.loc, { repeat }).join("–")})`); } }
-    if (!moved) break;
+    const s = lowest((s, r) => atLoc(s.loc) < r[1]); if (!s) break;
+    s.nights++; steps.push(`${label(s.loc)} takes a night (${s.nights - 1} → ${s.nights}, inside its ${rangeOf(s.loc, { repeat }).join("–")})`);
   }
   guard = 0;
   /* over the count asked for: the city with the most nights above its usual low gives one up first, later in the trip
@@ -884,9 +887,9 @@ function fitTotal(stops, N, repeat) {
   guard = 0;
   while (total() < N && guard++ < 200) {
     let moved = false;
-    /* in reverse trip order: the last region takes the extra night before the gateway city does */
-    for (const [s] of bases.slice().reverse()) { if (total() >= N) break; const top = rangeOf(s.loc, { repeat })[1];
-      if (atLoc(s.loc) === top && atLoc(s.loc) < capOf(s.loc, { repeat })) { s.nights++; moved = true; steps.push(`${label(s.loc)} takes one night over its usual ${rangeOf(s.loc, { repeat }).join("–")} (${s.nights - 1} → ${s.nights})`); } }
+    /* the same order for the +1 ceiling: nearest its low first, the first city on a tie */
+    { const s = lowest((s, r) => atLoc(s.loc) === r[1] && atLoc(s.loc) < capOf(s.loc, { repeat }));
+      if (s) { s.nights++; moved = true; steps.push(`${label(s.loc)} takes one night over its usual ${rangeOf(s.loc, { repeat }).join("–")} (${s.nights - 1} → ${s.nights})`); } }
     if (!moved) break;
   }
   /* asked for fewer than the cities' own minimums: go under them, down to one night a stop, and say so */
