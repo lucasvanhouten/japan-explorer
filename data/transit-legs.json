@@ -3424,14 +3424,14 @@
   {
    "from": "katsuragi",
    "to": "kix",
-   "hours": 1.5,
+   "hours": 0.9,
    "transfers": 0,
    "mode": "car",
    "source": "researched",
    "flags": {
     "car": 1
    },
-   "route": "Taxi/inn-arranged car straight down from the Katsuragi foothills to KIX — Amanosato sits about an hour from the airport by road (arrange with the inn) + airport processing on arrival. (Transit: the Nankai chain via Namba runs ~3h with 2 changes — skip it.)"
+   "route": "Car Amanosato → Kansai airport: 54.5 km via the Keinawa expressway, 53 min (Google Maps, 2026-09-13); the inn arranges the taxi. No airport padding: check-in is stated on the flight leg."
   },
   {
    "from": "katsuragi",

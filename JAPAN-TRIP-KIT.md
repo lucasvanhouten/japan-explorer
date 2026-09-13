@@ -636,7 +636,7 @@ A **spine** is an order of major cities with decisions hanging off each city and
 1. **Explore first.** Once the spine is picked, the first message shows its default timeline and the first decision, closing on that question: *"Tokyo first, or straight into Kansai?"*
 2. **The default is the recommendation.** One option arrives taken, and you say why. Never volunteer a place to sleep before they have chosen the area (Stage 4), but **a direct question about a town's inns gets its shortlist there and then**: `stays <place>`, names linked, your pick first.
 3. **Re-price after every answer, and re-open the page.** Each answer is a `--set`; the timeline that comes back is what they see next, and **every run prints an `Explorer:` address carrying the answers so far.** Hand it on its own bold line — **Open beside this chat: <route name> — <address>** — in every message. Never ask whether they want it.
-4. **Say what the spine can't do.** An option marked *not offered here*: name the nearest thing this spine does; a place it never reaches gets one no with its reason. **An ending is never withheld for the airport**: the ride to the ticketed airport is priced and said (Kōyasan to Haneda: 3h45 via Kansai).
+4. **Say what the spine can't do.** An option marked *not offered here*: name the nearest thing this spine does; a place it never reaches gets one no with its reason. **An ending is never withheld for the airport**: the ride to the ticketed airport is priced and said (Kōyasan to Haneda: 3h10 via Kansai).
 5. **Never type a number.** Every figure comes from the engine.
 
 **Never name a principle to the user.**
@@ -1206,7 +1206,7 @@ _Left off on price: **Bouyourou** (Mikuni, from $1450), **Fuji Seiran** (Cape Os
 |---|---|---|---|---|
 | Tokyo | Palace Hotel Tokyo · Marunouchi, on the Imperial Palace moat · [map](https://www.google.com/maps?cid=1748987416538389436) · [site](https://en.palacehoteltokyo.com/) | Japanese-run luxury | $600–1250 | Tokyo's best Japanese-run luxury hotel, and the one FlyerTalk's regulars pick first: grand but not stiff, with the most polished service in the city. |
 | Tokyo | The Okura Tokyo · Toranomon, on the Okura hill · [map](https://www.google.com/maps?cid=3528441622244778882) · [site](https://theokuratokyo.jp/en/the-okura-heritage-wing/) | Japanese-run luxury | $360–640 Prestige Tower · $650–950 Heritage Wing | Two buildings on the Okura hill, rebuilt in 2019 around the famous 1962 lobby and the Orchid Bar. |
-| Tokyo | Hoshinoya Tokyo · Ōtemachi · [map](https://www.google.com/maps?cid=452005950262881873) · [site](https://hoshinoresorts.com/en/hotels/hoshinoyatokyo/) | Japanese-run luxury | $450–950 | Tokyo's one real ryokan: a seventeen-storey tower in Ōtemachi run like a country inn — shoes off at the door, tatami corridors, six rooms to a floor and a lounge on each with tea, sake and snacks all day. |
+| Tokyo | Hoshinoya Tokyo · Ōtemachi · [map](https://www.google.com/maps?cid=452005950262881873) · [site](https://hoshinoresorts.com/en/hotels/hoshinoyatokyo/) | Japanese-run luxury | $450–950 | Tokyo's one real ryokan: a seventeen-storey tower in Ōtemachi run like a country inn — shoes off at the door, tatami corridors, six rooms to a floor and a lounge on each with tea, sake and snacks. |
 | Tokyo | K5 · Kabutochō / Nihonbashi · [map](https://www.google.com/maps?cid=10906498574121315795) · [site](https://k5-tokyo.com/) | Funky boutique | $275–650 | A design hotel in a converted pre-war bank in Kabutocho, Tokyo's old stock-exchange quarter, and the building is the reason to book it. |
 | Tokyo | SOIL Nihonbashi · Bakurochō, Nihonbashi · [map](https://www.google.com/maps?cid=11886533522893997146) · [site](https://soilis.co/nihonbashi/) | Funky boutique | $200–225 | A small design-led hotel over its own cafe and sake bar in Bakurocho, the old textile-wholesale district. |
 | Tokyo | Park Hyatt Tokyo · Nishi-Shinjuku, top of the Shinjuku Park Tower · [map](https://www.google.com/maps?cid=3231512592087154070) · [site](https://www.hyatt.com/park-hyatt/tyoph-park-hyatt-tokyo) | If you hold Hyatt or Chase points | $850–1050 · or Hyatt points | Tokyo's most famous luxury hotel, and for thirty years the one the others are measured against: hushed, spacious and high above the city on the top fourteen floors of a Shinjuku tower, the hotel Lost in Translation made known around the world. |
@@ -1578,7 +1578,7 @@ Any pair not in these tables was not in the source data. Look it up on a timetab
 The inns on the road between two cities, with what a night at each costs over going straight through — read only when a plan wants an inn night on a leg that has none.
 
 <!-- generated:connectors -->
-*128 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
+*130 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
 
 | From → To | Direct | Connector inn | Leg in | Leg out | Detour |
 |---|---|---|---|---|---|
@@ -1635,9 +1635,11 @@ The inns on the road between two cities, with what a night at each costs over go
 | Osaka → Kansai airport | 1h05/0 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h30/0 train | +1h10 |
 | Kanazawa → Minakami / Tanigawa | 3h15/1 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 2h25/1 shinkansen | +1h10 |
 | Fukuoka → Beppu | 2h/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 2h10/0 train | 1h/0 bus | +1h10 |
+| Osaka → Kansai airport | 1h05/0 | [Sanso Amanosato](https://ryokancatalog.com/inn/sanso-amanosato) · Katsuragi | 1h25/1 train | 55 min/0 car | +1h10 |
 | Kyoto → Fukuoka | 3h30/0 | [Migiwatei Ochi Kochi](https://ryokancatalog.com/inn/migiwatei-ochi-kochi) · Tomonoura | 2h10/1 train | 2h30/0 shinkansen | +1h10 |
 | Kyoto → Lake Kawaguchi | 4h15/1 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 3h45/2 train | 1h45/1 train | +1h15 |
 | Lake Kawaguchi → Haneda airport | 3h/1 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 1h45/1 train | 2h30/1 train | +1h15 |
+| Nara → Kansai airport | 1h55/1 | [Sanso Amanosato](https://ryokancatalog.com/inn/sanso-amanosato) · Katsuragi | 2h15/2 train | 55 min/0 car | +1h15 |
 | Sendai → Kanazawa | 4h30/1 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 2h30/1 train | 3h15/1 shinkansen | +1h15 |
 | Tokyo → Lake Kawaguchi | 2h/0 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 1h30/0 train | 1h45/1 train | +1h15 |
 | Kanazawa → Nikkō | 4h/2 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 3h20/2 shinkansen | +1h20 |
@@ -1809,7 +1811,7 @@ Only after the plan exists. **Don't deliver all of it unasked.**
 
 ### (a) Eating
 
-**The first message is an interview, not a list of restaurants.** One short paragraph, then four questions, read against their `Taste:` line so you don't re-ask it. The paragraph says three things: nobody needs reservations to eat superbly in Japan, most eating is walk-in, and two or three booked meals per city is the most anyone needs — none is normal. Then the questions, with examples to react to, glossing each Japanese word:
+**The first message is an interview, not a list of restaurants.** One short paragraph, then four questions, read against their `Taste:` line. The paragraph says: nobody needs reservations to eat superbly in Japan, and two or three booked meals per city is the most anyone needs. Then the questions, with examples, glossing each Japanese word:
 
 1. **Which styles pull at you?** — sushi counter, izakaya, ramen, soba, udon, kaiseki, yakitori, tempura, tonkatsu, yakiniku, French or Italian in Japan, wine bars, cocktail bars, coffee, listening bars (built around a record collection).
 2. **How formal, and what would you spend on a good dinner?** — a ¥3–6k counter, a ¥10–15k room, ¥25k and up for one big meal. An ambitious lunch is the cheaper way in.
@@ -1818,7 +1820,7 @@ Only after the plan exists. **Don't deliver all of it unasked.**
 
 **Name the two sources once.**
 
-- **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 each in Osaka and Kagoshima, 25 in Kanazawa, and shorter sections for Kobe, Hiroshima, Takayama, Sendai, Nara and Yanagawa. Written from one traveller's palate — creative low-key rooms, counters, natural wine — and every entry checked for whether a table can be got.
+- **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 each in Osaka and Kagoshima, 25 in Kanazawa, shorter sections for six more cities. One traveller's palate — creative low-key rooms, counters, natural wine — every entry checked for bookability.
 - **The illustrated trip report** linked above: one earlier trip in photos, not a survey.
 
 **Open one city at a time**, `guides/dining/<city>.md` for the stops on the plan and `guides/dining/index.md` to list them; **never `guides/dining.md` whole** — half a megabyte of the same text.
@@ -1833,7 +1835,7 @@ Say that what follows is a small subset chosen against their answers, and that t
 |---|---|---|---|---|---|
 | `<name>` | `<cuisine or room type>` | `<band per head, dinner or lunch>` | `<neighbourhood, not the address>` | `<walk-in · Tabelog · TableCheck · OMAKASE.in · phone, in Japanese · through the hotel>` | [map](`<link>`) |
 
-One line of prose per place at most, under the table, and only where the pitch needs it; price and booking channel are cells, never sentences. Lotteries and midnight releases are excluded by rule. The booking-effort answer decides what appears: "none" is walk-in only, "two or three anchors" that many bookable places per city, "all in" opens the hard-to-get tier. The **Tabelog score** is optional — Japan's own review site, 3.5 and up very good, 3.7 excellent; casual places are not marked down for being cheap.
+One line of prose per place at most, under the table, only where the pitch needs it; price and booking channel are cells. Lotteries and midnight releases are excluded. The booking-effort answer decides what appears: "none" is walk-in only, "two or three anchors" that many per city, "all in" the hard-to-get tier. The **Tabelog score** is optional — Japan's review site, 3.5 and up very good, 3.7 excellent; casual places are not marked down for being cheap.
 
 **The map link rule.** A guide row's real pin (`google.com/maps/place/…`) is best: pass it through. A name-search link is the fallback, labelled "map (search)" so the reader checks it lands on the venue. Never write a map link from memory.
 

@@ -393,7 +393,7 @@ const LEGS={
   "ise>kyoto":L(2.0,1,"train","Kintetsu Ltd Exp Iseshi/Ujiyamada→Kyoto (~2h); most change at Yamato-Yagi, a few run direct (2/hr)."),
   "onomichi>hiroshima":L(1.0,1,"train","JR Sanyo local Onomichi→Fukuyama (~15 min), Sanyo Shinkansen Fukuyama→Hiroshima (~25 min) — change at Fukuyama (faster than Shin-Onomichi, 3 km out of town)."),
   /* Kansai onsen finales → airports */
-  "katsuragi>kix":L(1.5,0,"car","Taxi/inn-arranged car straight down from the Katsuragi foothills to KIX — Amanosato sits about an hour from the airport by road (arrange with the inn) + airport processing on arrival (2026-07 audit: the old 1.0 gave KIX 30 minutes). (Transit: the Nankai chain via Namba runs ~3h with 2 changes — skip it.)",{car:1}),
+  "katsuragi>kix":L(0.9,0,"car","Car Amanosato → Kansai airport: 54.5 km via the Keinawa expressway, 53 min (Google Maps, 2026-09-13); the inn arranges the taxi. No airport padding: check-in is stated on the flight leg.",{car:1}),
   "amino>kix":L(4.75,1,"train","Shuttle/taxi to Amino, Ltd Exp 'Hashidate'→Kyoto (~2h40), change to Haruka→KIX (~80 min). Long; snow-risk.",{awkward:1,car:1}),
   "kinosaki>kix":L(3.9,1,"train","Ltd Exp 'Kounotori' Kinosaki Onsen→Shin-Osaka (~2h50), change to Haruka→KIX (~50 min)."),
   "arima>kix":L(2.6,1,"bus","Arima Express bus→Kobe-Sannomiya (~40 min), change to KATE airport limousine→KIX (~70 min)."),

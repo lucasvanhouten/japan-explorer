@@ -244,7 +244,7 @@ Any pair not in these tables was not in the source data. Look it up on a timetab
 The inns on the road between two cities, with what a night at each costs over going straight through — read only when a plan wants an inn night on a leg that has none.
 
 <!-- generated:connectors -->
-*128 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
+*130 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
 
 | From → To | Direct | Connector inn | Leg in | Leg out | Detour |
 |---|---|---|---|---|---|
@@ -301,9 +301,11 @@ The inns on the road between two cities, with what a night at each costs over go
 | Osaka → Kansai airport | 1h05/0 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h30/0 train | +1h10 |
 | Kanazawa → Minakami / Tanigawa | 3h15/1 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 2h25/1 shinkansen | +1h10 |
 | Fukuoka → Beppu | 2h/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 2h10/0 train | 1h/0 bus | +1h10 |
+| Osaka → Kansai airport | 1h05/0 | [Sanso Amanosato](https://ryokancatalog.com/inn/sanso-amanosato) · Katsuragi | 1h25/1 train | 55 min/0 car | +1h10 |
 | Kyoto → Fukuoka | 3h30/0 | [Migiwatei Ochi Kochi](https://ryokancatalog.com/inn/migiwatei-ochi-kochi) · Tomonoura | 2h10/1 train | 2h30/0 shinkansen | +1h10 |
 | Kyoto → Lake Kawaguchi | 4h15/1 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 3h45/2 train | 1h45/1 train | +1h15 |
 | Lake Kawaguchi → Haneda airport | 3h/1 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 1h45/1 train | 2h30/1 train | +1h15 |
+| Nara → Kansai airport | 1h55/1 | [Sanso Amanosato](https://ryokancatalog.com/inn/sanso-amanosato) · Katsuragi | 2h15/2 train | 55 min/0 car | +1h15 |
 | Sendai → Kanazawa | 4h30/1 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 2h30/1 train | 3h15/1 shinkansen | +1h15 |
 | Tokyo → Lake Kawaguchi | 2h/0 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 1h30/0 train | 1h45/1 train | +1h15 |
 | Kanazawa → Nikkō | 4h/2 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 3h20/2 shinkansen | +1h20 |

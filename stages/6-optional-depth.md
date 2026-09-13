@@ -24,7 +24,7 @@ Only after the plan exists. **Don't deliver all of it unasked.**
 
 ### (a) Eating
 
-**The first message is an interview, not a list of restaurants.** One short paragraph, then four questions, read against their `Taste:` line so you don't re-ask it. The paragraph says three things: nobody needs reservations to eat superbly in Japan, most eating is walk-in, and two or three booked meals per city is the most anyone needs — none is normal. Then the questions, with examples to react to, glossing each Japanese word:
+**The first message is an interview, not a list of restaurants.** One short paragraph, then four questions, read against their `Taste:` line. The paragraph says: nobody needs reservations to eat superbly in Japan, and two or three booked meals per city is the most anyone needs. Then the questions, with examples, glossing each Japanese word:
 
 1. **Which styles pull at you?** — sushi counter, izakaya, ramen, soba, udon, kaiseki, yakitori, tempura, tonkatsu, yakiniku, French or Italian in Japan, wine bars, cocktail bars, coffee, listening bars (built around a record collection).
 2. **How formal, and what would you spend on a good dinner?** — a ¥3–6k counter, a ¥10–15k room, ¥25k and up for one big meal. An ambitious lunch is the cheaper way in.
@@ -33,7 +33,7 @@ Only after the plan exists. **Don't deliver all of it unasked.**
 
 **Name the two sources once.**
 
-- **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 each in Osaka and Kagoshima, 25 in Kanazawa, and shorter sections for Kobe, Hiroshima, Takayama, Sendai, Nara and Yanagawa. Written from one traveller's palate — creative low-key rooms, counters, natural wine — and every entry checked for whether a table can be got.
+- **`guides/dining.md`**, if it came with this kit — roughly 430 venues in Tokyo, 215 in Fukuoka, 110 in Kyoto, 80 each in Osaka and Kagoshima, 25 in Kanazawa, shorter sections for six more cities. One traveller's palate — creative low-key rooms, counters, natural wine — every entry checked for bookability.
 - **The illustrated trip report** linked above: one earlier trip in photos, not a survey.
 
 **Open one city at a time**, `guides/dining/<city>.md` for the stops on the plan and `guides/dining/index.md` to list them; **never `guides/dining.md` whole** — half a megabyte of the same text.
@@ -48,7 +48,7 @@ Say that what follows is a small subset chosen against their answers, and that t
 |---|---|---|---|---|---|
 | `<name>` | `<cuisine or room type>` | `<band per head, dinner or lunch>` | `<neighbourhood, not the address>` | `<walk-in · Tabelog · TableCheck · OMAKASE.in · phone, in Japanese · through the hotel>` | [map](`<link>`) |
 
-One line of prose per place at most, under the table, and only where the pitch needs it; price and booking channel are cells, never sentences. Lotteries and midnight releases are excluded by rule. The booking-effort answer decides what appears: "none" is walk-in only, "two or three anchors" that many bookable places per city, "all in" opens the hard-to-get tier. The **Tabelog score** is optional — Japan's own review site, 3.5 and up very good, 3.7 excellent; casual places are not marked down for being cheap.
+One line of prose per place at most, under the table, only where the pitch needs it; price and booking channel are cells. Lotteries and midnight releases are excluded. The booking-effort answer decides what appears: "none" is walk-in only, "two or three anchors" that many per city, "all in" the hard-to-get tier. The **Tabelog score** is optional — Japan's review site, 3.5 and up very good, 3.7 excellent; casual places are not marked down for being cheap.
 
 **The map link rule.** A guide row's real pin (`google.com/maps/place/…`) is best: pass it through. A name-search link is the fallback, labelled "map (search)" so the reader checks it lands on the venue. Never write a map link from memory.
 
