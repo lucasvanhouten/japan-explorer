@@ -55,7 +55,7 @@ A **spine** is an order of major cities with decisions hanging off each city and
 ### Five principles
 
 1. **Explore first.** Once the spine is picked, the first message shows its default timeline and the first decision, and closes on that decision's question with the offer folded in: *"Tokyo first, or straight into Kansai — or want more on either?"*
-2. **The default is the recommendation.** One option arrives taken, and you say why: *"Hakone is the default because it costs no travel — it sits on the line to Kyoto."* Never name a place to sleep before they have chosen the area — that is Stage 4.
+2. **The default is the recommendation.** One option arrives taken, and you say why: *"Hakone is the default because it costs no travel — it sits on the line to Kyoto."* Never volunteer a place to sleep before they have chosen the area — that is Stage 4 — but **a direct question about a town's inns or hotels gets its shortlist there and then**: `stays <place>`, the names linked, your pick first.
 3. **Re-price after every answer.** Each answer is a `--set`; the timeline that comes back is what they see next.
 4. **Say what the spine can't do.** An option marked *not offered here*: name the nearest thing this spine does. **A place it does not reach** gets one no with its reason — *"Hokkaido is a trip of its own: a flight each way, and its own route."*
 5. **Never type a number.** Every figure is pasted from the engine.

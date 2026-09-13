@@ -410,7 +410,11 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
  const q=l=>NQ(l);
  /* the room a row has inside its USUAL count — the fit never goes outside it, so the recommended load cannot arrive
   * wearing its own amber warning, and a place added later takes its nights from the overrun, not from another row */
- const room=r=>{const b=bandOf(r.loc);return {lo:cnt[r.loc]>1?Math.min(r.def,b[0]):b[0],hi:Math.max(r.def,b[1])};};
+ /* a city split around an out-and-back night is read as one stay, so a visit of it comes down to the split floor —
+  * two nights, or one where the later visit is the airport-side night — while the whole stay is held inside its usual */
+ const splitFloor=r=>{const idx=rows.indexOf(r),last=rows.map(x=>x.loc).lastIndexOf(r.loc)===idx;
+  return last&&rows.slice(idx+1).every(x=>!BASE.has(x.loc))?1:2;};
+ const room=r=>{const b=bandOf(r.loc);return {lo:cnt[r.loc]>1?Math.min(r.def,splitFloor(r)):b[0],hi:Math.max(r.def,b[1])};};
  /* the nights a row opens on: its usual count, and for a place stayed at twice the split the assembler chose */
  const base=r=>cnt[r.loc]>1?r.def:usualNights(r.loc);
  const hardLo=r=>cnt[r.loc]>1?1:Math.max(1,q(r.loc)[1]);
@@ -466,6 +470,8 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
  * trip order, then an ending that carries nights. Only a default moves: anything the reader or the link chose stays. */
 const autoOn={};
 /* the most this assembly can hold the engine's way: every city up to its ceiling, the smaller places at their own count */
+/* the nights the route opens on when none are asked for: every stop at the count the assembly gives it */
+function defaultTotal(sp){return stopsOf(sp).reduce((a,s)=>a+s.def,0);}
 function capacity(sp){const seen=new Set();let n=0;
  stopsOf(sp).forEach(s=>{if(!BASE.has(s.loc)){n+=s.def;return;}if(seen.has(s.loc))return;seen.add(s.loc);n+=NQ(s.loc)[2];});return n;}
 function spendNights(sp){
@@ -516,8 +522,9 @@ function readHash(){const p=hashParams();
  const found=findSpine(p.spine);ask=p.spine&&!found?p.spine:null;
  cur=found||(ask?null:spines[0]);
  if(!cur)return p;
- /* no nights in the address: open on the route's own default assembly, not the band's low end (owner, 2026-09-12) */
- const n=parseInt(p.nights,10);target=n>0?n:(typeof capacity==="function"?capacity(cur):cur.band[0]);
+ /* no nights in the address: open on the route's own default assembly — the nights every stop opens on, added up, the
+  * same plan the route engine prints when it is given no total; never the band's low end nor the ceiling (owner, 2026-09-12) */
+ const n=parseInt(p.nights,10);target=n>0?n:defaultTotal(cur);
  /* a booked ticket picks the option that declares it; if the route's own airport is the one booked, any decision that
   * moved it goes back to its default instead */
  const want={in:(p.in||"").toUpperCase(),out:(p.out||"").toUpperCase()};
