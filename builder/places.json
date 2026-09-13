@@ -316,6 +316,7 @@
   "lng": 139.054,
   "spines": [
    "s1",
+   "s2",
    "s3",
    "s8"
   ]
@@ -778,9 +779,7 @@
   "label": "Lake Kawaguchi (Mt Fuji)",
   "lat": 35.4969,
   "lng": 138.7642,
-  "spines": [
-   "s2"
-  ]
+  "spines": []
  },
  {
   "loc": "kinosaki",

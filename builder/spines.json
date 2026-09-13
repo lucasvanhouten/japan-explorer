@@ -442,18 +442,20 @@
        "key": "fuji",
        "kind": "inn",
        "default": 1,
-       "question": "A lakeside inn under Fuji on the way back to Tokyo?",
-       "desc": "Back through Tokyo to a lakeside ryokan under Mount Fuji, then the last nights in the city.",
+       "question": "A ryokan near Mount Fuji on the way back to Tokyo?",
+       "desc": "Hakone, the Fuji lakes or Izu: back through Tokyo to a ryokan under the mountain, then the last nights in the city.",
        "no": "Straight back to Tokyo.",
        "stops": [
-        "kawaguchiko"
+        "hakone"
        ],
        "requires": [
         "tokyo@last"
        ],
-       "why_not": "the Fuji inn only works on a loop that closes there, and not with the Kaga night too — four inn dinners running",
+       "why_not": "the Fuji ryokan sits on the road straight back from Kanazawa to Tokyo; after Kyoto it is the ending instead, and not with the Kaga night too — four inn dinners running",
        "not_with": [
-        "yamashiro"
+        "yamashiro",
+        "kyoto",
+        "osaka"
        ]
       }
      ]
@@ -495,21 +497,21 @@
       "desc_rev": "The Japan Sea hot-spring town of old inns and public baths."
      },
      {
-      "label": "Back to Tokyo, a Fuji inn on the way",
-      "desc": "A lakeside ryokan under Mount Fuji, then the last nights in Tokyo.",
+      "label": "Back to Tokyo, a Fuji ryokan on the way",
+      "desc": "Hakone, the Fuji lakes or Izu on the road back, then the last nights in Tokyo.",
       "place": "after kyoto|osaka",
       "stops": [
-       "kawaguchiko",
+       "hakone",
        "tokyo"
       ],
       "out": "HND",
       "label_rev": "Tokyo and a Fuji inn at the start",
-      "desc_rev": "The first nights in Tokyo, then a lakeside ryokan under Mount Fuji.",
+      "desc_rev": "The first nights in Tokyo, then Hakone, the Fuji lakes or Izu.",
       "not_with": [
-       "kawaguchiko",
+       "hakone",
        "osaka@last"
       ],
-      "why_not": "the lake is on the Kyoto–Tokyo road, so this ending wants Kyoto as the last Kansai city"
+      "why_not": "the Fuji ryokan sits on the Kyoto–Tokyo road, so this ending wants Kyoto as the last Kansai city"
      },
      {
       "label": "Back to Tokyo",
