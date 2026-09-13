@@ -477,8 +477,8 @@
   "corridors": 176,
   "legs": 788,
   "region_cards": 13,
-  "front_door_words": 49496,
-  "start_here_words": 4318,
+  "front_door_words": 49486,
+  "start_here_words": 4319,
   "stage_files": 6,
   "stays_files": 12
  },
@@ -1415,7 +1415,7 @@
   "planning/kit-src/tools/spines.json": "7beee1b388e0e3572c7afa52b3f2a141dacef6d2004df8689f5cebf8fc0d955c",
   "planning/kit-src/tools/build-spines.js": "d9c27648cbe21b2ada924f6c305e7ff07b1dca06417389c10083dfdbc12771c3",
   "planning/kit-src/companions/explorer/route-explorer.template.html": "71e117b67f3bea77fda061b2832d0f8c37896fb011c848e6c406373452c5bab4",
-  "planning/kit-src/companions/route-engine/route.js": "80413d0bffb032db72bf558ff86871571703236deeb90d2293f9f4cc14c99da4",
+  "planning/kit-src/companions/route-engine/route.js": "90a1e4a1b3e20bfee91c47e2be4c24f46d07d4e624c54e577787ea107fd26de0",
   "planning/kit-src/companions/route-engine/README.md": "a904b5ef8c94f746078ab1227204cc81d40fbd8ab57a0b43bccfcad2b731b451",
   "deploy/catalog.json": "d80b1bef8421f4724ceaa7f7fe3cb3a7fdc2d02b8b01d8da3b6ec62758b1d300",
   "deploy/catalog.md": "285cfbf7b2784c33c43471eb6ef193c8bc2b9a4059824d68c78b6a577497d614",
@@ -1424,26 +1424,26 @@
   "research/dining-notes-process.md": "902b413beb5190960d7c54709dfd40d10d4a6db3b67e0f0d896b5275b62ed6dd",
   "ryokans/ryokan_data.json": "fff54d24b89a0df707c1273d573bc7d347a0cdfe914c5fb65730e90cf9b01ace",
   "planning/kit-src/kit/00-traveler.md": "57e5f8c6ad14b80a784dde85b1ffbed445e35cd96a2a46c45f03ccd63f4b16cb",
-  "planning/kit-src/kit/01-agent.md": "3b14b892ed0e532db562ca2f1d80860735cba057a3f1798728337c80772198b4",
+  "planning/kit-src/kit/01-agent.md": "4f3dd61da9207ab689067e2f9f0708cf9e4bc0bf50de861b19239c3f27fd3f3a",
   "planning/kit-src/kit/02-interview.md": "444c0a417ccb46e25a296431a921c2d336185753b1acc6135e9c79253daf13b5",
   "planning/kit-src/kit/03-orientation.md": "ff88bc547bf4a94b9e9ebf718009d036418f49e11e1c14e8b284cb3c52b13a2f",
-  "planning/kit-src/kit/04-where-to-go.md": "c75b3095261a7a0c4a8e4746a84ac14046aa907b1cff54379a46e289f91f36d8",
-  "planning/kit-src/kit/05-where-to-stay.md": "4ca0678b2311bf25bded3ac6bcc674a314b5c95cb589b2665f49a8ea21da9b4a",
-  "planning/kit-src/kit/06-route.md": "41475dfc0d09eb5f701bb7dbd8b72b9d8d3ec3d6e7f87a5169dc2de54272c496",
-  "planning/kit-src/kit/07-optional-depth.md": "a33e15c690c8e4bc5f41b950d60a0712ed5107b8e9256d3b9c7adb81e749c809",
-  "planning/kit-src/kit/08-appendix.md": "d67288bf269e6cf6bb8f21ed4cbce0f60a690a0e0d28303d91f3b6df0d970992",
+  "planning/kit-src/kit/04-where-to-go.md": "ad8c6f07fce1b0c600f940dc1909bde83ce7a99fcb13f22c92c8ec8d61faa435",
+  "planning/kit-src/kit/05-where-to-stay.md": "e28a865acf83df47170dd7edaf3b64a3c1284604c83f5e3ab2b76ce08cf6ee58",
+  "planning/kit-src/kit/06-route.md": "87d8a121f16d3aa7bce43aad0989a7efd80531d6c0ccb7b63fcf86c2df4e156a",
+  "planning/kit-src/kit/07-optional-depth.md": "e5e647980e5d60737bd9c04dca98f08aefb1f9a5ec506397ae61e4ea76e3b00f",
+  "planning/kit-src/kit/08-appendix.md": "6a7573b159b01009a0c369673e99a0bdf1d9cb9ba94a3dd0f2f933b640782e65",
   "planning/kit-src/companions/LICENSE": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
   "planning/kit-src/companions/README.md": "c78fc667173c1f254b2b4192754e869e13392a6056e61f34605f12efe63f3e57",
   "planning/kit-src/companions/builder-README.md": "3e7321b664fbf2f90ce8fc3e0f11ebe9b7a7a3bc3c53713b35d531625e20b976",
   "planning/kit-src/companions/design-language.md": "05912acaa59186d39d4f7e40d6e307472de052680b08af6248915c6929a56f35",
   "planning/kit-src/companions/design-principles.md": "99cdf1d08b23c60b409aa7762bbb874646779d378824926411e8000cc69ef6dc",
   "planning/kit-src/companions/research-method.md": "0d8c7f7c23d834be49a69f6b29e2755d1c1de410e801db2831463d1bdd76133b",
-  "planning/kit-src/companions/sample-plan.md": "495f207e6f0077de3fd931cb158a757c3e8a0cf184e206221aeea2bcfe0def44",
+  "planning/kit-src/companions/sample-plan.md": "cc00c52e87883618d0cf24d20409311ec9fc29b5d56284dd163b1b34d5cbdb8c",
   "planning/kit-src/companions/token-guide.md": "6dc63f2330778ffdb1c72dab66797f0b06ed95e3e13a439492a07f108bb294a5",
   "planning/kit-src/companions/transit-know-how.md": "9e89de3f3f10740975faca4543d9b2090337bb1857a630a77df296956f6e02df",
   "planning/kit-src/companions/trip-visual-stops.json": "2b5e735bafd9323bdba08dc72af177b81375dfcc68a6b3e41315653ef97099a5",
   "planning/kit-src/companions/trip-visual-template.html": "e412558bc56bc929c887691fbece9b4977e32367e1aebc93498755300204c3ba",
-  "planning/kit-src/companions/visualizing-the-trip.md": "a8862f9c7ed1bee119a0005c845abced29d8941e96fb0440e195e8edfb5130ed",
+  "planning/kit-src/companions/visualizing-the-trip.md": "d7974c560114047300a8f92f921a1ba90bd199748c3e31a787ec5cbcc8e1ceb1",
   "planning/kit-src/scrub.js": "e700e7effd7cb6bca726210eb87a1f884dc5ac29d1763389106dccf816efeaeb"
  },
  "outputs": {
@@ -1452,16 +1452,16 @@
    "bytes": 518
   },
   "AGENTS.md": {
-   "sha256": "f0e595c20f587a6a14186f5a5d0a19e72bae11ac3d4a5cc02b499b9dc9413665",
-   "bytes": 25970
+   "sha256": "3681f481f4638ca3d2a901b95f5b0dd5a2912f39f720fa05f313e3208d6f6a7c",
+   "bytes": 25982
   },
   "CLAUDE.md": {
-   "sha256": "f0e595c20f587a6a14186f5a5d0a19e72bae11ac3d4a5cc02b499b9dc9413665",
-   "bytes": 25970
+   "sha256": "3681f481f4638ca3d2a901b95f5b0dd5a2912f39f720fa05f313e3208d6f6a7c",
+   "bytes": 25982
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "586e8ca83b84b41077348bc9da1052c2adebd9461c3fbf7b92b72617d5cdffd4",
-   "bytes": 292061
+   "sha256": "b134c72b7bfc109719b98b9e50498c122d3e9899fd291926a15532b4314d0acb",
+   "bytes": 291825
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1472,8 +1472,8 @@
    "bytes": 7527
   },
   "START-HERE.md": {
-   "sha256": "94db20f62ade5cf6fdbd8706fcc5013b82f50ff5a141927a2ceabe32e82855ca",
-   "bytes": 25552
+   "sha256": "bec7657f4a9ac9051fabd643039fb2656031049f958929262910b9eebd150e78",
+   "bytes": 25564
   },
   "builder/README.md": {
    "sha256": "3e7321b664fbf2f90ce8fc3e0f11ebe9b7a7a3bc3c53713b35d531625e20b976",
@@ -1500,7 +1500,7 @@
    "bytes": 9240
   },
   "builder/route.js": {
-   "sha256": "80413d0bffb032db72bf558ff86871571703236deeb90d2293f9f4cc14c99da4",
+   "sha256": "90a1e4a1b3e20bfee91c47e2be4c24f46d07d4e624c54e577787ea107fd26de0",
    "bytes": 157033
   },
   "builder/serve.js": {
@@ -1608,8 +1608,8 @@
    "bytes": 205378
   },
   "examples/sample-plan.md": {
-   "sha256": "495f207e6f0077de3fd931cb158a757c3e8a0cf184e206221aeea2bcfe0def44",
-   "bytes": 8966
+   "sha256": "cc00c52e87883618d0cf24d20409311ec9fc29b5d56284dd163b1b34d5cbdb8c",
+   "bytes": 9013
   },
   "guides/design-language.md": {
    "sha256": "05912acaa59186d39d4f7e40d6e307472de052680b08af6248915c6929a56f35",
@@ -1696,31 +1696,31 @@
    "bytes": 49831
   },
   "guides/visualizing-the-trip.md": {
-   "sha256": "a8862f9c7ed1bee119a0005c845abced29d8941e96fb0440e195e8edfb5130ed",
-   "bytes": 20694
+   "sha256": "d7974c560114047300a8f92f921a1ba90bd199748c3e31a787ec5cbcc8e1ceb1",
+   "bytes": 20691
   },
   "stages/2-orientation.md": {
    "sha256": "22e07519a95fe454a2f77d2f622ad1f13efa1763cae118aa31cc71b1ed746ddf",
    "bytes": 41615
   },
   "stages/3-where-to-go.md": {
-   "sha256": "d5458235a018bbaed12ce46a4c9d61d55b07fda6b5767c70f4da5af9fae7e762",
+   "sha256": "3e00e8668b42113077ddaf0a89b04f18eabaac387583a16d09b5b541a80fe9d4",
    "bytes": 85249
   },
   "stages/4-where-to-stay.md": {
-   "sha256": "f7f9c865e8e7430aec9f21f79dd3e2e1bc6faf5aa28624d86579ff364f48c387",
-   "bytes": 64833
+   "sha256": "4a9e5c9edd5f0666c5aae419f9e15defe9e2b27e7509746d81dc24e2b2820650",
+   "bytes": 64633
   },
   "stages/5-route.md": {
-   "sha256": "f76bffa468b640e63ab2efb5f0aea221d0d63fdf91f2e5f6040c0645d5b29704",
-   "bytes": 86782
+   "sha256": "4522f5625f6e6410d523e3f9ef4e75ffaa39f852d43d9218daac63def257be75",
+   "bytes": 86586
   },
   "stages/6-optional-depth.md": {
-   "sha256": "280d1d6b08e4bc8abe59bd6caa14bbafc99d28a99b63286acc6c3646414bf839",
-   "bytes": 13333
+   "sha256": "f39c6e05b90afc3125e2619bd566ac61c083ecef27f92eb24a276aa40c3dfefe",
+   "bytes": 13481
   },
   "stages/7-appendix.md": {
-   "sha256": "1a229d68b819bb562f03f6b1a70cdde8b7ff8fb07502b1c0af504f08dde55821",
+   "sha256": "7c6b7db2f86080b6d19ce9d628ffaa5f8d85dbc6f15d0f0c8b2bfc6fd6ff1ca8",
    "bytes": 10686
   },
   "stays/hakone-izu-fuji.md": {

@@ -46,7 +46,7 @@ The one table the run is built in, filled progressively from Stage 3 to Stage 5,
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
 | 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
@@ -64,7 +64,7 @@ The one table the run is built in, filled progressively from Stage 3 to Stage 5,
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**How it is read, wherever it appears.** Stage 3 fills `#`, `Stop`, `Nights` and every leg row; Stage 4 fills `Stay`, `Band` and `Alternate`; Stage 5 adds the airport rows and the totals. Show it whole each time it changes. **Mode** is the word the corridor and airport tables print — `shinkansen` · `train` · `subway` · `bus` · `car` · `ferry` · `flight` — and the master inn table's `Reach` column prints it too, so **every leg row has one**; two hours on a bullet train and two hours on a mountain bus are different days. **A hotel's `Stay` links to its Google Maps pin, an inn's to its `ryokancatalog.com` page.** A leg has three forms and no fourth: sourced, `estimated` and labelled every time, or `to confirm`, which is left out of the totals and makes them partial — `≥ 6h00 (partial — 1 leg unsourced)`.
+**How it is read, wherever it appears.** Stage 3 fills `#`, `Stop`, `Nights` and every leg row; Stage 4 fills `Stay`, `Band` and `Earmarked`; Stage 5 adds the airport rows and the totals. Show it whole each time it changes. **Mode** is the word the corridor and airport tables print — `shinkansen` · `train` · `subway` · `bus` · `car` · `ferry` · `flight` — and the master inn table's `Reach` column prints it too, so **every leg row has one**; two hours on a bullet train and two hours on a mountain bus are different days. **A hotel's `Stay` links to its Google Maps pin, an inn's to its `ryokancatalog.com` page.** A leg has three forms and no fourth: sourced, `estimated` and labelled every time, or `to confirm`, which is left out of the totals and makes them partial — `≥ 6h00 (partial — 1 leg unsourced)`.
 
 ### Finding a stay the kit doesn't hold
 

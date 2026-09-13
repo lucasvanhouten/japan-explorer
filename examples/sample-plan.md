@@ -55,7 +55,7 @@ right-hand columns wait for Stage 4.
 
 **Trip plan** · mid-April 2027 · 12 nights · arrive Tokyo (Haneda), depart Osaka (Kansai, KIX)
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | 1 | Tokyo | 5 | | | |
 | | ↓ 2h45 · 0 changes · shinkansen | | | | |
@@ -79,7 +79,7 @@ shortlist covers that tier well, and it is where the splurge goes.
 | Stay | Kind | Band | Bath | Why | Links |
 |---|---|---|---|---|---|
 | Hotel Toranomon Hills | hotel | $375–700, room only | — | Toranomon, inside a serious food complex, and the best value in the shortlist's design tier | [map](https://www.google.com/maps?cid=12819761384697507953) · [site](https://www.hyatt.com/hotel-toranomon-hills) |
-| K5 | hotel, the alternate | $275–650, room only | — | a 1920s bank turned twenty-room hotel in Kabutochō | [map](https://www.google.com/maps?cid=10906498574121315795) |
+| K5 | hotel, earmarked | $275–650, room only | — | a 1920s bank turned twenty-room hotel in Kabutochō | [map](https://www.google.com/maps?cid=10906498574121315795) |
 
 Toranomon Hills is bookable with Hyatt or transferred Chase points.
 
@@ -88,36 +88,36 @@ Toranomon Hills is bookable with Hyatt or transferred Chase points.
 | Stay | Kind | Band | Bath | Why | Links |
 |---|---|---|---|---|---|
 | Sowaka | hotel | $900–1650, room only | — | twenty-three rooms in a restored former *ryōtei*, a traditional high-end restaurant, on the Yasaka side streets of Gion, with a serious Japanese kitchen in the building | [map](https://www.google.com/maps?cid=3046628050993449764) · [site](https://sowaka.com) |
-| Hotel The Mitsui Kyoto | hotel, the alternate | $700–1000, room only | hot-spring bath in the spa | opposite Nijō castle | [map](https://www.google.com/maps?cid=9260278570712509021) |
+| Hotel The Mitsui Kyoto | hotel, earmarked | $700–1000, room only | hot-spring bath in the spa | opposite Nijō castle | [map](https://www.google.com/maps?cid=9260278570712509021) |
 
 **Nara**
 
 | Stay | Kind | Band | Bath | Why | Links |
 |---|---|---|---|---|---|
 | Tsukihitei | inn | $750–950, dinner and breakfast included | not stated | a five-room 1902 hideaway inside Nara's primeval forest, renovated 2023–25, and the reason the trip ends in Nara | [inn page](https://ryokancatalog.com/inn/tsukihitei) |
-| Fufu Nara | modern-luxury inn, the alternate | $780–1200, dinner and breakfast included | in the room | an open-air hot-spring bath on the room's own terrace and beds rather than floor mattresses — the answer if communal bathing or a bad back is a worry | [inn page](https://ryokancatalog.com/inn/fufu-nara) |
+| Fufu Nara | modern-luxury inn, earmarked | $780–1200, dinner and breakfast included | in the room | an open-air hot-spring bath on the room's own terrace and beds rather than floor mattresses — the answer if communal bathing or a bad back is a worry | [inn page](https://ryokancatalog.com/inn/fufu-nara) |
 
 The splurge goes on the inn, and it gets two nights rather than one: it is the only inn stay of the
 trip, and they asked for a settle-in pace. Every other stop would have been one night at an inn.
 
 Two follow-up questions were asked, because only two changed the pick: whether either
-of them had tattoos or would rather not bathe communally (the Fufu Nara alternate is the answer to
+of them had tattoos or would rather not bathe communally (the Fufu Nara earmark is the answer to
 that), and whether a long formal Japanese dinner sounded like a highlight or a chore.
 
-Those three answers fill the `Stay`, `Band` and `Alternate` columns the table left empty.
+Those answers fill the `Stay`, `Band` and `Earmarked` columns the table left empty: the lean in bold, the second name kept in the running.
 
 ## Stage 5 — the plan
 
 **Trip plan** · mid-April 2027 · 12 nights · arrive Tokyo (Haneda), depart Osaka (Kansai, KIX)
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | | ↓ in from Haneda (HND) · 36 min · 1 change · train | | | | |
-| 1 | Tokyo | 5 | [Hotel Toranomon Hills](https://www.google.com/maps?cid=12819761384697507953) | $375–700 | [K5](https://www.google.com/maps?cid=10906498574121315795) |
+| 1 | Tokyo | 5 | **[Hotel Toranomon Hills](https://www.google.com/maps?cid=12819761384697507953)** | $375–700 | [K5](https://www.google.com/maps?cid=10906498574121315795) |
 | | ↓ 2h45 · 0 changes · shinkansen | | | | |
-| 2 | Kyoto | 5 | [Sowaka](https://www.google.com/maps?cid=3046628050993449764) | $900–1650 | [Hotel The Mitsui Kyoto](https://www.google.com/maps?cid=9260278570712509021) |
+| 2 | Kyoto | 5 | **[Sowaka](https://www.google.com/maps?cid=3046628050993449764)** | $900–1650 | [Hotel The Mitsui Kyoto](https://www.google.com/maps?cid=9260278570712509021) |
 | | ↓ 45 min · 0 changes · train | | | | |
-| 3 | Nara | 2 | [Tsukihitei](https://ryokancatalog.com/inn/tsukihitei) | $750–950 | [Fufu Nara](https://ryokancatalog.com/inn/fufu-nara) |
+| 3 | Nara | 2 | **[Tsukihitei](https://ryokancatalog.com/inn/tsukihitei)** | $750–950 | [Fufu Nara](https://ryokancatalog.com/inn/fufu-nara) |
 | | ↓ out to Kansai (KIX) · 1h54 · 1 change · train | | | | |
 
 **Totals:** 6 travel hours · 2 changes · 3 check-ins · 2 inn nights / 10 city nights · 0

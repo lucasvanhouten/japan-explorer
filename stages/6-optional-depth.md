@@ -6,7 +6,7 @@
 
 ```
 Goal    whichever of the three they actually want
-Inputs  the finished Trip plan
+Inputs  the finished Trip plan, open stops and all
 Do      offer (a) eating (b) day ideas (c) the booking calendar (d) the trip drawn as a page, in
         one line; do the one they pick. (a) and (b) open by asking what they like, not with a list
 Tables  eating `| Place | Type | Price | Neighbourhood | Booking | Map |`, grouped under a heading per
@@ -101,6 +101,8 @@ Order by **deadline**, not by trip order: a checklist, earliest first, with a re
 | **Before leaving** | `<date>` | Travel money, transport card, connectivity, confirmations saved offline | [Suica](https://www.jreast.co.jp/multi/en/pass/suica.html) on the phone, and an eSIM before you fly | Cash still matters outside the cities |
 
 **Put a real date in the `Date` column, counted back from their departure date** — "6 months out" is not a deadline anybody acts on, and each row of this table has to name a day. Where a window opens on a fixed date rather than a rolling one (an inn's booking window, a restaurant's first-of-the-month release), write that date, not the count-back. **Every row is a live link**, so that the next click is in the table rather than in a search.
+
+**A stop Stage 4 left open still gets its rows** — the inn or hotel deadline stands, and it is the reason to close the stay.
 
 **Restaurant windows live here, and only for the anchors they chose.** A restaurant that books a fixed period ahead usually opens on the first of the month, one to three months out, and the good seats go the same day. Put each anchor's opening date in the checklist. No other restaurant belongs in the calendar.
 

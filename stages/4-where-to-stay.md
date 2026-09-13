@@ -5,19 +5,19 @@
 ## Stage 4 — Where to stay
 
 ```
-Goal    one place to sleep plus one alternate, for every stop
+Goal    two or three stays earmarked at every stop, never one pick forced
 Inputs  the itinerary table from Stage 3; Taste and Budget from the Trip profile
 Do      one stop per message, in trip order: the shortlist only, three to five options chosen against the
         profile in one `| Stay | Band | Why | Links |` table, best fit first, Why in your words from the write-ups
         verbatim, no default and no pick of your own; offer more on any of them
-Ask     first: whether they want any of them opened up — then the pick, once they lean. Max 2 follow-up questions, and only where the options in front of them differ on it
-Output  the itinerary table with Stay, Band and Alternate filled
+Ask     first: whether they want any of them opened up — then which two or three they would keep in the running. Max 2 follow-ups, only where the options differ on it
+Output  the itinerary table with the lean, its band and the earmarks; a stop with none stays open
 Next    Stage 5 — make the route work
 ```
 
-The alternate matters: the good inns sell out, so have the second answer ready. Nothing here is a default: every stop is a choice from the shortlist, made against the profile, with the kit's write-up verbatim. **The user chooses.** The options are ordered best fit first; you name a pick of your own only if they ask.
+**Earmark, don't pick.** Nobody settles a hotel mid-chat — they compare prices and check points first. So ask which **two or three to keep in the running**, never which one. The good inns sell out, so the second name earns its place; one earmark is fine, none leaves the stop open. Nothing here is a default: every stop is a choice from the shortlist, against the profile, with the kit's write-up verbatim. **The user chooses.** Rows run best fit first; you name a pick of your own only if they ask.
 
-**A RYOKAN slot expands here.** Stage 3's ryokan slots are areas, not inns, and each is **one call to the tool, one table**: `stays fuji` (Hakone, the Fuji lakes, Izu) · `stays snow` (Minakami, Minamiuonuma, Yudanaka, Yamada Onsen) · `stays kaga` (Yamashiro, Yamanaka) · `stays east` (Amagase, Yufuin, Kurokawa) · `stays sapporo-onsen` (the hot-spring inns within reach of Sapporo). One table, **the town as a column**, so the choice of inn fixes the town and the leg at once; then re-price the stop string with that town (`plan`, or `spine … --set` again) and paste the timeline. **Hokkaido's mountain night is Niseko**, and the inns near Sapporo are the rest of the island's answer; Furano is indexed under Sapporo but holds no stay of its own, so the tool prints the nearest place it covers instead.
+**A RYOKAN slot expands here.** Stage 3's ryokan slots are areas, not inns, and each is **one call to the tool, one table**: `stays fuji` (Hakone, the Fuji lakes, Izu) · `stays snow` (Minakami, Minamiuonuma, Yudanaka, Yamada Onsen) · `stays kaga` (Yamashiro, Yamanaka) · `stays east` (Amagase, Yufuin, Kurokawa) · `stays sapporo-onsen` (the hot-spring inns within reach of Sapporo). One table, **the town as a column**, so the choice of inn fixes the town and the leg at once; then re-price the stop string with that town (`plan`, or `spine … --set` again) and paste the timeline. **Hokkaido's mountain night is Niseko**; the inns near Sapporo are the rest of the island's answer, and Furano holds no stay of its own.
 
 ### How to work the table
 
@@ -31,24 +31,24 @@ The alternate matters: the good inns sell out, so have the second answer ready. 
 
    **Why gets the width**: kind, score and editor's pick ride in the Stay cell; no Town column, since they know the town. Two variants, as `stays` prints them: a RYOKAN option spanning towns adds `Town` — `| Stay | Town | Band | Why | Links |`; a city of hotels has no bath — `| Stay | Band | Why | Links |`.
 
-4. **What goes in the cells.** **`Why` is yours** — what makes it special for this couple and its key features, every fact from the write-up (below). Where the stop is a RYOKAN option spanning towns, `Town` carries the time from the gateway city from the corridor table, so the leg is visible beside the name. `Band` says what it includes — per night for two, dinner and breakfast included for an inn, room only for a hotel — and the band itself is said once, in that cell, never again in a sentence. `Links` is the Google Maps pin first, then the hotel's homepage or the inn's `ryokancatalog.com` page. Anything else that changes the choice — no natural spring, a bed rather than a floor mattress, out of town — goes in `Why`, in a clause.
-5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so in their words — *"four more on the kit's list — ask and I'll show them"* — so they can ask. No "I would take X", no "recommended": the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*. Ask for the choice in a later turn, once they name one they lean to or say "go", and record the second choice as the alternate. If they ask which you would take, answer in one line, with the reason.
+4. **What goes in the cells.** **`Why` is yours** — the section below says how. `Band` says what it includes — per night for two, dinner and breakfast included for an inn, room only for a hotel — and the band itself is said once, in that cell, never again in a sentence. `Links` is the Google Maps pin first, then the hotel's homepage or the inn's `ryokancatalog.com` page. Anything else that changes the choice — no natural spring, a bed rather than a floor mattress, out of town — goes in `Why`, in a clause.
+5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so in their words — *"four more on the kit's list — ask and I'll show them"* — so they can ask. No "I would take X", no "recommended": the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*. In a later turn ask which two or three they would keep in the running; the first they name is the lean, the rest are earmarks. If they ask which you would take, answer in one line, with the reason.
 
 **Opening up a stay means reading its page on [ryokancatalog.com](https://ryokancatalog.com)** — rooms, bath, kitchen, setting, where it is weakest — plus the practical half: distance from the gateway city, the room with the private bath, what booking needs.
 
 **How many, by kind of stop:**
 
-- **A city stop** (Tokyo, Kyoto, Osaka, Fukuoka) — **up to six hotels for Tokyo, Kyoto or Osaka, so the list shows variety; one or two for a minor city** — the tool prints what fits their band, and the held-back count under the table says how many more sit at other bands. **Where it has fewer, say so and say how many**; a city with none offers the live catalogue or the nearest city the kit covers — never a padded list, never a silent short one. **Choose every one against their `Budget:` and `Taste:` lines** — options at the wrong price do not count. Up to two notable inns actually in the city belong in the same table, with `Kind` marking them and a clause in `Why` saying they are a different product on a different price basis. Tokyo is the clearest case: a hotel city, and the inns near it are countryside places an hour or two out — a possible separate stop, not a way to sleep in Tokyo.
+- **A city stop** (Tokyo, Kyoto, Osaka, Fukuoka) — **up to six hotels for Tokyo, Kyoto or Osaka, so the list shows variety; one or two for a minor city** — the tool prints what fits their band. **Where it has fewer, say so and say how many**; a city with none offers the live catalogue or the nearest city the kit covers — never a padded list, never a silent short one. **Choose every one against their `Budget:` and `Taste:` lines** — options at the wrong price do not count. Up to two notable inns actually in the city belong in the same table, with `Kind` marking them and a clause in `Why` saying they are a different product on a different price basis. Tokyo is the clearest case: a hotel city, and the inns near it are countryside places an hour out — a separate stop, not a way to sleep in Tokyo.
 - **An inn stop** (a hot-spring valley, a mountain town, a coast) — five where the table has five, fewer where it doesn't. In a thin area, one inn plus a hotel in the nearest town is a legitimate answer.
-- **A stop that is a RYOKAN option spanning towns** ("Near Mount Fuji" = Hakone, the Fuji lakes or Izu; "Snow country" = Minakami, Minamiuonuma, Yudanaka or Yamada Onsen) — **one table, the town as a column**, with the travel time from the gateway city in the Town cell from the corridor table, never inside the prose: that difference usually decides it. Choosing the inn fixes the town: re-price the stop string with the place key `route.js places` prints for that town — Lake Yamanaka area is `oyama`. Where a slot is a single town, only its rows can be taken without leaving the spine.
+- **A stop that is a RYOKAN option spanning towns** — **one table, the town as a column**, the travel time from the gateway city in the Town cell from the corridor table, never inside the prose: that difference usually decides it. Choosing the inn fixes the town: re-price the stop string with the place key `route.js places` prints for it — Lake Yamanaka area is `oyama`. Where a slot is a single town, only its rows can be taken without leaving the spine.
 
 **Rules for this stage:**
 
-- **Don't lead with the most expensive option** unless they asked for the splurge. Leading with the dearest makes everything after it read as a compromise; Japan's best nights are often not its priciest. Lead with the best fit, name the expensive one as the reach if there is a reason, and say what the extra money buys. **An editor's pick above their budget still prints, last, marked "above the budget"** — say in a clause what the extra buys, never drop it.
+- **Don't lead with the most expensive option** unless they asked for the splurge. Leading with the dearest makes everything after it read as a compromise. Lead with the best fit, and name the expensive one as the reach if there is a reason. **An editor's pick above their budget still prints, last, marked "above the budget"** — say in a clause what the extra buys, never drop it.
 - **Prefer inns with a bath in the room**, particularly for American travellers, and say why in half a sentence: it settles tattoos, privacy and bathing together at once. **"Some rooms" is fine**, and often the better buy — but **"some" always means a specific, dearer room CATEGORY**, never a room the inn might give you on the night: get the category's name off the inn's page and price *that* one, never the entry room. Offline, say "some rooms — ask for the category with the private bath when booking". Where a group has none, say so plainly: *"this is an onsen town and the shared baths are what people come for"*, and ask whether the inn has a private bath bookable by the hour.
 - **Mention booking mechanics only when unusual** — no online booking at all, a window that opens on a fixed date months ahead, agent-or-Japanese-site only, a lottery. Those change what they have to do and when. Say plainly when you don't know.
 - **Give the Google Maps link first, the second link after it** — the homepage for a hotel, the catalogue page for an inn, the order the tool prints them in. Every hotel row carries both. The map link is the property's own Google place. Where the `Map` cell is `—`, no place was confirmed: give the site alone and say the map is unconfirmed. Never build a maps search link out of the hotel's name — it lands on the town, not the building.
-- **When the budget doesn't land.** A band reading *rate not researched — check live* still prints, with that note, and goes on **To confirm**. A list sitting entirely under their budget is offered as it is, and say so. Where every row is above it or unpriced, show the nearest rows and say the kit has nothing at that price here. Convert a budget given in yen once, at a round rate you state — ¥150 to the dollar unless they give one — and that conversion is the one number you may type.
+- **When the budget doesn't land.** A band reading *rate not researched — check live* still prints, with that note, and goes on **To confirm**. A list sitting entirely under their budget is offered as it is, and say so. Where every row is above it or unpriced, show the nearest rows and say the kit has nothing at that price here. Convert a yen budget once, at a round rate you state — ¥150 to the dollar unless they give one — the one number you may type.
 - **Say what a band is when you quote one.** Hotel bands are three-night checks for two, taxes included, across February, May and October. Japanese holidays run well above them: 11 February (National Foundation Day), Golden Week, Obon and the autumn-colour weekends. Confirm on the property's own page for the actual dates.
 
 ### The Why cell is yours; the facts are the kit's
@@ -61,7 +61,7 @@ Gora Kadan Fuji, not as the write-up pastes but for a couple on their first ryok
 
 ### Two things to say out loud once
 
-- **A ryokan night is a fixed schedule, so shape the day around it.** Where there are sights (Nikkō, Takayama), take an early train, see the sights through the late morning and early afternoon, check in mid-afternoon; dinner and breakfast are at set hours; after checkout, two more hours of sights before the train on. A late arrival can cost the dinner you paid for.
+- **A ryokan night is a fixed schedule, so shape the day around it.** Where there are sights (Nikkō, Takayama), take an early train, see them through the late morning, check in mid-afternoon; meals are at set hours, and two more hours of sights fit after checkout. A late arrival can cost the dinner you paid for.
 - **The price isn't like-for-like.** A ryokan's rate covers two substantial meals for two; a hotel's covers the room, so the gap is smaller than it looks.
 
 <!-- generated:catalog-howto -->
@@ -235,7 +235,7 @@ Where a band says *check live*, read one off the property's page for the actual 
 
 ### When the stop or the budget is outside these tables
 
-The tables are a **design-and-luxury list** and do not cover every town. Say so plainly — "Japan is not expensive, this particular list is" — and use the research method in the appendix; a find is presented as a row of the same table, its band marked "unverified — check live for your dates".
+The tables are a **design-and-luxury list** and do not cover every town. Say so plainly — "Japan is not expensive, this particular list is" — and use the research method in the appendix; a find is a row of the same table, band marked "unverified — check live for your dates".
 
 **Satellite stops have their own file.** A stop with beds of its own — **Nikkō**, **Gero**, **Kinugawa**, the Kaga towns, the Hakone–Izu–Fuji belt — is answered by its region's file, not the city you reach it from:
 
@@ -258,7 +258,7 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 | `stays/kyushu.md` | Amagase Onsen · Amakusa · Ibusuki · Iki island · Karatsu · Kirishima · Kurokawa Onsen · Takachiho · Takeo Onsen · Unzen · Yakushima · Yufuin |
 <!-- /generated:satellites -->
 
-**Where a `fits` tag holds fewer than five inns, say so** and offer the nearest tag rather than padding: a short honest list plus a named neighbour beats a fifth that is filler.
+**Where a `fits` tag holds fewer than five inns, say so** and offer the nearest tag rather than padding.
 
 ### The follow-up questions — ask only when they change the pick
 
@@ -272,13 +272,15 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 - **Children, and how many of you?** Ask **before** showing inns to a family. Policies vary, the best inns are strictest, and the rule is often only in Japanese: check the page, then confirm by email.
 - **Dietary needs?** Inn menus are fixed weeks ahead; vegetarian, no fish, an allergy are usually possible if stated at booking, never on arrival.
 
-### The decision
+### The decision — earmark, don't pick
 
-Fill a stop's row once they have settled on it — after the exploring, not in the message that first showed the options. Stage 3 opened the itinerary table; this stage fills the three columns it left empty. **After each stop is settled, re-show only that stop's row**; the whole table is shown once, when the last stop is filled.
+Fill a stop's row once they have earmarked, not in the message that first showed the options. `Stay` is the lean — the first name they gave, in bold — or *open* where they have not leaned; `Band` is the lean's; `Earmarked` is the other one or two, each linked, or *—*. **After each stop, re-show only that stop's row**; the whole table is shown once, at the end.
+
+**Close the stage on the open stops.** List each one with its earmarks and, for each, the single line that will decide it — points at that chain, a bath in the room, the price on their dates. Then say plainly that a pick can come back in this chat or a later one and the kit will close it: *"Tokyo: the Okura"* is enough.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
 | 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
@@ -296,7 +298,7 @@ Fill a stop's row once they have settled on it — after the exploring, not in t
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin — the `Map` cell of the hotel table, never a maps search built out of the name — and an inn to its `ryokancatalog.com` page, the `Link` cell of the master table. `Alternate` is a link too: it is the answer when the first choice is full, and an unlinked name is not one.
+**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin — the `Map` cell of the hotel table, never a maps search built out of the name — and an inn to its `ryokancatalog.com` page, the `Link` cell of the master table. **Every earmark is a link too** — an unlinked name is no use when the first choice is full.
 
 ---
 

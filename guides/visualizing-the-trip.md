@@ -151,7 +151,7 @@ Everything below comes from the plan. Nothing else goes on the page.
   (labelled, every time), `to confirm` (labelled, excluded from the totals, and written only where
   no researched path exists even through a hub city). The airport journeys bracket the list as
   dashed-edge bars, so the trip reads door to door.
-- **Every stay named, with its link, its price band and its alternate.** The link is the one the
+- **Every stay named, with its link, its price band and its earmarks.** The link is the one the
   table carries — a hotel's Google Maps pin, an inn's `ryokancatalog.com` page. The band is a band,
   not a rate; the meal is stated once, in the card's meta line.
 - **Three photographs of each inn**, which is the one piece of the page that is not a number and the
@@ -265,7 +265,7 @@ you can tell when an edit would break one.
 
 - [ ] Opened in a browser: it renders, at desktop width and at phone width, in light and in dark.
 - [ ] **Opened with JavaScript disabled: identical, except the theme button is not there.**
-- [ ] Every stop, night count, stay, link, band, alternate and leg matches the itinerary table,
+- [ ] Every stop, night count, stay, link, band, earmark and leg matches the itinerary table,
       character for character where it is a name or a link.
 - [ ] Every leg bar names both ends and carries its mode, and the mode is the word the corridor and
       airport tables print.

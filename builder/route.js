@@ -416,7 +416,7 @@ const apLabel = (code) => (code && AIRPORT[code] ? AIRPORT[code].label : "—");
 function printPlan(P, opt) {
   const L = [], t = P.totals, o = P.opt || opt;
   L.push(`**Trip plan** · ${t.nights} nights · arrive ${apLabel(o.in)}${o.inDefault ? " (assumed)" : ""}, depart ${apLabel(o.out)}${o.outDefault ? " (nearest)" : ""}`, "");
-  L.push("| # | Stop | Nights | Stay | Band | Alternate |", "|---|---|---|---|---|---|");
+  L.push("| # | Stop | Nights | Stay | Band | Earmarked |", "|---|---|---|---|---|---|");
   let li = 0; if (o.in) L.push(`| | ${legCell(P.legs[li++])} | | | | |`);
   P.stops.forEach((st, i) => { L.push(`| ${i + 1} | ${st.name} | ${nightsCell(st)} | ${st.inn ? `[${RYK[st.inn].name}](https://ryokancatalog.com/inn/${slugOf(st.inn)})` : ""} | | |`);
     if (i < P.stops.length - 1) L.push(`| | ${legCell(P.legs[li++])} | | | | |`); });

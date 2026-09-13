@@ -23,7 +23,7 @@ Output  Trip profile (Stage 1) → a longlist of places and the shape they sugge
 Next    Stage 6 only if they want it. The run may end at Stage 5, and for many people it should.
 ```
 
-**The deliverable, concretely:** one table — the stops in travel order, nights in each, a named place to stay per stop with a live link and an alternate, and a leg row between every pair carrying hours, changes and mode. Eating, day plans and the booking calendar are extras offered *after* that plan exists.
+**The deliverable, concretely:** one table — the stops in travel order, nights in each, a named place to stay per stop with a live link and its earmarked runners-up, and a leg row between every pair carrying hours, changes and mode. Eating, day plans and the booking calendar are extras offered *after* that plan exists.
 
 **Everything you hand them is rendered markdown, never a code fence:** a fence sets a plan in monospace and kills every link in it. **Every sequence, set of options and comparison you present is a table** — the spine menu, a spine's decisions and timelines, the stays for a stop, the plan, the restaurants, the day ideas, the calendar. Each stage prescribes its header line; use that one. The one exception is a Stage 2 place card: two or three sentences, no table. The prose around a table carries the pitch and the trade-offs only: **travel times, prices, links and scores never appear inline in a sentence** — the one exception is the rough time in words on the Stage 2 Nikkō and Hakone cards ("two hours north"). No code formatting in what they read.
 
@@ -958,11 +958,11 @@ Both are printed in full in Stage 5 below, under *The corridor cheat-sheet*. Rea
 
 ### The decision
 
-Open the itinerary table once they have settled: fill `#`, `Stop`, `Nights` and every leg row from `plan` on the final stop string; `Stay`, `Band` and `Alternate` wait for Stage 4.
+Open the itinerary table once they have settled: fill `#`, `Stop`, `Nights` and every leg row from `plan` on the final stop string; `Stay`, `Band` and `Earmarked` wait for Stage 4.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
 | 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
@@ -985,19 +985,19 @@ If the total overshoots, say which nights you would give up; never trim silently
 ## Stage 4 — Where to stay
 
 ```
-Goal    one place to sleep plus one alternate, for every stop
+Goal    two or three stays earmarked at every stop, never one pick forced
 Inputs  the itinerary table from Stage 3; Taste and Budget from the Trip profile
 Do      one stop per message, in trip order: the shortlist only, three to five options chosen against the
         profile in one `| Stay | Band | Why | Links |` table, best fit first, Why in your words from the write-ups
         verbatim, no default and no pick of your own; offer more on any of them
-Ask     first: whether they want any of them opened up — then the pick, once they lean. Max 2 follow-up questions, and only where the options in front of them differ on it
-Output  the itinerary table with Stay, Band and Alternate filled
+Ask     first: whether they want any of them opened up — then which two or three they would keep in the running. Max 2 follow-ups, only where the options differ on it
+Output  the itinerary table with the lean, its band and the earmarks; a stop with none stays open
 Next    Stage 5 — make the route work
 ```
 
-The alternate matters: the good inns sell out, so have the second answer ready. Nothing here is a default: every stop is a choice from the shortlist, made against the profile, with the kit's write-up verbatim. **The user chooses.** The options are ordered best fit first; you name a pick of your own only if they ask.
+**Earmark, don't pick.** Nobody settles a hotel mid-chat — they compare prices and check points first. So ask which **two or three to keep in the running**, never which one. The good inns sell out, so the second name earns its place; one earmark is fine, none leaves the stop open. Nothing here is a default: every stop is a choice from the shortlist, against the profile, with the kit's write-up verbatim. **The user chooses.** Rows run best fit first; you name a pick of your own only if they ask.
 
-**A RYOKAN slot expands here.** Stage 3's ryokan slots are areas, not inns, and each is **one call to the tool, one table**: `stays fuji` (Hakone, the Fuji lakes, Izu) · `stays snow` (Minakami, Minamiuonuma, Yudanaka, Yamada Onsen) · `stays kaga` (Yamashiro, Yamanaka) · `stays east` (Amagase, Yufuin, Kurokawa) · `stays sapporo-onsen` (the hot-spring inns within reach of Sapporo). One table, **the town as a column**, so the choice of inn fixes the town and the leg at once; then re-price the stop string with that town (`plan`, or `spine … --set` again) and paste the timeline. **Hokkaido's mountain night is Niseko**, and the inns near Sapporo are the rest of the island's answer; Furano is indexed under Sapporo but holds no stay of its own, so the tool prints the nearest place it covers instead.
+**A RYOKAN slot expands here.** Stage 3's ryokan slots are areas, not inns, and each is **one call to the tool, one table**: `stays fuji` (Hakone, the Fuji lakes, Izu) · `stays snow` (Minakami, Minamiuonuma, Yudanaka, Yamada Onsen) · `stays kaga` (Yamashiro, Yamanaka) · `stays east` (Amagase, Yufuin, Kurokawa) · `stays sapporo-onsen` (the hot-spring inns within reach of Sapporo). One table, **the town as a column**, so the choice of inn fixes the town and the leg at once; then re-price the stop string with that town (`plan`, or `spine … --set` again) and paste the timeline. **Hokkaido's mountain night is Niseko**; the inns near Sapporo are the rest of the island's answer, and Furano holds no stay of its own.
 
 ### How to work the table
 
@@ -1011,24 +1011,24 @@ The alternate matters: the good inns sell out, so have the second answer ready. 
 
    **Why gets the width**: kind, score and editor's pick ride in the Stay cell; no Town column, since they know the town. Two variants, as `stays` prints them: a RYOKAN option spanning towns adds `Town` — `| Stay | Town | Band | Why | Links |`; a city of hotels has no bath — `| Stay | Band | Why | Links |`.
 
-4. **What goes in the cells.** **`Why` is yours** — what makes it special for this couple and its key features, every fact from the write-up (below). Where the stop is a RYOKAN option spanning towns, `Town` carries the time from the gateway city from the corridor table, so the leg is visible beside the name. `Band` says what it includes — per night for two, dinner and breakfast included for an inn, room only for a hotel — and the band itself is said once, in that cell, never again in a sentence. `Links` is the Google Maps pin first, then the hotel's homepage or the inn's `ryokancatalog.com` page. Anything else that changes the choice — no natural spring, a bed rather than a floor mattress, out of town — goes in `Why`, in a clause.
-5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so in their words — *"four more on the kit's list — ask and I'll show them"* — so they can ask. No "I would take X", no "recommended": the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*. Ask for the choice in a later turn, once they name one they lean to or say "go", and record the second choice as the alternate. If they ask which you would take, answer in one line, with the reason.
+4. **What goes in the cells.** **`Why` is yours** — the section below says how. `Band` says what it includes — per night for two, dinner and breakfast included for an inn, room only for a hotel — and the band itself is said once, in that cell, never again in a sentence. `Links` is the Google Maps pin first, then the hotel's homepage or the inn's `ryokancatalog.com` page. Anything else that changes the choice — no natural spring, a bed rather than a floor mattress, out of town — goes in `Why`, in a clause.
+5. **Under the table: the held-back count, then the closing line.** When the tool's header says more are on the list, one line says so in their words — *"four more on the kit's list — ask and I'll show them"* — so they can ask. No "I would take X", no "recommended": the order of the rows is the recommendation. Close the first message on the line Stage 3 prescribes, not on *"which one?"*. In a later turn ask which two or three they would keep in the running; the first they name is the lean, the rest are earmarks. If they ask which you would take, answer in one line, with the reason.
 
 **Opening up a stay means reading its page on [ryokancatalog.com](https://ryokancatalog.com)** — rooms, bath, kitchen, setting, where it is weakest — plus the practical half: distance from the gateway city, the room with the private bath, what booking needs.
 
 **How many, by kind of stop:**
 
-- **A city stop** (Tokyo, Kyoto, Osaka, Fukuoka) — **up to six hotels for Tokyo, Kyoto or Osaka, so the list shows variety; one or two for a minor city** — the tool prints what fits their band, and the held-back count under the table says how many more sit at other bands. **Where it has fewer, say so and say how many**; a city with none offers the live catalogue or the nearest city the kit covers — never a padded list, never a silent short one. **Choose every one against their `Budget:` and `Taste:` lines** — options at the wrong price do not count. Up to two notable inns actually in the city belong in the same table, with `Kind` marking them and a clause in `Why` saying they are a different product on a different price basis. Tokyo is the clearest case: a hotel city, and the inns near it are countryside places an hour or two out — a possible separate stop, not a way to sleep in Tokyo.
+- **A city stop** (Tokyo, Kyoto, Osaka, Fukuoka) — **up to six hotels for Tokyo, Kyoto or Osaka, so the list shows variety; one or two for a minor city** — the tool prints what fits their band. **Where it has fewer, say so and say how many**; a city with none offers the live catalogue or the nearest city the kit covers — never a padded list, never a silent short one. **Choose every one against their `Budget:` and `Taste:` lines** — options at the wrong price do not count. Up to two notable inns actually in the city belong in the same table, with `Kind` marking them and a clause in `Why` saying they are a different product on a different price basis. Tokyo is the clearest case: a hotel city, and the inns near it are countryside places an hour out — a separate stop, not a way to sleep in Tokyo.
 - **An inn stop** (a hot-spring valley, a mountain town, a coast) — five where the table has five, fewer where it doesn't. In a thin area, one inn plus a hotel in the nearest town is a legitimate answer.
-- **A stop that is a RYOKAN option spanning towns** ("Near Mount Fuji" = Hakone, the Fuji lakes or Izu; "Snow country" = Minakami, Minamiuonuma, Yudanaka or Yamada Onsen) — **one table, the town as a column**, with the travel time from the gateway city in the Town cell from the corridor table, never inside the prose: that difference usually decides it. Choosing the inn fixes the town: re-price the stop string with the place key `route.js places` prints for that town — Lake Yamanaka area is `oyama`. Where a slot is a single town, only its rows can be taken without leaving the spine.
+- **A stop that is a RYOKAN option spanning towns** — **one table, the town as a column**, the travel time from the gateway city in the Town cell from the corridor table, never inside the prose: that difference usually decides it. Choosing the inn fixes the town: re-price the stop string with the place key `route.js places` prints for it — Lake Yamanaka area is `oyama`. Where a slot is a single town, only its rows can be taken without leaving the spine.
 
 **Rules for this stage:**
 
-- **Don't lead with the most expensive option** unless they asked for the splurge. Leading with the dearest makes everything after it read as a compromise; Japan's best nights are often not its priciest. Lead with the best fit, name the expensive one as the reach if there is a reason, and say what the extra money buys. **An editor's pick above their budget still prints, last, marked "above the budget"** — say in a clause what the extra buys, never drop it.
+- **Don't lead with the most expensive option** unless they asked for the splurge. Leading with the dearest makes everything after it read as a compromise. Lead with the best fit, and name the expensive one as the reach if there is a reason. **An editor's pick above their budget still prints, last, marked "above the budget"** — say in a clause what the extra buys, never drop it.
 - **Prefer inns with a bath in the room**, particularly for American travellers, and say why in half a sentence: it settles tattoos, privacy and bathing together at once. **"Some rooms" is fine**, and often the better buy — but **"some" always means a specific, dearer room CATEGORY**, never a room the inn might give you on the night: get the category's name off the inn's page and price *that* one, never the entry room. Offline, say "some rooms — ask for the category with the private bath when booking". Where a group has none, say so plainly: *"this is an onsen town and the shared baths are what people come for"*, and ask whether the inn has a private bath bookable by the hour.
 - **Mention booking mechanics only when unusual** — no online booking at all, a window that opens on a fixed date months ahead, agent-or-Japanese-site only, a lottery. Those change what they have to do and when. Say plainly when you don't know.
 - **Give the Google Maps link first, the second link after it** — the homepage for a hotel, the catalogue page for an inn, the order the tool prints them in. Every hotel row carries both. The map link is the property's own Google place. Where the `Map` cell is `—`, no place was confirmed: give the site alone and say the map is unconfirmed. Never build a maps search link out of the hotel's name — it lands on the town, not the building.
-- **When the budget doesn't land.** A band reading *rate not researched — check live* still prints, with that note, and goes on **To confirm**. A list sitting entirely under their budget is offered as it is, and say so. Where every row is above it or unpriced, show the nearest rows and say the kit has nothing at that price here. Convert a budget given in yen once, at a round rate you state — ¥150 to the dollar unless they give one — and that conversion is the one number you may type.
+- **When the budget doesn't land.** A band reading *rate not researched — check live* still prints, with that note, and goes on **To confirm**. A list sitting entirely under their budget is offered as it is, and say so. Where every row is above it or unpriced, show the nearest rows and say the kit has nothing at that price here. Convert a yen budget once, at a round rate you state — ¥150 to the dollar unless they give one — the one number you may type.
 - **Say what a band is when you quote one.** Hotel bands are three-night checks for two, taxes included, across February, May and October. Japanese holidays run well above them: 11 February (National Foundation Day), Golden Week, Obon and the autumn-colour weekends. Confirm on the property's own page for the actual dates.
 
 ### The Why cell is yours; the facts are the kit's
@@ -1041,7 +1041,7 @@ Gora Kadan Fuji, not as the write-up pastes but for a couple on their first ryok
 
 ### Two things to say out loud once
 
-- **A ryokan night is a fixed schedule, so shape the day around it.** Where there are sights (Nikkō, Takayama), take an early train, see the sights through the late morning and early afternoon, check in mid-afternoon; dinner and breakfast are at set hours; after checkout, two more hours of sights before the train on. A late arrival can cost the dinner you paid for.
+- **A ryokan night is a fixed schedule, so shape the day around it.** Where there are sights (Nikkō, Takayama), take an early train, see them through the late morning, check in mid-afternoon; meals are at set hours, and two more hours of sights fit after checkout. A late arrival can cost the dinner you paid for.
 - **The price isn't like-for-like.** A ryokan's rate covers two substantial meals for two; a hotel's covers the room, so the gap is smaller than it looks.
 
 <!-- generated:catalog-howto -->
@@ -1264,7 +1264,7 @@ Where a band says *check live*, read one off the property's page for the actual 
 
 ### When the stop or the budget is outside these tables
 
-The tables are a **design-and-luxury list** and do not cover every town. Say so plainly — "Japan is not expensive, this particular list is" — and use the research method in the appendix; a find is presented as a row of the same table, its band marked "unverified — check live for your dates".
+The tables are a **design-and-luxury list** and do not cover every town. Say so plainly — "Japan is not expensive, this particular list is" — and use the research method in the appendix; a find is a row of the same table, band marked "unverified — check live for your dates".
 
 **Satellite stops have their own file.** A stop with beds of its own — **Nikkō**, **Gero**, **Kinugawa**, the Kaga towns, the Hakone–Izu–Fuji belt — is answered by its region's file, not the city you reach it from:
 
@@ -1287,7 +1287,7 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 | **Kyushu** | Amagase Onsen · Amakusa · Ibusuki · Iki island · Karatsu · Kirishima · Kurokawa Onsen · Takachiho · Takeo Onsen · Unzen · Yakushima · Yufuin |
 <!-- /generated:satellites -->
 
-**Where a `fits` tag holds fewer than five inns, say so** and offer the nearest tag rather than padding: a short honest list plus a named neighbour beats a fifth that is filler.
+**Where a `fits` tag holds fewer than five inns, say so** and offer the nearest tag rather than padding.
 
 ### The follow-up questions — ask only when they change the pick
 
@@ -1301,13 +1301,15 @@ The tables are a **design-and-luxury list** and do not cover every town. Say so 
 - **Children, and how many of you?** Ask **before** showing inns to a family. Policies vary, the best inns are strictest, and the rule is often only in Japanese: check the page, then confirm by email.
 - **Dietary needs?** Inn menus are fixed weeks ahead; vegetarian, no fish, an allergy are usually possible if stated at booking, never on arrival.
 
-### The decision
+### The decision — earmark, don't pick
 
-Fill a stop's row once they have settled on it — after the exploring, not in the message that first showed the options. Stage 3 opened the itinerary table; this stage fills the three columns it left empty. **After each stop is settled, re-show only that stop's row**; the whole table is shown once, when the last stop is filled.
+Fill a stop's row once they have earmarked, not in the message that first showed the options. `Stay` is the lean — the first name they gave, in bold — or *open* where they have not leaned; `Band` is the lean's; `Earmarked` is the other one or two, each linked, or *—*. **After each stop, re-show only that stop's row**; the whole table is shown once, at the end.
+
+**Close the stage on the open stops.** List each one with its earmarks and, for each, the single line that will decide it — points at that chain, a bath in the room, the price on their dates. Then say plainly that a pick can come back in this chat or a later one and the kit will close it: *"Tokyo: the Okura"* is enough.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
 | 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
@@ -1325,7 +1327,7 @@ Fill a stop's row once they have settled on it — after the exploring, not in t
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin — the `Map` cell of the hotel table, never a maps search built out of the name — and an inn to its `ryokancatalog.com` page, the `Link` cell of the master table. `Alternate` is a link too: it is the answer when the first choice is full, and an unlinked name is not one.
+**Every stay is a link, and the link is the real place**: a hotel to its own Google Maps pin — the `Map` cell of the hotel table, never a maps search built out of the name — and an inn to its `ryokancatalog.com` page, the `Link` cell of the master table. **Every earmark is a link too** — an unlinked name is no use when the first choice is full.
 
 ## Stage 5 — Make the route work
 
@@ -1357,7 +1359,7 @@ Next    offer Stage 6 in a single line. If they don't want it, they have what th
    | `<reversed>` | `<n>` | `<min>` | `<n>` | `<n>` | `<n>` / `<n>` | `<n>` |
 
    Per night is the total, both airport legs in it, divided by the nights and rounded half up to the minute, with each domestic flight leg counted at three hours at most; the Hours cell prints the true time. The numbers live in the table and nowhere else; the prose under it names the trade-off and nothing more. Where one side has an unsourced leg, its total keeps the `≥ X h (partial — N legs unsourced)` form all the way into the verdict. If the sourced part of the partial total is already the larger of the two, the comparison is settled and you can say so.
-6. **Check the defaults survive the order you chose:** every city at or above its card's minimum, each visit of a split city two nights or more except a final airport-side night · one night at each inn unless the plan argued for two · no more than three inn dinners in a row · no zig-zags · an exit airport that suits the last stop — **leave from where you end**, rather than travelling back to the airport you arrived at to take off from it.
+6. **Check the defaults survive the order you chose:** every city at or above its card's minimum, each visit of a split city two nights or more except a final airport-side night · one night at each inn unless the plan argued for two · no more than three inn dinners in a row · no zig-zags · an exit airport that suits the last stop — **leave from where you end**.
 7. **Add the totals up in writing, including the journey out to the departure airport.** That last leg is part of the trip and is the one people forget; the airport table has it. Show the sum rather than the answer — `2h + 4h42 + 45min + 1h06 (to the airport) = 8h33`, and `changes 0+2+0+0 = 2` — so a reader can check the arithmetic.
 8. **Present the winner with the trade-off against the runner-up** in a sentence — "an hour longer, but it drops a change and ends near the airport" — then finish the itinerary table. **Re-add the totals against the finished table before you send it**: the order changes last, and the totals go stale first.
 
@@ -1713,9 +1715,9 @@ The inns that sit on the road between two cities, with what a night at each cost
 - **Changes cost more than the clock says.** Two hours with no changes is an easier day than ninety minutes with two.
 - **Times run both ways**, and each row is printed in whichever direction it was researched. Read From/To as a pair, not as an order. **A pair is missing only if it appears in neither direction** — scan for both places by name before writing a number down. Don't work from a memorised list of gaps: the tables are regenerated as legs are researched.
 - **Airports are a separate table** covering fewer cities than the main one, and **every row in it runs both ways** — the transfer in from the terminal on arrival is the same journey as the one out. Check it specifically before promising a transfer, and never reuse one airport's number for another serving the same city: Tokyo's two are an hour apart in opposite directions.
-- **Inn legs are not in these tables.** The journey from a gateway city to an individual inn is the `Reach` column of the master inn table in Stage 4, written `kyoto 3h/1 train` — hours, changes and mode, from the same researched leg table as the rows above. **Every leg row carries a mode**, and the Reach tag gives you one, so there is never a reason to leave it off or to borrow it from somewhere else. A tag reading `in town` means the inn is in that city: no journey, so no leg row. Where a reach tag says `changes to confirm`, the hours were researched and the number of changes was not: write it as `3h, changes to confirm`.
+- **Inn legs are not in these tables.** The journey from a gateway city to an individual inn is the `Reach` column of the master inn table in Stage 4, written `kyoto 3h/1 train` — hours, changes and mode, from the same researched leg table as the rows above. **Every leg row carries a mode**, and the Reach tag gives you one, so there is never a reason to leave it off. A tag reading `in town` means the inn is in that city: no journey, so no leg row. Where a reach tag says `changes to confirm`, the hours were researched and the number of changes was not: write it as `3h, changes to confirm`.
 - **An airport leg may be COMPOSED out of two rows that are both in the tables.** A missing row is usually a journey the tables hold in two parts. Kyoto→Haneda is the standard case — no Kyoto→HND row, but the corridor table has **Kyoto→Tokyo 2h45, 0 changes** and the airport table has **Tokyo→HND 36 min, 1 change**, so the leg is `2h45 + 36min = 3h21`, changes `0 + 1 = 1`, **plus one for the join at Tokyo = 2**. Write both parts, show the sum, and count the extra change — a plan that swallows it understates the morning. Two rules: **compose only where both halves are researched rows of these tables** (two halves at most — a three-part chain is a live lookup), and **add the transfer time at the join** if the halves do not meet in the same station. A composed leg counts as sourced and is written as a time.
-- **ANY leg composes the same way, not just an airport one — and composing comes before `to confirm`.** Grep the full leg table first (step 4a); if `A→B` is absent there too, find a **hub city** the tables hold both halves through — **Tokyo, Sendai, Kyoto, Osaka, Nagoya, Kanazawa, Okayama, Hiroshima, Fukuoka, Kumamoto, Nagasaki, Kagoshima, Sapporo** — and take the fastest that works; a town with no flight row of its own may compose its airport transfer with the airport's flight row. Sum the halves, add **one change for the join**, name both modes where the halves differ (an airport transfer row counts as a half), and label the row `composed via <city>`: `2h + 2h45 = 4h45`, `changes 0+0+1 = 1`. Same three rules as above. A composed leg is sourced, never "estimated"; `to confirm` is only for a pair no hub joins.
+- **ANY leg composes the same way, not just an airport one — and composing comes before `to confirm`.** Grep the full leg table first (step 4a); if `A→B` is absent there too, find a **hub city** from step 4's list the tables hold both halves through and take the fastest that works; a town with no flight row of its own may compose its airport transfer with the airport's flight row. Sum the halves, add **one change for the join**, name both modes where the halves differ, and label the row `composed via <city>`: `2h + 2h45 = 4h45`, `changes 0+0+1 = 1`. Same rules as above. A composed leg is sourced, never "estimated"; `to confirm` is only for a pair no hub joins.
 - **Okinawa is absent from the dataset:** a trip there means looking up every leg. Hokkaido's Sapporo hub, its towns and New Chitose are in the tables.
 - **For any gap:** look it up live — Google Maps, Jorudan or Navitime, station to station for the dates in question — say in the plan that you looked it up, and write it as an estimate. Never fill a hole from memory.
 - **Winter and mountains.** Mountain and coastal lines carry real weather delays in winter, and some are single-track with a handful of services a day. Leave slack, and never schedule a flight immediately after one.
@@ -1725,14 +1727,13 @@ The inns that sit on the road between two cities, with what a night at each cost
 
 Lay the stop list out along the geography, then **reverse it and price the reverse**. Reversals routinely save hours: a painful backtrack in one direction sits directly on the line in the other. Show both totals in the comparison table of step 5, a row each; the lower one usually wins outright. Then check three things:
 
-1. **No zig-zags.** If the route goes past a place, comes back, and goes past it again, resequence.
-2. **The dinner rule survives the reordering.** Three inn dinners in a row is the cap, and reordering can create a run of four without your noticing.
-3. **The exit works.** Pick the airport you fly home from **last**, once the order is settled, and pick the one nearest the final stop: flying into one airport and home from another is the default, and doubling back across the country to leave from the one you landed at spends a day for nothing. The usual exits are **HND** and **NRT** for Tokyo, **KIX** for Kyoto and Osaka, **CTS** for Hokkaido, **NGO** for a route ending at Takayama or Nagoya, and **FUK**, **KOJ**, **NGS**, **KMJ** or **OIT** for Kyushu, whichever end of the island the route finishes at; any airport with a Haneda flight counts, Komatsu and Hiroshima included. A fixed Haneda ticket at the far end of a Kyushu or Hokkaido trip is the transfer to the nearest airport plus that airport's Haneda flight, both rows in the tables — or two Tokyo nights at the close, which is what the spines offer. A return ticket already booked out of one city settles the question before the route starts.
+1. **No zig-zags, and the dinner rule survives the reorder.** If the route passes a place, comes back and passes it again, resequence; three inn dinners in a row is still the cap, and a reorder can make a run of four.
+2. **The exit works.** Pick the airport you fly home from **last**, once the order is settled, and pick the one nearest the final stop: flying into one airport and home from another is the default, and doubling back across the country to leave from the one you landed at spends a day for nothing. The usual exits are **HND** and **NRT** for Tokyo, **KIX** for Kyoto and Osaka, **CTS** for Hokkaido, **NGO** for a route ending at Takayama or Nagoya, and **FUK**, **KOJ**, **NGS**, **KMJ** or **OIT** for Kyushu, whichever end of the island the route finishes at; any airport with a Haneda flight counts, Komatsu and Hiroshima included. A fixed Haneda ticket at the far end of a Kyushu or Hokkaido trip is the transfer to the nearest airport plus that airport's Haneda flight, both rows in the tables — or two Tokyo nights at the close, which is what the spines offer. A return ticket already booked out of one city settles the question before the route starts.
 
 ### Two practical things
 
-- **Luggage forwarding.** Hand a suitcase to the front desk in the morning and it reaches the next hotel the following afternoon for roughly the price of a couple of meals, while you travel with an overnight bag. Use it for mountain legs with stairs and changes, for one-night stops, and for anything that would mean wrestling a case onto a crowded train. Two catches: it is **next-day, not same-day**, so keep a night's things with you, and some remote inns sit outside the fastest service areas.
-- **Is a rail pass worth it?** Sometimes. The nationwide pass is priced against long-distance return travel and rose sharply in 2023, so it no longer pays for itself on a trip that mostly sits in two cities. The test: add up the individual fares for the long journeys in the plan, compare with the pass price for the same days, buy only if it wins. Regional passes are often better value for these shapes. Separately, **reserve seats** for long journeys with luggage, especially around New Year, the early-May holiday week and mid-August, when some trains are reserved-only.
+- **Luggage forwarding.** Hand a suitcase to the front desk in the morning and it reaches the next hotel the following afternoon for roughly the price of a couple of meals, while you travel with an overnight bag. Use it for mountain legs with changes, one-night stops, and anything that means wrestling a case onto a crowded train. Two catches: it is **next-day, not same-day**, so keep a night's things with you, and some remote inns sit outside the fastest service areas.
+- **Is a rail pass worth it?** Sometimes. The nationwide pass rose sharply in 2023, so it no longer pays for itself on a trip that mostly sits in two cities. The test: add up the individual fares for the long journeys in the plan, compare with the pass price for the same days, buy only if it wins. Regional passes are often better value for these shapes. Separately, **reserve seats** for long journeys with luggage, especially around New Year, the early-May holiday week and mid-August, when some trains are reserved-only.
 
 ### If two versions of the trip are still alive
 
@@ -1762,7 +1763,7 @@ A leg row reads `↓ <h>h · <n> changes · <mode>`; a composed one names its hu
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
 | 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
@@ -1782,7 +1783,7 @@ A leg row reads `↓ <h>h · <n> changes · <mode>`; a composed one names its hu
 
 **The totals line includes the departure leg.** A plan whose travel hours stop at the last hotel understates the trip by two hours and hides the morning that decides whether the flight is catchable.
 
-The `To confirm` list is the next thing they have to do. Keep it specific and short.
+The `To confirm` list is the next thing they have to do. Keep it specific and short. **An open stop is not a blocker**: finish the plan around it and give the list a line — *"close the stay at Tokyo — the Okura or the Aman"* — for every stop Stage 4 left open.
 
 **Then offer the visual, in one line.** `guides/trip-visual-template.html` draws this table as a page
 they can open in a browser: the stops as bars sized by nights, every leg as a chip with its hours,
@@ -1793,7 +1794,7 @@ says how to fill it and what not to put on it. It shows the plan and nothing bey
 
 ```
 Goal    whichever of the three they actually want
-Inputs  the finished Trip plan
+Inputs  the finished Trip plan, open stops and all
 Do      offer (a) eating (b) day ideas (c) the booking calendar (d) the trip drawn as a page, in
         one line; do the one they pick. (a) and (b) open by asking what they like, not with a list
 Tables  eating `| Place | Type | Price | Neighbourhood | Booking | Map |`, grouped under a heading per
@@ -1889,6 +1890,8 @@ Order by **deadline**, not by trip order: a checklist, earliest first, with a re
 
 **Put a real date in the `Date` column, counted back from their departure date** — "6 months out" is not a deadline anybody acts on, and each row of this table has to name a day. Where a window opens on a fixed date rather than a rolling one (an inn's booking window, a restaurant's first-of-the-month release), write that date, not the count-back. **Every row is a live link**, so that the next click is in the table rather than in a search.
 
+**A stop Stage 4 left open still gets its rows** — the inn or hotel deadline stands, and it is the reason to close the stay.
+
 **Restaurant windows live here, and only for the anchors they chose.** A restaurant that books a fixed period ahead usually opens on the first of the month, one to three months out, and the good seats go the same day. Put each anchor's opening date in the checklist. No other restaurant belongs in the calendar.
 
 Hand over the checklist with real dates, and the Stage 5 plan alongside it.
@@ -1958,7 +1961,7 @@ The one table the run is built in, filled progressively from Stage 3 to Stage 5,
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
 | 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
@@ -1976,7 +1979,7 @@ The one table the run is built in, filled progressively from Stage 3 to Stage 5,
 
 1. `<unsourced leg, unverified opening, shuttle to arrange>`
 
-**How it is read, wherever it appears.** Stage 3 fills `#`, `Stop`, `Nights` and every leg row; Stage 4 fills `Stay`, `Band` and `Alternate`; Stage 5 adds the airport rows and the totals. Show it whole each time it changes. **Mode** is the word the corridor and airport tables print — `shinkansen` · `train` · `subway` · `bus` · `car` · `ferry` · `flight` — and the master inn table's `Reach` column prints it too, so **every leg row has one**; two hours on a bullet train and two hours on a mountain bus are different days. **A hotel's `Stay` links to its Google Maps pin, an inn's to its `ryokancatalog.com` page.** A leg has three forms and no fourth: sourced, `estimated` and labelled every time, or `to confirm`, which is left out of the totals and makes them partial — `≥ 6h00 (partial — 1 leg unsourced)`.
+**How it is read, wherever it appears.** Stage 3 fills `#`, `Stop`, `Nights` and every leg row; Stage 4 fills `Stay`, `Band` and `Earmarked`; Stage 5 adds the airport rows and the totals. Show it whole each time it changes. **Mode** is the word the corridor and airport tables print — `shinkansen` · `train` · `subway` · `bus` · `car` · `ferry` · `flight` — and the master inn table's `Reach` column prints it too, so **every leg row has one**; two hours on a bullet train and two hours on a mountain bus are different days. **A hotel's `Stay` links to its Google Maps pin, an inn's to its `ryokancatalog.com` page.** A leg has three forms and no fourth: sourced, `estimated` and labelled every time, or `to confirm`, which is left out of the totals and makes them partial — `≥ 6h00 (partial — 1 leg unsourced)`.
 
 ### Finding a stay the kit doesn't hold
 

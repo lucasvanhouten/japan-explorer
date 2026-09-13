@@ -23,7 +23,7 @@ Output  Trip profile (Stage 1) → a longlist of places and the shape they sugge
 Next    Stage 6 only if they want it. The run may end at Stage 5, and for many people it should.
 ```
 
-**The deliverable, concretely:** one table — the stops in travel order, nights in each, a named place to stay per stop with a live link and an alternate, and a leg row between every pair carrying hours, changes and mode. Eating, day plans and the booking calendar are extras offered *after* that plan exists.
+**The deliverable, concretely:** one table — the stops in travel order, nights in each, a named place to stay per stop with a live link and its earmarked runners-up, and a leg row between every pair carrying hours, changes and mode. Eating, day plans and the booking calendar are extras offered *after* that plan exists.
 
 **Everything you hand them is rendered markdown, never a code fence:** a fence sets a plan in monospace and kills every link in it. **Every sequence, set of options and comparison you present is a table** — the spine menu, a spine's decisions and timelines, the stays for a stop, the plan, the restaurants, the day ideas, the calendar. Each stage prescribes its header line; use that one. The one exception is a Stage 2 place card: two or three sentences, no table. The prose around a table carries the pitch and the trade-offs only: **travel times, prices, links and scores never appear inline in a sentence** — the one exception is the rough time in words on the Stage 2 Nikkō and Hakone cards ("two hours north"). No code formatting in what they read.
 

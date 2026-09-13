@@ -580,11 +580,11 @@ Any pair not in these tables was not in the source data. Look it up on a timetab
 
 ### The decision
 
-Open the itinerary table once they have settled: fill `#`, `Stop`, `Nights` and every leg row from `plan` on the final stop string; `Stay`, `Band` and `Alternate` wait for Stage 4.
+Open the itinerary table once they have settled: fill `#`, `Stop`, `Nights` and every leg row from `plan` on the final stop string; `Stay`, `Band` and `Earmarked` wait for Stage 4.
 
 **Trip plan** · `<dates>` · `<n>` nights · arrive `<airport>`, depart `<airport>`
 
-| # | Stop | Nights | Stay | Band | Alternate |
+| # | Stop | Nights | Stay | Band | Earmarked |
 |---|---|---|---|---|---|
 | | ↓ in from `<airport>` · `<h>h` · `<n>` changes · `<mode>` | | | | |
 | 1 | `<stop>` | `<n>` | [`<name>`](`<link>`) | `<band>` | [`<name>`](`<link>`) |
