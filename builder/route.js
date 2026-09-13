@@ -1023,17 +1023,20 @@ function assembleSpine(sp, optIn) {
  * and every town option this assembly offers, each marked on or off — so a comparison names Nikkō and Kaga even when
  * they are off, and nothing turns up later as a surprise */
 function shapeLines(sp, P) {
-  const off = new Set((P.unavailable || []).map((u) => `${u.key}#${u.index}`));
+  const off = new Set((P.unavailable || []).map((u) => `${u.key}#${u.index}`)), rev = P.reversed;
+  /* where an option sits, in trip direction: on the way between two cities, out and back from one, before or after it */
+  const where = (d) => { const o = d.owner; if (o.type === "leg") { const f = label(o.from[0]), t = label(o.to[0]); return rev ? `on the way ${t} → ${f}` : `on the way ${f} → ${t}`; }
+    const c = label(o.city[0]); if (o.at === "split") return `out and back from ${c}`; const side = rev && o.at !== "split" ? (o.at === "before" ? "after" : "before") : o.at; return `${side} ${c}`; };
   const tag = (d) => { const j = d.options.findIndex((o) => (o.stops || []).length); if (j < 0 || off.has(`${d.key}#${j}`)) return null;
-    return `${label(d.options[j].stops[0])} (${P.choices[d.key] === j ? "on" : "off"})`; };
+    return `${label(d.options[j].stops[0])} (${where(d)})`; };
   const list = (kind) => decisionsOf(sp).filter((d) => d.kind === kind && d.owner.type !== "end").map(tag).filter(Boolean);
   const cities = (P.cities || []).map(label);
-  const endD = decisionsOf(sp).find((d) => d.owner.type === "end"), endO = endD && endD.options[P.choices[endD.key]];
-  if (endO && (endO.stops || []).length) cities.push(label(endO.stops[endO.stops.length - 1]));
-  const ends = endD ? endD.options.map((o, j) => off.has(`${endD.key}#${j}`) ? null : (j === P.choices[endD.key] ? `**${optWord(o, P.reversed).label}**` : optWord(o, P.reversed).label)).filter(Boolean) : [];
+  const endD = decisionsOf(sp).find((d) => d.owner.type === "end");
+  const ends = endD ? endD.options.map((o, j) => off.has(`${endD.key}#${j}`) ? null : optWord(o, rev).label).filter(Boolean) : [];
   const ry = list("inn"), tw = list("stop");
+  const nights = [...new Set(P.cities || [])].map((c) => `${label(c)} ${rangeOf(c, { repeat: P.opt && P.opt.repeat }).join("–")}`);
   return [`**Cities:** ${cities.join(" → ")}`, `**Ryokan nights:** ${ry.length ? ry.join(" · ") : "none on this route"}`,
-    `**Town stops:** ${tw.length ? tw.join(" · ") : "none on this route"}`, `**Ending:** ${ends.join(" · ")}`];
+    `**Town stops:** ${tw.length ? tw.join(" · ") : "none on this route"}`, `**Ending:** ${ends.join(" · ")}`, `**Usual nights:** ${nights.join(" · ")}`];
 }
 function spineHead(sp, band, opt, P) {
   const own = sp.band.join("–"), here = band ? band.join("–") : own;
