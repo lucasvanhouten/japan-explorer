@@ -214,16 +214,16 @@ The main city-to-city journeys, the stops the Stage 3 routes pass through, and t
 | Hakone | Tokyo · Haneda airport (HND) | 2h10 | 2 | train | Direct Tozan BUS Gōra/Sengokuhara→Odawara (~45 min — one seat; the Tozan rail needs an extra change at Hakone-Yumoto), Tōkaidō Shinkansen Odawara→Shinagawa (~30 min), Keikyū→Haneda (~18 min); or the direct Odawara→HND limousine bus (~85 min). |
 | Izu peninsula (Shuzenji) | Tokyo · Haneda airport (HND) | 2h | 2 | train | Taxi/shuttle→Shuzenji, Izuhakone Sunzu line→Mishima (~35 min), Tōkaidō Shinkansen Mishima→Shinagawa (~40 min), Keikyū→Haneda (~18 min). |
 | Lake Kawaguchi (Mt Fuji) | Tokyo · Haneda airport (HND) | 3h | 1 | train | JR 'Fuji Excursion' Kawaguchiko→Shinjuku (~2h, direct), then the airport limousine bus Shinjuku→Haneda (~45 min). ⚠ limited morning Fuji departures. |
-| Kyoto | Osaka · Kansai airport (KIX) | 1h30 | 0 | train | JR Ltd Exp 'Haruka' Kyoto→Kansai Airport (~75 min, direct). |
+| Kyoto | Osaka · Kansai airport (KIX) | 1h15 | 0 | train | JR Ltd Exp 'Haruka' Kyoto→Kansai Airport (~75 min, direct). |
 | Kyoto | Osaka · Itami airport (ITM) | 1h | 0 | bus | Airport limousine bus Kyoto Station→Osaka-Itami (~55 min). |
-| Nara | Osaka · Kansai airport (KIX) | 1h55 | 1 | train | JR Yamatoji rapid Nara→Tennoji (~40 min), change to Haruka→KIX (~30 min). |
-| Osaka | Osaka · Kansai airport (KIX) | 1h05 | 0 | train | JR Ltd Exp 'Haruka' Osaka Stn→Kansai Airport ~45 min (¥2,380 unreserved; Shin-Osaka ~50 min, ¥2,540), or the Nankai 'Rapi:t' Osaka-Namba→KIX 35–40 min (¥1,520–1,670, reserved; the fastest services 34 min). Cheaper: Nankai airport express 45–50 min ¥970, JR Airport Rapid from Osaka Stn ~70 min ¥1,180, airport bus from Umeda ~60 min ¥1,800 / Namba ~45 min ¥1,400. ~1h door-to-door with bags and the terminal walk — airport processing on top. |
-| Osaka | Osaka · Itami airport (ITM) | 45 min | 0 | bus | Airport limousine bus Osaka Stn/Umeda→Itami (~30 min, ¥730, multiple per hour); Shin-Osaka ~25 min ¥600, Namba/OCAT ~30 min ¥730. Rail alt: Hankyu Takarazuka Line Osaka-Umeda→Hotarugaike (15–20 min, ¥240) + Osaka Monorail one stop to Osaka Airport (2 min, ¥200) ≈ 25 min, ¥440. Itami is the close-in domestic airport — the reason a Kansai finale flies ITM→HND. |
-| Hiroshima | Hiroshima airport (HIJ) | 1h05 | 0 | bus | Airport limousine bus Hiroshima Station→Hiroshima Airport (~50 min; no rail link). |
+| Nara | Osaka · Kansai airport (KIX) | 1h25 | 1 | train | JR Yamatoji rapid Nara→Tennoji (~40 min), change to Haruka→KIX (~30 min). |
+| Osaka | Osaka · Kansai airport (KIX) | 50 min | 0 | train | JR Ltd Exp 'Haruka' Osaka Stn→Kansai Airport ~45 min (¥2,380 unreserved; Shin-Osaka ~50 min, ¥2,540), or the Nankai 'Rapi:t' Osaka-Namba→KIX 35–40 min (¥1,520–1,670, reserved; the fastest services 34 min). Cheaper: Nankai airport express 45–50 min ¥970, JR Airport Rapid from Osaka Stn ~70 min ¥1,180, airport bus from Umeda ~60 min ¥1,800 / Namba ~45 min ¥1,400. ~1h door-to-door with bags and the terminal walk — airport processing on top. |
+| Osaka | Osaka · Itami airport (ITM) | 30 min | 0 | bus | Airport limousine bus Osaka Stn/Umeda→Itami (~30 min, ¥730, multiple per hour); Shin-Osaka ~25 min ¥600, Namba/OCAT ~30 min ¥730. Rail alt: Hankyu Takarazuka Line Osaka-Umeda→Hotarugaike (15–20 min, ¥240) + Osaka Monorail one stop to Osaka Airport (2 min, ¥200) ≈ 25 min, ¥440. Itami is the close-in domestic airport — the reason a Kansai finale flies ITM→HND. |
+| Hiroshima | Hiroshima airport (HIJ) | 50 min | 0 | bus | Airport limousine bus Hiroshima Station→Hiroshima Airport (~50 min; no rail link). |
 | Fukuoka (Hakata) | Fukuoka airport (FUK) | 20 min | 0 | subway | Fukuoka City Subway Hakata→Fukuoka Airport (2 stops, ~5 min). |
 | Beppu | Ōita airport (OIT) | 55 min | 0 | bus | Ōita Kōtsū 'Air Liner' airport bus Beppu Kitahama / Beppu Station→Ōita Airport (OIT), ~47–50 min, hourly, every day. ⚠ Take the 'Air Liner' — the separate 'Airport Express' for Ōita city does NOT stop in Beppu. OIT is Beppu's own gateway (OIT→Haneda ~1h40, frequent ANA/JAL/SNA — see oit>hnd), so a Beppu finale exits without crossing back to Fukuoka. |
 | Kumamoto | Kumamoto airport (KMJ) | 55 min | 0 | bus | Airport limousine bus Kumamoto Stn/Sakuramachi→Kumamoto Airport (KMJ) at Mashiki (~55 min). |
-| Nagasaki | Nagasaki airport (NGS) | 1h | 0 | bus | Airport limousine bus Nagasaki Station→Nagasaki Airport (~45 min). |
+| Nagasaki | Nagasaki airport (NGS) | 45 min | 0 | bus | Airport limousine bus Nagasaki Station→Nagasaki Airport (~45 min). |
 | Kagoshima | Kagoshima airport (KOJ) | 1h05 | 0 | bus | Airport limousine bus Kagoshima-Chūō→Kagoshima Airport (~40–60 min). |
 | Yufuin | Ōita airport (OIT) | 1h | 0 | bus | Airport bus Yufuin Station→Oita Airport (~55 min; the inn shuttle reaches the station). |
 | Kirishima (Myōken Onsen) | Kagoshima airport (KOJ) | 45 min | 0 | bus | Kagoshima Airport is Myōken's own gateway, ~30 km up the Amori river: the ¥450 Myōken route bus KOJ→Myōken Onsen runs ~25 min (Kirishima City's Myōken bus page; Kagoshima Kōtsū airport-bus timetable, Sep 2026), a pre-called taxi ~15 min. ~45 min door to door with bags. ⚠ Only ~8 airport departures a day on that bus, the inn's own shuttle-taxi was discontinued pre-Mar-2026, and called taxis want ~40 min notice. |
@@ -233,7 +233,7 @@ The main city-to-city journeys, the stops the Stage 3 routes pass through, and t
 | Niseko (Hirafu) | Sapporo · New Chitose airport (CTS) | 2h45 | 0 | bus | Chūō Bus/Niseko Bus New Chitose Airport→Niseko Hirafu, ~2h33, reserved, 4 a day in winter (10:00, 13:40, 14:40, 15:30), ~¥6,000; the reserved winter shuttles (Hokkaidō Resort Liner, White Liner, Sky Express) run the same ~2.5h with hotel drop-offs. Rail alt, 2 changes: 'Rapid Airport' through to Otaru (~72 min) + Hakodate-Line local to Kutchan (~1h–1h20) + 15-min taxi, ~3h+. The inns quote ~2h by car/private transfer straight from the airport — no Sapporo detour. |
 | Furano | Sapporo · New Chitose airport (CTS) | 2h15 | 0 | bus | Furano Bus airport liner New Chitose Airport (stop 23)→Furano, ~2h, 4 a day year-round (10:30, 11:45, 14:30, 17:30); in winter (Dec 1–Mar 30) the reserved Hokkaidō Resort Liner runs the same corridor in 2h15–2h30 with ski-hotel drop-offs (book ≥9 days ahead). Nothing on rail beats these — the train goes back through Sapporo and Takikawa. |
 | Noboribetsu Onsen | Sapporo · New Chitose airport (CTS) | 1h20 | 0 | bus | Dōnan Bus 'Noboribetsu Onsen Airport Express' New Chitose Airport→Noboribetsu Onsen direct, ~1h10, reserved, ~4 a day, ~¥2,200. Rail alt (2 changes): local one stop to Minami-Chitose, 'Hokuto' to Noboribetsu Stn, then the 15-min onsen bus. |
-| Nagoya | Nagoya · Centrair airport (NGO) | 40 min | 0 | train | Meitetsu 'μSKY' Meitetsu-Nagoya→Central Japan Airport (Centrair, NGO), 28 min, all-reserved, ¥1,430 (¥980 fare + ¥450 μ-ticket), ~2 an hour; the ordinary Meitetsu Ltd Exp ~38 min for the plain ¥980. Meitetsu-Nagoya is under the JR station's west side — allow 10 min to cross. |
+| Nagoya | Nagoya · Centrair airport (NGO) | 30 min | 0 | train | Meitetsu 'μSKY' Meitetsu-Nagoya→Central Japan Airport (Centrair, NGO), 28 min, all-reserved, ¥1,430 (¥980 fare + ¥450 μ-ticket), ~2 an hour; the ordinary Meitetsu Ltd Exp ~38 min for the plain ¥980. Meitetsu-Nagoya is under the JR station's west side — allow 10 min to cross. |
 | Nikkō | Tokyo · Haneda airport (HND) | 2h50 | 1 | train | Taxi to Tōbu-Nikkō (~5 min), Tōbu Ltd Exp 'Spacia X'/'Kegon' Tōbu-Nikkō→Asakusa (~1h50, 6–7 a day, all reserved), walk to the Toei Asakusa-line platforms (~5 min), then the through train Asakusa→Haneda Airport Terminal 1·2 (37 min, no change on the Keikyū through services — check the destination board, otherwise change at Sengakuji). One change, at Asakusa; no Tokyo Station detour. |
 
 Any pair not in these tables was not in the source data. Look it up on a timetable (Jorudan, Navitime or Google Maps), say out loud that you looked it up, label it estimated, and never estimate it from the distance. The full set of 790 sourced legs — including every inn — is in `data/transit-legs.md`.
@@ -244,7 +244,7 @@ Any pair not in these tables was not in the source data. Look it up on a timetab
 The inns on the road between two cities, with what a night at each costs over going straight through — read only when a plan wants an inn night on a leg that has none.
 
 <!-- generated:connectors -->
-*130 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
+*126 places to break a journey, worked out of the same researched legs as the corridor table. Read a row as: the direct journey between those two places takes `direct`, and a night at that inn on the way makes it the two legs shown, costing `detour` more than going straight through. **Prefer one of these to an inn you have to go out and come back from**: the night costs almost nothing in travel. **`Leg in` and `Leg out` are researched legs like any other here** — put either straight into an **Onward** cell, in either direction. A pair with no row has no researched place to break at, and a journey made by air has none at all, because a flight cannot be broken at an inn. One inn per valley, the best-scored of the kit's shortlist; the master inn table in Stage 4 holds the others there, and its `Reach` column answers the pairs this table does not.*
 
 | From → To | Direct | Connector inn | Leg in | Leg out | Detour |
 |---|---|---|---|---|---|
@@ -261,12 +261,10 @@ The inns on the road between two cities, with what a night at each costs over go
 | Nagasaki → Amakusa | 3h25/3 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 40 min/0 shinkansen | 3h/2 train | +20 min |
 | Beppu → Kurokawa Onsen | 2h25/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 1h/0 bus | 1h45/0 bus | +20 min |
 | Nagasaki → Amakusa | 3h25/3 | [Mt.Resort Unzen Kyushu Hotel](https://ryokancatalog.com/inn/mt-resort-unzen-kyushu-hotel) · Unzen | 1h15/0 car | 2h30/0 car | +20 min |
-| Nara → Kansai airport | 1h55/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h30/0 train | +20 min |
 | Osaka → Hakone | 3h25/2 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 3h/1 train | +20 min |
 | Sendai → Kanazawa | 4h30/1 | [Atamiso](https://ryokancatalog.com/inn/atamiso) · Bandai-Atami | 1h/1 shinkansen | 3h55/2 shinkansen | +25 min |
 | Sendai → Kanazawa | 4h30/1 | [Tsuchiyu Bettei Satonoyu](https://ryokancatalog.com/inn/tsuchiyu-bettei-satonoyu) · Tsuchiyu Onsen | 1h/0 train | 3h55/1 shinkansen | +25 min |
 | Kyoto → Yamashiro Onsen | 2h/1 | [Kanshuku-en Eshikoto](https://ryokancatalog.com/inn/kanshuku-en-eshikoto) · Eiheiji | 1h45/1 train | 40 min/0 car | +25 min |
-| Nagasaki → Nagasaki airport | 1h/0 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 40 min/0 shinkansen | 45 min/1 train | +25 min |
 | Fukuoka → Kurokawa Onsen | 2h30/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h45/0 train | 1h15/0 car | +30 min |
 | Kanazawa → Osaka | 2h45/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 2h30/1 train | 45 min/0 train | +30 min |
 | Kumamoto → Nagasaki | 2h/2 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 1h50/1 train | 40 min/0 shinkansen | +30 min |
@@ -277,6 +275,7 @@ The inns on the road between two cities, with what a night at each costs over go
 | Osaka → Hiroshima | 2h05/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h55/0 shinkansen | +35 min |
 | Fukuoka → Yufuin | 2h10/0 | [Onyado Chikurintei](https://ryokancatalog.com/inn/onyado-chikurintei) · Takeo Onsen | 1h/0 train | 1h45/0 car | +35 min |
 | Fukuoka → Yufuin | 2h10/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h45/0 train | 1h/0 train | +35 min |
+| Nara → Kansai airport | 1h25/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h15/0 train | +35 min |
 | Takayama → Kyoto | 3h50/1 | [Hanamurasaki](https://ryokancatalog.com/inn/hanamurasaki) · Yamanaka Onsen | 2h50/1 train | 1h35/1 train | +35 min |
 | Kyoto → Yamanaka Onsen | 1h35/1 | [Kanshuku-en Eshikoto](https://ryokancatalog.com/inn/kanshuku-en-eshikoto) · Eiheiji | 1h45/1 train | 30 min/0 car | +40 min |
 | Takayama → Osaka | 3h55/2 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 3h50/1 train | 45 min/0 train | +40 min |
@@ -289,6 +288,7 @@ The inns on the road between two cities, with what a night at each costs over go
 | Kanazawa → Takayama | 2h25/0 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 35 min/0 train | 2h35/1 train | +50 min |
 | Beppu → Kumamoto | 2h30/1 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 1h/0 bus | 2h25/1 train | +55 min |
 | Kyoto → Yamanaka Onsen | 1h35/1 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 2h/1 train | 30 min/0 car | +55 min |
+| Kyoto → Kansai airport | 1h15/0 | [Tsukihitei](https://ryokancatalog.com/inn/tsukihitei) · Nara | 45 min/0 train | 1h25/1 train | +55 min |
 | Tokyo → Kanazawa | 2h40/0 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 3h/0 shinkansen | 35 min/0 train | +55 min |
 | Sendai → Kanazawa | 4h30/1 | [Onyado Kawasemi](https://ryokancatalog.com/inn/onyado-kawasemi) · Iizaka Onsen | 1h15/1 train | 4h10/2 shinkansen | +55 min |
 | Tokyo → Izu peninsula | 1h45/0 | [Arcana Izu](https://ryokancatalog.com/inn/arcana-izu) · Yugashima | 2h10/1 train | 30 min/0 car | +55 min |
@@ -296,18 +296,15 @@ The inns on the road between two cities, with what a night at each costs over go
 | Kumamoto → Takachiho | 2h/0 | [Takefue](https://ryokancatalog.com/inn/takefue) · Kurokawa Onsen | 1h50/0 car | 1h10/0 car | +1h |
 | Kanazawa → Nikkō | 4h/2 | [Beniya Mukayu](https://ryokancatalog.com/inn/beniya-mukayu) · Yamashiro Onsen | 35 min/0 train | 4h30/3 train (two researched halves) | +1h05 |
 | Kumamoto → Kurokawa Onsen | 1h50/0 | [Sanso Tensui](https://ryokancatalog.com/inn/sanso-tensui) · Amagase | 1h40/1 train | 1h15/0 car | +1h05 |
-| Kyoto → Kansai airport | 1h30/0 | [Tsukihitei](https://ryokancatalog.com/inn/tsukihitei) · Nara | 45 min/0 train | 1h55/1 train | +1h10 |
 | Osaka → Fukuoka | 3h05/1 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 3h30/0 shinkansen | +1h10 |
-| Osaka → Kansai airport | 1h05/0 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 45 min/0 train | 1h30/0 train | +1h10 |
 | Kanazawa → Minakami / Tanigawa | 3h15/1 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 2h25/1 shinkansen | +1h10 |
 | Fukuoka → Beppu | 2h/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 2h10/0 train | 1h/0 bus | +1h10 |
-| Osaka → Kansai airport | 1h05/0 | [Sanso Amanosato](https://ryokancatalog.com/inn/sanso-amanosato) · Katsuragi | 1h25/1 train | 55 min/0 car | +1h10 |
 | Kyoto → Fukuoka | 3h30/0 | [Migiwatei Ochi Kochi](https://ryokancatalog.com/inn/migiwatei-ochi-kochi) · Tomonoura | 2h10/1 train | 2h30/0 shinkansen | +1h10 |
 | Kyoto → Lake Kawaguchi | 4h15/1 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 3h45/2 train | 1h45/1 train | +1h15 |
 | Lake Kawaguchi → Haneda airport | 3h/1 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 1h45/1 train | 2h30/1 train | +1h15 |
-| Nara → Kansai airport | 1h55/1 | [Sanso Amanosato](https://ryokancatalog.com/inn/sanso-amanosato) · Katsuragi | 2h15/2 train | 55 min/0 car | +1h15 |
 | Sendai → Kanazawa | 4h30/1 | [Bettei Senjuan](https://ryokancatalog.com/inn/bettei-senjuan) · Minakami / Tanigawa | 2h30/1 train | 3h15/1 shinkansen | +1h15 |
 | Tokyo → Lake Kawaguchi | 2h/0 | [Fuefukigawa Onsen Zabou](https://ryokancatalog.com/inn/fuefukigawa-onsen-zabou) · Kōshū | 1h30/0 train | 1h45/1 train | +1h15 |
+| Izu peninsula → Haneda airport | 2h/2 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 1h25/1 train | 1h55/1 car | +1h20 |
 | Kanazawa → Nikkō | 4h/2 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 3h20/2 shinkansen | +1h20 |
 | Kanazawa → Echigo-Yuzawa | 3h30/1 | [Fujiiso](https://ryokancatalog.com/inn/fujiiso) · Yamada Onsen | 2h/0 train | 2h50/1 shinkansen | +1h20 |
 | Kanazawa → Takayama | 2h25/0 | [Hanamurasaki](https://ryokancatalog.com/inn/hanamurasaki) · Yamanaka Onsen | 55 min/0 train | 2h50/1 train | +1h20 |
@@ -328,7 +325,6 @@ The inns on the road between two cities, with what a night at each costs over go
 | Kurokawa Onsen → Amagase | 1h15/0 | [Sanso Murata](https://ryokancatalog.com/inn/sanso-murata) · Yufuin | 1h45/0 bus | 1h/0 train | +1h30 |
 | Kyoto → Hakone | 3h/1 | [Asaba](https://ryokancatalog.com/inn/asaba) · Izu peninsula | 2h40/0 train | 1h50/2 train | +1h30 |
 | Kyoto → Hakone | 3h/1 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 2h35/0 train | 1h55/1 train | +1h30 |
-| Nagasaki → Nagasaki airport | 1h/0 | [Mt.Resort Unzen Kyushu Hotel](https://ryokancatalog.com/inn/mt-resort-unzen-kyushu-hotel) · Unzen | 1h15/0 car | 1h15/0 car | +1h30 |
 | Tokyo → Hakone | 2h10/1 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 1h50/0 train | 1h55/1 train | +1h30 |
 | Tokyo → Nagoya | 2h05/0 | [Hiiragiya](https://ryokancatalog.com/inn/hiiragiya) · Kyoto | 2h45/0 shinkansen | 55 min/0 shinkansen | +1h35 · a stop, not a free connector |
 | Tokyo → Kyoto | 2h45/0 | [Gora Kadan Fuji](https://ryokancatalog.com/inn/gora-kadan-fuji) · Oyama | 1h50/0 train | 2h35/0 train | +1h40 · a stop, not a free connector |

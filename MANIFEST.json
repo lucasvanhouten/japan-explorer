@@ -76,40 +76,40 @@
    "s1": {
     "stops": "tokyo:3,nikko:1,tokyo:3,hakone:1,kyoto:4",
     "nights": 12,
-    "hours": 11.3,
-    "perNight": 57,
+    "hours": 11.05,
+    "perNight": 55,
     "in": "HND",
     "out": "KIX"
    },
    "s2": {
     "stops": "tokyo:4,yudanaka:1,kanazawa:3,kyoto:4",
     "nights": 12,
-    "hours": 9.4,
-    "perNight": 47,
+    "hours": 9.15,
+    "perNight": 46,
     "in": "HND",
     "out": "KIX"
    },
    "s3": {
     "stops": "tokyo:5,hakone:1,kyoto:4,hiroshima:2",
     "nights": 12,
-    "hours": 8.8,
-    "perNight": 44,
+    "hours": 8.55,
+    "perNight": 43,
     "in": "HND",
     "out": "HIJ"
    },
    "s4": {
     "stops": "tokyo:4,tanigawa:1,echigoyuzawa:1,kanazawa:3,kyoto:4",
     "nights": 13,
-    "hours": 11.17,
-    "perNight": 52,
+    "hours": 10.92,
+    "perNight": 50,
     "in": "HND",
     "out": "KIX"
    },
    "s5": {
     "stops": "tokyo:4,kirishima:1,kagoshima:2,fukuoka:3,takeo:1,nagasaki:2",
     "nights": 13,
-    "hours": 9.6,
-    "perNight": 40,
+    "hours": 9.35,
+    "perNight": 39,
     "in": "HND",
     "out": "NGS"
    },
@@ -476,7 +476,7 @@
   "corridors": 176,
   "legs": 790,
   "region_cards": 13,
-  "front_door_words": 49500,
+  "front_door_words": 49416,
   "start_here_words": 4129,
   "stage_files": 6,
   "stays_files": 12
@@ -1407,7 +1407,7 @@
  "sources": {
   "planning/trip-data.js": "7f4d300660f98f1ea5b68890bc4c9faaa6618480c48a6854338f0cdb8454945a",
   "planning/route-data.js": "c84409b1f9459468022df3e18a4f0df6438078a3ad59557b80033d05b0e836fe",
-  "planning/route-builder-logic.js": "db60a6059f064dcd2a723f2f001e60771a0d6f74794304d5192529bafb53c306",
+  "planning/route-builder-logic.js": "ab018f339310584df09520c32a73ec4357ec96d64e652cd9b842f04d64109ce5",
   "planning/build-kit.js": "8c91ac7ee28368c2d9b36a8152abaddff3464862b2462b7f1caac659062b227e",
   "planning/kit-src/kit-hotels.json": "e7dbaaf2e59596806148514a0ae4da92cfb49fea88319fbb6be30e72833061cb",
   "planning/kit-src/pinned-inns.json": "2fc30d000ed06e40a611042c05f00ffb0f4978899dc1c6cee13d86d6a93a0501",
@@ -1466,8 +1466,8 @@
    "bytes": 24852
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "4701292d4d52ff0ad079afabe0ba1b8fd4ba23e149e53bb61fb1da1d016a4966",
-   "bytes": 293991
+   "sha256": "6123b70cf50b3d9d6b2d9d894017c58e829fb8e99c645444dc03402dd17a7d07",
+   "bytes": 293355
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1494,8 +1494,8 @@
    "bytes": 33863
   },
   "builder/route-builder-logic.js": {
-   "sha256": "391896ca8365aebc71aee838e03864aecda3e6a934c54c6babc6130914ddd525",
-   "bytes": 352462
+   "sha256": "c1e1b93b6f98896ef550d2f12afa3e9857a8ca1bc4cef0919d1a9a82cd7cd212",
+   "bytes": 352757
   },
   "builder/route-data.js": {
    "sha256": "240e8530c5df50ba2e40bd522721c72141f3979ff063199d4be110bb190523e0",
@@ -1590,12 +1590,12 @@
    "bytes": 4822
   },
   "data/connectors.md": {
-   "sha256": "8436f7a86b2e1be8d4690a384aa76882c6436f7611eff4d5d126dbcb4ea3c8f1",
-   "bytes": 23268
+   "sha256": "5756e1c2c5429ba4f987ee1cf0a10cc7fdac5567b2882d564c9ecc6f35a41d0b",
+   "bytes": 22618
   },
   "data/corridors.md": {
-   "sha256": "368b1ce1d91d67da71ead26bf9446ad5abcdee5d546b63c2df6e766274f6bba2",
-   "bytes": 47062
+   "sha256": "3285bcbad23ddf5a8f68bb070694153eda37d768e1b8be17f011de5f648b379a",
+   "bytes": 47070
   },
   "data/hotels.json": {
    "sha256": "30778d55b9712127b3d0fd98963b1abdabff45941404c0558c5a847a776ead51",
@@ -1606,12 +1606,12 @@
    "bytes": 20604
   },
   "data/transit-legs.json": {
-   "sha256": "e03d14cf744393e5751d44a35105187e5280025dc01f8b2a42a912aee0064eb4",
-   "bytes": 318647
+   "sha256": "01c0637e67c7105b5e7dcf521292fb2a2670c2a2f440ea4caa9f5c8bb9cd14f0",
+   "bytes": 318652
   },
   "data/transit-legs.md": {
-   "sha256": "9f9429b306d22886e74941a5606cb908681cbf58659721d177edf0ea7f993af4",
-   "bytes": 206441
+   "sha256": "2f314dc6fd8fb160ae2cd725d8aadcbf5b4d343567ece1d7824813e0cf347960",
+   "bytes": 206451
   },
   "examples/sample-plan.md": {
    "sha256": "c8c7b5a560fe6a93df00e124f390c0277e815c16a89312083704dc7e4a40606d",
@@ -1674,8 +1674,8 @@
    "bytes": 9168
   },
   "guides/route-explorer-data.js": {
-   "sha256": "32fef4b57e9989f63ab644ec955c5f3e59a661606b130af36936bff4fb46c460",
-   "bytes": 107621
+   "sha256": "1ed3514b0438b24f7dc722413f2ee2f1eeee9d166cd5b5531e9569a1181a3304",
+   "bytes": 107627
   },
   "guides/route-explorer.html": {
    "sha256": "ea7c2770bbe14efa2ab2ef82db04c3cb32c20f62b54a66139460a25dfd91096f",
@@ -1710,16 +1710,16 @@
    "bytes": 43154
   },
   "stages/3-where-to-go.md": {
-   "sha256": "43a01ca5ba78189492e58e03fe3ff43289d50224ea0f393c8910185dd04832b4",
-   "bytes": 90656
+   "sha256": "a90ecfe53c2d53bd93ad49e85763e271770b6aa44599b76963bb4ebdbdbb7427",
+   "bytes": 90670
   },
   "stages/4-where-to-stay.md": {
    "sha256": "be6ccad97a4f6f7128c42102f76204f0abdd9554445a82bcba44b65a374fb3e6",
    "bytes": 66826
   },
   "stages/5-route.md": {
-   "sha256": "3b9947dd930bf4c28a55d541ea14f91282bc7e5ddd1b45007449d72fe9d49d3f",
-   "bytes": 82947
+   "sha256": "b8d1cd39497d560decc25cd3e059a96a52f0c36152d327df6256bd4888ae82fa",
+   "bytes": 82305
   },
   "stages/6-optional-depth.md": {
    "sha256": "25fba13bb160af41966f7b8d39a9099c9068e2db4f3196012314a203f8bb9fe8",

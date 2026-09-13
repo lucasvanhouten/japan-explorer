@@ -393,12 +393,13 @@ const LEGS={
   "ise>kyoto":L(2.0,1,"train","Kintetsu Ltd Exp Iseshi/Ujiyamada→Kyoto (~2h); most change at Yamato-Yagi, a few run direct (2/hr)."),
   "onomichi>hiroshima":L(1.0,1,"train","JR Sanyo local Onomichi→Fukuyama (~15 min), Sanyo Shinkansen Fukuyama→Hiroshima (~25 min) — change at Fukuyama (faster than Shin-Onomichi, 3 km out of town)."),
   /* Kansai onsen finales → airports */
+  /* Airport transfer rows (owner, 2026-09-13): the ride plus 15 min per change — no walk from the hotel, no check-in; the flight leg carries a stated 30-min check-in of its own. Eleven rows that still held the old audit's "airport processing" padding were re-authored to this convention. */
   "katsuragi>kix":L(0.9,0,"car","Car Amanosato → Kansai airport: 54.5 km via the Keinawa expressway, 53 min (Google Maps, 2026-09-13); the inn arranges the taxi. No airport padding: check-in is stated on the flight leg.",{car:1}),
   "amino>kix":L(4.75,1,"train","Shuttle/taxi to Amino, Ltd Exp 'Hashidate'→Kyoto (~2h40), change to Haruka→KIX (~80 min). Long; snow-risk.",{awkward:1,car:1}),
   "kinosaki>kix":L(3.9,1,"train","Ltd Exp 'Kounotori' Kinosaki Onsen→Shin-Osaka (~2h50), change to Haruka→KIX (~50 min)."),
-  "arima>kix":L(2.6,1,"bus","Arima Express bus→Kobe-Sannomiya (~40 min), change to KATE airport limousine→KIX (~70 min)."),
+  "arima>kix":L(2.1,1,"bus","Arima Express bus→Kobe-Sannomiya (~40 min), change to KATE airport limousine→KIX (~70 min)."),
   "arima>itm":L(1.5,0,"bus","Hankyu direct highway bus Arima→Itami (~70 min, sparse — reserve ahead)."),
-  "nara>kix":L(1.9,1,"train","JR Yamatoji rapid Nara→Tennoji (~40 min), change to Haruka→KIX (~30 min)."),
+  "nara>kix":L(1.4,1,"train","JR Yamatoji rapid Nara→Tennoji (~40 min), change to Haruka→KIX (~30 min)."),
   /* Kyoto → Kansai finales directly (when Nara is skipped — a logical move) */
   "kyoto>katsuragi":L(2.5,2,"train","JR to Kaseda via the Wakayama line (~2h15), then a PRE-BOOKED taxi ~15 min (~¥3k; Yuko-Kihoku 0736-22-3333 — Kaseda has no rank taxis) — frees you from Amanosato's 15:00-only shuttle (4-pax cap)."),
   "kyoto>amino":L(2.5,0,"train","Ltd Exp 'Hashidate' Kyoto→Amino direct (~2h30). Snow-risk in January.",{awkward:1}),
@@ -408,8 +409,8 @@ const LEGS={
   "tomonoura>kix":L(3.0,1,"shinkansen","Car/shuttle to Fukuyama (~30 min), Sanyo Shinkansen→Shin-Osaka (~62 min), change to Haruka→KIX.",{car:1}),
   "setoda>kix":L(3.6,2,"train","Ferry to Mihara (~30 min), Sanyo Shinkansen→Shin-Osaka, change to Haruka→KIX.",{awkward:1}),
   "onomichi>kix":L(3.0,2,"train","Local to Fukuyama (~20 min), Sanyo Shinkansen→Shin-Osaka, change to Haruka→KIX."),
-  "hiroshima>kix":L(3.5,1,"shinkansen","Sanyo Shinkansen Nozomi→Shin-Osaka (~1h20), change to Haruka→KIX (~50 min)."),
-  "hiroshima>itm":L(3.0,1,"shinkansen","Sanyo Shinkansen→Shin-Osaka (~1h20), airport limousine bus→Itami (~30 min)."),
+  "hiroshima>kix":L(2.4,1,"shinkansen","Sanyo Shinkansen Nozomi→Shin-Osaka (~1h20), change to Haruka→KIX (~50 min)."),
+  "hiroshima>itm":L(2.1,1,"shinkansen","Sanyo Shinkansen→Shin-Osaka (~1h20), airport limousine bus→Itami (~30 min)."),
   /* Mid-trip flight DOWN to Kyushu + the Fukuoka→south continuation (gaps surfaced Jun 2026).
      The engine is single-hop, so a northern opener that then flies to Kyushu (Senjuan→…→Fukuoka)
      had no leg and fell to a ~7h all-rail estimate via Sendai/Kyoto; and Fukuoka→Myoken collapsed
@@ -511,7 +512,7 @@ const LEGS={
   "tokyo>kagoshima":L(4.5,2,"flight","Fly: Tokyo→Haneda (~30 min), HND→Kagoshima (KOJ) ~1h40 (~20+ daily), then the airport limousine bus KOJ→Kagoshima-Chūō (~40–60 min).",{flight:1}),
   "tokyo>nagasaki":L(4.25,2,"flight","Fly: Tokyo→Haneda (~30 min), HND→Nagasaki (NGS) ~1h50, then the airport limousine bus NGS→Nagasaki Station (~45 min).",{flight:1}),
   /* Airport access: hub station → terminal (used to complete any …→airport leg) */
-  "kyoto>kix":L(1.5,0,"train","JR Ltd Exp 'Haruka' Kyoto→Kansai Airport (~75 min, direct)."),
+  "kyoto>kix":L(1.25,0,"train","JR Ltd Exp 'Haruka' Kyoto→Kansai Airport (~75 min, direct)."),
   "kyoto>itm":L(1.0,0,"bus","Airport limousine bus Kyoto Station→Osaka-Itami (~55 min)."),
   "tokyo>hnd":L(0.6,1,"train","From Tokyo Stn/trunk: JR→Hamamatsuchō + Monorail, or Shinagawa + Keikyū (~25–30 min ride). ⚠ From a central HOTEL door add ~20–30 min (walk to the trunk) → 55–70 min real; taxi ~40–60 min/0 changes and the hotel-doorstep Airport Limousine (~70 min) are the luggage-friendly versions (2026-07-27 audit). Station-anchored here because via-Tokyo airport compositions reuse this tail."),
   /* Narita, added 2026-09-09 for the trip kit: the second Tokyo airport, and the one most long-haul
@@ -521,7 +522,7 @@ const LEGS={
      the same hotel-door caveat; 1.1 = the 53–60-min ride plus the platform walk and the wait. */
   "tokyo>nrt":L(1.1,0,"train","JR Narita Express (N'EX) Tokyo Station→Narita Airport Terminal 2·3 ~53 min, Terminal 1 ~56–60 min — direct, 1–2 an hour (JR East timetable; japan-guide Narita access). ⚠ From a central HOTEL door add ~20–30 min to reach the trunk → ~1h20 real; the door-to-terminal Airport Limousine bus from the big hotels runs ~85–120 min depending on traffic, and the Keisei Skyliner from Ueno/Nippori is ~41–46 min if you are staying on that side."),
   "fukuoka>fuk":L(0.3,0,"subway","Fukuoka City Subway Hakata→Fukuoka Airport (2 stops, ~5 min)."),
-  "nagasaki>ngs":L(1.0,0,"bus","Airport limousine bus Nagasaki Station→Nagasaki Airport (~45 min)."),
+  "nagasaki>ngs":L(0.75,0,"bus","Airport limousine bus Nagasaki Station→Nagasaki Airport (~45 min)."),
   "unzen>ngs":L(1.25,0,"car","Rental car Unzen Onsen→Nagasaki Airport (Ōmura): R57 down the mountain → Chijiwa → Isahaya → airport, ~70–80 min (KAI Unzen access page says 70 min; JNTO says about 1h20). The car is the point of an Unzen night on a Nagasaki flight — the buses go through Nagasaki city.",{car:1,drive:1}),
   "takachiho>kmj":L(2.0,0,"car","Rental car Takachiho→Aso Kumamoto Airport: R218/R325 via Takamori and the Aso caldera to the airport at Mashiki, approx. 2 hours per the Takachiho tourism association (the buses are one a day and change at Aso Station).",{car:1,drive:1}),
   "kumamoto>kmj":L(0.9,0,"bus","Airport limousine bus Kumamoto Stn/Sakuramachi→Kumamoto Airport (KMJ) at Mashiki (~55 min)."),
@@ -531,7 +532,7 @@ const LEGS={
      resolving to a region-hub estimate that sent the traveller through the city first. */
   "kirishima>koj":L(0.75,0,"bus","Kagoshima Airport is Myōken's own gateway, ~30 km up the Amori river: the ¥450 Myōken route bus KOJ→Myōken Onsen runs ~25 min (Kirishima City's Myōken bus page; Kagoshima Kōtsū airport-bus timetable, Sep 2026), a pre-called taxi ~15 min. ~45 min door to door with bags. ⚠ Only ~8 airport departures a day on that bus, the inn's own shuttle-taxi was discontinued pre-Mar-2026, and called taxis want ~40 min notice."),
   "kanazawa>kmq":L(0.8,0,"bus","Hokutetsu airport limousine Kanazawa Station→Komatsu Airport (KMQ), ~40–50 min, timed to the departures — the same bus leg the Kanazawa→Kyushu flight legs are built on. KMQ is Kanazawa's own airport; ANA/Oriental Air Bridge fly it to Fukuoka ~4×daily (~1h40)."),
-  "hiroshima>hij":L(1.1,0,"bus","Airport limousine bus Hiroshima Station→Hiroshima Airport (~50 min; no rail link)."),
+  "hiroshima>hij":L(0.85,0,"bus","Airport limousine bus Hiroshima Station→Hiroshima Airport (~50 min; no rail link)."),
   /* ── Domestic flight HOME: regional airport → Haneda. Haneda is the fixed international departure, so
      any route that exits via another airport still has to fly to HND — departLeg() appends one of these
      onto the ground leg that reaches the terminal. Block times (air + a light pad; the change from
@@ -559,7 +560,7 @@ const LEGS={
   "yugashima>hnd":L(2.25,2,"train","Inn courtesy car→Shuzenji (~20 min), Izuhakone Sunzu line→Mishima (~35 min), Tōkaidō Shinkansen Mishima→Shinagawa (~40 min), Keikyū→Haneda (~18 min) — Izu drops straight down to HND, no Tokyo backtrack.",{car:1}),
   "izu>hnd":L(2.0,2,"train","Taxi/shuttle→Shuzenji, Izuhakone Sunzu line→Mishima (~35 min), Tōkaidō Shinkansen Mishima→Shinagawa (~40 min), Keikyū→Haneda (~18 min)."),
   "hakone>hnd":L(2.2,2,"train","Direct Tozan BUS Gōra/Sengokuhara→Odawara (~45 min — one seat; the Tozan rail needs an extra change at Hakone-Yumoto), Tōkaidō Shinkansen Odawara→Shinagawa (~30 min), Keikyū→Haneda (~18 min); or the direct Odawara→HND limousine bus (~85 min)."),
-  "oyama>hnd":L(2.25,1,"car","Hotel car→Mishima (~40 min), Tōkaidō Shinkansen Mishima→Shinagawa (~40 min), Keikyū→Haneda (~18 min).",{car:1}),
+  "oyama>hnd":L(1.9,1,"car","Hotel car→Mishima (~40 min), Tōkaidō Shinkansen Mishima→Shinagawa (~40 min), Keikyū→Haneda (~18 min).",{car:1}),
   "kawaguchiko>hnd":L(3,1,"train","JR 'Fuji Excursion' Kawaguchiko→Shinjuku (~2h, direct), then the airport limousine bus Shinjuku→Haneda (~45 min). ⚠ limited morning Fuji departures.",{awkward:1}),
   "koshu>hnd":L(2.5,1,"train","JR Chūō Ltd Exp 'Azusa'→Shinjuku (~1h30), airport limousine bus Shinjuku→Haneda (~45 min)."),
   "kobuchizawa>hnd":L(3.1,1,"train","JR Chūō Ltd Exp 'Azusa' Kobuchizawa→Shinjuku (~2h), airport limousine bus Shinjuku→Haneda (~45 min)."),
@@ -629,8 +630,8 @@ const LEGS={
   "osaka>kanazawa":L(2.75,1,"train","Ltd Exp 'Thunderbird' Osaka Stn→Tsuruga (~1h20), ~10-min change at Tsuruga, Hokuriku Shinkansen Tsuruga→Kanazawa (~40 min) — ~2h10–2h30 station to station. Departs central Osaka, so there is no Shin-Osaka hop; the Tsuruga change is the one the Mar 2024 extension imposed (the one-seat Thunderbird to Kanazawa is gone). ⚠ January snow on the Hokuriku coast delays this corridor.",{awkward:1}),
   "osaka>kinosaki":L(2.75,0,"train","Ltd Exp 'Kōnotori' Osaka Stn→Kinosaki Onsen (~2h40, direct, no change; ¥5,940–6,540, seat reservation mandatory). Central Osaka departure — the Kyoto twin ('Kinosaki' Ltd Exp, ~2h30) is barely shorter, so base city doesn't decide this one. (Zentan bus ~3h, ¥4,100, is the cheap alt.)"),
   "osaka>hakone":L(3.4,2,"shinkansen","Midōsuji hop Umeda→Shin-Osaka, Tōkaidō 'Hikari' Shin-Osaka→Odawara (~2h05 — the same ~2-hourly Odawara-calling 'Hikari' the hakone>kyoto leg uses at ~1h50 to Kyoto, plus the ~15-min Kyoto–Shin-Osaka segment; 'Nozomi' skips Odawara and all-'Kodama' is ~2h40), then the direct Tozan BUS Odawara→Gōra/Sengokuhara (~45 min, one seat; the Tozan rail adds a Hakone-Yumoto change)."),
-  "osaka>kix":L(1.1,0,"train","JR Ltd Exp 'Haruka' Osaka Stn→Kansai Airport ~45 min (¥2,380 unreserved; Shin-Osaka ~50 min, ¥2,540), or the Nankai 'Rapi:t' Osaka-Namba→KIX 35–40 min (¥1,520–1,670, reserved; the fastest services 34 min). Cheaper: Nankai airport express 45–50 min ¥970, JR Airport Rapid from Osaka Stn ~70 min ¥1,180, airport bus from Umeda ~60 min ¥1,800 / Namba ~45 min ¥1,400. ~1h door-to-door with bags and the terminal walk — airport processing on top."),
-  "osaka>itm":L(0.75,0,"bus","Airport limousine bus Osaka Stn/Umeda→Itami (~30 min, ¥730, multiple per hour); Shin-Osaka ~25 min ¥600, Namba/OCAT ~30 min ¥730. Rail alt: Hankyu Takarazuka Line Osaka-Umeda→Hotarugaike (15–20 min, ¥240) + Osaka Monorail one stop to Osaka Airport (2 min, ¥200) ≈ 25 min, ¥440. Itami is the close-in domestic airport — the reason a Kansai finale flies ITM→HND."),
+  "osaka>kix":L(0.8,0,"train","JR Ltd Exp 'Haruka' Osaka Stn→Kansai Airport ~45 min (¥2,380 unreserved; Shin-Osaka ~50 min, ¥2,540), or the Nankai 'Rapi:t' Osaka-Namba→KIX 35–40 min (¥1,520–1,670, reserved; the fastest services 34 min). Cheaper: Nankai airport express 45–50 min ¥970, JR Airport Rapid from Osaka Stn ~70 min ¥1,180, airport bus from Umeda ~60 min ¥1,800 / Namba ~45 min ¥1,400. ~1h door-to-door with bags and the terminal walk — airport processing on top."),
+  "osaka>itm":L(0.5,0,"bus","Airport limousine bus Osaka Stn/Umeda→Itami (~30 min, ¥730, multiple per hour); Shin-Osaka ~25 min ¥600, Namba/OCAT ~30 min ¥730. Rail alt: Hankyu Takarazuka Line Osaka-Umeda→Hotarugaike (15–20 min, ¥240) + Osaka Monorail one stop to Osaka Airport (2 min, ¥200) ≈ 25 min, ¥440. Itami is the close-in domestic airport — the reason a Kansai finale flies ITM→HND."),
   /* Kumamoto city added Jul 2026 — same completeness rule (every Kyushu inn loc → every Kyushu city),
      plus the Grand-Arc driving legs. Kyushu Ōdan bus through-runs Yufuin→Kurokawa→Aso→Kumamoto 3/day.
      Sourced prose in research/transit-notes.md. */
@@ -1141,7 +1142,7 @@ const LEGS={
   "kyoto>nagoya":L(0.9,0,"shinkansen","Tōkaidō 'Nozomi' Kyoto→Nagoya ~35 min (several an hour; 'Hikari'/'Kodama' 40–60 min), ¥5,170 unreserved / ~¥6,000 reserved. The shortest Shinkansen hop on the board."),
   "takayama>nagoya":L(2.75,0,"train","JR Ltd Exp 'Hida' Takayama→Nagoya, ~2h25 direct, 10 a day (hourly only ~11:30–16:30, 2h gaps outside), ¥5,610 unreserved / ¥6,140 reserved, + the 7-min walk from the inn/old town. ⚠ Snow-exposed — JR Central posts 大雪 advisories most Januaries, all-reserved Dec 25–Jan 5. Equal-time alternative when the line is under an advisory: the Nohi highway bus Takayama Nōhi BC→Meitetsu BC Nagoya, ~2h45, reserved."),
   "nikko>hnd":L(2.8,1,"train","Taxi to Tōbu-Nikkō (~5 min), Tōbu Ltd Exp 'Spacia X'/'Kegon' Tōbu-Nikkō→Asakusa (~1h50, 6–7 a day, all reserved), walk to the Toei Asakusa-line platforms (~5 min), then the through train Asakusa→Haneda Airport Terminal 1·2 (37 min, no change on the Keikyū through services — check the destination board, otherwise change at Sengakuji). One change, at Asakusa; no Tokyo Station detour."),
-  "nagoya>ngo":L(0.7,0,"train","Meitetsu 'μSKY' Meitetsu-Nagoya→Central Japan Airport (Centrair, NGO), 28 min, all-reserved, ¥1,430 (¥980 fare + ¥450 μ-ticket), ~2 an hour; the ordinary Meitetsu Ltd Exp ~38 min for the plain ¥980. Meitetsu-Nagoya is under the JR station's west side — allow 10 min to cross."),
+  "nagoya>ngo":L(0.5,0,"train","Meitetsu 'μSKY' Meitetsu-Nagoya→Central Japan Airport (Centrair, NGO), 28 min, all-reserved, ¥1,430 (¥980 fare + ¥450 μ-ticket), ~2 an hour; the ordinary Meitetsu Ltd Exp ~38 min for the plain ¥980. Meitetsu-Nagoya is under the JR station's west side — allow 10 min to cross."),
   "kyoto>hatsukaichi":L(2.4,1,"train","Shinkansen Kyoto→Hiroshima (~1h40), JR ~25 min toward Miyajimaguchi + short taxi."),
   "kyoto>miyajima":L(2.7,2,"train","Shinkansen Kyoto→Hiroshima (~1h40), JR to Miyajimaguchi + ferry (~40 min), then ~3-min walk."),
   "kyoto>nara":L(0.75,0,"train","Kintetsu Kyoto→Kintetsu-Nara (~45 min), ~5-min taxi."),

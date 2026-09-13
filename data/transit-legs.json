@@ -517,7 +517,7 @@
   {
    "from": "arima",
    "to": "kix",
-   "hours": 2.6,
+   "hours": 2.1,
    "transfers": 1,
    "mode": "bus",
    "source": "researched",
@@ -1722,7 +1722,7 @@
   {
    "from": "hiroshima",
    "to": "hij",
-   "hours": 1.1,
+   "hours": 0.85,
    "transfers": 0,
    "mode": "bus",
    "source": "researched",
@@ -1732,7 +1732,7 @@
   {
    "from": "hiroshima",
    "to": "itm",
-   "hours": 3,
+   "hours": 2.1,
    "transfers": 1,
    "mode": "shinkansen",
    "source": "researched",
@@ -1742,7 +1742,7 @@
   {
    "from": "hiroshima",
    "to": "kix",
-   "hours": 3.5,
+   "hours": 2.4,
    "transfers": 1,
    "mode": "shinkansen",
    "source": "researched",
@@ -4615,7 +4615,7 @@
   {
    "from": "kyoto",
    "to": "kix",
-   "hours": 1.5,
+   "hours": 1.25,
    "transfers": 0,
    "mode": "train",
    "source": "researched",
@@ -5229,7 +5229,7 @@
   {
    "from": "nagasaki",
    "to": "ngs",
-   "hours": 1,
+   "hours": 0.75,
    "transfers": 0,
    "mode": "bus",
    "source": "researched",
@@ -5239,7 +5239,7 @@
   {
    "from": "nagoya",
    "to": "ngo",
-   "hours": 0.7,
+   "hours": 0.5,
    "transfers": 0,
    "mode": "train",
    "source": "researched",
@@ -5306,7 +5306,7 @@
   {
    "from": "nara",
    "to": "kix",
-   "hours": 1.9,
+   "hours": 1.4,
    "transfers": 1,
    "mode": "train",
    "source": "researched",
@@ -5723,7 +5723,7 @@
   {
    "from": "osaka",
    "to": "itm",
-   "hours": 0.75,
+   "hours": 0.5,
    "transfers": 0,
    "mode": "bus",
    "source": "researched",
@@ -5755,7 +5755,7 @@
   {
    "from": "osaka",
    "to": "kix",
-   "hours": 1.1,
+   "hours": 0.8,
    "transfers": 0,
    "mode": "train",
    "source": "researched",
@@ -5808,7 +5808,7 @@
   {
    "from": "oyama",
    "to": "hnd",
-   "hours": 2.25,
+   "hours": 1.9,
    "transfers": 1,
    "mode": "car",
    "source": "researched",
