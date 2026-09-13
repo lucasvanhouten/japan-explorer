@@ -334,7 +334,7 @@
    "to": "karatsu",
    "hours": 3.3,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -350,8 +350,7 @@
    "mode": "car",
    "source": "researched",
    "flags": {
-    "car": 1,
-    "drive": 1
+    "car": 1
    },
    "route": "By car ~1h10 via the Five Bridges, Misumi and R57 — coastal and effectively snow-proof. Carless parity (~1¼h): 15-min Takarajima-Line boat Matsushima Port⇄Misumi port (+2-min walk to the station) or 20-min taxi, then Misumi Line⇄Kumamoto ~50–60 min — both Tayuta and Amanojyaku sync pickups. ('Amakusa-gō' rapid bus Matsushima→Sakuramachi BT ~1h20, ~9/day, no reservation.)"
   },
@@ -384,7 +383,7 @@
    "to": "unzen",
    "hours": 2.5,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -1799,7 +1798,7 @@
    "to": "amakusa",
    "hours": 2.5,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -1822,7 +1821,7 @@
    "to": "karatsu",
    "hours": 2,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -1845,7 +1844,7 @@
    "to": "kurokawa",
    "hours": 1.25,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -1870,7 +1869,7 @@
    "to": "takachiho",
    "hours": 3,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -1883,7 +1882,7 @@
    "to": "takeo",
    "hours": 1.5,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -1896,7 +1895,7 @@
    "to": "unzen",
    "hours": 2.7,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -3653,7 +3652,7 @@
    "to": "amakusa",
    "hours": 4,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -3667,7 +3666,7 @@
    "to": "hita",
    "hours": 3.6,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -3691,7 +3690,7 @@
    "to": "karatsu",
    "hours": 3.75,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -3725,7 +3724,7 @@
    "to": "kurokawa",
    "hours": 3.4,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -3751,7 +3750,7 @@
    "to": "takachiho",
    "hours": 3.7,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -3765,7 +3764,7 @@
    "to": "takeo",
    "hours": 3.5,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -3779,7 +3778,7 @@
    "to": "unzen",
    "hours": 3.5,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -3805,7 +3804,7 @@
    "to": "yufuin",
    "hours": 3.9,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -4407,7 +4406,7 @@
    "to": "amakusa",
    "hours": 2.9,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -4421,9 +4420,12 @@
    "to": "fukuoka",
    "hours": 2.5,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
-   "flags": {},
+   "flags": {
+    "car": 1,
+    "drive": 1
+   },
    "route": "Rental car ~117 km / ~2h30: R212 to Hita IC, Ōita Expwy → Tosu JCT → Kyushu Expwy → Dazaifu IC (Kurokawa Onsen Ryokan Association and Ichinoi access pages, 2026-09-13). Studless tyres Dec–Feb. Without a car: the direct highway bus Kurokawa→Hakata (~2.5–3h, reserve)."
   },
   {
@@ -4431,7 +4433,7 @@
    "to": "karatsu",
    "hours": 2.6,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -4478,7 +4480,7 @@
    "to": "takachiho",
    "hours": 1.15,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -4491,7 +4493,7 @@
    "to": "takeo",
    "hours": 2.25,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -4504,7 +4506,7 @@
    "to": "unzen",
    "hours": 3.75,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -6454,7 +6456,7 @@
    "to": "amakusa",
    "hours": 3.2,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -6480,7 +6482,7 @@
    "to": "karatsu",
    "hours": 3.4,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -6493,9 +6495,12 @@
    "to": "kmj",
    "hours": 2,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
-   "flags": {},
+   "flags": {
+    "car": 1,
+    "drive": 1
+   },
    "route": "Rental car Takachiho→Aso Kumamoto Airport: R218/R325 via Takamori and the Aso caldera to the airport at Mashiki, approx. 2 hours per the Takachiho tourism association (the buses are one a day and change at Aso Station)."
   },
   {
@@ -6503,7 +6508,7 @@
    "to": "kumamoto",
    "hours": 2,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -6528,7 +6533,7 @@
    "to": "takeo",
    "hours": 3,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -7073,7 +7078,7 @@
    "to": "karatsu",
    "hours": 1,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -8337,7 +8342,7 @@
    "to": "karatsu",
    "hours": 2.25,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -8362,9 +8367,12 @@
    "to": "nagasaki",
    "hours": 1.25,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
-   "flags": {},
+   "flags": {
+    "car": 1,
+    "drive": 1
+   },
    "route": "Rental car ~47 km / ~1h15 (R57 down the mountain → Chijiwa → Isahaya → Nagasaki) — only the top ~10 km of the descent carries ice risk (owner: Unzen assumes a car, 2026-09-13). Without a car: Ken-ei bus Unzen→Nagasaki (~1h40), or back to Isahaya and Ltd Exp on."
   },
   {
@@ -8372,9 +8380,12 @@
    "to": "ngs",
    "hours": 1.25,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
-   "flags": {},
+   "flags": {
+    "car": 1,
+    "drive": 1
+   },
    "route": "Rental car Unzen Onsen→Nagasaki Airport (Ōmura): R57 down the mountain → Chijiwa → Isahaya → airport, ~70–80 min (KAI Unzen access page says 70 min; JNTO says about 1h20). The car is the point of an Unzen night on a Nagasaki flight — the buses go through Nagasaki city."
   },
   {
@@ -8382,7 +8393,7 @@
    "to": "takachiho",
    "hours": 4,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -8396,7 +8407,7 @@
    "to": "takeo",
    "hours": 1.75,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -9129,7 +9140,7 @@
    "to": "amakusa",
    "hours": 3.1,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -9152,7 +9163,7 @@
    "to": "karatsu",
    "hours": 2.25,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -9175,7 +9186,7 @@
    "to": "nagasaki",
    "hours": 3,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -9198,7 +9209,7 @@
    "to": "takachiho",
    "hours": 2.5,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -9213,7 +9224,7 @@
    "to": "takeo",
    "hours": 1.75,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,
@@ -9226,7 +9237,7 @@
    "to": "unzen",
    "hours": 3.2,
    "transfers": 0,
-   "mode": "car",
+   "mode": "drive",
    "source": "researched",
    "flags": {
     "car": 1,

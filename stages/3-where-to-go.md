@@ -29,7 +29,7 @@ A **spine** is an order of major cities with decisions hanging off each city and
 
 5. **Serving the explorer.** The kit root ships `.claude/launch.json` with a configuration named `kit-explorer`. Start it with the preview tool on that name, then open `http://localhost:8790/guides/route-explorer.html#…`. **Never `file://`** — the page comes up blank and says nothing about why. **After every open, read the page's text and check the first stop's name is on it before saying it is showing.**
 
-**Where a region carries more than one route, show them all before any pick.** Kyushu has three, and they are different trips; roll each out in the four parts above, in the same message, before you say which you would take. Close on the question that separates them — inns first or cities first, the coast or the volcano, how much of the trip is spent moving — and ask that, not "which one?". **On Kyushu the two southern routes open at an inn:** the flight lands at Kagoshima and the first night is at Kirishima, a riverside hot-spring ryokan beside the airport; the north-east opens at Nagasaki, with Unzen and a rental car as the inn-first option. Fukuoka sits in the middle or is left out, never straight after Tokyo. **Hokkaido is the kit's thinnest route**: say so when you offer it, and help them research it with the appendix method.
+**Where a region carries more than one route, show them all before any pick.** Kyushu has three, and they are different trips; roll each out in the four parts above, in the same message, before you say which you would take. Close on the question that separates them — inns first or cities first, the coast or the volcano, how much of the trip is spent moving — and ask that, not "which one?". **On Kyushu the two southern routes open at an inn:** the flight lands at Kagoshima and the first night is at Kirishima, a riverside hot-spring ryokan beside the airport; the north-east opens at Nagasaki, with Unzen and a rental car as the inn-first option. Fukuoka sits in the middle or is left out, never straight after Tokyo. **A note under a route's header is said when you offer it** — Hokkaido's thin research, the Kyushu rental car and what the drive opens up.
 
 **Run the menu, never quote it.** `cd builder && node route.js spines --nights N --draws food,onsen` prints the nine ranked for the profile — offer them in that order. **A repeat visitor** gets `--repeat` on every run: routes that start straight in the region come first. A Tokyo-only start holds Tokyo to two or three nights, and says they have seen it. **The Kanazawa Loop is offered on every first trip**, ahead of Snow Country. Then **the roll call**: the other routes, a line each.
 
@@ -53,6 +53,10 @@ A **spine** is an order of major cities with decisions hanging off each city and
 - Hokkaido: **flag** 69 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
 
 *Hokkaido — read this first: The kit's thinnest route — the least research behind it, fewer inns and fewer researched journey times. Say so, and help them research the island (the appendix has the method) rather than treating these defaults as settled.*
+
+*Kyushu North & East — read this first: Assumes a rental car for the volcanic middle: collect it in Fukuoka, drop it at Kumamoto airport. Driving in Japan is easy even on the left — quiet roads, English signs and satnav, automatic cars — and it is the only way to see the middle of the island: the Aso caldera, Kurokawa's lanes, the Takachiho gorge. US and most licences need an International Driving Permit, bought at home. Unzen at the start is the same: a car from the Nagasaki flight, an hour to the inn.*
+
+*Kyushu South & West — read this first: Run from a Nagasaki flight with Unzen first, it starts with a rental car: an hour from the airport to the inn, then down to Nagasaki.*
 <!-- /generated:spines-menu -->
 
 ### Walk the spine
@@ -230,7 +234,7 @@ Tokyo and the north, then Kanazawa and onward. Tokyo, then north into the snow, 
 |---|---|---|
 | in from Haneda (HND) | — | 36 min train |
 | Tokyo | 4 | 1h40 train |
-| Minakami / Tanigawa (snow country) | 1 | 1h24 taxi |
+| Minakami / Tanigawa (snow country) | 1 | 1h24 car (rental or taxi) |
 | Echigo-Yuzawa (snow country) | 1 | 3h30 train |
 | Kanazawa | 3 | 2h30 train |
 | Kyoto | 3 | 1h30 train · out to Kansai (KIX) |
@@ -319,9 +323,9 @@ Tokyo and Kyushu, the west coast and the volcanic middle. Nagasaki and the Takeo
 | Tokyo | 4 | 4h15 flight |
 | Nagasaki | 2 | 42 min train |
 | Takeo Onsen | 1 | 1h train |
-| Fukuoka (Hakata) | 3 | 2h30 taxi |
-| Kurokawa Onsen | 1 | 1h09 taxi |
-| Takachiho | 1 | 2h taxi |
+| Fukuoka (Hakata) | 3 | 2h30 drive |
+| Kurokawa Onsen | 1 | 1h09 drive |
+| Takachiho | 1 | 2h drive |
 | Kumamoto | 1 | 54 min bus · out to Kumamoto (KMJ) |
 
 Stop string: `plan "tokyo:4,nagasaki:2,takeo:1,fukuoka:3,kurokawa:1,takachiho:1,kumamoto:1" --in HND --out KMJ`

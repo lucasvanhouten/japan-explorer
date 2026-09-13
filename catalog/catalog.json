@@ -4,7 +4,7 @@
   "site": "https://ryokancatalog.com",
   "as_of": "2026-09-07",
   "count": 199,
-  "src_sha": "a16a8fc99bab889b199a4c78278abec9f980eea2a153a296c57a853271792c0d",
+  "src_sha": "aca541190ec170b3af427d5b4762abf4fe2ca466834b57e56491102142049e40",
   "score_scale": "1-10 overall (evidence-adjusted), 1-5 per aspect",
   "source": "KI-NRT's FlyerTalk 'Japan Luxury Ryokans' thread + TripAdvisor + Japanese booking sites"
  },
@@ -639,11 +639,11 @@
     "cities": [
      {
       "city": "Fukuoka",
-      "hours": 2.7,
-      "time": "2h40",
+      "hours": 2.5,
+      "time": "2h30",
       "transfers": 0,
       "estimated": false,
-      "text": "Reverse of: Direct highway bus Kurokawa→Hakata/Fukuoka (~2.5–3h, reserve) — no train changes at all."
+      "text": "Reverse of: Rental car ~117 km / ~2h30: R212 to Hita IC, Ōita Expwy → Tosu JCT → Kyushu Expwy → Dazaifu IC (Kurokawa Onsen Ryokan Association and Ichinoi access pages, 2026-09-13). Studless tyres Dec–Feb. Without a car: the direct highway bus Kurokawa→Hakata (~2.5–3h, reserve)."
      },
      {
       "city": "Kagoshima",
@@ -663,11 +663,11 @@
      },
      {
       "city": "Kumamoto",
-      "hours": 2.6,
-      "time": "2h35",
+      "hours": 1.85,
+      "time": "1h50",
       "transfers": 0,
       "estimated": false,
-      "text": "Reverse of: Kyushu Ōdan bus one-seat Kurokawa→Kumamoto Stn (~2h38; 3/day down, only 2/day back up — reserve). Also stops at Kumamoto Airport (~1h50) en route. By car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice."
+      "text": "Reverse of: Rental car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice (owner: the volcanic middle assumes a car, 2026-09-13). Without a car: Kyushu Ōdan bus one-seat Kurokawa→Kumamoto Stn (~2h38; 3/day down, only 2/day back up — reserve). Also stops at Kumamoto Airport (~1h50) en route. By car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice."
      },
      {
       "city": "Tokyo",
@@ -2136,11 +2136,11 @@
      },
      {
       "city": "Nagasaki",
-      "hours": 1.7,
-      "time": "1h40",
+      "hours": 1.25,
+      "time": "1h15",
       "transfers": 0,
       "estimated": false,
-      "text": "Reverse of: Ken-ei bus Unzen→Nagasaki (~1h40), or back to Isahaya and Ltd Exp on. By car ~47 km / ~1h15 (R57 down the mountain → Chijiwa → Isahaya) — only the top ~10 km of the descent carries ice risk."
+      "text": "Reverse of: Rental car ~47 km / ~1h15 (R57 down the mountain → Chijiwa → Isahaya → Nagasaki) — only the top ~10 km of the descent carries ice risk (owner: Unzen assumes a car, 2026-09-13). Without a car: Ken-ei bus Unzen→Nagasaki (~1h40), or back to Isahaya and Ltd Exp on."
      },
      {
       "city": "Kumamoto",
@@ -3464,11 +3464,11 @@
     "cities": [
      {
       "city": "Fukuoka",
-      "hours": 2.7,
-      "time": "2h40",
+      "hours": 2.5,
+      "time": "2h30",
       "transfers": 0,
       "estimated": false,
-      "text": "Reverse of: Direct highway bus Kurokawa→Hakata/Fukuoka (~2.5–3h, reserve) — no train changes at all."
+      "text": "Reverse of: Rental car ~117 km / ~2h30: R212 to Hita IC, Ōita Expwy → Tosu JCT → Kyushu Expwy → Dazaifu IC (Kurokawa Onsen Ryokan Association and Ichinoi access pages, 2026-09-13). Studless tyres Dec–Feb. Without a car: the direct highway bus Kurokawa→Hakata (~2.5–3h, reserve)."
      },
      {
       "city": "Kagoshima",
@@ -3488,11 +3488,11 @@
      },
      {
       "city": "Kumamoto",
-      "hours": 2.6,
-      "time": "2h35",
+      "hours": 1.85,
+      "time": "1h50",
       "transfers": 0,
       "estimated": false,
-      "text": "Reverse of: Kyushu Ōdan bus one-seat Kurokawa→Kumamoto Stn (~2h38; 3/day down, only 2/day back up — reserve). Also stops at Kumamoto Airport (~1h50) en route. By car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice."
+      "text": "Reverse of: Rental car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice (owner: the volcanic middle assumes a car, 2026-09-13). Without a car: Kyushu Ōdan bus one-seat Kurokawa→Kumamoto Stn (~2h38; 3/day down, only 2/day back up — reserve). Also stops at Kumamoto Airport (~1h50) en route. By car ~77 km / ~1h50 via Senomoto + R57 (or the Milk Road rim), budget 2h15–2h30 in January — the Aso rim roads can gate-close in ice."
      },
      {
       "city": "Tokyo",

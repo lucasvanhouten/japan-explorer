@@ -223,8 +223,12 @@ const runId = (spec, opt) => crypto.createHash("sha1").update(`${spec}|${opt.in 
 function pivotOf(leg) { const m = /changes at ([^ (]+(?: [^ (]+)*?) \(/.exec(leg.text || ""); return m ? m[1] : "a hub"; }
 const rawLeg = (a, b) => B.LEGS[a + ">" + b] || B.LEGS[b + ">" + a];   // LEGS is authored once per pair, either way round
 const isFlight = (l) => !!l && (/flight/i.test(String(l.mode || "")) || !!(l.flags && l.flags.flight));
+/* a self-drive car leg (LEGS flag drive:1) is "drive"; a plain car leg is a taxi or a hire car (owner, 2026-09-13) */
+const modeOf = (l) => (l && l.mode === "car" && l.flags && l.flags.drive ? "drive" : (l && l.mode) || "train");
+const modeShown = (m) => (m === "car" ? "car (rental or taxi)" : m);
 function researchedDirect(a, b) { const f = B.LEGS[a + ">" + b], r = B.LEGS[b + ">" + a]; const l = f || r; if (!l || l.source === "estimated") return null;
-  return { t: l.t, mode: l.mode || "train", text: (f ? "" : "Reverse of: ") + (l.text || ""), flags: l.flags || {}, flight: isFlight(l) }; }
+  /* a self-drive car leg (LEGS flag drive:1) reads "drive"; a plain car leg is a taxi or a hire car (owner, 2026-09-13) */
+  return { t: l.t, mode: modeOf(l), text: (f ? "" : "Reverse of: ") + (l.text || ""), flags: l.flags || {}, flight: isFlight(l) }; }
 const halfH = (h) => ({ h: h.t[0], x: h.t[1], flightH: h.flight ? h.t[0] : 0 });
 const LEG_MEMO = new Map();
 function leg(a, b) { const k = a + ">" + b; if (!LEG_MEMO.has(k)) LEG_MEMO.set(k, legRaw(a, b)); return LEG_MEMO.get(k); }
@@ -232,8 +236,8 @@ function leg(a, b) { const k = a + ">" + b; if (!LEG_MEMO.has(k)) LEG_MEMO.set(k
 function legRaw(a, b) {
   if (a === b) return { h: 0, x: 0, flightH: 0, mode: "—", source: "table", text: "" };
   const L = B.legBetween(a, b);
-  if (L && L.source === "researched" && !L.composed) return { h: L.t[0], x: L.t[1], flightH: isFlight(L) ? L.t[0] : 0, mode: L.mode, source: "table", text: L.text, flags: L.flags };
-  if (L && L.composed) return { h: L.t[0], x: L.t[1], flightH: isFlight(L) ? L.t[0] : 0, mode: L.mode, source: "composed via " + pivotOf(L), text: L.text, flags: L.flags };
+  if (L && L.source === "researched" && !L.composed) return { h: L.t[0], x: L.t[1], flightH: isFlight(L) ? L.t[0] : 0, mode: modeOf(L), source: "table", text: L.text, flags: L.flags };
+  if (L && L.composed) return { h: L.t[0], x: L.t[1], flightH: isFlight(L) ? L.t[0] : 0, mode: modeOf(L), source: "composed via " + pivotOf(L), text: L.text, flags: L.flags };
   const cands = [];
   /* Stage 3: compose through a hub on two researched halves, +1 change for the join */
   HUBS.forEach((c) => { if (c === a || c === b) return; const h1 = researchedDirect(a, c), h2 = researchedDirect(c, b); if (!h1 || !h2) return;
@@ -256,7 +260,7 @@ function legRaw(a, b) {
 function airportLeg(loc, code) {
   const ap = AIRPORT[code]; if (!ap) throw new Error(`unknown airport ${code} (${AP_CODES.join(", ")})`);
   const lc = apKey(code), direct = rawLeg(loc, lc);
-  if (direct && direct.source !== "estimated") return { h: direct.t[0], x: direct.t[1], flightH: isFlight(direct) ? direct.t[0] : 0, mode: direct.mode || "train", source: "table", text: direct.text };
+  if (direct && direct.source !== "estimated") return { h: direct.t[0], x: direct.t[1], flightH: isFlight(direct) ? direct.t[0] : 0, mode: modeOf(direct), source: "table", text: direct.text };
   const cands = [];
   ap.hubs.forEach((hub) => { const acc = researchedDirect(hub, lc); if (!acc) return; const to = leg(loc, hub); if (to.estimated) return;
     cands.push({ h: to.h + acc.t[0], x: to.x + acc.t[1] + (loc === hub ? 0 : 1), flightH: to.flightH, mode: to.mode,
@@ -405,10 +409,10 @@ const isClean = (P) => !P.totals.unsourced && !P.checks.some((c) => c.level === 
 const mark = (c) => (c.level === "violation" ? "**!**" : c.level === "flag" ? "**flag**" : "·");
 /* a leg cell reads to the exact minute, as the corridor tables do, so a leg never prints two different times in
  * two places; the Totals line is the sum of those legs, read to five minutes (2026-09-13) */
-const legBody = (l) => (l.estimated ? "to confirm" : `${hm(l.h)} · ${l.x ? chg(l.x) : "direct"} · ${l.mode}${l.source === "table" ? "" : ` · ${l.source}`}`);
+const legBody = (l) => (l.estimated ? "to confirm" : `${hm(l.h)} · ${l.x ? chg(l.x) : "direct"} · ${modeShown(l.mode)}${l.source === "table" ? "" : ` · ${l.source}`}`);
 /* a composed airport leg prints both halves, in the direction travelled (an arrival reads airport → town) */
 const halfWhat = (h, back) => (back ? h.what.split(" → ").reverse().join(" → ") : h.what);
-const halvesTxt = (l) => (l.halves ? ` (${(l.kind === "in" ? l.halves.slice().reverse() : l.halves).map((h) => `${halfWhat(h, l.kind === "in")} ${hm(h.h)} · ${h.x ? chg(h.x) : "direct"} · ${h.mode}`).join("; ")})` : "");
+const halvesTxt = (l) => (l.halves ? ` (${(l.kind === "in" ? l.halves.slice().reverse() : l.halves).map((h) => `${halfWhat(h, l.kind === "in")} ${hm(h.h)} · ${h.x ? chg(h.x) : "direct"} · ${modeShown(h.mode)}`).join("; ")})` : "");
 function legCell(l) { const pre = l.kind === "in" ? `in from ${AIRPORT[l.code].label} · ` : l.kind === "out" ? `out to ${AIRPORT[l.code].label} · ` : "";
   return `↓ ${pre}${legBody(l)}${halvesTxt(l)}`; }
 const nightsCell = (st) => `${st.nights}${st.roomOnly ? " · room only" : ""}`;
@@ -560,7 +564,7 @@ function cmdExit(q, opt) { const loc = resolveLoc(q), ranked = airportsRanked(lo
   const two = ranked.slice(0, 2).map((a) => `**${a.label}** · ${hm(a.leg.h)} · ${chg(a.leg.x)} · ${a.leg.mode} · ${a.cls}`);
   const L = [`Nearest exits from ${label(loc)}: ${two.join("; then ")}.`, "", "| Airport | Door to door | Changes | Mode | Source | Flights |", "|---|---|---|---|---|---|"];
   ranked.forEach((a) => { const hr = hanedaRow(a.code);
-    L.push(`| ${a.label} | ${hm(a.leg.h)} | ${a.leg.x} | ${a.leg.mode} | ${a.leg.source}${halvesTxt(a.leg)} | ${a.cls}${!a.intl && hr ? ` (${hm(hr.t[0])} · ${hr.t[1] ? chg(hr.t[1]) : "direct"})` : ""} |`); });
+    L.push(`| ${a.label} | ${hm(a.leg.h)} | ${a.leg.x} | ${modeShown(a.leg.mode)} | ${a.leg.source}${halvesTxt(a.leg)} | ${a.cls}${!a.intl && hr ? ` (${hm(hr.t[0])} · ${hr.t[1] ? chg(hr.t[1]) : "direct"})` : ""} |`); });
   L.push("", ranked[0].leg.text); return L.join("\n"); }
 function cmdLegs(a, b, opt) {
   if (!a || !b) throw new Error("legs needs two places, e.g. `legs tokyo nikko`");
@@ -603,7 +607,7 @@ const capOf = (loc, opt) => { const p = placeOf(loc), r = rangeOf(loc, opt); ret
 const defaultOf = (loc, opt) => { const p = placeOf(loc), r = rangeOf(loc, opt); return Math.max(r[0], Math.min(p.default == null ? r[0] : p.default, r[1])); };
 /* hours to the nearest five minutes with one mode word — the timeline's leg cell (never a transfer count; those stay in the checks) */
 const hm5 = (h) => { let m = Math.round((h * 60) / 5) * 5; if (m === 0 && h > 0) m = 5; const H = Math.floor(m / 60), M = m % 60; return H ? `${H}h${M ? String(M).padStart(2, "0") : ""}` : `${M} min`; };
-const modeWord = (m) => { const s = String(m || "").toLowerCase(); return /flight|fly|plane/.test(s) ? "flight" : /car|taxi|drive/.test(s) ? "taxi" : /ferry|boat/.test(s) ? "ferry" : /bus|coach/.test(s) ? "bus" : "train"; };
+const modeWord = (m) => { const s = String(m || "").toLowerCase(); return /flight|fly|plane/.test(s) ? "flight" : /drive/.test(s) ? "drive" : /car|taxi/.test(s) ? "car (rental or taxi)" : /ferry|boat/.test(s) ? "ferry" : /bus|coach/.test(s) ? "bus" : "train"; };
 const legWord = (l) => (l.estimated ? "to confirm" : `${hm(l.h)} ${modeWord(l.mode)}`);
 
 function spineOf(ref) {

@@ -595,7 +595,7 @@ A **spine** is an order of major cities with decisions hanging off each city and
 
 5. **Serving the explorer.** The kit root ships `.claude/launch.json` with a configuration named `kit-explorer`. Start it with the preview tool on that name, then open `http://localhost:8790/guides/route-explorer.html#…`. **Never `file://`** — the page comes up blank and says nothing about why. **After every open, read the page's text and check the first stop's name is on it before saying it is showing.**
 
-**Where a region carries more than one route, show them all before any pick.** Kyushu has three, and they are different trips; roll each out in the four parts above, in the same message, before you say which you would take. Close on the question that separates them — inns first or cities first, the coast or the volcano, how much of the trip is spent moving — and ask that, not "which one?". **On Kyushu the two southern routes open at an inn:** the flight lands at Kagoshima and the first night is at Kirishima, a riverside hot-spring ryokan beside the airport; the north-east opens at Nagasaki, with Unzen and a rental car as the inn-first option. Fukuoka sits in the middle or is left out, never straight after Tokyo. **Hokkaido is the kit's thinnest route**: say so when you offer it, and help them research it with the appendix method.
+**Where a region carries more than one route, show them all before any pick.** Kyushu has three, and they are different trips; roll each out in the four parts above, in the same message, before you say which you would take. Close on the question that separates them — inns first or cities first, the coast or the volcano, how much of the trip is spent moving — and ask that, not "which one?". **On Kyushu the two southern routes open at an inn:** the flight lands at Kagoshima and the first night is at Kirishima, a riverside hot-spring ryokan beside the airport; the north-east opens at Nagasaki, with Unzen and a rental car as the inn-first option. Fukuoka sits in the middle or is left out, never straight after Tokyo. **A note under a route's header is said when you offer it** — Hokkaido's thin research, the Kyushu rental car and what the drive opens up.
 
 **Run the menu, never quote it.** `cd builder && node route.js spines --nights N --draws food,onsen` prints the nine ranked for the profile — offer them in that order. **A repeat visitor** gets `--repeat` on every run: routes that start straight in the region come first. A Tokyo-only start holds Tokyo to two or three nights, and says they have seen it. **The Kanazawa Loop is offered on every first trip**, ahead of Snow Country. Then **the roll call**: the other routes, a line each.
 
@@ -619,6 +619,10 @@ A **spine** is an order of major cities with decisions hanging off each city and
 - Hokkaido: **flag** 69 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
 
 *Hokkaido — read this first: The kit's thinnest route — the least research behind it, fewer inns and fewer researched journey times. Say so, and help them research the island (the appendix has the method) rather than treating these defaults as settled.*
+
+*Kyushu North & East — read this first: Assumes a rental car for the volcanic middle: collect it in Fukuoka, drop it at Kumamoto airport. Driving in Japan is easy even on the left — quiet roads, English signs and satnav, automatic cars — and it is the only way to see the middle of the island: the Aso caldera, Kurokawa's lanes, the Takachiho gorge. US and most licences need an International Driving Permit, bought at home. Unzen at the start is the same: a car from the Nagasaki flight, an hour to the inn.*
+
+*Kyushu South & West — read this first: Run from a Nagasaki flight with Unzen first, it starts with a rental car: an hour from the airport to the inn, then down to Nagasaki.*
 <!-- /generated:spines-menu -->
 
 ### Walk the spine
@@ -796,7 +800,7 @@ Tokyo and the north, then Kanazawa and onward. Tokyo, then north into the snow, 
 |---|---|---|
 | in from Haneda (HND) | — | 36 min train |
 | Tokyo | 4 | 1h40 train |
-| Minakami / Tanigawa (snow country) | 1 | 1h24 taxi |
+| Minakami / Tanigawa (snow country) | 1 | 1h24 car (rental or taxi) |
 | Echigo-Yuzawa (snow country) | 1 | 3h30 train |
 | Kanazawa | 3 | 2h30 train |
 | Kyoto | 3 | 1h30 train · out to Kansai (KIX) |
@@ -885,9 +889,9 @@ Tokyo and Kyushu, the west coast and the volcanic middle. Nagasaki and the Takeo
 | Tokyo | 4 | 4h15 flight |
 | Nagasaki | 2 | 42 min train |
 | Takeo Onsen | 1 | 1h train |
-| Fukuoka (Hakata) | 3 | 2h30 taxi |
-| Kurokawa Onsen | 1 | 1h09 taxi |
-| Takachiho | 1 | 2h taxi |
+| Fukuoka (Hakata) | 3 | 2h30 drive |
+| Kurokawa Onsen | 1 | 1h09 drive |
+| Takachiho | 1 | 2h drive |
 | Kumamoto | 1 | 54 min bus · out to Kumamoto (KMJ) |
 
 Stop string: `plan "tokyo:4,nagasaki:2,takeo:1,fukuoka:3,kurokawa:1,takachiho:1,kumamoto:1" --in HND --out KMJ`
@@ -1719,8 +1723,8 @@ The inns on the road between two cities, with what a night at each costs over go
 - **Changes cost more than the clock says.** Two hours with none is an easier day than ninety minutes with two.
 - **Times run both ways**, and each row is printed in whichever direction it was researched. Read From/To as a pair, not as an order. **A pair is missing only if it appears in neither direction** — scan for both places by name before writing a number down.
 - **Airports are a separate table**, and **every row in it runs both ways** — the transfer in on arrival is the same journey as the one out. Never reuse one airport's number for another serving the same city: Tokyo's two are an hour apart in opposite directions.
-- **Inn legs are not in these tables.** The journey from a gateway city to an inn is the `Reach` column of the master inn table in Stage 4, written `kyoto 3h/1 train` — hours, changes and mode, from the same researched leg table. **Every leg row carries a mode**, and the Reach tag gives you one. `in town` means the inn is in that city: no journey, no leg row. `changes to confirm` means the hours were researched and the changes were not: write `3h, changes to confirm`.
-- **A missing pair is COMPOSED out of two researched rows, and composing comes before `to confirm`.** Grep the full leg table first (step 4a). If `A→B` is absent there too, find a **hub city** from step 4's list the tables hold both halves through and take the fastest that works; sum the halves, **add one change for the join**, name both modes where they differ, and label the row `composed via <city>`. Kyoto→Haneda is the standard case: the corridor table has **Kyoto→Tokyo 2h45, 0 changes** and the airport table has **Tokyo→HND 36 min, 1 change**, so the leg is `2h45 + 36min = 3h21`, changes `0 + 1 + 1 for the join = 2`. Write both parts and show the sum — a plan that swallows the join understates the morning. Two halves at most (a three-part chain is a live lookup), both of them researched rows of these tables, and add the transfer time where the halves do not meet in the same station. A town with no flight row of its own may compose its airport transfer with the airport's flight row. A composed leg counts as sourced and is written as a time, never as "estimated"; `to confirm` is only for a pair no hub joins.
+- **Inn legs are not in these tables.** The journey from a gateway city to an inn is the `Reach` column of the master inn table in Stage 4, written `kyoto 3h/1 train` — hours, changes and mode. `in town` means the inn is in that city: no leg row. `changes to confirm` means the hours were researched and the changes were not: write `3h, changes to confirm`.
+- **A missing pair is COMPOSED out of two researched rows, and composing comes before `to confirm`.** Grep the full leg table first (step 4a). If `A→B` is absent there too, find a **hub city** from step 4's list the tables hold both halves through and take the fastest that works; sum the halves, **add one change for the join**, name both modes where they differ, and label the row `composed via <city>`. Kyoto→Haneda is the standard case: the corridor table has **Kyoto→Tokyo 2h45, 0 changes** and the airport table has **Tokyo→HND 36 min, 1 change**, so the leg is `2h45 + 36min = 3h21`, changes `0 + 1 + 1 for the join = 2`. Write both parts and show the sum. Two halves at most, both researched rows, plus the transfer time where the halves do not meet in one station. A town with no flight row of its own may compose its airport transfer with the airport's flight row. A composed leg counts as sourced and is written as a time, never as "estimated"; `to confirm` is only for a pair no hub joins.
 - **Okinawa is absent from the dataset:** a trip there means looking up every leg. Hokkaido's Sapporo hub, its towns and New Chitose are in the tables.
 - **For any gap:** look it up live — Google Maps, Jorudan or Navitime, station to station for the dates in question — say so in the plan and write it as an estimate. Never fill a hole from memory.
 - **Winter and mountains.** Mountain and coastal lines carry real weather delays in winter, and some run a handful of services a day. Leave slack, and never schedule a flight straight after one.
@@ -1730,12 +1734,12 @@ The inns on the road between two cities, with what a night at each costs over go
 
 Price the reverse of every order before you settle one — step 3 above — and check two things after a reorder. **No zig-zags, and the dinner rule survives it:** if the route passes a place, comes back and passes it again, resequence; three inn dinners in a row is still the cap, and a reorder can make a run of four.
 
-**The exit works.** Pick the airport you fly home from **last**, once the order is settled, and pick the one nearest the final stop: flying into one airport and home from another is the default, and doubling back across the country to leave from the one you landed at spends a day for nothing. The usual exits are **HND** and **NRT** for Tokyo, **KIX** for Kyoto and Osaka, **CTS** for Hokkaido, **NGO** for a route ending at Takayama or Nagoya, and **FUK**, **KOJ**, **NGS**, **KMJ** or **OIT** for Kyushu, whichever end of the island the route finishes at; any airport with a Haneda flight counts, Komatsu and Hiroshima included. A fixed Haneda ticket at the far end of a Kyushu or Hokkaido trip is the transfer to the nearest airport plus that airport's Haneda flight, both rows in the tables — or two Tokyo nights at the close, which is what the spines offer. A return ticket already booked out of one city settles the question before the route starts.
+**The exit works.** Pick the airport you fly home from **last**, once the order is settled: the one nearest the final stop; in through one airport and home from another is the default, and doubling back to the one you landed at spends a day for nothing. The usual exits are **HND** and **NRT** for Tokyo, **KIX** for Kyoto and Osaka, **CTS** for Hokkaido, **NGO** for a route ending at Takayama or Nagoya, and **FUK**, **KOJ**, **NGS**, **KMJ** or **OIT** for Kyushu, whichever end of the island the route finishes at; any airport with a Haneda flight counts, Komatsu and Hiroshima included. A fixed Haneda ticket at the far end of a Kyushu or Hokkaido trip is the transfer to the nearest airport plus its Haneda flight, both rows in the tables — or two Tokyo nights at the close, as the spines offer. A return ticket already booked settles it.
 
 ### Two practical things
 
 - **Luggage forwarding.** Hand a suitcase to the front desk in the morning and it reaches the next hotel the following afternoon for roughly the price of a couple of meals, while you travel with an overnight bag. Use it for mountain legs with changes and one-night stops. Two catches: it is **next-day, not same-day**, so keep a night's things with you, and some remote inns sit outside the fastest service areas.
-- **Is a rail pass worth it?** Sometimes. The nationwide pass rose sharply in 2023, so it no longer pays for itself on a trip that mostly sits in two cities. The test: add up the individual fares for the long journeys, compare with the pass price for the same days, buy only if it wins. Regional passes are often better value. Separately, **reserve seats** for long journeys with luggage, especially around New Year, the early-May holiday week and mid-August.
+- **Is a rail pass worth it?** Rarely since the 2023 price rise: add up the fares for the long journeys, compare with the pass for the same days, buy only if it wins; regional passes are often better value. Separately, **reserve seats** for long journeys with luggage, especially around New Year, the early-May holiday week and mid-August.
 
 ### If two versions of the trip are still alive
 
