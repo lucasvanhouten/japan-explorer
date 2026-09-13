@@ -136,11 +136,11 @@ Optional depth, all from the **`japan-trip-kit`** repository on GitHub (green **
 | `catalog/catalog.md` | The whole inn catalogue as one table, with scores and links — `catalog/by-region/<region>.md` is the same table for one region |
 | `guides/visualizing-the-trip.md` | How to draw the plan as a page a browser opens, with `guides/trip-visual-template.html` to fill in, `guides/design-principles.md` as its checklist and `guides/design-language.md` behind both |
 | `builder/index.html` | An offline tool that recalculates travel time as you assemble a route |
-| `builder/route.js` | The route engine, in the full kit: `spines` is the menu, `spine <id>` walks one, `plan` prices any stop string, `stays <place>` prints a stop's shortlist |
+| `builder/route.js` | The route figures, in the full kit: `spines` is the menu, `spine <id>` walks one, `plan` prices any stop string, `stays <place>` prints a stop's shortlist |
 | `guides/route-explorer.html` | The nine spines as a clickable page; it hands back a stop string for `plan` |
 | `examples/sample-plan.md` | A finished plan, so they can see the shape of the output |
 
-**Do:** say in **one sentence** which you can see — "I have the dining guide and the full travel-time table; the rest isn't here, which is fine." Then get on with the trip. Don't ask them to fetch anything. A missing file means falling back to what is embedded, or to https://ryokancatalog.com. Name a specific one only when it would improve the answer in front of you.
+**Do:** say in **one sentence** which you can see, by what it holds, never as an engine or a tool — "I have the dining guide and the full travel-time table; the rest isn't here, which is fine." Then get on with the trip. Don't ask them to fetch anything. A missing file means falling back to what is embedded, or to https://ryokancatalog.com. Name a specific one only when it would improve the answer in front of you.
 
 ### Is this copy current? — check once, at the start, never later
 
@@ -438,7 +438,7 @@ For the traveller who said "hot springs" and meant it. The compressed version �
 <!-- generated:card-hokkaido -->
 - **nights:** ideal 5–7 · minimum 4 · a flight each way and large internal distances
 - **places:**
-  - **Sapporo:** ideal 2–3 · minimum 2 · the island's hub and its food city
+  - **Sapporo:** ideal 3–5 · minimum 2 · the island's hub and its food city
   - **Niseko, Furano and Lake Akan inns:** ideal 1–2 · minimum 1 · one inn night; a second is for skiing
   - **Noboribetsu:** ideal 1 · minimum 1 · onsen town, the last night before the airport
   - **Otaru:** ideal 0–1 · minimum 0 · day trip from Sapporo on the airport train
@@ -592,17 +592,17 @@ Do      first the spine: run the menu at the profile's nights and offer the two 
         order — a city, its own extra night, what sits on the leg to the next city — with their options
         and descriptions as the tool prints them; give the reason for the default in a clause; after each
         answer re-price and show the timeline; move nights only when asked
-Ask     one decision per message, each message closing on that decision's question; the first ends by offering to open any option up
+Ask     one decision per message, each message closing on that decision's question; the first folds the offer to open any option into its question
 Output  the stop string and its timeline; then the itinerary table, opened
 Next    Stage 4 — where to stay.
 ```
 
 ### Choose the spine
 
-A **spine** is an order of major cities, with every decision hanging off a city or off the leg between two — which cities and which way round, a city's own extra night, the ryokan and stop towns on a leg, how the trip ends. Nine spines cover the country; the places they warmed to in Stage 2 sit on two or three. **Lead with the comparison, not a list**:
+A **spine** is an order of major cities, with every decision hanging off a city or off the leg between two. Nine spines cover the country; the places they warmed to in Stage 2 sit on two or three. **Lead with the comparison, not a list**:
 
 1. **A paragraph per route**, in your own words: what the trip feels like day to day, what each stop gives, what it trades away, how many times it moves. The name in bold; no id.
-2. **A side-by-side table**, one column per route: `| | <Route> | <Route> |`, rows **Stops** · **Nights by city** · **Inn nights** · **The extra** (what this route has that the other lacks) · **Travel** (hours, per night, check-ins) · then **one row per draw they gave** saying what each route does for it. **Every figure and every Stops row comes from one engine run per route at the profile's nights and ticket** — `spine <name> --total N --in X --out Y` — and **the walk opens on exactly that assembly**: a default that switches with the length (Nara from 12 nights) is already in the comparison, never a surprise later. The ticket settles the start and the ending too, so comparison and walk open on the same route; the menu already ranks the ones that open where they land and close where they fly home first.
+2. **A side-by-side table**, one column per route: `| | <Route> | <Route> |`, rows **Stops** · **Nights by city** · **Inn nights** · **The extra** (what this route has that the other lacks) · **Travel** (hours, per night, check-ins) · then **one row per draw they gave** saying what each route does for it. **Every figure and every Stops row comes from one engine run per route at the profile's nights and ticket** — `spine <name> --total N --in X --out Y` — and **the walk opens on exactly that assembly**: a default that switches with the length (Nara from 12 nights) is already in the comparison, never a surprise later. The menu ranks first the routes that open where they land and close where they fly home.
 3. **"Pick A if… Pick B if…"** — one paragraph tying each route to their profile's words, and which you would take.
 4. **The closing line**, plus the offer to look: *"want more on any of them, a different mix, or to open the route explorer and play with them?"* — `guides/route-explorer.html` opens on a route when its address carries the settled facts — `#spine=the-kanazawa-loop&nights=14&in=HND&out=KIX`, the route's name as a slug — give them that address when they say yes.
 
@@ -618,12 +618,12 @@ A **spine** is an order of major cities, with every decision hanging off a city 
 | **Stretched West** · 12–19 nights | A first trip with two weeks or more. | Tokyo → Hakone → Kyoto → Hiroshima | 12 | 8h50 | 1 | 0 | Haneda (HND) / Hiroshima (HIJ) |
 | **Snow Country** · 9–16 nights | Winter: snow country and the northern hot-spring towns. | Tokyo → Minakami / Tanigawa → Echigo-Yuzawa → Kanazawa → Kyoto | 13 | 11h10 | 2 | 0 | Haneda (HND) / Kansai (KIX) |
 | **The Long Line** · 11–18 nights | Kyushu without a flight: one train line the whole way. | Tokyo → Hakone → Kyoto → Hiroshima → Fukuoka | 14 | 9h05 | 1 | 0 | Haneda (HND) / Fukuoka (FUK) |
-| **Hokkaido** · 8–12 nights | The northern island in snow. The kit is thin here: no hotel rows in Sapporo, and one mountain town to sleep in. | Tokyo → Sapporo → Niseko → Sapporo | 8 | 11h20 (78 min per night) | 1 | 1 | Haneda (HND) / New Chitose (CTS) |
+| **Hokkaido** · 8–12 nights | The northern island in snow. The kit is thin here: no hotel rows in Sapporo, and one mountain town to sleep in. | Tokyo → Sapporo → Niseko → Sapporo | 9 | 11h20 (69 min per night) | 1 | 1 | Haneda (HND) / New Chitose (CTS) |
 | **Kyushu South & East** · 11–19 nights | Kyushu when the hot springs are the point. | Tokyo → Fukuoka → Amagase → Yufuin → Kagoshima → Kirishima | 12 | 11h40 | 3 | 1 | Haneda (HND) / Kagoshima (KOJ) |
 | **Kyushu North & East** · 10–17 nights | Kyushu on a shorter trip, either way round. | Tokyo → Nagasaki → Takeo Onsen → Fukuoka → Amagase → Yufuin | 12 | 10h20 | 3 | 1 | Haneda (HND) / Ōita (OIT) |
 | **Kyushu South & West** · 11–20 nights | Kyushu for people who have done Tokyo and Kyoto. | Tokyo → Fukuoka → Takeo Onsen → Nagasaki → Kagoshima → Kirishima | 13 | 10h25 | 2 | 1 | Haneda (HND) / Kagoshima (KOJ) |
 
-- Hokkaido: **flag** 78 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
+- Hokkaido: **flag** 69 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
 <!-- /generated:spines-menu -->
 
 ### Walk the spine
@@ -632,7 +632,7 @@ A **spine** is an order of major cities, with every decision hanging off a city 
 
 ### Five principles
 
-1. **Explore first.** Once the spine is picked, the first message shows its default timeline and the first decision, and closes as Stages 2 and 4 do: *"want more on any of these, or a different mix?"*
+1. **Explore first.** Once the spine is picked, the first message shows its default timeline and the first decision, and closes on that decision's question with the offer folded in: *"Tokyo first, or straight into Kansai — or want more on either?"*
 2. **The default is the recommendation.** One option arrives taken, and you say why: *"Hakone is the default because it costs no travel — it sits on the line to Kyoto."* Then the alternatives as the tool prints them. Never name a place to sleep before they have chosen the area — that is Stage 4.
 3. **Re-price after every answer.** Each answer is a `--set`; the timeline that comes back is what they see next, what changed said in a clause.
 4. **Say what the spine can't do.** An option marked *not offered here*: name the nearest thing this spine does. **A place it does not reach** gets one no with its reason — *"Hokkaido is a trip of its own: a flight each way, and its own route."* Price it only if they ask again.
@@ -642,7 +642,7 @@ A **spine** is an order of major cities, with every decision hanging off a city 
 
 ### Where the decisions live
 
-A **city** carries its **CITY** switch — which cities, which way round — and at most one **attachment**: one extra night of its own, a yes or a no. Each **leg** carries **slots**: the **RYOKAN** and **STOP** towns on it, each a yes or a no, so a ryokan before a city and one after it are two answers rather than an either/or. The inn is Stage 4's, so towns only an expert would separate are one slot. **END** closes the trip. Nara never comes before Kyoto.
+A **city** carries its **CITY** switch — which cities, which way round — and at most one **attachment**: one extra night of its own, a yes or a no. Each **leg** carries **slots**: the **RYOKAN** and **STOP** towns on it, each a yes or a no. **END** closes the trip. Nara never comes before Kyoto.
 
 ### Walk it
 
@@ -666,9 +666,9 @@ Before and after get a row each:
 |---|---|---|---|---|---|---|---|---|
 | before | Tokyo → Hakone → Kyoto | 10 | 7h18 | 44 min | 3 | 1 | 0 | Haneda (HND) / Kansai (KIX) |
 
-Then the next decision; one with a single option is not asked. Nights stay at their defaults until they move one: `--nights <place>=N` for a stop (`=0` drops it), `--total N` for the length, either on the same line as a `--set`; an explicit `--nights` holds against the total. **A total outside the band still assembles**, and so does a place under its own range — say once what that costs. At 60 minutes of travel a night or more the engine prints a **`Lighter:`** line under the checks: a real assembly at the same length, its per-night figure and the one thing that changed. **Paste it beside the route they asked for and say which you would take, in one sentence**; over 60 with a city under its minimum is never left settled. `--nights <place>=1r` is a room-only night: no inn dinner, so the dinner run resets there. **When the nights asked cannot all be spent**, the engine names the ones left over: offer the Back to Tokyo ending, another city night, or a shorter trip; a city is never padded past its cap.
+Then the next decision; one with a single option is not asked. Nights stay at their defaults until they move one: `--nights <place>=N` for a stop (`=0` drops it), `--total N` for the length, both fine beside a `--set`; an explicit `--nights` holds against the total. **A total outside the band still assembles**, and so does a place under its range; say once what that costs. At 60 minutes of travel a night or more the engine prints a **`Lighter:`** line under the checks: a real assembly at the same length, its per-night figure and what changed. **Paste it beside the route they asked for and say which you would take**; over 60 with a city under its minimum is never left settled. `--nights <place>=1r` is a room-only night: no inn dinner, so the dinner run resets. **When the nights asked cannot all be spent**, the engine switches on the ryokan and stop nights it left off, then the Tokyo ending, and says so under What moved; only then does it name the nights left over: offer another city night or a shorter trip; a city is never padded past its cap.
 
-A booked ticket rides on every run as `--in <code> --out <code>`: it prices the last leg and removes nothing. The engine opens in the city they land in (Fukuoka, Nagasaki or Ōita on a Kyushu spine) and closes where they fly home when the route offers it (a Haneda flight home ends with two Tokyo nights); **a ticket into the far end** turns the spine round by itself and says so; `--repeat` starts a second visit in the region. Mid-walk, `--before "<the stop string on screen>"` makes Before the route they actually have; it is a `spine` flag, and `plan` has none. Two routes they cannot choose between are one `compare "<A>" "<B>"`; a stop string from the route explorer is priced by `plan "<stop string>"`.
+A booked ticket rides on every run as `--in <code> --out <code>`: it prices the last leg and removes nothing. The engine opens in the city they land in (Fukuoka, Nagasaki or Ōita on Kyushu) and closes where they fly home when the route offers it (a Haneda flight home ends with two Tokyo nights); **a ticket into the far end** turns the spine round and says so; `--repeat` starts a second visit in the region. Mid-walk, `--before "<the stop string on screen>"` makes Before the route they actually have; it is a `spine` flag, `plan` has none. Two routes they cannot choose between are one `compare "<A>" "<B>"`; a stop string from the explorer is priced by `plan "<stop string>"`.
 
 It checks ranges, split cities, the three-dinner run, doubling back, the exit airport, travel per night and that every leg is researched; an unresearched pair prints *to confirm*.
 
@@ -927,21 +927,22 @@ The northern island in snow, a flight each way. A flight each way, the island's 
 |---|---|---|
 | **Tokyo** | 1 · CITY · Where does the trip start? `start` | **1 Tokyo first** — Tokyo, then a flight to Sapporo. · 2 Straight into Sapporo — No Tokyo. |
 |  | 2 · RYOKAN · A night at Nikkō? `tokyo.nikko` | 1 Yes — Carved shrines in cedar forest north of Tokyo; out and back, so it splits the Tokyo stay. · **2 No** — No Nikkō; the Tokyo stay runs unbroken. |
-| **The end** | 3 · END · How does the trip end? `end` | **1 Fly home from New Chitose** — Out through Sapporo's airport. · 2 A hot-spring ryokan — A last night at Noboribetsu or Jōzankei, near the airport (no kit write-up at Noboribetsu; Jōzankei has one). · 3 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
+| **Niseko (Hirafu)** | 3 · CITY · A mountain night at Niseko? `mountain` | **1 Niseko** — The ski resort's inn night, two hours from Sapporo. · 2 No Niseko — Sapporo unbroken; a hot-spring night near the airport at the end instead. |
+| **The end** | 4 · END · How does the trip end? `end` | **1 Fly home from New Chitose** — Out through Sapporo's airport. · 2 A hot-spring ryokan — A last night at Noboribetsu or Jōzankei, near the airport (no kit write-up at Noboribetsu; Jōzankei has one). · 3 Back to Tokyo — Two more Tokyo nights and a Haneda flight home. |
 
-**Hokkaido** · 8 nights · 4 check-ins · 11h20 of travel · 78 min per night · 1 flight · in Haneda (HND), out New Chitose (CTS) · band 8–12
+**Hokkaido** · 9 nights · 4 check-ins · 11h20 of travel · 69 min per night · 1 flight · in Haneda (HND), out New Chitose (CTS) · band 8–12
 
 | Stop | Nights | Onward |
 |---|---|---|
 | in from Haneda (HND) | — | 36 min train |
 | Tokyo | 4 | 4h flight |
-| Sapporo | 2 | 3h bus |
+| Sapporo | 3 | 3h bus |
 | Niseko (Hirafu) | 1 | 3h bus |
 | Sapporo | 1 | 45 min train · out to New Chitose (CTS) |
 
-Stop string: `plan "tokyo:4,sapporo:2,niseko:1,sapporo:1" --in HND --out CTS`
+Stop string: `plan "tokyo:4,sapporo:3,niseko:1,sapporo:1" --in HND --out CTS`
 
-- **flag** 78 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
+- **flag** 69 min of travel per night — 60 minutes or more; say why (4h of it is flying, counted at 3h a leg) and show a lighter order beside it.
 <!-- /generated:spines -->
 
 ### The corridor and airport tables

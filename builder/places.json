@@ -1422,8 +1422,8 @@
   "kind": "city",
   "base": true,
   "ideal": [
-   2,
-   3
+   3,
+   5
   ],
   "minimum": 2,
   "region": "hokkaido",

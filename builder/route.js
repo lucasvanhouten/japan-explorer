@@ -907,9 +907,16 @@ function assembleSpine(sp, optIn) {
   const opt = Object.assign({}, optIn);
   const sets = parseSets(sp, opt.set);
   const asked = choicesOf(sp, sets, opt.total, opt.repeat, opt.in, opt.out);
+  const userSet = Object.assign({}, sets);   // what the user actually asked for by name; the filler below never overrides one
+  const droppedSets = [];
   /* the order is fixed (2026-09-13): the chosen options build the route first, then the nights they asked
-   * for land on it, then the total — so `--set` and `--nights` on one line always resolve together */
-  let { locs, cities, reversed, choices, unavailable, dropped: droppedSets } = assembleLocs(sp, asked, sets, opt);
+   * for land on it, then the total — so `--set` and `--nights` on one line always resolve together.
+   * One whole assembly for one set of answers: route → default nights → --nights → --total. It is a function
+   * because the nights filler below may switch an answer on and ask for the assembly again (2026-09-13). */
+  const build = (want) => {
+  const A = assembleLocs(sp, want, sets, opt);
+  A.dropped.forEach((m) => { if (!droppedSets.includes(m)) droppedSets.push(m); });
+  let locs = A.locs, cities = A.cities, reversed = A.reversed, choices = A.choices, unavailable = A.unavailable;
   if (!locs.length) throw new Error(`${sp.id}: the choices leave no stop`);
   let stops = defaultStops(locs, opt.repeat), steps = [];
   const dropped = [];
@@ -935,8 +942,51 @@ function assembleSpine(sp, optIn) {
   /* the default assembly is read at the band's low end at least: extra nights go to the cities in order */
   const band = bandOf(sp, locs), sum = stops.reduce((a, s) => a + s.nights, 0);
   const total = opt.total || (!(opt.nightsAt || []).length && sum < band[0] ? band[0] : null);
-  let fitNote = null;
-  if (total) { const f = fitTotal(stops, total, opt.repeat); steps = steps.concat(f.steps); fitNote = f.note; }
+  let fitNote = null, fitSteps = [];
+  if (total) { const f = fitTotal(stops, total, opt.repeat); fitSteps = f.steps; fitNote = f.note; }
+  return { locs, cities, reversed, choices, unavailable, stops, steps, fitSteps, fitNote, total };
+  };
+  let R = build(asked);
+  /* spend the nights asked before handing any back (QA round 10): with every city at its +1 ceiling and nights still
+   * over, a knowledgeable friend switches on the ryokan and stop nights this route left off — in trip order, one at a
+   * time, re-assembling each time — and then takes an ending that carries nights (the Tokyo close). Only the engine's
+   * own defaults move: an answer the user gave by name is never overridden, and nothing is padded past `capOf`. */
+  const shortOf = (r) => (r.fitNote && r.fitNote.kind === "unspent" ? r.fitNote.n : 0);
+  const switchSteps = [], extra = {};
+  if (R.total && shortOf(R)) {
+    const take = (d, j, line) => {
+      let T; try { T = build(Object.assign({}, asked, extra, { [d.key]: j })); } catch (e) { return null; }
+      /* only a switch that spends nights and spends them well: the shortfall has to fall, and the assembly must not
+       * end up under the city minimums or over the length asked for */
+      if (shortOf(T) >= shortOf(R) || (T.fitNote && T.fitNote.kind !== "unspent")) return null;
+      extra[d.key] = j; R = T; switchSteps.push(line); return T;
+    };
+    const askedAs = (d) => String((R.reversed && d.question_rev) || d.question || "").replace(/\?\s*$/, "").replace(/^./, (c) => c.toLowerCase());
+    for (const d of decisionsOf(sp)) {
+      if (!shortOf(R)) break;
+      if (!(d.kind === "inn" || d.kind === "stop") || userSet[d.key] != null) continue;
+      const cur = d.options[R.choices[d.key]]; if (cur && (cur.stops || []).length) continue;   // already on
+      const j = d.options.findIndex((o) => (o.stops || []).length);
+      if (j < 0 || whyNot(sp, d, d.options[j], R.choices, opt)) continue;
+      take(d, j, `${label(d.options[j].stops[0])} switched on to spend the nights asked (${askedAs(d)})`);
+    }
+    /* still short: the ending that carries nights, the one that spends most of what is left */
+    const endD = decisionsOf(sp).find((d) => d.owner.type === "end");
+    if (shortOf(R) && endD && userSet[endD.key] == null && !((endD.options[R.choices[endD.key]] || {}).stops || []).length) {
+      let best = null;
+      endD.options.forEach((o, j) => {
+        if (!(o.stops || []).length || whyNot(sp, endD, o, R.choices, opt)) return;
+        let T; try { T = build(Object.assign({}, asked, extra, { [endD.key]: j })); } catch (e) { return; }
+        if (shortOf(T) >= shortOf(R) || (T.fitNote && T.fitNote.kind !== "unspent")) return;
+        /* a repeat visitor who chose a region is not sent to Tokyo while another ending would spend the nights (QA round 10, h02) */
+        const tk = opt.repeat && (o.stops || []).includes("tokyo") ? 1 : 0;
+        if (!best || tk < best.tk || (tk === best.tk && shortOf(T) < best.short)) best = { j, o, short: shortOf(T), tk };
+      });
+      if (best) take(endD, best.j, `${best.o.label} taken as the ending to spend the nights asked`);
+    }
+  }
+  const { locs, cities, reversed, choices, unavailable, stops, fitNote, total } = R;
+  const steps = R.steps.concat(switchSteps, R.fitSteps);
   /* airports: a ticket given wins; else the option taken (a straight-in start, an END that names its airport), else the
    * spine's own; a leading or trailing Tokyo always reads Haneda (the spine's io line says the same in words) */
   const chosen = decisionsOf(sp).map((d) => d.options[choices[d.key]]);

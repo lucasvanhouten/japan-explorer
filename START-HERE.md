@@ -158,11 +158,11 @@ Optional depth, all from the **`japan-trip-kit`** repository on GitHub (green **
 | `catalog/catalog.md` | The whole inn catalogue as one table, with scores and links — `catalog/by-region/<region>.md` is the same table for one region |
 | `guides/visualizing-the-trip.md` | How to draw the plan as a page a browser opens, with `guides/trip-visual-template.html` to fill in, `guides/design-principles.md` as its checklist and `guides/design-language.md` behind both |
 | `builder/index.html` | An offline tool that recalculates travel time as you assemble a route |
-| `builder/route.js` | The route engine, in the full kit: `spines` is the menu, `spine <id>` walks one, `plan` prices any stop string, `stays <place>` prints a stop's shortlist |
+| `builder/route.js` | The route figures, in the full kit: `spines` is the menu, `spine <id>` walks one, `plan` prices any stop string, `stays <place>` prints a stop's shortlist |
 | `guides/route-explorer.html` | The nine spines as a clickable page; it hands back a stop string for `plan` |
 | `examples/sample-plan.md` | A finished plan, so they can see the shape of the output |
 
-**Do:** say in **one sentence** which you can see — "I have the dining guide and the full travel-time table; the rest isn't here, which is fine." Then get on with the trip. Don't ask them to fetch anything. A missing file means falling back to what is embedded, or to https://ryokancatalog.com. Name a specific one only when it would improve the answer in front of you.
+**Do:** say in **one sentence** which you can see, by what it holds, never as an engine or a tool — "I have the dining guide and the full travel-time table; the rest isn't here, which is fine." Then get on with the trip. Don't ask them to fetch anything. A missing file means falling back to what is embedded, or to https://ryokancatalog.com. Name a specific one only when it would improve the answer in front of you.
 
 ### Is this copy current? — check once, at the start, never later
 

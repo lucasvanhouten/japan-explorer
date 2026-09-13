@@ -1232,7 +1232,7 @@
      "default": 1,
      "question": "A ryokan night on the Amakusa islands?",
      "desc": "A ryokan night on the Amakusa islands, out past Kumamoto.",
-     "no": "Straight on to Fukuoka.",
+     "no": "Kumamoto on its own, then on.",
      "stops": [
       "amakusa"
      ]
@@ -1875,7 +1875,26 @@
      ]
     },
     "sapporo",
-    "niseko",
+    {
+     "kind": "city",
+     "key": "mountain",
+     "question": "A mountain night at Niseko?",
+     "default": 0,
+     "options": [
+      {
+       "label": "Niseko",
+       "desc": "The ski resort's inn night, two hours from Sapporo.",
+       "cities": [
+        "niseko"
+       ]
+      },
+      {
+       "label": "No Niseko",
+       "desc": "Sapporo unbroken; a hot-spring night near the airport at the end instead.",
+       "cities": []
+      }
+     ]
+    },
     "sapporo"
    ],
    "attach": [

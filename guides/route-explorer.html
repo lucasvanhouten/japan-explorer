@@ -376,6 +376,33 @@ function fit(sp){const st=stopsOf(sp),cnt={};st.forEach(s=>{cnt[s.loc]=(cnt[s.lo
  rows.nudge=diff===0||!cand.length?null:nm(cand[0].loc);
  return rows;}
 
+/* ---------- spend the nights asked before handing any back ----------
+ * the mirror of the engine's own rule in builder/route.js (QA round 10): when the target is more than the places on
+ * this route can hold — every city at its ceiling — the ryokan and stop nights the route left off are switched on in
+ * trip order, then an ending that carries nights. Only a default moves: anything the reader or the link chose stays. */
+const autoOn={};
+/* the most this assembly can hold the engine's way: every city up to its ceiling, the smaller places at their own count */
+function capacity(sp){const seen=new Set();let n=0;
+ stopsOf(sp).forEach(s=>{if(!BASE.has(s.loc)){n+=s.def;return;}if(seen.has(s.loc))return;seen.add(s.loc);n+=NQ(s.loc)[2];});return n;}
+function spendNights(sp){
+ Object.keys(autoOn).forEach(k=>{if(k.indexOf(sp.id+"/")===0&&sel[k]===autoOn[k]){delete sel[k];delete autoOn[k];}});
+ if(capacity(sp)>=target)return;
+ const take=(d,j)=>{const k=sp.id+"/"+d.key;sel[k]=j;autoOn[k]=j;};
+ const drop=d=>{const k=sp.id+"/"+d.key;delete sel[k];delete autoOn[k];};
+ for(const d of decs(sp)){if(capacity(sp)>=target)break;
+  if(!(d.kind==="inn"||d.kind==="stop")||sel[sp.id+"/"+d.key]!=null)continue;
+  const R=resolve(sp),cur=d.options[R.ch[d.key]];if(cur&&(cur.stops||[]).length)continue;
+  const j=d.options.findIndex(o=>(o.stops||[]).length);if(j<0||whyNot(sp,d,d.options[j],R.ch))continue;
+  take(d,j);}
+ const endD=decs(sp).find(d=>d.owner.type==="end");
+ if(capacity(sp)<target&&endD&&sel[sp.id+"/"+endD.key]==null){const R=resolve(sp);
+  if(!(((endD.options[R.ch[endD.key]]||{}).stops)||[]).length){
+   /* the ending that spends most of what is left, the earliest on a tie — the engine's own choice */
+   let best=null;endD.options.forEach((o,j)=>{if(!(o.stops||[]).length||whyNot(sp,endD,o,R.ch))return;
+    take(endD,j);const c=Math.min(capacity(sp),target);drop(endD);
+    const tk=REPEAT&&(o.stops||[]).includes("tokyo")?1:0;if(!best||tk<best.tk||(tk===best.tk&&c>best.c))best={j,c,tk};});
+   if(best&&best.c>Math.min(capacity(sp),target))take(endD,best.j);}}}
+
 /* ---------- the settled facts live in the URL hash ---------- */
 const slugOf=sp=>sp.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
 const words=sp=>slugOf(sp).split("-");
@@ -819,7 +846,7 @@ let lastSig=null;
 function render(){readHash();
  if(cur){const sd=startDec(cur),dd=dirDec(cur);
   const sig=[cur.id,target,sd?sel[cur.id+"/"+sd.key]:"",dd?sel[cur.id+"/"+dd.key]:""].join("|");
-  if(sig!==lastSig){lastSig=sig;delete fitPin[cur.id];}}
+  if(sig!==lastSig){lastSig=sig;delete fitPin[cur.id];spendNights(cur);}}
  app.innerHTML=pageHtml(cur);if(cur)fitMaps();}
 render();
 addEventListener("hashchange",render);

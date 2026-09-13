@@ -238,7 +238,7 @@ For the traveller who said "hot springs" and meant it. The compressed version �
 <!-- generated:card-hokkaido -->
 - **nights:** ideal 5–7 · minimum 4 · a flight each way and large internal distances
 - **places:**
-  - **Sapporo:** ideal 2–3 · minimum 2 · the island's hub and its food city
+  - **Sapporo:** ideal 3–5 · minimum 2 · the island's hub and its food city
   - **Niseko, Furano and Lake Akan inns:** ideal 1–2 · minimum 1 · one inn night; a second is for skiing
   - **Noboribetsu:** ideal 1 · minimum 1 · onsen town, the last night before the airport
   - **Otaru:** ideal 0–1 · minimum 0 · day trip from Sapporo on the airport train
