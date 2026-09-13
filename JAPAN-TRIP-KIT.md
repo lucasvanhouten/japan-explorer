@@ -550,7 +550,7 @@ Three products, mixed freely: hotels in the cities, and a hot-spring inn night w
 *Two links, once: **[KI-NRT's primer](https://www.flyertalk.com/forum/34617783-post1.html)**, the FlyerTalk thread author's introduction to Japanese inns, and **[ryokancatalog.com](https://ryokancatalog.com)**.*
 
 - **The deal.** Per person, both meals included. Dinner is usually **kaiseki**, ten or more small seasonal courses; breakfast is grilled fish, rice, miso soup, pickles, egg. The meals are half of what you pay for.
-- **The clock runs the day.** Arrive mid-afternoon, bathe, put on the robe, eat at your assigned time, bathe again, sleep. **Both meals start within a fixed window**, picked at booking; arriving late disrupts a kitchen cooking for twelve rooms. One night is the usual stay: arrive mid-afternoon, leave mid-morning.
+- **The clock runs the day.** Arrive mid-afternoon, bathe, put on the robe, eat at your assigned time, bathe again, sleep. **Both meals start within a fixed window** picked at booking; arriving late disrupts the kitchen. One night is the usual stay: sights before check-in and again after checkout, in a town that has them.
 - **Rooms vary enormously inside one building** — the single most useful thing to know. An entry-level room may be one tatami space serving as living room, dining room and bedroom, with **futon** laid out while you are at dinner; better categories add a sitting area, a garden view, real beds, or a **private open-air bath on your own terrace**. A disappointing stay at a famous inn is usually a room-category story: pay up one tier if you can.
 - **Onsen etiquette.** Communal baths are gender-segregated and **bathing is nude**. **Wash and rinse at the seated showers first**; towel and hair out of the water. The loaned **yukata** goes to the baths and to dinner.
 - **Tattoos.** Many rural communal baths still refuse visible tattoos, unevenly and inn by inn. The reliable answers are a **room with its own private bath** or a **rentable private bath** booked in a slot — ask the property, reserve early, check it is hot-spring-fed.
@@ -636,7 +636,7 @@ A **spine** is an order of major cities with decisions hanging off each city and
 1. **Explore first.** Once the spine is picked, the first message shows its default timeline and the first decision, and closes on that decision's question with the offer folded in: *"Tokyo first, or straight into Kansai — or want more on either?"*
 2. **The default is the recommendation.** One option arrives taken, and you say why: *"Hakone is the default because it costs no travel — it sits on the line to Kyoto."* Never volunteer a place to sleep before they have chosen the area — that is Stage 4 — but **a direct question about a town's inns or hotels gets its shortlist there and then**: `stays <place>`, the names linked, your pick first.
 3. **Re-price after every answer.** Each answer is a `--set`; the timeline that comes back is what they see next. **Every run prints an `Explorer:` address carrying the answers so far: open it in the browser pane when one is there (the Claude Code desktop app), so the page beside the chat shows the route as it stands after every answer; otherwise paste it. The stage's last message hands the final address.**
-4. **Say what the spine can't do.** An option marked *not offered here*: name the nearest thing this spine does. **A place it does not reach** gets one no with its reason — *"Hokkaido is a trip of its own: a flight each way, and its own route."*
+4. **Say what the spine can't do.** An option marked *not offered here*: name the nearest thing this spine does. **A place it does not reach** gets one no with its reason.
 5. **Never type a number.** Every figure is pasted from the engine.
 
 **Never name a principle to the user.**
@@ -669,11 +669,11 @@ Before and after get a row each:
 
 Then the next decision. `--nights <place>=N` moves a stop (`=0` drops it), `--total N` the length, both fine beside a `--set`; an explicit `--nights` holds against the total. **A total outside the band still assembles**, and so does a place under its range; say once what that costs. At 60 minutes of travel a night or more the engine prints a **`Lighter:`** line: a real assembly at the same length. **Paste it beside the route they asked for and say which you would take**; over 60 with a city under its minimum is never left settled. `--nights <place>=1r` is a room-only night: no inn dinner, so the dinner run resets. **When the nights asked cannot all be spent**, the engine switches on the ryokan and stop nights it left off, then the Tokyo ending, and says so under What moved; only then does it name the nights left over: offer another city night or a shorter trip; a city is never padded past its cap.
 
-A booked ticket rides on every run as `--in <code> --out <code>`: it prices the last leg. The engine opens in the city they land in (Fukuoka, Nagasaki or Ōita on Kyushu) and closes where they fly home when the route offers it (a Haneda return flies from the last city; the Tokyo close is offered); **a ticket into the far end** turns the spine round and says so; `--repeat` starts a second visit in the region. Mid-walk, `--before "<the stop string on screen>"` makes Before the route they actually have; it is a `spine` flag, `plan` has none. Two routes they cannot choose between are one `compare "<A>" "<B>"`; an explorer stop string is priced by `plan`.
+A booked ticket rides on every run as `--in <code> --out <code>`: it prices the last leg. The engine opens in the city they land in (Fukuoka, Nagasaki or Ōita on Kyushu) and closes where they fly home when the route offers it (a Haneda return flies from the last city; the Tokyo close is offered); **a ticket into the far end** turns the spine round and says so; `--repeat` starts a second visit in the region. Mid-walk, `--before "<the stop string on screen>"` makes Before the route they actually have; it is a `spine` flag, `plan` has none. `compare "<A>" "<B>"` sets two routes side by side; `plan` prices an explorer stop string.
 
-It checks ranges, the three-dinner run, doubling back, the exit airport, travel per night and every leg; an unresearched pair prints *to confirm*.
+It checks ranges, the dinner run, doubling back, the exit airport and every leg; an unresearched pair prints *to confirm*.
 
-**Without the engine**, walk the decisions from the tables below, price legs from the corridor tables, and label the result **unvalidated until run**; a missing leg is *to confirm*.
+**Without the engine**, walk the decisions from the tables below, price legs from the corridor tables, and label the result **unvalidated**.
 
 ### Tokyo's satellites
 
@@ -1041,7 +1041,7 @@ Gora Kadan Fuji, not as the write-up pastes but for a couple on their first ryok
 
 ### Two things to say out loud once
 
-- **A ryokan night is a fixed schedule.** Arrive mid-afternoon, dinner at a set hour, breakfast likewise, checkout late morning: not a full sightseeing day, and a late train can cost the dinner you paid for. Plan the travel day around check-in.
+- **A ryokan night is a fixed schedule, so shape the day around it.** Where there are sights (Nikkō, Takayama), take an early train, see the sights through the late morning and early afternoon, check in mid-afternoon; dinner and breakfast are at set hours; after checkout, two more hours of sights before the train on. A late arrival can cost the dinner you paid for.
 - **The price isn't like-for-like.** A ryokan's rate covers two substantial meals for two; a hotel's covers the room, so the gap is smaller than it looks.
 
 <!-- generated:catalog-howto -->

@@ -61,7 +61,7 @@ Gora Kadan Fuji, not as the write-up pastes but for a couple on their first ryok
 
 ### Two things to say out loud once
 
-- **A ryokan night is a fixed schedule.** Arrive mid-afternoon, dinner at a set hour, breakfast likewise, checkout late morning: not a full sightseeing day, and a late train can cost the dinner you paid for. Plan the travel day around check-in.
+- **A ryokan night is a fixed schedule, so shape the day around it.** Where there are sights (Nikkō, Takayama), take an early train, see the sights through the late morning and early afternoon, check in mid-afternoon; dinner and breakfast are at set hours; after checkout, two more hours of sights before the train on. A late arrival can cost the dinner you paid for.
 - **The price isn't like-for-like.** A ryokan's rate covers two substantial meals for two; a hotel's covers the room, so the gap is smaller than it looks.
 
 <!-- generated:catalog-howto -->
