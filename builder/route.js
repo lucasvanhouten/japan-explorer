@@ -1034,7 +1034,7 @@ function shapeLines(sp, P) {
   const endD = decisionsOf(sp).find((d) => d.owner.type === "end");
   const ends = endD ? endD.options.map((o, j) => off.has(`${endD.key}#${j}`) ? null : optWord(o, rev).label).filter(Boolean) : [];
   const ry = list("inn"), tw = list("stop");
-  const nights = [...new Set(P.cities || [])].map((c) => `${label(c)} ${rangeOf(c, { repeat: P.opt && P.opt.repeat }).join("–")}`);
+  const nights = [...new Set(P.cities || [])].map((c) => `${label(c)} ${[...new Set(rangeOf(c, { repeat: P.opt && P.opt.repeat }))].join("–")}`);
   return [`**Cities:** ${cities.join(" → ")}`, `**Ryokan nights:** ${ry.length ? ry.join(" · ") : "none on this route"}`,
     `**Town stops:** ${tw.length ? tw.join(" · ") : "none on this route"}`, `**Ending:** ${ends.join(" · ")}`, `**Usual nights:** ${nights.join(" · ")}`];
 }
