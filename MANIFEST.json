@@ -477,7 +477,7 @@
   "corridors": 176,
   "legs": 788,
   "region_cards": 13,
-  "front_door_words": 49495,
+  "front_door_words": 49499,
   "start_here_words": 4318,
   "stage_files": 6,
   "stays_files": 12
@@ -1409,7 +1409,7 @@
   "planning/route-data.js": "60597d20783fcea41ce9c43fc0b3249c61f6b5d8fb18b41c0cebf87aa7aca581",
   "planning/route-builder-logic.js": "9df6774082d09257021291374d3126b9f6db4c6422054f3f8a1b95aeaeaada60",
   "planning/build-kit.js": "afdd429a87ef09580672493a451177c7eb1b21b6e2765df55b7949d3aa9ba955",
-  "planning/kit-src/kit-hotels.json": "6b853e1632aaf20b12c0ebd4621123ec91bf9ac812baef98be1d082c72f5cd7a",
+  "planning/kit-src/kit-hotels.json": "960b74bd8f9c9fa19312b351b35e18b3deb9cda4e7e7a246023f0655745b728f",
   "planning/kit-src/pinned-inns.json": "e8dc52506ecff5f9085cd0883fef3bc76fb01aa64e7c0aeec1314b44c92f90ff",
   "planning/kit-src/places.json": "8ad92f43fbabfff59caea33ded75590b54a06cf9e563490d27ca6e3f5ce192c1",
   "planning/kit-src/tools/spines.json": "7beee1b388e0e3572c7afa52b3f2a141dacef6d2004df8689f5cebf8fc0d955c",
@@ -1460,8 +1460,8 @@
    "bytes": 25970
   },
   "JAPAN-TRIP-KIT.md": {
-   "sha256": "3368f8cbce7b311b59c32d8f42ff413639720d4043d2675c116c74007d172409",
-   "bytes": 292082
+   "sha256": "aeb8277020b7ec4c589d95f8a30347335c9816da4fc76c725078ad04f894026b",
+   "bytes": 292097
   },
   "LICENSE": {
    "sha256": "07ec166fe93c4e3dbf967df7418469abc0eb908f650a264fce26b019bdf3319c",
@@ -1508,8 +1508,8 @@
    "bytes": 1213
   },
   "builder/shortlist.json": {
-   "sha256": "9fee36c0ee7ef0a9acff931ea5371bbc72f449921e741cbef39b850b99437a93",
-   "bytes": 138129
+   "sha256": "80c0944803fa4080c12767c7a1e02a92c27aa0385e2132512d595848e9575f4b",
+   "bytes": 138144
   },
   "builder/spines.json": {
    "sha256": "7beee1b388e0e3572c7afa52b3f2a141dacef6d2004df8689f5cebf8fc0d955c",
@@ -1768,8 +1768,8 @@
    "bytes": 6063
   },
   "stays/tokyo.md": {
-   "sha256": "67859fd0af1b69a6500160573da69cd7a345ac5e7bf2a256678ec26b374b36c2",
-   "bytes": 12025
+   "sha256": "d863a01e70aa86ee3ebf4e1c20e6dc7eb4dffc7602ddd9438a71203deec418aa",
+   "bytes": 12040
   }
  }
 }
