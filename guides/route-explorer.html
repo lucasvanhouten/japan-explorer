@@ -136,10 +136,16 @@ svg.jm tspan.x{font-weight:800}
 .act.add{border-style:dashed;color:var(--ink2)}
 .row.ghost:hover .act.add,.act.add:hover{border-style:solid;border-color:var(--ink);background:var(--ink);color:var(--paper)}
 .fixed{font-size:.61rem;color:var(--dim);width:5.8rem;text-align:center;line-height:1.3;display:inline-block}
+/* the flight home, the one line the list still keeps between rows */
 .legrow{display:flex;align-items:center;flex-wrap:wrap;gap:0 .4rem;padding:.3rem 0 .3rem 2.6rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;color:var(--ink2)}
 .legrow b{color:var(--ink);font-weight:800}
-.legrow.q b{color:var(--warn)}
 .legrow .ap{color:var(--dim)}
+/* the transit rides on the line of the stop it delivers you to, in the mono the leg row used: a hairline sets it off
+   from the name and kind, then the hours in ink so the figure is what the eye lands on (owner, 2026-09-12) */
+.row .legin{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;color:var(--ink2);white-space:nowrap;flex:none}
+.row .legin::before{content:"";display:inline-block;width:1px;height:14px;background:var(--hair2);vertical-align:-2px;margin:0 1rem 0 .5rem}
+.row .legin b{color:var(--ink);font-weight:800}
+.row .legin.q b{color:var(--warn)}
 /* dashed rows: the rail goes hollow and the fill goes, but the type holds its contrast */
 /* hanging off the rail, not standing on it: indented clear of the line, and carrying about seven-tenths of a solid
    row's vertical padding so a run of options never outweighs the stops between them */
@@ -180,6 +186,9 @@ svg.jm tspan.x{font-weight:800}
  .nn button{order:3}
  .nn.ghostn button{display:none}
  .legrow{padding-left:1.6rem}
+ /* too narrow for both: the transit drops to its own line under the name and the hairline goes with it */
+ .row .legin{flex:1 0 100%;white-space:normal;margin-top:.1rem}
+ .row .legin::before{display:none}
  .row.ghost{margin-left:.9rem}
 }
 
@@ -326,6 +335,9 @@ const KX={kakunodate:"stop"};
 const DESC={tokyo:"where most trips start: neighbourhoods a train apart, food at every price",kyoto:"temples, gardens and the old capital, at its quietest in winter",osaka:"the eating-and-going-out city, a short ride from Kyoto",kanazawa:"castle town on the Japan Sea: the garden under snow, crab, gold leaf",takayama:"a preserved timber town in the mountains, between Kanazawa and Kyoto",hiroshima:"the inland-sea city: the peace park, the food, the ferry to the shrine island",sendai:"the north's one big city and the way into the Tōhoku hot-spring towns",kagoshima:"a southern port under an active volcano, hot springs in the hills behind",fukuoka:"Kyushu's food city: ramen, the river stalls, everything within a walk",nagasaki:"a harbour city built on hills, with a Chinese and Portuguese past",kumamoto:"the castle city under the Aso caldera",sapporo:"the northern island's city: snow, crab, ramen and a grid you can walk",niseko:"the ski town under Mount Yōtei: deep snow and mountain ryokan",echigoyuzawa:"the second snow-country valley: a bullet-train stop under the ski slopes",nyuto:"a remote mountain ryokan in the Akita cedar forest, all outdoor baths",kakunodate:"the samurai town of black timber walls and weeping cherries",yufuin:"the valley town under Mount Yufu: small ryokan and a mountain skyline"};
 const APN={HND:"Tokyo Haneda (HND)",NRT:"Tokyo Narita (NRT)",KIX:"Osaka Kansai (KIX)",ITM:"Osaka Itami (ITM)",FUK:"Fukuoka (FUK)",NGS:"Nagasaki (NGS)",HIJ:"Hiroshima (HIJ)",KOJ:"Kagoshima (KOJ)",KMJ:"Kumamoto (KMJ)",OIT:"Ōita (OIT)",KMQ:"Komatsu (KMQ)",NGO:"Nagoya Centrair (NGO)",CTS:"Sapporo New Chitose (CTS)"};
 const apName=c=>APN[c]||(c&&c!=="—"?c:"to confirm");
+/* the airport as it is said mid-sentence, on the first stop's own line: "35 min train from Haneda" */
+const APS={HND:"Haneda",NRT:"Narita",KIX:"Kansai",ITM:"Itami",FUK:"Fukuoka",NGS:"Nagasaki",HIJ:"Hiroshima",KOJ:"Kagoshima",KMJ:"Kumamoto",OIT:"Ōita",KMQ:"Komatsu",NGO:"Centrair",CTS:"New Chitose"};
+const apShort=c=>APS[c]||(c&&c!=="—"?c:"the airport");
 const nm=l=>NAME[l]||C[l]||l;
 const KINDTAG={city:"CITY",inn:"RYOKAN",stop:"TOWN"};
 /* every reason the page prints goes through plainly(): the kit's own shorthand out, the engine's keys out, so a row
@@ -710,7 +722,7 @@ function nightsCtl(loc,key,n,warn){const [lo,hi]=bandOf(loc),mx=hi+2;
  +`<button data-nk="${esc(key)}" data-d="1"${n>=mx?" disabled":""} aria-label="One night more at ${esc(nm(loc))}">+</button></span>`;}
 function ghostCtl(n){return `<span class="nn ghostn"><button disabled tabindex="-1" aria-hidden="true">−</button>`
  +`<span class="n">${n}</span><span class="u">${n===1?"night":"nights"}</span><button disabled tabindex="-1" aria-hidden="true">+</button></span>`;}
-function rowHtml(T,sp,i){const s=T.st[i],loc=s.loc,k=kindOf(sp,loc),own=T.owner[i];
+function rowHtml(T,sp,i,leg){const s=T.st[i],loc=s.loc,k=kindOf(sp,loc),own=T.owner[i];
  const rep=T.firstAt[loc]!==i,[lo,hi]=bandOf(loc);
  const off=T.count[loc]===1&&(s.n<lo||s.n>hi);
  /* the amber is a warning about a choice: it belongs to nights the reader set. Where the settled target itself cannot
@@ -736,7 +748,7 @@ function rowHtml(T,sp,i){const s=T.st[i],loc=s.loc,k=kindOf(sp,loc),own=T.owner[
  const rk=off?`<span class="rk ${mine?"range":"grp"}">${bandText(loc)}</span>`
   :`<span class="rk">${T.rec.has(loc)&&!rep?"recommended":""}</span>`;
  return `<div class="row ${cls(k)}"><span class="no">${String(i+1).padStart(2,"0")}</span>`
- +`<span class="nm"><span class="nmt">${esc(nm(loc))}</span><span class="kindtag">${KINDTAG[k]}</span>`
+ +`<span class="nm"><span class="nmt">${esc(nm(loc))}</span><span class="kindtag">${KINDTAG[k]}</span>${leg||""}`
  +`<span class="d">${esc(d1)}</span></span>${rk}${nightsCtl(loc,s.key,s.n,mine)}<span class="ax">${act}</span></div>`;}
 function ghostHtml(g,no){
  /* a ghost that brings more than one place names each of them with its own kind */
@@ -750,21 +762,31 @@ function ghostHtml(g,no){
   * for a stay that cannot happen */
  +(g.dis?`<span class="nn ghostn"></span>`:ghostCtl(g.n))
  +`<span class="ax">${g.dis?"":`<span class="act add" aria-hidden="true">${word}</span>`}</span></div>`;}
-function legHtml(a,b){const L=LEG[a+">"+b];if(!L)return `<div class="legrow q"><b>to confirm</b> no researched leg</div>`;
- const w=modeWord(L[2]);return `<div class="legrow${w==="flight"?" f":""}"><b>${hmS(L[0])}</b> ${w}</div>`;}
-function apHtml(dir,code,L){const t=L?`<b>${hmS(L[0])}</b> ${modeWord(L[2])}`:"<b>to confirm</b>";
- return dir==="in"?`<div class="legrow"><span class="ap">✈ arrive ${esc(apName(code))}</span> · ${t}</div>`
-  :`<div class="legrow"><span class="ap">depart ${esc(apName(code))} ✈</span> · ${t}</div>`;}
+/* the leg no longer sits between two rows, so it names the place it came from on the row it arrives at */
+function legInline(a,b){const L=LEG[a+">"+b],fr=esc(nm(a));
+ if(!L)return `<span class="legin q"><b>to confirm</b> from ${fr}</span>`;
+ return `<span class="legin"><b>${hmS(L[0])}</b> ${modeWord(L[2])} from ${fr}</span>`;}
+/* the ride in from the airport is the same thing: the first stop's own arriving leg */
+function apInline(code,L){const fr=esc(apShort(code));
+ if(!L)return `<span class="legin q"><b>to confirm</b> from ${fr}</span>`;
+ return `<span class="legin"><b>${hmS(L[0])}</b> ${modeWord(L[2])} from ${fr}</span>`;}
+/* the flight home still closes the list on its own line: it goes after the last stop, not into one */
+function apOutHtml(code,L){const t=L?`<b>${hmS(L[0])}</b> ${modeWord(L[2])}`:"<b>to confirm</b>";
+ return `<div class="legrow"><span class="ap">depart ${esc(apName(code))} ✈</span> · ${t}</div>`;}
 function itinHtml(T,sp){const q={};
  /* inside one position: the place attached to the city just above, then the city switches, then the end */
  T.ghosts.map((x,i)=>[x,i]).sort((a,b)=>a[0].p-b[0].p||a[0].r-b[0].r||a[1]-b[1]).forEach(x=>{(q[x[0].p]=q[x[0].p]||[]).push(x[0].g);});
  let out="";
+ /* no line of its own between the rows: every arriving leg — the ride in from the airport included — is printed on the
+  * title line of the stop it delivers you to, so the time stands with the place and the options stand alone. The
+  * positions in T.items are untouched, so the option rows still fall exactly where the assembler put them */
+ const legInto={};T.items.forEach(x=>{if(x.t==="leg")legInto[x.after+1]=legInline(x.a,x.b);});
+ if(T.st.length)legInto[0]=apInline(T.apIn,T.lIn);
  for(let p=0;p<=T.items.length;p++){
   (q[p]||[]).forEach(g=>{out+=ghostHtml(g);});
   const it=T.items[p];if(!it)break;
-  if(it.t==="row")out+=rowHtml(T,sp,it.si);
-  else if(it.t==="leg")out+=legHtml(it.a,it.b);
-  else out+=apHtml(it.dir,it.dir==="in"?T.apIn:T.apOut,it.dir==="in"?T.lIn:T.lOut);}
+  if(it.t==="row")out+=rowHtml(T,sp,it.si,legInto[it.si]||"");
+  else if(it.t==="ap"&&it.dir==="out")out+=apOutHtml(T.apOut,T.lOut);}
  return `<div class="itin">${out}</div>`;}
 
 /* ---------- the summary: the nights against the target, and the travel ---------- */
