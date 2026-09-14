@@ -564,6 +564,41 @@ function readSections(){const parts=location.hash.replace(/^#/,"").split("|").fi
  return parts.length?parts.map(parseSec):[{}];}
 /* every reader of the address sees the tab that is open */
 function hashParams(){return SECTIONS[SEC]||{};}
+/* ---------- what each route remembers ----------
+ * The address is the whole state, but it is not the only copy of it: every route keeps its own last state in this
+ * browser (its nights, its answers, the nights on screen, its ticket), so an address the assistant sends next — which
+ * names only what that message is about — opens where the reader left the route rather than at the defaults.
+ * MERGE, NEVER RESET: a parameter the address carries wins; a parameter it leaves out keeps what was remembered, and
+ * `set=` and `n=` merge KEY BY KEY — an answer the assistant names wins for that decision alone and every other answer
+ * the reader made stands. `reset=1` in a section is the one way to ask for the route's own defaults again.
+ * An address the page itself wrote is already whole and is taken literally (owner, 2026-09-13). */
+const MEMKEY="jtk.explorer.v1",MEMFIELDS=["nights","in","out","repeat","reverse","start","set","n"];
+let MEM={};
+try{MEM=JSON.parse(localStorage.getItem(MEMKEY)||"{}")||{};}catch(e){MEM={};}
+function memSave(){try{const ks=Object.keys(MEM);if(ks.length>60)ks.slice(0,ks.length-60).forEach(k=>{delete MEM[k];});
+ localStorage.setItem(MEMKEY,JSON.stringify(MEM));}catch(e){}}
+function memKey(p){if(!p)return null;if(isPlanSec(p))return "plan:"+String(p.plan||"");
+ const sp=findSpine(p.spine);return sp?"spine:"+slugOf(sp):null;}
+function memPut(p){const k=memKey(p);if(!k)return;const o={};
+ MEMFIELDS.forEach(x=>{if(p[x]!=null&&p[x]!=="")o[x]=p[x];});
+ delete MEM[k];MEM[k]=o;memSave();}
+/* two comma lists of key:value, the second winning key by key, the first keeping its order */
+function mergeList(base,add,norm){const m=[],at={};
+ [String(base||""),String(add||"")].forEach(str=>str.split(",").forEach(pair=>{if(!pair.trim())return;
+  const i=pair.lastIndexOf(":");if(i<0)return;const k=norm?norm(pair.slice(0,i).trim()):pair.slice(0,i).trim();
+  if(at[k]==null){at[k]=m.length;m.push([k,pair.slice(i+1).trim()]);}else m[at[k]][1]=pair.slice(i+1).trim();}));
+ return m.map(kv=>kv[0]+":"+kv[1]).join(",");}
+const nKey=t=>{const v=visitOf(t);return visitStr(v[0],v[1]);};
+const isReset=p=>/^(1|yes|true|on)$/i.test(String((p||{}).reset||""));
+function mergeSec(p){const k=memKey(p);if(!k||isReset(p))return p;
+ const st=MEM[k];if(!st)return p;const out=Object.assign({},p);
+ MEMFIELDS.forEach(x=>{if(x==="set"||x==="n")return;if(out[x]==null||out[x]==="")if(st[x]!=null)out[x]=st[x];});
+ /* a different total is a different trip: the nights remembered against the old one are let go and the fill lands the
+  * new one, exactly as the page's own total stepper does — the answers, which are not about length, are kept */
+ const sameN=!p.nights||String(p.nights)===String(st.nights||"");
+ out.set=mergeList(st.set,p.set);out.n=mergeList(sameN?st.n:"",p.n,nKey);
+ if(!out.set)delete out.set;if(!out.n)delete out.n;
+ return out;}
 const isPlanSec=p=>!!(p&&p.plan&&!p.spine);
 /* the answers and the nights are keyed by the tab they were set in, so two tabs on one route never share them */
 const SID=sp=>SEC+"|"+sp.id;
@@ -580,12 +615,20 @@ let cur=spines[0],target=spines[0].band[0],ask=null;
 let NFIX=false;
 /* every render reads the hash again, so a fresh link overrides whatever the page was holding: the nights, the start, the
  * direction and the two airports all come from it when it carries them */
+/* the page's own state for one tab, let go when that tab is asked to start again */
+function clearSec(i){const pre=i+"|";[sel,nightsOv,autoOn].forEach(o=>Object.keys(o).forEach(k=>{if(k.indexOf(pre)===0)delete o[k];}));
+ delete PLANOFF[i];lastSig=null;}
+let NEEDSYNC=false;
 function readHash(){const raw=location.hash.replace(/^#/,"");
- /* a link the page did not write is a new trip: the answers, the nights and the fits it was holding go, so an address
-  * always shows what it says rather than the last one with this one laid over it (owner, 2026-09-13) */
- if(raw!==LASTWROTE){[sel,nightsOv,autoOn,PLANOFF].forEach(o=>Object.keys(o).forEach(k=>{delete o[k];}));
-  lastSig=null;addedSec=-1;SEC=0;LASTWROTE=raw;}
- SECTIONS=readSections();if(SEC>=SECTIONS.length)SEC=0;const p=hashParams();
+ /* an address the page wrote itself is the whole state already; anything else — a link from the assistant, a reload,
+  * a pasted address — is merged onto what each route remembers, so nothing the reader set is lost */
+ const own=raw===LASTWROTE&&!WANTMERGE;WANTMERGE=false;
+ const secs=readSections();
+ if(!own){secs.forEach((p,i)=>{if(isReset(p)){const k=memKey(p);if(k)delete MEM[k];memSave();clearSec(i);}});
+  SECTIONS=secs.map(mergeSec);NEEDSYNC=true;}
+ else SECTIONS=secs;
+ if(SEC>=SECTIONS.length)SEC=0;const p=hashParams();
+ SECTIONS.forEach(memPut);
  REPEAT=/^(1|yes|true|on)$/i.test(String(p.repeat||""));
  FIN=FOUT="";
  /* a plain stop string has no route behind it: the plan tab draws it as it stands */
@@ -624,15 +667,25 @@ function readHash(){const raw=location.hash.replace(/^#/,"");
  /* the nights on screen, the same figures the steppers set — with these the page shows what the link says and neither
   * re-spreads the total nor spends it on more places */
  NFIX=false;
- if(p.n)String(p.n).split(",").forEach(pair=>{const i=pair.lastIndexOf(":");if(i<0)return;
-  const v=parseInt(pair.slice(i+1),10);const vo=visitOf(pair.slice(0,i));let loc=vo[0];const visit=vo[1];
-  if(!loc||!(v>0))return;
-  nightsOv[SID(cur)+"/"+loc+"#"+visit]=Math.min(stepMax(loc),Math.max(1,v));NFIX=true;});
+ /* the merged `n=` is the whole truth about this route's nights — what the address says over what it remembered — so
+  * the figures the page was holding are let go first and laid down again from it */
+ {const pre=SID(cur)+"/";Object.keys(nightsOv).forEach(k=>{if(k.indexOf(pre)===0)delete nightsOv[k];});}
+ if(p.n){const pairs=[];String(p.n).split(",").forEach(pair=>{const i=pair.lastIndexOf(":");if(i<0)return;
+   const v=parseInt(pair.slice(i+1),10),vo=visitOf(pair.slice(0,i));if(!vo[0]||!(v>0))return;pairs.push([vo[0],vo[1],v]);});
+  /* a remembered figure that no longer describes the stay is let go: where an answer in this address has closed a split
+   * (Nikkō off, so Tokyo is one stay again), the halves it was written for are stale and the fill decides instead */
+  const seen={};stopsOf(cur).forEach(s=>{seen[s.loc]=(seen[s.loc]||0)+1;});
+  const stale={};pairs.forEach(([loc,visit])=>{if(visit>(seen[loc]||0))stale[loc]=1;});
+  pairs.forEach(([loc,visit,v])=>{if(stale[loc])return;
+   nightsOv[SID(cur)+"/"+loc+"#"+visit]=Math.min(stepMax(loc),Math.max(1,v));NFIX=true;});}
  /* the ticket the address carries, held for the airports no choice on this route declares */
  FIN=(p.in||"").toUpperCase();FOUT=(p.out||"").toUpperCase();
  return p;}
 /* the address the page wrote last: anything else in the bar is a fresh link, and a fresh link is the whole state */
 let LASTWROTE=null;
+/* the page's own writes are the whole state and are taken literally — except the sparse one a tab click makes, which
+ * asks to be merged with what that route remembers */
+let WANTMERGE=false;
 function writeSections(secs){const s=secs.map(hashStr).join("|");LASTWROTE=s;
  if("#"+s===location.hash)render();else location.hash=s;}
 function setHash(patch){const secs=readSections();if(SEC>=secs.length)SEC=Math.max(0,secs.length-1);
@@ -1182,15 +1235,23 @@ function planPageHtml(p){const T=planTrip(p);
  if(!T.st.length)return tabsHtml(null)+`<p class="prompt">This plan has no stops the kit knows. Ask the chat for the stop string again.</p>`;
  return tabsHtml(null)
  +`<div class="core">${planBarHtml(T)}<div class="tl"><div class="pairF">${mapCtl(T,null)}${itinHtml(T,null)}</div></div>${giveHtml(T)}</div>`;}
+/* after a merge the address in the bar is written out in full — every answer, every night, the ticket — so the next
+ * link the assistant is handed (or the one the reader copies) carries the state as it now stands */
+function syncHash(){NEEDSYNC=false;if(!cur)return;
+ const secs=SECTIONS.map(x=>Object.assign({},x)),p=Object.assign({},secs[SEC]||{});
+ delete p.reset;p.nights=String(target);p.set=setPart();p.n=nPart();
+ const ap=airportsOf(cur,fit(cur));if(ap[0]&&ap[0]!=="—")p.in=ap[0];if(ap[1]&&ap[1]!=="—")p.out=ap[1];
+ secs[SEC]=p;memPut(p);writeSections(secs);}
 const app=document.getElementById("app");
 let lastSig=null;
 function render(){readHash();
  const p=hashParams();
- if(isPlanSec(p)){app.innerHTML=planPageHtml(p);fitMaps();return;}
+ if(isPlanSec(p)){app.innerHTML=planPageHtml(p);fitMaps();NEEDSYNC=false;return;}
  if(cur){const sd=startDec(cur),dd=dirDec(cur);
   const sig=[SEC,cur.id,target,sd?sel[SID(cur)+"/"+sd.key]:"",dd?sel[SID(cur)+"/"+dd.key]:""].join("|");
   if(sig!==lastSig){lastSig=sig;if(!NFIX)spendNights(cur);}}
- app.innerHTML=pageHtml(cur);if(cur)fitMaps();}
+ app.innerHTML=pageHtml(cur);if(cur)fitMaps();
+ if(NEEDSYNC&&cur)syncHash();}
 render();
 addEventListener("hashchange",render);
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(fitMaps,120);});
@@ -1206,13 +1267,20 @@ function act(el){
  /* the nights asked for, the repeat visit and the routes under discussion belong to the trip and stay; the answers, the
   * nights on screen, the start, the direction — and the ticket, which is now flown to as written — belong to the route
   * being left, so a route opened from a tab states its own airports (owner, 2026-09-13) */
- if(tab){const slug=tab.dataset.tab,secs=readSections();
+ if(tab){const slug=tab.dataset.tab,secs=readSections(),known=!!MEM["spine:"+slug];
+  /* whichever tab this opens, it opens where that route was left: the sparse write below is merged with what the route
+   * remembers, and the address is written out in full again (owner, 2026-09-13) */
+  WANTMERGE=true;
   const at=secs.findIndex(p=>!isPlanSec(p)&&secSpine(p)&&slugOf(secSpine(p))===slug);
   if(at>=0){SEC=at;render();return true;}
   /* one route on the address: the tab replaces it, as it always did (a plan is never replaced — it opens beside it) */
-  if(secs.length<2&&!pinned().length&&!isPlanSec(secs[0])){SEC=0;setHash({spine:slug,plan:"",start:"",reverse:"",set:"",n:"",in:"",out:""});return true;}
+  if(secs.length<2&&!pinned().length&&!isPlanSec(secs[0])){SEC=0;
+   const patch={spine:slug,plan:"",start:"",reverse:"",set:"",n:"",in:"",out:""};
+   /* a route this browser has never opened takes the length the reader is working in; one it knows takes its own */
+   if(known)patch.nights="";
+   setHash(patch);return true;}
   /* a route the address only pins: it opens in a tab of its own, at its own defaults and its own airports */
-  const fresh={spine:slug};["nights","repeat"].forEach(k=>{if(secs[SEC]&&secs[SEC][k])fresh[k]=secs[SEC][k];});
+  const fresh={spine:slug};if(!known)["nights","repeat"].forEach(k=>{if(secs[SEC]&&secs[SEC][k])fresh[k]=secs[SEC][k];});
   const t=addedSec>0&&addedSec<secs.length?secs[addedSec]:null;
   if(t&&SEC===addedSec&&!t.set&&!t.n)secs[addedSec]=fresh;else{secs.push(fresh);addedSec=secs.length-1;}
   SEC=addedSec;writeSections(secs);return true;}
